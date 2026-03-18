@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="30200.xsd">
+	<type>30200</type>
+	<date>2002-11-25</date>
+	<time/>
+	<Long-Adjourn-Options>
+		<LAO-Type>30200_Adjourned_for_Pre-Sentence_Report_to_[date]</LAO-Type>
+		<LAO-Date>25/11/2002</LAO-Date>
+	</Long-Adjourn-Options>
+</event>

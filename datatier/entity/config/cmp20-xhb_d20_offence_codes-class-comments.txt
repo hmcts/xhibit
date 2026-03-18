@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByOffenceCode(java.lang.String offenceCode)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (d) FROM XhbD20OffenceCodes AS d WHERE 
+ *           d.offenceCode = ?1"
+ *
+ * -------- end of custom finders --------

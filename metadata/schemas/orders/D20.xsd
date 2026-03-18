@@ -1,0 +1,725 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="OrderTypes.xsd"/>
+	<xs:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xs:complexType name="D20OrderStructure">
+		<xs:sequence>
+			<!-- Header information -->
+			<xs:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xs:element name="D20PersonalDetails" type="D20PersonalDetailsStructure"/>
+			<xs:element name="D20CommittingCourtSection">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="D20CommittingCourt">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="OriginatingCourtStructure"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DriverNumber" type="xs:string"/>
+			<xs:element name="LicenceType" type="D20LicenceTypeProducedInCourt"/>
+			<xs:element name="LicenceIssueNo" type="xs:string" minOccurs="0"/>
+			<xs:element name="LicenceCounterpartIssueNo" type="xs:string" minOccurs="0"/>
+			<!-- Footer information -->
+			<xs:element name="PaperLicenceOption" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="PhotocardCounterpart" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="PaperLicenceEndorsed" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="CounterpartLicenceEndorsed" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="ForeignLicence" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="Hardship" type="xs:boolean" minOccurs="0"/>
+			<xs:element name="NotificationPreviouslySent" type="xs:boolean"/>
+			<xs:element name="DifferentAddress">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DifferentName" type="xs:string"/>
+						<xs:element name="Address" type="apd:UKPostalAddressStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Forms" type="D20FormsType"/>
+			<!-- Offence section -->
+			<xs:element name="Offence1">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OffenceCode1" type="xs:string"/>
+						<xs:element name="XhibitOffenceId1" type="xs:string"/>
+						<xs:element name="OffenceDate1Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDate1" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceFine1" type="OffenceFine"/>
+						<xs:element name="OffencePenaltyPoints1" type="xs:integer"/>
+						<xs:element name="OffenceAlcoholLevel1" type="D20AlcoholLevel"/>
+						<xs:element name="OffenceDisqualifiedPeriod1" type="XHIBITPeriodStructure"/>
+						<xs:element name="OffenceOtherSentence1Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceOtherSentence1" type="D20OffenceOtherSentence"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffencePPSCO1Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffencePPSCO1" type="D20OffencePPSCO" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqTestPassed1" type="D20DisqTestPassedDropdown"/>
+						<xs:element name="OffenceDPSSentence1" type="D20DPDDropdown" minOccurs="0"/>
+						<xs:element name="OffenceInterimFinal1" type="D20InterimFinalDropdown" minOccurs="0"/>
+						<xs:element name="OffenceSentencingCourt1Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceSentencingCourt1">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfSentence1" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationRemoved1Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationRemoved1" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationSuspended1Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationSuspended1" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationReimposed1Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationReimposed1" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NoDisqualificationMitigatingCircumstances1" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NoDisqualificationSpecialReasons1" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NotificationOfDisability1" type="xs:boolean" minOccurs="0"/>
+						<xs:element name="OffenceAppealCourt1" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="XHIBITCourtHouseStructure">
+										<xs:attributeGroup ref="ConditionAttributeGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceAppeal1Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceAppealCourt1" minOccurs="0">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfAppeal1Section" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="OffenceDateOfAppeal1" type="xs:date" minOccurs="0"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="ConditionAttributeGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AppealWasAgainstConviction1" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAgainstSentenceOnly1" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAllowed1" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealDismissed1Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateDismissed1" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="AppealWasAbandoned1Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateAbandoned1" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="SentenceWasVaried1" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasRemitted1Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateRemitted1" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Offence2">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OffenceCode2" type="xs:string"/>
+						<xs:element name="XhibitOffenceId2" type="xs:string"/>
+						<xs:element name="OffenceDate2Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDate2" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceFine2" type="OffenceFine"/>
+						<xs:element name="OffencePenaltyPoints2" type="xs:integer"/>
+						<xs:element name="OffenceAlcoholLevel2" type="D20AlcoholLevel"/>
+						<xs:element name="OffenceDisqualifiedPeriod2" type="XHIBITPeriodStructure"/>
+						<xs:element name="OffenceOtherSentence2Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceOtherSentence2" type="D20OffenceOtherSentence"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffencePPSCO2Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffencePPSCO2" type="D20OffencePPSCO" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqTestPassed2" type="D20DisqTestPassedDropdown"/>
+						<xs:element name="OffenceDPSSentence2" type="D20DPDDropdown" minOccurs="0"/>
+						<xs:element name="OffenceInterimFinal2" type="D20InterimFinalDropdown" minOccurs="0"/>
+						<xs:element name="OffenceSentencingCourt2Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceSentencingCourt2">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfSentence2" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationRemoved2Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationRemoved2" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationSuspended2Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationSuspended2" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationReimposed2Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationReimposed2" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NoDisqualificationMitigatingCircumstances2" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NoDisqualificationSpecialReasons2" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NotificationOfDisability2" type="xs:boolean" minOccurs="0"/>
+						<xs:element name="OffenceAppealCourt2" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="XHIBITCourtHouseStructure">
+										<xs:attributeGroup ref="ConditionAttributeGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceAppeal2Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceAppealCourt2" minOccurs="0">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfAppeal2Section" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="OffenceDateOfAppeal2" type="xs:date" minOccurs="0"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="ConditionAttributeGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AppealWasAgainstConviction2" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAgainstSentenceOnly2" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAllowed2" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealDismissed2Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateDismissed2" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="AppealWasAbandoned2Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateAbandoned2" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="SentenceWasVaried2" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasRemitted2Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateRemitted2" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Offence3">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OffenceCode3" type="xs:string"/>
+						<xs:element name="XhibitOffenceId3" type="xs:string"/>
+						<xs:element name="OffenceDate3Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDate3" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceFine3" type="OffenceFine"/>
+						<xs:element name="OffencePenaltyPoints3" type="xs:integer"/>
+						<xs:element name="OffenceAlcoholLevel3" type="D20AlcoholLevel"/>
+						<xs:element name="OffenceDisqualifiedPeriod3" type="XHIBITPeriodStructure"/>
+						<xs:element name="OffenceOtherSentence3Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceOtherSentence3" type="D20OffenceOtherSentence"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffencePPSCO3Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffencePPSCO3" type="D20OffencePPSCO" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqTestPassed3" type="D20DisqTestPassedDropdown"/>
+						<xs:element name="OffenceDPSSentence3" type="D20DPDDropdown" minOccurs="0"/>
+						<xs:element name="OffenceInterimFinal3" type="D20InterimFinalDropdown" minOccurs="0"/>
+						<xs:element name="OffenceSentencingCourt3Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceSentencingCourt3">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfSentence3" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationRemoved3Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationRemoved3" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationSuspended3Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationSuspended3" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationReimposed3Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationReimposed3" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NoDisqualificationMitigatingCircumstances3" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NoDisqualificationSpecialReasons3" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NotificationOfDisability3" type="xs:boolean" minOccurs="0"/>
+						<xs:element name="OffenceAppealCourt3" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="XHIBITCourtHouseStructure">
+										<xs:attributeGroup ref="ConditionAttributeGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceAppeal3Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceAppealCourt3" minOccurs="0">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfAppeal3Section" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="OffenceDateOfAppeal3" type="xs:date" minOccurs="0"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="ConditionAttributeGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AppealWasAgainstConviction3" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAgainstSentenceOnly3" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAllowed3" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealDismissed3Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateDismissed3" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="AppealWasAbandoned3Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateAbandoned3" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="SentenceWasVaried3" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasRemitted3Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateRemitted3" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Offence4">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="OffenceCode4" type="xs:string"/>
+						<xs:element name="XhibitOffenceId4" type="xs:string"/>
+						<xs:element name="OffenceDate4Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDate4" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceFine4" type="OffenceFine"/>
+						<xs:element name="OffencePenaltyPoints4" type="xs:integer"/>
+						<xs:element name="OffenceAlcoholLevel4" type="D20AlcoholLevel"/>
+						<xs:element name="OffenceDisqualifiedPeriod4" type="XHIBITPeriodStructure"/>
+						<xs:element name="OffenceOtherSentence4Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceOtherSentence4" type="D20OffenceOtherSentence"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffencePPSCO4Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffencePPSCO4" type="D20OffencePPSCO" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqTestPassed4" type="D20DisqTestPassedDropdown"/>
+						<xs:element name="OffenceDPSSentence4" type="D20DPDDropdown" minOccurs="0"/>
+						<xs:element name="OffenceInterimFinal4" type="D20InterimFinalDropdown" minOccurs="0"/>
+						<xs:element name="OffenceSentencingCourt4Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceSentencingCourt4">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfSentence4" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationRemoved4Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationRemoved4" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationSuspended4Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationSuspended4" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceDisqualificationReimposed4Section">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceDisqualificationReimposed4" type="xs:date"/>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="NoDisqualificationMitigatingCircumstances4" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NoDisqualificationSpecialReasons4" type="xs:boolean" minOccurs="0"/>
+			      <xs:element name="NotificationOfDisability4" type="xs:boolean" minOccurs="0"/>
+						<xs:element name="OffenceAppealCourt4" minOccurs="0">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="XHIBITCourtHouseStructure">
+										<xs:attributeGroup ref="ConditionAttributeGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="OffenceAppeal4Section" minOccurs="0">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="OffenceAppealCourt4" minOccurs="0">
+										<xs:complexType>
+											<xs:complexContent>
+												<xs:extension base="XHIBITCourtHouseStructure">
+													<xs:attributeGroup ref="ConditionAttributeGroup"/>
+												</xs:extension>
+											</xs:complexContent>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="OffenceDateOfAppeal4Section" minOccurs="0">
+										<xs:complexType>
+											<xs:sequence>
+												<xs:element name="OffenceDateOfAppeal4" type="xs:date" minOccurs="0"/>
+											</xs:sequence>
+											<xs:attributeGroup ref="ConditionAttributeGroup"/>
+										</xs:complexType>
+									</xs:element>
+									<xs:element name="AppealWasAgainstConviction4" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAgainstSentenceOnly4" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasAllowed4" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealDismissed4Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateDismissed4" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="AppealWasAbandoned4Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateAbandoned4" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+                  <xs:element name="SentenceWasVaried4" type="xs:boolean" minOccurs="0"/>
+                  <xs:element name="AppealWasRemitted4Section" minOccurs="0">
+                    <xs:complexType>
+                      <xs:sequence>
+                        <xs:element name="AppealDateRemitted4" type="xs:date" minOccurs="0"/>
+                      </xs:sequence>
+                      <xs:attributeGroup ref="ConditionAttributeGroup"/>
+                    </xs:complexType>
+                  </xs:element>
+								</xs:sequence>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OffenceFine">
+		<xs:sequence>
+			<xs:element name="MonetaryValue" type="MonetaryValueType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="D20FormsType">
+		<xs:sequence>
+			<xs:element name="FormNumber" type="xs:int"/>
+			<xs:element name="TotalForms" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="D20PersonalDetailsStructure">
+		<xs:sequence>
+			<xs:element name="Title" type="xs:string"/>
+			<xs:element name="OtherTitle" type="xs:string"/>
+			<xs:element name="Gender" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="D20OffenceOtherSentence">
+		<xs:sequence>
+			<xs:element name="D20OffenceOtherSentenceDropdown" type="xs:string"/>
+			<xs:element name="D20OffenceOtherSentenceValue" type="xs:string"/>
+			<xs:element name="D20OffenceOtherSentenceDurationType" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="D20OffencePPSCO">
+		<xs:sequence>
+			<xs:element name="D20OffencePPSCODropdown" type="xs:string"/>
+			<xs:element name="D20OffencePPSCOValue" type="xs:string" minOccurs="0"/>
+			<xs:element name="D20OffencePPSCODurationType" type="XHIBITPeriodStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="D20AlcoholLevel">
+		<xs:sequence>
+			<xs:element name="D20AlcoholLevelValue" type="xs:string"/>
+			<xs:element name="D20AlcoholLevelDropdown" type="D20AlcoholLevelTypes"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="D20AlcoholLevelTypes">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Blood"/>
+			<xs:enumeration value="Breath"/>
+			<xs:enumeration value="Urine"/>
+			<xs:enumeration value="Not Applicable"/>
+			<xs:enumeration value="Amphetamine"/>
+			<xs:enumeration value="Benzoylecgonine"/>
+			<xs:enumeration value="Clonazepam"/>
+			<xs:enumeration value="Cocaine"/>
+			<xs:enumeration value="Diazepam"/>
+			<xs:enumeration value="Flunitrazepam"/>
+			<xs:enumeration value="Ketamine"/>
+			<xs:enumeration value="Lorazepam"/>
+			<xs:enumeration value="Lysergic Acid Diethylamide"/>
+			<xs:enumeration value="Methadone"/>
+			<xs:enumeration value="Methamphetamine"/>
+			<xs:enumeration value="Methylenedioxymethamphetamine"/>
+			<xs:enumeration value="6-Monoacetylmorphine"/>
+			<xs:enumeration value="Morphine"/>
+			<xs:enumeration value="Oxazepam"/>
+			<xs:enumeration value="Temazepam"/>
+			<xs:enumeration value="Delta-9-Tetrahydrocannabinol"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D20LicenceTypeProducedInCourt">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="0 - Never held a DVLA Licence"/>
+			<xs:enumeration value="1 - DVLA Provisional"/>
+			<xs:enumeration value="2 - DVLA Full"/>
+			<xs:enumeration value="3 - Non UK"/>
+			<xs:enumeration value="5 - Has been or is a DVLA Licence holder"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D20DisqTestPassedDropdown">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DTTP - 1"/>
+			<xs:enumeration value="DTETP - 4"/>
+			<xs:enumeration value="Not Applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D20InterimFinalDropdown">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="1 - Interim Imposed"/>
+			<xs:enumeration value="2 - Final Sentence"/>
+			<xs:enumeration value="Not Applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="D20DPDDropdown">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="DPS - 0"/>
+			<xs:enumeration value="DPS - 1"/>
+			<xs:enumeration value="Sentenced - 2"/>
+			<xs:enumeration value="Not Applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

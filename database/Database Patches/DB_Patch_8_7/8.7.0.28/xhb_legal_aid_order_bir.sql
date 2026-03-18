@@ -1,0 +1,46 @@
+create or replace TRIGGER "XHIBIT".XHB_LEGAL_AID_ORDER_BIR_TR
+  BEFORE INSERT
+  ON XHB_LEGAL_AID_ORDER
+  FOR EACH ROW
+
+DECLARE v_legalaidorderid NUMBER;
+
+BEGIN
+
+  IF :NEW.LEGAL_AID_ORDER_ID IS NULL THEN
+
+    SELECT XHB_LEGAL_AID_ORDER_SEQ.NEXTVAL
+    INTO  v_legalaidorderid
+    FROM   DUAL;
+	:NEW.LEGAL_AID_ORDER_ID :=v_legalaidorderid;
+	
+	ELSE
+		v_legalaidorderid := :NEW.LEGAL_AID_ORDER_ID;
+  END IF;
+  
+  
+  IF :NEW.CREST_LEO_ID IS NULL THEN
+    :NEW.CREST_LEO_ID :=v_legalaidorderid;
+  END IF;
+
+  IF ((:NEW.LAST_UPDATED_BY IS NULL) OR
+      (:NEW.CREATED_BY IS NULL)) THEN
+
+    SELECT SYS_CONTEXT('USERENV', 'SESSION_USER'),
+           SYS_CONTEXT('USERENV', 'SESSION_USER')
+    INTO   :NEW.LAST_UPDATED_BY,
+           :NEW.CREATED_BY
+    FROM   DUAL;
+
+  END IF;
+
+  SELECT SYSDATE,
+         SYSDATE,
+         1
+  INTO   :NEW.LAST_UPDATE_DATE,
+         :NEW.CREATION_DATE,
+         :NEW.VERSION
+  FROM   DUAL;
+
+END;
+/

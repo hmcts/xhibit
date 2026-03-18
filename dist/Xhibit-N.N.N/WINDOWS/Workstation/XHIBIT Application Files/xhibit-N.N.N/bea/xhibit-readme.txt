@@ -1,0 +1,1 @@
+BEA_HOME is set to this dir, this allows weblogic to find the license file.

@@ -1,0 +1,9 @@
+<jwshc:handler-config xmlns:jwshc="http://www.bea.com/xml/ns/jws" xmlns="http://java.sun.com/xml/ns/j2ee">
+    <jwshc:handler-chain>
+        <jwshc:handler-chain-name>CJSEChain</jwshc:handler-chain-name>
+        <jwshc:handler>
+            <handler-name>CJSEHandler</handler-name>
+            <handler-class>uk.gov.courtservice.xhibit.webservice.scjsestub.cjseservice.server.CJSEHandler</handler-class>
+        </jwshc:handler>
+    </jwshc:handler-chain>
+</jwshc:handler-config>

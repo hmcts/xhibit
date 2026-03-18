@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="order" label="" borderLabel="Order" borderRaised="true" ref="/">
+			<date name="orderEndDate" label="Order End Date:" ref="/ord:Order/ord:OrderData/*/ord:CompletionDate"/>
+			<dropdown name="respOfficer1" type="three" label="Responsible Officer 1: " length="15" ref="/ord:Order/ord:OrderData/*/ord:ResponsibleOfficer1"/>
+			<dropdown name="respOfficer2" type="four" label="Responsible Officer 2: " length="15" ref="/ord:Order/ord:OrderData/*/ord:ResponsibleOfficer2"/>
+		</section>
+		<!-- Requirements Section Start -->
+		<section name="requirements" label="" borderLabel="Requirements" borderRaised="true" ref="/">
+			<!-- Section A Start-->
+			<section name="unpaidOpt" label="" switchLabel="Unpaid Work Option" borderLabel="Unpaid Work Requirement" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="noOfHours" valueRange="false" minVal="40" maxVal="300" maxLength="3" type="int" label="No. of Hours" length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/ord:Hours" numeric="Y"/>
+				<choice name="consecConcurr" label="" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/ord:Concurrent">
+					<option name="consecutive" label="consecutive" value="no" selected="true"/>
+					<option name="concurrent" label="concurrent" value="yes"/>
+					<option name="none" label="none" value="none"/>
+				</choice>
+				<textfield name="consConTo" type="string" label="Consec/Concur to: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/ord:WorkDetails"/>
+				<date name="unpaidWorkDate" label="Unpaid Work End Date:" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/ord:WorkEndDate"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/ord:AdditonalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:UnpaidWorkRequirement/ord:AdditonalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section A End-->
+			<!-- Section B Start -->
+			<section name="activityOptMain" label="" switchLabel="Activity Option" borderLabel="Activity Requirement" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<section name="presentOpt" label="" switchLabel="Present Yourself Option" borderLabel="" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:PresentDetails/@selected" selectedValue="true" unselectedValue="false">
+					<textfield name="person" type="string" label="Person(s): " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:PresentDetails/ord:Person"/>
+					<textfield name="place" type="string" label="Place(s): " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:PresentDetails/ord:Place/ord:Site"/>
+				</section>
+				<section name="activitiesOpt" label="" switchLabel="Activities Option" borderLabel="" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:ActivityDetails/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="activitiesValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:ActivityDetails/ord:Activity" label="" topLabel="Activities" rows="10" cols="15"/>
+					<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="false" monthsMax="2" daysMax="60" label="" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:ActivityDetails/ord:ActivityPeriod"/>
+				</section>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:AdditonalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ActivityRequirement/ord:AdditonalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section B End -->
+			<!-- Section C Start -->
+			<section name="programmeOpt" label="" switchLabel="Programme Option" borderLabel="Programme Requirement" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProgrammeRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="progTypes" type="string" label="Programme: " length="15" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProgrammeRequirement/ord:Programme"/>
+				<textfield name="place" type="string" label="Place: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProgrammeRequirement/ord:Place/ord:Site"/>
+				<textfield name="progNoOfdays" valueRange="true" minVal="0" maxVal="999" maxLength="3" type="int" label="No. of Days:" length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProgrammeRequirement/ord:Days" numeric="Y"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProgrammeRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProgrammeRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section C End -->
+			<!-- Section D Start -->
+			<section name="prohibitedOpt" label="" switchLabel="Prohibited Activity Option" borderLabel="Prohibited Activity Requirement" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProhibitedActivityRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="activitiesValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProhibitedActivityRequirement/ord:Activity" label="" topLabel="Activities: " rows="7" cols="10"/>
+				<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" label="" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProhibitedActivityRequirement/ord:ActivityPeriod"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProhibitedActivityRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ProhibitedActivityRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section D End -->
+			<!-- Section E Start -->
+			<section name="curfew" label="" switchLabel="Curfew Option" borderLabel="Curfew Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/            */ord:OrderRequirements/ord:CurfewRequirement/ord:CurfewOption" selectedValue="yes" unselectedValue="no">
+				<textfield name="duration" valueRange="true" minVal="0" maxVal="999" maxLength="3" type="int" label="Duration: " length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:CurfewRequirement/ord:CurfewDuration/ord:Duration" numeric="Y"/>
+				<dropdown name="period" type="five" label="Period: " length="15" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:CurfewRequirement/ord:CurfewDuration/ord:Period"/>
+			</section>
+			<!-- Section E End -->
+			<!-- Section F Start -->
+			<section name="exclusion" label="" switchLabel="Exclusion Option" borderLabel="Exclusion Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="place/area" type="string" label="Place/Area: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/ord:Place/ord:Site"/>
+				<section name="period" label="" switchLabel="Between Period Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/ord:BetweenPeriod/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="appPeriod" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/ord:BetweenPeriod/ord:ApplicablePeriod" label="" topLabel="Applicable Periods:" rows="4" cols="5"/>
+				</section>
+				<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" label="Exclusion lasts for: " defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/ord:ExclusionPeriod" yearsMax="2" monthsMax="24" daysMax="731"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ExclusionRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section F End -->
+			<!-- Section G Start -->
+			<section name="residence" label="" switchLabel="Residence Option" borderLabel="Residence Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="hostel" type="string" label="Hostel: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/ord:Hostel/ord:Site"/>
+				<durationdate name="durationdate" dayattribute="true"  weekattribute="false" monthattribute="true" yearattribute="true" label="Obey Hostel rules for: " defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/ord:ObeyRules"/>
+				<section name="anotherPlace" label="" switchLabel="Another Place Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/ord:PlaceOption/@selected" selectedValue="true" unselectedValue="false">
+					<textfield name="anotherValue" type="string" label="Another Place: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/ord:PlaceOption/ord:Place/ord:Site"/>
+				</section>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ResidenceRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section G End -->
+			<!-- Section H Start -->
+			<section name="mentalHealth" label="" switchLabel="Mental Health Treatment Option" borderLabel="Mental Health Treatment Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<choice name="mentalHealthDir" label="Under the direction of: " ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:TreatmentDirector">
+					<option name="practitioner" label="Registered Medical Practitioner" value="Registered Medical Practitioner" selected="true"/>
+					<option name="psychologist" label="Chartered Psychologist" value="Chartered Psychologist"/>
+					<option name="both" label="Both" value="Registered Medical Practitioner and Chartered Psychologist"/>
+				</choice>
+				<section name="treatmentLoc" label="" switchLabel="Treatment Location Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:TreatmentOption/@selected" selectedValue="true" unselectedValue="false">
+					<textfield name="location" type="string" label="Clinic: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:TreatmentOption/ord:TreatmentLocation/ord:Site"/>
+					<choice name="type" label="" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:TreatmentOption/ord:ResidenceStatus">
+						<option name="resident" label="resident" value="resident" selected="true"/>
+						<option name="nonResident" label="non-resident" value="non-resident"/>
+					</choice>
+				</section>
+				<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" label="Period of treatment: " defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:TreatmentPeriod"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:MentalHealthTreatmentRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section H End -->
+			<!-- Section I Start -->
+			<section name="rehab" label="" switchLabel="Drug Rehabilitation Option" borderLabel="Drug Rehabilitation Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="location" type="string" label="Under the direction of: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:TreatmentDirector"/>
+				<section name="treatmentLoc" label="" switchLabel="Treatment Location Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:TreatmentOption/@selected" selectedValue="true" unselectedValue="false">
+					<textfield name="clinic" type="string" label="Clinic: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:TreatmentOption/ord:TreatmentLocation/ord:Site"/>
+					<choice name="type" label="" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:TreatmentOption/ord:ResidenceStatus">
+						<option name="resident" label="resident" value="resident" selected="true"/>
+						<option name="nonResident" label="non-resident" value="non-resident"/>
+					</choice>
+				</section>
+				<textfield name="treatmentPer" valueRange="true" minVal="0" maxVal="999" maxLength="3" type="int" label="Period of treatment (months): " length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:TreatmentPeriod/ord:Months" numeric="Y"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+				<section name="description" label="" switchLabel="Provide Samples Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:SampleOption/@selected" selectedValue="true" unselectedValue="false"/>
+				<section name="review" label="" switchLabel="Review Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/@selected" selectedValue="true" unselectedValue="false">
+					<choice name="reviewDetails" label="Review details: " ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/ord:ReviewDetails">
+						<option name="weekly" label="weekly" value="weekly" selected="true"/>
+						<option name="fortnightly" label="fortnightly" value="fortnightly"/>
+						<option name="monthly" label="monthly" value="monthly"/>
+					</choice>
+					<date name="reviewDate" label="Review Date:" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/ord:ReviewDate"/>
+					<timepanel name="reviewTime" label="Review Time: " ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/ord:ReviewTime"/>
+					<courttype name="courttype" addressReq="true" telephoneReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/ord:ReviewCourt/ord:CourtHouseName"/>
+					<section name="telephone" label="" switchLabel="Telephone Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/ord:TelephoneOption/@selected" selectedValue="true" unselectedValue="false"/>
+					<section name="attendance" label="" switchLabel="Compulsory attendance" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:DrugRehabilitationRequirement/ord:ReviewOption/ord:Attendance" selectedValue="yes" unselectedValue="no"/>
+				</section>
+			</section>
+			<!-- Section I End -->
+			<!-- Section J Start -->
+			<section name="alcohol" label="" switchLabel="Alcohol Treatment Option" borderLabel="Alcohol Treatment Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="direction" type="string" label="Under the direction of: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:TreatmentDirector"/>
+				<section name="treatmentLoc" label="" switchLabel="Treatment Location Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:TreatmentOption/@selected" selectedValue="true" unselectedValue="false">
+					<textfield name="clinic" type="string" label="Clinic: " length="10" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:TreatmentOption/ord:TreatmentLocation/ord:Site"/>
+					<choice name="type" label="" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:TreatmentOption/ord:ResidenceStatus">
+						<option name="resident" label="resident" value="resident" selected="true"/>
+						<option name="nonResident" label="non-resident" value="non-resident"/>
+					</choice>
+				</section>
+				<textfield name="treatmentPer" valueRange="true" minVal="0" maxVal="999" maxLength="3" type="int" label="Period of treatment (months): " length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:TreatmentPeriod/ord:Months" numeric="Y"/>
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholTreatmentRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section J End -->
+			<!-- Section K Start -->
+			<section name="supervision" label="" switchLabel="Supervision Option" borderLabel="Supervision Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:SupervisionRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<section name="additionalreq" label="" switchLabel="Additional Requirements Option" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:SupervisionRequirement/ord:AdditionalRequirements/@selected" selectedValue="true" unselectedValue="false">
+					<textarea name="additonalReqValue" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:SupervisionRequirement/ord:AdditionalRequirements/ord:AdditionalInformation" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+				</section>
+			</section>
+			<!-- Section K End -->
+			<!-- Section L Start -->
+			<section name="travel" label="" switchLabel="Foreign Travel Prohibition Option" borderLabel="Foreign Travel Prohibition Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="days" type="string" label="Day / days: " length="18" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:Days"/>
+				<section name="fromtoOption" label="" switchLabel="or" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:FromToOption/@selected" selectedValue="true" unselectedValue="false">
+					<date name="fromDate" label="From:" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:FromToOption/ord:FromDate"/>
+					<date name="toDate" label="to:" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:FromToOption/ord:ToDate"/>
+				</section>
+				<textfield name="prohibitedFrom" type="string" label="Travel prohibited to: " length="18" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:ProhibitedFrom"/>
+				<section name="exceptionOption" label="" switchLabel="" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:ExceptionOption/@selected" selectedValue="true" unselectedValue="false">
+					<textfield name="exception" type="string" label="other than:              " length="18" maxLength="255" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:ForeignTravelProhibitionRequirement/ord:ExceptionOption/ord:Exception"/>
+				</section>
+			</section>
+			<!-- Section L End -->
+			<!-- Section M Start -->
+			<section name="rehabactivity" label="" switchLabel="Rehabilitation Activity Option" borderLabel="Rehabilitation Activity Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:RehabilitationActivityRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="days" valueRange="true" minVal="0" maxVal="999" maxLength="3" type="int" label="Maximum number of days to participate:" length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:RehabilitationActivityRequirement/ord:Days" numeric="Y"/>
+			</section>
+			<!-- Section M End -->
+			<!-- Section N Start -->
+			<section name="attendance" label="" switchLabel="Attendance Centre Option" borderLabel="Attendance Centre Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AttendanceCentreRequirement/ord:AttendanceOption" selectedValue="yes" unselectedValue="no"/>
+			<!-- Section N End -->
+			<!-- Section O -->
+			 <section name="alcoholabstinence" label="" switchLabel="Alcohol Abstinence and Monitoring Option" borderLabel="Alcohol Abstinence and Monitoring Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholAbstinenceAndMonitoringRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="days" valueRange="true" minVal="0" maxVal="120" maxLength="3" type="int" label="No of days:                            " length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:AlcoholAbstinenceAndMonitoringRequirement/ord:Days" numeric="Y"/>
+			</section>
+			<!-- Section O End -->
+			<!-- Section P Start -->
+			<section name="electronic" label="" switchLabel="Electronic Monitoring Option" borderLabel="Electronic Monitoring Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:ElectronicMonitoringRequirement/@selected" selectedValue="true" unselectedValue="false"/>
+			<!-- Section P End -->
+			<!-- Section Q Start -->
+			<section name="trail" label="" switchLabel="Trail Monitoring Option" borderLabel="Trail Monitoring Requirement" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:TrailMonitoringRequirement/@selected" selectedValue="true" unselectedValue="false">
+				<textfield name="trailduration" valueRange="true" minVal="0" maxVal="999" maxLength="3" type="int" label="No. of days:                            " length="5" ref="/ord:Order/ord:OrderData/*/ord:OrderRequirements/ord:TrailMonitoringRequirement/ord:Duration" numeric="Y"/>
+			</section>
+			<!-- Section Q End -->
+		</section>
+		<!-- Requirements Section End -->
+		<section name="additionalNotes" label="" switchLabel="Additional Notes Option" borderLabel="Additional Notes" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:AdditionalNotes/@selected" selectedValue="true" unselectedValue="false">
+			<textarea name="additonalNotesValue" ref="/ord:Order/ord:OrderData/*/ord:AdditionalNotes" label="" rows="10" cols="40"/>
+		</section>
+		<!-- RFC 1356 - chnage Petty Sessional Area to Local Justice Area -->
+		<!-- Local Justice Area Start -->
+		<textfield name="courttype" label="Local Justice Area:" type="string" length="25" maxLength="48" ref="/ord:Order/ord:OrderData/*/ord:PettySessionalArea/ord:CourtHouseName"/>
+		<!-- Local Justice Area End -->
+		<!-- Warning Sentence Type Start -->
+		<section name="warning" label="" borderLabel="Warning Sentence Type" borderRaised="false" ref="/">
+			<choice name="type" label="" ref="/ord:Order/ord:OrderData/*/ord:WarningDetentionType">
+				<option name="prison" label="Prison" value="Imprisonment" selected="true"/>
+				<option name="detention" label="Detention" value="Detention"/>
+			</choice>
+		</section>
+		<!-- Warning Sentence Type End -->
+		<!-- Offence Details Start -->
+		<convictiontextarea name="convictionValue" maxlength="20" label="Offence Details: " length="20" ref="//ord:Defendant/ord:Charges/ord:Charge[1]/ord:OffenceStatement"/>
+		<!-- Offence Details End -->
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="/ord:Order/ord:OrderData/*/ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

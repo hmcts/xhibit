@@ -1,0 +1,50 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="XhbDiaryNoteEntry findByCaseListingEntryIdAndNoteTypeId(java.lang.Integer caseListingEntryId, java.lang.Integer noteTypeId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(dne) 
+ *    FROM XhbDiaryNoteEntry dne
+ *    WHERE dne.caseListingEntryId = ?1
+ *    AND dne.noteTypeId = ?2
+ *    AND (dne.obsInd IS NULL OR dne.obsInd = 'N')"
+ *
+ *
+ * @ejb.finder
+ *    signature="XhbDiaryNoteEntry findDiaryNotesByCourtIdAndDateAndNoteTypeId(java.lang.Integer courtId, java.util.Date diaryDate, java.lang.Integer noteTypeId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(dne) 
+ *    FROM XhbDiaryNoteEntry dne
+ *    WHERE dne.courtId = ?1
+ *    AND dne.diaryDate = ?2
+ *    AND dne.noteTypeId = ?3
+ *    AND (dne.obsInd IS NULL OR dne.obsInd = 'N')
+ *	  AND (dne.caseId IS NULL OR dne.caseId in (Select c.caseId FROM XhbCase c where c.caseStatus is null or c.caseStatus not in ('D','F','I','H')))"
+ *
+* @ejb.finder
+ *    signature="XhbDiaryNoteEntry findDiaryNotesByCourtIdAndDatesAndNoteTypeId(java.lang.Integer courtId, java.util.Date diaryStartDate, java.util.Date diaryEndDate, java.lang.Integer noteTypeId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(dne) 
+ *    FROM XhbDiaryNoteEntry dne
+ *    WHERE dne.courtId = ?1
+ *    AND (dne.diaryDate  = ?2 OR dne.diaryDate > ?2) 
+ *	  AND (dne.diaryDate  = ?3 OR dne.diaryDate < ?3) 
+ *    AND dne.noteTypeId = ?4 
+ *    AND (dne.obsInd IS NULL OR dne.obsInd = 'N')
+ *	  AND (dne.caseId IS NULL OR dne.caseId in (Select c.caseId FROM XhbCase c where c.caseStatus is null or c.caseStatus not in ('D','F','I','H')))"
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseListingEntryIdAndCaseId(java.lang.Integer caseListingEntryId, java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(dne) 
+ *    FROM XhbDiaryNoteEntry dne
+ *    WHERE (dne.caseListingEntryId = ?1 OR dne.caseListingEntryId IS NULL)
+ *    AND (dne.caseId = ?2 OR (dne.caseId IS NULL AND dne.caseListingEntryId IS NOT NULL))
+ *    AND (dne.obsInd IS NULL OR dne.obsInd = 'N')"
+ * -------- end of custom finders --------
+  

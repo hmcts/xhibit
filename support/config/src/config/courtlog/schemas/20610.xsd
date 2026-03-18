@@ -1,0 +1,33 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trai - Jury Returns-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20610_Appeal_Judgement_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20610_Appeal_Judgement_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20610_AJO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20610_AJO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20610_Appeal_against_conviction_dismissed"/>
+				<xs:enumeration value="E20610_Appeal_against_conviction_allowed"/>
+				<xs:enumeration value="E20610_Appeal_against_sentence_allowed"/>
+				<xs:enumeration value="E20610_Appeal_against_sentence_varied"/>
+				<xs:enumeration value="E20610_Appeal_against_sentence_dismissed"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,81 @@
+CSH1
+
+/opt/moj/home/wmbroker/bin/cron/patch/abend_errors.sh
+/opt/moj/home/wmbroker/bin/cron/cjit/cjit_makereport.sh 
+/opt/moj/home/wmbroker/bin/cron/cjit/Retrieve_Sent_Document_Information.sh 
+/opt/moj/home/wmbroker/bin/cron/PurgeUsers.sh 
+/opt/moj/home/wmbroker/bin/cron/CheckDARTSNewMessages.sh 
+/opt/moj/home/wmbroker/bin/cron/ClearDARTSMessages.sh
+/opt/moj/home/wmbroker/bin/cron/archiveWTXLogs1.sh
+/opt/moj/home/wmbroker/bin/cron/archiveWTXLogs2.sh
+/opt/moj/home/wmbroker/bin/cron/deleteWTXLogs.sh
+/opt/moj/home/wmbroker/bin/cron/nightlyCheck/runJob.sh
+/opt/moj/home/wmbroker/bin/cron/check_interfaces.sh
+/opt/moj/home/wmbroker/bin/cron/dlEmailChecker/runJob.sh
+/opt/moj/home/wmbroker/bin/cron/CJIT_HK/cjit_hk.sh
+/opt/moj/home/wmbroker/bin/cron/morningChecks/finalMorningScript.sh
+/opt/moj/home/wmbroker/bin/cron/morningChecks/healthChecks.sh
+/opt/moj/home/wmbroker/bin/cron/morningChecks/eveningHealthCheckScript.sh 
+/opt/moj/home/wmbroker/bin/cron/morningChecks/checkOrderFailures.sh
+/opt/moj/home/wmbroker/bin/cron/cjit/bin/SendWeeklyCjitEmail.sh 
+/opt/moj/home/wmbroker/bin/cron/cjit.weekly.sh 
+/opt/moj/home/wmbroker/bin/cron/checkMqsiarchivefolder.sh 
+/opt/moj/home/wmbroker/bin/cron/checkAndUpdateCJIPStatus.sh 
+/opt/moj/home/wmbroker/bin/cron/resend_formatting_document_failures.sh 
+/opt/moj/home/wmbroker/bin/cron/HK/run_list_archive.sh
+/opt/moj/home/wmbroker/bin/cron/HK/run_case_archive.sh
+/opt/moj/home/wmbroker/bin/cron/HK/run_case_archive_weekend.sh
+/opt/moj/home/wmbroker/bin/cron/HK/CTX/xhb_delete_list_data.sh
+/opt/moj/home/wmbroker/bin/cron/HK/CTX/xhb_hk_courtel_running_lists.sh
+/opt/moj/home/wmbroker/bin/cron/HK/CTX/run_misc_hk.sh
+/opt/moj/home/wmbroker/bin/cron/HK/CTX/xhb_mark_cases_for_hk.sh 
+/opt/moj/home/wmbroker/bin/cron/HK/CTX/xhb_mark_all_cases_for_deletion.sh
+/opt/moj/home/wmbroker/bin/cron/HK/CTX/xhb_write_del_record_to_history.sh
+/opt/moj/home/wmbroker/bin/cron/checkWTXLog/checkWTXLog.sh
+/opt/moj/home/wmbroker/bin/cron/generic_version_number_reset.sh
+/opt/moj/home/wmbroker/xhibit_hk2/xhb_housekeeping2.sh E DAYS 0
+/opt/moj/home/wmbroker/xhibit_hk2/xhb_housekeeping2.sh V DAYS 0
+/opt/moj/home/wmbroker/xhibit_hk2/xhb_housekeeping2.sh P DAYS 0
+/opt/moj/home/wmbroker/bin/cron/CheckDARTSPriorityNewMessages.sh
+/var/mqsi/WebPages/Send/sFTP_Send.bat
+/opt/moj/home/wmbroker/bin/cron/amdashboard/xhibitDashboardScript.sh
+/opt/moj/home/wmbroker/xhibit_hk2/pdm_housekeeping.sh
+/opt/moj/home/wmbroker/bin/cron/LAA/sendDataToLAA.sh
+/opt/moj/home/wmbroker/bin/cron/LAA/zipAndSendToLAA.sh
+/opt/moj/home/wmbroker/bin/cron/CAD/processMonthlyCAD.sh 
+/opt/moj/home/wmbroker/bin/cron/update_courtel_last_attempt.sh 
+
+
+
+CSH2
+/opt/moj/home/wmbroker/bin/cron/patch/abend_errors.sh 
+/opt/moj/home/wmbroker/bin/cron/archiveWTXLogs1.sh
+/opt/moj/home/wmbroker/bin/cron/archiveWTXLogs2.sh 
+/opt/moj/home/wmbroker/bin/cron/deleteWTXLogs.sh 
+/opt/moj/home/wmbroker/bin/cron/pollCJITProxy.sh 
+/opt/moj/home/wmbroker/bin/cron/checkMqsiarchivefolder.sh 
+/opt/moj/home/wmbroker/bin/cron/rs.sh
+/opt/moj/home/wmbroker/bin/cron/countUsers.sh
+/opt/moj/home/wmbroker/bin/cron/insertTestDARTSMessage.sh 
+/opt/moj/home/wmbroker/bin/cron/checkDRAFTDailyLists.sh 
+/opt/moj/home/wmbroker/bin/cron/resubmitRecordSheet.sh 
+/var/mqsi/WebPages/Send/sFTP_Send.bat 
+/opt/moj/home/wmbroker/bin/cron/LAA/ftpLAAFilesToCSH1.sh 
+
+
+
+WL ADMIN:
+/opt/customer/bea/user_projects/domains/XHIBIT_LIVE/common/publicDisplayNotifier/autoNotify.sh
+/opt/customer/bea/user_projects/domains/XHIBIT_LIVE/common/publicDisplayNotifier/autoNotify.CTX.sh
+/home/oracle/bin/cron/restart.sh
+
+WL MIDTIER/PRES:
+All servers have got cronjobs to delete/zip old logs. 3 examples below:
+00 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/applogs/ -name "*log*" -type f -mtime +30|xargs rm
+00 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/applogs/ -name "*log*" -type f -mtime +3|xargs gzip -9
+00 1 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/proxylogs -name '*.log' -mtime +2 -exec rm -f {} \;
+
+WL PRES SERVERS:
+/home/oracle/bin/cron/userCount/countUsers.sh
+/opt/customer/bea/user_projects/domains/XHIBIT_LIVE/xhibitFTPScript.sh
+

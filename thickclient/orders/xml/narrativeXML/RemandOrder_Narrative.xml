@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nar:Narrative xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative">
+	<nar:Header>Text</nar:Header>
+	<nar:Body>
+		<nar:Section>
+			<nar:Label/>
+			<nar:Body>
+				<nar:H1>Remand Order
+					</nar:H1>
+			</nar:Body>
+		</nar:Section>
+		<nar:Section>
+			<nar:Label>
+				<nar:Line>It was ordered</nar:Line>
+			</nar:Label>
+			<nar:Body>
+				<nar:Table>
+					<nar:TR>
+						<nar:TD>
+							<nar:Line>on <nar:OrderDate/>
+							</nar:Line>
+							<nar:Line>that the defendant <nar:DefendantFullName/>
+							</nar:Line>
+							<nar:Line>be remanded in custody at <nar:CustodyLocation/>
+							</nar:Line>
+							<nar:If>
+								<nar:Condition>ReportIndicator</nar:Condition>
+								<nar:Body>
+									<nar:Line>
+										<nar:ReportIndicator/>
+									</nar:Line>
+								</nar:Body>
+							</nar:If>
+							<nar:Line>
+								and on <nar:NextAppearanceDate> a date and at a time to be notified </nar:NextAppearanceDate> be brought before the <nar:NextAppearanceCourtType/> sitting at: 
+										</nar:Line>
+							<nar:Line>
+								<nar:NextAppearanceCourtHouseName/> or any other place that may be notified.
+										</nar:Line>
+						</nar:TD>
+						<nar:TD>
+							<nar:Line>Date of Birth</nar:Line>
+							<nar:Line>
+								<nar:DefendantDOB/>
+							</nar:Line>
+						</nar:TD>
+					</nar:TR>
+				</nar:Table>
+			</nar:Body>
+		</nar:Section>
+		<nar:If>
+			<nar:Condition>RemandCommitted</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>The defendant</nar:Line>
+					</nar:Label>
+					<nar:Body>
+							The defendant was <nar:CommitSent/> to the Crown Court on <nar:CommittedDate/> by the <nar:CommittingCourtHouseName/> Magistrates Court.
+						</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:If>
+			<nar:Condition>RemandIsBefore</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>The defendant</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						is before the Court <nar:VoluntaryBillOfIndictment/>
+						<nar:CertificateOfTransfer/>
+						<nar:AppealAgainstBailGranted/>
+						<nar:IndictedConvicted/>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:Section>
+			<nar:Label/>
+			<nar:Body>
+				<nar:RmdAdditionalInfo/>
+				<nar:AssociatedCases/>
+			</nar:Body>
+		</nar:Section>
+	</nar:Body>
+	<nar:Footer>Text</nar:Footer>
+</nar:Narrative>

@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<bea-licenses>
+    <license-group format="1.0" product="WebLogic Platform" release="9.2">
+        <license
+            component="2PC"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MCwCFFcwnwUr+CgeeU+eyoNSuoipfxIbAhQ7aEZe5UqiZokPlgHp8DszqMFQ0w=="
+        />
+        <license
+            appnames="*"
+            component="Campaign Manager"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFFPdU10bZl+Z66xayk5WLDoPS1U+AhUAq0REOOmQq1Gy+50iFbANC3Te/qs="
+        />
+        <license
+            component="Cluster"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC4CFQCrZe0c4DGZ01OmKZ2raR00e6q3MQIVAJgcoMv9EvC3v3JTO/hDFD5A5ubn"
+        />
+        <license
+            component="Clustered JMS"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFQCrZe0c4DGZ01OmKZ2raR00e6q3MQIULEoRRAtqXr7UH4FCSkEhkztYAQA="
+        />
+        <license
+            appnames="*"
+            component="Commerce"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC4CFQC1f4utFdtFbUW1KqnaR78LtFJ/3QIVALgQZhPlBFcxRm2KpvX6ENL4lEZk"
+        />
+        <license
+            component="Connector"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MCwCFCk1SIGNAgNWvcQ7GUkOWwD9z+O5AhQ8mPvVtVqziEbTBF39XM46yyQLHA=="
+        />
+        <license
+            component="EJB 1.0"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFCk1SIGNAgNWvcQ7GUkOWwD9z+O5AhUAwxgE3dC4Yeas2YKr3hGU5Jn2hlY="
+        />
+        <license
+            component="EJB 2.0"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC4CFQCugD2kKbPg/ZqjHHwMeLzfiib9gAIVAJecDZrMWyJn4khvWY3bYmZdWNgg"
+        />
+        <license
+            component="Enterprise Web Services"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFQCugD2kKbPg/ZqjHHwMeLzfiib9gAIUKOmptcKwdy3CkOm3CiGXswjJebE="
+        />
+        <license
+            component="In-memory Replication - EJB"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC4CFQDcT0XDi+XrRBQZ81nfepeIOva7IAIVAKPP6q38togStmvj/XhrF9BI+SFo"
+        />
+        <license
+            component="In-memory Replication - Servlet"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC4CFQDV8Io5tYh65Zn8424NVxGzeQeURQIVAI3DralCZ0sE0UwYu8s+i876ylLT"
+        />
+        <license
+            component="JMS"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFQDV8Io5tYh65Zn8424NVxGzeQeURQIUAUvlxknHIq9LLPGK9EWeI5Gwf/w="
+        />
+        <license
+            appnames="*"
+            component="Personalization"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFQCybwA4oEzK+fWPMTiapdkkM4rsQQIUXzem7pTt60Rlm8iHQbakpsXnBJg="
+        />
+        <license
+            appnames="*"
+            component="Portal"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC4CFQDfGeAr4Ic25RAfMh16g8IhPNsLjwIVAIsvFL9k/XG/+Hls4YSTae5KMj0c"
+        />
+        <license
+            appnames="*"
+            component="PortalFramework"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFQDfGeAr4Ic25RAfMh16g8IhPNsLjwIUB7tqqpUPvWeIpEmqUsBuUE4Xjno="
+        />
+        <license
+            component="SSL/Domestic"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MC0CFDIWTLnVNmfmlzZNbC6zIy5Z8MZJAhUAhuaG0j+W9uq6T/yeMsdfogrQk1A="
+        />
+        <license
+            component="SSL/Export"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MCwCFDIWTLnVNmfmlzZNbC6zIy5Z8MZJAhQ6OKaeVXJBeH2SEYNdY7mkBqqr5Q=="
+        />
+        <license
+            component="Service Bus"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MCwCFFH0LV33KJOSimrPTfWXIhCQvz0kAhQS2be5D1WODPjy0xwAuPFsfHdo7g=="
+        />
+        <license
+            component="Servlet Session"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            sessions="unlimited"
+            type="SDK"
+            units="5"
+            signature="MCwCFES3PH/JTfItJ2luZL7gWDNmKY5fAhRWmrZ6nxevXt9WtdPTMIHeS86Zcg=="
+        />
+        <license
+            component="WebLogic"
+            cpus="unvalued"
+            expiration="never"
+            ip="any"
+            licensee="BEA Evaluation Customer"
+            serial="616351266349-2030770964373"
+            type="SDK"
+            units="5"
+            signature="MCwCFES3PH/JTfItJ2luZL7gWDNmKY5fAhRDKyDMmt3x8tTFdrrjR+62HuPW5A=="
+        />
+    </license-group>
+</bea-licenses>
+
+

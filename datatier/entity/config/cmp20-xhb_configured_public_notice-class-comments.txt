@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefinitivePNCourtRoom(java.lang.Integer courtRoomId, java.lang.Integer definitivePNId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbConfiguredPublicNotice AS c WHERE c.courtRoomId = ?1 AND c.xhbPublicNotice.xhbDefinitivePublicNotice.definitivePnId = ?2"
+ *
+ * -------- end of custom finders --------

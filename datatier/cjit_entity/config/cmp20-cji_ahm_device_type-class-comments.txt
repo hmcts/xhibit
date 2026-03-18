@@ -1,0 +1,6 @@
+ * @ejb.finder
+ *    signature="CjiAhmDeviceType findByDeviceTextUniquely(java.lang.String deviceText)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM CjiAhmDeviceType o WHERE o.deviceText = ?1"
+ *    description="DEVICE_TEXT is candidate primary key."

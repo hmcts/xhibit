@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ListDistribution">
+
+    <description>
+       List Distribution - Manages distribution of lists and recipients.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="component.author"                  value="Brett and Neil"/>
+
+    <property name="project.type.controller.bean"      value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialisation Override
+      =======================================================================
+      -->
+
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="XhibitEntities.jar"/>
+                <include name="Value.jar"/>
+                <include name="XhibitValues.jar"/>
+                <include name="Framework.jar"/>
+                <include name="BisRefController.jar"/>
+                <include name="SysAdminEntities.jar"/>
+            </fileset>
+        </path>
+
+        <!-- The controller should not contain the entity classes -->
+        <property name="controller.jar.file.no.ejbc.excludes" value="**/business/entities/**/*.class" />
+
+        <property name="cache.dir" location="${basedir}/cache"/>
+        <property name="cache.includes" value="**/*Entities/**"/>
+    </target>
+
+    <!--
+     =======================================================================
+       Local Initialise
+            - Used for each entity bean's generate and package
+     =======================================================================
+     -->
+
+    <target name="common.entity.initialise">
+        <!-- Extract the name both without the classpath and without the ejbgrp.entityx suffix. -->
+        <property name="entity.file" location="${basedir}/ListDistributionEntities.ejbgrpx"/>
+        <property name="entity.name" value="ListDistribution"/>
+
+        <echo message="entity.name: ${entity.name}"/>
+
+        <property name="entity.ejb.dir"         location="${ejb.build.dir}/${entity.name}Entities" />
+        <property name="entity.meta.dir"        location="${entity.ejb.dir}/META-INF" />
+        <property name="entity.manifest.file"   location="${manifest.dir}/Entity.mf" />
+        <property name="entity.includes.file"   location="${config.dir}/${entity.name}Entities.includes" />
+        <property name="entity.jar.file.noejbc" location="${ejb.build.dir}/${entity.name}Entities-noejbc.jar" />
+        <property name="entity.jar.file"        location="${lib.build.dir}/${entity.name}Entities.jar" />
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+
+    <target name="generate.entity" depends="common.entity.initialise">
+        <copy todir="${ejb.build.dir}" preservelastmodified="true" filtering="true">
+            <filterset>
+                <filter token="xhibit.tx.database.jndi" value="${xhibit.tx.database.jndi}"/>
+            </filterset>
+            <fileset dir="${cache.dir}" includes="${cache.includes}"/>
+        </copy>
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="framework.generate, generate.entity">
+        <log target="generate"/>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+    <target name="package.entity" depends="common.entity.initialise">
+        <jar destfile="${entity.jar.file.noejbc}" manifest="${entity.manifest.file}">
+            <fileset dir="${entity.ejb.dir}"/>
+            <fileset dir="${classes.dir}">
+                <includesfile name="${entity.includes.file}"/>
+            </fileset>
+        </jar>
+
+        <uptodate property="skip.package.entity.ejbc"
+                  srcfile="${entity.jar.file.noejbc}"
+                  targetfile="${entity.jar.file}" />
+    </target>
+
+    <target name="package.entity.ejbc.check" if="skip.package" depends="package.entity">
+        <property name="skip.package.entity.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.entity.ejbc" unless="skip.package.entity.ejbc" depends="package.entity.ejbc.check" >
+        <echo message="Running ejbc on ${entity.jar.file.noejbc}"/>
+
+        <dirname property="entity.jar.dir" file="${entity.jar.file}"/>
+        <mkdir dir="${entity.jar.dir}"/>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="compile.classpath" />
+            </classpath>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${entity.jar.file}" />
+            <arg value="${entity.jar.file.noejbc}" />
+        </java>
+    </target>
+
+    <target name="package" unless="skip.package" depends="framework.package, package.entity.ejbc">
+        <log target="package"/>
+    </target>
+</project>

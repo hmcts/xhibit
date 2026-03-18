@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ * @ejb.finder
+ *    signature="java.util.Collection findAllNonObsolete()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbRefAggravatingReasons AS o WHERE (o.obsInd IS NULL OR o.obsInd = 'N')"
+ *
+ * -------- end of custom finders --------
+  

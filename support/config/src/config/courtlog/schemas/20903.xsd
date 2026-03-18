@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trial - Prosecution Case-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20903_Prosecution_Case_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20903_Prosecution_Case_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20903_PCO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20903_PCO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20903_Prosecution_Opening"/>
+				<xs:enumeration value="E20903_Prosecution_Case_TV_Link_in_Progress"/>
+				<xs:enumeration value="E20903_Prosecution_Case_Video_Being_Played"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

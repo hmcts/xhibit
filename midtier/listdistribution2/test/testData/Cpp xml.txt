@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:DailyList
+	xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+	xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice ListDistributionDailyList-v2-2.xsd">
+	<cs:DocumentID>
+		<cs:DocumentName>Daily List DRAFT v3 28-NOV-19</cs:DocumentName>
+		<cs:UniqueID>CSDDLD000000s000029283</cs:UniqueID>
+		<cs:DocumentType>DLD</cs:DocumentType>
+		<cs:TimeStamp>2019-11-20T15:37:26.174</cs:TimeStamp>
+	</cs:DocumentID>
+	<cs:ListHeader>
+		<cs:ListCategory>Criminssal</cs:ListCategory>
+		<cs:StartDate>2019-11-28</cs:StartDate>
+		<cs:EndDate>2019-11-28</cs:EndDate>
+		<cs:Version>DRAFT 2</cs:Version>
+		<cs:PublishedTime>2019-11-27T14:38:15.000</cs:PublishedTime>
+		<cs:CRESTlistID>678</cs:CRESTlistID>
+		<cs:Duration>0</cs:Duration>
+	</cs:ListHeader>
+	<cs:CrownCourt>
+		<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+		<cs:CourtHouseCode>0453</cs:CourtHouseCode>
+		<cs:CourtHouseName>SNARESBROOK</cs:CourtHouseName>
+		<cs:CourtHouseAddress>
+			<Line>snARESBROOK COURT HOUSETY ab</Line>
+			<Line>75 HOLLYBUSH HILL7 cd</Line>
+			<Line>45 ef</Line>
+			<Line>45 gh</Line>
+			<Line>SNARESBROOK4 ij,LONDON3 kl</Line>
+			<PostCode>E11 1QC</PostCode>
+		</cs:CourtHouseAddress>
+		<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+		<cs:Description>CROWN COURT</cs:Description>
+	</cs:CrownCourt>
+	<cs:CourtLists>
+		<cs:CourtList id="1697">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0012</cs:CourtHouseCode>
+				<cs:CourtHouseName>test2</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1628">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0001</cs:CourtHouseCode>
+				<cs:CourtHouseName>SNARESBROOK mu</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings>
+				<cs:Sitting id="1846">
+					<cs:CourtRoomNumber>1</cs:CourtRoomNumber>
+					<cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+					<cs:SittingAt>11:36:00</cs:SittingAt>
+					<cs:SittingPriority>T</cs:SittingPriority>
+					<cs:SittingNote>sitting note</cs:SittingNote>
+					<cs:Judiciary>
+						<cs:Judge>
+							<CitizenNameTitle>MRS</CitizenNameTitle>
+							<CitizenNameForename>AALL</CitizenNameForename>
+							<CitizenNameSurname>LIZ-JUDGE</CitizenNameSurname>
+							<CitizenNameSuffix>QC LLM</CitizenNameSuffix>
+							<CitizenNameRequestedName>HER HONOUR MRS LIZ-JUDGE QC THE
+								HONORARY RECORDER OF SHREWSBURYSECOND </CitizenNameRequestedName>
+							<cs:CRESTjudgeID>825</cs:CRESTjudgeID>
+						</cs:Judge>
+					</cs:Judiciary>
+					<cs:Hearings>
+						<cs:Hearing id="3262">
+							<cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+							<cs:HearingDetails HearingType="TRL"
+								CRESTListSequence="1">
+								<cs:HearingDescription>For Trial</cs:HearingDescription>
+								<cs:HearingDate>2019-11-28</cs:HearingDate>
+							</cs:HearingDetails>
+							<cs:CRESThearingID>3262</cs:CRESThearingID>
+							<cs:CaseNumber>T20107113</cs:CaseNumber>
+							<cs:Prosecution id="10515">
+								<cs:ProsecutingReference>CPS</cs:ProsecutingReference>
+								<cs:ProsecutingOrganisation>
+									<cs:OrganisationCode>001</cs:OrganisationCode>
+									<cs:OrganisationName> CPS</cs:OrganisationName>
+									<cs:OrganisationAddress>
+										<Line>TH</Line>
+										<Line>SGF</Line>
+										<Line>H</Line>
+										<Line>SF</Line>
+										<Line>GFHFDGH</Line>
+									</cs:OrganisationAddress>
+									<cs:OrganisationDX>KHFKX564</cs:OrganisationDX>
+								</cs:ProsecutingOrganisation>
+							</cs:Prosecution>
+							<cs:NumberOfDefendants>1</cs:NumberOfDefendants>
+							<cs:Defendants>
+								<cs:Defendant id="29700">
+									<cs:PersonalDetails>
+										<cs:Name>
+											<CitizenNameForename>TEST 14</CitizenNameForename>
+											<CitizenNameSurname>SNARE DEFENDANT T20107113-1</CitizenNameSurname>
+										</cs:Name>
+										<cs:IsMasked>no</cs:IsMasked>
+										<cs:DateOfBirth>
+											<BirthDate>1988-04-02</BirthDate>
+											<VerifiedBy>not verified</VerifiedBy>
+										</cs:DateOfBirth>
+										<cs:Sex>male</cs:Sex>
+										<cs:Address>
+											<Line>ADDRESS 1</Line>
+											<Line>ADDRESS 2</Line>
+											<Line>ADDRESS 3</Line>
+											<Line>ADDRESS 4</Line>
+											<Line>TOWN,COUNTY</Line>
+											<PostCode>AL12 7YH</PostCode>
+										</cs:Address>
+									</cs:PersonalDetails>
+									<cs:ASNs>
+										<cs:ASN>1001XH0100000235084L</cs:ASN>
+									</cs:ASNs>
+									<cs:DefendantNumber>1</cs:DefendantNumber>
+									<cs:CRESTdefendantID>29700</cs:CRESTdefendantID>
+									<cs:CustodyStatus>Not applicable</cs:CustodyStatus>
+									<cs:Counsel></cs:Counsel>
+								</cs:Defendant>
+							</cs:Defendants>
+						</cs:Hearing>
+					</cs:Hearings>
+				</cs:Sitting>
+				<cs:Sitting id="1847">
+					<cs:CourtRoomNumber>99</cs:CourtRoomNumber>
+					<cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+					<cs:SittingAt>11:36:00</cs:SittingAt>
+					<cs:SittingPriority>T</cs:SittingPriority>
+					<cs:Judiciary>
+						<cs:Judge>
+							<CitizenNameSurname>N/A</CitizenNameSurname>
+							<CitizenNameRequestedName>N/A</CitizenNameRequestedName>
+						</cs:Judge>
+					</cs:Judiciary>
+					<cs:Hearings>
+						<cs:Hearing id="3264">
+							<cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+							<cs:HearingDetails HearingType="PLY"
+								CRESTListSequence="1">
+								<cs:HearingDescription>For Preliminary Hearing</cs:HearingDescription>
+								<cs:HearingDate>2019-11-28</cs:HearingDate>
+							</cs:HearingDetails>
+							<cs:CRESThearingID>3264</cs:CRESThearingID>
+							<cs:CaseNumber>U20190001</cs:CaseNumber>
+							<cs:Defendants></cs:Defendants>
+						</cs:Hearing>
+					</cs:Hearings>
+				</cs:Sitting>
+			</cs:Sittings>
+		</cs:CourtList>
+	</cs:CourtLists>
+</cs:DailyList>

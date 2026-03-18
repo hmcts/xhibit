@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<RuleEngine>
+	<DocumentRules>
+		<RuleRef id="CaseBeingHeard" class="uk.gov.courtservice.xhibit.web.publicdisplay.workflow.pub.ruleengine.rules.CaseBeingHeardRule"/>
+		<RuleRef id="DefendantNameChanged" class="uk.gov.courtservice.xhibit.web.publicdisplay.workflow.pub.ruleengine.rules.DefendantNameChangedRule"/>
+        <RuleRef id="ReportingRestrictionChangedRule" class="uk.gov.courtservice.xhibit.web.publicdisplay.workflow.pub.ruleengine.rules.ReportingRestrictionChangedRule"/>
+	</DocumentRules>
+	<EventMappings>
+		<Event type="MoveCaseEvent">
+			<ConditionalDocument id="CourtDetail">
+				<Rule id="CaseBeingHeard"/>
+			</ConditionalDocument>
+			<ConditionalDocument id="CourtList"/>
+			<ConditionalDocument id="DailyList"/>
+			<ConditionalDocument id="AllCourtStatus"/>
+            <ConditionalDocument id="AllCaseStatus"/>
+			<ConditionalDocument id="SummaryByName"/>
+			<ConditionalDocument id="JuryCurrentStatus"/>
+		</Event>
+		<Event type="AddCaseEvent">
+			<ConditionalDocument id="CourtList"/>
+			<ConditionalDocument id="DailyList"/>
+			<ConditionalDocument id="SummaryByName"/>
+			<ConditionalDocument id="JuryCurrentStatus"/>
+            <ConditionalDocument id="AllCaseStatus"/>
+		</Event>
+		<Event type="UpdateCaseEvent">
+			<ConditionalDocument id="CourtDetail">
+				<Rule id="CaseBeingHeard"/>
+			</ConditionalDocument>
+			<ConditionalDocument id="DailyList"/>
+			<ConditionalDocument id="JuryCurrentStatus"/>
+            <ConditionalDocument id="CourtList">
+                <Rule id="DefendantNameChanged"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="SummaryByName">
+                <Rule id="DefendantNameChanged"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="AllCourtStatus">
+                <Rule id="DefendantNameChanged"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="AllCaseStatus"/>
+		</Event>
+		<Event type="CaseStatusEvent">
+            <ConditionalDocument id="AllCaseStatus"/>
+            <ConditionalDocument id="CourtDetail">
+               <Rule id="CaseBeingHeard"/>
+            </ConditionalDocument>
+			<ConditionalDocument id="AllCourtStatus">
+               <Rule id="CaseBeingHeard"/>
+			</ConditionalDocument>
+		</Event>
+		<Event type="HearingStatusEvent">
+			<ConditionalDocument id="CourtList"/>
+            <ConditionalDocument id="AllCaseStatus"/>
+		</Event>
+		<Event type="ActivateCaseEvent">
+			<ConditionalDocument id="CourtDetail"/>
+			<ConditionalDocument id="AllCourtStatus"/>
+		</Event>
+		<Event type="PublicNoticeEvent">
+			<ConditionalDocument id="CourtDetail"/>
+            <ConditionalDocument id="CourtList">
+               <Rule id="ReportingRestrictionChangedRule"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="DailyList">
+               <Rule id="ReportingRestrictionChangedRule"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="AllCourtStatus">
+               <Rule id="ReportingRestrictionChangedRule"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="SummaryByName">
+               <Rule id="ReportingRestrictionChangedRule"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="JuryCurrentStatus">
+               <Rule id="ReportingRestrictionChangedRule"/>
+            </ConditionalDocument>
+            <ConditionalDocument id="AllCaseStatus">
+               <Rule id="ReportingRestrictionChangedRule"/>
+            </ConditionalDocument>
+		</Event>
+		<!--Event type="TemplateEvent">
+			<ConditionalDocument id="CourtDetail"/>
+			<ConditionalDocument id="CourtList"/>
+			<ConditionalDocument id="DailyList"/>
+			<ConditionalDocument id="AllCourtStatus"/>
+			<ConditionalDocument id="SummaryByName"/>
+			<ConditionalDocument id="JuryCurrentStatus"/>
+		</Event-->
+	</EventMappings>
+</RuleEngine>

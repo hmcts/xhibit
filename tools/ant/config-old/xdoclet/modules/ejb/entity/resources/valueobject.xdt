@@ -1,0 +1,375 @@
+/*
+ * Generated file - Do not edit!
+ */
+package <XDtPackage:packageOf><XDtEjbValueObj:valueObjectClass/></XDtPackage:packageOf>;
+
+import java.util.*;
+
+/**
+ * Value object for <XDtEjb:ejbName/>.
+ *
+<XDtClass:classCommentTags indent="0"/> */
+public class <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>
+    extends uk.gov.courtservice.framework.business.vos.CSAbstractValue
+   implements java.io.Serializable <XDtEjbValueObj:valueObjectImplements/>
+{
+  <XDtEjbPersistent:forAllPersistentFields superclasses="false" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+   private <XDtMethod:methodType/> <XDtMethod:propertyName/>;
+   private boolean <XDtMethod:propertyName/>HasBeenSet = false;
+  </XDtEjbPersistent:forAllPersistentFields>
+  <XDtEjbValueObj:forAllRelations superclasses="false" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+  <XDtMethod:ifDoesntHaveMethodTag tagName="ejb:value-object" paramName="type">
+   private <XDtEjbValueObj:currentAggregateType/> <XDtEjbValueObj:currentAggregateName/>;
+   private boolean <XDtEjbValueObj:currentAggregateName/>HasBeenSet = false;
+   </XDtMethod:ifDoesntHaveMethodTag>
+  <XDtMethod:ifHasMethodTag tagName="ejb:value-object" paramName="type">
+   private <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> <XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+   </XDtMethod:ifHasMethodTag>
+  </XDtEjbValueObj:forAllRelations>
+
+   private <XDtEjbPk:pkClass/> pk;
+
+   public <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>()
+   {
+	 <XDtEjbPk:ifDoesntHavePrimkeyField>
+	  pk = new <XDtEjbPk:pkClass/>();
+	 </XDtEjbPk:ifDoesntHavePrimkeyField>
+   }
+
+   public <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>( <XDtEjbPersistent:persistentfieldList valueobject="<XDtEjbValueObj:valueObjectMatch/>"/> )
+   {
+	 <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+	  this.<XDtMethod:propertyName/> = <XDtMethod:propertyName/>;
+	  <XDtMethod:propertyName/>HasBeenSet = true;
+	 </XDtEjbPersistent:forAllPersistentFields>
+	 <XDtEjbPk:ifHasPrimkeyField>
+	  pk = this.<XDtEjbPk:primkeyGetter/>();
+	 </XDtEjbPk:ifHasPrimkeyField>
+	 <XDtEjbPk:ifDoesntHavePrimkeyField>
+	  pk = new <XDtEjbPk:pkClass/>(<XDtEjbPk:pkfieldListFrom name="this"/>);
+	 </XDtEjbPk:ifDoesntHavePrimkeyField>
+   }
+
+   //TODO Cloneable is better than this !
+   public <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>( <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf> otherValue )
+   {
+	<XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+	  this.<XDtMethod:propertyName/> = otherValue.<XDtMethod:propertyName/>;
+	  <XDtMethod:propertyName/>HasBeenSet = true;
+	</XDtEjbPersistent:forAllPersistentFields>
+	<XDtEjbValueObj:forAllRelations superclasses="false" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+	// TODO Clone is better no ?
+	 <XDtMethod:ifDoesntHaveMethodTag tagName="ejb:value-object" paramName="type">
+	  this.<XDtEjbValueObj:currentAggregateName/> = otherValue.<XDtEjbValueObj:currentAggregateName/>;
+	  <XDtEjbValueObj:currentAggregateName/>HasBeenSet = true;
+	 </XDtMethod:ifDoesntHaveMethodTag>
+	 <XDtMethod:ifHasMethodTag tagName="ejb:value-object" paramName="type">
+	  this.<XDtEjbValueObj:currentAggregateName/>s = otherValue.<XDtEjbValueObj:currentAggregateName/>s;
+	 </XDtMethod:ifHasMethodTag>
+	</XDtEjbValueObj:forAllRelations>
+
+	<XDtEjbPk:ifHasPrimkeyField>
+	  pk = this.<XDtEjbPk:primkeyGetter/>();
+	</XDtEjbPk:ifHasPrimkeyField>
+	<XDtEjbPk:ifDoesntHavePrimkeyField>
+	  pk = new <XDtEjbPk:pkClass/>(<XDtEjbPk:pkfieldListFrom name="this"/>);
+	</XDtEjbPk:ifDoesntHavePrimkeyField>
+   }
+
+   public <XDtEjbPk:pkClass/> getPrimaryKey()
+   {
+	  return pk;
+   }
+
+   public void setPrimaryKey( <XDtEjbPk:pkClass/> pk )
+   {
+      // it's also nice to update PK object - just in case
+      // somebody would ask for it later...
+      this.pk = pk;
+      <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+         <XDtMethod:ifHasMethod name="<XDtMethod:setterMethod/>" parameters="<XDtMethod:methodType/>">
+            <XDtEjbPk:ifHasPrimkeyField>
+               <XDtEjbPk:ifIsPrimkeyField>
+	  <XDtMethod:setterMethod/>( pk );
+               </XDtEjbPk:ifIsPrimkeyField>
+            </XDtEjbPk:ifHasPrimkeyField>
+            <XDtEjbPk:ifDoesntHavePrimkeyField>
+               <XDtEjbPk:ifIsPkField>
+	  <XDtMethod:setterMethod/>( pk.<XDtMethod:propertyName/> );
+               </XDtEjbPk:ifIsPkField>
+            </XDtEjbPk:ifDoesntHavePrimkeyField>
+         </XDtMethod:ifHasMethod>
+      </XDtEjbPersistent:forAllPersistentFields>
+   }
+
+ <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+   public <XDtMethod:methodType/> <XDtMethod:getterMethod/>()
+   {
+	  return this.<XDtMethod:propertyName/>;
+   }
+
+  <XDtMethod:ifHasMethod name="<XDtMethod:setterMethod/>" parameters="<XDtMethod:methodType/>">
+   public void <XDtMethod:setterMethod/>( <XDtMethod:methodType/> <XDtMethod:propertyName/> )
+   {
+	  this.<XDtMethod:propertyName/> = <XDtMethod:propertyName/>;
+	  <XDtMethod:propertyName/>HasBeenSet = true;
+
+	  <XDtEjbPk:ifHasPrimkeyField>
+		<XDtEjbPk:ifIsPrimkeyField>
+		  pk = <XDtMethod:propertyName/>;
+		</XDtEjbPk:ifIsPrimkeyField>
+	  </XDtEjbPk:ifHasPrimkeyField>
+	  <XDtEjbPk:ifDoesntHavePrimkeyField>
+		<XDtEjbPk:ifIsPkField>
+		 pk.<XDtMethod:setterMethod/>(<XDtMethod:propertyName/>);
+		</XDtEjbPk:ifIsPkField>
+	  </XDtEjbPk:ifDoesntHavePrimkeyField>
+   }
+
+   public boolean <XDtMethod:propertyName/>HasBeenSet(){
+	  return <XDtMethod:propertyName/>HasBeenSet;
+   }
+  </XDtMethod:ifHasMethod>
+ </XDtEjbPersistent:forAllPersistentFields>
+
+ <XDtEjbValueObj:forAllRelations superclasses="false" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+  <XDtMethod:ifDoesntHaveMethodTag tagName="ejb:value-object" paramName="type">
+   public <XDtEjbValueObj:currentAggregateType/> get<XDtEjbValueObj:currentAggregateName/>()
+   {
+	  return this.<XDtEjbValueObj:currentAggregateName/>;
+   }
+   public void set<XDtEjbValueObj:currentAggregateName/>( <XDtEjbValueObj:currentAggregateType/> <XDtEjbValueObj:currentAggregateName/> )
+   {
+	  this.<XDtEjbValueObj:currentAggregateName/> = <XDtEjbValueObj:currentAggregateName/>;
+	  <XDtEjbValueObj:currentAggregateName/>HasBeenSet = true;
+   }
+  </XDtMethod:ifDoesntHaveMethodTag>
+  <XDtMethod:ifHasMethodTag tagName="ejb:value-object" paramName="type">
+   protected <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> added<XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+   protected <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> removed<XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+   protected <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> updated<XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+
+   public <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> getAdded<XDtEjbValueObj:currentAggregateName/>s() { return added<XDtEjbValueObj:currentAggregateName/>s; }
+   public <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> getRemoved<XDtEjbValueObj:currentAggregateName/>s() { return removed<XDtEjbValueObj:currentAggregateName/>s; }
+   public <XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> getUpdated<XDtEjbValueObj:currentAggregateName/>s() { return updated<XDtEjbValueObj:currentAggregateName/>s; }
+
+   public void setAdded<XDtEjbValueObj:currentAggregateName/>s(<XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> added<XDtEjbValueObj:currentAggregateName/>s)
+   {
+      this.added<XDtEjbValueObj:currentAggregateName/>s.clear();
+      this.added<XDtEjbValueObj:currentAggregateName/>s.addAll(added<XDtEjbValueObj:currentAggregateName/>s);
+   }
+
+   public void setRemoved<XDtEjbValueObj:currentAggregateName/>s(<XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> removed<XDtEjbValueObj:currentAggregateName/>s)
+   {
+      this.removed<XDtEjbValueObj:currentAggregateName/>s.clear();
+      this.removed<XDtEjbValueObj:currentAggregateName/>s.addAll(removed<XDtEjbValueObj:currentAggregateName/>s);
+   }
+
+   public void setUpdated<XDtEjbValueObj:currentAggregateName/>s(<XDtMethod:methodTagValue tagName="ejb:value-object" paramName="type"/> updated<XDtEjbValueObj:currentAggregateName/>s)
+   {
+      this.updated<XDtEjbValueObj:currentAggregateName/>s.clear();
+      this.updated<XDtEjbValueObj:currentAggregateName/>s.addAll(updated<XDtEjbValueObj:currentAggregateName/>s);
+   }
+
+   public <XDtEjbValueObj:currentAggregateType/>[] get<XDtEjbValueObj:currentAggregateName/>s()
+   {
+	  return (<XDtEjbValueObj:currentAggregateType/>[])this.<XDtEjbValueObj:currentAggregateName/>s.toArray(new <XDtEjbValueObj:currentAggregateType/>[<XDtEjbValueObj:currentAggregateName/>s.size()]);
+   }
+
+   public void set<XDtEjbValueObj:currentAggregateName/>s(<XDtEjbValueObj:currentAggregateType/>[] <XDtEjbValueObj:currentAggregateName/>s)
+   {
+      this.<XDtEjbValueObj:currentAggregateName/>s.clear();
+      for (int i=0; i < <XDtEjbValueObj:currentAggregateName/>s.length; i++)
+      	this.<XDtEjbValueObj:currentAggregateName/>s.add(<XDtEjbValueObj:currentAggregateName/>s[i]);
+   }
+
+   public void clear<XDtEjbValueObj:currentAggregateName/>s()
+   {
+	  this.<XDtEjbValueObj:currentAggregateName/>s.clear();
+   }
+
+   public void add<XDtEjbValueObj:currentAggregateName/>(<XDtEjbValueObj:currentAggregateType/> added)
+   {
+	  this.<XDtEjbValueObj:currentAggregateName/>s.add(added);
+	  if ( ! this.added<XDtEjbValueObj:currentAggregateName/>s.contains(added))
+		 this.added<XDtEjbValueObj:currentAggregateName/>s.add(added);
+   }
+
+   public void remove<XDtEjbValueObj:currentAggregateName/>(<XDtEjbValueObj:currentAggregateType/> removed)
+   {
+	  this.<XDtEjbValueObj:currentAggregateName/>s.remove(removed);
+	  this.removed<XDtEjbValueObj:currentAggregateName/>s.add(removed);
+	  if (this.added<XDtEjbValueObj:currentAggregateName/>s.contains(removed))
+		 this.added<XDtEjbValueObj:currentAggregateName/>s.remove(removed);
+	  if (this.updated<XDtEjbValueObj:currentAggregateName/>s.contains(removed))
+		 this.updated<XDtEjbValueObj:currentAggregateName/>s.remove(removed);
+   }
+
+   public void update<XDtEjbValueObj:currentAggregateName/>(<XDtEjbValueObj:currentAggregateType/> updated)
+   {
+	  if ( !this.updated<XDtEjbValueObj:currentAggregateName/>s.contains(updated) && !this.added<XDtEjbValueObj:currentAggregateName/>s.contains(updated))
+		 this.updated<XDtEjbValueObj:currentAggregateName/>s.add(updated);
+   }
+
+   public void clean<XDtEjbValueObj:currentAggregateName/>(){
+	  this.added<XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+	  this.removed<XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+	  this.updated<XDtEjbValueObj:currentAggregateName/>s = new <XDtEjbValueObj:concreteCollectionType/>();
+   }
+
+   public void copy<XDtEjbValueObj:currentAggregateName/>sFrom(<XDtEjbValueObj:valueObjectClass/> from)
+   {
+	  // TODO Clone the List ????
+	  this.<XDtEjbValueObj:currentAggregateName/>s = from.<XDtEjbValueObj:currentAggregateName/>s;
+   }
+  </XDtMethod:ifHasMethodTag>
+ </XDtEjbValueObj:forAllRelations>
+
+
+   public String toString()
+   {
+	  StringBuffer str = new StringBuffer("{");
+
+	  str.append(<XDtEjbPersistent:persistentfieldNameValueList valueobject="<XDtEjbValueObj:valueObjectMatch/>" superclasses="true"/>);
+	 <XDtEjbBmp:ifUseSoftLocking>
+	  str.append(",version=");
+	  str.append(getVersion());
+	 </XDtEjbBmp:ifUseSoftLocking>
+	  str.append('}');
+
+	  return(str.toString());
+   }
+
+   /**
+	* A Value object have an identity if its attributes making its Primary Key
+	* has all been set.  One object without identity is never equal to any other
+	* object.
+	*
+	* @return true if this instance have an identity.
+	*/
+   protected boolean hasIdentity()
+   {
+	 <XDtEjbPk:ifHasPrimkeyField>
+	  return <XDtEjbPk:primkeyField/>HasBeenSet;
+	 </XDtEjbPk:ifHasPrimkeyField>
+	 <XDtEjbPk:ifDoesntHavePrimkeyField>
+	  boolean ret = true;
+	 <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>" only-pk="true">
+	  ret = ret && <XDtMethod:propertyName/>HasBeenSet;
+	 </XDtEjbPersistent:forAllPersistentFields>
+	  return ret;
+	 </XDtEjbPk:ifDoesntHavePrimkeyField>
+   }
+
+   public boolean equals(Object other)
+   {
+      if (this == other)
+         return true;
+	  if ( ! hasIdentity() ) return false;
+	  if (other instanceof <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>)
+	  {
+		 <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf> that = (<XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>) other;
+		 if ( ! that.hasIdentity() ) return false;
+		 boolean lEquals = true;
+		 <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>" only-pk="true">
+		<XDtType:ifIsPrimitive value="<XDtMethod:methodType/>">
+		 lEquals = lEquals && this.<XDtMethod:propertyName/> == that.<XDtMethod:propertyName/>;
+		</XDtType:ifIsPrimitive>
+		<XDtType:ifIsNotPrimitive value="<XDtMethod:methodType/>">
+		 if( this.<XDtMethod:propertyName/> == null )
+		 {
+			lEquals = lEquals && ( that.<XDtMethod:propertyName/> == null );
+		 }
+		 else
+		 {
+			lEquals = lEquals && this.<XDtMethod:propertyName/>.equals( that.<XDtMethod:propertyName/> );
+		 }
+		</XDtType:ifIsNotPrimitive>
+		 </XDtEjbPersistent:forAllPersistentFields>
+
+		 lEquals = lEquals && isIdentical(that);
+
+		 return lEquals;
+	  }
+	  else
+	  {
+		 return false;
+	  }
+   }
+
+   public boolean isIdentical(Object other)
+   {
+	  if (other instanceof <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>)
+	  {
+		 <XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf> that = (<XDtClass:classOf><XDtEjbValueObj:valueObjectClass/></XDtClass:classOf>) other;
+		 boolean lEquals = true;
+		 <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>" not-pk="true">
+		<XDtType:ifIsPrimitive value="<XDtMethod:methodType/>">
+		 lEquals = lEquals && this.<XDtMethod:propertyName/> == that.<XDtMethod:propertyName/>;
+		</XDtType:ifIsPrimitive>
+		<XDtType:ifIsNotPrimitive value="<XDtMethod:methodType/>">
+		 if( this.<XDtMethod:propertyName/> == null )
+		 {
+			lEquals = lEquals && ( that.<XDtMethod:propertyName/> == null );
+		 }
+		 else
+		 {
+			lEquals = lEquals && this.<XDtMethod:propertyName/>.equals( that.<XDtMethod:propertyName/> );
+		 }
+		</XDtType:ifIsNotPrimitive>
+		 </XDtEjbPersistent:forAllPersistentFields>
+		 <XDtEjbValueObj:forAllRelations superclasses="false" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+		  <XDtMethod:ifDoesntHaveMethodTag tagName="ejb:value-object" paramName="type">
+		 if( this.<XDtEjbValueObj:currentAggregateName/> == null )
+		 {
+			lEquals = lEquals && ( that.<XDtEjbValueObj:currentAggregateName/> == null );
+		 }
+		 else
+		 {
+			lEquals = lEquals && this.<XDtEjbValueObj:currentAggregateName/>.equals( that.<XDtEjbValueObj:currentAggregateName/> );
+		 }
+		  </XDtMethod:ifDoesntHaveMethodTag>
+		  <XDtMethod:ifHasMethodTag tagName="ejb:value-object" paramName="type">
+		 if( this.get<XDtEjbValueObj:currentAggregateName/>s() == null )
+		 {
+			lEquals = lEquals && ( that.get<XDtEjbValueObj:currentAggregateName/>s() == null );
+		 }
+		 else
+		 {
+			lEquals = lEquals && java.util.Arrays.equals(this.get<XDtEjbValueObj:currentAggregateName/>s() , that.get<XDtEjbValueObj:currentAggregateName/>s()) ;
+		 }
+		  </XDtMethod:ifHasMethodTag>
+		 </XDtEjbValueObj:forAllRelations>
+
+		 return lEquals;
+	  }
+	  else
+	  {
+		 return false;
+	  }
+   }
+
+   public int hashCode(){
+	  int result = 17;
+	 <XDtEjbPersistent:forAllPersistentFields superclasses="true" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+     <XDtMerge:merge file="xdoclet/modules/ejb/entity/resources/entity-object-hashcode.xdt">
+     </XDtMerge:merge>
+	 </XDtEjbPersistent:forAllPersistentFields>
+		 <XDtEjbValueObj:forAllRelations superclasses="false" valueobject="<XDtEjbValueObj:valueObjectMatch/>">
+		  <XDtMethod:ifDoesntHaveMethodTag tagName="ejb:value-object" paramName="type">
+	  result = 37*result + ((this.<XDtEjbValueObj:currentAggregateName/> != null) ? this.<XDtEjbValueObj:currentAggregateName/>.hashCode() : 0);
+		  </XDtMethod:ifDoesntHaveMethodTag>
+		  <XDtMethod:ifHasMethodTag tagName="ejb:value-object" paramName="type">
+			<XDtComment:comment>
+			hashCode() is implemented in java.util.List so we don't have to worry
+			</XDtComment:comment>
+	  result = 37*result + ((this.get<XDtEjbValueObj:currentAggregateName/>s() != null) ? this.get<XDtEjbValueObj:currentAggregateName/>s().hashCode() : 0);
+		  </XDtMethod:ifHasMethodTag>
+		 </XDtEjbValueObj:forAllRelations>
+	  return result;
+   }
+
+   <XDtMerge:merge file="valueobject-custom.xdt">
+   </XDtMerge:merge>
+
+}

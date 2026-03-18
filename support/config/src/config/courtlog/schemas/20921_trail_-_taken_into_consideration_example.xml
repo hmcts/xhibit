@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="20921.xsd">
+	<id>11111</id>
+	<type>20921</type>
+	<free_text>free text</free_text>
+	<E20921_Defendant_Details>
+		<E20921_Defendant_ID />
+		<E20921_Defendant_Name />
+		<E20921_Defendant_TIC />
+	</E20921_Defendant_Details>
+</event>

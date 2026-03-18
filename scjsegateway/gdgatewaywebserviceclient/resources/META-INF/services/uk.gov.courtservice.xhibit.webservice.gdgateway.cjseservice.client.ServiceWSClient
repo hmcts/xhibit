@@ -1,0 +1,3 @@
+uk.gov.courtservice.xhibit.webservice.gdgateway.cjseservice.client.ServiceWSClientImpl
+uk.gov.courtservice.xhibit.webservice.gdgateway.cjseservice.client.ServiceWSClientProxy
+uk.gov.courtservice.xhibit.webservice.scjsestub.cjseservice.client.ServiceWSClientStub

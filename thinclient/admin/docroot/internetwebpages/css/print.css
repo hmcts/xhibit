@@ -1,0 +1,49 @@
+html { margin: 0px; padding: 0px;}
+body { margin: 0px; padding: 0px; font-family: verdana, arial, helvetica, sans-serif;  color: #000000;  }
+#header { display: none;  }
+#header img { height: 50px; width: 154px;  }
+#topnav { display: none; }
+#leftnav { display: none;  }
+#leftnav a img { display: none;} 
+.mainNav { display: none; }
+.activeNav { display: none; }
+.subnav { display: none; }
+#content { padding: 0px 0px 0px 0px; font-size: 70%; height: auto;}
+#rightNav { display: none; }
+.rightNavPanel { display: none; }
+h1, h2, h3, h4, h5 { padding: 3px 0 3px 0;  margin-bottom: 10px; color: #000; background: #EEE; }
+h1 {font-size: 135%; }
+h2 { font-size: 120%; }
+h3 { font-size: 115%; }
+h4 { font-size: 110%; }
+h5 { font-size: 100%; }
+.breadcrumb { padding: 0px 0px 0px 0px; margin: 0px; color: #636; float: left;}
+.breadcrumb a, .breadcrumb a:visited { color: #636; text-decoration: none; }
+.breadcrumb a:hover { color: #636; text-decoration: underline; }
+.hidden { display: none}
+ul { margin-top: 0px; padding-left: 2em; list-style-type: disc; margin-bottom: 1em; padding-bottom: 0px; text-indent: 0px; padding-top: 0px; list-style-type: disc }
+ul ul {	list-style-image: url(../images/indent.gif); list-style-type: disc }
+ol { margin-top: 0px; margin-bottom: 1em; padding-bottom: 0px; padding-top: 0px }
+li { padding: 0; margin: 0em 0em 0.5em; }
+.indent50 { margin-left: 50px; }
+.indent30 { margin-left: 30px; }
+a { color: #606; text-decoration: none; }
+a:visited { color: #606;  text-decoration: none; }
+a:hover { color: #606;  text-decoration: underline; }
+p {	padding-right: 0px; padding-left: 0px; padding-bottom: 0px; margin: 0px 0px 1em; padding-top: 0px }
+table { font-size: 100% ; }
+table.border, table.border td, table.border th { border: 1px solid #CCC; }
+#title {padding: 0px; background: #EEE; }
+#title h1 { font-size: 135%; margin: 20px 0px 0px 0px; padding: 0px; color: #000; background: #EEE }
+#title h3 { font-size: 105%; margin: 2px 0px 10px 0px; padding: 0px; color: #000; background: #EEE }
+
+.list a, .list a:visited{ display: block; color: #606; text-decoration: none; padding-top: 5px;}
+.list a:hover { color: #606; text-decoration: underline; }
+#widecontent {padding: 0px 0px 0px 220px;  font-size: 72%; margin: 0; }
+.author {  display: none;  }
+
+.searchform {  display: none; }
+
+.top { display: none ; }
+
+.page { text-align: right; font-weight: bold; }

@@ -1,0 +1,8 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findAllPolicies()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefDarRetentionPolicies AS o (o.obsInd is null OR o.obsInd = 'N') ORDER BY o.policyNo"
+ * -------- end of custom finders --------

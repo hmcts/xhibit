@@ -1,0 +1,6 @@
+ * @ejb.finder
+ *    signature="java.util.Collection findByObsIndAndCourt(java.lang.String code, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefCourt o WHERE o.obsInd = ?1 AND o.courtId = ?2"
+ *    description="Each court will have distinct court types."

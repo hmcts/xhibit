@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="CommonValue">
+
+    <description>
+        All Value Objects
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="marker"/>
+    <property name="project.type.requires.compilation" value="marker"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="CourtLogCommon.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="XhibitXmlBinding.jar" />
+            </fileset>
+        </path>
+    </target>
+</project>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- Test data for TestXSLServices -->
+<event xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xsi:noNamespaceSchemaLocation='20906.xsd'>
+    <E20906_Defence_CO_Name>TEST T DEFENDANT S20021482-1</E20906_Defence_CO_Name>
+    <free_text/>
+    <defendant_on_case_id>467</defendant_on_case_id>
+    <E20906_Defence_CO_ID>467</E20906_Defence_CO_ID>
+    <type>20906</type>
+    <defendant_masked_flag>Y</defendant_masked_flag>
+    <defendant_name>TEST T DEFENDANT S20021482-1</defendant_name>
+    <defendant_masked_name>masked name 02</defendant_masked_name>
+</event>

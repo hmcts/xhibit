@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by LCMG (LogicaCMG) -->
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by Doug Climie (Electronic Data Systems LTD) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.3" id="AppealRecordSheet">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Department for Constitutional Affairs</Creator>
+				<Created>2002-05-28</Created>
+				<Modified>2005-10-06</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>AppealRecordSheet</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Department for Constitutional Affairs, Clive House, 70 Petty France, London, SW1H 9HD</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2006</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>final</Status>
+				<StatusDescription>definitive version for release</StatusDescription>
+				<Version>5.3</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>Court Service AppealRecord Sheet</Title>
+				<Type>message</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="AppealRecordSheetStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="RecordSheetHeader" type="RecordSheetHeaderStructure"/>
+			<xsd:element name="BenchWarrantDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="OriginalSentenceOrOrderDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="AppellantSolicitors" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AppellantSolicitor" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:complexContent>
+									<xsd:extension base="cs:SolicitorStructure">
+										<xsd:attribute name="RepresentationType">
+											<xsd:simpleType>
+												<xsd:restriction base="xsd:string">
+													<xsd:enumeration value="Legal Aid"/>
+													<xsd:enumeration value="Private"/>
+													<xsd:enumeration value="Unrepresented"/>
+												</xsd:restriction>
+											</xsd:simpleType>
+										</xsd:attribute>
+									</xsd:extension>
+								</xsd:complexContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AppellantAdvocates" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="AppellantAdvocate" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<!-- Modified by Tom Muir-Webb RFC 1745 -->
+									<xsd:element name="Solicitor" type="cs:SolicitorStructure" minOccurs="0" maxOccurs="unbounded"/>
+									<xsd:element name="Advocate" type="cs:AdvocateStructure" minOccurs="0" maxOccurs="unbounded"/>
+								</xsd:sequence>
+								<xsd:attribute name="QC" type="cs:YesNoType"/>
+								<xsd:attribute name="CentralAdvocate" type="cs:YesNoType"/>
+								<xsd:attribute name="HearingRole">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:enumeration value="QC Alone"/>
+											<xsd:enumeration value="Leading QC"/>
+											<xsd:enumeration value="Leading J"/>
+											<xsd:enumeration value="J Led By QC"/>
+											<xsd:enumeration value="J Led By J"/>
+											<xsd:enumeration value="J Alone"/>
+											<xsd:enumeration value="Noting J"/>
+											<xsd:enumeration value="KC Alone"/>
+											<xsd:enumeration value="Leading KC"/>
+											<xsd:enumeration value="J Led By KC"/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:attribute>
+								<xsd:attribute name="SubInst">
+									<xsd:simpleType>
+										<xsd:restriction base="xsd:string">
+											<xsd:enumeration value="S"/>
+											<xsd:enumeration value="I"/>
+											<xsd:enumeration value=""/>
+										</xsd:restriction>
+									</xsd:simpleType>
+								</xsd:attribute>
+								<xsd:attribute name="RepresentationHearingType" type="cs:HearingTypeType"/>
+								<xsd:attribute name="AdvocateType" type="cs:YesNoType"/>
+								<xsd:attribute name="NonAttendance" type="cs:YesNoType"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Respondents" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="RespondentsAdvocates" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="RespondentsAdvocate" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="Solicitor" type="SolicitorStructure" minOccurs="0" maxOccurs="unbounded"/>
+												<xsd:element name="Advocate" type="AdvocateStructure" minOccurs="0" maxOccurs="unbounded"/>
+											</xsd:sequence>
+											<xsd:attribute name="QC" type="YesNoType"/>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="ProsecutingReference" type="xsd:string" minOccurs="0"/>
+						<xsd:element name="ProsecutingOrganisation" type="OrganisationStructure" minOccurs="0"/>
+						<xsd:element name="RespondentsSolicitors" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="RespondentSolicitor" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:complexContent>
+												<xsd:extension base="cs:SolicitorStructure">
+													<xsd:attribute name="RepresentationType">
+														<xsd:simpleType>
+															<xsd:restriction base="xsd:string">
+																<xsd:enumeration value="Legal Aid"/>
+																<xsd:enumeration value="Private"/>
+																<xsd:enumeration value="Unrepresented"/>
+															</xsd:restriction>
+														</xsd:simpleType>
+													</xsd:attribute>
+												</xsd:extension>
+											</xsd:complexContent>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attribute name="ProsecutingAuthority" type="ProsecutingAuthorityType"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CourtReportingFirms" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CourtReportingFirm" type="CourtReportingStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Judiciaries" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Judiciary" type="JudiciaryStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DefendantBailApplications" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DefendantBailApplication" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="ApplicationDate" type="xsd:date"/>
+									<xsd:element name="Result">
+										<xsd:simpleType>
+											<xsd:restriction base="xsd:string">
+												<xsd:enumeration value="Granted"/>
+												<xsd:enumeration value="Refused"/>
+											</xsd:restriction>
+										</xsd:simpleType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BailStatusWhenAppealLodged" type="BailStatusType" minOccurs="0"/>
+			<xsd:element name="BailStatusAfterBenchWarrantExecuted" minOccurs="0"/>
+			<xsd:element name="BailStatusAtStartOfHearing" type="BailStatusType" minOccurs="0"/>
+			<xsd:element name="BailStatusPutBackforSentence" minOccurs="0"/>
+			<xsd:element name="Hearings" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Hearing" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="HearingDescription" type="xsd:string"/>
+									<xsd:element name="HearingDate" type="xsd:date" minOccurs="0"/>
+									<xsd:element name="HearingEndDate" type="xsd:date" minOccurs="0"/>
+									<xsd:element name="HearingBailChanges" type="cs:HearingBailChangesStructure" minOccurs="0"/>
+								</xsd:sequence>
+								<xsd:attribute name="HearingType" type="cs:HearingTypeType"/>
+								<xsd:attribute name="PreliminaryHearing" type="cs:YesNoType"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SentenceDeferredToDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="SentencePostponed" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="SentencePostponedToDate" type="xsd:date" minOccurs="0">
+							<xsd:annotation>
+								<xsd:documentation>A date may not be set.</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="SentenceReports" type="YesNoType"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DecisionGivenDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="SentenceOrOrderDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Offences">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Offence" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="OffenceNumber" type="xsd:string" minOccurs="0"/>
+									<xsd:element name="Offence" type="xsd:string"/>
+									<xsd:element name="AppealType" type="AppealTypeType"/>
+									<xsd:element name="AppealResult" type="xsd:string"/>
+									<xsd:element name="OffenceDisposals" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="OriginalSentenceOrOrder" type="xsd:string"/>
+												<xsd:element name="CrownCourtDecision" type="xsd:string" minOccurs="0"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+									<xsd:element name="OffenceDisposalData" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="CRESTOriginalOrderData" type="CRESTDisposalDataStructure" maxOccurs="unbounded"/>
+												<!-- Modified by Tom Muir-Webb RFC 1745 -->
+												<xsd:element name="CRESTCrownCourtDecisionData" type="CRESTDisposalDataStructure" minOccurs="0"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ReasonsForDecision" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LinkedCases" type="LinkedCasesStructure" minOccurs="0"/>
+			<xsd:element name="TotalSentence" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Term" type="TermStructure" minOccurs="0"/>
+						<xsd:element name="OtherOrders" minOccurs="0">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Order" maxOccurs="unbounded">
+										<xsd:complexType>
+											<xsd:choice>
+												<xsd:element name="MagistratesOrder">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="AppealResult" type="xsd:string"/>
+															<xsd:element name="OriginalOrder" type="xsd:string"/>
+															<xsd:element name="CRESTUnrelatedOriginalOrderData" type="CRESTDisposalDataStructure"/>
+															<xsd:element name="CrownCourtDecision" type="xsd:string" minOccurs="0"/>
+															<!-- Modified by Tom Muir-Webb RFC 1745 -->
+															<xsd:element name="UnrelatedDecisionData" type="CRESTDisposalDataStructure" minOccurs="0"/>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+												<xsd:element name="CrownCourtOrder">
+													<xsd:complexType>
+														<xsd:sequence>
+															<xsd:element name="Order"/>
+															<xsd:element name="CrownCourtOrderData" type="CRESTDisposalDataStructure"/>
+														</xsd:sequence>
+													</xsd:complexType>
+												</xsd:element>
+											</xsd:choice>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="AppealRecordSheet" type="AppealRecordSheetStructure"/>
+</xsd:schema>

@@ -1,0 +1,21 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCaseProsecutorAgency c WHERE c.caseId = ?1 AND (c.obsInd is null OR c.obsInd = 'N' OR c.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByRefProsecutorAgencyId(java.lang.Integer refProsecutorAgencyId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCaseProsecutorAgency c WHERE c.refProsecutorAgencyId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByRefProsecutorAgencyIdAndCaseId(java.lang.Integer refProsecutorAgencyId, java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCaseProsecutorAgency c WHERE c.refProsecutorAgencyId = ?1 AND c.caseId = ?2"
+ *
+ * -------- end of custom finders --------

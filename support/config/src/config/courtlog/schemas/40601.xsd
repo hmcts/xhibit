@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--7/14 Day Order-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E40601_7_14_Day_Order_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40601_7_14_Day_Order_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40601_7_14_Type"/>
+				<xs:element name="E40601_7_14_Date" type="xs:string"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40601_7_14_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40601_7_Day_Order"/>
+				<xs:enumeration value="E40601_14_Day_Order"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>
+

@@ -1,0 +1,85 @@
+<Exception xmlns:error="http://schemas.cjse.gov.uk/messages/exception/2006-06" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" SchemaVersion="1.0">
+	<error:Name>CJSE</error:Name>
+	<error:Code>001</error:Code>
+	<error:Detail>A business error occured whilst trying to process a routing request, see attached exception list for details. The RelatesTo field is populated so this exception will be audited (EXCEPTION entry in Item Tracking) against the original Outbound message</error:Detail>
+	<error:RelatesTo><MessageIdentifier>9998</MessageIdentifier></error:RelatesTo>
+	<error:OriginalExceptionData><![CDATA[<ReceiveRequest xmlns:mm="http://schemas.cjse.gov.uk/messages/metadata/2006-05" xmlns:mf="http://schemas.cjse.gov.uk/messages/format/2006-05" xmlns:msg="http://schemas.cjse.gov.uk/messages/messaging/2006-05" xmlns:ex="http://schemas.cjse.gov.uk/messages/exception/2006-06" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://schemas.cjse.gov.uk/messages/receive/2006-05"><msg:MessageIdentifier>31</msg:MessageIdentifier><msg:RequestingSystem><msg:Name>CourtServicesHub</msg:Name><msg:OrgUnitCode>C000001</msg:OrgUnitCode><msg:Environment>Development</msg:Environment></msg:RequestingSystem><msg:AckRequested>false</msg:AckRequested><mm:MessageMetadata SchemaVersion="1.0"><mm:OriginatingSystem><msg:Name>Xhibit</msg:Name><msg:OrgUnitCode>C00CS00</msg:OrgUnitCode><msg:Environment>Development</msg:Environment></mm:OriginatingSystem><mm:CreationDateTime>2006-09-11T14:45:08.000+01:00</mm:CreationDateTime></mm:MessageMetadata><mf:MessageFormat SchemaVersion="1.0"><mf:MessageType><msg:Type>XHIBITCharges</msg:Type><msg:Version>4.5</msg:Version></mf:MessageType><mf:MessageSchema><msg:Namespace>http://www.courtservice.gov.uk/schemas/courtservice</msg:Namespace></mf:MessageSchema></mf:MessageFormat><Message><cs:Indictment xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice Indictment-v4-4.xsd" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" IsJoinderIndictment="no"><cs:DocumentID><cs:DocumentName>CH CN:T20067233</cs:DocumentName><cs:UniqueID>CSDCH000000000057972</cs:UniqueID><cs:DocumentType>CH</cs:DocumentType><cs:TimeStamp>2006-09-11T14:45:08.266</cs:TimeStamp><cs:Version>1.0</cs:Version><cs:SecurityClassification>NPM</cs:SecurityClassification><cs:SellByDate>2007-07-08</cs:SellByDate><cs:XSLstylesheetURL>http://www.courtservice.gov.uk/transforms/courtservice/Indictment-v2-4.xsl</cs:XSLstylesheetURL></cs:DocumentID><cs:IssuingCourtHouse><cs:CourtHouseType>Crown Court</cs:CourtHouseType><cs:CourtHouseCode CourtHouseShortName="CHEST">415</cs:CourtHouseCode><cs:CourtHouseName>CHESTER</cs:CourtHouseName></cs:IssuingCourtHouse><cs:Cases><cs:CaseNumber>T20067233</cs:CaseNumber></cs:Cases><cs:Signed>no</cs:Signed><cs:Defendants><cs:Defendant><cs:PersonalDetails><cs:Name><apd:CitizenNameForename>PUXUUM</apd:CitizenNameForename><apd:CitizenNameForename>CSPUCI</apd:CitizenNameForename><apd:CitizenNameSurname>DAXO</apd:CitizenNameSurname></cs:Name><cs:IsMasked>no</cs:IsMasked><cs:DateOfBirth><apd:BirthDate>1970-03-12</apd:BirthDate><apd:VerifiedBy>not verified</apd:VerifiedBy></cs:DateOfBirth><cs:Address><apd:Line>aa HQAQDOUXD</apd:Line><apd:Line>-</apd:Line><apd:Line>CHESTER, CHESHIRE</apd:Line></cs:Address></cs:PersonalDetails><cs:CRESTdefendantID>26971</cs:CRESTdefendantID><cs:URN>09WZ123456</cs:URN><cs:CROnumber>01742194Y</cs:CROnumber><cs:PrisonerID>DA304050</cs:PrisonerID><cs:PrisonLocation PrisonID="BMCM"><cs:Location>BIRMINGHAM</cs:Location></cs:PrisonLocation><cs:Charges><cs:Charge IndictmentNumber="1" IndictmentCountNumber="1" CJSoffenceCode="CJ88001"><cs:CRESTchargeID>415I00076927</cs:CRESTchargeID><cs:CaseNumber>T20067233</cs:CaseNumber><cs:OffenceStatement>Common assault</cs:OffenceStatement><cs:CRESToffenceNumber>1</cs:CRESToffenceNumber></cs:Charge></cs:Charges></cs:Defendant></cs:Defendants></cs:Indictment></Message></ReceiveRequest>]]></error:OriginalExceptionData>
+	<error:InnerException SchemaVersion="1.0">
+		<error:Name>CJSE</error:Name>
+		<error:Code>002</error:Code>
+		<error:Detail>A business error occured whilst trying to process a routing request, see attached exception list for details. The RelatesTo field is populated so this exception will be audited (EXCEPTION entry in Item Tracking) against the original Outbound message</error:Detail>
+		<List xmlns="">
+			<RecoverableException>
+				<File>/build/S500_P/src/DataFlowEngine/ImbDataFlowNode.cpp</File>
+				<Line>558</Line>
+				<Function>ImbDataFlowNode::createExceptionList</Function>
+				<Type>ComIbmComputeNode</Type>
+				<Name>com/steria/wbi/cjit/RDRouting#FCMComposite_1_3</Name>
+				<Label>com.steria.wbi.cjit.RDRouting.Check OI Header</Label>
+				<Text>Node throwing exception</Text>
+				<Catalog>BIPv500</Catalog>
+				<Severity>3</Severity>
+				<Number>2230</Number>
+				<RecoverableException>
+					<File>/build/S500_P/src/DataFlowEngine/ImbRdl/ImbRdlStatementGroup.cpp</File>
+					<Line>158</Line>
+					<Function>SqlStatementGroup::execute</Function>
+					<Type>ComIbmComputeNode</Type>
+					<Name>com/steria/wbi/cjit/RDRouting#FCMComposite_1_3</Name>
+					<Label>com.steria.wbi.cjit.RDRouting.Check OI Header</Label>
+					<Text>Error detected, rethrowing</Text>
+					<Catalog>BIPv500</Catalog>
+					<Severity>3</Severity>
+					<Number>2488</Number>
+					<Insert>
+						<Type>5</Type>
+						<Text>com.steria.wbi.cjit.CheckOI.Main</Text>
+					</Insert>
+					<Insert>
+						<Type>5</Type>
+						<Text>26.4</Text>
+					</Insert>
+					<Insert>
+						<Type>5</Type>
+						<Text>THROW USER EXCEPTION MESSAGE 2957 VALUES( &apos;Unknown Requesting System OrgUnitCode&apos;, refMsg.nsMessaging:Name, refMsg.nsMessaging:OrgUnitCode, refMsg.nsMessaging:Environment);</Text>
+					</Insert>
+					<UserException>
+						<File>/build/S500_P/src/DataFlowEngine/ImbRdl/ImbRdlThrowExceptionStatements.cpp</File>
+						<Line>173</Line>
+						<Function>SqlThrowExceptionStatement::execute</Function>
+						<Type>ComIbmComputeNode</Type>
+						<Name>com/steria/wbi/cjit/RDRouting#FCMComposite_1_3</Name>
+						<Label>com.steria.wbi.cjit.RDRouting.Check OI Header</Label>
+						<Text>User Generated SQL &apos;USER&apos; exception</Text>
+						<Catalog>BIPv500</Catalog>
+						<Severity>1</Severity>
+						<Number>2957</Number>
+						<Insert>
+							<Type>5</Type>
+							<Text>Unknown Requesting System OrgUnitCode</Text>
+						</Insert>
+						<Insert>
+							<Type>5</Type>
+							<Text>CourtServicesHub</Text>
+						</Insert>
+						<Insert>
+							<Type>5</Type>
+							<Text>C000001</Text>
+						</Insert>
+						<Insert>
+							<Type>5</Type>
+							<Text>Development</Text>
+						</Insert>
+					</UserException>
+				</RecoverableException>
+			</RecoverableException>
+		</List>
+	</error:InnerException>
+	<List xmlns="">
+		<Label>Invalid receive format</Label>
+		<Code>2953</Code>
+		<Insert/>
+		<Insert/>
+		<Insert/>
+	</List>	
+</Exception>

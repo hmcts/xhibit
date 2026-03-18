@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="OrderTypes.xsd"/>
+	<xs:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xs:complexType name="ImprisonmentOrderStructure">
+		<xs:sequence>
+			<xs:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xs:element name="ConvictionDate" type="xs:date"/>
+			<xs:element name="CommittingCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="CourtHouseStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustodialSentence" type="XHIBITCustodialSentenceStructure"/>
+			<xs:element name="ChapterIII" type="apd:YesNoType"/>
+			<xs:element name="ReturnToImprisonment">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITReturnToImprisonmentStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Section28">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DiscretionaryRelevantPart" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Section86" type="apd:YesNoType"/>
+			<xs:element name="AdditionalNotes">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<!-- ADDED FOR CCN400 - START -->
+			<xs:element name="DeportationSection">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DeportationReasons" type="DeportationStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<!-- ADDED FOR CCN400 - END -->
+			<xs:element name="AssociatedCases" type="AssociatedCaseStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

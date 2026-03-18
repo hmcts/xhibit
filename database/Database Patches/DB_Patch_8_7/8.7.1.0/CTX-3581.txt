@@ -1,0 +1,8 @@
+### Delete unnecssary data from new CJI tables in XHIBIT schema ONLY
+
+delete from cji_document_type where internal_code not in ('DL','DLP','FL','WL','RL','DLD','FLD','WLD');
+commit;
+
+delete from cji_parameter_value where parameter_name not in ('DocumentExpiryTimeOut');
+commit;
+/

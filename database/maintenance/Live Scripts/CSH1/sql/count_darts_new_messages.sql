@@ -1,0 +1,4 @@
+set termout off;
+spool &1
+select count(*) from dar_new_messages ;
+exit;

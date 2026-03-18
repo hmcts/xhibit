@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<!-- Record Plea for Summary Offence -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Ref_Plea_Code"/>
+				<xs:element ref="Ref_Plea_Description"/>
+				<xs:element ref="Crest_Offence_Seq_No"/>
+				<xs:element ref="Crest_Charge_Seq_No"/>
+				<xs:element ref="Charge_Type"/>
+				<xs:element ref="Offence_Description"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Ref_Plea_Code" type="xs:string"/>
+	<xs:element name="Ref_Plea_Description" type="xs:string"/>
+	<xs:element name="Crest_Offence_Seq_No" type="xs:string"/>
+	<xs:element name="Crest_Charge_Seq_No" type="xs:string"/>
+	<xs:element name="Charge_Type" type="xs:string"/>
+	<xs:element name="Offence_Description" type="xs:string"/>
+</xs:schema>

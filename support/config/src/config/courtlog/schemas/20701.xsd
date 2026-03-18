@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Mentions and Applications - Application to Stand Out-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20701_App_List"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20701_App_List">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20701_AL_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20701_AL_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20701_Application_To_Stand_Out_Granted"/>
+				<xs:enumeration value="E20701_Application_To_Stand_Out_Refused"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

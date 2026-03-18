@@ -1,0 +1,7 @@
+<weblogic-wsee-clientHandlerChain  xmlns="http://www.bea.com/ns/weblogic/90"  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xmlns:j2ee="http://java.sun.com/xml/ns/j2ee">        
+    <handler>          
+        <j2ee:handler-name>CJSEClientChain</j2ee:handler-name>          
+        <j2ee:handler-class>uk.gov.courtservice.xhibit.webservice.gdgateway.cjseservice.client.CJSEClientHandler</j2ee:handler-class>
+    </handler>
+</weblogic-wsee-clientHandlerChain>
+

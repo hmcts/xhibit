@@ -1,0 +1,13 @@
+ * -------- custom finders --------
+ *
+* @ejb.finder
+*    signature="java.util.Collection findRSByCodeCourtIdAndTemplate(java.lang.String code,java.lang.Integer courtId,java.lang.Integer templateVersion)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (o) FROM XhbRefDisposalLine o WHERE 
+*	    o.disposalCode = ?1 AND o.courtId = ?2 AND o.templateVersion = ?3
+*    AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') 
+*    and o.screenPrint = 'Y'
+*    ORDER BY o.dilSeqNo"
+ *
+ * -------- end of custom finders --------

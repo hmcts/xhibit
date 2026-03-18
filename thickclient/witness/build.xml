@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="WitnessThickClient">
+
+    <description>
+        Witness Thick Client
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="set" />
+    <property name="project.type.requires.compilation" value="set" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+	<target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+		<!-- Initialize the build path -->
+		<path id="compile.classpath">
+			<path refid="lib.classpath"/>
+
+			<fileset dir="${build.dest.dir}">
+				<include name="ThickClientFramework.jar" />
+                <include name="Framework.jar" />
+                <include name="ClientView.jar" />
+                <include name="Value.jar" />
+                <include name="MDateSelector.jar" />
+			</fileset>
+		</path>
+	</target>
+
+</project>

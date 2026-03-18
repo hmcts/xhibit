@@ -1,0 +1,13 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByPsrRecipientId(java.lang.Integer psrRecipientId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) 
+ *    FROM 
+ * 	XhbPsrRequest o 
+ *    WHERE 
+ *   	o.psrRecipientId = ?1"
+ *
+ * -------- end of custom finders --------

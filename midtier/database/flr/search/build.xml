@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="flrSearch">
+
+    <description>
+        Construct the fast lane readers from the stored procedure
+    </description>
+
+    <import file="./../../../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar"           value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="Value.jar"/>
+            </fileset>
+        </path>
+
+        <!-- No source to include! -->
+        <filesetlist id="jar.source.filelist"/>
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+    <target name="generate" unless="skip.generate" depends="framework.generate">
+        <log target="generate"/>
+
+        <!-- Create all required folders -->
+        <mkdir dir="${gen.source.dir}" />
+        <mkdir dir="${gen.test.source.dir}" />
+
+        <!-- Execute the pre-defined task -->
+        <storedprocedure user="${xhibit.tx.database.user}"
+                         password="${xhibit.tx.database.password}"
+                         driver="${xhibit.tx.database.driver}"
+                         url="${xhibit.tx.database.url}"
+                         catalog="XHB_SEARCH_PKG"
+                         pattern="GET%"
+                         srcDestinationDir="${gen.source.dir}"
+                         testDestinationDir="${gen.test.source.dir}"
+                         queryClassPackage="uk.gov.courtservice.xhibit.business.database.query.search"
+                         queryClassSuffix="Query"
+                         generateTest="true" />
+    </target>
+
+</project>

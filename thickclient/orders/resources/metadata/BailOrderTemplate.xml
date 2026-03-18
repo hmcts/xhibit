@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  $Revision: 1.8 $  $Author: hingstb $ $Date: 2015/12/01 22:05:27 $-->
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="bailDate" borderLabel="" label="" borderRaised="true" ref="/">
+			<date name="xxx2" label="Bail Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+		</section>
+		<section name="amended" label="" switchLabel="Amended / Varied" borderLabel="" borderRaised="true" switchable="true" ref="//ord:Amended/@selected" selectedValue="true" unselectedValue="false">
+			<choice name="amendedVaried" label="" ref="//ord:Amended/ord:AmendedVaried">
+				<option name="amended" label="Amended" value="Amended" selected="false"/>
+				<option name="varied" label="Varied" value="Varied" selected="true"/>
+			</choice>
+			<date name="amendedDate" label="Amended / Varied Date:" ref="//ord:Amended/ord:AmendedVariedDate"/>
+		</section>
+		<section name="conditional" label="" switchLabel="Conditional" borderLabel="Conditional/Unconditional" borderRaised="true" switchable="true" ref="//ord:BailDecision" selectedValue="Conditional" unselectedValue="Unconditional">
+			<section name="part2" label="" borderLabel="Part 2" borderRaised="true" ref="/">
+				<section name="PreConditions" label="" switchLabel="Before Release Conditions" borderLabel="" switchable="true" ref="//ord:PreConditions/@selected" selectedValue="true" unselectedValue="false">
+					<section name="suretyCondition" label="Surety" borderLabel="" switchLabel="Surety Condition" switchable="true" ref="//ord:PreConditions/ord:Surety/@selected" selectedValue="true" unselectedValue="false">
+						<choice name="suretyText" label="" ref="//ord:BailOrder/ord:PreConditions/ord:Surety/ord:Plural">
+							<option name="surety" label="Surety" value="surety" selected="false"/>
+							<option name="sureties" label="Sureties" value="sureties" selected="true">
+								</option>
+						</choice>
+						<currency name="suretyValue" label="Value :" signLength="3" length="8" minVal="0" maxLength="8" required="true" type="float" ref="//ord:BailOrder/ord:PreConditions/ord:Surety/ord:MonetaryValue/ord:Amount"/>
+					</section>
+					<section name="passportConditions" label="" borderLabel="" switchLabel="Passport Conditions" switchable="true" ref="//ord:BailOrder/ord:PreConditions/ord:Passport/@selected" selectedValue="true" unselectedValue="false">
+						<section name="surrenderedTo" label="" switchLabel="Surrendered to" switchable="true" ref="//ord:BailOrder/ord:PreConditions/ord:Passport/ord:Surrendered" selectedValue="true" unselectedValue="false">
+								</section>
+						<section name="retainedBy" label="" switchLabel="Retained by" switchable="true" ref="//ord:BailOrder/ord:PreConditions/ord:Passport/ord:Retained" selectedValue="true" unselectedValue="false">
+								</section>
+					</section>
+					<section name="securityConditions" label="" borderLabel="" switchLabel="Security Condition" switchable="true" ref="//ord:BailOrder/ord:PreConditions/ord:Security/@selected" selectedValue="true" unselectedValue="false">
+						<currency name="securityValue" label="Value :" signLength="3" length="6" type="float" minVal="0" maxLength="6" required="true" ref="//ord:BailOrder/ord:PreConditions/ord:Security/ord:MonetaryValue/ord:Amount"/>
+					</section>
+				</section>
+				<section name="PostConditions" label="" borderLabel="" switchLabel="After Release Conditions" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:PostConditions/@selected" selectedValue="true" unselectedValue="false">
+					<section name="liveSleepCondition" label="" borderLabel="" switchLabel="Live/Sleep Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:LiveSleep/@selected" selectedValue="true" unselectedValue="false">
+						<choice name="PostReleaseAddressOption" label="" ref="/">
+							<option name="aboveAddress" label="At recorded address" ref="//ord:BailOrder/ord:PostConditions/ord:LiveSleep/ord:AtAboveAddress"/>
+							<option name="atFollowingAddress" label="At following address" ref="//ord:BailOrder/ord:PostConditions/ord:LiveSleep/ord:AtFollowingAddress">
+								<addresstextfields name="addresstextfields" type="string" label="" ref="//ord:LiveSleep//apd:Line"/>
+							</option>
+						</choice>
+					</section>
+					<section name="notifyPoliceCondition" label="" borderLabel="" switchLabel="Notify Police Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:NotifyPolice/@selected" selectedValue="true" unselectedValue="false">
+						</section>
+					<section name="curfewCondition" label="" borderLabel="" switchLabel="Curfew Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Curfew/@selected" selectedValue="true" unselectedValue="false">
+						<timepanel name="betweenValue" label="Between: " ref="//ord:BailOrder/ord:PostConditions/ord:Curfew/ord:From"/>
+						<timepanel name="andValue" label="And: " ref="//ord:BailOrder/ord:PostConditions/ord:Curfew/ord:To"/>
+						<section name="electronicMonitoring" label="" switchLabel="Electronic Monitoring" borderLabel="" borderRaised="false" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Curfew/ord:ElectronicMonitoring" selectedValue="true" unselectedValue="false"/>
+						<section name="doorstepConditions" label="" switchLabel="Doorstep Conditions" borderLabel="" borderRaised="false" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Curfew/ord:DoorstepCondition" selectedValue="true" unselectedValue="false"/>
+					</section>
+					<section name="policeCondition" label="" borderLabel="" switchLabel="Police Report Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:PoliceReport/@selected" selectedValue="true" unselectedValue="false">
+						<textfield name="stationValue" ref="//ord:BailOrder/ord:PostConditions/ord:PoliceReport/ord:Station" maxLength="40" type="string" label="Station: " length="20"/>
+						<!-- maxLength="200" type="string" label="Period: " length="10" -->
+						<textarea name="periodValue" ref="//ord:BailOrder/ord:PostConditions/ord:PoliceReport/ord:Period" label="Period: " rows="2" cols="31" maxlength="100"/>
+						<timepanel name="betweenValue" label="Between: " length="10" ref="//ord:BailOrder/ord:PostConditions/ord:PoliceReport/ord:From"/>
+						<timepanel name="andValue" label="And: " length="10" ref="//ord:BailOrder/ord:PostConditions/ord:PoliceReport/ord:To"/>
+					</section>
+					<section name="availableCondition" label="" borderLabel="" switchLabel="Availability Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Available/@selected" selectedValue="true" unselectedValue="false">
+					</section>
+ 					<section name="contactCondition" label="" borderLabel="" switchLabel="Contact Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Contact/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="contactValue" ref="//ord:BailOrder/ord:PostConditions/ord:Contact" label="" topLabel="Name(s): " rows="3" cols="15"/>
+					</section>
+					<section name="distanceCondition" label="" borderLabel="" switchLabel="Distance Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Distance/@selected" selectedValue="true" unselectedValue="false">
+						<textfield name="distanceValue" type="string" label="Distance: " length="10" maxLength="20" ref="//ord:BailOrder/ord:PostConditions/ord:Distance/ord:TheDistance"/>
+						<textarea name="locationValue" ref="//ord:BailOrder/ord:PostConditions/ord:Distance/ord:Location" label="" topLabel="Location:" rows="4" cols="15"/>
+					</section>
+					<section name="travelwarrantCondition" label="" borderLabel="" switchLabel="Not to Apply for International Travel Warrants Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:TravelWarrants/@selected" selectedValue="true" unselectedValue="false">
+					</section>
+					<section name="otherCondition" label="" borderLabel="" switchLabel="Other Condition" switchable="true" ref="//ord:BailOrder/ord:PostConditions/ord:Other/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="otherValue" ref="//ord:BailOrder/ord:PostConditions/ord:Other" label="" topLabel="Details:" rows="4" cols="15"/>
+					</section>
+				</section>
+			</section>
+			<section name="part3" label="" borderLabel="Part 3" borderRaised="true" ref="/">
+				<textarea name="reasonsValue" ref="//ord:BailOrder/ord:Reasons" label="" topLabel="Reasons:" rows="10" cols="15"/>
+			</section>
+		</section>
+		<section name="part4" borderLabel="Part 4" label="" borderRaised="true" ref="/">
+			<section name="date/time" borderLabel="" label="" ref="/">
+				<choice name="date/timeOption" label="" ref="//ord:NextAppearance//ord:AppearanceDateTime/@selected">
+					<option name="toBeNotifiedOption" label="Date &amp; time to be notified" selected="true" value="false"/>
+					<option name="specificOption" label="Specific date &amp; time" value="true">
+						<date name="xxx2" label="Date:" ref="//ord:BailOrder/ord:NextAppearance//ord:AppearanceDate"/>
+						<timepanel name="timeValue" label="Time: " length="10" ref="//ord:BailOrder/ord:NextAppearance//ord:AppearanceTime"/>
+					</option>
+				</choice>
+				<section name="courtbox" borderLabel="" label="" ref="/">
+					<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:NextAppearance//ord:CourtHouseName"/>
+				</section>
+			</section>
+			<fixedlist name="relatedCases" label="Associated Cases:" rows="123" cols="60" ref="//ord:BailOrder/ord:AssociatedCases/ord:AssociatedCase"/>
+		</section>
+	</form>
+</template>

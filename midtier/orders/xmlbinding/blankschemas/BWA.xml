@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  edited with XMLSPY v5 rel. 2 U  (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+D:\projects\XHIBIT\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<BenchWarrant>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="false">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="true">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<ord:WarrantType>failureToAttend</ord:WarrantType>
+	        <ord:AssociatedOrder>communityOrder</ord:AssociatedOrder> 
+			<Release>Refused</Release>
+			<PreConditions selected="false">
+				<Surety selected="false">
+					<Plural>surety</Plural>
+					<MonetaryValue>
+						<Amount>0.00</Amount>
+						<Currency>GBP</Currency>
+					</MonetaryValue>
+				</Surety>
+				<PreConditionDetails selected="false"> </PreConditionDetails>
+			</PreConditions>
+			<PostConditions selected="false">
+				<PostConditionDetails> </PostConditionDetails>
+			</PostConditions>
+			<NextAppearance>
+				<AppearanceCourt>
+					<CourtHouseType>Crown Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</AppearanceCourt>
+				<AppearanceDateTime selected="false">
+					<AppearanceDate>0001-01-01</AppearanceDate>
+					<AppearanceTime>14:20:00-05:00</AppearanceTime>
+				</AppearanceDateTime>
+			</NextAppearance>
+		</BenchWarrant>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

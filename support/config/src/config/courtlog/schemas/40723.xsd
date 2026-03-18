@@ -1,0 +1,22 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--DEPRECATED      Verdict (Criminal Appeals)-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Defendant_Name"/>
+				<xs:element ref="Crest_Offence_Seq_No"/>
+				<xs:element ref="Appeal_Decs"/>
+                <xs:element ref="Offence_Desc" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Defendant_Name" type="xs:string"/>
+	<xs:element name="Crest_Offence_Seq_No" type="xs:string"/>
+	<xs:element name="Appeal_Decs" type="xs:string"/>
+    <xs:element name="Offence_Desc" type="xs:string"/>
+</xs:schema>

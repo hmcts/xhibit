@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/datamigrationreport" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/datamigrationreport" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="DataMigrationReport">
+    <xsd:element name="Mode" type="xsd:string" use="optional"/>
+    <xsd:element name="ASN" type="xsd:string" use="optional"/>
+    <xsd:element name="Court" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="Mode"/>
+                <xsd:element ref="TotalDefendantOnCase"/>
+                <xsd:element ref="TotalDefendantOnOffence"/>
+                <xsd:element ref="DefendantsGroup"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:int" use="optional"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="crestCourtId" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CourtsGroup" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="Court" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataMigrationReport">
+        <xsd:complexType>
+            <xsd:sequence  minOccurs="0">
+                <xsd:element ref="CourtsGroup"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DefendantOnCase" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="PTIURN"/>
+                <xsd:element ref="ASN"/>
+                <xsd:element ref="OffencesGroup"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:int" use="optional"/>
+            <xsd:attribute name="caseId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+            <xsd:attribute name="caseNumber" type="xsd:string" use="optional"/>
+            <xsd:attribute name="caseSubType" type="xsd:string" use="optional"/>
+            <xsd:attribute name="defendantId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="crestDefendantId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DefendantOnOffence" use="optional">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:int" use="optional"/>
+            <xsd:attribute name="chargeId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="chargeType" type="xsd:string" use="optional"/>
+            <xsd:attribute name="crestChargeId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="crestChargeSeqNo" type="xsd:int" use="optional"/>
+            <xsd:attribute name="offenceId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="crestOffenceId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="crestOffenceSeqNo" type="xsd:int" use="optional"/>
+            <xsd:attribute name="seqNo" type="xsd:string" use="optional"/>
+            <xsd:attribute name="crnId" type="xsd:string" use="optional"/>  
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DefendantsGroup" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="DefendantOnCase" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>    
+    <xsd:element name="OffencesGroup" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="DefendantOnOffence" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="PTIURN" use="optional">
+        <xsd:complexType>
+            <xsd:attribute name="oldValue" type="xsd:string" use="optional"/>
+            <xsd:attribute name="newValue" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="TotalDefendantOnCase" type="xsd:int" use="optional"/>
+    <xsd:element name="TotalDefendantOnOffence" type="xsd:int" use="optional"/>
+</xsd:schema>

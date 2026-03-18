@@ -1,0 +1,520 @@
+/*
+ * Patch(22) to upgrade DB release 21 to DB release 22.
+ */
+
+ALTER TABLE XHB_RECIPIENT ADD (PREF_DISTRIBUTION_TYPE VARCHAR2(5) DEFAULT 'XXXXX' NOT NULL,
+                               PREF_MIME_TYPE         VARCHAR2(3) DEFAULT 'XXX' NOT NULL);
+
+ALTER TABLE XHB_DOCUMENT_DISTRIBUTION ADD (USE_PREF_DIST_TYPE VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+ALTER TABLE XHB_EMAIL ADD (MIME_TYPE VARCHAR2(3) DEFAULT 'PDF' NOT NULL);
+
+
+
+DROP TABLE AUD_RECIPIENT;
+CREATE TABLE AUD_RECIPIENT TABLESPACE AUDITD AS SELECT * FROM XHB_RECIPIENT;
+TRUNCATE TABLE AUD_RECIPIENT;
+
+DROP TABLE AUD_DOCUMENT_DISTRIBUTION;
+CREATE TABLE AUD_DOCUMENT_DISTRIBUTION TABLESPACE AUDITD AS SELECT * FROM XHB_DOCUMENT_DISTRIBUTION;
+TRUNCATE TABLE AUD_DOCUMENT_DISTRIBUTION;
+
+DROP TABLE AUD_EMAIL;
+CREATE TABLE AUD_EMAIL TABLESPACE AUDITD AS SELECT * FROM XHB_EMAIL;
+TRUNCATE TABLE AUD_EMAIL;
+
+SET TERM OFF
+/*
+ * Author:      Nick Sawyer
+ *
+ * Description: Script to alter each of the audit tables to add a column that
+ *              will be populated as usual when the main table update trigger
+ *              is fired.  The column will indicated the action that caused the
+ *              trigger to fire, either an UPDATE or DELETE from the main table.
+ *
+ * Version Information:
+ *
+ * Revision    Author                 Notes
+ *
+ * 0.1         Nick Sawyer            Initial revision
+ *
+ */
+
+SET TERM ON
+
+set serveroutput on
+execute dbms_output.enable(100000)
+
+prompt Adding columns to autit tables to indicate UPDATE/DELETED on main table
+
+DECLARE
+
+  /*
+   * Cursor to select the audit tables that require the additional column.
+   */
+
+  CURSOR c_audit_tables is SELECT table_name
+                           FROM   user_tables
+                           WHERE  table_name like 'AUD_%';
+
+  l_audit_table VARCHAR2(128);
+  l_cmd_start   VARCHAR2(128) := ' ALTER TABLE ';
+  l_cmd_end     VARCHAR2(128) := ' ADD (INSERT_EVENT VARCHAR2(1) DEFAULT ''X'' NOT NULL)';
+  l_cmd_full    VARCHAR2(512);
+
+BEGIN
+
+  OPEN c_audit_tables;
+
+  LOOP
+
+    FETCH c_audit_tables
+    INTO  l_audit_table;
+
+    EXIT WHEN c_audit_tables%NOTFOUND;
+
+--    DBMS_OUTPUT.PUT_LINE('Adding INSERT_EVENT column to table: '||l_audit_table);
+
+    l_cmd_full := l_cmd_start||l_audit_table||l_cmd_end;
+
+--    DBMS_OUTPUT.PUT_LINE(l_cmd_full);
+
+    EXECUTE IMMEDIATE l_cmd_full;
+
+  END LOOP;
+
+  CLOSE c_audit_tables;
+
+END;
+/
+
+
+@'D:\Nick Sawyer\XHIBIT2 Dev\Patch for 21 to 22\03_XHIBIT2_Create_Triggers'
+@'D:\Nick Sawyer\XHIBIT2 Dev\Patch for 21 to 22\04_counsel_view'
+@'D:\Nick Sawyer\XHIBIT2 Dev\Patch for 21 to 22\05_counsel_h'
+@'D:\Nick Sawyer\XHIBIT2 Dev\Patch for 21 to 22\06_counsel_b'
+
+NOW FOR PATCH 23
+################
+################
+
+/*
+* Patch for upgrade from v22 to v23 for development environments.
+*/
+
+
+-- SEQ For CRN autogeneration
+
+CREATE SEQUENCE XHB_CRN_SEQ MAXVALUE 99999999999 CYCLE NOORDER;
+
+
+-- SEQ for XHB_IMPORT_EXPORT_STATUS
+
+CREATE SEQUENCE XHB_IMPORT_EXPORT_STATUS_SEQ
+NOMAXVALUE
+NOMINVALUE
+NOCACHE
+NOCYCLE
+NOORDER;
+
+CREATE TABLE XHB_IMPORT_EXPORT_STATUS (
+       IMPORT_EXPORT_STATUS_ID  NUMBER(8)      NOT NULL,
+       TYPE_CODE                VARCHAR2(5)    NOT NULL,
+       STATUS_CODE              VARCHAR2(1)    NOT NULL,
+       MESSAGE                  VARCHAR2(2000) NULL,
+       CASE_ID                  NUMBER(8)      NULL,
+       COURT_ID                 NUMBER(8)      NOT NULL,
+       DEFENDANT_ON_CASE_ID     NUMBER(8)      NULL,
+       LAST_UPDATE_DATE         DATE           NOT NULL,
+       CREATION_DATE            DATE           NOT NULL,
+       CREATED_BY               VARCHAR2(30)   NOT NULL,
+       LAST_UPDATED_BY          VARCHAR2(30)   NOT NULL,
+       VERSION                  NUMBER(5)      NOT NULL)
+         TABLESPACE XHIBITD
+         STORAGE (INITIAL 1M
+                  NEXT 1M
+                  PCTINCREASE 0);
+
+ALTER TABLE XHB_IMPORT_EXPORT_STATUS
+       ADD (PRIMARY KEY (IMPORT_EXPORT_STATUS_ID)
+       USING INDEX TABLESPACE XHIBITX
+       STORAGE (INITIAL 1M
+                NEXT 1M
+                PCTINCREASE 0));
+
+
+-- Foreign Keys
+
+ALTER TABLE XHB_IMPORT_EXPORT_STATUS
+      ADD (FOREIGN KEY (CASE_ID)
+           REFERENCES XHB_CASE);
+
+ALTER TABLE XHB_IMPORT_EXPORT_STATUS
+      ADD (FOREIGN KEY (COURT_ID)
+           REFERENCES XHB_COURT);
+
+ALTER TABLE XHB_IMPORT_EXPORT_STATUS
+      ADD (FOREIGN KEY (DEFENDANT_ON_CASE_ID)
+           REFERENCES XHB_DEFENDANT_ON_CASE);
+
+-- Audit table
+
+CREATE TABLE AUD_IMPORT_EXPORT_STATUS TABLESPACE AUDITD AS SELECT * FROM XHB_IMPORT_EXPORT_STATUS;
+ALTER TABLE AUD_IMPORT_EXPORT_STATUS ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+CREATE OR REPLACE TRIGGER XHB_IMP_EXP_STATUS_BIR_TR
+  BEFORE INSERT
+  ON XHB_IMPORT_EXPORT_STATUS
+  FOR EACH ROW
+
+BEGIN
+
+  IF :NEW.IMPORT_EXPORT_STATUS_ID IS NULL THEN
+
+    SELECT XHB_IMPORT_EXPORT_STATUS_SEQ.NEXTVAL
+    INTO   :NEW.IMPORT_EXPORT_STATUS_ID
+    FROM   DUAL;
+
+  END IF;
+
+  IF ((:NEW.LAST_UPDATED_BY IS NULL) OR
+      (:NEW.CREATED_BY IS NULL)) THEN
+
+    SELECT SYS_CONTEXT('USERENV', 'SESSION_USER'),
+           SYS_CONTEXT('USERENV', 'SESSION_USER')
+    INTO   :NEW.LAST_UPDATED_BY,
+           :NEW.CREATED_BY
+    FROM   DUAL;
+
+  END IF;
+
+  SELECT SYSDATE,
+         SYSDATE,
+         1
+  INTO   :NEW.LAST_UPDATE_DATE,
+         :NEW.CREATION_DATE,
+         :NEW.VERSION
+  FROM   DUAL;
+
+END;
+/
+
+CREATE OR REPLACE TRIGGER XHB_IMP_EXP_STATUS_BUR_TR
+  BEFORE UPDATE OR DELETE
+  ON XHB_IMPORT_EXPORT_STATUS
+  FOR EACH ROW
+
+DECLARE
+
+  l_trig_event VARCHAR2(1) := NULL;
+
+  OPTIMISTIC_LOCK_PROB EXCEPTION;
+  PRAGMA EXCEPTION_INIT(OPTIMISTIC_LOCK_PROB, -20101);
+
+BEGIN
+
+  /* Determine whether UPDATING or DELETING */
+  IF UPDATING THEN
+
+    l_trig_event := 'U';
+
+    /* If the user is the connection pool user as defined in 
+XHB_SYS_USER_INFORMATION */
+    IF (XHB_CUSTOM_PKG.IS_CONNECTION_POOL_USER = 1) THEN
+
+      IF (:OLD.VERSION != :NEW.VERSION) THEN
+      /* Someone has pulled the rug out from below! */
+        RAISE OPTIMISTIC_LOCK_PROB;
+
+      END IF;
+
+    END IF;
+
+    SELECT :OLD.VERSION + 1,
+           SYSDATE
+    INTO   :NEW.VERSION,
+           :NEW.LAST_UPDATE_DATE
+    FROM   DUAL;
+
+    /* If the user is not the connection pool user as defined in 
+XHB_SYS_USER_INFORMATION */
+    IF (XHB_CUSTOM_PKG.IS_CONNECTION_POOL_USER = 0) THEN
+
+      SELECT SYS_CONTEXT('USERENV', 'SESSION_USER')
+      INTO   :NEW.LAST_UPDATED_BY
+      FROM   DUAL;
+
+    END IF;
+
+  ELSE -- Must be DELETING
+
+    l_trig_event := 'D';
+
+  END IF;
+
+  /* Is Auditing on this table required */
+  IF (XHB_CUSTOM_PKG.IS_AUDIT_REQUIRED('XHB_IMPORT_EXPORT_STATUS') = 1) THEN
+
+    INSERT INTO AUD_IMPORT_EXPORT_STATUS
+    VALUES (:old.IMPORT_EXPORT_STATUS_ID,
+            :old.TYPE_CODE,
+            :old.STATUS_CODE,
+            :old.MESSAGE,
+            :old.CASE_ID,
+            :old.COURT_ID,
+            :old.DEFENDANT_ON_CASE_ID,
+            :old.LAST_UPDATE_DATE,
+            :old.CREATION_DATE,
+            :old.CREATED_BY,
+            :old.LAST_UPDATED_BY,
+            :old.VERSION,
+            l_trig_event);
+
+  END IF;
+
+END;
+/
+
+
+ALTER TABLE XHB_DEFENDANT ADD (PRISON_ID VARCHAR2(4) NULL);
+
+ALTER TABLE XHB_DEFENDANT_ON_CASE ADD (PNC_ID VARCHAR2(10) NULL);
+
+ALTER TABLE XHB_DEFENDANT_ON_OFFENCE ADD (CRN_ID VARCHAR2(23) NULL);
+
+ALTER TABLE XHB_CASE ADD (MAGISTRATES_CASE_REF VARCHAR2(30) NULL);
+
+ALTER TABLE XHB_COURT ADD (COURT_CODE CHAR(4) NULL);
+
+
+DROP TABLE AUD_DEFENDANT;
+CREATE TABLE AUD_DEFENDANT TABLESPACE AUDITD AS SELECT * FROM XHB_DEFENDANT;
+TRUNCATE TABLE AUD_DEFENDANT;
+ALTER TABLE AUD_DEFENDANT ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+DROP TABLE AUD_DEFENDANT_ON_CASE;
+CREATE TABLE AUD_DEFENDANT_ON_CASE TABLESPACE AUDITD AS SELECT * FROM XHB_DEFENDANT_ON_CASE;
+TRUNCATE TABLE AUD_DEFENDANT_ON_CASE;
+ALTER TABLE AUD_DEFENDANT_ON_CASE ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+DROP TABLE AUD_DEFENDANT_ON_OFFENCE;
+CREATE TABLE AUD_DEFENDANT_ON_OFFENCE TABLESPACE AUDITD AS SELECT * FROM XHB_DEFENDANT_ON_OFFENCE;
+TRUNCATE TABLE AUD_DEFENDANT_ON_OFFENCE;
+ALTER TABLE AUD_DEFENDANT_ON_OFFENCE ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+DROP TABLE AUD_CASE;
+CREATE TABLE AUD_CASE TABLESPACE AUDITD AS SELECT * FROM XHB_CASE;
+TRUNCATE TABLE AUD_CASE;
+ALTER TABLE AUD_CASE ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+DROP TABLE AUD_COURT;
+CREATE TABLE AUD_COURT TABLESPACE AUDITD AS SELECT * FROM XHB_COURT;
+TRUNCATE TABLE AUD_COURT;
+ALTER TABLE AUD_COURT ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+ALTER TABLE xhb_court_log_entry RENAME COLUMN log_entry_xml TO log_entry_xml_varchar;
+
+ALTER TABLE xhb_court_log_entry ADD (log_entry_xml CLOB NULL);
+
+DECLARE
+BEGIN
+	FOR log_rec IN (SELECT rowid, log_entry_xml_varchar FROM xhb_court_log_entry) LOOP
+		UPDATE xhb_court_log_entry SET log_entry_xml = log_rec.log_entry_xml_varchar WHERE rowid = log_rec.rowid;
+	END LOOP;
+
+END;
+/
+
+ALTER TABLE xhb_court_log_entry modify (log_entry_xml NOT NULL);
+
+ALTER TABLE xhb_court_log_entry DROP COLUMN log_entry_xml_varchar;
+
+-- AUDIT
+
+DROP TABLE AUD_COURT_LOG_ENTRY;
+CREATE TABLE AUD_COURT_LOG_ENTRY TABLESPACE AUDITD AS SELECT * FROM XHB_COURT_LOG_ENTRY;
+TRUNCATE TABLE AUD_COURT_LOG_ENTRY;
+ALTER TABLE AUD_COURT_LOG_ENTRY ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+ALTER TABLE XHB_EMAIL MODIFY (RECIPIENTS VARCHAR2(255), CCRECIPIENTS VARCHAR2(255), BCCRECIPIENTS VARCHAR2(255));
+
+DROP TABLE AUD_EMAIL;
+CREATE TABLE AUD_EMAIL TABLESPACE AUDITD AS SELECT * FROM XHB_EMAIL;
+TRUNCATE TABLE AUD_EMAIL;
+ALTER TABLE AUD_EMAIL ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+CREATE OR REPLACE TRIGGER XHB_COURT_LOG_ENTRY_BUR_TR
+  BEFORE UPDATE OR DELETE
+  ON XHB_COURT_LOG_ENTRY
+  FOR EACH ROW
+
+/* ERwin Builtin Tue May 06 14:13:58 2003 */
+/* default body for XHB_COURT_LOG_ENTRY_BUR_TR */
+
+DECLARE
+
+  l_trig_event VARCHAR2(1) := NULL;
+
+  OPTIMISTIC_LOCK_PROB EXCEPTION;
+  PRAGMA EXCEPTION_INIT(OPTIMISTIC_LOCK_PROB, -20101);
+
+BEGIN
+
+  /* Determine whether UPDATING or DELETING */
+  IF UPDATING THEN
+
+    l_trig_event := 'U';
+
+    /* If the user is the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+    IF (XHB_CUSTOM_PKG.IS_CONNECTION_POOL_USER = 1) THEN
+
+      IF (:OLD.VERSION != :NEW.VERSION) THEN
+      /* Someone has pulled the rug out from below! */
+
+        RAISE OPTIMISTIC_LOCK_PROB;
+
+      END IF;
+
+    END IF;
+
+    SELECT :OLD.VERSION + 1,
+           SYSDATE
+    INTO   :NEW.VERSION,
+           :NEW.LAST_UPDATE_DATE
+    FROM   DUAL;
+
+    /* If the user is not the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+    IF (XHB_CUSTOM_PKG.IS_CONNECTION_POOL_USER = 0) THEN
+
+      SELECT SYS_CONTEXT('USERENV', 'SESSION_USER')
+      INTO   :NEW.LAST_UPDATED_BY
+      FROM   DUAL;
+
+    END IF;
+
+  ELSE -- Must be DELETING
+
+    l_trig_event := 'D';
+
+  END IF;
+
+  /* Is Auditing on this table required */
+  IF (XHB_CUSTOM_PKG.IS_AUDIT_REQUIRED('XHB_COURT_LOG_ENTRY') = 1) THEN
+
+    INSERT INTO AUD_COURT_LOG_ENTRY 
+    VALUES (:old.ENTRY_ID, 
+            :old.CASE_ID, 
+            :old.VERSION, 
+            :old.LAST_UPDATED_BY, 
+            :old.CREATED_BY, 
+            :old.CREATION_DATE, 
+            :old.LAST_UPDATE_DATE, 
+            :old.DATE_TIME, 
+            :old.EVENT_DESC_ID,
+            :old.LOG_ENTRY_XML,
+            l_trig_event);
+
+  END IF;
+
+END;
+/
+
+/*
+ * Further Patch for DB release 23
+ */
+
+
+ALTER TABLE XHB_COURT_LOG_ENTRY ADD (DEFENDANT_ON_CASE_ID NUMBER(8) NULL,
+                                     DEFENDANT_ID         NUMBER(8) NULL);
+
+DROP TABLE AUD_COURT_LOG_ENTRY;
+CREATE TABLE AUD_COURT_LOG_ENTRY TABLESPACE AUDITD AS SELECT * FROM XHB_COURT_LOG_ENTRY;
+TRUNCATE TABLE AUD_COURT_LOG_ENTRY;
+ALTER TABLE AUD_COURT_LOG_ENTRY ADD (INSERT_EVENT VARCHAR2(1) DEFAULT 'X' NOT NULL);
+
+
+ALTER TABLE XHB_COURT_LOG_ENTRY
+      ADD (FOREIGN KEY (DEFENDANT_ON_CASE_ID)
+           REFERENCES XHB_DEFENDANT_ON_CASE);
+
+ALTER TABLE XHB_COURT_LOG_ENTRY
+      ADD (FOREIGN KEY (DEFENDANT_ID)
+           REFERENCES XHB_DEFENDANT);
+
+CREATE OR REPLACE TRIGGER XHB_COURT_LOG_ENTRY_BUR_TR
+  BEFORE UPDATE OR DELETE
+  ON XHB_COURT_LOG_ENTRY
+  FOR EACH ROW
+
+/* ERwin Builtin Tue May 06 14:13:58 2003 */
+/* default body for XHB_COURT_LOG_ENTRY_BUR_TR */
+
+DECLARE
+
+  l_trig_event VARCHAR2(1) := NULL;
+
+  OPTIMISTIC_LOCK_PROB EXCEPTION;
+  PRAGMA EXCEPTION_INIT(OPTIMISTIC_LOCK_PROB, -20101);
+
+BEGIN
+
+  /* Determine whether UPDATING or DELETING */
+  IF UPDATING THEN
+
+    l_trig_event := 'U';
+
+    /* If the user is the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+    IF (XHB_CUSTOM_PKG.IS_CONNECTION_POOL_USER = 1) THEN
+
+      IF (:OLD.VERSION != :NEW.VERSION) THEN
+      /* Someone has pulled the rug out from below! */
+
+        RAISE OPTIMISTIC_LOCK_PROB;
+
+      END IF;
+
+    END IF;
+
+    SELECT :OLD.VERSION + 1,
+           SYSDATE
+    INTO   :NEW.VERSION,
+           :NEW.LAST_UPDATE_DATE
+    FROM   DUAL;
+
+    /* If the user is not the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+    IF (XHB_CUSTOM_PKG.IS_CONNECTION_POOL_USER = 0) THEN
+
+      SELECT SYS_CONTEXT('USERENV', 'SESSION_USER')
+      INTO   :NEW.LAST_UPDATED_BY
+      FROM   DUAL;
+
+    END IF;
+
+  ELSE -- Must be DELETING
+
+    l_trig_event := 'D';
+
+  END IF;
+
+  /* Is Auditing on this table required */
+  IF (XHB_CUSTOM_PKG.IS_AUDIT_REQUIRED('XHB_COURT_LOG_ENTRY') = 1) THEN
+
+    INSERT INTO AUD_COURT_LOG_ENTRY 
+    VALUES (:old.ENTRY_ID, 
+            :old.CASE_ID, 
+            :old.VERSION, 
+            :old.LAST_UPDATED_BY, 
+            :old.CREATED_BY, 
+            :old.CREATION_DATE, 
+            :old.LAST_UPDATE_DATE, 
+            :old.DATE_TIME, 
+            :old.EVENT_DESC_ID,
+            :old.LOG_ENTRY_XML,
+            :old.DEFENDANT_ON_CASE_ID,
+            :old.DEFENDANT_ID,
+            l_trig_event);
+
+  END IF;
+
+END;
+/

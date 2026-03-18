@@ -1,0 +1,65 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findMinCrestDefendantId()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendant o WHERE o.crestDefendantId=(SELECT MIN(xd.crestDefendantId) FROM XhbDefendant xd)"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findMaxCrestDefendantId()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendant o WHERE o.crestDefendantId=(SELECT MAX(xd.crestDefendantId) FROM XhbDefendant xd)"
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findDefendantByCourtIdSurname(java.lang.Integer courtId, java.lang.String surname)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendant o WHERE UPPER(o.surname) LIKE UPPER(?2) and o.courtId=?1 AND o.gender IS NOT NULL"
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findDefendantByCourtIdSurnameGenderFirstName(java.lang.Integer courtId, java.lang.String firstName, java.lang.String surname, java.lang.Integer gender)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT
+ *				OBJECT(xhbD) 
+ * 		FROM 
+ *			XhbDefendant xhbD
+ *		WHERE 
+ *			((UPPER(xhbD.firstName) LIKE UPPER(?2)) AND UPPER(xhbD.surname) LIKE UPPER(?3) AND xhbD.gender = ?4)
+ *		AND
+ *			xhbD.courtId = ?1"
+ * 
+ * @ejb.finder
+ *    signature="Collection findDefendantByCourtIdSurnameGender(java.lang.Integer courtId, java.lang.String surname, java.lang.Integer gender)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT
+ *				OBJECT(xhbD) 
+ * 		FROM 
+ *			XhbDefendant xhbD
+ *		WHERE 
+ *			(UPPER(xhbD.surname) LIKE UPPER(?2) AND xhbD.gender = ?3)
+ *		AND
+ *			xhbD.courtId = ?1"
+ * 
+ *
+ * @ejb.finder
+ *    signature="Collection findDefendantByCourtIdFirstNameSurname(java.lang.Integer courtId, java.lang.String firstName, java.lang.String surname)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT
+ *				OBJECT(xhbD) 
+ * 		FROM 
+ *			XhbDefendant xhbD
+ *		WHERE 
+ *			(UPPER(xhbD.firstName) LIKE UPPER(?2)) AND UPPER(xhbD.surname) LIKE UPPER(?3)
+ *		AND
+ *			xhbD.courtId = ?1
+ *		AND
+ *			xhbD.gender IS NOT NULL"
+ *
+ * -------- end of custom finders --------

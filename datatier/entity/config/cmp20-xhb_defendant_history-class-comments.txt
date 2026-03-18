@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findBySurname(java.lang.String surname, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantHistory o WHERE UPPER(o.surname) LIKE UPPER(?1) and o.courtId=?2"
+ *
+ * -------- end of custom finders --------

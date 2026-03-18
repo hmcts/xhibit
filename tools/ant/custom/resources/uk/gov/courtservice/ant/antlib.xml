@@ -1,0 +1,18 @@
+<antlib>
+    <typedef name="filesetlist"
+             classname="uk.gov.courtservice.ant.types.FileSetList"/>             
+             
+	<taskdef name="jar2"
+             classname="uk.gov.courtservice.ant.taskdefs.JarFileSetList"/>
+	<taskdef name="merge"
+             classname="uk.gov.courtservice.ant.taskdefs.Merge"/>
+	<taskdef name="storedprocedure"
+             classname="uk.gov.courtservice.ant.taskdefs.StoredProcedure"/>
+	<taskdef name="uptodatefileset"
+             classname="uk.gov.courtservice.ant.taskdefs.UpToDateFileSet"/>
+	<taskdef name="war2"
+             classname="uk.gov.courtservice.ant.taskdefs.WarFileSetList"/>
+	<taskdef name="hostnumber"
+             classname="uk.gov.courtservice.ant.taskdefs.HostNumber"/>
+             
+</antlib>

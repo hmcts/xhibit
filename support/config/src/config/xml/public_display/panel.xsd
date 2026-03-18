@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Alex Brown (EDS) -->
+<xs:schema targetNamespace="uri:XHIBIT/panel" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:panel="uri:XHIBIT/panel" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="panels">
+		<xs:annotation>
+			<xs:documentation>The panels contained within this collection are not configurable.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="panel:panel" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="panel">
+		<xs:annotation>
+			<xs:documentation>The panel is not configurable. It will be configured and the court administrators can add panels to pages but they cannot edit the panels themselves.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="filter" minOccurs="0" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>There should be several filters. One will enable the administrator to only display data relating to courts 1-10. Another filter will help to split the data into manageable chunks that can fit on screen. Sort order will be part of the filter.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="id" type="xs:string" use="required"/>
+						<xs:attribute name="description" type="xs:string" use="optional"/>
+						<xs:attribute name="sort-order" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="event" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>A panel is regenerated after receiving one or more events.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="attribute" minOccurs="0" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:attribute name="name" type="xs:string"/>
+									<xs:attribute name="value" type="xs:string"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="name" type="xs:string"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+			<xs:attribute name="title" type="xs:string" use="required"/>
+			<xs:attribute name="class-source" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,11 @@
+    /**
+     * Business method to check if the tracking status is enabled
+     *
+     * @return true if the tracking status is enabled
+     */
+    public boolean isTrackingEnabled()
+    {
+        return "Y".equalsIgnoreCase(getTrackingEnabled());
+    }
+  
+  

@@ -1,0 +1,2 @@
+alter table XHB_CASE_NUMBER_SEQ_GENERATOR
+add constraint XHB_CASE_NUMBER_SEQ_GEN_PK primary key (COURT_ID, CASE_TYPE);

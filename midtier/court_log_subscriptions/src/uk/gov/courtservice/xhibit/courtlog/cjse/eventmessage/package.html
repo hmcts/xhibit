@@ -1,0 +1,89 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+</head>
+<body bgcolor="white">
+
+Provides classes which generate the dynamic elements of the CJSE Message component of the CJSE event.
+
+
+<h2>Package Specification</h2>
+<p>
+Each event which is sent to the CJSE contains a message component which is a textual descroption of the event.
+Each distinct message required for the CJSE is given a message code and stored in
+the CjseEventMessageText bundle under /config/bundles for each language in use in the system.
+</p>
+<p>
+The message structure comprises of static text and tokens describing message elements, for example
+message 1257 appears as:
+</p>
+1257=$$$CourtIdentification$$$ $$$CaseNumber$$$ $$$EventDateTime$$$ Reserved to $$$ReservedToJudge$$$
+<p>
+The tokens in between the '$$$' separators indictate that this portion of the message is to be provided
+by the given mesage element, for example 1257 uses message elements:
+
+<ul>
+<li><code>CourtIdentificationMessageElement</code></li>
+<li><code>CaseNumberMessageElement</code></li>
+<li><code>EventDateTimeMessageElement</code></li>
+<li><code>ReservedToJudgeMessageElement</code></li>
+<li><code>StringMessageElement</code></li>
+</ul>
+
+<p>
+The configuration file /config/components/cjse.event.message.elements.properties defines the class which
+is used to provide each message element, for example this file contains an entry:
+</p>
+<p>
+CourtIdentification=uk.gov.courtservice.xhibit.courtlog.cjse.eventmessage.CourtIdentificationMessageElement
+</p>
+<p>
+indication that the token CourtIdentification in the message structure will be provided by the class uk.gov.courtservice.xhibit.courtlog.cjse.eventmessage.CourtIdentificationMessageElement
+</p>
+
+See below for further information on the <code>StringMessageElement</code>.
+
+<h2>Application flow to build a CJSE message component:</h2>
+<p>
+The entry point to the message functionality is the <code>MessageFactory</code>.
+</p>
+<p>
+The <code>MessageFactory</code> contains a 'lazy instantiated' Map of <code>MessageBuilders</code> keyed
+on <code>MessageBuilderKey</code>, where the <code>MessageBuilderKey</code> consists of the message code
+(1257 in the example) and the locale.
+</p>
+<p>
+On the first request for a given <code>MessageBuilder</code> the <code>MessageFactory</code> will uses the
+<code>MessageElementFactory</code> to retrieve the MessageElements required for a given message text.
+An instance of the <code>MessageBuilder</code> class is then created with these <code>MessageElements</code>
+and stored in the Map for future requests.
+</p>
+
+<p>
+The <code>MessageBuilder</code> class can then be used to generate the message text for this message component, this
+is achieved by looping through the <code>MessageElement</code> array and calling each <code>MessageElement</code>
+class to provide it's section of the message text.
+</p>
+
+<p>
+Each MessageElement contains the logic to build a dynamic section to the message test.
+The <code>StringMessageElement</code> is a special case of <code>MessageElement</code>. This may take the
+form of retrieving data from the database, or retrieving data from the xhibit court log xml. Details of paths
+to information in the cort log xml are retrieved by the MessageElement from the config file
+/config/components/cjse.event.properties.
+If no special processing is required for a section of the message text i.e. a staic section such as ' Reserved to '
+in the example above, a <code>StringMessageElement</code> is constructed which simply returns this string.
+</p>
+
+<h2>Summary of configuration files used</h2>
+
+<ul>
+<li>/config/bundles/CjseEventMessageText_en_GB - Contains English versions of all CJSE event messages with tokens
+    to indicate where <code>MessageElement</code>s are used</li>
+<li>/config/components/cjse.event.message.elements.properties - defines the class which
+is used to provide each message element</li>
+<li>/config/components/cjse.event.properties - contains xpath references to retrieve information from xhibit court log events</li>
+</ul>
+
+</body>
+</html>

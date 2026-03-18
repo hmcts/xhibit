@@ -1,0 +1,17 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDisposalCode(java.lang.String disposalCode)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (d) FROM XhbRefMonOrdDisposals AS d WHERE 
+ *           d.disposalCode = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByMOType(java.lang.String moType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (d) FROM XhbRefMonOrdDisposals AS d WHERE 
+ *           d.moType = ?1"
+ *
+ * -------- end of custom finders --------

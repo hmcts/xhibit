@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<project basedir="." default="all" name="ViewSchedule">
+
+    <description>
+        Description to be done...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.controller.bean"      value="true" />
+    <property name="project.type.message.bean"         value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="XhibitEntities.jar" />
+                <include name="Value.jar" />
+                <include name="PublicDisplayCommon.jar" />
+            </fileset>
+        </path>
+
+        <property name="message.jar.file" location="${lib.build.dir}/ViewScheduleMessageBean.jar" />
+        <property name="controller.jar.file.client.includes"  value="**/*Delegate*.class, **/*Exception.class, **/vos/**/*.class" />
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+    <target name="package.controller" unless="skip.package" depends="framework.package.controller">
+        <log target="package"/>
+        <!-- need to add some additional files to the generated jar files -->
+        <jar destfile="${controller.jar.file.no.ejbc}" update="true">
+            <fileset dir="${config.dir}/resources" />
+        </jar>
+    </target>
+</project>
+

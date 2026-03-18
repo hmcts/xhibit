@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="XhibitSecurityProviders">
+
+    <description>
+        This build script is designed to work within the Xhibit build framework, in particular the mbean creation
+        is maniplulated to allow generated files to start up and end up in the common directories. This
+        simplifies development by using a familiar view.
+
+        Build script for the xhibit security providers which provides the following mbeans.
+
+        XhibitAuthenticator
+
+            This is an optimized ActiveDirectoryAuthenticator that uses token groups to authenticate users.
+            It also provides additional services to the application to allow it to search the active directory
+            for terminals (and there location), group heirarchy and user display names.
+
+        XhibitRoleMapper
+
+            This rolemapper uses roles configured in the database to perform the rolemapping.
+
+    </description>
+
+    <import file="./../tools/ant/framework.xml" />
+    
+    <property name="project.type.requires.compilation" value="true" />
+            
+    <!--
+      ============================================================================
+        Initialise Override
+      ============================================================================
+      -->
+
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <property name="mbean.build.dir"  location="${build.dir}/mbean" />
+        <property name="generate.mbean.build.dir" location="${mbean.build.dir}/generate"/>
+        <property name="package.mbean.build.dir" location="${mbean.build.dir}/package"/>
+        
+
+        <property name="java.jar.file" location="${lib.build.dir}/${ant.project.name}.jar"/>
+
+        <path id="compile.classpath">
+            <pathelement path="${java.home}/lib/rt.jar"/>
+            <pathelement path="${lib.dir}/wlfullclient.jar"/>
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="XhibitEnvironment.jar"/>
+            </fileset>
+        </path>
+
+        <!-- include resources directory into the jar -->
+        <!--
+        <filesetlist id="jar.source.filelist">
+            <fileset dir="${source.dir}"
+                      includes="${default.jar.includes}"
+                      excludes="${default.jar.source.excludes}" />
+            <fileset dir="${basedir}/resources"
+                      includes="${default.jar.includes}"
+                      excludes="${default.jar.source.excludes}" />
+        </filesetlist>
+        -->
+    </target>
+
+    <!--
+      ============================================================================
+        Generate Override
+      ============================================================================
+      -->
+
+    <target name="generate.mbean.check">
+        <if>
+            <isset property="skip.generate"/>
+            <then>
+                <property name="skip.generate.mbean" value="marker"/>
+            </then>
+            <elseif>
+                <available file="${generate.mbean.build.dir}"/>
+                <then>
+                    <uptodatefileset property="skip.generate.mbean">
+                        <srcpath>
+                            <fileset dir="${resources.dir}"/>
+                        </srcpath>
+                        <destpath>
+                            <fileset dir="${generate.mbean.build.dir}"/>
+                        </destpath>
+                    </uptodatefileset>
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="generate.mbean" unless="skip.generate.mbean" depends="generate.mbean.check">
+        <!-- Gen src and classes into temp mbean dir -->
+        <java classname="weblogic.management.commo.WebLogicMBeanMaker" fork="true" failonerror="true">
+            <jvmarg value="-DMDFDIR=${resources.dir}"/>
+            <jvmarg value="-Dfiles=${generate.mbean.build.dir}"/>
+            <jvmarg value="-DcreateStubs=true"/>
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <pathelement path="${lib.dir}/wlfullclient.jar"/>
+            </classpath>
+        </java>
+
+        <copy todir="${gen.source.dir}">
+            <fileset dir="${generate.mbean.build.dir}" excludes="*Impl.java"/>
+        </copy>
+
+        <copy file="${generate.mbean.build.dir}/XhibitAuthenticatorImpl.java"
+              todir="${gen.source.dir}/uk/gov/courtservice/framework/security/providers/authentication"/>
+
+        <copy file="${generate.mbean.build.dir}/XhibitRoleMapperImpl.java"
+              todir="${gen.source.dir}/uk/gov/courtservice/framework/security/providers/authorization"/>
+
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="framework.generate, generate.mbean">
+        <log target="generate"/>
+    </target>
+
+    <!--
+      ============================================================================
+        Compile Override
+      ============================================================================
+      -->
+
+    <target name="compile.mbean" unless="skip.compile" >
+        <!-- Copy all the files required to the mbean package dir -->
+        <copy todir="${package.mbean.build.dir}">
+            <fileset dir="${resources.dir}" />
+            <fileset dir="${gen.source.dir}" />
+            <fileset dir="${source.dir}" />
+            <fileset dir="${classes.dir}" />
+        </copy>
+    </target>
+
+    <target name="compile" unless="skip.compile" depends="framework.compile, compile.mbean">
+        <log target="compile"/>
+    </target>
+
+    <!--
+      ============================================================================
+        Generate Override
+      ============================================================================
+      -->
+
+    <target name="package.mbean.check">
+        <if>
+            <isset property="skip.package"/>
+            <then>
+                <property name="skip.package.mbean" value="marker"/>
+            </then>
+            <elseif>
+                <and>
+                    <available file="${package.mbean.build.dir}"/>
+                    <available file="${java.jar.file}"/>
+                </and>
+                <then>
+                    <uptodatefileset property="skip.package.mbean">
+                        <srcpath>
+                            <fileset dir="${package.mbean.build.dir}"/>
+                        </srcpath>
+                        <destpath>
+                            <pathelement path="${java.jar.file}"/>                            
+                        </destpath>
+                    </uptodatefileset>
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="package.mbean" unless="skip.package.mbean" depends="package.mbean.check">
+
+        <!-- create all of the directories required -->
+        <mkdir dir="${lib.build.dir}"/>
+
+        <!-- Generate the special jar -->
+        <java classname="weblogic.management.commo.WebLogicMBeanMaker" fork="true" failonerror="true">
+            <jvmarg value="-Dfiles=${package.mbean.build.dir}"/>
+            <jvmarg value="-DMJF=${java.jar.file}"/>
+            <jvmarg value="-DmbeantypesDir=C:\bea\wlserver_10.3\server\lib\mbeantypes"/>
+            <classpath>
+				<pathelement path="${lib.dir}/wlfullclient.jar"/>
+                <path refid="compile.classpath"/>
+                <pathelement path="${java.class.path}"/>
+            </classpath>
+        </java>
+
+    </target>
+
+    <target name="package" unless="skip.package" depends="framework.package, package.mbean">
+        <log target="package"/>
+    </target>
+
+</project>

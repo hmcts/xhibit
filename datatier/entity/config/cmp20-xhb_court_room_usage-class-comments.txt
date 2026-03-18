@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findBySittingDateAndCourtRoom(java.lang.Integer courtId, java.util.Date startDate, java.util.Date endDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbCourtRoomUsage o WHERE o.courtRoomId = ?1 AND o.sittingDate between ?2 and ?3 AND (o.obsInd IS NULL OR o.obsInd = 'N')"
+ *
+ * -------- end of custom finders --------

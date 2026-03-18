@@ -1,0 +1,18 @@
+<html>
+    <body>
+        <p>
+This package contains the classes associated with a java.util.Timer based scheduler. The main
+entry point is the Scheduler class that takes an instance of java.util.Properties to configure
+which tasks are scheduled. 
+        </p>
+        <p>
+The execution of the tasks is handled using a strategy pattern, using the TaskStrategy interface.
+Two implementations of TaskStrategy are provided to allow trivial implementation of either Session
+Bean based or plain java class tasks, RemoteSessionTaskStrategy and the JavaTasksStrategy. If wished Task
+Strategy can be implemented for much more specific, configurable task execution.
+        </p>
+        <p>
+The properties format expected by Schedulable are recorded in it's document set.
+        </p>
+    </body>
+</html>

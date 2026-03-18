@@ -1,0 +1,49 @@
+<body>
+<p>The Calendar package provides a popup Calendar widget which is used when
+ date entry is required. 
+
+You may already have a custom date entry field and simply need to provide
+a call to the MDateSelector. My test harness triggers it on a
+right mouse click, the code fragment for do this is reproduced
+below.</p>
+
+<pre>
+    public void mouseReleased(MouseEvent e)
+    {
+        if (e.isPopupTrigger())
+        {
+            try
+            {
+                date = df.parse(getText());
+            }
+            catch(ParseException pe)
+            {
+                date = null;
+            }
+
+            MDateSelector popup;
+            popup = new MDateSelector();
+            if (minDate!=null)
+                popup.setMinimum(minDate);
+            if (maxDate!=null)
+                popup.setMaximum(maxDate);
+
+            Point p=e.getPoint();
+            p.x+=getBounds(null).x;
+            p.y+=getBounds(null).y;
+
+            popup.setFirstDay(Calendar.MONDAY);
+            popup.setForeground(Calendar.SATURDAY, Color.blue);
+            popup.setForeground(Calendar.SUNDAY, Color.blue);
+            popup.show(getParent(), p, date);
+
+            date = popup.getValue(); 
+            setText(date==null ? &quot;&quot; : shortFormatter.format(date));
+            popup=null;
+        }
+    } 
+</pre>
+The CalendarPanel component may also be used separately in any other context for example
+a appointment book application to assist in finding dates.
+
+</body>

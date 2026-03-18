@@ -1,0 +1,25 @@
+/* -------- custom finders --------
+* @ejb.finder
+*    signature="java.util.Collection findByChargeIdForOffence(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (pl) FROM XhbPlea pl, XhbDefendantOnOffence do, XhbOffence off WHERE 
+*           (pl.obsInd IS NULL OR pl.obsInd = 'N') AND
+*           pl.defendantOnOffenceId = do.defendantOnOffenceId AND 
+*           do.offenceId = off.offenceId AND 
+*           off.chargeId = ?1"
+*/ 
+  
+  /**
+     * Business method to check whether the hearing has been ended
+     *
+     * @return the originalCourtType
+     *
+     * @ejb.interface-method view-type="local"
+     */
+    public boolean isHearingEnded()
+    {
+        return getHearingStartDate() != null && getHearingEndDate() != null;
+    }
+  
+  

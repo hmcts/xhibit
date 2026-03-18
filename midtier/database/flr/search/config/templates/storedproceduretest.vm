@@ -1,0 +1,42 @@
+package $testClassPackage;
+
+import java.util.List;
+import uk.gov.courtservice.xhibit.business.vos.services.systemadmin.criteria.${criteriaClassName};
+import uk.gov.courtservice.xhibit.business.database.query.search.${queryClassName};
+import uk.gov.courtservice.framework.testutils.junit.TransactionTestCase;
+
+
+/**
+ * @author Andrew Turner
+ * @title ${testClassName}
+ * @description This class acts as a wrapper on the stored procedure
+ */
+public class ${testClassName} extends TransactionTestCase {
+    static {
+        System.setProperty("java.naming.factory.initial", "weblogic.jndi.WLInitialContextFactory");
+    }
+
+
+    public $testClassName(String name) throws javax.naming.NamingException {
+        super(name, true, "XhibitOracleTxDataSource", DEFAULT_TRANSACTION);
+    }
+
+
+    /**
+     * Perform the testing of the class
+     */
+    public void testSearch() {
+        final ${criteriaClassName} criteria = new ${criteriaClassName}();
+        final ${queryClassName} query = new ${queryClassName}();
+        // we don't want to return too many records!
+        query.setMaxRowCount(10);
+
+	// now run the query
+        final List results = query.search(criteria);
+
+	// and fail if the results are null
+        assertNotNull(results);
+        
+        // would we want to do a zero length check???
+    }
+}

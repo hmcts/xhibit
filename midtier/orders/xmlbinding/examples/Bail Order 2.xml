@@ -1,0 +1,317 @@
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="D:\projects\XHIBIT\thickclient\orders\xml\documentTransforms\Bail Order.xsl"?>
+-->
+
+<Order 
+  xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" 
+
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+  xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" 
+  xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666"  
+  xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative"
+  xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders"
+     
+  xsi:schemaLocation="
+    http://www.govtalk.gov.uk/people/bs7666 ../schemas/TrustedCourtServiceSchemas/BS7666-v1.xsd
+    http://www.govtalk.gov.uk/people/AddressAndPersonalDetails ../schemas/TrustedCourtServiceSchemas/apd.xsd
+    http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative ../schemas/Narrative.xsd
+    http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders ../schemas/Orders.xsd"
+  >
+
+  <OrderData>
+		<BailOrder>
+			<OrderHeader>
+				<OrderType/>
+				<CourtHouse>
+					<CourtHouseType>magistrates court</CourtHouseType>
+					<CourtHouseCode>1234</CourtHouseCode>
+					<CourtHouseName>Newcastle</CourtHouseName>
+					<CourtHouseAddress>
+						<apd:Line>address1</apd:Line>
+						<apd:Line>address2</apd:Line>
+						<apd:Line>address3</apd:Line>
+						<apd:Line>address4</apd:Line>
+						<apd:Line>address5</apd:Line>
+						<apd:PostCode>GIR 0AA</apd:PostCode>
+					</CourtHouseAddress>
+					<CourtHouseDX>String</CourtHouseDX>
+					<CourtHouseTelephone>0</CourtHouseTelephone>
+					<CourtHouseFax>0</CourtHouseFax>
+					<Description>String</Description>
+				</CourtHouse>
+				<Judiciary>
+					<Judge>
+						<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>A</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+						<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+						<CRESTjudgeID>0</CRESTjudgeID>
+					</Judge>
+					<Justice>
+						<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>A</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+						<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+						<CRESTjusticeID>0</CRESTjusticeID>
+					</Justice>
+					<StartDate>1967-08-13</StartDate>
+					<EndDate>1967-08-13</EndDate>
+				</Judiciary>
+				<CaseNumber>T00000000</CaseNumber>
+				<SubjectType>Defendant</SubjectType>
+				<Defendant>
+					<PersonalDetails>
+						<Name>
+							<apd:CitizenNameTitle>Mr</apd:CitizenNameTitle>
+							<apd:CitizenNameForename>Joe</apd:CitizenNameForename>
+							<apd:CitizenNameSurname>Bloggs</apd:CitizenNameSurname>
+							<apd:CitizenNameSuffix>MBE</apd:CitizenNameSuffix>
+							<apd:CitizenNameRequestedName>Joe</apd:CitizenNameRequestedName>
+						</Name>
+						<DateOfBirth>
+							<apd:BirthDate>1967-08-13</apd:BirthDate>
+							<apd:VerifiedBy>not verified</apd:VerifiedBy>
+						</DateOfBirth>
+						<Sex>male</Sex>
+						<Address>
+							<apd:Line>Address1</apd:Line>
+							<apd:Line>Address2</apd:Line>
+							<apd:Line>Address3</apd:Line>
+							<apd:Line>Address4</apd:Line>
+							<apd:Line>Address5</apd:Line>
+							<apd:PostCode>GIR 0AA</apd:PostCode>
+						</Address>
+					</PersonalDetails>
+					<ASN>Number</ASN>
+				</Defendant>
+				<OrderDate>1967-08-13</OrderDate>
+				<SignedBy>
+					<CourtOfficer>
+						<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>A</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+						<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+					</CourtOfficer>
+					<Judiciary>
+						<Judge>
+							<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+							<apd:CitizenNameForename>A</apd:CitizenNameForename>
+							<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+							<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+							<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+							<CRESTjudgeID>0</CRESTjudgeID>
+						</Judge>
+						<Justice>
+							<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+							<apd:CitizenNameForename>A</apd:CitizenNameForename>
+							<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+							<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+							<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+							<CRESTjusticeID>0</CRESTjusticeID>
+						</Justice>
+						<StartDate>1967-08-13</StartDate>
+						<EndDate>1967-08-13</EndDate>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>1967-08-13</SignedDate>
+			</OrderHeader>
+			<BailDecision>unconditional</BailDecision>
+			<PreConditions selected="true">
+				<Surety selected="true">
+					<Plural>surety</Plural>
+					<MonetaryValue>
+						<Amount>20000</Amount>
+						<Currency>GBP</Currency>
+					</MonetaryValue>
+				</Surety>
+				<Passport selected="true">
+					<Surrendered>false</Surrendered>
+					<Retained>true</Retained>
+				</Passport>
+				<Security selected="true">
+					<MonetaryValue>
+						<Amount>40000</Amount>
+						<Currency>EURO</Currency>
+					</MonetaryValue>
+				</Security>
+			</PreConditions>
+			<PostConditions selected="true">
+				<LiveSleep selected="true">
+					<AtFollowingAddress>true</AtFollowingAddress>
+					<Address>
+						<apd:Line>LSline1</apd:Line>
+						<apd:Line>LSline2</apd:Line>
+						<apd:Line>LSline3</apd:Line>
+						<apd:Line>LSline4</apd:Line>
+						<apd:Line>LSline5</apd:Line>
+						<apd:PostCode>SS6 2BB</apd:PostCode>
+					</Address>
+				</LiveSleep>
+				<NotifyPolice selected="true"/>
+				<Curfew selected="true">
+					<From>14:20:00-05:00</From>
+					<To>14:20:00-05:00</To>
+				</Curfew>
+				<PoliceReport selected="true">
+					<Station>Scotland Yard</Station>
+					<Period>monday</Period>
+					<From>14:20:00-05:00</From>
+					<To>14:20:00-05:00</To>
+				</PoliceReport>
+				<Available selected="true"/>
+				<Contact selected="true">Name of person</Contact>
+				<Distance selected="true">
+					<TheDistance>10 miles</TheDistance>
+					<Location>1 High Street, London</Location>
+				</Distance>
+				<Other selected="true">Other text displayed here</Other>
+			</PostConditions>
+			<Reasons>Reasons for Bail Text is placed here</Reasons>
+			<NextAppearance>
+				<AppearanceCourt>
+					<CourtHouseType>magistrates court</CourtHouseType>
+					<CourtHouseCode>0000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+					<CourtHouseAddress>
+						<apd:Line>A</apd:Line>
+						<apd:Line>A</apd:Line>
+						<apd:PostCode>GIR 0AA</apd:PostCode>
+					</CourtHouseAddress>
+					<CourtHouseDX>String</CourtHouseDX>
+					<CourtHouseTelephone>0</CourtHouseTelephone>
+					<CourtHouseFax>0</CourtHouseFax>
+					<Description>String</Description>
+				</AppearanceCourt>
+				<AppearanceDateTime selected="false">
+					<AppearanceDate>1967-08-13</AppearanceDate>
+					<AppearanceTime>14:20:00-05:00</AppearanceTime>
+				</AppearanceDateTime>
+			</NextAppearance>
+			<AssociatedCases>
+				<AssociatedCase selected="true">T10000001</AssociatedCase>
+				<AssociatedCase selected="true">T10000002</AssociatedCase>
+				<AssociatedCase selected="true">T10000003</AssociatedCase>
+				<AssociatedCase selected="true">T10000004</AssociatedCase>
+				<AssociatedCase selected="true">T10000005</AssociatedCase>
+			</AssociatedCases>
+		</BailOrder>
+	</OrderData>
+	<Narrative xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative">
+		<Header>Text</Header>
+		<Body>
+			<Section>
+				<Label/>
+				<Body>
+					<H1>Bail granted <BailGrantedType/> record of decision
+					</H1>
+				</Body>
+			</Section>
+			<Section>
+				<Label>
+					<Line>Part 1</Line>
+					<Line>The <AppellantDefendant/>
+					</Line>
+				</Label>
+				<Body>
+					<Table>
+						<TR>
+							<TD>
+								<Line>
+									<DefendantFullName/>
+								</Line>
+								<Line>of: <DefendantAddress/>
+								</Line>
+								<Line>applied to this court for bail.</Line>
+							</TD>
+							<TD>
+								<Line>Date of Birth</Line>
+								<Line>
+									<DefendantDOB/>
+								</Line>
+							</TD>
+						</TR>
+					</Table>
+				</Body>
+			</Section>
+			<Section>
+				<Label>
+					<Line>Part 2</Line>
+					<Line>The decision and</Line>
+					<Line>conditions</Line>
+				</Label>
+				<Body>
+					<P>The Court considered the application under the Bail Act 1976 on: <OrderDate/>
+					</P>
+					<P>Bail was granted <BailGrantedType/>.</P>
+					<If>
+						<Condition>ConditionalBail</Condition>
+						<Body>
+							<PreConditions/>
+							<PostConditions/>
+						</Body>
+					</If>
+				</Body>
+			</Section>
+			<If>
+				<Condition>ConditionalBail</Condition>
+				<Body>
+					<Section>
+						<Label>
+							<Line>Part 3</Line>
+							<Line>Reason(s) for imposing </Line>
+							<Line> the above conditions</Line>
+						</Label>
+						<Body>
+							<Table>
+								<TR>
+									<TD>
+										<Line>
+											<Reasons/>
+										</Line>
+									</TD>
+								</TR>
+							</Table>
+						</Body>
+					</Section>
+				</Body>
+			</If>
+			<Section>
+				<Label>
+					<Line>Part 4</Line>
+					<Line>The next appearance</Line>
+				</Label>
+				<Body>
+					<Line>The <AppellantDefendant/> shall appear on <NextAppearanceDate>a date and at a time to be notified</NextAppearanceDate>
+				before the <NextAppearanceCourtType/> sitting at: <NextAppearanceCourtHouseName/> or any other place that may be notified, there to surrender to custody.</Line>
+					<P/>
+					<P>
+						<List>
+							<ListItem>If you do not surrender to custody you will commit an offence.</ListItem>
+							<ListItem>You must comply with the conditions in Part 2 while you are on bail.</ListItem>
+						</List>
+					</P>
+					<P>If you do not, or if it seems likely that you will not, you may  be remanded in custody.</P>
+				</Body>
+			</Section>
+			<Section>
+				<Label/>
+				<Body>
+					<AssociatedCases/>
+				</Body>
+			</Section>
+		</Body>
+		<Footer>Text</Footer>
+	</Narrative>
+	<State/>
+	<SaveNotes>Text here</SaveNotes>
+</Order>
+<!--
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="D:\projects\XHIBIT\thickclient\orders\xml\documentTransforms\Bail Order.xsl"?>
+-->
+

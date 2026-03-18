@@ -1,0 +1,59 @@
+package uk.gov.courtservice.xhibit.web.publicdisplay.workflow.pub.ruleengine.rules;
+
+import org.apache.log4j.Logger;
+
+import uk.gov.courtservice.xhibit.common.publicdisplay.events.PublicDisplayEvent;
+import uk.gov.courtservice.xhibit.common.publicdisplay.events.PublicNoticeEvent;
+
+/**
+ * <p>
+ * Title: Reporting restrictions have changed rule
+ * </p>
+ * <p>
+ * Description: Checks whether the public notice event has a reporting
+ * restiction change
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2004
+ * </p>
+ * <p>
+ * Company: EDS
+ * </p>
+ * 
+ * @author Rakesh Lakhani
+ * @version $Id: ReportingRestrictionChangedRule.java,v 1.1 2004/02/06 11:16:49
+ *          sz0t7n Exp $ $Log: ReportingRestrictionChangedRule.java,v $
+ *          sz0t7n Exp $ Revision 1.3  2006/06/05 12:32:37  bzjrnl
+ *          sz0t7n Exp $ Change: TI901
+ *          sz0t7n Exp $ Comment: Weblogic Upgrade - Standadise code formatting tab fix
+ *          sz0t7n Exp $ sz0t7n
+ *          Exp $ Revision 1.2 2006/05/31 14:27:09 bzjrnl sz0t7n Exp $ Change:
+ *          TI901 sz0t7n Exp $ Comment: Weblogic Upgrade - Standadise code
+ *          formatting sz0t7n Exp $ Revision 1.1 2004/02/06 11:16:49 sz0t7n
+ *          Issue with reporting restriction not rerendering
+ * 
+ */
+
+public class ReportingRestrictionChangedRule implements Rule {
+    private static final Logger log = Logger.getLogger(ReportingRestrictionChangedRule.class);
+
+    public ReportingRestrictionChangedRule() {
+    }
+
+    /**
+     * Rule is true if the case associated with the event being processed has
+     * its display turned on
+     * 
+     * @param event
+     *            An event that sub classes
+     * @return
+     */
+    public boolean isValid(PublicDisplayEvent event) {
+        if (event instanceof PublicNoticeEvent) {
+            return ((PublicNoticeEvent) event).isReportingRestrictionsChanged();
+        } else {
+            log.error("Rule called with wrong error type:" + event.getClass().toString());
+            return false;
+        }
+    }
+}

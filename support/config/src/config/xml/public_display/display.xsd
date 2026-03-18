@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Alex Brown (EDS) -->
+<xs:schema targetNamespace="uri:XHIBIT/display" xmlns:display="uri:XHIBIT/display" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="screen-group">
+		<xs:annotation>
+			<xs:documentation>The screen group controls and synchronises groups of screens. This is because there may be more than one screen displaying information in the larger courthouses and it would look far better if the screens were synchronised / grouped.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="display:rotation-set" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+			<xs:attribute name="synchronous" type="xs:boolean" use="optional" default="true"/>
+			<xs:attribute name="no_screens" type="xs:int" use="optional" default="1"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="rotation-set">
+		<xs:annotation>
+			<xs:documentation>The rotation set controls the sequence of page-groups that are displayed on th public display screens.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="display:page" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+			<xs:attribute name="display-times" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="page">
+		<xs:annotation>
+			<xs:documentation>A page is what is displayed on the screen. It consists of panels. The page can be configured and altered in terms of colour scheme, font and font-size as well as what panels appear on the screen.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+			<xs:attribute name="url" type="xs:anyURI" use="required"/>
+			<xs:attribute name="delay" type="xs:int" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

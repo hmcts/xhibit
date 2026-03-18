@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trial - Legal Argument-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20916_Legal_Argument_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20916_Legal_Argument_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20916_Opt1_Public_Not_Permitted_To_Enter"/>
+				<xs:element ref="E20916_Opt2_Judges_Ruling"/>
+				<xs:element ref="E20916_Opt3_Defence_Addresses_Judge"/>
+				<xs:element ref="E20916_Opt4_Prosecution_Addresses_Judge"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20916_Opt4_Prosecution_Addresses_Judge" type="xs:string"/>
+	<xs:element name="E20916_Opt3_Defence_Addresses_Judge" type="xs:string"/>
+	<xs:element name="E20916_Opt2_Judges_Ruling" type="xs:string"/>
+	<xs:element name="E20916_Opt1_Public_Not_Permitted_To_Enter" type="xs:integer"/>
+</xs:schema>

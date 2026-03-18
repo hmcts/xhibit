@@ -1,0 +1,87 @@
+/* Dries Styles
+    Don't know about the rest, I would delete them and start again not to have redundant crap in here.
+    Don't understand what's going on either.
+         */
+
+  body{background-color:#FFFFFF;}
+
+ .titleText{font-family:Arial,Helvetica,san-serif;font-size:24px;font-weight:bold;color:#FFFFFF;}
+ .leftColumn{width:175px;padding-left:5px;padding-right:5px;padding-top:5px;}
+ .contentWell{width:560px;padding-right:5px;padding-top:5px;padding-left:25px;}
+ .aquaBanner{background-color:#4aa29c;}
+ .aquaBannerDark{background-color:#008186;}
+ .aquaBannerImg{background-image: url(images/images_aqua/banner.gif);background-repeat:no-repeat;}
+ .orangeBanner{background-color:#FF6600;}
+ .orangeBannerDark{background-color:#B25D1B;}
+ .orangeBannerImg{background-image: url(images/images_orange/banner.gif);background-repeat:no-repeat;}
+ .purpleBanner{background-color:#b85b9d;}
+ .purpleBannerDark{background-color:#6B3A86;}
+ .purpleBannerImg{background-image: url(images/images_purple/banner.gif);background-repeat:no-repeat;}
+ .blueBanner{background-color:#3366cc;}
+ .blueBannerDark{background-color:#245DA9;}
+ .blueBannerImg{background-image: url(images/images_blue/banner.gif);background-repeat:no-repeat;}
+.text{font-weight:normal;font-style: italic;font-family:Arial,Helvetica,san-serif;font-size:80%;color:#000066;text-decoration:none}
+
+a:active  {font-family:Arial, Helvetica, san-serif;font-style:normal;font-weight:normal;color:#000066;text-decoration:none}
+a:hover   {font-family:Arial, Helvetica, san-serif;font-style:normal;font-weight:bold;color:#339999;text-decoration:none}
+a:visited {font-family:Arial, Helvetica, san-serif;font-style:normal;font-weight:bold;color:#999999;text-decoration:none}
+a:link    {font-family:Arial, Helvetica, san-serif;color:#000066;text-decoration:none;font-weight:bold}
+
+.Heading1{font-family:Arial,Helvetica,san-serif;font-size:130%;font-weight:bold;color:#000066;text-decoration:none;}
+.Heading2{font-family:Arial,Helvetica,sans-serif;font-size:110%;font-style:normal;font-weight:bold;color:#000066;text-decoration:none;}
+
+a.special:link    {font-family:Arial, Helvetica, sans-serif;color:#ffffff;text-decoration:none;text-decoration:none}
+a.special:visited {font-family:Arial, Helvetica, sans-serif;color:#FFFFFF;text-decoration:none;text-decoration:none}
+a.special:hover   {font-family:Arial, Helvetica, sans-serif;color:#FFFF99;text-decoration:none;text-decoration:none}
+
+a.lang_select:link    {font-family: Arial, Helvetica, sans-serif; color:#000066;text-decoration:none; font-size:60%;text-decoration: none}
+a.lang_select:hover   {font-family: Arial, Helvetica, sans-serif; color:#339999;text-decoration:none; font-size:60%;text-decoration: none}
+a.lang_select:visited {font-family: Arial, Helvetica, sans-serif; color:#999999;text-decoration:none; font-size:60%;text-decoration: none}
+
+
+ 
+/* end ammended styles */
+
+
+
+
+
+
+.navigation {
+    font-family: Geneva, Arial, Helvetica, san-serif;
+    font-size: 12px; font-style: normal;
+    font-weight:
+    bold; color: #FFFFFF;
+    text-decoration: none
+}
+
+.text_link {
+    font-family: Geneva, Arial, Helvetica, san-serif;
+    font-size: 10px; 
+    color: #FFFFFF; 
+    text-decoration: underline; 
+    font-weight: normal
+}
+.headerTitle    {
+    color=#FFFFFF;
+    font-family: Gill-Sans, Arial, Helvetica, san-serif;
+    font-size: 30px;
+    font-style: normal;
+    font-weight: bold;
+    position:absolute; top:17px; left:53px;
+}
+
+.textSmall {
+    font-family: Geneva, Arial, Helvetica, san-serif; font-size: 10px; 
+    font-weight: normal; 
+    color: #000066; 
+    text-decoration: none
+}
+
+.menu {display:none; margin-left:2px; text-decoration:none; font-family:arial, verdana, "sans serif"}
+p { font-family:Arial, Helvetica, san-serif;font-weight:normal;color:#000066;text-decoration:none } 
+td {  font-family: Arial, Helvetica, sans-serif; font-size: 80%; font-weight: normal; color: #000066; text-decoration: none}
+.hrLegal {  color: #3366cc; shading: none; width: 100%}
+.hrUsing {  color: #993399; shading: none; width: 100%}
+.hrHome {  color: #2a9797; shading: none; width: 100%}
+.hrAbout {  color: #ff6600; shading: none; width: 100%}

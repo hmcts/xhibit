@@ -1,0 +1,5 @@
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name, version) VALUES  ('11530', 23, 2, 'Serious Terrorism Sentencing', 'http://www.courtservice.gov.uk/schemas/courtservice','5.9');
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name, version) VALUES  ('11531', 23, 2, 'Special Sentence of Detention for Terrorist Offenders of Particular Concern', 'http://www.courtservice.gov.uk/schemas/courtservice','5.9');
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name, version) VALUES  ('13507', 23, 2, '(Extended Discretional 18 to 20)', 'http://www.courtservice.gov.uk/schemas/courtservice','5.9');
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name, version) VALUES  ('13508', 23, 2, '(Extended Discretional over 21)', 'http://www.courtservice.gov.uk/schemas/courtservice','5.9');
+commit;

@@ -1,0 +1,48 @@
+<?xml version="1.0"?> 
+
+<schema xmlns="http://www.w3.org/1999/XMLSchema"> 
+
+  <attribute name="courtID"> 
+    <simpleType baseType="Integer"> 
+      <minExclusive value="0" /> 
+      <maxInclusive value="78" /> 
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="width"> 
+    <simpleType baseType="String"> 
+      <enumeration value="A" /> 
+      <enumeration value="B" /> 
+      <enumeration value="C" /> 
+      <enumeration value="D" /> 
+      <enumeration value="DD" /> 
+    </simpleType> 
+  </attribute>
+
+  <attribute name="courtName"> 
+    <simpleType baseType="String"> 
+      <enumeration value="Kingston Crown Court" /> 
+      <enumeration value="Liverpool" /> 
+      <enumeration value="Thames Valley" /> 
+      <enumeration value="Wimbledon Center court" /> 
+      <enumeration value="This is not a valid court name it is far too long to fit!!"/>
+      <maxLength value="30"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="roomNum">
+    <simpleType baseType="int">
+      <minInclusive value="0" />
+    </simpleType>
+  </attribute>
+
+<attribute name="nextTest">
+    <simpleType baseType="int">
+       <minLength value="1"/>
+       <maxLength value="10"/>
+       <minInclusive value="2"/>
+       <maxExclusive value = "99"/>
+    </simpleType>
+  </attribute>
+
+</schema>

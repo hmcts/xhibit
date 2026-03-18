@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="40702.xsd">
+	<type>40702</type>
+	<E40702_Directions_By_Case_Options>
+		<E40702_P_And_D>E40702_Form_Handed_In</E40702_P_And_D>
+		<E40702_List>E40702_Further_P_And_D</E40702_List>
+		<E40702_Directions>Some junk here</E40702_Directions>
+		<E40702_Placed_In>
+			<E40702_Placed_In_List_Options>E40702_Fixed_List</E40702_Placed_In_List_Options>
+			<E40702_List_Date>12/02/34</E40702_List_Date>
+		</E40702_Placed_In>
+		<E40702_Time_Estimate>
+			<E40702_Time_Estimate_Options>E40702_Months</E40702_Time_Estimate_Options>
+			<E40702_Time>50</E40702_Time>
+		</E40702_Time_Estimate>
+		<E40702_Defendants_To_Attend>
+			<E40702_Defendant_Name>fred bloggs</E40702_Defendant_Name>
+			<E40702_Defendant_Name>John smith</E40702_Defendant_Name>
+		</E40702_Defendants_To_Attend>
+	</E40702_Directions_By_Case_Options>
+	<free_text>free text</free_text>
+</event>

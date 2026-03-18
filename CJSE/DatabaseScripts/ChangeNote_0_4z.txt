@@ -1,0 +1,8 @@
+Changes from 0_4_y to 0_4_z
+
+
+In order to allow New Documents for CR42 rows added to CJI_DOCUMENT_TYPE - these documents will not be sent to the CJSE
+
+
+
+

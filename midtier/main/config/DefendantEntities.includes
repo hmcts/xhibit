@@ -1,0 +1,13 @@
+uk/gov/courtservice/xhibit/business/entities/defendant/*.class
+uk/gov/courtservice/xhibit/business/entities/defendantoncase/*.class
+uk/gov/courtservice/xhibit/business/entities/defendantonoffence/*.class
+uk/gov/courtservice/xhibit/business/entities/legrepforscheddef/*.class
+uk/gov/courtservice/xhibit/business/entities/schedhearingdefendant/*.class
+
+
+
+
+
+
+
+

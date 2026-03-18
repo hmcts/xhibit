@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="OrdersMidtierEJB">
+
+    <description>
+        Description to be done...
+    </description>
+
+    <import file="./../../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+          Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- allow style task to use the xalan(2+) parser that should be installed as a jar in the ant lib directory. -->
+        <property name="javax.xml.transform.TransformerFactory" value="org.apache.xalan.processor.TransformerFactoryImpl"/>
+
+        <!-- for compiling static and generated source (also used to build junit.classpath) -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="OrdersMidTierCommon.jar"/>
+                <include name="XhibitEntities.jar"/>
+                <include name="DefendantController.jar" />
+                <include name="PreHearingEntities.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="Value.jar" />
+                <include name="ProgressCommon.jar" />
+                <include name="CommonValue.jar" />
+		<include name="MidTierTestFramework.jar"/>
+            </fileset>
+        </path>
+
+
+       <!-- dependencies for the test classes  -->
+       <!-- <path id="compile.classpath">
+            <pathelement location="../../build/lib/MidTierTestFramework.jar"/>
+            <pathelement location="../../../build/prerelease/framework.jar"/> 
+            <pathelement location="../../../build/prerelease/OrdersMidTierCommon.jar"/>
+        </path>  -->
+
+       <!-- dependencies for ejbc'ing entity EJB -->
+        <path id="package.entities.ejbc.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="OrdersMidTierCommon.jar"/>
+                <include name="XhibitEntities.jar"/>
+                <include name="DefendantController.jar" />
+                <include name="PreHearingEntities.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="Value.jar" />
+                <include name="ProgressCommon.jar" />
+                <include name="CommonValue.jar" />
+            </fileset>
+        </path>
+
+        
+        <!-- dependencies for ejbc'ing controller EJBs  -->
+        <path id="package.controller.ejbc.classpath">
+            <path refid="package.entities.ejbc.classpath" />
+            <pathelement location="${lib.build.dir}/OrdersEntities.jar"/>
+        </path>
+
+    </target>
+
+    <!--
+      =======================================================================
+          Generate Override
+      =======================================================================
+      -->
+
+    <target name="generate.middlegen" unless="skip.generate" depends="framework.generate.middlegen">
+        <middlegen-old
+            appname="OrdersRef"
+            prefsdir="${config.build.dir}"
+            gui="${middlegen.use.gui}"
+            databaseurl="${xhibit.tx.database.url}"
+            driver="${xhibit.tx.database.driver}"
+            datasourceJNDIName="${xhibit.tx.database.jndi}"
+            providerURL="${weblogic.provider.url}"
+            initialContextFactory="${java.naming.factory.initial}"
+            schema="${xhibit.tx.database.user}"
+            username="${xhibit.tx.database.user}"
+            password="${xhibit.tx.database.password}"
+            >
+
+            <table name="XHB_REF_COURT" pktable="XHB_REF_COURT_SEQ" pkcachesize="1"/>
+            <table name="XHB_ADDRESS" pktable="XHB_ADDRESS_SEQ" pkcachesize="1"/>
+            <table name="XHB_COURT_SITE" pktable="XHB_COURT_SITE_SEQ" pkcachesize="1"/>
+            <table name="XHB_REF_DISPOSAL" pktable="XHB_REF_DISPOSAL_SEQ" pkcachesize="1"/>
+            <table name="XHB_ORDER_DISPOSAL_XREF" pktable="XHB_ORDER_DISPOSAL_XREF_SEQ" pkcachesize="1"/>
+
+            <cmp20
+                destination="${gen.source.dir}"
+                package="uk.gov.courtservice.xhibit.business.entities.ordersref"
+                interfacepackage="uk.gov.courtservice.xhibit.business.entities.ordersref"
+                mergedir="${basedir}/config"
+                localsuffix=""
+                localhomesuffix="Home"
+                pkclass="false"
+                dataobject="true"
+                datasuffix="Value"
+                viewtype="local"
+                readonly="true"
+                fkcmp="true"
+                >
+                <weblogic pkgen="VENDOR_SEQ"/>
+            </cmp20>
+        </middlegen-old>
+
+        <middlegen-old
+            appname="Orders"
+            prefsdir="${config.build.dir}"
+            gui="${middlegen.use.gui}"
+            databaseurl="${xhibit.tx.database.url}"
+            driver="${xhibit.tx.database.driver}"
+            datasourceJNDIName="${xhibit.tx.database.jndi}"
+            providerURL="${weblogic.provider.url}"
+            initialContextFactory="${java.naming.factory.initial}"
+            username="${xhibit.tx.database.user}"
+            schema="${xhibit.tx.database.user}"
+            password="${xhibit.tx.database.password}"
+            >
+
+            <table name="XHB_ORDER" pktable="XHB_ORDER_SEQ" pkcachesize="1"/>
+            <table name="XHB_ORDER_TYPE" pktable="XHB_ORD_TYPE_SEQ" pkcachesize="1"/>
+            <table name="XHB_ORDER_TEMPLATE" pktable="XHB_ORD_TEMPLATE_SEQ" pkcachesize="1"/>
+            <table name="XHB_ORDER_STATUS" singular="xhbOrderStatus" pktable="XHB_ORD_STATUS_SEQ" pkcachesize="1"/>
+            <table name="XHB_ORDER_DELIVERY_STATUS" singular="xhbDeliverOrderStatus" pktable="XHB_ORD_DELIVERY_STATUS_SEQ" pkcachesize="1"/>
+            <table name="XHB_ORDER_TYPE_MAPPING" pktable="XHB_ORD_TYPE_MAP_SEQ" pkcachesize="1"/>
+
+            <cmp20
+                destination="${gen.source.dir}"
+                package="uk.gov.courtservice.xhibit.business.entities.orders"
+                interfacepackage="uk.gov.courtservice.xhibit.business.entities.orders"
+                mergedir="${basedir}/config"
+                localsuffix=""
+                localhomesuffix="Home"
+                pkclass="false"
+                dataobject="true"
+                datasuffix="Value"
+                viewtype="local"
+                readonly="false"
+                fkcmp="true"
+                >
+                <weblogic pkgen="VENDOR_SEQ"/>
+            </cmp20>
+        </middlegen-old>
+    </target>
+
+    <target name="generate.entity" unless="skip.generate">
+
+        <echo>XDoclet first pass on Entity Beans</echo>
+
+        <ejbdoclet-old destdir="${gen.source.dir}" excludedtags="@version,@author" ejbspec="2.0">
+            <fileset dir="${gen.source.dir}">
+                <include name="**/*Bean.java"/>
+                <exclude name="**/*ControllerBean.java"/>
+            </fileset>
+
+            <localinterface pattern="{0}"/>
+            <localhomeinterface pattern="{0}Home"/>
+            <dataobject pattern="{0}Value"/>
+            <entityfacade pattern="{0}Helper"/>
+        </ejbdoclet-old>
+
+        <echo>XDoclet second pass on Entity Beans</echo>
+
+        <ejbdoclet-old
+            destdir="${gen.source.dir}"
+            excludedtags="@version,@author"
+            addedtags="@xdoclet-generated at ${TODAY}"
+            ejbspec="2.0"
+            >
+            <fileset dir="${gen.source.dir}">
+                <include name="**/*Bean.java"/>
+                <include name="**/*EJB.java"/>
+                <exclude name="**/*ControllerBean.java"/>
+            </fileset>
+            <dataobject pattern="{0}Value"/>
+            <localinterface pattern="{0}"/>
+            <localhomeinterface pattern="{0}Home"/>
+            <deploymentdescriptor destdir="${ejb.build.dir}/OrdersEntities/META-INF"/>
+            <entitycmp pattern="{0}BeanCMP"/>
+
+            <weblogic
+                version="7.0"
+                xmlencoding="UTF-8"
+                destdir="${ejb.build.dir}/OrdersEntities/META-INF"
+                validatexml="true"
+                datasource="${xhibit.tx.database.jndi}"
+                persistence="weblogic"
+                />
+        </ejbdoclet-old>
+    </target>
+
+    <target name="generate.controller" unless="skip.generate" depends="generate.middlegen, generate.entity, framework.generate.controller">
+
+        <echo>XDoclet now building Controller Beans</echo>
+
+        <ejbdoclet-old
+            mergedir="${basedir}/config"
+            destdir="${gen.source.dir}"
+            excludedtags="@version,@author"
+            addedtags="@xdoclet-generated at ${TODAY}"
+            ejbspec="2.0"
+            >
+            <fileset dir="src">
+                <include name="**/*ControllerBean.java"/>
+            </fileset>
+            <remoteinterface pattern="{0}"/>
+            <homeinterface/>
+            <deploymentdescriptor destdir="${ejb.build.dir}/OrdersController/META-INF"/>
+            <template destinationFile="{0}BusinessDelegate.java"
+                      templateFile="${framework.config.dir}/uk/gov/courtservice/codegen/delegate.xdt"/>
+            <weblogic version="7.0" destdir="${ejb.build.dir}/OrdersController/META-INF"/>
+        </ejbdoclet-old>
+    </target>
+
+    <!--
+      =======================================================================
+          LOCAL PACAKGE
+      =======================================================================
+      -->
+
+    <!-- Client -->
+
+    <target name="package.client" unless="skip.package">
+        <mkdir dir="${client.build.dir}" />
+        <jar destfile="${client.build.dir}/OrdersMidTierClient.jar" manifest="${manifest.dir}/OrdersMidTierClient.mf">
+            <fileset dir="${classes.dir}">
+                <include name="**/services/**/*.class"/>
+                <include name="**/exceptions/**/*.class"/>
+                <include name="**/*Value.class"/>
+                <exclude name="**/services/**/*Bean.class"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <!-- Enterties -->
+
+    <target name="package.entity" unless="skip.package">
+        <mkdir dir="${ejb.build.dir}" />
+        <jar destfile="${ejb.build.dir}/OrdersEntities-noejbc.jar" manifest="${manifest.dir}/OrdersEntities.mf">
+            <fileset dir="${classes.dir}">
+                <include name="**/entities/**/*.class"/>
+                <include name="**/*Value.class"/>
+            </fileset>
+            <fileset dir="${ejb.build.dir}/OrdersEntities">
+                <include name="META-INF/**"/>
+            </fileset>
+        </jar>
+
+        <uptodate
+            property="skip.package.entity.ejbc"
+            srcfile="${ejb.build.dir}/OrdersEntities-noejbc.jar"
+            targetfile="${lib.build.dir}/OrdersEntities.jar" />
+    </target>
+
+
+    <target name="package.entity.ejbc.check" if="skip.package" depends="package.entity">
+        <property name="skip.package.entity.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.entity.ejbc" unless="skip.package.entity.ejbc" depends="package.entity.ejbc.check">
+        <mkdir dir="${lib.build.dir}"/>
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="package.entities.ejbc.classpath" />
+            </classpath>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${lib.build.dir}/OrdersEntities.jar" />
+            <arg value="${ejb.build.dir}/OrdersEntities-noejbc.jar" />
+        </java>
+    </target>
+
+    <target name="package.controller" unless="skip.package" depends="package.client, package.entity.ejbc, framework.package.controller">
+        <mkdir dir="${ejb.build.dir}" />
+
+        <jar destfile="${ejb.build.dir}/OrdersController-noejbc.jar" manifest="${manifest.dir}/OrdersController.mf">
+            <fileset dir="${classes.dir}">
+                <include name="**/services/**/*.class"/>
+                <include name="**/exceptions/**/*.class"/>
+                <include name="**/services/vos/**/*.class"/>
+                <include name="**/*Value.class"/>
+                <include name="**/*.xml"/>
+            </fileset>
+            <fileset dir="${ejb.build.dir}/OrdersController">
+                <include name="META-INF/**"/>
+            </fileset>
+        </jar>
+
+        <uptodate
+            property="skip.package.controller.ejbc"
+            srcfile="${ejb.build.dir}/OrdersController-noejbc.jar"
+            targetfile="${lib.build.dir}/OrdersController.jar" />
+    </target>
+
+    <target name="package.controller.ejbc" unless="skip.package.controller.ejbc" depends="framework.package.controller.ejbc">
+        <mkdir dir="${lib.build.dir}"/>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="package.controller.ejbc.classpath" />
+            </classpath>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${lib.build.dir}/OrdersController.jar" />
+            <arg value="${ejb.build.dir}/OrdersController-noejbc.jar" />
+        </java>
+    </target>
+
+</project>

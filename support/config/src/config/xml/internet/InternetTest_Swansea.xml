@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="InternetWebPageTemplate.xsl"?>
+<currentcourtstatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<court>
+		<courtname>SWANSEA</courtname>
+		<courtsites>
+			<courtsite>
+				<courtsitename>SWANSEA</courtsitename>
+				<courtrooms>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<casenumber>20061567</casenumber>
+								<casetype>T</casetype>
+								<hearingtype>For Trial</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>First</firstname>
+								<middlename>Second</middlename>
+								<lastname>Last</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:31</time>
+								<date>20/04/07</date>
+								<free_text/>
+								<type>10100</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:32</timestatusset>
+						<courtroomname>Court 1</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 2</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 3</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 4</courtroomname>
+					</courtroom>
+				</courtrooms>
+			</courtsite>
+			<courtsite>
+				<courtsitename>CARMARTHEN</courtsitename>
+				<courtrooms>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<casenumber>20061734</casenumber>
+								<casetype>A</casetype>
+								<hearingtype>For Appeal</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>SWANS TEST</firstname>
+								<middlename>SWANS T</middlename>
+								<lastname>SWANS APPELLANT A20061734</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:31</time>
+								<date>20/04/07</date>
+								<free_text/>
+								<type>30200</type>
+								<defendant_masked_flag>N</defendant_masked_flag>
+								<E30200_Long_Adjourn_Options><E30200_LAO_Type>E30200_Case_to_be_listed_in_week_commencing</E30200_LAO_Type><E30200_LAO_Date>23-Apr-2007</E30200_LAO_Date><E30200_LAO_Name>SWANS TEST SWANS T SWANS APPELLANT A20061734</E30200_LAO_Name><E30200_LAO_PSR_Deft_ID>146689</E30200_LAO_PSR_Deft_ID></E30200_Long_Adjourn_Options>
+								<defendant_name>SWANS TEST SWANS T SWANS APPELLANT A20061734</defendant_name>
+								<defendant_masked_name/>
+								<defendant_on_case_id>170555</defendant_on_case_id>
+							</event>
+						</currentstatus>
+						<timestatusset>10:31</timestatusset>
+						<courtroomname>Court 1</courtroomname>
+					</courtroom>
+				</courtrooms>
+			</courtsite>
+			<courtsite>
+				<courtsitename>HAVERFORDWEST</courtsitename>
+				<courtrooms>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 1</courtroomname>
+					</courtroom>
+				</courtrooms>
+			</courtsite>
+			<courtsite>
+				<courtsitename>THE CRIMINAL COURT, GUILDHALL</courtsitename>
+				<courtrooms>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 1</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 2</courtroomname>
+					</courtroom>
+				</courtrooms>
+			</courtsite>
+		</courtsites>
+	</court>
+	<datetimestamp>
+		<dayofweek>Friday</dayofweek>
+		<date>20</date>
+		<month>April</month>
+		<year>2007</year>
+		<hour>10</hour>
+		<min>40</min>
+	</datetimestamp>
+	<pagename>swansea</pagename>
+</currentcourtstatus>

@@ -1,0 +1,24 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findBySchedHearingId(java.lang.Integer scheduledHearingId, java.lang.Integer defOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(sf) 
+ *    FROM 
+ * 	XhbRefSolicitorFirm AS sf, 
+ * 	XhbRefSolicitor AS s, 
+ * 	XhbRefLegalRepresentative AS lr, 
+ *	XhbShLegRep AS shlr, 
+ *      XhbSchedHearingDefendant AS shd
+ *    WHERE 
+ *   	shlr.scheduledHearingId = ?1 AND
+ *      shd.defendantOnCaseId = ?2 AND
+ *	shlr.schedHearDefId = shd.schedHearDefId AND
+ *   	lr.refLegalRepId = shlr.refLegalRepId AND
+ *   	lr.legalRepType = 'S'AND  
+ *   	lr.refLegalRepId = s.refLegalRepId AND
+ *    	sf.refSolicitorFirmId = s.refSolicitorFirmId
+ *    orderby shlr.creationDate asc"
+ *
+ * -------- end of custom finders --------

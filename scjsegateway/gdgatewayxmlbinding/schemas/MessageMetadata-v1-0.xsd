@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msg="http://schemas.cjse.gov.uk/messages/messaging/2006-05" xmlns="http://schemas.cjse.gov.uk/messages/metadata/2006-05" targetNamespace="http://schemas.cjse.gov.uk/messages/metadata/2006-05" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.3">
+	<xs:import namespace="http://schemas.cjse.gov.uk/messages/messaging/2006-05" schemaLocation="MessagingTypes-v1-0.xsd"/>
+	<xs:element name="MessageMetadata" type="MessageMetadataStructure"/>
+	<xs:complexType name="MessageMetadataStructure">
+		<xs:annotation>
+			<xs:documentation>
+				This structure carries information about a particular message's origin and creation time,
+				as well as information to identify the data controller for individual elements in the
+				message.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OriginatingSystem" type="msg:SystemIdentifierStructure"/>
+			<xs:element name="DataController" type="msg:DataControllerLinkStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="CreationDateTime" type="xs:dateTime"/>
+			<xs:element name="ExpiryDateTime" type="xs:dateTime" minOccurs="0"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="SchemaVersion" type="xs:string" use="required" fixed="1.0"/>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+</xs:schema>

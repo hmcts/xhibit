@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Exception xmlns:ex="http://schemas.cjse.gov.uk/messages/exception/2006-06" xmlns="http://schemas.cjse.gov.uk/messages/receive/2006-05" SchemaVersion="1.0"><ex:Name>Validation Exception</ex:Name><ex:Code>SAX</ex:Code><ex:Detail>Parsing Error</ex:Detail><ex:RelatesTo><string xmlns="" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="java:java.lang.String">Relates To String</string></ex:RelatesTo><ex:OriginalExceptionData>Original Exception Data Text</ex:OriginalExceptionData></Exception>

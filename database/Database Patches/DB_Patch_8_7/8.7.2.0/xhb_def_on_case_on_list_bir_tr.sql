@@ -1,0 +1,48 @@
+CREATE OR REPLACE TRIGGER xhb_def_on_case_on_list_bir_tr
+  BEFORE INSERT
+  ON xhb_def_on_case_on_list
+  FOR EACH ROW
+DECLARE
+  v_id     XHB_DEF_ON_CASE_ON_LIST.DEF_ON_CASE_ON_LIST_ID%TYPE;
+  OPTIMISTIC_LOCK_PROB EXCEPTION;
+  PRAGMA EXCEPTION_INIT(OPTIMISTIC_LOCK_PROB, -20101);
+BEGIN
+
+  IF :NEW.DEF_ON_CASE_ON_LIST_ID IS NULL THEN
+  
+    SELECT XHB_DEF_ON_CASE_ON_LIST_SEQ.NEXTVAL
+    INTO   :NEW.DEF_ON_CASE_ON_LIST_ID
+    FROM   DUAL;
+    
+  END IF;
+
+  -- Check we haven't added this combination before
+  SELECT xhb_listing_pkg.get_existing_def_on_case_id(xcol.LIST_ID, :NEW.CASE_ID, xcol.TIME_LISTED, :NEW.DEFENDANT_ON_CASE_ID) 
+    INTO v_id
+    FROM XHB_CASE_ON_LIST xcol
+   WHERE xcol.CASE_ON_LIST_ID = :NEW.CASE_ON_LIST_ID;
+  IF NVL(v_id,:NEW.DEF_ON_CASE_ON_LIST_ID) <> :NEW.DEF_ON_CASE_ON_LIST_ID THEN
+     RAISE OPTIMISTIC_LOCK_PROB;
+  END IF;
+
+  IF ((:NEW.LAST_UPDATED_BY IS NULL)
+     OR (:NEW.CREATED_BY IS NULL)) THEN
+     
+    SELECT SYS_CONTEXT('USERENV', 'SESSION_USER'),
+           SYS_CONTEXT('USERENV', 'SESSION_USER')
+    INTO   :NEW.LAST_UPDATED_BY,
+           :NEW.CREATED_BY 
+    FROM   DUAL;
+    
+  END IF;
+
+  SELECT SYSDATE,
+         SYSDATE,
+         1
+  INTO   :NEW.LAST_UPDATE_DATE, 
+         :NEW.CREATION_DATE, 
+         :NEW.VERSION 
+  FROM   DUAL;
+
+END xhb_def_on_case_on_list_bir_tr;
+/

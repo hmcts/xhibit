@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:complexType name="BreachConditionalDischargeOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xsd:element name="DateOfOrder" type="xsd:date" />
+			<xsd:element name="SubsequentConv">
+				<xsd:complexType>
+					<xsd:sequence>
+ 						<xsd:element name="SubsConvDate" type="xsd:date" />
+						<xsd:element name="CourtName" type="xsd:string" />
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="SummonedToAppearAt" type="XHIBITSummonedToAppearStructure"/>					
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="BreachConditionalDischargeOrder" type="ord:BreachConditionalDischargeOrderStructure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V1.0 (30/11/2015)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

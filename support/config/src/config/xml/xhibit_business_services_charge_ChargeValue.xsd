@@ -1,0 +1,38 @@
+<?xml version="1.0"?> 
+
+<schema xmlns="http://www.w3.org/1999/XMLSchema"> 
+<!-- The constraints here have been set for testing purposes only. TO DO: set constraints for real-->
+  
+  <attribute name="chargeType"> 
+    <simpleType baseType="String"> 
+      <enumeration value="C"/> 
+      <enumeration value="M"/> 
+      <enumeration value="B"/> 
+      <enumeration value="O"/> 
+      <enumeration value="S"/>
+      <enumeration value="I"/>
+      <maxLength value="1"/>
+      <minLength value="1"/>       
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="crestChargeID">
+    <simpleType baseType="Integer">      
+      <maxLength value="8"/>
+      <minLength value="1"/>	
+      <minInclusive value="1"/>	
+      <maxInclusive value="99999999"/>        
+    </simpleType>
+  </attribute>
+
+
+  <attribute name="crestChargeSeqNo">
+    <simpleType baseType="Integer">      
+      <minInclusive value="1"/>
+      <maxInclusive value = "99"/>	
+      <maxLength value="2"/>
+      <minLength value="1" />
+    </simpleType>
+  </attribute>
+
+</schema>

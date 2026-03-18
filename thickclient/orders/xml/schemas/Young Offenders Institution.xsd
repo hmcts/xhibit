@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:import namespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" schemaLocation="OrderTypes.xsd"/>
+	<xsd:import namespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" schemaLocation="ImprisonmentOrder.xsd"/>
+	<xsd:complexType name="YoungOffenderOrderStructure">
+		<xsd:complexContent>
+			<xsd:extension base="ImprisonmentOrderStructure"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="YoungOffenderOrder" type="YoungOffenderOrderStructure"/>
+</xsd:schema>

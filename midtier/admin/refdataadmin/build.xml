@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="RefDataAdmin">
+
+    <description>
+        The midtier ref data admin code, used by ThinClient\Admin.
+    </description>
+
+    <import file="./../../../tools/ant/framework.xml" />
+
+    <property name="project.type.controller.bean"      value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="XhibitEntities.jar"/>
+                <include name="XhibitValues.jar"/>
+                <include name="ListDistribution2Controller.jar"/>
+            </fileset>
+        </path>
+    </target>
+
+    <!--
+      =======================================================================
+        Release Override
+      =======================================================================
+      -->
+    <target name="release" unless="skip.release" depends="framework.release">
+        <log target="release"/>
+        <copy todir="${build.dest.dir}">
+            <fileset dir="${client.build.dir}" />
+        </copy>
+    </target>
+
+</project>

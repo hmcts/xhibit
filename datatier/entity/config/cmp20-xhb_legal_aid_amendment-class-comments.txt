@@ -1,0 +1,9 @@
+* -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findByLegalAidOrderId(java.lang.Integer legalAidOrderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbLegalAidAmendment o WHERE o.legalAidOrderId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') AND (o.amendmentType = 'COUNSEL' OR o.amendmentType = 'SOLICITOR') order by o.legalAidAmendmentId desc"
+ *
+ * -------- end of custom finders --------

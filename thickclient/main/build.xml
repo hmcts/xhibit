@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="RichClient">
+    <description>
+        The bulk of the Rich Client.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.builds.jar" value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+	<target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initalise"/>
+        <!-- include images into the jar -->
+		<filesetlist id="jar.source.filelist">
+			<fileset dir="${source.dir}" 
+					 includes="${default.jar.includes}"
+					 excludes="${default.jar.source.excludes}" />
+			<fileset dir="${basedir}/images"
+					 includes="${default.jar.includes}"
+					 excludes="${default.jar.source.excludes}" />
+		</filesetlist>
+        
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+
+            <fileset dir="${build.dest.dir}">
+                <include name="MDateSelector.jar"/>
+                <include name="InstantMessagingClient.jar" />
+                <include name="ResultsThickClient.jar" />
+                <include name="ThickClientFramework.jar" />
+                <include name="ThickClientTestingFramework.jar" />
+                <include name="ClientView.jar" />
+                <include name="Framework.jar" />
+                <include name="Value.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="InstantMessaging.jar" />
+            </fileset>
+        </path>
+    </target>
+
+</project>
+

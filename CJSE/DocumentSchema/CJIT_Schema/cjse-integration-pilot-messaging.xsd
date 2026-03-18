@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ 
+	CJS Exchange: Integration Messaging Protocol
+	Messaging Envelope Schema
+	
+	Version 0.22	05-08-2003  (No change since 0.21)
+	
+-->
+<xsd:schema 
+	targetNamespace="urn:integration-cjsonline-gov-uk:pilot:messaging" 
+	elementFormDefault="qualified" 
+	xmlns:op="urn:integration-cjsonline-gov-uk:pilot:operations" 
+	xmlns:me="urn:integration-cjsonline-gov-uk:pilot:messaging" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+	<!--Imports-->
+	<xsd:import namespace="urn:integration-cjsonline-gov-uk:pilot:operations"></xsd:import>
+	
+	<!--Elements-->
+	<xsd:element name="CjseMessage" type="me:Message"></xsd:element>
+	<xsd:element name="CjseMessageCollection">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element minOccurs="0" maxOccurs="unbounded" name="CjseMessage" type="me:Message"></xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	
+	<!--Type definitions-->
+	<!--Simple types-->
+	<xsd:simpleType name="MessageStatusClass">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Completed"></xsd:enumeration>
+			<xsd:enumeration value="CompletedWithErrors"></xsd:enumeration>
+			<xsd:enumeration value="MessageFailed"></xsd:enumeration>
+			<xsd:enumeration value="RetriableFailed"></xsd:enumeration>
+			<xsd:enumeration value="SystemFailed"></xsd:enumeration>
+			<xsd:enumeration value="TransactionFailed"></xsd:enumeration>
+			<xsd:enumeration value="StatusUpdate"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MessageStatusDescriptionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1024"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="MessageCorrelationIDType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="38"/>
+			<xsd:pattern value="[A-Za-z0-9!@#$%&amp;\(\)\*\+,\-\./:;\?\[\\\]_\{\}]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="RoutingSystemIdentifierType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="[SX][A-Za-z]+[0-9]+" />
+			<xsd:minLength value="3"/>
+			<xsd:maxLength value="15"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	
+	<!--Complex types-->
+	<xsd:complexType name="OperationsContainerBase" abstract="true">
+		<xsd:attribute name="MessageCorrelationID" type="me:MessageCorrelationIDType"></xsd:attribute>
+	</xsd:complexType>
+
+	<xsd:complexType name="Message">
+		<xsd:sequence>
+			<xsd:element name="RoutingHeader" type="me:RoutingHeader"></xsd:element>
+			<xsd:choice>
+				<xsd:element name="OperationResponses" type="me:OperationResponses"></xsd:element>
+				<xsd:element name="OperationRequests" type="me:OperationRequests"></xsd:element>
+			</xsd:choice>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MessageStatus">
+		<xsd:sequence>
+			<xsd:element minOccurs="1" maxOccurs="1" name="StatusClass" type="me:MessageStatusClass"></xsd:element>
+			<xsd:element minOccurs="1" maxOccurs="1" name="Code" type="xsd:int"></xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="1" name="Description" type="me:MessageStatusDescriptionType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="OperationRequests">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="me:OperationsContainerBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="50" name="OperationRequest" type="op:OperationRequestBase"></xsd:element>
+				</xsd:sequence>
+				<xsd:attribute name="SuccessResponseRequired" type="xsd:boolean"></xsd:attribute>
+				<xsd:attribute name="TransactionRequired" type="xsd:boolean"></xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="OperationResponses">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="me:OperationsContainerBase">
+				<xsd:sequence>
+					<xsd:element name="MessageStatus" type="me:MessageStatus"></xsd:element>
+					<xsd:element minOccurs="0" maxOccurs="50" name="OperationResponse" type="op:OperationResponseBase"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RoutingHeader">
+		<xsd:sequence>
+			<xsd:element name="SourceSystemIdentifier" type="me:RoutingSystemIdentifierType"></xsd:element>
+			<xsd:element name="DestinationSystemIdentifier" type="me:RoutingSystemIdentifierType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+
+</xsd:schema>

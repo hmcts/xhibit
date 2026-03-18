@@ -1,0 +1,21 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findNextDocumentByValidationStatus(java.util.Date timeLoaded, java.lang.String validationStatus)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="Select object (o) from XhbCppStagingInbound AS o where o.timeLoaded >= ?1 and (o.obsInd IS NULL OR o.obsInd = 'N') and (o.validationStatus = ?2) order by o.timeLoaded"
+ *
+ * @ejb.finder
+ *    signature="Collection findNextDocumentByProcessingStatus(java.util.Date timeLoaded, java.lang.String processingStatus)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="Select object (o) from XhbCppStagingInbound AS o where o.timeLoaded >= ?1 and (o.obsInd IS NULL OR o.obsInd = 'N') and (o.processingStatus = ?2) order by o.timeLoaded"
+ *
+ * @ejb.finder
+ *    signature="Collection findNextDocumentByValidationAndProcessingStatus(java.util.Date timeLoaded, java.lang.String validationStatus, java.lang.String processingStatus)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="Select object (o) from XhbCppStagingInbound AS o where o.timeLoaded >= ?1 and (o.obsInd IS NULL OR o.obsInd = 'N') and (o.validationStatus = ?2) and (o.processingStatus = ?3) order by o.timeLoaded"
+ *
+ * -------- end of custom finders --------

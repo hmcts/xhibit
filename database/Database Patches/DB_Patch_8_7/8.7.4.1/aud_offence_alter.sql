@@ -1,0 +1,1 @@
+CREATE INDEX AUD_OFFENCE_CHRGID_OFFID ON aud_offence(charge_id, offence_id);

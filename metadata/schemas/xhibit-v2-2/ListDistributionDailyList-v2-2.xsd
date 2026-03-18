@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+		xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+		xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+		elementFormDefault="qualified"
+		attributeFormDefault="unqualified"
+		version="2.2"
+		id="ListDistributionDailyList">
+	<xsd:include schemaLocation="ListDistribution.xsd"/>
+	<xsd:complexType name="ListDistributionDailyListStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="ListHeader" type="ListDistributionListHeaderStructure"/>
+			<xsd:element name="CrownCourt" type="CourtHouseStructure"/>
+			<xsd:element name="CourtLists">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CourtList" maxOccurs="unbounded">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="CourtHouse" type="CourtHouseStructure"/>
+									<xsd:element name="Sittings">
+										<xsd:complexType>
+											<xsd:sequence>
+												<xsd:element name="Sitting" type="ListDistributionSittingStructure" minOccurs="0" maxOccurs="unbounded"/>
+											</xsd:sequence>
+										</xsd:complexType>
+									</xsd:element>
+								</xsd:sequence>
+                                <xsd:attribute name="id" type="xsd:string" use="required"/>
+							</xsd:complexType>                            
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="DailyList" type="ListDistributionDailyListStructure"/>
+</xsd:schema>

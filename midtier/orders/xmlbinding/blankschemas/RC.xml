@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with  XMLSPY v5 rel. 2 U  (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+D:\XHIBIT_8_2\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<RemandOrder>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Crown Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<RemandOrderType>
+				<RemandOrdType>standard</RemandOrdType>
+				<LADesignatedLocalAuthority>Liverpool</LADesignatedLocalAuthority>
+				<YDDesignatedLocalAuthority>Liverpool</YDDesignatedLocalAuthority>
+				<RequirementsOnLocalAuthority selected="false"> </RequirementsOnLocalAuthority>
+				<ConditionsOnDefendant selected="false"> </ConditionsOnDefendant>
+			</RemandOrderType>
+			<CustodyLocation> </CustodyLocation>
+			<ReportDetails selected="false"> </ReportDetails>
+			<NextAppearance>
+				<AppearanceCourt>
+					<CourtHouseType>Crown Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</AppearanceCourt>
+				<AppearanceDateTime selected="false">
+					<AppearanceDate>0001-01-01</AppearanceDate>
+					<AppearanceTime>14:20:00-05:00</AppearanceTime>
+				</AppearanceDateTime>
+			</NextAppearance>
+			<ReasonsForRemand selected="false">
+				<SeriousnessForRemand selected="false">
+					<SeriousnessOfOffence>violentOrSexualOffence</SeriousnessOfOffence>
+					<LikelyConviction>false</LikelyConviction>
+				</SeriousnessForRemand>
+				<RemandHistory selected="false">
+					<HistoryForRemand>historyOfAbsconding</HistoryForRemand>
+					<LikelyCustodialSentence>false</LikelyCustodialSentence>
+				</RemandHistory>
+				<NecessityCondition selected="false">
+					<RiskOfHarm>false</RiskOfHarm>
+				</NecessityCondition>
+				<OtherReasonsForRemand selected="false">
+					<WelfareReason selected="false"> </WelfareReason>
+					<OwnProtectionReason selected="false"> </OwnProtectionReason>
+					<LackOfPlacementReason selected="false"> </LackOfPlacementReason>
+					<BailISSNotAvailableReason selected="false"> </BailISSNotAvailableReason>
+					<BailInadequateReason selected="false"> </BailInadequateReason>
+				</OtherReasonsForRemand>	
+			</ReasonsForRemand>
+			<RemandReason selected="true">
+				<CommitSent>committed</CommitSent>
+				<IsBefore selected="false"/>
+				<CrownCourt>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+					<Date>0001-01-01</Date>
+				</CrownCourt>
+				<VoluntaryBillOfIndictment selected="true">0001-01-01</VoluntaryBillOfIndictment>
+				<CertificateOfTransfer selected="false">0001-01-01</CertificateOfTransfer>
+				<AppealAgainstBailGranted selected="false"/>
+			</RemandReason>
+			<RemandType>Indicted</RemandType>
+			<AdditionalInfo selected="false"> </AdditionalInfo>
+			<ChargedWith selected="false"> </ChargedWith>
+		</RemandOrder>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

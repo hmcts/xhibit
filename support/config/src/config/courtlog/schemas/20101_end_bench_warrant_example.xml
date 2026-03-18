@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="20100_bench_warrant.xsd">
+	<type>20100</type>
+	<date>2002-11-25</date>
+	<time/>
+	<Issue-Bench-Warrant-Options>
+		<BWO-Type>20100_Bench_warrant_issued_backed_for_bail</BWO-Type>
+	</Issue-Bench-Warrant-Options>
+</event>

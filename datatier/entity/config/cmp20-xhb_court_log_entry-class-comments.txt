@@ -1,0 +1,70 @@
+ * -------- custom finders --------
+* @xhibit.auditable true
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdEventDesc(java.lang.Integer caseId, java.lang.String eventDescription)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c WHERE c.xhbCase.caseId = ?1 AND c.xhbCourtLogEventDesc.shortDescription = ?2 ORDERBY c.dateTime, c.entryId"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdEventTypeDate(java.lang.Integer caseId, java.lang.Integer eventType, java.sql.Timestamp fromDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c WHERE c.xhbCase.caseId = ?1 AND c.xhbCourtLogEventDesc.eventType = ?2 and c.dateTime > ?3 ORDERBY c.dateTime, c.entryId"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdCategoryDesc(java.lang.Integer caseId, java.lang.String categoryDescription)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c, IN (c.xhbCourtLogEventDesc.xhbCourtLogCategories) AS x WHERE c.xhbCase.caseId = ?1 AND x.xhbCourtLogCategoryDesc.categoryDescription = ?2 ORDERBY c.dateTime, c.entryId"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdCategoryDescDate(java.lang.Integer caseId, java.lang.String categoryDescription, java.sql.Timestamp toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c, IN (c.xhbCourtLogEventDesc.xhbCourtLogCategories) AS x WHERE c.xhbCase.caseId = ?1 AND x.xhbCourtLogCategoryDesc.categoryDescription = ?2 AND c.dateTime < ?3 ORDERBY c.dateTime DESC, c.entryId"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdCategoryDescDate(java.lang.Integer caseId, java.lang.String categoryDescription, java.sql.Timestamp fromDate, java.sql.Timestamp toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c, IN (c.xhbCourtLogEventDesc.xhbCourtLogCategories) AS x WHERE c.xhbCase.caseId = ?1 AND x.xhbCourtLogCategoryDesc.categoryDescription = ?2 AND c.dateTime BETWEEN ?3 AND ?4 ORDERBY c.dateTime DESC, c.entryId"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findLinkedEvent(java.lang.Integer caseId, java.lang.Integer defendantOnCaseId, java.lang.Integer eventDescId, java.sql.Timestamp dateTime, java.lang.Integer scheduledHearingId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c WHERE c.caseId = ?1 AND (c.defendantOnCaseId = ?2 OR (c.defendantOnCaseId is null AND ?2 is null)) AND c.eventDescId = ?3 AND c.dateTime = ?4 AND c.scheduledHearingId = ?5"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findLastEntryByCategoryAndCase(java.lang.String category, java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(a) FROM XhbCourtLogEntry AS a, IN (a.xhbCourtLogEventDesc.xhbCourtLogCategories) AS b WHERE b.xhbCourtLogCategoryDesc.categoryDescription = ?1 and a.caseId = ?2 and a.dateTime = (SELECT MAX(c.dateTime) FROM XhbCourtLogEntry AS c, IN (c.xhbCourtLogEventDesc.xhbCourtLogCategories) AS d WHERE d.xhbCourtLogCategoryDesc.categoryDescription = ?1 and c.caseId = ?2)"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdEventTypeToDateDescending(java.lang.Integer caseId, java.lang.Integer eventType, java.util.Date toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c WHERE c.xhbCase.caseId = ?1 AND c.xhbCourtLogEventDesc.eventType = ?2 and c.dateTime < ?3 ORDERBY c.dateTime DESC, c.entryId DESC"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdCategoryDescFromDate(java.lang.Integer caseId, java.lang.String categoryDescription, java.sql.Timestamp fromDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c, IN (c.xhbCourtLogEventDesc.xhbCourtLogCategories) AS x WHERE c.xhbCase.caseId = ?1 AND x.xhbCourtLogCategoryDesc.categoryDescription = ?2 AND c.dateTime > ?3"
+ * 
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdEventTypeToCreationDateDescending(java.lang.Integer caseId, java.lang.Integer eventType, java.util.Date toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c WHERE c.xhbCase.caseId = ?1 AND c.xhbCourtLogEventDesc.eventType = ?2 and c.creationDate < ?3 ORDERBY c.creationDate DESC, c.entryId DESC"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefOnCaseIdEventTypeToCreationDateDescending(java.lang.Integer caseId, java.lang.Integer defendantOnCaseId, java.lang.Integer eventType, java.util.Date toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCourtLogEntry AS c WHERE c.xhbCase.caseId = ?1 AND c.defendantOnCaseId = ?2 AND c.xhbCourtLogEventDesc.eventType = ?3 and c.creationDate < ?4 ORDERBY c.creationDate DESC, c.entryId DESC"
+ *
+ -------- end of custom finders --------

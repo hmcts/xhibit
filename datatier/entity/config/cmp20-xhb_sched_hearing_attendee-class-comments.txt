@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByAttendeeTypeAndSchedHearingID(java.lang.String type, java.lang.Integer schHearingID)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbSchedHearingAttendee o WHERE o.attendeeType = ?1 AND o.scheduledHearingId = ?2"
+ *
+ *
+ * -------- end of custom finders --------

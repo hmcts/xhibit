@@ -1,0 +1,3 @@
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name) VALUES  ('13816', 23, 2, 'Trail Monitoring Requirement', 'http://www.courtservice.gov.uk/schemas/courtservice');                                                                                                                                                                                    
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name) VALUES  ('13817', 23, 2, 'Trail Monitoring Requirement', 'http://www.courtservice.gov.uk/schemas/courtservice');
+commit;

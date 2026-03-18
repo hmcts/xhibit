@@ -1,0 +1,998 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+ 
+	CJS Exchange: Integration Messaging Protocol
+	Operations Schema
+	
+	Version 0.22	05-08-2003  (No change since 0.21)
+
+	
+-->
+<xsd:schema 
+	targetNamespace="urn:integration-cjsonline-gov-uk:pilot:operations"
+	elementFormDefault="qualified" 
+	xmlns:op="urn:integration-cjsonline-gov-uk:pilot:operations" 
+	xmlns:be="urn:integration-cjsonline-gov-uk:pilot:entities"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+>
+	<!--Imports-->
+	<xsd:import namespace="urn:integration-cjsonline-gov-uk:pilot:entities"/>
+	<!--Type definitions-->
+	<!--Simple types-->
+	<xsd:simpleType name="OperationStatusClass">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Completed"></xsd:enumeration>
+			<xsd:enumeration value="RolledBack"></xsd:enumeration>
+			<xsd:enumeration value="NotStarted"></xsd:enumeration>
+			<xsd:enumeration value="RetriableFailed"></xsd:enumeration>
+			<xsd:enumeration value="SystemFailed"></xsd:enumeration>
+			<xsd:enumeration value="OperationFailed"></xsd:enumeration>
+			<xsd:enumeration value="Pending"></xsd:enumeration>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="OperationStatusDescriptionType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="1024"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="CorrelationIDType">
+		<xsd:restriction base="xsd:string">
+			<xsd:maxLength value="38"/>
+			<xsd:pattern value="[A-Za-z0-9!@#$%&amp;\(\)\*\+,\-\./:;\?\[\\\]_\{\}]*"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<!--Complex types-->
+	<xsd:complexType name="OperationStatus">
+		<xsd:sequence>
+			<xsd:element name="StatusClass" type="op:OperationStatusClass"></xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="1" name="Code" type="xsd:int"></xsd:element>
+			<xsd:element minOccurs="0" maxOccurs="1" name="Description" type="op:OperationStatusDescriptionType"></xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<!--Root abstract types for operations and responses-->
+	<xsd:complexType name="OperationRequestBase" abstract="true">
+		<xsd:attribute name="CorrelationID" type="op:CorrelationIDType" use="required"></xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="OperationResponseBase" abstract="true">
+		<xsd:sequence>
+			<xsd:element name="OperationStatus" type="op:OperationStatus"></xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="CorrelationID" type="xsd:string" use="required"></xsd:attribute>
+	</xsd:complexType>
+	<!--Operation category abstract types for operations and responses-->
+	<xsd:complexType name="BusinessEventOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase">
+				<xsd:attribute name="SuccessResponseRequired" type="xsd:boolean"></xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="BusinessEventOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentContentOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase"/>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="DocumentContentOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="QueryOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="QueryOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:NotificationsAndAlerts" />
+				</xsd:sequence>
+				<xsd:attribute name="SuccessResponseRequired" type="xsd:boolean"></xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="NotificationOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="NotificationOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubscribeOperationRequestBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationRequestBase">
+				<xsd:attribute name="SuccessResponseRequired" type="xsd:boolean"></xsd:attribute>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="SubscribeOperationResponseBase" abstract="true">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:OperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!--Concrete types for operations and responses-->
+	<xsd:complexType name="CreateCaseFileOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFile"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreateCaseFileOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CaseFile"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreateCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRN"></xsd:element>
+					<xsd:element ref="be:DefendantIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreateCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreateDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:Defendant"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="CreateDefendantOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Defendant"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GenerateOtherCaseFileEventOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:BusinessEventOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" ref="be:CaseFileIdentifier"></xsd:element>
+					<xsd:element minOccurs="1" maxOccurs="1" ref="be:EventParameters"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GenerateOtherCaseFileEventOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:BusinessEventOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GenerateOtherCRNEventOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:BusinessEventOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CRNIdentifier"></xsd:element>
+					<xsd:element minOccurs="1" maxOccurs="1" ref="be:EventParameters"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GenerateOtherCRNEventOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:BusinessEventOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GenerateOtherDefendantEventOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:BusinessEventOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:DefendantIdentifier"></xsd:element>
+					<xsd:element minOccurs="1" maxOccurs="1" ref="be:EventParameters"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GenerateOtherDefendantEventOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:BusinessEventOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCaseFileOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCaseFileOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CaseFile"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCaseFilesForCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCaseFilesForCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CaseFile"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetContactsForCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetContactsForCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:Contact"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNsForCaseFileOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNsForCaseFileOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNsForDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DefendantIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNsForDefendantOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNsForDocumentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetCRNsForDocumentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDefendantForCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDefendantForCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Defendant"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDefendantForDocumentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDefendantForDocumentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Defendant"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<!-- Changed for vantive 2895325 - Change GetDefendantOperation to a collection of identifiers from a single defendantid
+	<xsd:complexType name="GetDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DefendantIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType> -->
+	<xsd:complexType name="GetDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" name="DefendantIdentifiers" type="be:ArrayOfDefendantIdentifier"/>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDefendantOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Defendant"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentContentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:DocumentContentOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentContentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:DocumentContentOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:DocumentContent"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentsForCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentsForCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentsForDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DefendantIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetDocumentsForDefendantOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetLinkedCaseFilesOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetLinkedCaseFilesOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CaseFile"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetLinkedCRNsOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GetLinkedCRNsOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:LinkedCRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GrantDocumentPermissionOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+					<xsd:element minOccurs="1" maxOccurs="unbounded" ref="be:RoleID"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="GrantDocumentPermissionOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkCaseFilesOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileIdentifier1"></xsd:element>
+					<xsd:element ref="be:CaseFileIdentifier2"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkCaseFilesOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkCRNsOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier1"></xsd:element>
+					<xsd:element ref="be:CRNIdentifier2"></xsd:element>
+					<xsd:element ref="be:LinkTypeCode"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkCRNsOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkCRNToCaseFileOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+					<xsd:element ref="be:CaseFileIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkCRNToCaseFileOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkDocumentToCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="LinkDocumentToCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListBailStatusOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListBailStatusOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:BailStatus"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListCRNLinkTypeOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListCRNLinkTypeOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CRNLinkType"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListCRNStatusOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListCRNStatusOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:CRNStatus"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListDefendantIDTypeOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListDefendantIDTypeOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:DefendantIdentifierType"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListDocumentTypeOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListDocumentTypeOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:DocumentType"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListOrganisationalUnitOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListOrganisationalUnitOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:OrganisationalUnit"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListRoleOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListRoleOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:Role" ></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListVerdictStatusOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationRequestBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ListVerdictStatusOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:ListOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="unbounded" ref="be:VerdictStatus"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MarkCaseFileAsDeletedOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="MarkCaseFileAsDeletedOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RegisterDocumentWithCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:Document"></xsd:element>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RegisterDocumentWithCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RegisterDocumentWithDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:Document"></xsd:element>
+					<xsd:element ref="be:DefendantIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RegisterDocumentWithDefendantOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RegisterDocumentWithLocationOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RegisterDocumentWithLocationOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RequestDocumentContentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:DocumentContentOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RequestDocumentContentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:DocumentContentOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:DocumentContent"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RevokeDocumentPermissionOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+					<xsd:element minOccurs="1" maxOccurs="unbounded" ref="be:RoleID"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="RevokeDocumentPermissionOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ServiceTestOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" ref="be:ServiceTest"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="ServiceTestOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:QueryOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="1" maxOccurs="1" ref="be:ServiceTest"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkCaseFilesOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileIdentifier1"></xsd:element>
+					<xsd:element ref="be:CaseFileIdentifier2"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkCaseFilesOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkCRNFromCaseFileOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+					<xsd:element ref="be:CaseFileIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkCRNFromCaseFileOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkCRNsOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNIdentifier1"></xsd:element>
+					<xsd:element ref="be:CRNIdentifier2"></xsd:element>
+					<xsd:element ref="be:LinkTypeCode"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkCRNsOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkDocumentFromCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+					<xsd:element ref="be:CRNIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnLinkDocumentFromCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnRegisterDocumentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentIdentifier"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UnRegisterDocumentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase"></xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateCaseFileOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CaseFileUpdate"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateCaseFileOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CaseFile"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateCRNOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:CRNUpdate"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateCRNOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:CRN"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateDefendantOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DefendantUpdate"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateDefendantOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Defendant"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateDocumentOperation">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationRequestBase">
+				<xsd:sequence>
+					<xsd:element ref="be:DocumentUpdate"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:complexType name="UpdateDocumentOperationResponse">
+		<xsd:complexContent mixed="false">
+			<xsd:extension base="op:UpdateOperationResponseBase">
+				<xsd:sequence>
+					<xsd:element minOccurs="0" maxOccurs="1" ref="be:Document"></xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+</xsd:schema>

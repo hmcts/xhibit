@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jdbc-data-source xmlns="http://www.bea.com/ns/weblogic/90" xmlns:sec="http://www.bea.com/ns/weblogic/90/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls" xsi:schemaLocation="http://www.bea.com/ns/weblogic/910/domain.xsd">
+  <name>GdGateOracleTxDataSource</name>
+  <jdbc-driver-params>
+    <url>@gdgate.tx.database.url@</url>
+    <driver-name>@gdgate.tx.database.driver@</driver-name>
+    <properties>
+      <property>
+        <name>user</name>
+        <value>@gdgate.tx.database.user@</value>
+      </property>
+      <property>
+        <name>SetBigStringTryClob</name>
+        <value>@gdgate.tx.database.bigstringclobenabled@</value>
+      </property>      
+    </properties>
+    <password-encrypted>@gdgate.tx.database.password@</password-encrypted>
+  </jdbc-driver-params>
+  <jdbc-connection-pool-params>
+    <initial-capacity>@gdgate.pool.capacity@</initial-capacity>
+    <max-capacity>@gdgate.pool.max.capacity@</max-capacity>
+    <test-connections-on-reserve>true</test-connections-on-reserve>
+    <test-table-name>SQL SELECT 1 FROM DUAL</test-table-name>
+  </jdbc-connection-pool-params>
+  <jdbc-data-source-params>
+    <jndi-name>@gdgate.tx.database.jndi@</jndi-name>
+    <global-transactions-protocol>TwoPhaseCommit</global-transactions-protocol>
+  </jdbc-data-source-params>
+</jdbc-data-source>

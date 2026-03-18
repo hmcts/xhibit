@@ -1,0 +1,35 @@
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Bench Warrant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E21500_Electronic_Monitoring_Options"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E21500_Electronic_Monitoring_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E21500_EM_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E21500_EM_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E21500_Defendant_Ordered_To_Be_Electronically_Monitored"/>
+				<xs:enumeration value="E21500_Electronic_Monitoring_Requirement_Amended"/>
+				<xs:enumeration value="E21500_Electronic_MonitoringFlag_To_Be_Removed"/>
+				<xs:enumeration value="E21500_Defendant_Subject_To_An_Electronically_Monitored_Curfew"/>
+				<xs:enumeration value="E21500_Terms_Of_Electronically_Monitored_Curfew_Amended"/>
+				<xs:enumeration value="E21500_Requirement_For_An_Electronically_Monitored_Curfew_Removed"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

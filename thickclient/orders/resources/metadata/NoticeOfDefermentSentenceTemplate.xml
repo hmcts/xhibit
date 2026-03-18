@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	 <form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="DefermentSentenceOrder" label="" switchLabel="" borderLabel="Sentence Deferred Until">
+			<date name="DateOfOrder" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:DateOfOrder"/>
+	    </section>
+		<section name="CrownCourtToAttend" label="" switchLabel="" borderLabel="Crown Court To Attend">
+				<courttype name="courttype" addressReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" 
+				crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false"
+				ref="//ord:CrownCourtToAttend/ord:CourtHouseDetails/ord:CourtHouseName"/>
+	 	</section>
+		<section name="RequirementsSection" label="" borderLabel="Requirements">
+		<!-- Requirements Start -->
+		<textarea name="requirements" ref="//ord:Requirements" label="" rows="8" cols="60"/>
+		</section>
+		<!--Requirements End -->
+		<!-- Offence Details Start -->
+		<convictiontextarea name="convictionValue" maxlength="10" label="Offence Details: " length="10" ref="//ord:Defendant/ord:Charges/ord:Charge[1]/ord:OffenceStatement"/>
+		<!-- Offence Details End -->
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="50" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+ 	</form>
+</template>

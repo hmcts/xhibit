@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="40701.xsd">
+	<type>40701</type>
+	<E40701_Direction_By_Defendant_Options>
+		<E40701_Name>fred</E40701_Name>
+		<E40701_Identification>E40701_Defendant_Identified</E40701_Identification>
+		<E40701_Certificate_Of_Attendance>E40701_Granted</E40701_Certificate_Of_Attendance>
+		<E40701_Bail_Or_Custody>
+			<E40701_Bail_Or_Custody_Options>E40701_Bail_As_Before</E40701_Bail_Or_Custody_Options>
+			<E40701_Bail_Or_Custody_Conditions>qewrwrrt</E40701_Bail_Or_Custody_Conditions>
+		</E40701_Bail_Or_Custody>
+		<E40701_Arraignment>false</E40701_Arraignment>
+		<E40701_Form_B>
+			<E40701_Form_B_Options>E40701_To_Be_Filed</E40701_Form_B_Options>
+			<E40701_To_Be_Filed_Date>12/03/04</E40701_To_Be_Filed_Date>
+		</E40701_Form_B>
+	</E40701_Direction_By_Defendant_Options>
+	<free_text>free text</free_text>
+</event>

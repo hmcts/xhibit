@@ -1,0 +1,20 @@
+<html>
+	<body>
+		<p>
+This package contains the Session Beans and associated classes for the public displays. The two session beans
+have separate responsibilities.
+		</p>
+		<p>
+<code>PublicDisplayConfigurationBean</code> is responsible for managing the
+public display configuration data. It presents methods both for the maintenance of the data by a client and the
+querying of the data by the render component. The transformation from the highly normalised entities addressed by
+the administrative user managing the configuration and the de-normalised entities used by the render component is
+handled hear by the <code>DisplayRotationSetDataHelper</code>.
+		</p>
+		<p>
+<code>?????</code> is responsible for servicing the application data requests of the render component, using a set
+of pre-defined queries it populates instances of the classes held in the
+<code>uk.gov.courtservice.xhibit.common.publicdisplay.renderdata</code> package.
+		</p>
+	</body>
+</html>

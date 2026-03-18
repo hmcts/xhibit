@@ -1,0 +1,10 @@
+* -------- custom finders --------
+*
+* @ejb.finder
+*    signature="java.util.Collection findByHearingId(java.lang.Integer hearingId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (e) FROM XhbExporta e WHERE
+*           e.hearingId = ?1"
+*
+* -------- end of custom finders --------

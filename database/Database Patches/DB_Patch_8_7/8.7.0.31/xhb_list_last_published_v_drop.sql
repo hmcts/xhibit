@@ -1,0 +1,1 @@
+DROP VIEW xhb_list_last_published_v;

@@ -1,0 +1,6 @@
+file=<dump_file_name>.dmp
+fromuser=xhibit
+touser=xhibit
+log=<TAA_version>_<date>.log
+feedback=1000
+

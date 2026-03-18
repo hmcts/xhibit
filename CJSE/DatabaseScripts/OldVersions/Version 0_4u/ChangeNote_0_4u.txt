@@ -1,0 +1,4 @@
+Changes from 0_4_t to 0_4_u
+
+-  Changed Stylesheet Values in cji_document_type in order to support CR49
+

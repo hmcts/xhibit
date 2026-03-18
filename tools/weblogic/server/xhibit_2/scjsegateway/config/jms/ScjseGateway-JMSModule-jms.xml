@@ -1,0 +1,209 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-jms xmlns="http://www.bea.com/ns/weblogic/90" xmlns:sec="http://www.bea.com/ns/weblogic/90/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls" xsi:schemaLocation="http://www.bea.com/ns/weblogic/910/domain.xsd">
+
+  <connection-factory name="ScjseGatewayConnectionFactory">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <jndi-name>ScjseGatewayConnectionFactory</jndi-name>
+    <transaction-params>
+      <xa-connection-factory-enabled>true</xa-connection-factory-enabled>
+    </transaction-params>
+    <security-params>
+      <attach-jmsx-user-id>false</attach-jmsx-user-id>
+    </security-params>
+  </connection-factory>
+  
+  <uniform-distributed-queue name="ScjseOutboundQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>ScjseOutboundDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/ScjseOutboundQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="ScjseOutboundDeadLetterQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/ScjseOutboundDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="ScjseInboundQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>ScjseInboundDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/ScjseInboundQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="ScjseInboundDeadLetterQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/ScjseInboundDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="ScjseItemTrackingQueue ">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/ScjseItemTrackingQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="DeadLetterQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>0</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <redelivery-limit>0</redelivery-limit>
+      <expiration-policy>Log</expiration-policy>
+      <expiration-logging-policy>%header%,%properties%</expiration-logging-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/DeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="GdMessageBrokerQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>GdMessageBrokerDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/GdMessageBrokerQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="GdMessageBrokerDeadLetterQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/GdMessageBrokerDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="GdOutboundGatewayQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>GdOutboundGatewayDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/GdOutboundGatewayQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="GdOutboundGatewayDeadLetterQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/GdOutboundGatewayDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="GdInboundGatewayQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>GdInboundGatewayDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/GdInboundGatewayQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="GdInboundGatewayDeadLetterQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/GdInboundGatewayDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+
+  <uniform-distributed-queue name="InboundTestQueue">
+    <sub-deployment-name>scjsegatecluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>scjsegateway/jms/InboundTestQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>  
+
+</weblogic-jms>

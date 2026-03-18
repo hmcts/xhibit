@@ -1,0 +1,9 @@
+INSERT INTO XHB_REF_MON_ORD_DISPOSALS
+(disposal_code, mo_type)
+SELECT subqry.DISPOSAL_CODE, subqry.MO_TYPE FROM (
+	SELECT 'SFOP' DISPOSAL_CODE, 'FINE' MO_TYPE FROM DUAL
+) subqry 
+WHERE NOT EXISTS (SELECT 1 FROM XHB_REF_MON_ORD_DISPOSALS x2 
+                   WHERE x2.MO_TYPE = subqry.MO_TYPE
+                     AND x2.DISPOSAL_CODE = subqry.DISPOSAL_CODE);
+commit;

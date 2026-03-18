@@ -1,0 +1,28 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Special Measures Application-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20934_Special_Measures_Application_Options" minOccurs="0"/>
+				<xs:element name="EventSpecificText" minOccurs="0" maxOccurs="1"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20934_Special_Measures_Application_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="E20934_Order_For_Screens_Granted" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="E20934_Evidence_By_Live_Link" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="E20934_Evidence_To_Be_Given_In_Private" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="E20934_Removal_Of_Wigs_And_Gowns" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="E20934_Video_Recorded_Evidence_In_Chief" minOccurs="0" maxOccurs="1"/>
+				<xs:element name="E20934_Aids_To_Communication" minOccurs="0" maxOccurs="1"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

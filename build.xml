@@ -1,0 +1,1071 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Xhibit">
+
+    <description>
+        The Top level build script.  This script is responsible for calling
+        the build on all child-projects, and creating the distribution.
+    </description>
+
+    <import file="./tools/ant/framework.xml" />
+
+    <!--
+    =======================================================================
+        Initialise Override
+    =======================================================================
+     -->
+
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- The following dirs should be layed out as follows. -->
+
+        <property name="dist.template.dir" location="${basedir}/dist" />
+
+        <property name="dist.dir" location="${build.dir}/dist"/>
+        <property name="dist.server.dir" location="${dist.dir}/Xhibit-${version}/SOLARIS/XHIBIT Application Files"/>
+        <property name="dist.server.domain.config.jms.dir" location="${dist.server.dir}/environment"/>
+        <property name="dist.server.application.dir" location="${dist.server.dir}/xhibit-${version}"/>
+        <property name="dist.server.application.lib.dir" location="${dist.server.application.dir}/lib"/>
+        <property name="dist.server.application.deploy.dir" location="${dist.server.application.dir}/staging"/>
+        <property name="dist.server.application.mbeantypes.dir" location="${dist.server.application.dir}/mbeantypes"/>
+        <property name="dist.server.application.schema.dir" location="${dist.server.application.dir}/schema"/>
+
+        <property name="dist.server.notifier.dir" location="${dist.server.dir}/publicDisplayNotifier-${version}"/>
+        <property name="dist.server.notifier.lib.dir" location="${dist.server.notifier.dir}/lib"/>
+        <property name="dist.client.dir" location="${dist.dir}/Xhibit-${version}/WINDOWS/Workstation"/>
+        <property name="dist.client.application.dir" location="${dist.client.dir}/XHIBIT Application Files"/>
+        <property name="dist.client.application.3rdparty.dir" location="${dist.client.application.dir}/3rdparty-${3rdparty.version}"/>
+        <property name="dist.client.application.3rdparty.lib.dir" location="${dist.client.application.3rdparty.dir}/lib"/>
+        <property name="dist.client.application.xhibit.dir" location="${dist.client.application.dir}/xhibit-${version}"/>
+        <property name="dist.client.application.xhibit.lib.dir" location="${dist.client.application.xhibit.dir}/lib"/>
+        <property name="dist.client.application.xhibit.properties.dir" location="${dist.client.application.xhibit.dir}/properties"/>
+
+        <property name="run.template.server.dir" location="${basedir}/tools/weblogic/server"/>
+        <property name="run.template.client.dir" location="${basedir}/tools/weblogic/client"/>
+
+        <property name="run.dir" location="${basedir}/tools/weblogic/build"/>
+        <property name="run.server.dir" location="${run.dir}/server"/>
+        <property name="run.server.domain.dir" location="${run.server.dir}/xhibit_2/xhibit"/>
+        <property name="run.scjsegateway.domain.dir" location="${run.server.dir}/xhibit_2/scjsegateway"/>
+
+        <property name="run.server.application.dir" location="${run.server.dir}/xhibit_2/xhibit-${version}"/>
+        <property name="run.scjsegateway.application.dir" location="${run.server.dir}/xhibit_2/scjsegateway-${version}"/>
+        <property name="run.server.notifier.dir" location="${run.server.dir}/xhibit/scripts/publicDisplayNotifier-${version}"/>
+        <property name="run.server.notifier.bin.dir" location="${run.server.notifier.dir}/bin"/>
+        <property name="run.client.dir" location="${run.dir}/client"/>
+        <property name="run.client.application.dir" location="${run.dir}/client/Xhibit"/>
+        <property name="run.client.xhibit.bin.dir" location="${run.client.application.dir}/xhibit-${version}/bin"/>
+
+		<property name="midtier.ear.dir" location="${basedir}/midtier/build/lib"/>
+        <property name="admin.username" value="weblogic"/>
+        <property name="admin.password" value="password"/>
+        <property name="admin.port" value="7001"/>
+        <property name="midM1.port" value="9001"/>
+        <property name="midM1.sslport" value="9002"/>
+        <property name="midM2.port" value="9501"/>
+        <property name="midM2.sslport" value="9502"/>
+        <property name="presM1.port" value="5001"/>
+        <property name="presM1.sslport" value="5002"/>
+        <property name="presM2.port" value="5501"/>
+        <property name="presM2.sslport" value="5502"/>
+
+        <property name="admin.proxy.port" value="80"/>
+        <property name="admin.secure.proxy.port" value="443"/>
+
+        <property name="scjsegateadmin.username" value="weblogic"/>
+        <property name="scjsegateadmin.password" value="password"/>
+        <property name="scjsegateadmin.port" value="7501"/>
+        <property name="scjsegateM1.port" value="8001"/>
+        <property name="scjsegateM1.sslport" value="8002"/>
+        <property name="scjsegateM2.port" value="8501"/>
+        <property name="scjsegateM2.sslport" value="8502"/>
+
+        <property name="ssl.keystore" value="../common/security/xhibit.development.server.jks"/>
+        <property name="ssl.storepass" value="password"/>
+        <property name="ssl.alias" value="xhibitthin"/>
+        <property name="ssl.keypass" value="password"/>
+
+        <property name="disable.scheduler" value="false"/>
+        <property name="scheduler.scheduledtasks" value="default"/>
+
+        <path id="child.path">
+			<pathelement location="${cjse.schema.dir.cjse}/build.xml" />
+            <pathelement location="environment/build.xml" />
+            <pathelement location="security/build.xml" />
+            <pathelement location="support/config/build.xml" />
+            <pathelement location="support/framework/build.xml" />
+            <pathelement location="support/instant_messaging/build.xml" />
+            <pathelement location="support/scheduler/build.xml" />
+            <pathelement location="support/thinclient_framework/build.xml" />
+            <pathelement location="support/openjms_selector/build.xml" />
+            <pathelement location="datatier/cjit_entity/build.xml" />
+            <pathelement location="datatier/entity/build.xml" />
+            <pathelement location="datatier/exiss_entity/build.xml" />
+            <pathelement location="metadata/build.xml" />
+            <pathelement location="common/build.xml" />
+            <pathelement location="integration/mercator/build.xml" />
+            <pathelement location="integration/publicdisplay/build.xml" />
+            <pathelement location="midtier/build.xml" />
+            <pathelement location="support/scripts/build.xml" />
+            <pathelement location="thickclient/build.xml" />
+            <pathelement location="thinclient/build.xml" />
+            <!--<pathelement location="scjsegateway/build.xml" /> -->
+            <!-- <pathelement location="wmbbridge/build.xml" /> -->
+        </path>
+
+        <filterchain id="version.filterchain">
+            <replacestring from="N.N.N" to="${version}"/>
+            <replacestring from="Y.Y.Y" to="${3rdparty.version}"/>
+        </filterchain>
+
+    </target>
+
+    <!--
+    =======================================================================
+        Package Override
+    =======================================================================
+     -->
+
+    <target name="package" unless="skip.package" depends="framework.package">
+		        <log target="package"/>
+
+            
+        <!-- Dynamic Server Files -->
+
+        <copy todir="${dist.server.application.lib.dir}">
+            <fileset dir="${lib.dir}" includes="*.jar"/>
+            <fileset dir="${build.dest.dir}" includes="XhibitEnvironment.jar"/>
+            <fileset dir="${build.dest.dir}" includes="XhibitSecurityProviders.jar"/>
+            <fileset dir="${build.dest.dir}" includes="dartsstartup.jar"/>                        
+        </copy>
+
+        <copy todir="${dist.server.application.mbeantypes.dir}">
+            <fileset dir="${build.dest.dir}">
+                <include name="XhibitSecurityProviders.jar"/>
+            </fileset>
+        </copy>
+
+        <copy todir="${dist.server.application.deploy.dir}">
+            <fileset dir="${build.dest.dir}">
+                <include name="MidTier.ear"/>
+                <include name="PublicDisplay.ear"/>
+                <include name="ThinClient.ear"/>
+                <include name="WmbBridge.jar"/>
+            </fileset>
+        </copy>
+        
+        <copy todir="${dist.server.application.schema.dir}">
+			<fileset dir="${cjse.schema.dir.build}">
+				<include name="*.xsd"/>
+			</fileset>
+        </copy>
+
+        <!-- Dynamic Public Display Notifier -->
+
+        <copy todir="${dist.server.notifier.lib.dir}" >
+            <fileset dir="${weblogic.home}/server/lib">
+                <include name="wlclient.jar" />
+                <include name="wljmsclient.jar" />
+            </fileset>
+            <fileset dir="${build.dest.dir}">
+                <include name="DailyListNotifier.jar"/>
+            </fileset>
+        </copy>
+
+        <!-- Dynamic Client -->
+
+        <copy todir="${dist.client.application.3rdparty.lib.dir}">
+            <fileset dir="${lib.dir}" includes="*.jar"/>
+            <fileset dir="${weblogic.home}/server/lib">
+            <!--
+                <include name="wlclient.jar" />
+                <include name="wljmsclient.jar" />
+              -->
+                <include name="weblogic.jar" />
+                <include name="webserviceclient+ssl.jar" />
+                <include name="jsafeFIPS.jar" />
+            </fileset>
+        </copy>
+
+        <copy todir="${dist.client.application.xhibit.lib.dir}">
+            <fileset dir="${build.dest.dir}">
+                <include name="Client.jar" />
+                <include name="ClientView.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="Integration.jar" />
+                <include name="XhibitEnvironment.jar" />
+                <include name="Framework.jar" />
+                <include name="Value.jar" />
+                <include name="Config.jar" />
+                <include name="CjitValues.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="XhibitXmlBinding.jar" />
+                <include name="InstantMessaging.jar" />
+                <include name="OrdersMidTierCommon.jar" />
+            </fileset>
+        </copy>
+
+        <!-- Static Files (Filter Bat Files)-->
+
+        <path id="dist.client.application.lib.classpath">
+            <pathelement location="${dist.client.application.xhibit.properties.dir}"/>
+            <fileset dir="${dist.client.application.xhibit.lib.dir}" includes="**/*.jar **/*.zip"/>
+            <fileset dir="${dist.client.application.3rdparty.lib.dir}" includes="**/*.jar **/*.zip"/>
+        </path>
+
+        <pathconvert property="dist.client.application.lib.classpath" refid="dist.client.application.lib.classpath" dirsep="\" pathsep=";">
+            <map from="${dist.client.application.3rdparty.dir}" to="..\..\3rdparty-${3rdparty.version}"/>
+            <map from="${dist.client.application.xhibit.dir}" to=".."/>
+        </pathconvert>
+
+        <copy todir="${dist.dir}" overwrite="true">
+            <fileset dir="${dist.template.dir}" includes="**/*.bat" />
+            <filterset>
+                <filter token="xhibit.version" value="${version}"/>
+                <filter token="3rdparty.version" value="${3rdparty.version}"/>
+                <filter token="xhibit.classpath" value="${dist.client.application.lib.classpath}"/>
+            </filterset>
+            <mapper classname="uk.gov.courtservice.ant.types.mappers.RefFilterMapper"
+                    classpathref="framework.classpath"
+                    from="version.filterchain" />
+        </copy>
+
+        <copy todir="${dist.dir}" includeEmptyDirs="false">
+            <fileset dir="${dist.template.dir}" excludes="**/*.bat" />
+            <mapper classname="uk.gov.courtservice.ant.types.mappers.RefFilterMapper"
+                    classpathref="framework.classpath"
+                    from="version.filterchain" />
+        </copy>
+
+    </target>
+
+    <!--
+      =======================================================================
+        Release Override
+      =======================================================================
+      -->
+
+    <target name="release" unless="skip.release" depends="framework.release">
+        <log target="release"/>
+        <echo message="To Do: Build Client, Client Core and Server jars."/>
+    </target>
+
+
+    <!--
+      =======================================================================
+        Setup weblogic domain and client ready to run
+      =======================================================================
+      -->
+
+    <target name="update.domain" depends="initialise">
+
+        <!-- Server Applicaion Files -->
+        <echo message="Copying server distribution to development runtime."/>
+        <copy toDir="${run.server.application.dir}">
+            <fileset dir="${dist.server.application.dir}"/>
+        </copy>
+
+        <!-- Notifier Files -->
+        <echo message="Copying notifier distribution to development runtime."/>
+        <copy toDir="${run.server.notifier.dir}">
+            <fileset dir="${dist.server.notifier.dir}"/>
+        </copy>
+
+        <!-- Client Files -->
+        <echo message="Copying client distribution to development runtime."/>
+        <copy toDir="${run.client.application.dir}">
+            <fileset dir="${dist.client.application.dir}"/>
+        </copy>
+
+        <!-- Rewrite xhibit.bat for development -->
+
+        <echo message="Create xhibit.development.bat"/>
+        <!-- These are the values currently used in xhibit.bat -->
+        <property name="xhibit.security" value="-Dweblogic.security.SSL.ignoreHostnameVerification=TRUE"/>
+        <property name="xhibit.displayurl" value="http://xhibitdisplay"/>
+        <property name="xhibit.authenticationurl" value="t3s://midtier1,midtier2,midtier3:4430"/>
+        <property name="xhibit.providerurl" value="t3://midtier1,midtier2,midtier3:7071"/>
+        <property name="xhibit.command" value="START &quot;XHIBIT&quot; /D&quot;%~dp0&quot; ..\..\jre-1.6.0_45\bin\javaw.exe"/>
+
+        <!-- These are the default values that should be used for development -->
+        <property name="runclient.security" value="-Dweblogic.security.SSL.ignoreHostnameVerification=TRUE -Dweblogic.security.SSL.trustedCAKeyStore=&quot;..\security\xhibit.development.client.jks&quot;"/>
+        <property name="runclient.displayurl" value="http://${computer.name}:${presM1.port}"/>
+        <property name="runclient.authenticationurl" value="t3s://${computer.name}:${midM1.sslport},${computer.name}:${midM2.sslport}"/>
+        <property name="runclient.providerurl" value="t3://${computer.name}:${midM1.port},${computer.name}:${midM2.port}"/>
+        <property name="runclient.command" value="%JAVA_HOME%\jre\bin\java.exe"/>
+
+        <!-- Copy the execute command so we can localise it -->
+
+        <copy file="${run.client.xhibit.bin.dir}/xhibit.bat" tofile="${run.client.xhibit.bin.dir}/xhibit.development.bat" overwrite="true"/>
+
+        <!-- Replace the xhibit.bat values with the development values -->
+
+        <replace file="${run.client.xhibit.bin.dir}/xhibit.development.bat" summary="true">
+            <replacefilter token="${xhibit.security}" value="${runclient.security}"/>
+            <replacefilter token="${xhibit.displayurl}" value="${runclient.displayurl}"/>
+            <replacefilter token="${xhibit.authenticationurl}" value="${runclient.authenticationurl}"/>
+            <replacefilter token="${xhibit.providerurl}" value="${runclient.providerurl}"/>
+            <replacefilter token="${xhibit.command}" value="${runclient.command}"/>
+        </replace>
+
+    </target>
+
+    <target name="setup.domain" depends="initialise, update.domain">
+
+        <!-- Server Files -->
+
+        <property name="midcluster.multicast.address" value="239.192.0.1"/>
+        <hostnumber property="midcluster.multicast.port" min="10000" max="19999"/>
+        <property name="prescluster.multicast.address" value="239.192.0.1"/>
+        <hostnumber property="prescluster.multicast.port" min="20000" max="29999"/>
+        <property name="scjsegatecluster.multicast.address" value="239.192.0.1"/>
+        <hostnumber property="scjsegatecluster.multicast.port" min="30000" max="39999"/>
+
+        <filterset id="filter.filterset">
+            <filter token="computer.name" value="${computer.name}"/>
+            <filter token="admin.username" value="${admin.username}"/>
+            <filter token="admin.password" value="${admin.password}"/>
+            <filter token="admin.port" value="${admin.port}"/>
+            <filter token="midM1.port" value="${midM1.port}"/>
+            <filter token="midM1.sslport" value="${midM1.sslport}"/>
+            <filter token="midM2.port" value="${midM2.port}"/>
+            <filter token="midM2.sslport" value="${midM2.sslport}"/>
+            <filter token="presM1.port" value="${presM1.port}"/>
+            <filter token="presM1.sslport" value="${presM1.sslport}"/>
+            <filter token="presM2.port" value="${presM2.port}"/>
+            <filter token="presM2.sslport" value="${presM2.sslport}"/>
+            <filter token="admin.proxy.port" value="${admin.proxy.port}"/>
+            <filter token="admin.secure.proxy.port" value="${admin.secure.proxy.port}"/>
+
+            <filter token="scjsegateadmin.username" value="${scjsegateadmin.username}"/>
+            <filter token="scjsegateadmin.password" value="${scjsegateadmin.password}"/>
+            <filter token="scjsegateadmin.port" value="${scjsegateadmin.port}"/>
+            <filter token="scjsegateM1.port" value="${scjsegateM1.port}"/>
+            <filter token="scjsegateM1.sslport" value="${scjsegateM1.sslport}"/>
+            <filter token="scjsegateM2.port" value="${scjsegateM2.port}"/>
+            <filter token="scjsegateM2.sslport" value="${scjsegateM2.sslport}"/>
+
+            <filter token="ssl.keystore" value="${ssl.keystore}"/>
+            <filter token="ssl.storepass" value="${ssl.storepass}"/>
+            <filter token="ssl.alias" value="${ssl.alias}"/>
+            <filter token="ssl.keypass" value="${ssl.keypass}"/>
+
+            <filter token="midcluster.multicast.address" value="${midcluster.multicast.address}"/>
+            <filter token="midcluster.multicast.port" value="${midcluster.multicast.port}"/>
+            <filter token="prescluster.multicast.address" value="${prescluster.multicast.address}"/>
+            <filter token="prescluster.multicast.port" value="${prescluster.multicast.port}"/>
+            <filter token="scjsegatecluster.multicast.address" value="${scjsegatecluster.multicast.address}"/>
+            <filter token="scjsegatecluster.multicast.port" value="${scjsegatecluster.multicast.port}"/>
+
+            <filter token="xhibit.tx.database.url" value="${xhibit.tx.database.url}"/>
+            <filter token="xhibit.tx.database.driver" value="${xhibit.tx.database.driver}"/>
+            <filter token="xhibit.tx.database.user" value="${xhibit.tx.database.user}"/>
+            <filter token="xhibit.tx.database.password" value="${xhibit.tx.database.password}"/>
+            <filter token="xhibit.tx.database.jndi" value="${xhibit.tx.database.jndi}"/>
+
+            <filter token="xhibit.jms.database.url" value="${xhibit.jms.database.url}"/>
+            <filter token="xhibit.jms.database.driver" value="${xhibit.jms.database.driver}"/>
+            <filter token="xhibit.jms.database.user" value="${xhibit.jms.database.user}"/>
+            <filter token="xhibit.jms.database.password" value="${xhibit.jms.database.password}"/>
+            <filter token="xhibit.jms.database.jndi" value="${xhibit.jms.database.jndi}"/>
+
+            <filter token="exiss.tx.database.url" value="${exiss.tx.database.url}"/>
+            <filter token="exiss.tx.database.driver" value="${exiss.tx.database.driver}"/>
+            <filter token="exiss.tx.database.user" value="${exiss.tx.database.user}"/>
+            <filter token="exiss.tx.database.password" value="${exiss.tx.database.password}"/>
+            <filter token="exiss.tx.database.jndi" value="${exiss.tx.database.jndi}"/>
+            <filter token="exiss.tx.database.bigstringclobenabled" value="${exiss.tx.database.bigstringclobenabled}"/>
+            <filter token="exiss.pool.capacity" value="${exiss.pool.capacity}"/>
+            <filter token="exiss.pool.max.capacity" value="${exiss.pool.max.capacity}"/>
+
+            <filter token="exiss.jms.outbridge.sourceurl" value="t3://${computer.name}:${midM1.port};t3://${computer.name}:${midM2.port}"/>
+            <filter token="exiss.jms.outbridge.targeturl" value="t3://${computer.name}:${scjsegateM1.port};t3://${computer.name}:${scjsegateM2.port}"/>
+            <filter token="exiss.jms.outbridge.user" value="${exiss.jms.outbridge.user}"/>
+            <filter token="exiss.jms.outbridge.password" value="${exiss.jms.outbridge.password}"/>
+            <filter token="exiss.jms.outbridge.idletimemaximum" value="${exiss.jms.outbridge.idletimemaximum}"/>
+            <filter token="exiss.jms.outbridge.batchsize" value="${exiss.jms.outbridge.batchsize}"/>
+            <filter token="exiss.jms.outbridge.batchinterval" value="${exiss.jms.outbridge.batchinterval}"/>
+            
+            <filter token="exiss.jms.jmsxaadp" value="${weblogic.home}\server\lib\jms-xa-adp.rar"/>
+
+            <filter token="exiss.weblogic.kernel.default.count" value="${exiss.weblogic.kernel.default.count}"/>
+            <filter token="exiss.weblogic.kernel.default.max.count" value="${exiss.weblogic.kernel.default.max.count}"/>
+            <filter token="exiss.weblogic.kernel.default.min.count" value="${exiss.weblogic.kernel.default.min.count}"/>
+            
+            <filter token="exiss.message.builder.execute.queue.count" value="${exiss.message.builder.execute.queue.count}"/>
+            <filter token="exiss.message.builder.execute.queue.max.count" value="${exiss.message.builder.execute.queue.max.count}"/>
+            <filter token="exiss.message.builder.execute.queue.min.count" value="${exiss.message.builder.execute.queue.min.count}"/>
+            
+            <filter token="exiss.item.tracking.execute.queue.count" value="${exiss.item.tracking.execute.queue.count}"/>
+            <filter token="exiss.item.tracking.execute.queue.max.count" value="${exiss.item.tracking.execute.queue.max.count}"/>
+            <filter token="exiss.item.tracking.execute.queue.min.count" value="${exiss.item.tracking.execute.queue.min.count}"/>
+
+            <filter token="exiss.inbound.execute.queue.count" value="${exiss.inbound.execute.queue.count}"/>
+            <filter token="exiss.inbound.execute.queue.max.count" value="${exiss.inbound.execute.queue.max.count}"/>
+            <filter token="exiss.inbound.execute.queue.min.count" value="${exiss.inbound.execute.queue.min.count}"/>
+
+            <filter token="exiss.item.tracking.notifier.execute.queue.count" value="${exiss.item.tracking.notifier.execute.queue.count}"/>
+            <filter token="exiss.item.tracking.notifier.execute.queue.max.count" value="${exiss.item.tracking.notifier.execute.queue.max.count}"/>
+            <filter token="exiss.item.tracking.notifier.execute.queue.min.count" value="${exiss.item.tracking.notifier.execute.queue.min.count}"/>
+
+            <filter token="exiss.message.broker.execute.queue.count" value="${exiss.message.broker.execute.queue.count}"/>
+            <filter token="exiss.message.broker.execute.queue.max.count" value="${exiss.message.broker.execute.queue.max.count}"/>
+            <filter token="exiss.message.broker.execute.queue.min.count" value="${exiss.message.broker.execute.queue.min.count}"/>
+
+            <filter token="cjit.tx.database.url" value="${cjit.tx.database.url}"/>
+            <filter token="cjit.tx.database.driver" value="${cjit.tx.database.driver}"/>
+            <filter token="cjit.tx.database.user" value="${cjit.tx.database.user}"/>
+            <filter token="cjit.tx.database.password" value="${cjit.tx.database.password}"/>
+            <filter token="cjit.tx.database.jndi" value="${cjit.tx.database.jndi}"/>
+
+            <filter token="darts.tx.database.url" value="${darts.tx.database.url}"/>
+            <filter token="darts.tx.database.driver" value="${darts.tx.database.driver}"/>
+            <filter token="darts.tx.database.user" value="${darts.tx.database.user}"/>
+            <filter token="darts.tx.database.password" value="${darts.tx.database.password}"/>
+            <filter token="darts.tx.database.jndi" value="${darts.tx.database.jndi}"/>
+
+            <filter token="gdgate.tx.database.url" value="${gdgate.tx.database.url}"/>
+            <filter token="gdgate.tx.database.driver" value="${gdgate.tx.database.driver}"/>
+            <filter token="gdgate.tx.database.user" value="${gdgate.tx.database.user}"/>
+            <filter token="gdgate.tx.database.password" value="${gdgate.tx.database.password}"/>
+            <filter token="gdgate.tx.database.jndi" value="${gdgate.tx.database.jndi}"/>
+            <filter token="gdgate.tx.database.bigstringclobenabled" value="${gdgate.tx.database.bigstringclobenabled}"/>
+            <filter token="gdgate.pool.capacity" value="${gdgate.pool.capacity}"/>
+            <filter token="gdgate.pool.max.capacity" value="${gdgate.pool.max.capacity}"/>
+            
+            <filter token="scjsegate.jms.database.url" value="${scjsegate.jms.database.url}"/>
+            <filter token="scjsegate.jms.database.driver" value="${scjsegate.jms.database.driver}"/>
+            <filter token="scjsegate.jms.database.user" value="${scjsegate.jms.database.user}"/>
+            <filter token="scjsegate.jms.database.password" value="${scjsegate.jms.database.password}"/>
+            <filter token="scjsegate.jms.database.jndi" value="${scjsegate.jms.database.jndi}"/>
+
+            <filter token="scjsegate.jms.inbridge.sourceurl" value="t3://${computer.name}:${scjsegateM1.port};t3://${computer.name}:${scjsegateM2.port}"/>
+            <filter token="scjsegate.jms.inbridge.targeturl" value="t3://${computer.name}:${midM1.port};t3://${computer.name}:${midM2.port}"/>
+            <filter token="scjsegate.jms.inbridge.user" value="${scjsegate.jms.inbridge.user}"/>
+            <filter token="scjsegate.jms.inbridge.password" value="${scjsegate.jms.inbridge.password}"/>
+            <filter token="scjsegate.jms.inbridge.idletimemaximum" value="${scjsegate.jms.inbridge.idletimemaximum}"/>
+            <filter token="scjsegate.jms.inbridge.batchsize" value="${scjsegate.jms.inbridge.batchsize}"/>
+            <filter token="scjsegate.jms.inbridge.batchinterval" value="${scjsegate.jms.inbridge.batchinterval}"/>
+
+            <filter token="scjsegate.jms.trackbridge.sourceurl" value="t3://${computer.name}:${scjsegateM1.port};t3://${computer.name}:${scjsegateM2.port}"/>
+            <filter token="scjsegate.jms.trackbridge.targeturl" value="t3://${computer.name}:${midM1.port};t3://${computer.name}:${midM2.port}"/>
+            <filter token="scjsegate.jms.trackbridge.user" value="${scjsegate.jms.trackbridge.user}"/>
+            <filter token="scjsegate.jms.trackbridge.password" value="${scjsegate.jms.trackbridge.password}"/>
+            <filter token="scjsegate.jms.trackbridge.idletimemaximum" value="${scjsegate.jms.trackbridge.idletimemaximum}"/>
+            <filter token="scjsegate.jms.trackbridge.batchsize" value="${scjsegate.jms.trackbridge.batchsize}"/>
+            <filter token="scjsegate.jms.trackbridge.batchinterval" value="${scjsegate.jms.trackbridge.batchinterval}"/>
+            
+            <filter token="scjsegate.jms.jmsxaadp" value="${weblogic.home}\server\lib\jms-xa-adp.rar"/>
+
+            <filter token="scjsegate.weblogic.kernel.default.count" value="${scjsegate.weblogic.kernel.default.count}"/>
+            <filter token="scjsegate.weblogic.kernel.default.max.count" value="${scjsegate.weblogic.kernel.default.max.count}"/>
+            <filter token="scjsegate.weblogic.kernel.default.min.count" value="${scjsegate.weblogic.kernel.default.min.count}"/>
+
+            <filter token="scjsegate.outbound.message.execute.queue.count" value="${scjsegate.outbound.message.execute.queue.count}"/>
+            <filter token="scjsegate.outbound.message.execute.queue.max.count" value="${scjsegate.outbound.message.execute.queue.max.count}"/>
+            <filter token="scjsegate.outbound.message.execute.queue.min.count" value="${scjsegate.outbound.message.execute.queue.min.count}"/>
+                       
+            <filter token="scjsegate.outbound.gateway.message.execute.queue.count" value="${scjsegate.outbound.gateway.message.execute.queue.count}"/>
+            <filter token="scjsegate.outbound.gateway.message.execute.queue.max.count" value="${scjsegate.outbound.gateway.message.execute.queue.max.count}"/>
+            <filter token="scjsegate.outbound.gateway.message.execute.queue.min.count" value="${scjsegate.outbound.gateway.message.execute.queue.min.count}"/>
+ 
+            <filter token="scjsegate.inbound.gateway.message.execute.queue.count" value="${scjsegate.inbound.gateway.message.execute.queue.count}"/>
+            <filter token="scjsegate.inbound.gateway.message.execute.queue.max.count" value="${scjsegate.inbound.gateway.message.execute.queue.max.count}"/>
+            <filter token="scjsegate.inbound.gateway.message.execute.queue.min.count" value="${scjsegate.inbound.gateway.message.execute.queue.min.count}"/>
+
+            <filter token="scjsegate.message.broker.execute.queue.count" value="${scjsegate.message.broker.execute.queue.count}"/>
+            <filter token="scjsegate.message.broker.execute.queue.max.count" value="${scjsegate.message.broker.execute.queue.max.count}"/>
+            <filter token="scjsegate.message.broker.execute.queue.min.count" value="${scjsegate.message.broker.execute.queue.min.count}"/>
+
+            <filter token="active.directory.host" value="${active.directory.host}"/>
+            <filter token="active.directory.user" value="${active.directory.user}"/>
+            <filter token="active.directory.password" value="${active.directory.password}"/>
+
+            <filter token="xhibit.version" value="${version}"/>
+            <filter token="disable.scheduler" value="${disable.scheduler}"/>
+            <filter token="scheduler.scheduledtasks" value="${scheduler.scheduledtasks}"/>
+            
+            <filter token="exiss.deadletter.execute.queue.count" value="${exiss.deadletter.execute.queue.count}"/>
+            <filter token="exiss.deadletter.execute.queue.max.count" value="${exiss.deadletter.execute.queue.max.count}"/>
+            <filter token="exiss.deadletter.execute.queue.min.count" value="${exiss.deadletter.execute.queue.min.count}"/>
+
+            <filter token="darts.execution.group.count" value="${darts.execution.group.count}"/>
+            <filter token="darts.execution.group.max.count" value="${darts.execution.group.max.count}"/>
+            <filter token="darts.execution.group.min.count" value="${darts.execution.group.min.count}"/>
+            
+
+         </filterset>
+
+        <property name="server.filter.includes" value="**/*.bat,**/*.xml"/>
+        <fileset id="server.static.fileset" dir="${run.template.server.dir}" excludes="${server.filter.includes}"/>
+        <fileset id="server.filtered.fileset" dir="${run.template.server.dir}" includes="${server.filter.includes}"/>
+
+        <!-- Uncomment below for debug!-->
+        <!--
+        <property name="server.static.fileset" refid="server.static.fileset"/>
+        <echo message="server.static.fileset: ${server.static.fileset}"/>
+        <property name="server.filtered.fileset" refid="server.filtered.fileset"/>
+        <echo message="server.filtered.fileset: ${server.filtered.fileset}"/>
+        -->
+
+        <echo message="Copy static server template files..."/>
+        <copy toDir="${run.server.dir}">
+            <fileset refid="server.static.fileset"/>
+            <mapper classname="uk.gov.courtservice.ant.types.mappers.RefFilterMapper"
+                    classpathref="framework.classpath"
+                    from="version.filterchain" />
+        </copy>
+
+        <echo message="Copy dynamic server template files..."/>
+        <copy toDir="${run.server.dir}" overwrite="false">
+            <fileset refid="server.filtered.fileset"/>
+            <filterset refid="filter.filterset"/>
+            <mapper classname="uk.gov.courtservice.ant.types.mappers.RefFilterMapper"
+                    classpathref="framework.classpath"
+                    from="version.filterchain" />
+        </copy>
+
+        <!-- Client Files -->
+
+        <property name="client.filter.includes" value="**/*.url"/>
+        <fileset id="client.static.fileset" dir="${run.template.client.dir}" excludes="${client.filter.includes}"/>
+        <fileset id="client.filtered.fileset" dir="${run.template.client.dir}" includes="${client.filter.includes}"/>
+
+        <echo message="Copy static client template files..."/>
+        <copy toDir="${run.client.dir}">
+            <fileset refid="client.static.fileset"/>
+            <mapper classname="uk.gov.courtservice.ant.types.mappers.RefFilterMapper"
+                    classpathref="framework.classpath"
+                    from="version.filterchain" />
+        </copy>
+
+        <echo message="Copy dynamic client template files..."/>
+        <copy toDir="${run.client.dir}" overwrite="false">
+            <fileset refid="client.filtered.fileset"/>
+            <filterset refid="filter.filterset"/>
+            <mapper classname="uk.gov.courtservice.ant.types.mappers.RefFilterMapper"
+                    classpathref="framework.classpath"
+                    from="version.filterchain" />
+        </copy>
+
+    </target>
+
+    <target name="clean.domain" depends="initialise">
+        <delete dir="${run.dir}"/>
+    </target>
+
+    <target name="run.notifier" depends="initialise,update.domain">
+        <property name="run.server.notifier.courtId" value="3"/> <!-- Isleworth-->
+        <tstamp>
+            <format property="run.server.notifier.date" pattern="yyyyMMdd"/>
+        </tstamp>
+        <property name="run.server.notifier.hostname" value="${computer.name}"/>
+        <property name="run.server.notifier.port" value="${midM1.port}"/>
+
+        <exec executable="cmd" dir="${run.server.notifier.bin.dir}" spawn="true">
+            <arg line="/c start &quot;XHIBIT Public Display Notifier&quot; notify.bat ${run.server.notifier.courtId} ${run.server.notifier.date} ${run.server.notifier.hostname} ${run.server.notifier.port}"/>
+        </exec>
+    </target>
+
+    <target name="run.client" depends="initialise,update.domain">
+        <exec executable="cmd" dir="${run.client.xhibit.bin.dir}" spawn="true">
+            <arg line="/c start &quot;XHIBIT Client&quot; xhibit.development.bat"/>
+        </exec>
+    </target>
+
+    <target name="start.admin" depends="initialise,update.domain">
+        <exec executable="cmd.exe" dir="${run.server.domain.dir}" spawn="true">
+            <arg line="/c start &quot;Admin Server&quot; startAdmin.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.admin" depends="initialise">
+        <wlserver servername="admin"
+                  host="${computer.name}"
+                  port="${admin.port}"
+                  username="${admin.username}"
+                  password="${admin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.midM1" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.server.domain.dir}" spawn="true">
+            <arg line="/c start &quot;Midtier 1&quot; startmidM1.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.midM1" depends="initialise">
+        <wlserver servername="midM1"
+                  host="${computer.name}"
+                  port="${midM1.port}"
+                  username="${admin.username}"
+                  password="${admin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.midM2" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.server.domain.dir}" spawn="true">
+            <arg line="/c start &quot;Midtier 2&quot; startmidM2.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.midM2" depends="initialise">
+        <wlserver servername="midM2"
+                  host="${computer.name}"
+                  port="${midM2.port}"
+                  username="${admin.username}"
+                  password="${admin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.presM1" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.server.domain.dir}" spawn="true">
+            <arg line="/c start &quot;Presentation 1&quot; startpresM1.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.presM1" depends="initialise">
+        <wlserver servername="presM1"
+                  host="${computer.name}"
+                  port="${presM1.port}"
+                  username="${admin.username}"
+                  password="${admin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.presM2" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.server.domain.dir}" spawn="true">
+            <arg line="/c start &quot;Presentation 2&quot; startpresM2.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.presM2" depends="initialise">
+        <wlserver servername="presM2"
+                  host="${computer.name}"
+                  port="${presM2.port}"
+                  username="${admin.username}"
+                  password="${admin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.scjsegateAdmin" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.scjsegateway.domain.dir}" spawn="true">
+            <arg line="/c start &quot;SCJSE Gateway Admin&quot; startadmin.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.scjsegateAdmin" depends="initialise">
+        <wlserver servername="admin"
+                  host="${computer.name}"
+                  port="${scjsegateadmin.port}"
+                  username="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.scjsegateM1" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.scjsegateway.domain.dir}" spawn="true">
+            <arg line="/c start &quot;SCJSE Gateway 1&quot; startscjsegateM1.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.scjsegateM1" depends="initialise">
+        <wlserver servername="scjsegateM1"
+                  host="${computer.name}"
+                  port="${scjsegateM1.port}"
+                  username="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  action="shutdown"/>
+    </target>
+
+    <target name="start.scjsegateM2" depends="initialise">
+        <exec executable="cmd.exe" dir="${run.scjsegateway.domain.dir}" spawn="true">
+            <arg line="/c start &quot;SCJSE Gateway 2&quot; startscjsegateM2.bat"/>
+        </exec>
+    </target>
+
+    <target name="stop.scjsegateM2" depends="initialise">
+        <wlserver servername="scjsegateM2"
+                  host="${computer.name}"
+                  port="${scjsegateM2.port}"
+                  username="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  action="shutdown"/>
+    </target>
+
+
+    <target name="deploy.midtier" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="MidTier"
+                  source="${run.server.application.dir}/staging/MidTier.ear"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  securityModel="CustomRoles"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="midcluster"/>
+    </target>
+
+    <target name="undeploy.midtier" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="MidTier"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="midcluster"
+                  failonerror="false"/>
+    </target>
+
+    <target name="redeploy.midtier" depends="undeploy.midtier,deploy.midtier"/>
+
+    <target name="deploy.publicdisplay" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="PublicDisplay"
+                  source="${run.server.application.dir}/staging/PublicDisplay.ear"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  securityModel="CustomRoles"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="prescluster" />
+    </target>
+
+    <target name="undeploy.publicdisplay" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="PublicDisplay"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="prescluster"
+                  failonerror="false" />
+    </target>
+
+    <target name="redeploy.publicdisplay" depends="undeploy.publicdisplay,deploy.publicdisplay"/>
+
+    <target name="deploy.thinclient" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="ThinClient"
+                  source="${run.server.application.dir}/staging/ThinClient.ear"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  securityModel="CustomRoles"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="prescluster" />
+    </target>
+
+    <target name="undeploy.thinclient" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="ThinClient"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="prescluster"
+                  failonerror="false" />
+      </target>
+
+      <target name="redeploy.thinclient" depends="undeploy.thinclient,deploy.thinclient"/>
+
+
+    <target name="deploy.scjsegateway" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="ScjseGateway"
+                  source="${run.scjsegateway.application.dir}/staging/ScjseGateway.ear"
+                  user="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  securityModel="DDOnly"
+                  adminurl="t3://${computer.name}:${scjsegateadmin.port}"
+                  targets="scjsegatecluster"/>
+    </target>
+
+    <target name="undeploy.scjsegateway" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="ScjseGateway"
+                  user="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  adminurl="t3://${computer.name}:${scjsegateadmin.port}"
+                  targets="scjsegatecluster"
+                  failonerror="false"/>
+    </target>
+
+    <target name="redeploy.scjsegateway" depends="undeploy.scjsegateway,deploy.scjsegateway"/>
+
+    <target name="deploy.scjsewsstub" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="ScjseStubWebServiceEar"
+                  source="${run.scjsegateway.application.dir}/staging/ScjseStubWebService.ear"
+                  user="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  securityModel="DDOnly"
+                  adminurl="t3://${computer.name}:${scjsegateadmin.port}"
+                  targets="scjsegatecluster"/>
+    </target>
+
+    <target name="undeploy.scjsewsstub" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="ScjseStubWebServiceEar"
+                  user="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  adminurl="t3://${computer.name}:${scjsegateadmin.port}"
+                  targets="scjsegatecluster"
+                  failonerror="false"/>
+    </target>
+
+    <target name="redeploy.scjsewsstub" depends="undeploy.scjsewsstub,deploy.scjsewsstub"/>
+
+    <target name="deploy.echowebservice" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="EchoWebServiceEar"
+                  source="${run.scjsegateway.application.dir}/staging/EchoWebService.ear"
+                  user="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  securityModel="DDOnly"
+                  adminurl="t3://${computer.name}:${scjsegateadmin.port}"
+                  targets="scjsegatecluster"/>
+    </target>
+
+    <target name="undeploy.echowebservice" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="EchoWebServiceEar"
+                  user="${scjsegateadmin.username}"
+                  password="${scjsegateadmin.password}"
+                  adminurl="t3://${computer.name}:${scjsegateadmin.port}"
+                  targets="scjsegatecluster"
+                  failonerror="false"/>
+    </target>
+
+    <target name="redeploy.echowebservice" depends="undeploy.echowebservice,deploy.echowebservice"/>
+
+
+      <target name="pmd" depends="initialise">
+        <mkdir dir="${build.dir}/reports/"/>
+
+        <taskdef name="pmd" classname="net.sourceforge.pmd.ant.PMDTask" loaderref="framework.loader" />
+
+        <pmd rulesetfiles="braces,imports,unusedcode" shortFilenames="true">
+      <formatter type="summaryhtml" toFile="${build.dir}/reports/pmd_report.html" />
+      <fileset dir=".">
+        <include name="**/*.java"/>
+      </fileset>
+    </pmd>
+
+      </target>
+	  
+	    <!-- 
+        Used locally during development to redeploy midtier from the midtier/build directory
+        -->
+	  <target name="dev.deploy.midtier" depends="initialise">
+        <wldeploy action="deploy"
+                  verbose="false"
+                  debug="true"
+                  name="MidTier"
+                  source="${midtier.ear.dir}/MidTier.ear"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  securityModel="CustomRoles"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="midCluster"/>
+    </target>
+
+    <target name="dev.undeploy.midtier" depends="initialise">
+        <wldeploy action="undeploy"
+                  verbose="false"
+                  debug="true"
+                  name="MidTier"
+                  user="${admin.username}"
+                  password="${admin.password}"
+                  adminurl="t3://${computer.name}:${admin.port}"
+                  targets="midCluster"
+                  failonerror="false"/>
+    </target>
+	
+
+    <target name="dev.redeploy.midtier" depends="dev.undeploy.midtier,dev.deploy.midtier"/>
+
+</project>
+
+
+
+<!--
+  =======================================================================
+    Legacy Tasks To Be Reimplemented!
+  =======================================================================
+
+<property name="publish.dir" location="${framework.dir}/../doc"/>
+<property name="doc.dir" location="${publish.dir}/${version}"/>
+<property name="apidoc.dir" location="${doc.dir}/api"/>
+<property name="metrics.publish.dir" location="${doc.dir}/metrics"/>
+
+
+ Combine all the source sections ready for metrics, javadoc etc - note metrics doesn't work with jdk1.3
+<target name="local.release" depends="init" if="execute.publish">
+    <filter token="DOCDIR" value="${version}"/>
+    <filter token="VERSION" value="${version}"/>
+
+    <copy todir="${publish.dir}" filtering="true" overwrite="true">
+        <fileset file="${buildsupport.dir}/doc/*"/>
+    </copy>
+
+    <copy todir="${metrics.publish.dir}">
+        <fileset dir="${metrics.output.dir}" defaultexcludes="yes">
+            <include name="**/*.*"/>
+        </fileset>
+    </copy>
+</target>
+
+
+<property name="combined.source.dir" location="./all-src" />
+
+        <mkdir dir="${doc.dir}" />
+    <mkdir dir="${apidoc.dir}" />
+    <mkdir dir="${publish.dir}" />
+    <mkdir dir="${metrics.publish.dir}" />
+    <mkdir dir="${combined.source.dir}" />
+
+
+<target name="init.nightly.build" if="build.type.nightly">
+    <property name="execute.javadoc" value="dummy"/>
+    <property name="execute.metrics" value="dummy"/>
+    <property name="execute.publish" value="dummy"/>
+    <property name="execute.statcvs" value="dummy"/>
+</target>
+
+<target name="local.process" depends="init.buildnumber, dist, javadoc, statcvs, generate.junitee.reports" />
+
+<target name="combine.source.trees" depends="init" if="execute.javadoc">
+    <echo>Combining the source trees for processing by JavaDoc etc.</echo>
+    <mkdir dir="${combined.source.dir}"/>
+    <foreach param="from.src.dir" target="move.to.src">
+        <path>
+            <dirset dir="${basedir}">
+                <include name="**/src"/>
+                <include name="**/gen_src"/>
+                <exclude name="**/metrics/**" />
+                <exclude name="**/api/**" />
+                <exclude name="**/buildsupport/**" />
+            </dirset>
+        </path>
+    </foreach>
+
+    <jar destfile="${doc.dir}/xhibit-src.jar"
+        basedir="${combined.source.dir}"
+        includes="**/*.java"
+    />
+</target>
+
+
+<target name="move.to.src">
+    <copy todir="${combined.source.dir}" includeEmptyDirs="false">
+        <fileset dir="${from.src.dir}" defaultexcludes="yes" >
+            <include name="uk/**/*.java"/>
+            <include name="mseries/**/*.java"/>
+            <include name="**/package.html"/>
+            <exclude name="**/*.jbx"/>
+        </fileset>
+    </copy>
+</target>
+
+<target name="generate.junitee.reports" depends="init" if="build.machine" >
+    <mkdir dir="${publish.dir}/${version}/juniteeReport"/>
+    <mkdir dir="${publish.dir}/${version}/junitReport"/>
+    <junitreport todir="${publish.dir}/${version}/juniteeReport">
+        <fileset dir="metrics/components">
+            <include name="**/junitee/**/TEST-*.xml" />
+        </fileset>
+
+        <report format="frames" todir="${publish.dir}/${version}/juniteeReport/html"/>
+    </junitreport>
+
+    <junitreport todir="${publish.dir}/${version}/junitReport">
+        <fileset dir="metrics/components">
+            <include name="**/junit/**/TEST-*.xml" />
+        </fileset>
+
+        <report format="frames" todir="${publish.dir}/${version}/junitReport/html"/>
+    </junitreport>
+</target>
+
+<target name="statcvs" depends="init" if="execute.statcvs">
+
+    RAKESH - This does not work with JDK1.3.
+
+    <taskdef name="statcvs" classname="net.sf.statcvs.ant.StatCvsTask" classpath="${buildsupport.lib.dir}/statcvs.jar;${buildsupport.lib.dir}/log4j.jar"/>
+        <cvs cvsRoot="${cvsroot}" command="log" output="${top.level.dir}/cvs.log"/>
+    <statcvs
+        projectName="XHIBIT"
+        projectDirectory="${top.level.dir}"
+        cvsLogFile="${top.level.dir}/cvs.log"
+        outputDirectory="${metrics.output.dir}/statcvs"
+        showCredits="yes"/>
+</target>
+
+<target name="javadoc" depends="init, combine.source.trees" if="execute.javadoc">
+    <mkdir dir="${apidoc.dir}"/>
+
+    <echo>Producing Javadoc for the entire application.</echo>
+    <path id="build.path">
+        <fileset dir="${lib.dir}">
+            <include name="*.jar,classes12.zip"/>
+        </fileset>
+
+        <fileset dir="${lib.dir}/velocity">
+            <include name="*.jar"/>
+        </fileset>
+
+
+        <fileset dir="${build.dest.dir}">
+            <include name="*.jar"/>
+        </fileset>
+
+        <fileset dir="${buildsupport.dir}/apps/apache-ant-1.6.0/lib">
+            <include name="ant.jar"/>
+        </fileset>
+    </path>
+
+    <javadoc destdir="${apidoc.dir}" failonerror="false" author="true" version="true"
+             use="true" windowtitle="Xhibit2" classpathref="build.path" maxmemory="256m" useexternalfile="true">
+        <packageset dir="${combined.source.dir}">
+            <exclude name="**/test"/>
+        </packageset>
+        <doctitle><![CDATA[<h1>Xhibit2 Build ${version}</h1>]]></doctitle>
+        <bottom><![CDATA[<i>Build ${version} Copyright &#169; 2005 EDS. All Rights Reserved.</i>]]></bottom>
+        <tag name="todo" scope="all" description="To do:"/>
+    </javadoc>
+
+    <jar destfile="${doc.dir}/xhibit-javadoc.jar"
+         basedir="${apidoc.dir}"
+         includes="**/*.*"/>
+</target>
+
+<target name="email" depends="init" >
+    <mail mailhost="205.191.69.42"
+          mailport="25"
+          subject="${version} ${build.result}"
+          tolist="${email.address}"
+          messagefile="${msg.file}"
+          from="xhibit.build@fake-address.com" />
+</target>
+-->
+

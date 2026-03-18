@@ -1,0 +1,4 @@
+
+    public static final Integer REPORTING_RESTRICTIONS_NOT_SET = new Integer(0);
+    public static final Integer REPORTING_RESTRICTIONS = new Integer(1);
+    public static final Integer LIFTING_RESTRICTIONS   = new Integer(99);

@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="XhbRefStatusCodes findByCode(java.lang.String statusCode)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbRefStatusCodes AS o WHERE o.statusCode = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ * -------- end of custom finders --------
+  

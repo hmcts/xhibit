@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC "-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN" "http://java.sun.com/dtd/application_1_3.dtd">
+<application>
+    <display-name>ThinClient</display-name>
+    <module>
+            <web>
+                <web-uri>ContentSwitchHeartbeat.war</web-uri>
+                <context-root>/</context-root>
+            </web>
+    </module>
+    <module>
+            <web>
+                <web-uri>Static.war</web-uri>
+                <context-root>Static</context-root>
+            </web>
+    </module>
+    <module>
+        <web>
+            <web-uri>Admin.war</web-uri>
+            <context-root>Admin</context-root>
+        </web>
+    </module>
+    <module>
+        <web>
+            <web-uri>CounselFacilities.war</web-uri>
+            <context-root>CounselFacilities</context-root>
+        </web>
+    </module>
+    <module>
+        <web>
+            <web-uri>Messaging.war</web-uri>
+            <context-root>Messaging</context-root>
+        </web>
+    </module>
+    <module>
+        <web>
+            <web-uri>ProbationService.war</web-uri>
+            <context-root>ProbationService</context-root>
+        </web>
+    </module>
+    <module>
+        <web>
+            <web-uri>WitnessFacilities.war</web-uri>
+            <context-root>WitnessFacilities</context-root>
+        </web>
+    </module>
+</application>

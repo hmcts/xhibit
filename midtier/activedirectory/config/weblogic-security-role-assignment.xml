@@ -1,0 +1,8 @@
+<!--
+  - XHBWeblogic requires access to the weblogic mbean configuration so must have
+  - administrator privileges
+  -->
+   <security-role-assignment>
+     <role-name>XHBWeblogic</role-name>
+     <principal-name>weblogic</principal-name>
+   </security-role-assignment>

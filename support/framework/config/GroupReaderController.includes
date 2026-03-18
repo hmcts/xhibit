@@ -1,0 +1,17 @@
+uk/gov/courtservice/framework/services/session/*.class
+uk/gov/courtservice/framework/services/locator/*.class
+uk/gov/courtservice/framework/services/errorhandling/*.class
+uk/gov/courtservice/framework/services/ejb/*.class
+uk/gov/courtservice/framework/services/database/*.class
+uk/gov/courtservice/framework/services/config/*.class
+uk/gov/courtservice/framework/services/audit/*.class
+uk/gov/courtservice/framework/services/*.class
+uk/gov/courtservice/framework/security/login/*.class
+uk/gov/courtservice/framework/security/authentication/*.class
+uk/gov/courtservice/framework/security/authentication/groupreader/*.class
+uk/gov/courtservice/framework/security/*.class
+uk/gov/courtservice/framework/exception/*.class
+uk/gov/courtservice/framework/client/*.class
+uk/gov/courtservice/framework/business/vos/*.class
+
+

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="InternetWebPageTemplate.xsl"?>
+<currentcourtstatus>
+  <datetimestamp>
+    <dayofweek>Monday</dayofweek>
+    <date>03</date>
+    <month>February</month>
+    <year>2003</year>
+    <hour>14</hour>
+    <min>40</min>
+  </datetimestamp>
+  <court>
+    <courtname>Snaresbrook Crown Court</courtname>
+    <courtsites>
+      <courtsite>
+        <courtsitename>Snaresbrook</courtsitename>
+        <courtrooms>
+          <courtroom>
+            <cases>
+              <caseDetails>
+                <casenumber>T20034444</casenumber>
+                <casetype>For Mention</casetype>
+              </caseDetails>
+              <defendant>
+                <firstname>John</firstname>
+                <middlename>H</middlename>
+                <lastname>Smith</lastname>
+              </defendant>
+            </cases>
+            <currentstatus>Legal Submissions at 14:36</currentstatus>
+            <statushelpcode>20611</statushelpcode>
+            <courtroomname>Court 1</courtroomname>
+          </courtroom>
+          <courtroom>
+            <cases>
+              <caseDetails>
+                <casenumber>T20035555</casenumber>
+                <casetype>For Mention (test)</casetype>
+              </caseDetails>
+              <defendant>
+                <firstname>Peter</firstname>
+                <middlename>B</middlename>
+                <lastname>Good</lastname>
+              </defendant>
+            </cases>
+            <currentstatus>Case Started at 14:38</currentstatus>
+            <statushelpcode>10100</statushelpcode>
+            <courtroomname>Court 2</courtroomname>
+          </courtroom>
+        </courtrooms>
+      </courtsite>
+    </courtsites>
+  </court>
+</currentcourtstatus>

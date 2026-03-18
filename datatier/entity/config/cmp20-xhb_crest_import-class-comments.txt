@@ -1,0 +1,16 @@
+* -------- custom finders --------
+*
+* @ejb.finder
+*    signature="Collection findUserInitiatedCrestImportsByCourtId(java.lang.Integer courtId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT
+*              OBJECT(ci)
+*          FROM
+*              XhbCrestImport ci
+*          WHERE
+*              ci.courtId = ?1
+*          AND
+*              ci.importType IN ('AD', 'GL', 'LL')"
+*
+* -------- end of custom finders --------

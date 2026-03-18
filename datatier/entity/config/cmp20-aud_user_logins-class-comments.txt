@@ -1,0 +1,23 @@
+ * -------- custom finders --------
+ *
+* @ejb.finder
+*    signature="java.util.Collection findRSByUserId(java.lang.String userId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (o) FROM AudUserLogins o WHERE 
+*	    o.userId = ?1"           
+* @ejb.finder
+*    signature="java.util.Collection findRSByUserIdandTerminal(java.lang.String userId,java.lang.String terminalId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (o) FROM AudUserLogins o WHERE 
+*	    o.userId = ?1 AND o.terminalName = ?2"           
+* @ejb.finder
+*    signature="java.util.Collection findMaxByUserId(java.lang.String userId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (o) FROM AudUserLogins o WHERE 
+*	    o.id = (SELECT MAX(aul.id) FROM AudUserLogins aul WHERE aul.userId = ?1)"           
+ *
+ * -------- end of custom finders --------
+  

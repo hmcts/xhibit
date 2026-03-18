@@ -1,0 +1,35 @@
+ *
+ * @ejb.finder
+ *    signature="Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xw) FROM XhbWitness xw  WHERE xw.caseId = ?1"
+ *    description="Find witnesses for a case."
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findByCaseAndWeek(java.lang.Integer caseId, int week)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xw) FROM XhbWitness xw WHERE xw.caseId=?1 AND xw.xhbSkeletonSession.xhbSkeletonDay.dayNumber between (?2*5-4) and (?2*5)"
+ *    description="Find witnesses for a week."
+ *
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findSignedInWitnesses(java.lang.Integer caseId, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xw) FROM XhbWitness xw, XhbCase xc WHERE xw.caseId = ?1 AND xc.caseId=?1 and xc.courtId= ?2 AND xw.actualArrivalDateTime is not null AND xw.releasedDateTime is null"
+ *    description="Find signed in witnesses for a case."
+ *
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findByCaseAndDay(java.lang.Integer caseId, int day)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xw) FROM XhbWitness xw WHERE xw.caseId=?1 AND xw.xhbSkeletonSession.xhbSkeletonDay.dayNumber=?2"
+ *    description="Find witnesses for a day."
+ *
+ *

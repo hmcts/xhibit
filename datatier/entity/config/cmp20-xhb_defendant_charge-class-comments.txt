@@ -1,0 +1,15 @@
+* -------- custom finders --------
+*
+* @ejb.finder
+*    signature="Collection findByChargeId(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT(dc) FROM XhbDefendantCharge dc WHERE dc.chargeId = ?1"
+*
+* @ejb.finder
+*    signature="Collection findByChargeIdAndDefOnCaseId(java.lang.Integer chargeId, java.lang.Integer defendantOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT(dc) FROM XhbDefendantCharge dc WHERE dc.chargeId = ?1 and dc.defendantOnCaseId=?2"
+*
+* -------- end of custom finders --------

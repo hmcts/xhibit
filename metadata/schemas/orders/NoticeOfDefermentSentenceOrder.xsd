@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:complexType name="NoticeOfDefermentSentenceOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xsd:element name="DateOfOrder" type="xsd:date" />
+ 			<xsd:element name="CrownCourtToAttend">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CourtHouseDetails" type="XHIBITCourtHouseStructure" />
+					</xsd:sequence>
+ 				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="LinkedOffences" type="LinkedOffenceStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Linked Offences for the defendant</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="Requirements" type="xs:string" minOccurs="0"/>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NoticeOfDefermentSentenceOrder" type="ord:NoticeOfDefermentSentenceOrderStructure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V1.0 (30/11/2015)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

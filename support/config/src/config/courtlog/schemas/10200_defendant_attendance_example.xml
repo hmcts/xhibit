@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="10200.xsd">
+	<id>123456</id>
+	<type>10200</type>
+	<date>2002-11-11</date>
+	<time/>
+	<free_text/>
+	<Defendant-Attendance-Options>
+		<DEO-Type>10200_Defendant_delayed</DEO-Type>
+	</Defendant-Attendance-Options>
+</event>

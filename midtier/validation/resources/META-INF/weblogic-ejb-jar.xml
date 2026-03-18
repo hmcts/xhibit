@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<weblogic-ejb-jar xmlns="http://www.bea.com/ns/weblogic/90" xmlns:j2ee="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.bea.com/ns/weblogic/90 http://www.bea.com/ns/weblogic/90/weblogic-ejb-jar.xsd">
+	<weblogic-enterprise-bean>
+		<ejb-name>ValidationMessageBean</ejb-name>
+		<message-driven-descriptor>
+			<pool>
+				<max-beans-in-free-pool>2</max-beans-in-free-pool>
+				<initial-beans-in-free-pool>2</initial-beans-in-free-pool>
+			</pool>
+			<destination-jndi-name>AQJMS_XhbValidationQueue</destination-jndi-name>
+			<!-- Reuse the connection factory created for WMB -->
+			<connection-factory-jndi-name>AQJMS_WmbConnectionFactory</connection-factory-jndi-name>
+		</message-driven-descriptor>
+	</weblogic-enterprise-bean>
+</weblogic-ejb-jar>

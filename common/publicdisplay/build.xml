@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="PublicDisplayCommon">
+    
+    <description>
+        Common classes for the Public DisplayRewrite
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.author" value="Bob Boothby, Neil Ellis, Rakesh Lakhani"/>
+    
+    <property name="project.type.builds.jar" value="marker"/>
+    <property name="project.type.requires.compilation" value="marker"/>    
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>        
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="CourtLogCommon.jar" />
+				<include name="CommonValue.jar" />
+            </fileset>
+        </path>
+    </target>
+
+</project>

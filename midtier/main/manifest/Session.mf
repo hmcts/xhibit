@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ./Framework.jar ./Value.jar ./Config.jar ./Integration.jar ./database.jar ./TimerProcess.jar ./EmailHelper.jar ./flrSearch.jar ./PublicDisplayCommon.jar ./RoleMappingCommon.jar ./ProgressCommon.jar ./AddressHelper.jar
+
+

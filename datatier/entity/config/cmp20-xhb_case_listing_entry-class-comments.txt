@@ -1,0 +1,12 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(cle) 
+ *    FROM XhbCaseListingEntry AS cle
+ *    WHERE cle.caseId = ?1
+ *    orderby cle.creationDate asc"
+ *
+ * -------- end of custom finders --------

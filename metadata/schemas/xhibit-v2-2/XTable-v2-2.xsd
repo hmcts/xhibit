@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="XTable">
+    <xs:element name="XTable">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="XTableTitle" type="xs:string"/>
+                <xs:element name="XTableHeader">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="XTableRow"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="XTableBody">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="XTableRow" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="XTableRow">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="XTableCell" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:simpleContent>
+                            <xs:extension base="xs:string">
+                                <xs:attribute name="textAlign" type="textAlignType" default="left"/>
+                            </xs:extension>
+                        </xs:simpleContent>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="textAlignType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="left"/>
+            <xs:enumeration value="right"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

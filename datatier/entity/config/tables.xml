@@ -1,0 +1,220 @@
+﻿      <table name="XHB_ADDRESS"/>
+      <table name="XHB_AGGRAVATING_REASONS" pktable="XHB_AGGRAVATING_REASONS_SEQ"/>
+      <table name="XHB_BLOB"/>
+      <table name="XHB_BREACH"/>
+      <table name="XHB_BW_HISTORY"/>
+      <table name="XHB_CASE"/>
+      <table name="XHB_CASE_HISTORY"/>
+      <table name="XHB_CASE_APP_REASON"/>
+      <table name="XHB_CASE_DIARY_FIXTURE"/>
+      <table name="XHB_CASE_LISTING_ENTRY"/>
+      <table name="XHB_CASE_PROSECUTOR_AGENCY" pktable="XHB_CASE_PROSECTOR_AGENCY_SEQ"/>
+      <table name="XHB_CASE_NON_AVAIL_DAYS"/>
+      <table name="XHB_CASE_ON_LIST"/>
+      <table name="XHB_CASE_REFERENCE"/>
+      <!--
+      <table name="XHB_CC_INFO"/>
+      -->
+      <table name="XHB_CHARGE"/>
+      <table name="XHB_CHARGES_LOG"/>
+      <table name="XHB_CHARGE_DIFFERENCES" singular="XhbChargeDifferences"/>
+      <table name="XHB_CLOB"/>
+	  <table name="XHB_CM_LOGS"/>
+      <table name="XHB_CONFIGURED_PUBLIC_NOTICE" pktable="XHB_CONFIGURED_PUBLIC_NOT_SEQ"/>
+      <table name="XHB_CONFIG_PROP"/>
+      <table name="XHB_CONTACT_DETAIL"/>
+      <table name="XHB_COLLECTION_CENTRE"/>
+      <table name="XHB_COURT"/>
+      <table name="XHB_COURT_LOG_CATEGORY"/>
+      <table name="XHB_COURT_LOG_CATEGORY_DESC" pktable="XHB_COURT_LOG_CAT_DESC_SEQ"/>
+      <table name="XHB_COURT_LOG_ENTRY"/>
+      <table name="XHB_COURT_LOG_EVENT_DESC"/>
+      <table name="XHB_COURT_ROOM"/>
+      <table name="XHB_COURT_SITE"/>
+	    <table name="XHB_COURT_SATELLITE"/>
+      <table name="XHB_CPP_FORMATTING_MERGE"/>
+      <table name="XHB_CPP_STAGING_INBOUND"/>
+	    <table name="XHB_CREST_IMPORT"/>
+      <table name="XHB_CREST_IMPORT_TYPE" pktable="XHB_DUMMY_WEBLOGIC_SEQ"/>
+      <table name="XHB_CR_LIVE_INTERNET" singular="XhbCrLiveInternet"/>
+      <table name="XHB_CR_LIVE_DISPLAY" singular="XhbCrLiveDisplay"/>
+	    <table name="XHB_CPP_FORMATTING"/>
+      <table name="XHB_CPP_LIST"/>
+      <table name="XHB_D20_OFFENCE_CODES"/>
+	  <table name="XHB_D20_OFFENCE_LINK"/>
+	  <table name="XHB_DAR_RETENTION_POLICY" pktable="XHB_DAR_RETENTION_POLICY_SEQ"/>
+      <table name="XHB_DEF_ON_CASE_REF_SOL_FIRM" pktable="XHB_DEF_CASE_SOL_FIRM_SEQ"/>
+      <table name="XHB_DEF_ON_CASE_ON_LIST"/>
+      <table name="XHB_DEFENDANT"/>
+      <table name="XHB_DEFENDANT_CHARGE"/>
+      <table name="XHB_DEFENDANT_ON_CASE"/>
+      <table name="XHB_DEFENDANT_ON_OFFENCE" pktable="XHB_DEFENDANT_ON_OFFENCE_SEQ"/>
+      <table name="XHB_DEFENDANT_REFERENCE"/>
+      <table name="XHB_DEFENDANT_HISTORY"/>
+	    <table name="XHB_DEFENDANT_ON_CASE_HISTORY" pktable="XHB_DEFENDANT_ON_CASE_HIST_SEQ"/>
+      <table name="XHB_DEFINITIVE_PUBLIC_NOTICE" pktable="XHB_DEFINITIVE_PUB_NOTICE_SEQ"/>
+      <table name="XHB_DEF_HEARING_RECORD"/>
+      <table name="XHB_DIARY_NOTE_ENTRY"/>
+      <table name="XHB_DIRECTIONS_FOR_CASE" pktable="XHB_DIR_FOR_CASE_SEQ"/>
+      <table name="XHB_DIRECTIONS_FOR_DEFENDANT" pktable="XHB_DIR_FOR_DEFENDANT_SEQ"/>
+      <!--
+      <table name="XHB_DIRECTION_ATTEND"/>
+      -->
+      <table name="XHB_DISPLAY"/>
+      <table name="XHB_DISPLAY_DOCUMENT"/>
+      <table name="XHB_DISPLAY_LOCATION"/>
+      <table name="XHB_DISPLAY_TYPE"/>
+      <table name="XHB_DISPOSAL2"/>
+      <table name="XHB_DISPOSAL_LINE"/>
+      <table name="XHB_DOCUMENT_CONTROL"/>
+      <table name="XHB_DOCUMENT_DISTRIBUTION"/>
+      <table name="XHB_DOCUMENT_RECIPIENT"/>
+      <!--
+      <table name="XHB_DOCUMENT_REPLY"/>
+      -->
+      <table name="XHB_EMAIL"/>
+      <!--
+      <table name="XHB_ERROR_DEF"/>
+      -->
+      <table name="XHB_EXPORTA"/>
+      <table name="XHB_FIXTURE_DEFT_ATTENDING"/>
+      <table name="XHB_FORMATTING"/>
+      <table name="XHB_FORMB_RESULT"/>
+      <table name="XHB_HATE_SENTENCING"/>
+      <table name="XHB_HEARING"/>
+      <table name="XHB_HEARING_LEG_REP"/>
+      <table name="XHB_HEARING_LIST"/>
+      <table name="XHB_IMPORT_EXPORT_STATUS" singular="XhbImportExportStatus"/>
+      <table name="XHB_INDICTMENT_LOG"/>
+      <table name="XHB_INTERNET_HTML"/>
+      <table name="XHB_JOINDER"/>
+      <table name="XHB_JOINDER_CHARGE"/>
+      <table name="XHB_JOINDER_DEFENDANT_ON_CASE" pktable="XHB_JOINDER_DEF_ON_CASE_SEQ"/>
+      <table name="XHB_JOINDER_XML"/>
+      <!--
+      <table name="XHB_LINKED_CASE"/>
+      <table name="XHB_LINKED_HEARING"/>
+      <table name="XHB_LINKED_SH"/>
+      <table name="XHB_MESSAGE"/>
+      <table name="XHB_OBJECT_STATUS" singular="XhbObjectStatus"/>
+      -->
+      <table name="XHB_LEGAL_AID_AMENDMENT"/>
+      <table name="XHB_LEGAL_AID_ORDER"/>
+      <table name="XHB_LEO_ADV_LINK"/>
+      <table name="XHB_LIST"/>
+	  <table name="XHB_MIGRATE_CASE" pktable="XHB_MIGRATE_CASE_SEQ"/>
+      <table name="XHB_MONETARY_ORDER_TRACKING" pktable="XHB_MONETARY_ORDER_TRACK_SEQ"/>
+      <table name="XHB_OFFENCE"/>
+      <!--
+      <table name="XHB_ORDER"/>
+      <table name="XHB_ORDER_DELIVERY_STATUS" singular="XhbObjectDeliveryStatus"/>
+      -->
+      <table name="XHB_ORDER_DISPOSAL_XREF"/>
+      <!--
+      <table name="XHB_ORDER_STATUS" singular="XhbOrderStatus"/>
+      <table name="XHB_ORDER_TEMPLATE"/>
+      -->
+      <table name="XHB_ORDER_TYPE" pktable="XHB_ORD_TYPE_SEQ"/>
+      <table name="XHB_PDDA_BATCH" pktable="XHB_PDDA_BATCH_SEQ"/>
+      <table name="XHB_PDDA_MESSAGE" pktable="XHB_PDDA_MESSAGE_SEQ"/>
+      <table name="XHB_PLEA"/>
+      <table name="XHB_PROGRESS_TRIGGER"/>
+      <table name="XHB_PROGRESS_TRIGGER_STATUS" pktable="XHB_PROGRESS_STATUS_SEQ"/>
+      <table name="XHB_PSR_RECIPIENT"/>
+      <table name="XHB_PSR_REQUEST"/>
+      <table name="XHB_PUBLIC_NOTICE"/>
+	  <table name="XHB_PUB_RUNNING_LIST"/>
+      <table name="XHB_RECIPIENT"/>
+      <table name="XHB_REF_AGGRAVATING_REASONS" pktable="XHB_REF_AGGRAVATING_REASON_SEQ"/>
+      <!--
+      <table name="XHB_REF_ADVOCATE"/>
+      <table name="XHB_REF_CHAMBER"/>
+      -->
+	  <table name="XHB_REF_APP_RES_D20_MAP"/>
+      <table name="XHB_REF_APP_RESULT"/>
+      <table name="XHB_REF_CALENDAR"/>
+      <table name="XHB_REF_COURT"/>
+      <table name="XHB_REF_CALENDAR"/>
+      <!--
+      <table name="XHB_REF_COURT_REPORTER"/>
+      <table name="XHB_REF_COURT_REPORTER_FIRM"/>
+      -->
+      <table name="XHB_REF_DAR_RETENTION_POLICIES" pktable="XHB_REF_RETENTION_POLICY_SEQ"/>
+      <table name="XHB_REF_DISP_RETENTION_POLICY" pktable="XHB_DISP_RETENTION_POLICY_SEQ"/>
+      <table name="XHB_REF_DISPOSAL"/>
+      <table name="XHB_REF_DISPOSAL_TYPE"/>
+      <table name="XHB_REF_DISPOSAL_LINE"/>
+      <table name="XHB_REF_DISPOSAL_MENU"/>
+      <table name="XHB_REF_HATE_SENTENCING_TYPE" pktable="XHB_REF_HATE_SENT_TYPE_SEQ"/>
+      <table name="XHB_REF_HEARING_TYPE"/>
+      <table name="XHB_REF_JUDGE"/>
+      <table name="XHB_REF_JUDGE_TICKET"/>
+      <table name="XHB_REF_JUSTICE"/>
+      <table name="XHB_REF_LEGAL_REPRESENTATIVE" pktable="XHB_REF_LEGAL_REP_SEQ"/>
+      <table name="XHB_REF_LISTING_DATA"/>
+      <table name="XHB_REF_NATIONALITY"/>
+      <table name="XHB_REF_MONITORING_CATEGORY" pktable="XHB_REF_MONITORING_CAT_SEQ"/>
+      <table name="XHB_REF_MON_ORD_DISPOSALS"/>
+      <table name="XHB_REF_OFFENCE"/>
+      <table name="XHB_REF_PDDA_MESSAGE_TYPE" pktable="XHB_REF_PDDA_MESSAGE_TYPE_SEQ"/>
+      <table name="XHB_REF_PROSECUTOR_AGENCY"/>
+      <table name="XHB_PROSECUTOR_REF_SOL_FIRM" pktable="XHB_PROS_REF_SOL_FIRM_SEQ"/>
+      <table name="XHB_REF_SOLICITOR"/>
+      <table name="XHB_REF_SOLICITOR_FIRM"/>
+      <table name="XHB_REF_STATUS_CODES" pktable="XHB_REF_STATUS_CODES_SEQ"/>
+      <table name="XHB_REF_SYSTEM_CODE"/>
+	  <table name="XHB_REMAND_REASONS" pktable="XHB_REMAND_REASONS_SEQ"/>
+	  <table name="XHB_REMAND_REASON_DESCRIPTION" pktable="XHB_REMAND_REASON_DESC_SEQ"/>
+      <table name="XHB_REFUSED_BROADCAST_CASE"/>
+      <table name="XHB_ROTATION_SET_DD"/>
+      <table name="XHB_ROTATION_SETS"/>
+      <table name="XHB_SCHEDULED_HEARING"/>
+      <table name="XHB_SCHED_HEARING_ATTENDEE" pktable="XHB_SCHED_HEARING_ATTEND_SEQ"/>
+      <table name="XHB_SCHED_HEARING_DEFENDANT" pktable="XHB_SCHEDULED_HEARING_DEF_SEQ"/>
+      <table name="XHB_SECURITY_GROUP" pktable="XHB_DUMMY_WEBLOGIC_SEQ"/>
+      <table name="XHB_SECURITY_GROUP_ROLE"/>
+      <table name="XHB_SECURITY_ROLE" pktable="XHB_DUMMY_WEBLOGIC_SEQ"/>
+      <!--
+      <table name="XHB_SH_JUDGE"/>
+	  -->
+      <table name="XHB_SH_JUSTICE"/>
+      <table name="XHB_SH_LEG_REP"/>
+      <!--
+      table name="XHB_SH_STAFF"/
+      -->
+      <table name="XHB_SITTING"/>
+      <table name="XHB_SITTING_ON_LIST"/>
+      <!--
+      <table name="XHB_SKELETON_DAY"/>
+      <table name="XHB_SKELETON_DELIVERY_STATUS" singular="XhbSkeletonDeliveryStatus"/>
+      <table name="XHB_SKELETON_SCHEDULE"/>
+      <table name="XHB_SKELETON_SESSION"/>
+      -->
+      <table name="XHB_SUBSCR_EVENT_CONTROL"/>
+      <!--
+      <table name="XHB_SYS_AUDIT"/>
+      <table name="XHB_SYS_USER_INFORMATION"/>
+      -->
+      <table name="XHB_TERMINAL"/>
+      <table name="XHB_TERMINAL_COURT_DEFAULT"/>
+      <table name="XHB_TERMINAL_DEFAULT"/>
+      <!--
+      table name="XHB_TERMINAL_REFERENCE"/
+      -->
+      <table name="XHB_TIME"/>
+      <table name="XHB_VERDICT"/>
+      <table name="XHB_WITNESS"/>
+      <table name="XHB_WLL_CONTROL"/>
+      <table name="XHB_WLL_DOCUMENT"/>
+      <table name="XHB_WLL_RECIPIENT"/>
+      <table name="XHB_XML_DOCUMENT"/>
+      <table name="AUD_USER_LOGINS"/>
+      <table name="XHB_JUDGE_USAGE"/>
+      <table name="XHB_COURT_ROOM_USAGE"/>
+      <table name="XHB_COURTEL_LIST"/>
+      <many2many>
+        <tablea name="XHB_DISPLAY"/>
+        <jointable name="XHB_DISPLAY_COURT_ROOM" generate="false"/>
+        <tableb name="XHB_COURT_ROOM"/>
+      </many2many>
+

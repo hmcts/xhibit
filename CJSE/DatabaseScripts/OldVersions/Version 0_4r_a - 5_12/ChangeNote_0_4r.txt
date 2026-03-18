@@ -1,0 +1,6 @@
+Changes from 0_4_q to 0_4_r
+
+- Added extra column to the CJI_EVENT table
+
+ BITS_REGISTERING_LOCATION VARCHAR2 ( 50 )
+

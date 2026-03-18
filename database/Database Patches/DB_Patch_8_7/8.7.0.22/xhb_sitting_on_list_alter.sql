@@ -1,0 +1,17 @@
+--ctx-1727
+--xhb table changes
+ALTER TABLE xhb_sitting_on_list ADD COURT_ROOM_ID NUMBER(8) NOT NULL;
+ALTER TABLE xhb_sitting_on_list ADD COURT_SITE_ID NUMBER(8) NOT NULL;
+
+--Create FK constraints
+ALTER TABLE xhb_sitting_on_list ADD (CONSTRAINT SITT_ON_LIST_COURT_ROOM_ID_FK FOREIGN KEY (COURT_ROOM_ID) REFERENCES XHB_COURT_ROOM(COURT_ROOM_ID));
+ALTER TABLE xhb_sitting_on_list ADD (CONSTRAINT SITT_ON_LIST_COURT_SITE_ID_FK FOREIGN KEY (COURT_SITE_ID) REFERENCES XHB_COURT_SITE(COURT_SITE_ID));
+
+--aud table changes
+
+ALTER TABLE aud_sitting_on_list ADD COURT_ROOM_ID NUMBER(8) NOT NULL;
+ALTER TABLE aud_sitting_on_list ADD COURT_SITE_ID NUMBER(8) NOT NULL;
+
+@@xhb_sitting_on_list_bur_tr.sql;
+
+commit;

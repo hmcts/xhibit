@@ -1,0 +1,130 @@
+<?xml version="1.0"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+    <!-- Struts Tag Library Descriptors -->
+    <!-- Servlet to serve the rotation sets -->
+    <!-- <servlet>
+        <servlet-name>RotationSetServlet</servlet-name>
+        <display-name>RotationSetServlet</display-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.publicdisplay.RotationSetServlet</servlet-class>
+    </servlet>  -->
+    <!-- Servlet to serve the rotation sets -->
+    <servlet>
+        <servlet-name>FileServlet</servlet-name>
+        <display-name>FileServlet</display-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.publicdisplay.storage.pub.servlet.FileServlet</servlet-class>
+    </servlet>
+    <!-- Servlet to serve images -->
+    <servlet>
+        <servlet-name>HeaderImageServlet</servlet-name>
+        <display-name>HeaderImageServlet</display-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.publicdisplay.imaging.HeaderImageServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>HeadingServlet</servlet-name>
+        <display-name>HeadingServlet</display-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.publicdisplay.imaging.HeadingServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DisplaySelectorServlet</servlet-name>
+        <display-name>DisplaySelectorServlet</display-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.publicdisplay.setup.servlet.DisplaySelectorServlet</servlet-class>
+    </servlet>
+    <!-- Servlet used to perform initialization -->
+    <servlet>
+        <servlet-name>InitServlet</servlet-name>
+        <display-name>Initialization Servlet</display-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.publicdisplay.initialization.servlet.InitServlet</servlet-class>
+        <init-param>
+            <param-name>retry.period</param-name>
+            <param-value>60000</param-value>
+            <description>Retry period used by the initialization service for connecting to the midtier</description>
+        </init-param>
+        <init-param>
+            <param-name>num.subscription.workers</param-name>
+            <param-value>1</param-value>
+            <description>Number of worker threads used by each subscriptions</description>
+        </init-param>
+        <init-param>
+            <param-name>messaging.mode</param-name>
+            <param-value>PubSub</param-value>
+            <description>Messaging mode used by public display. Possible values are P2P or PubSub</description>
+        </init-param>
+        <init-param>
+            <param-name>num.initialization.workers</param-name>
+            <param-value>5</param-value>
+            <description>Number of worker threads used for document initialization</description>
+        </init-param>
+        <init-param>
+            <param-name>initialization.delay</param-name>
+            <param-value>2000</param-value>
+            <description>Delay after each initialization</description>
+        </init-param>
+        <load-on-startup>0</load-on-startup>
+    </servlet>
+
+
+    <!-- URI mapping for the rotation set servlet -->
+    <!-- <servlet-mapping>
+        <servlet-name>RotationSetServlet</servlet-name>
+        <url-pattern>/RotationSetServlet</url-pattern>
+    </servlet-mapping> -->
+    <servlet-mapping>
+        <servlet-name>FileServlet</servlet-name>
+        <url-pattern>/FileServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeaderImageServlet</servlet-name>
+        <url-pattern>/header/*</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HeadingServlet</servlet-name>
+        <url-pattern>/heading</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DisplaySelectorServlet</servlet-name>
+        <url-pattern>/setup/DisplaySelectorServlet</url-pattern>
+    </servlet-mapping>
+    <!-- List of welcome files for the container -->
+    <welcome-file-list>
+        <welcome-file>index.jsp</welcome-file>
+        <welcome-file>index.html</welcome-file>
+        <welcome-file>index.htm</welcome-file>
+    </welcome-file-list>
+    <!-- Use the setting in weblogic config -->
+    <session-config>
+        <session-timeout>-2</session-timeout>
+    </session-config>
+    <!-- Error Page Settings -->
+    <error-page>
+        <error-code>404</error-code>
+        <location>/errors/error_404.jsp</location>
+    </error-page>
+    <error-page>
+        <error-code>503</error-code>
+        <location>/errors/error_503.jsp</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Throwable</exception-type>
+        <location>/errors/error_general_runtime.jsp</location>
+    </error-page>
+    <!-- Taglib discriptors -->
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+        <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+    </taglib>
+    <!-- Security constraint for stress test JSPs -->
+    <security-constraint>
+        <display-name>Security constraint for load test JSPs</display-name>
+        <web-resource-collection>
+            <web-resource-name>Load test JSPs</web-resource-name>
+            <url-pattern>/loadtest/*.jsp</url-pattern>
+        </web-resource-collection>
+    </security-constraint>
+
+    <login-config>
+        <auth-method>BASIC</auth-method>
+    </login-config>
+
+</web-app>

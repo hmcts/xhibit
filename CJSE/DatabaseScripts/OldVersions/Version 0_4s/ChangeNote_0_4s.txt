@@ -1,0 +1,7 @@
+Changes from 0_4_r to 0_4_s
+
+-  Changed value in cji_document_type
+
+update cji_document_type set bits_document_config = 'BITS.CommittalRecordSheetHandler'
+where document_type_id = 14
+

@@ -1,0 +1,1 @@
+CREATE INDEX AUD_CHARGE_CASEID_CHRGID ON aud_charge(case_id, charge_id);

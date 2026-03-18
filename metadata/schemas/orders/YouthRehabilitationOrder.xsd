@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:complexType name="YouthRehabilitationOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xsd:element name="ResponsibleOfficer1" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>ResponsibleOfficer1</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="ResponsibleOfficer2" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>ResponsibleOfficer2</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="CompletionDate" type="xsd:date">
+				<xsd:annotation>
+					<xsd:documentation>CompletionDate</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="YouthRehabilitationOrderRequirements">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="UnpaidWorkRequirement" type="XHIBITUnpaidWorkStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section A</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ActivityRequirement" type="XHIBITActivityStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section B</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ProgrammeRequirement" type="XHIBITProgrammeStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section C</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ProhibitedActivityRequirement" type="XHIBITProhibitedStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section D</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="CurfewRequirement" type="XHIBITCurfewStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section E</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ExclusionRequirement" type="XHIBITExclusionStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section F</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ResidenceRequirement" type="XHIBITResidenceStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section G</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="LocalAuthorityResidenceRequirement" type="XHIBITLocalAuthorityResidenceStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section H</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="FosteringRequirement" type="XHIBITFosteringStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section I</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="MentalHealthTreatmentRequirement" type="XHIBITMentalHealthStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section J</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="DrugRehabilitationRequirement" type="XHIBITDrugRehabStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section K</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="DrugTestingRequirement" type="XHIBITDrugTestingStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section L</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="IntoxicatingSubstanceRequirement" type="XHIBITIntoxicatingSubstanceStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section M</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="SupervisionRequirement" type="XHIBITSupervisionStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section N</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="EducationRequirement" type="XHIBITEducationStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section O</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+						<xsd:element name="ExtendedActivityRequirement" type="XHIBITExtendedActivityStructure">
+						</xsd:element>
+						<xsd:element name="ElectronicWhereaboutsRequirement" type="XHIBITElectronicWhereaboutsStructure">
+						</xsd:element>
+						<xsd:element name="AttendanceCentreRequirement" type="XHIBITAttendanceStructure">
+							<xsd:annotation>
+								<xsd:documentation>Section P</xsd:documentation>
+							</xsd:annotation>
+						</xsd:element>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="ElectronicMonitoringRequirement">
+				<xsd:annotation>
+					<xsd:documentation>OrderRequirements / ElectronicMonitoringProvision</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="AdditionalNotes" minOccurs="0">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PettySessionalArea" type="XHIBITCourtHouseStructure">
+				<xsd:annotation>
+					<xsd:documentation>LocalJusticeArea</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LinkedOffences" type="LinkedOffenceStructure" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Linked Offences for the defendant</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="YouthRehabilitationOrder" type="ord:YouthRehabilitationOrderStructure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V1.0 (26/02/2015)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ================================================================= -->
+<!-- This file describes events in xhibit which can generate multiple  -->
+<!-- simultaneous CJSE events. The xhibit events are categorised into  -->
+<!-- sub events and treated separately. Each such event will have an   -->
+<!-- entry in this file describing the sub events.                     -->
+<!-- ================================================================= -->    
+<CJSE_CASCADE_CONFIGURATION>
+	<INCOMING_EVENT xhibitid="40701">
+		<SUBEVENT subxhibitid="407011"/>
+		<SUBEVENT subxhibitid="407012"/>
+		<SUBEVENT subxhibitid="407013"/>
+	</INCOMING_EVENT>
+   <INCOMING_EVENT xhibitid="40702">
+		<SUBEVENT subxhibitid="407021"/>
+		<SUBEVENT subxhibitid="407022"/>
+	</INCOMING_EVENT>	
+</CJSE_CASCADE_CONFIGURATION>

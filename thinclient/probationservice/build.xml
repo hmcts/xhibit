@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ProbationService">
+    <description>
+        Thin Client Probation Service
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="component.author" value="Will Fardell, Ed Cawley"/>
+    <property name="component.name" value="Probation Service"/>
+
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.war" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+
+        <!-- Shared Code Settings -->
+        <property name="shared.dir" value="${build.dir}/shared"/>
+        <property name="shared.classes.dir" value="${shared.dir}/classes"/>
+        <property name="shared.docroot.dir" value="${shared.dir}/docroot"/>
+        <property name="shared.resources.dir" value="${shared.dir}/resources"/>
+
+        <!-- Merge settings -->
+        <property name="build.resources.dir" value="${build.dir}/resources"/>
+
+       <!-- Compile settings -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Value.jar" />
+                <include name="ClientView.jar" />
+                <include name="ThinClientFramework.jar" />
+                <include name="Framework.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="Config.jar" />
+                <include name="PublicDisplayCommon.jar" />
+                <include name="UserMonitorControllerClient.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="UserTerminalLocationControllerClient.jar"/>
+            </fileset>
+            <pathelement path="${shared.classes.dir}"/>
+        </path>
+
+        <!-- War Settings -->
+        <filesetlist id="war.classes.fileset">
+            <fileset dir="${classes.dir}" />
+            <fileset dir="${shared.classes.dir}" />
+            <fileset dir="${build.resources.dir}" />
+        </filesetlist>
+
+        <filesetlist id="war.source.fileset">
+            <!-- Exclude WEB-INF/web.xml as explicitly included -->
+            <fileset dir="${docroot.dir}" excludes="WEB-INF/web.xml" />
+            <!-- Exclude WEB-INF/* as only dummy for compiling shared jsps -->
+            <fileset dir="${shared.docroot.dir}"/>
+        </filesetlist>
+
+        <filesetlist id="war.lib.fileset">
+            <fileset dir="${build.dest.dir}">
+                <include name="Value.jar" />
+                <include name="ClientView.jar" />
+                <include name="ThinClientFramework.jar" />
+                <include name="Framework.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="Config.jar" />
+                <include name="PublicDisplayCommon.jar" />
+                <include name="UserMonitorControllerClient.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="UserTerminalLocationControllerClient.jar"/>
+            </fileset>
+        </filesetlist>
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+
+    <target name="generate" unless="skip.generate" depends="framework.generate">
+        <log target="generate"/>
+        <mkdir dir="${shared.dir}"/>
+        <unzip src="${build.dest.dir}/ThinClientSharedTemp.zip" dest="${shared.dir}"/>
+        <mkdir dir="${build.resources.dir}"/>
+        <merge destination="${build.resources.dir}">
+            <fileset dir="${resources.dir}" excludes="${os.files}"/>
+            <fileset dir="${shared.resources.dir}" excludes="${os.files}"/>
+        </merge>
+    </target>
+
+</project>
+

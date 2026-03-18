@@ -1,0 +1,327 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-jms xmlns="http://www.bea.com/ns/weblogic/90" xmlns:sec="http://www.bea.com/ns/weblogic/90/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls" xsi:schemaLocation="http://www.bea.com/ns/weblogic/910/domain.xsd">
+  <topic name="aylesbury_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/aylesbury_crown_court</jndi-name>
+  </topic>
+  <topic name="basildon_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/basildon_crown_court</jndi-name>
+  </topic>
+  <topic name="birmingham_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/birmingham_crown_court</jndi-name>
+  </topic>
+  <topic name="blackfriars_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/blackfriars_crown_court</jndi-name>
+  </topic>
+  <topic name="bolton_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/bolton_crown_court</jndi-name>
+  </topic>
+  <topic name="bournemouth_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/bournemouth_crown_court</jndi-name>
+  </topic>
+  <topic name="bradford_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/bradford_crown_court</jndi-name>
+  </topic>
+  <topic name="bristol_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/bristol_crown_court</jndi-name>
+  </topic>
+  <topic name="burnley_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/burnley_crown_court</jndi-name>
+  </topic>
+  <topic name="cambridge_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/cambridge_crown_court</jndi-name>
+  </topic>
+  <topic name="canterbury_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/canterbury_crown_court</jndi-name>
+  </topic>
+  <topic name="cardiff_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/cardiff_crown_court</jndi-name>
+  </topic>
+  <topic name="carlisle_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/carlisle_crown_court</jndi-name>
+  </topic>
+  <topic name="central_criminal_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/central_criminal_court</jndi-name>
+  </topic>
+  <topic name="chelmsford_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/chelmsford_crown_court</jndi-name>
+  </topic>
+  <topic name="chester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/chester_crown_court</jndi-name>
+  </topic>
+  <topic name="chichester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/chichester_crown_court</jndi-name>
+  </topic>
+  <topic name="coventry_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/coventry_crown_court</jndi-name>
+  </topic>
+  <topic name="croydon_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/croydon_crown_court</jndi-name>
+  </topic>
+  <topic name="derby_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/derby_crown_court</jndi-name>
+  </topic>
+  <topic name="doncaster_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/doncaster_crown_court</jndi-name>
+  </topic>
+  <topic name="durham_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/durham_crown_court</jndi-name>
+  </topic>
+  <topic name="dorchester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/dorchester_crown_court</jndi-name>
+  </topic>
+  <topic name="exeter_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/exeter_crown_court</jndi-name>
+  </topic>
+  <topic name="gloucester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/gloucester_crown_court</jndi-name>
+  </topic>
+  <topic name="great_grimsby_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/great_grimsby_crown_court</jndi-name>
+  </topic>
+  <topic name="guildford_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/guildford_crown_court</jndi-name>
+  </topic>
+  <topic name="harrow_crown_court          ">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/harrow_crown_court</jndi-name>
+  </topic>
+  <topic name="hull_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/hull_crown_court</jndi-name>
+  </topic>
+  <topic name="inner_london_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/inner_london_crown_court</jndi-name>
+  </topic>
+  <topic name="ipo_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/ipo_crown_court</jndi-name>
+  </topic>
+  <topic name="ipswich_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/ipswich_crown_court</jndi-name>
+  </topic>
+  <topic name="isleworth_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/isleworth_crown_court</jndi-name>
+  </topic>
+  <topic name="kingston_upon_thames_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/kingston_upon_thames_crown_court</jndi-name>
+  </topic>
+  <topic name="leeds_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/leeds_crown_court</jndi-name>
+  </topic>
+  <topic name="leicester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/leicester_crown_court</jndi-name>
+  </topic>
+  <topic name="lewes_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/lewes_crown_court</jndi-name>
+  </topic>
+  <topic name="lincoln_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/lincoln_crown_court</jndi-name>
+  </topic>
+  <topic name="liverpool_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/liverpool_crown_court</jndi-name>
+  </topic>
+  <topic name="luton_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/luton_crown_court</jndi-name>
+  </topic>
+  <topic name="maidstone_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/maidstone_crown_court</jndi-name>
+  </topic>
+  <topic name="manchester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/manchester_crown_court</jndi-name>
+  </topic>
+  <topic name="manchester_minshull_street_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/manchester_minshull_street_crown_court</jndi-name>
+  </topic>
+  <topic name="merthyr_tydfil_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/merthyr_tydfil_crown_court</jndi-name>
+  </topic>
+  <topic name="middlesex_guildhall_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/middlesex_guildhall_crown_court</jndi-name>
+  </topic>
+  <topic name="mold_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/mold_crown_court</jndi-name>
+  </topic>
+  <topic name="newcastle_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/newcastle_crown_court</jndi-name>
+  </topic>
+  <topic name="newport_gwent_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/newport_(gwent)_crown_court</jndi-name>
+  </topic>
+  <topic name="newport_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/newport_crown_court</jndi-name>
+  </topic>
+  <topic name="northampton_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/northampton_crown_court</jndi-name>
+  </topic>
+  <topic name="norwich_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/norwich_crown_court</jndi-name>
+  </topic>
+  <topic name="nottingham_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/nottingham_crown_court</jndi-name>
+  </topic>
+  <topic name="oxford_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/oxford_crown_court</jndi-name>
+  </topic>
+  <topic name="peterborough_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/peterborough_crown_court</jndi-name>
+  </topic>
+  <topic name="plymouth_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/plymouth_crown_court</jndi-name>
+  </topic>
+  <topic name="portsmouth_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/portsmouth_crown_court</jndi-name>
+  </topic>
+  <topic name="preston_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/preston_crown_court</jndi-name>
+  </topic>
+  <topic name="reading_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/reading_crown_court</jndi-name>
+  </topic>
+  <topic name="salisbury_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/salisbury_crown_court</jndi-name>
+  </topic>
+  <topic name="sheffield_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/sheffield_crown_court</jndi-name>
+  </topic>
+  <topic name="shrewsbury_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/shrewsbury_crown_court</jndi-name>
+  </topic>
+  <topic name="snaresbrook_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/snaresbrook_crown_court</jndi-name>
+  </topic>
+  <topic name="southampton_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/southampton_crown_court</jndi-name>
+  </topic>
+  <topic name="southwark_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/southwark_crown_court</jndi-name>
+  </topic>
+  <topic name="st_albans_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/st_albans_crown_court</jndi-name>
+  </topic>
+  <topic name="stafford_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/stafford_crown_court</jndi-name>
+  </topic>
+  <topic name="stoke_on_trent_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/stoke_on_trent_crown_court</jndi-name>
+  </topic>
+  <topic name="swansea_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/swansea_crown_court</jndi-name>
+  </topic>
+  <topic name="swindon_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/swindon_crown_court</jndi-name>
+  </topic>
+  <topic name="taunton_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/taunton_crown_court</jndi-name>
+  </topic>
+  <topic name="teesside_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/teesside_crown_court</jndi-name>
+  </topic>
+  <topic name="truro_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/truro_crown_court</jndi-name>
+  </topic>
+  <topic name="warrington_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/warrington_crown_court</jndi-name>
+  </topic>
+  <topic name="warwick_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/warwick_crown_court</jndi-name>
+  </topic>
+  <topic name="weymouth_and_dorchester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/weymouth_and_dorchester_crown_court</jndi-name>
+  </topic>
+  <topic name="winchester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/winchester_crown_court</jndi-name>
+  </topic>
+  <topic name="wolverhampton_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/wolverhampton_crown_court</jndi-name>
+  </topic>
+  <topic name="wood_green_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/wood_green_crown_court</jndi-name>
+  </topic>
+  <topic name="woolwich_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/woolwich_crown_court</jndi-name>
+  </topic>
+  <topic name="worcester_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/worcester_crown_court</jndi-name>
+  </topic>
+  <topic name="york_crown_court">
+    <sub-deployment-name>midM1-JMSServer-Subdeployment</sub-deployment-name>
+    <jndi-name>jms/im/york_crown_court</jndi-name>
+  </topic>
+</weblogic-jms>

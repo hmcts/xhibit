@@ -1,0 +1,8 @@
+[PropertyInfo]
+prosecutorType,String,false,false, , ,true,<default>
+refProsecutorAgencyID,Integer,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

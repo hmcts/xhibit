@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Exiss">
+
+    <description>
+        This project contains the files for brokering message beans
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.message.bean"         value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="Config.jar" />
+                <include name="ExissEntities.jar"/>
+                <include name="ExissValues.jar"/>
+                <include name="ExissCommon.jar"/>
+                <include name="Darts.jar"/>
+                <include name="MessageBrokerMessaging.jar"/>
+            </fileset>
+        </path>
+
+        <!-- We dont have a controller jar so include all the classes in the
+             message jar -->
+        <property name="package.message.includes" value="**/*"/>
+    </target>
+
+</project>

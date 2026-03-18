@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<template>
+	<form>
+		<section name="defendant" label="" borderLabel="Defendant" borderRaised="false" ref="/">
+			<section name="address" label="" borderLabel="" ref="/">
+				<choice name="addressChoice" label="" ref="//ord:AddressOption">
+					<option name="addressIs" label="Address is" value="AddressIs" selected="true"/>
+					<option name="addressWillBe" label="Address will be" value="AddressWillBe"/>
+				</choice>
+			</section>
+		</section>
+		<convictiontextfield name="convictionValue" maxlength="10" label="Conviction: " length="10" ref="//ord:Defendant/ord:Charges/ord:Charge/ord:OffenceStatement"/>
+		<choice name="trialCommittalBreachChoice" label="" ref="/">
+			<option name="trialOption" label="Trial" value="" selected="true"/>
+			<option name="committalOption" label="Committal" ref="//ord:CommittingCourt/@selected">
+				<section name="conviction" label="" borderLabel="Conviction Details" borderRaised="true" ref="/">
+					<date name="xxx2" label="Conviction Date:" ref="//ord:CommittingCourt/ord:Date"/>
+					<section name="committalCourt" label="" borderLabel="Committal Court" ref="/">
+						<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:CommittingCourt/ord:CourtHouse/ord:CourtHouseName"/>
+					</section>
+				</section>
+			</option>
+			<option name="breachOption" label="Breach" ref="//ord:Breach/@selected">
+				<section name="breach" label="" borderLabel="Breach" borderRaised="true" ref="/">
+					<!-- what does this date relate to -->
+					<date name="xxx2" label="Conviction Date:" ref="/"/>
+					<section name="breachCourt" label="" borderLabel="Breach Court" ref="/">
+						<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:Breach/ord:BreachCourt/ord:CourtHouse/ord:CourtHouseName"/>
+					</section>
+					<ordertype name="courtname" label="Order Type Breached: " length="15" ref="/ord:Order/ord:OrderData/*/ord:Breach/ord:OriginatingCourt/ord:OriginalOrderType"/>
+					<section name="originatingCourt" label="" borderLabel="Originating Court" borderRaised="false" ref="/">
+						<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true"  courtlabel="false" ref="//ord:Breach/ord:OriginatingCourt//ord:CourtHouse/ord:CourtHouseName"/>
+						<date name="xxx2" label="Court Date:" ref="//ord:Breach/ord:OriginatingCourt/ord:Date"/>
+					</section>
+					<section name="breachOptions" label="" borderLabel="" borderRaised="false" ref="/">
+						<section name="revokeOption" label="" switchLabel="Order Revoked" switchable="true" ref="//ord:OriginalOrderRevoked/@selected" selectedValue="true" unselectedValue="false"/>
+						<section name="dealOption" label="" switchLabel="Breach Court to deal option" switchable="true" ref="//ord:Breach/ord:BreachCourt/@breachCourtOption" selectedValue="true" unselectedValue="false"/>
+						<section name="failureOption" label="" switchLabel="Satisfied of failure to comply option" switchable="true" ref="//ord:FailedToComply" selectedValue="yes" unselectedValue="no"/>
+					</section>
+				</section>
+			</option>
+		</choice>
+		<section name="courtOrdered" label="" borderLabel="The Court Ordered" borderRaised="false" ref="/">
+			<date name="xxx2" label="On Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+		</section>
+		<section name="ordered" label="" borderLabel="It is Ordered" ref="/">
+			<durationdate name="durationdate" dayattribute="false" monthattribute="true" yearattribute="true" label="Rehab Period:" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:RehabilitationPeriod"/>
+            		<!-- RFC 1356 - change Petty Sessional Area to Local Justice Area -->            
+			<courttype name="courttype" label="Local Justice Area:" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="petty" ref="//ord:PettySessionalArea/ord:CourtHouseName"/>
+		</section>
+		<section name="additionalRequirements" label="" switchLabel="Additional Requirements Option" borderLabel="Additional Requirements" borderRaised="false" switchable="true" ref="//ord:Conditions/@selected" selectedValue="true" unselectedValue="false">
+			<textarea name="additonalReqValue" ref="//ord:Conditions/ord:Condition/ord:Description" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+		</section>
+		<fixedlist name="relatedCases" label="Associated Cases:" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

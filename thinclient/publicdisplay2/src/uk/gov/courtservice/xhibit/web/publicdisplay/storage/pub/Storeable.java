@@ -1,0 +1,52 @@
+package uk.gov.courtservice.xhibit.web.publicdisplay.storage.pub;
+
+import uk.gov.courtservice.xhibit.common.publicdisplay.types.uri.Identifiable;
+
+/**
+ * <p/> Title: Any object that a Storer can store.
+ * </p>
+ * <p/> <p/> Description: A Storeable object is one that is Identifiable, that
+ * is it has an AbstractURI associated with it and which contains textual
+ * content that can be persisted.
+ * </p>
+ * <p>
+ * To encourage cleaner interfaces Storeable objects are required to implement
+ * the store() method. This is <b>not</b> a callback method.#
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2003
+ * </p>
+ * <p/> <p/> Company: Electronic Data Systems
+ * </p>
+ * 
+ * @author Neil Ellis
+ * @version $Revision: 1.6 $
+ */
+public interface Storeable extends Identifiable {
+    public static final String DOCUMENT = "document";
+
+    public static final String ROTATION_SET = "rotationset";
+
+    /**
+     * Returns the contents of the Storeable object which we wish to persist.
+     * 
+     * @return the textual content of the object.
+     */
+    String getRenderedString();
+
+    /**
+     * Obtain a stored object reference for this stored.
+     * 
+     * @return
+     * @deprecated this method is supplied by Storer, use that one.
+     */
+    StoredObject retrieve();
+
+    /**
+     * The store() method is included here and typically this would call
+     * StorerFactory.getInstance().store(this). It exists so that objects not
+     * related to the persistence of Storeables can request the storing of the
+     * object.
+     */
+    void store();
+}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="OrderTypes.xsd"/>
+	<xs:complexType name="BenchWarrantStructure">
+		<xs:sequence>
+			<xs:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xs:element name="Release" type="BailDecisionType"/>
+			<xs:element name="PreConditions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Surety">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:element name="Plural" type="xs:string"/>
+									<xs:element name="MonetaryValue" type="MonetaryValueType"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="PostConditions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PostConditionDetails" type="xs:string"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NextAppearance" type="XHIBITCourtAppearanceStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

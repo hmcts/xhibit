@@ -1,0 +1,79 @@
+/****************************************************************************************************/
+
+Author: G Nagarajan
+Date  : 05-May-2009
+Description: This document details the instruction to release the changes of 8.3 on to Live database.
+
+/****************************************************************************************************/
+
+Note: When this release is applied to other than Live environment, necessary changes has to be made.
+====
+
+Pre-Requisite
+================
+Ensure valid backup of CSDBPRD1 and CSDBPRD2 are taken and available before this release is applied.
+Outage is required before this release is applied.
+Access to the sever as "oracle" user and to the databases as "sys" or "system" is required to perform this release.
+Read the README.txt file
+
+
+Regression Plan
+=================
+If the release fails for any reason, inform the contact person who's shown on the release note before regressing the release by restoring the backup of the databaseS (e.g CSDBPRD1 and CSDBPRD2) to the point-in-time the release was applied
+
+
+Skills Required
+===============
+Following skills are required to apply this release
+
+* Oracle Plsql
+* Oracle DBA 
+* Unix 
+
+Unix Shell scripts
+===================
+
+Follow the instruction 1) in README.txt
+
+Oracle Scripts
+==============
+Open a SQL*Plus session and login to CSDBPRD1 as sys / system and run
+
+@HS_dba.sql
+
+In SQL*Plus session, login as xhibit@CSDBPRD1 and run the following command
+
+@Xhibit_DB_Patch_8_3.sql
+
+Note: Recompile the invalid objects by running the query as mentioned in section "Recompile the INVALID Objects"
+====
+In SQL*Plus session, login as exiss@CSDBPRD2 and run the following command
+
+@Exiss_DB_update.sql 
+
+Note: Recompile the invalid objects by running the query as mentioned in section "Recompile the INVALID Objects"
+====
+
+
+Recompile the INVALID Objects
+==================================================================
+set head off
+set feedback off
+set echo off
+set linesize 250
+set pagesize 150
+spool re-compile_invalid_objects.sql
+SELECT 'ALTER '||DECODE(object_type,'PACKAGE','PACKAGE','PACKAGE BODY','PACKAGE','PROCEDURE','PROCEDURE','FUNCTION','FUNCTION','VIEW','VIEW','TRIGGER','TRIGGER')||'  "'||owner||'"."'||object_name||'" COMPILE '||DECODE(object_type,
+'PACKAGE BODY','BODY')||';'
+FROM all_objects
+WHERE status='INVALID'
+AND owner = USER
+AND object_type in ('PACKAGE','PACKAGE BODY','PROCEDURE','FUNCTION','VIEW','TRIGGER')
+ORDER BY DECODE(object_type,'VIEW',1,'PACKAGE',2,'PACKAGE BODY',3,'PROCEDURE',4,'FUNCTION',5,'TRIGGER',6)
+/
+spool off;
+set head on
+set feedback on
+set echo on
+@re-compile_invalid_objects.sql
+

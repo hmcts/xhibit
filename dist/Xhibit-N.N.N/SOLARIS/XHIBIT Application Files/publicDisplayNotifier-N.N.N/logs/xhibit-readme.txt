@@ -1,0 +1,1 @@
+The output of the public display notifier is logged to this dir.

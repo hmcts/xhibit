@@ -1,0 +1,20 @@
+	* -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findCourtelListToSend(java.lang.Integer numOfRetries, java.lang.Integer lookupDelay, java.util.Date currentDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbCourtelList c WHERE c.sentToCourtel = 'N' and c.numSendAttempts < ?1 and (c.lastAttemptDatetime is null or(c.lastAttemptDatetime + (?2/86400) < ?3))"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findCountOfXmlId(java.lang.Integer xmlDocumentId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbCourtelList c WHERE c.xmlDocumentId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findCountOfXmlDocClobId(java.lang.Long xmlDocClobId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbCourtelList c WHERE c.xmlDocumentClobId = ?1"
+ * -------- end of custom finders --------

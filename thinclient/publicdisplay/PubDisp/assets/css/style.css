@@ -1,0 +1,448 @@
+notA:active {
+	COLOR: #ffffff;
+}
+TABLE.CSTable A:active {
+	COLOR: #0000ff;
+}
+A:link {
+	COLOR: #0000ff;
+}
+TABLE.navbar a:hover {
+	COLOR: #ffffff;
+}
+TABLE.navbar A {
+	COLOR: #ffff00;
+	FONT-WEIGHT: bold; 
+	FONT-SIZE: 9pt;  
+}
+TABLE.navbar A.subMenu {
+	CURSOR: default;
+}
+TABLE.PublicNotices TD {
+	FONT-WEIGHT: normal; 
+	FONT-SIZE: 28pt; 
+	COLOR: #ffff00; 
+	TEXT-ALIGN: center
+}
+TABLE.navbar TR.hover TD {
+	BACKGROUND-COLOR: #bbddff;
+}
+TABLE.navbar TR.hover A {
+	COLOR: #000000;
+}
+TABLE.navbar IMG {
+	MARGIN-LEFT: 5px; 
+}
+P.pageTitle {
+	TEXT-ALIGN: center;
+	COLOR: #000000;
+	FONT-WEIGHT: bold; 
+	FONT-FAMILY: times; 
+	FONT-SIZE: 15pt; 
+}
+TABLE.navbar TD {
+	BACKGROUND-COLOR: #003366;
+	FONT-SIZE: 8pt; 
+	COLOR: #ffffff;
+}
+BODY {
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 8pt; 
+}
+BODY TABLE TD {
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 15pt; 
+}
+TABLE.CSTable TD {
+	BACKGROUND-COLOR: #ffffcc;
+	TEXT-ALIGN: center;
+	COLOR: #003366;
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 13pt; 
+	FONT-WEIGHT: bold;
+}
+BODY.plasma TABLE.CSTable TD {
+}
+TABLE.CSTable TR.header TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+	FONT-SIZE: 15pt; 
+}
+TABLE.CSTableNoAlign TD {
+	BACKGROUND-COLOR: #ffffcc;
+	COLOR: #003366;
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 13pt; 
+	FONT-WEIGHT: bold;
+}
+TABLE.CSTableNoAlign TR.header TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+	FONT-SIZE: 15pt; 
+}
+TABLE.CSTable#small TD {
+	FONT-SIZE: 10px;
+}
+TABLE.CSTable#big TD {
+	FONT-SIZE: 18pt;
+}
+TABLE.CSTable#big TD#extraBig {
+	FONT-SIZE: 35pt;
+	COLOR: #003366; 
+	BACKGROUND-COLOR: #ffffcc;
+}
+TABLE.CSTable#big TR.header TD {
+	FONT-SIZE: 20pt; 
+}
+TABLE.CSTableNoAlign TR.alternate TD {
+	BACKGROUND-COLOR: #E8E89E;
+}
+TABLE.CSTable TR.headerSmall TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+}
+TD.netscapeNav {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+	font-weight : bold;
+	text-align : center;
+}
+
+BODY.InternetPage TD.heading2 {
+	COLOR: #ffff00;
+	font-family : Verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-size : 16px;
+}
+@media print {
+body { margin-left: 1cm; margin-right: 1cm }
+span.speaker { font-weight: bold }
+}
+TABLE.CSLogTable TD {
+	BACKGROUND-COLOR: #ffffff;
+	COLOR: #000000;
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 10pt; 
+}
+TABLE.CSLogTable TR.editedAfter {
+	FONT-STYLE: italic; 
+}
+TABLE.CSLogTable TR.header TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffffff;
+}
+DIV.listTables TABLE {
+	BACKGROUND-COLOR: #ffffcc;
+}
+DIV.listTables HR {
+	WIDTH: 867px;
+}
+SPAN.typeTrial {
+	COLOR: #A52A2A;
+}
+SPAN.typeSentence {
+	COLOR: #FF8800;
+}
+SPAN.typeUNum {
+	COLOR: #FF0000;
+}
+SPAN.typeAppeal {
+	COLOR: #008800;
+}
+TABLE.CSTable TD.number {
+	FONT-SIZE: 15pt;
+}
+TABLE.CSTable TD.message {
+	TEXT-ALIGN: left;
+	FONT-SIZE: 9pt;
+	FONT-WEIGHT: normal;
+	BACKGROUND-COLOR: #D1E6FE;
+}
+TABLE.CSTable TR.break TD {
+	BACKGROUND-COLOR: #003366;
+	HEIGHT: 2px;
+}
+TABLE.CrestFormA {
+	MARGIN: 0px;
+	FONT-SIZE: 10pt;
+	FONT-FAMILY: times, serif;
+}
+TABLE.CrestFormA TD {
+	FONT-SIZE: 10pt;
+	FONT-FAMILY: times, serif;
+}
+TABLE.CrestFormA H1 {
+	FONT-SIZE: 14pt;
+	FONT-FAMILY: times, serif;
+	FONT-WEIGHT: bold;
+	MARGIN-BOTTOM: 0px;
+	MARGIN-TOP: 0px;
+}
+TABLE.CrestFormA H2, SPAN.divider {
+	FONT-SIZE: 13pt;
+	FONT-FAMILY: times, serif;
+	FONT-WEIGHT: bold;
+	MARGIN-BOTTOM: 0px;
+	MARGIN-TOP: 0px;
+}
+TABLE.CrestFormA H3 {
+	FONT-SIZE: 11pt;
+	FONT-FAMILY: times, serif;
+	FONT-WEIGHT: bold;
+	MARGIN-BOTTOM: 0px;
+	MARGIN-TOP: 0px;
+}
+TABLE.CrestFormA P.SecTitle, SPAN.SecTitle {
+	FONT-WEIGHT: bold;
+	MARGIN-TOP: 0px;
+}
+TABLE.CrestFormA P.ExText, TABLE.CrestFormA SPAN.ExText {
+	FONT-SIZE: 11pt;
+	FONT-FAMILY: Verdana;
+	TEXT-ALIGN: center;
+	MARGIN-TOP: 10px;
+	MARGIN-BOTTOM: 10px;
+	MARGIN-RIGHT: 40px;
+	MARGIN-LEFT: 40px;
+	LINE-HEIGHT: 140%;
+	FONT-WEIGHT: bold; 
+}
+TABLE.CrestFormA P.ScheduleText {
+	FONT-SIZE: 11pt;
+	FONT-FAMILY: Verdana;
+	TEXT-ALIGN: center;
+	MARGIN-TOP: 3px;
+	MARGIN-BOTTOM: 3px;
+	MARGIN-RIGHT: 12px;
+	MARGIN-LEFT: 12px;
+	LINE-HEIGHT: 100%;
+	FONT-WEIGHT: bold; 
+}
+TABLE.ctOrder P.ExText, TABLE.ctOrder SPAN.ExText {
+	FONT-SIZE: 13pt;
+	FONT-FAMILY: Courier New;
+	TEXT-ALIGN: center;
+	LINE-HEIGHT: 140%;
+	FONT-WEIGHT: normal; 
+	TEXT-DECORATION: underline;
+}
+BODY.UpdLogEvent {
+	FONT-WEIGHT: bold; 
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+}
+BODY.UpdLogEvent TD {
+	FONT-WEIGHT: bold; 
+}
+BODY.UpdLogEvent DIV.title {
+	FONT-SIZE: 130%; 
+	TEXT-ALIGN: center;
+}
+BODY.UpdLogEvent HR {
+	WIDTH: 95%;
+	TEXT-ALIGN: center;
+	COLOR: #bbddff;
+}
+TABLE.tabs TD#open {
+	BACKGROUND-COLOR: #ffffcc;
+	COLOR: #000000;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 8pt;
+}
+TABLE.tabs TD.behind {
+	BACKGROUND-COLOR: #bbddff;
+	COLOR: #000000;
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 8pt;
+}
+SPAN.defendant {
+	FONT-SIZE: 140%;
+}
+TR.instructions TD {
+	FONT-SIZE: 80%;
+	FONT-STYLE: italic; 
+}
+TD.netscapeNav2 {
+	BACKGROUND-COLOR: #ffffcc;
+	TEXT-ALIGN: center;
+	COLOR: #003366;
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 10pt; 
+	FONT-WEIGHT: bold;
+}
+TABLE.progressBar TD {
+	BACKGROUND-COLOR: #ffffff;
+	TEXT-ALIGN: center;
+	COLOR: #000000;
+	FONT-FAMILY: times new roman; 
+	FONT-SIZE: 8pt; 
+	FONT-WEIGHT: normal;
+	WIDTH: 110px;
+}
+TABLE.progressBar TD.current {
+	BACKGROUND-COLOR: red;
+	TEXT-ALIGN: center;
+	COLOR: #ffffff;
+	FONT-FAMILY: times new roman; 
+	FONT-SIZE: 8pt; 
+	FONT-WEIGHT: bold;
+}
+TABLE.countTable TR.appended TD {
+	FONT-WEIGHT: bold;
+}
+TABLE.countTable TD.merged {
+	FONT-WEIGHT: bold;
+}
+TABLE.maintIndictCount {
+	MARGIN-TOP: 10px;
+}
+TABLE.maintIndictCount TR.header TD {
+	BACKGROUND-COLOR: #cccccc;
+	COLOR: #000000;
+	FONT-FAMILY: verdana, sans-serif; 
+	FONT-SIZE: 10pt; 
+	FONT-WEIGHT: bold;
+}
+TABLE.maintIndictCount TD {
+	BACKGROUND-COLOR: #ffffff;
+	COLOR: #000000;
+	FONT-FAMILY: verdana, sans-serif; 
+	FONT-SIZE: 10pt; 
+	FONT-WEIGHT: normal;
+}
+TABLE.maintIndictCount INPUT {
+	FONT-SIZE: 6pt; 
+}
+TABLE.maintIndictIndict A {
+	FONT-FAMILY: verdana, sans-serif; 
+	FONT-SIZE: 8pt; 
+	FONT-WEIGHT: normal;
+	COLOR: blue;
+}
+H4 {
+	MARGIN-TOP: 3px;
+	MARGIN-BOTTOM: 3px;
+}
+TABLE.maintIndictCount TD.unchosen,
+TABLE.maintIndictCount TD.unchosen TD {
+	BACKGROUND-COLOR: #009900;
+}
+TABLE.maintIndictCount TD.altered,
+TABLE.maintIndictCount TD.altered TD {
+	BACKGROUND-COLOR: #ff6600;
+}
+TABLE.ctOrder TD {
+	FONT-FAMILY: Lucida Sans, Arial Narrow, Trebuchet MS, Arial; 
+	FONT-SIZE: 11pt;
+}
+TABLE.ctOrder H1 {
+	FONT-WEIGHT: 600;
+	FONT-SIZE: 18pt;
+}
+TABLE.ctOrder H2 {
+	FONT-WEIGHT: 600;
+	FONT-SIZE: 15pt;
+}
+TABLE.ctOrder H3 {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 12pt;
+	FONT-STYLE: italic; 
+	MARGIN-BOTTOM: 0px;
+}
+TABLE.ctOrder H4 {
+	FONT-WEIGHT: normal;
+	FONT-SIZE: 10pt;
+	FONT-STYLE: italic; 
+	MARGIN-TOP: 0px;
+}
+TABLE.ctOrder TR.instructions TD {
+	FONT-SIZE: 80%;
+	FONT-STYLE: italic; 
+}
+TABLE.oneChoice TD {
+	BACKGROUND-COLOR: #cccccc;
+}
+DIV.indent {
+	MARGIN-LEFT: 30px;
+}
+SPAN.oneChoice {
+	COLOR: #ff0000;
+	FONT-WEIGHT: bold;
+}
+TABLE.WSTable TD {
+	BACKGROUND-COLOR: #ffffcc;
+	TEXT-ALIGN: center;
+	COLOR: #003366;
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 9pt; 
+	FONT-WEIGHT: bold;
+}
+TABLE.WSTable2 TD {
+	BACKGROUND-COLOR: #ffffcc;
+	COLOR: #003366;
+	FONT-FAMILY: verdana, arial, sans serif; 
+	FONT-SIZE: 9pt; 
+	FONT-WEIGHT: bold;
+}
+TABLE.WSTable2 TR.header TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+	FONT-SIZE: 10pt; 
+}
+TABLE.WSTable TR.header TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+	FONT-SIZE: 10pt; 
+}
+TABLE.WSTable#small TD {
+	FONT-SIZE: 9px;
+}
+TABLE.WSTable#big TD {
+	FONT-SIZE: 12pt;
+}
+TABLE.WSTable#big TR.header TD {
+	FONT-SIZE: 10pt; 
+}
+TABLE.WSTable TR.headerSmall TD {
+	BACKGROUND-COLOR: #003366;
+	COLOR: #ffff00;
+}
+TD.sectionHide {
+	BACKGROUND-IMAGE: url(images\section-hide-line.gif);
+	BACKGROUND-REPEAT: repeat-y;
+}
+TD.sectionShow {
+	BACKGROUND-IMAGE: url(images\section-show-line.gif);
+	BACKGROUND-REPEAT: repeat-y;
+}
+TR.sectionHideAllBelow TD.bg {
+	BACKGROUND-IMAGE: url(images\section-dotted-line-blue.gif);
+	BACKGROUND-REPEAT: repeat-x;
+}
+TR.sectionShowAllBelow TD.bg {
+	BACKGROUND-IMAGE: url(images\section-dotted-line-red.gif);
+	BACKGROUND-REPEAT: repeat-x;
+}
+TD.sectionCellShow {
+	COLOR: #000000;
+}
+TD.sectionCellHide {
+	COLOR: #cccccc;
+}
+TD.sectionHover {
+	BACKGROUND-COLOR: #ffffcc;
+}
+BODY.order INPUT.radio {
+	BACKGROUND: #ff0000;
+	COLOR: #cccccc;
+}
+SPAN.notChosen, SPAN.notChosen TD, SPAN.notChosen INPUT {
+	COLOR: #cccccc;
+	TEXT-DECORATION: line-through;
+	STRIKETHROUGH-THICKNESS: 1px;
+}
+SPAN.chosen {
+	COLOR: #000000;
+}
+SPAN.notChosen SPAN.oneChoice {
+	COLOR: #ffcccc;
+}

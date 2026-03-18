@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by LCMG (LogicaCMG) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="OrderTypes.xsd"/>
+	<xs:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xs:complexType name="ImprisonmentOrder5035CStructure">
+		<xs:annotation>
+			<xs:documentation>Schema V4.1 (08/06/2005)</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xs:element name="ConvictionDate" type="xs:date"/>
+			<xs:element name="CommittingCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITCourtHouseStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RiskVulnerabilityFactors">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITRiskFactorsStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CustodialSentence" type="XHIBITCustodialSentenceStructure"/>
+			<xs:element name="CreditForRemand">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Term" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CreditForBail">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CreditForTimeOnBailSection" type="CreditForTimeOnBailSectionType"/>
+						<xs:element name="Term" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<!--hw should this be renamed-->
+			<xs:element name="ChapterIII" type="apd:YesNoType"/>
+			<xs:element name="DomesticBurglary" minOccurs="0">
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReturnToImprisonment">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITReturnToImprisonmentStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Section28" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DiscretionaryRelevantPart" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Section86" type="apd:YesNoType"/>
+			<xs:element name="AdditionalNotes">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AutomaticDeportation" type="apd:YesNoType"/>
+			<xs:element name="RecommendedDeportation" type="apd:YesNoType"/>
+			<xs:element name="AssociatedCases" type="AssociatedCaseStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

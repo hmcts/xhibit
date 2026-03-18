@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Mentions and Applications - Application to Stand Out-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E20701_App_List"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20701_App_List">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20701_Application_To_Stand_Out_Granted"/>
+				<xs:enumeration value="E20701_Application_To_Stand_Out_Refused"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

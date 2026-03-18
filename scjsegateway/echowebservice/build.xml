@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ScjseEchoWebService">
+
+    <description>
+        This project contains ...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.jar" value="marker"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">            
+            <fileset dir="${build.dest.dir}">                
+            </fileset>
+        </path>
+
+        <property name="wsdl.file" location="${basedir}/wsdl/Echo-v0-1.wsdl"/>
+        <property name="generate.ws.marker" location="${build.dir}/generate.ws.marker"/>
+
+        <taskdef name="wlwsdlc" classname="weblogic.wsee.tools.anttasks.WsdlcTask" loaderref="framework.loader"/>
+        <taskdef name="wljwsc" classname="weblogic.wsee.tools.anttasks.JwscTask" loaderref="framework.loader"/>
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+
+    <target name="generate.ws.check" description="Generate src from wsdl check." >
+        <uptodate property="generate.ws.uptodate" targetfile="${generate.ws.marker}">
+            <srcfiles file="${wsdl.file}"/>
+        </uptodate>
+    </target>
+
+    <target name="generate.ws" unless="generate.ws.uptodate" depends="generate.ws.check" description="Generate src from wsdl." >
+        <mkdir dir="${build.dir}/temp/jws"/>
+        <mkdir dir="${build.dir}/temp/impl"/>
+
+        <wlwsdlc srcWsdl="${wsdl.file}"
+                 destJwsDir="${build.dir}/temp/jws"
+                 destImplDir="${build.dir}/temp/impl"
+                 packageName="uk.gov.courtservice.xhibit.webservice.scjseecho.cjseservice.server" />
+
+        <!-- Extract The java files from the compiled wsdl -->
+        <mkdir dir="${gen.source.dir}"/>
+        <unzip src="${build.dir}/temp/jws/Echo-v0-1_wsdl.jar" dest="${gen.source.dir}">
+            <patternset>
+                <include name="**/server/*.java"/>
+            </patternset>
+        </unzip>
+
+        <touch file="${generate.ws.marker}"/>
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="framework.generate, generate.ws"/>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+      <target name="package.ws.check" description="Generate src from wsdl check." >         
+      </target>
+
+      <target name="package.ws" unless="package.ws.uptodate" description="Generate src from wsdl." depends="package.ws.check">
+        <mkdir dir="${build.dir}/temp/ear/EchoService"/>
+        <mkdir dir="${build.dir}/temp/working/EchoService"/>
+        <!-- Do not include the gen-src extracted from compiled wsdl. This is compiled and added directly -->
+        <wljwsc srcdir="${source.dir}"
+              destdir="${build.dir}/temp/ear/EchoService"
+              tempdir="${build.dir}/temp/working/EchoService"
+              keepGenerated="false">
+              <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="lib.classpath"/>
+            </classpath>
+            <jws file="uk/gov/courtservice/xhibit/webservice/scjseecho/cjseservice/server/EchoPortImpl.java"
+                 compiledWsdl="${build.dir}/temp/jws/Echo-v0-1_wsdl.jar"
+                 explode="false"
+                 name="EchoService"/>
+        </wljwsc>
+      </target>
+
+    <target name="package" unless="skip.package" depends="framework.package, package.ws"/>
+
+</project>

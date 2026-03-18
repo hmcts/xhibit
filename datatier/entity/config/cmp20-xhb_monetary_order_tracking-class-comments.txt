@@ -1,0 +1,15 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(m) FROM XhbMonetaryOrderTracking m, XhbCase c WHERE m.caseId = ?1 AND c.caseId = m.caseId AND c.courtId = ?2 AND (m.obsInd is null OR m.obsInd = 'N' OR m.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantOnCaseId(java.lang.Integer defendantOnCaseId, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(m) FROM XhbMonetaryOrderTracking m, XhbCase c WHERE m.defendantOnCaseId = ?1 AND c.caseId = m.caseId AND c.courtId = ?2 AND (m.obsInd is null OR m.obsInd = 'N' OR m.obsInd = ' ')"
+ *
+ * -------- end of custom finders --------

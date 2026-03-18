@@ -1,0 +1,18 @@
+ * -------- custom finders --------
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByJoinderId(java.lang.Integer joinderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (jdoc) FROM XhbJoinderDefendantOnCase jdoc WHERE jdoc.joinderId = ?1"
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefOnCaseId2AndJId(java.lang.Integer defendantOnCaseId, java.lang.Integer joinderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (jdoc) FROM XhbJoinderDefendantOnCase jdoc WHERE jdoc.defendantOnCaseId2 = ?1 AND jdoc.joinderId = ?2"
+ *
+ * -------- end of custom finders --------
+  

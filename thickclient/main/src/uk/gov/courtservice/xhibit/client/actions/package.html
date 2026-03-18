@@ -1,0 +1,43 @@
+<html>
+    <body>
+        <p>
+This package and it's children provide the functionality to invoke process, panels and dialogs within the XHIBIT application in response to user input.
+        </p>
+<h1>Package Structure</h1>
+        <p>The package is structured by functional area within the client domain:</p>
+            <ul>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.admin</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.caseprogress</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.charges</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.common</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.counselfacilities</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.courtlog</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.hearingrecord</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.importexportnotification</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.linkedcases</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.listdistribution</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.menu</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.results</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.search</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.todaysschedule</b></li>
+                <li><b>uk.gov.courtservice.xhibit.client.actions.updatecase</b></li>
+            </ul>
+<h1>Adding New Actions</h1>
+<h2>Court Log Events</h2>
+<p>The following files must be added or updated in order to make available a new court log event on the XHIBIT court log menu and toolbar:</p>
+<ul>
+<li>config.bundles.CLSubstitution_client_en_GB.properties
+<li>config.bundles.XhibitActionResources_en_GB.properties
+<li>config.xml.CourtLogMenu.xml
+<li>images.&lt;<i>eventname</i>&gt;.gif
+<li>uk.gov.courtservice.xhibit.client.actions.XhibitActions.java
+<li>uk.gov.courtservice.xhibit.client.actions.XhibitActionBundle.java
+<li>uk.gov.courtservice.xhibit.client.actions.courtlog.&lt;<i>EventName</i>&gt;Action.java
+<li>uk.gov.courtservice.xhibit.client.courtlog.CourtLogVOBundle.java
+<li>uk.gov.courtservice.xhibit.client.util.XhibitBundles.java
+<li>uk.gov.courtservice.xhibit.client.util.security.EditMapping.java
+<li>uk.gov.courtservice.xhibit.client.util.security.FunctionList.java
+<li>uk.gov.courtservice.xhibit.client.util.security.ReadMapping.java
+</ul>
+    </body>
+</html>

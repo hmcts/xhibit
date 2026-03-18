@@ -1,0 +1,88 @@
+<!DOCTYPE subscribers [
+  <!ELEMENT subscribers (subscriber*)>
+  <!ELEMENT subscriber EMPTY>
+  <!ATTLIST subscriber class CDATA #REQUIRED>
+  <!ATTLIST subscriber level (global|category|event) "global">
+  <!ATTLIST subscriber name ID #REQUIRED>
+  <!ATTLIST subscriber async (true|false) "false">
+]>
+
+<subscribers>
+
+<!-- +++++++++++++++++ Global Level Subscribers ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+  <!-- CJSE -->
+  <subscriber level="global" name="CJSE" async="true"
+    class="uk.gov.courtservice.xhibit.courtlog.cjse.CjseSubscriber" />
+
+  <!-- DARTS -->
+  <subscriber level="global" name="DARTS" async="true"
+    class="uk.gov.courtservice.xhibit.courtlog.darts.DartsSubscriber" />
+
+
+<!-- +++++++++++++++++ Category Level Subscribers ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+  <!-- Adjournment -->
+  <subscriber level="category" name="Adjournment"
+    class="uk.gov.courtservice.xhibit.courtlog.adjournment.AdjournmentSubscriber" />
+
+  <!-- CR Live Status -->
+  <subscriber level="category" name="Cr_Live_Status"
+    class="uk.gov.courtservice.xhibit.courtlog.crlivestatus.CrLiveStatusSubscriber" />
+
+  <!-- Public Display -->
+  <subscriber level="category" name="Public_Display"
+    class="uk.gov.courtservice.xhibit.courtlog.publicdisplay.PublicDisplaySubscriber" />
+
+  <!-- Public Notice -->
+  <subscriber level="category" name="Public_Notice"
+    class="uk.gov.courtservice.xhibit.courtlog.publicnotice.PublicNoticeSubscriber" />
+
+  <!-- Directions For Case -->
+  <subscriber level="category" name="Directions_By_Case"
+    class="uk.gov.courtservice.xhibit.courtlog.directionsbycase.DirectionsByCaseSubscriber" />
+
+  <!-- Directions For Defendant -->
+  <subscriber level="category" name="Directions_By_Defendant"
+    class="uk.gov.courtservice.xhibit.courtlog.directionsbydefendant.DirectionsByDefendantSubscriber" />
+
+  <!-- Jury Start -->
+  <subscriber level="category" name="Calc_Jury_Out_Time_Start"
+    class="uk.gov.courtservice.xhibit.courtlog.jury.JuryStartSubscriber" />
+
+  <!-- Jury Stop -->
+  <subscriber level="category" name="Calc_Jury_Out_Time_Stop"
+    class="uk.gov.courtservice.xhibit.courtlog.jury.JuryStopSubscriber" />
+
+  <!-- End Hearing -->
+  <subscriber level="category" name="End_Hearing"
+    class="uk.gov.courtservice.xhibit.courtlog.endhearing.EndHearingSubscriber" />
+
+  <!-- Witness Sworn -->
+  <subscriber level="category" name="Witness_Sworn"
+    class="uk.gov.courtservice.xhibit.courtlog.witness.WitnessSwornSubscriber" />
+
+  <!-- Witness Released -->
+  <subscriber level="category" name="Witness_Released"
+    class="uk.gov.courtservice.xhibit.courtlog.witness.WitnessReleasedSubscriber" />
+    
+   <!-- Witness Read -->
+  <subscriber level="category" name="Witness_Read"
+    class="uk.gov.courtservice.xhibit.courtlog.witness.WitnessReadSubscriber" />
+
+<!-- +++++++++++++++++ Event Level Subscribers ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
+
+  <!-- Probation Service -->
+  <subscriber level="event" name="Long_Adjourn" async="true"
+    class="uk.gov.courtservice.xhibit.courtlog.probation.ProbationServiceSubscriber" />
+
+  <!-- Reporting Restrictions -->
+  <subscriber level="event" name="Reporting_Restrictions"
+    class="uk.gov.courtservice.xhibit.courtlog.reportingrestrictions.ReportingRestrictionsSubscriber" />
+
+  <!-- Lifting Restrictions -->
+  <subscriber level="event" name="Lifting_Restrictions"
+    class="uk.gov.courtservice.xhibit.courtlog.reportingrestrictions.LiftingRestrictionsSubscriber" />
+
+</subscribers>
+

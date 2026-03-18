@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by CGI IT UK LTD -->
+<xsd:schema xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:fin="http://www.govtalk.gov.uk/financial/GDSCFinancialTypes" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="XHIBITDVLAdriversComplexTypes">
+	<xsd:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="apd.xsd"/>
+	<xsd:import namespace="http://www.govtalk.gov.uk/people/bs7666" schemaLocation="BS7666.xsd"/>
+	<xsd:import namespace="http://www.govtalk.gov.uk/financial/GDSCFinancialTypes" schemaLocation="FinancialTypes.xsd"/>
+	<xsd:include schemaLocation="XHIBITDVLAdriversSimpleTypes.xsd"/>
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Ministry of Justice</Creator>
+				<Created>2015-06-03</Created>
+				<Modified>2015-06-03</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>CourtService</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Ministry of Justice, Clive House, 102 Petty France, London, SW1H 9AJ</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2015</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>draft</Status>
+				<StatusDescription>initial version for review</StatusDescription>
+				<Version>1.0</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>XHIBIT DVLA drivers complex types</Title>
+				<Type>architectural</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="AddressStructure">
+		<xsd:sequence>
+			<xsd:element name="AddressLine1" type="apd:AddressLineType"/>
+			<xsd:element name="AddressLine2" type="apd:AddressLineType" minOccurs="0"/>
+			<xsd:element name="AddressLine3" type="apd:AddressLineType" minOccurs="0"/>
+			<xsd:element name="AddressLine4" type="apd:AddressLineType" minOccurs="0"/>
+			<xsd:element name="AddressLine5" type="apd:AddressLineType" minOccurs="0"/>
+			<xsd:element name="PostCode" type="bs7666:PostcodeType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="AppealStructure">
+		<xsd:sequence>
+			<xsd:element name="AppealAgainstConviction" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="AppealAgainstSentenceOnly" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="AppealAllowed" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="AppealDismissed" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="AppealAbandoned" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="SentenceVaried" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="AppealRemitted" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BasicDriverStructure">
+		<xsd:sequence>
+			<xsd:element name="DriverNumber" type="DriverNumberType" minOccurs="0"/>
+			<xsd:element name="PersonName" type="RelaxedNameStructure" minOccurs="0"/>
+			<xsd:element name="Birthdate" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="Gender" type="DriverGenderType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="BasicEndorsementStructure">
+		<xsd:sequence>
+			<xsd:element name="DVLAoffenceCode" type="DVLAoffenceCodeType"/>
+			<xsd:element name="OffenceDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="ConvictingCourt" type="CourtCodeType"/>
+			<xsd:element name="SentencingCourt" type="CourtCodeType" minOccurs="0"/>
+			<xsd:element name="InterimFinal" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="DateOfSentence" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="AmountAndCurrency" type="fin:AmountStructure" minOccurs="0"/>
+			<xsd:element name="Fine" type="xsd:decimal" minOccurs="0"/>
+			<xsd:element name="PenaltyPoints" type="PenaltyPointsType" minOccurs="0"/>
+			<xsd:element name="DisqualificationPeriod" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="DisqualificationUntilTestPassed" type="DisqualificationUntilTestPassedType" minOccurs="0"/>
+			<xsd:element name="DisqualificationPendingSentence" type="DisqualificationPendingSentenceType" minOccurs="0"/>
+			<xsd:element name="AlcoholLevelMethod" type="AlcoholLevelMethodType" minOccurs="0"/>
+			<xsd:element name="AlcoholLevelAmount" type="AlcoholLevelAmountType" minOccurs="0"/>
+			<xsd:element name="DVLAcustodyCode" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="PrimarySentencePeriod" type="xsd:integer" minOccurs="0"/>
+			<xsd:element name="PrimarySentenceQualifier" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="SecondarySentencePeriod" type="SentencePeriodType" minOccurs="0"/>
+			<xsd:element name="SecondarySentenceQualifier" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="DateDisqualificationRemoved" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DateDisqualificationSuspended" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DateDisqualificationReimposed" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DisqualificationExpiryDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="NoDisqualificationMitigatingCircumstances" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="NoDisqualificationSpecialReasons" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="NotificationOfDisability" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="AppealCourt" type="CourtCodeType" minOccurs="0"/>
+			<xsd:element name="AppealDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Appeals" type="AppealStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ1DriverEnquiryStructure">
+		<xsd:sequence>
+			<xsd:element name="EnquirerCMU" type="CaseManagementUnitType"/>
+			<xsd:element name="EnquirerMCC" type="MagistratesCourtCommitteeType"/>
+			<xsd:element name="EnquirerCourthouse" type="CourthouseType"/>
+			<xsd:element name="EnquirerCourtroom" type="CourtroomType"/>
+			<xsd:element name="EnquirerLocation" type="LocationType"/>
+			<xsd:element name="EnquirerPSA" type="PettySessionalAreaType"/>
+			<xsd:element name="EnquirerIdentity" type="IdentityType"/>
+			<xsd:element name="UrgentMarker" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="CaseNumber" type="CaseNumberType"/>
+			<xsd:element name="BasicDriverDetails" type="BasicDriverStructure" minOccurs="0"/>
+			<xsd:element name="DateOfNextHearing" type="xsd:date"/>
+			<xsd:element name="DateOfRequest" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="TimeOfRequest" type="xsd:time" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3CategoryStructure">
+		<xsd:sequence>
+			<xsd:element name="DriverLicenceStatus" type="DriverLicenceStatusType"/>
+			<xsd:element name="DateOfCommission" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DateOfExpiry" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="CategoryCode" type="String3Type"/>
+			<xsd:element name="CategoryIdentifier" type="String3Type"/>
+			<xsd:element name="MotorcycleRestrictionExpiryDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="MotorcycleCategoryEntitlementMarker" type="PopulatedStringType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3CrossReferenceStructure">
+		<xsd:sequence>
+			<xsd:element name="DriverNumber" type="DriverNumberType" minOccurs="0"/>
+			<xsd:element name="PersonName" type="RelaxedNameStructure" minOccurs="0"/>
+			<xsd:element name="DateToBeRemoved" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3DocumentTrailStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentNumber" type="DocumentNumberType"/>
+			<xsd:element name="TransactionKey" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="TransactionKeyText" type="TransactionKeyTextType" minOccurs="0"/>
+			<xsd:element name="DateOfProcessing" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3DriverResponseStructure">
+		<xsd:sequence>
+			<xsd:element name="EnquirerCMU" type="CaseManagementUnitType"/>
+			<xsd:element name="EnquirerMCC" type="MagistratesCourtCommitteeType"/>
+			<xsd:element name="EnquirerCourthouse" type="CourthouseType"/>
+			<xsd:element name="EnquirerCourtroom" type="CourtroomType"/>
+			<xsd:element name="EnquirerLocation" type="LocationType"/>
+			<xsd:element name="EnquirerIdentity" type="IdentityType"/>
+			<xsd:element name="CaseNumber" type="CaseNumberType"/>
+			<xsd:element name="DocumentReference" type="DocumentReferenceType" minOccurs="0"/>
+			<xsd:element name="DateOfRequest" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="TimeOfRequest" type="xsd:time" minOccurs="0"/>
+			<xsd:element name="BasicDriverDetails" type="BasicDriverStructure" minOccurs="0"/>
+			<xsd:element name="NumberOfMatches" type="NumberOfMatchesType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3DriverStructure">
+		<xsd:sequence>
+			<xsd:element name="MatchedDriverDetails" type="MatchedDriverStructure"/>
+			<xsd:element name="UnstructuredAddress" type="AddressStructure"/>
+			<xsd:element name="OverallPointsTotal" type="OverallPointsTotalType"/>
+			<xsd:element name="DateToWhichDisqualified" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3EndorsementStructure">
+		<xsd:sequence>
+			<xsd:element name="ConvictionDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="BasicEndorsementDetails" type="BasicEndorsementStructure"/>
+			<xsd:element name="AppealCourt" type="CourtCodeType" minOccurs="0"/>
+			<xsd:element name="DateOfAppeal" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="RehabilitationMarker" type="YesNoType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3LicenceStructure">
+		<xsd:sequence>
+			<xsd:element name="DriverLicenceRecordCode" type="DriverLicenceRecordCodeType"/>
+			<xsd:element name="LicenceRecordTypeText" type="DriverLicenceRecordTypeTextType"/>
+			<xsd:element name="LicenceIssue" type="DriverLicenceIssueType" minOccurs="0"/>
+			<xsd:element name="DateOfCommission" type="xsd:date"/>
+			<xsd:element name="DateOfExpiry" type="xsd:date"/>
+			<xsd:element name="HarmonisationMarker" type="PopulatedStringType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3RestrictionStructure">
+		<xsd:sequence>
+			<xsd:element name="RestrictionCode" type="String3Type"/>
+			<xsd:element name="RestrictionIdentifier" type="String3Type"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3StatusStructure">
+		<xsd:sequence>
+			<xsd:element name="DateTestPassed" type="xsd:date"/>
+			<xsd:element name="TestStatus" type="TestStatusType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3StopsAndMarkersStructure">
+		<xsd:sequence>
+			<xsd:element name="MarkerCode" type="MarkerCodeType"/>
+			<xsd:element name="MarkerText" type="MarkerTextType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="DQ3TextStructure">
+		<xsd:sequence>
+			<xsd:element name="TextCode" type="String3Type"/>
+			<xsd:element name="Text" type="TextType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="D20DriverStructure">
+		<xsd:sequence>
+			<xsd:element name="SourceCMU" type="CaseManagementUnitType"/>
+			<xsd:element name="SourceMCC" type="MagistratesCourtCommitteeType"/>
+			<xsd:element name="SourceCourthouse" type="CourthouseType"/>
+			<xsd:element name="SourceCourtroom" type="CourtroomType"/>
+			<xsd:element name="SourceLocation" type="LocationType" minOccurs="0"/>
+			<xsd:element name="SourceIdentity" type="IdentityType"/>
+			<xsd:element name="DocumentType" type="String3Type"/>
+			<xsd:element name="LibraCaseAccountNumber" type="LibraCaseAccountNumberType"/>
+			<xsd:element name="EventDate" type="xsd:date"/>
+			<xsd:element name="BasicDriverDetails" type="ResultedDriverStructure"/>
+			<xsd:element name="LicenceRecordType" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="DriverLicenceIssue" type="DriverLicenceIssueType" minOccurs="0"/>
+			<xsd:element name="CounterpartIssue" type="CounterpartIssueType" minOccurs="0"/>
+			<xsd:element name="PreviouslyNotifiedEndorsements" type="PreviouslyNotifiedEndorsementsType"/>
+			<xsd:element name="LicenceToFollowMarker" type="LicenceToFollowMarkerType"/>
+			<xsd:element name="UnstructuredAddress" type="AddressStructure"/>
+			<xsd:element name="HardshipMarker" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="EndorsementsNotified" type="EndorsementsNotifiedType"/>
+			<xsd:element name="PaperLicenceEnclosed" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="PhotocardEnclosed" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="PaperLicenceEndorsed" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="CounterpartLicenceEndorsed" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="ForeignLicenceEnclosed" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="OtherName" type="PopulatedStringType" minOccurs="0"/>
+			<xsd:element name="OtherAddress" type="AddressStructure" minOccurs="0"/>
+			<xsd:element name="Appeals" type="AppealStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="D20EndorsementStructure">
+		<xsd:sequence>
+			<xsd:element name="ConvictionDate" type="xsd:date"/>
+			<xsd:element name="BasicEndorsementDetails" type="BasicEndorsementStructure"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="MatchedDriverStructure">
+		<xsd:sequence>
+			<xsd:element name="DriverNumber" type="DriverNumberType" minOccurs="0"/>
+			<xsd:element name="PersonName" type="RequiredNameStructure"/>
+			<xsd:element name="Birthdate" type="xsd:integer"/>
+			<xsd:element name="Gender" type="DriverGenderType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RelaxedNameStructure">
+		<xsd:sequence>
+			<xsd:element name="PersonFamilyName" type="PersonFamilyNameType" minOccurs="0"/>
+			<xsd:element name="PersonGivenName1" type="PersonGivenNameType" minOccurs="0"/>
+			<xsd:element name="PersonGivenName2" type="PersonGivenNameType" minOccurs="0"/>
+			<xsd:element name="PersonGivenName3" type="PersonGivenNameType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="RequiredNameStructure">
+		<xsd:sequence>
+			<xsd:element name="PersonFamilyName" type="PersonFamilyNameType"/>
+			<xsd:element name="PersonGivenName1" type="PersonGivenNameType" minOccurs="0"/>
+			<xsd:element name="PersonGivenName2" type="PersonGivenNameType" minOccurs="0"/>
+			<xsd:element name="PersonGivenName3" type="PersonGivenNameType" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="ResultedDriverStructure">
+		<xsd:sequence>
+			<xsd:element name="DriverNumber" type="DriverNumberType" minOccurs="0"/>
+			<xsd:element name="PersonName" type="RelaxedNameStructure" minOccurs="0"/>
+			<xsd:element name="Birthdate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Gender" type="DriverGenderType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

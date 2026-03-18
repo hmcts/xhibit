@@ -1,0 +1,16 @@
+ * -------- custom finders --------
+ * @ejb.finder
+ *    signature="java.util.Collection findNonObsoleteByDefOnCaseId(java.lang.Integer defendantOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbHateSentencing AS o WHERE o.defendantOnCaseId = ?1 AND  (o.obsInd IS NULL OR o.obsInd = 'N')"
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefOnCaseId(java.lang.Integer defendantOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbHateSentencing AS o WHERE o.defendantOnCaseId = ?1" 
+ *
+ * -------- end of custom finders --------
+  

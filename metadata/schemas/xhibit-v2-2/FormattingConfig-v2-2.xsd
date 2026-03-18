@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="FormattingConfig">
+    <xs:element name="xsltproperties">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="xslttransform" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="distributiontype" type="DistributionTypeType" minOccurs="0"/>
+                            <xs:element name="mimetype" type="MimeTypeType" minOccurs="0"/>
+                            <xs:element name="documenttype" type="DocumentTypeType" minOccurs="0"/>
+                            <xs:element name="majorversion" type="MajorVersionType" minOccurs="0"/>
+                            <xs:element name="minorversion" type="MinorVersionType" minOccurs="0"/>
+                            <xs:element name="xsltfilelist">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="xsltfilename" type="xs:string" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="DistributionTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="EMAIL"/>
+            <xs:enumeration value="FAX"/>
+            <xs:enumeration value="FTP"/>
+            <xs:enumeration value="POST"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DocumentTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="DL"/>
+            <xs:enumeration value="DLL"/>
+            <xs:enumeration value="DLP"/>
+            <xs:enumeration value="FL"/>
+            <xs:enumeration value="FLL"/>
+            <xs:enumeration value="IWP"/>
+            <xs:enumeration value="RL"/>
+            <xs:enumeration value="WL"/>
+            <xs:enumeration value="WLL"/>
+            <xs:enumeration value="WLS"/>
+            <xs:enumeration value="FLS"/>
+            <xs:enumeration value="DLS"/>
+            <xs:enumeration value="ROS"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MimeTypeType">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="HTM"/>
+            <xs:enumeration value="PDF"/>
+            <xs:enumeration value="FOP"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MajorVersionType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MinorVersionType">
+        <xs:restriction base="xs:int">
+            <xs:minInclusive value="0"/>
+            <xs:maxInclusive value="99"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>
+

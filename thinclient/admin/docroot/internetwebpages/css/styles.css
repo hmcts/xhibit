@@ -1,0 +1,120 @@
+/* CSS Document */
+html { margin: 0px; padding: 0px;}
+body { margin: 0px; padding: 0px; font-family: verdana, arial, helvetica, sans-serif; color: #000; height: 100%; }
+
+#header {background: url(../images/new-header.jpg); background-position: top; background-position: right; background-repeat: no-repeat; }
+
+#topnav { padding: 2px 10px 2px 10px; margin-top: 0px; font-size: 62%;  color: #636;  background: #CCC; text-align: right; font-weight: normal; }
+#topnav a { color: #636; text-decoration: none; font-weight: normal; }
+#topnav a:visited { color: #636; text-decoration: none; font-weight: normal; }
+#topnav a:hover { color: #636; text-decoration: underline; font-weight: normal; }
+
+#leftnav { clear: both; font-size: 65%; float: left;  width: 20%; margin-top: 15px; font-weight: normal; height: 100%; }
+
+#leftnav a img {margin-top: 10px; font-weight: normal; } 
+
+.mainNav { margin: 0px; padding: 0px; font-weight: normal; }
+.mainNav a, .mainNav a:visited  { padding: 2px 2px 2px 6px; display: block; background: #969 ; margin: 0px 4px 1px; color: #FFF; text-decoration: none; font-weight: normal; }
+.mainNav a:hover { background: #EEE ; color: #606; text-decoration: none; font-weight: normal; }
+
+.activeNav { padding: 0px; margin: 0px; font-weight: normal; }
+.activeNav a, .activeNav a:visited {padding: 2px 2px 2px 6px; display: block; background: #636 ; margin: 0px 4px 1px; color: #FFF; text-decoration: none; font-weight: normal;  }
+.activeNav a:hover { color: #606; background: #EEE; text-decoration: none ; font-weight: normal; }
+
+.subnav { margin: 0px; padding: 0px; font-weight: normal; }
+.subnav a, .subnav a:visited  { padding: 2px 2px 2px 12px; display: block;  background: #EAD5EA ; margin: 0px 4px 1px; color: #000066;  text-decoration: none ; font-weight: normal; }
+.subnav a:hover { color: #606; background: #EEE; text-decoration: none ; font-weight: normal; }
+.subnav a#act { font-weight: bold; }
+
+#content {padding: 0px 21% 0px 20%; font-size: 68%; }
+
+#widecontent {padding: 0px 10px 0px 20%;  font-size: 68%; margin: 0; margin-left: 1px;}
+
+#rightNav { font-size: 65%; float: right; padding: 0px; margin: 0px; width: 20%; margin-top: 8px; }
+
+.rightNavPanel { border: #636 1px solid; padding: 0px; margin-top: 10px;  margin-right: 5px; }
+.rightNavPanel h1 { padding: 2px; font-weight: normal; font-size: 1em; background: #969; margin: 0px; color: #FFF; }
+.rightNavPanel a, .rightNavPanel a:visited  {  display: block; padding: 2px 2px 2px 2px; margin: 0px; color: #606; text-decoration: none; font-weight:normal; }
+.rightNavPanel a:hover { color: #606; text-decoration: underline; font-weight:normal; }
+.rightNavPanel form { margin: 0; padding: 2px 2px 2px 2px; }
+.rightNavPanel img { margin: 0; }
+.rightNavPanel p { padding: 2px 2px 2px 2px; margin: 0px;  }
+.rightNavPanel .imageleft { margin-top: 5px; float: left; margin-bottom: 2px; margin-right: 5px }
+
+h1, h2, h3, h4, h5 { padding: 3px 0 3px 0;  margin-bottom: 10px; color: #000; background: #EEE; }
+h1 {font-size: 135%; text-align: left; }
+h2 { font-size: 120%; }
+h3 { font-size: 115%; }
+h4 { font-size: 110%; }
+h5 { font-size: 100%; }
+
+.breadcrumb { padding: 0px 0px 0px 0px; margin: 0px; color: #636; float: left;}
+.breadcrumb a, .breadcrumb a:visited { color: #636; text-decoration: none; }
+.breadcrumb a:hover { color: #636; text-decoration: underline; }
+
+.hidden { display: none}
+
+ul { margin-top: 0px; padding-left: 2em; list-style-type: disc; margin-bottom: 1em; padding-bottom: 0px; text-indent: 0px; padding-top: 0px; list-style-type: disc }
+ul ul { list-style-image: url(../images/indent.gif); list-style-type: disc }
+
+ol { margin-top: 0px; margin-bottom: 1em; padding-bottom: 0px; padding-top: 0px }
+
+li { padding: 0; margin: 0em 0em 0.5em; }
+
+.indent50 { margin-left: 50px; }
+.indent30 { margin-left: 30px; }
+.indent15 { margin-left: 15px; }
+
+a, a:visited  { color: #636; text-decoration: none; font-weight: bold; }
+a:hover { color: #636; text-decoration: underline; font-weight: bold;}
+
+p { padding: 0px; margin: 0px 0px 1em; }
+
+table { font-size: 100% ; }
+
+#title {padding: 0px; background: #EEE; }
+#title h1 { font-size: 135%; margin: 20px 0px 0px 0px; padding: 0px; color: #000; background: #EEE }
+#title h2 { font-size: 105%; margin: 2px 0px 10px 0px; padding: 0px; color: #000; background: #EEE }
+
+table.border, table.border td, table.border th { border: 1px solid #CCC; }
+
+th { color: black; margin: 0; padding: 2px; font-size: 100%; text-align: left; }
+
+td { padding: 2px; font-size: 100%; margin: 0;}
+
+caption { padding: 8px; font-weight: bold; }
+
+.list a, .list a:visited{ display: block; color: #606; text-decoration: none; padding-top: 5px;}
+.list a:hover { color: #606; text-decoration: underline; }
+
+#tablesearch { border: #636 1px solid; padding: 0px; margin-bottom: 10px;  margin-left: 10px; }
+#tablesearch form { top: 10px;}
+#tablesearch h1 { padding: 2px; font-weight: normal; font-size: 1em; background: #969; margin: 0px; color: #FFF; }
+#tablesearch a, #tablesearch a:visited  { display: block; padding: 4px; margin: 0px; color: #606; text-decoration: none }
+#tablesearch a:hover { color: #606; text-decoration: underline }
+#tablesearch form { margin: 0; padding: 5px 5px 5px 5px; }
+
+.top { padding: 6px 0px; text-align: right; }
+.top a, .top a:visited  { color: #606; text-decoration: none; font-weight: normal; }
+.top a:hover { color: #606; text-decoration: underline; font-weight: normal; }
+
+.bookmark { padding: 5px 0px; text-align:center; }
+
+.author {font-size: 85%; padding: 10px; border-top: 1px solid #606; text-align: center;}
+.author a, .author a:visited  { color: #606; text-decoration: none; font-weight: normal; }
+.author a:hover { color: #606; text-decoration: underline; font-weight: normal;}
+
+.pipe { display: none; }
+
+input#button { border-right: #000 2px solid; border-bottom: #000 2px solid; padding: 1px;  color: #FFF; font-weight: bold; background: #606;}
+
+.reddot { color: #FF0000; font-size: 95%;}
+
+input#button { padding: 1px;  color: #000; font-weight: normal; background: #EEE; }
+label { padding: 0px; text-align: right; margin: 10px 5px 0px 0px; color: #000; font-weight: normal; }
+
+.searchform { padding: 0px; text-align: right; margin: 10px 5px 0px 0px; }
+.searchform a, .searchform a:visited  { color: #606; text-decoration: none; font-weight: normal; }
+.searchform a:hover { color: #606; text-decoration: underline; font-weight: normal; }
+
+.page { text-align: right; font-weight: bold; }

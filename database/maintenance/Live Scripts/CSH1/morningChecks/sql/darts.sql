@@ -1,0 +1,9 @@
+#
+SET ECHO OFF
+SET FEEDBACK OFF
+SET PAGESIZE 9999
+SET LINESIZE 500
+SET HEADING OFF
+select count(*) from dar_new_messages;
+EXIT;
+#

@@ -1,0 +1,13 @@
+XHBRequestingSystemName,CourtServicesHub
+XHBRequestingSystemOrgUnitCode,C000000
+XHBRequestingSystemEnvironment,INTEGRATION
+XHBMessageTypeVersion,1.2
+XHBMessageSchemaNamespace,http://schemas.cjse.gov.uk/messages/deliver/2006-05
+XHBMessageSchemaVersion,1.23
+XHBOriginatingSystemName,CourtServicesHub
+XHBOriginatingSystemOrgUnitCode,C000000
+XHBOriginatingSystemEnvironment,INTEGRATION
+XHBCreationDateTime,2006-10-30T19:40:47-05:00
+XHBExpiryDateTime,2010-12-17T09:40:47-05:00
+
+

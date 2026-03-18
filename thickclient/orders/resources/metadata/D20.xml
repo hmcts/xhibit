@@ -1,0 +1,412 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  edited with XMLSPY v5 rel. 2 U  (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+F:\XHIBIT\XHIBIT_8_2\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<D20>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<D20PersonalDetails>
+				<Title>Mr</Title>
+				<OtherTitle> </OtherTitle>
+				<Gender>Male</Gender>
+			</D20PersonalDetails>
+			<D20CommittingCourtSection selected="true">
+				<D20CommittingCourt>
+					<Date>0001-01-01</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+				</D20CommittingCourt>
+			</D20CommittingCourtSection>
+			<DriverNumber> </DriverNumber>
+			<LicenceType>0 - Never held a DVLA Licence</LicenceType>
+			<LicenceIssueNo> </LicenceIssueNo>
+			<NotificationPreviouslySent>false</NotificationPreviouslySent>
+			<DifferentAddress selected="true">
+				<DifferentName> </DifferentName>
+				<Address>
+					<apd:Line> </apd:Line>
+					<apd:Line> </apd:Line>
+					<apd:Line> </apd:Line>
+					<apd:Line> </apd:Line>
+					<apd:Line> </apd:Line>
+					<apd:PostCode>AA1 1AA</apd:PostCode>
+				</Address>
+			</DifferentAddress>
+			<Forms>
+				<FormNumber>1</FormNumber>
+				<TotalForms>1</TotalForms>
+			</Forms>
+			<Offence1 selected="false">
+				<OffenceCode1> </OffenceCode1>
+				<OffenceDate1Section selected="false">
+					<OffenceDate1>0001-01-01</OffenceDate1>
+				</OffenceDate1Section>
+				<OffenceFine1 selected="true">
+					<MonetaryValue>
+						<Amount>0.00</Amount>
+						<Currency>GBP</Currency>
+					</MonetaryValue>
+				</OffenceFine1>
+				<OffencePenaltyPoints1>0</OffencePenaltyPoints1>
+				<OffenceAlcoholLevel1>
+					<D20AlcoholLevelValue> </D20AlcoholLevelValue>
+					<D20AlcoholLevelDropdown>Not Applicable</D20AlcoholLevelDropdown>
+				</OffenceAlcoholLevel1>
+				<OffenceDisqualifiedPeriod1>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</OffenceDisqualifiedPeriod1>
+				<OffenceOtherSentence1Section selected="false">
+					<OffenceOtherSentence1>
+						<D20OffenceOtherSentenceDropdown>A - Imprisonment</D20OffenceOtherSentenceDropdown>
+						<D20OffenceOtherSentenceValue>0</D20OffenceOtherSentenceValue>
+						<D20OffenceOtherSentenceDurationType>hour(s)</D20OffenceOtherSentenceDurationType>
+					</OffenceOtherSentence1>
+				</OffenceOtherSentence1Section>
+				<OffencePPSCO1Section selected="false">
+					<OffencePPSCO1>
+						<D20OffencePPSCODropdown>Prison Sentence Suspended</D20OffencePPSCODropdown>
+						<D20OffencePPSCODurationType>
+							<Years>0</Years>
+							<Months>0</Months>
+							<Days>0</Days>
+						</D20OffencePPSCODurationType>
+					</OffencePPSCO1>
+				</OffencePPSCO1Section>
+				<OffenceDisqTestPassed1>Not Applicable</OffenceDisqTestPassed1>
+				<OffenceInterimFinal1>Not Applicable</OffenceInterimFinal1>
+				<OffenceSentencingCourt1Section selected="false">
+					<OffenceSentencingCourt1 selected="false">
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceSentencingCourt1>
+					<OffenceDateOfSentence1>0001-01-01</OffenceDateOfSentence1>
+				</OffenceSentencingCourt1Section>
+				<OffenceDisqualificationRemoved1Section selected="false">
+					<OffenceDisqualificationRemoved1>0001-01-01</OffenceDisqualificationRemoved1>
+				</OffenceDisqualificationRemoved1Section>
+				<OffenceDisqualificationSuspended1Section selected="false">
+					<OffenceDisqualificationSuspended1>0001-01-01</OffenceDisqualificationSuspended1>
+				</OffenceDisqualificationSuspended1Section>
+				<OffenceDisqualificationReimposed1Section selected="false">
+					<OffenceDisqualificationReimposed1>0001-01-01</OffenceDisqualificationReimposed1>
+				</OffenceDisqualificationReimposed1Section>
+				<NoDisqualificationMitigatingCircumstances1>false</NoDisqualificationMitigatingCircumstances1>
+				<NoDisqualificationSpecialReasons1>false</NoDisqualificationSpecialReasons1>
+				<NotificationOfDisability1>false</NotificationOfDisability1>
+				<OffenceAppeal1Section selected="false">
+					<OffenceAppealCourt1 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceAppealCourt1>
+					<OffenceDateOfAppeal1Section selected="false">
+						<OffenceDateOfAppeal1>0001-01-01</OffenceDateOfAppeal1>
+					</OffenceDateOfAppeal1Section>
+					<AppealWasAgainstConviction1>false</AppealWasAgainstConviction1>
+					<AppealWasAgainstSentenceOnly1>false</AppealWasAgainstSentenceOnly1>
+					<AppealWasAllowed1>false</AppealWasAllowed1>
+					<AppealDismissed1Section selected="false">
+						<AppealDateDismissed1>0001-01-01</AppealDateDismissed1>
+					</AppealDismissed1Section>
+					<AppealWasAbandoned1Section selected="false">
+						<AppealDateAbandoned1>0001-01-01</AppealDateAbandoned1>
+					</AppealWasAbandoned1Section>
+					<SentenceWasVaried1>false</SentenceWasVaried1>
+					<AppealWasRemitted1Section selected="false">
+						<AppealDateRemitted1>0001-01-01</AppealDateRemitted1>
+					</AppealWasRemitted1Section>
+				</OffenceAppeal1Section>
+			</Offence1>
+			<Offence2 selected="false">
+				<OffenceCode2> </OffenceCode2>
+				<OffenceDate2Section selected="false">
+					<OffenceDate2>0001-01-01</OffenceDate2>
+				</OffenceDate2Section>
+				<OffenceFine2 selected="true">
+					<MonetaryValue>
+						<Amount>0.00</Amount>
+						<Currency>GBP</Currency>
+					</MonetaryValue>
+				</OffenceFine2>
+				<OffencePenaltyPoints2>0</OffencePenaltyPoints2>
+				<OffenceAlcoholLevel2>
+					<D20AlcoholLevelValue> </D20AlcoholLevelValue>
+					<D20AlcoholLevelDropdown>Not Applicable</D20AlcoholLevelDropdown>
+				</OffenceAlcoholLevel2>
+				<OffenceDisqualifiedPeriod2>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</OffenceDisqualifiedPeriod2>
+				<OffenceOtherSentence2Section selected="false">
+					<OffenceOtherSentence2>
+						<D20OffenceOtherSentenceDropdown>A - Imprisonment</D20OffenceOtherSentenceDropdown>
+						<D20OffenceOtherSentenceValue>0</D20OffenceOtherSentenceValue>
+						<D20OffenceOtherSentenceDurationType>hour(s)</D20OffenceOtherSentenceDurationType>
+					</OffenceOtherSentence2>
+				</OffenceOtherSentence2Section>
+				<OffencePPSCO2Section selected="false">
+					<OffencePPSCO2>
+						<D20OffencePPSCODropdown>Prison Sentence Suspended</D20OffencePPSCODropdown>
+						<D20OffencePPSCODurationType>
+							<Years>0</Years>
+							<Months>0</Months>
+							<Days>0</Days>
+						</D20OffencePPSCODurationType>
+					</OffencePPSCO2>
+				</OffencePPSCO2Section>
+				<OffenceDisqTestPassed2>Not Applicable</OffenceDisqTestPassed2>
+				<OffenceInterimFinal2>Not Applicable</OffenceInterimFinal2>
+				<OffenceSentencingCourt2Section selected="false">
+					<OffenceSentencingCourt2 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceSentencingCourt2>
+					<OffenceDateOfSentence2>0001-01-01</OffenceDateOfSentence2>
+				</OffenceSentencingCourt2Section>
+				<OffenceDisqualificationRemoved2Section selected="false">
+					<OffenceDisqualificationRemoved2>0001-01-01</OffenceDisqualificationRemoved2>
+				</OffenceDisqualificationRemoved2Section>
+				<OffenceDisqualificationSuspended2Section selected="false">
+					<OffenceDisqualificationSuspended2>0001-01-01</OffenceDisqualificationSuspended2>
+				</OffenceDisqualificationSuspended2Section>
+				<OffenceDisqualificationReimposed2Section selected="false">
+					<OffenceDisqualificationReimposed2>0001-01-01</OffenceDisqualificationReimposed2>
+				</OffenceDisqualificationReimposed2Section>
+				<NoDisqualificationMitigatingCircumstances2>false</NoDisqualificationMitigatingCircumstances2>
+				<NoDisqualificationSpecialReasons2>false</NoDisqualificationSpecialReasons2>
+				<NotificationOfDisability2>false</NotificationOfDisability2>
+				<OffenceAppeal2Section selected="false">
+					<OffenceAppealCourt2 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceAppealCourt2>
+					<OffenceDateOfAppeal2Section selected="false">
+						<OffenceDateOfAppeal2>0001-01-01</OffenceDateOfAppeal2>
+					</OffenceDateOfAppeal2Section>
+					<AppealWasAgainstConviction2>false</AppealWasAgainstConviction2>
+					<AppealWasAgainstSentenceOnly2>false</AppealWasAgainstSentenceOnly2>
+					<AppealWasAllowed2>false</AppealWasAllowed2>
+					<AppealDismissed2Section selected="false">
+						<AppealDateDismissed2>0001-01-01</AppealDateDismissed2>
+					</AppealDismissed2Section>
+					<AppealWasAbandoned2Section selected="false">
+						<AppealDateAbandoned2>0001-01-01</AppealDateAbandoned2>
+					</AppealWasAbandoned2Section>
+					<SentenceWasVaried2>false</SentenceWasVaried2>
+					<AppealWasRemitted2Section selected="false">
+						<AppealDateRemitted2>0001-01-01</AppealDateRemitted2>
+					</AppealWasRemitted2Section>
+				</OffenceAppeal2Section>
+			</Offence2>
+			<Offence3 selected="false">
+				<OffenceCode3> </OffenceCode3>
+				<OffenceDate3Section selected="false">
+					<OffenceDate3>0001-01-01</OffenceDate3>
+				</OffenceDate3Section>
+				<OffenceFine3 selected="true">
+					<MonetaryValue>
+						<Amount>0.00</Amount>
+						<Currency>GBP</Currency>
+					</MonetaryValue>
+				</OffenceFine3>
+				<OffencePenaltyPoints3>000</OffencePenaltyPoints3>
+				<OffenceAlcoholLevel3>
+					<D20AlcoholLevelValue> </D20AlcoholLevelValue>
+					<D20AlcoholLevelDropdown>Not Applicable</D20AlcoholLevelDropdown>
+				</OffenceAlcoholLevel3>
+				<OffenceDisqualifiedPeriod3>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</OffenceDisqualifiedPeriod3>
+				<OffenceOtherSentence3Section selected="false">
+					<OffenceOtherSentence3>
+						<D20OffenceOtherSentenceDropdown>A - Imprisonment</D20OffenceOtherSentenceDropdown>
+						<D20OffenceOtherSentenceValue>0</D20OffenceOtherSentenceValue>
+						<D20OffenceOtherSentenceDurationType>hour(s)</D20OffenceOtherSentenceDurationType>
+					</OffenceOtherSentence3>
+				</OffenceOtherSentence3Section>
+				<OffencePPSCO3Section selected="false">
+					<OffencePPSCO3>
+						<D20OffencePPSCODropdown>Prison Sentence Suspended</D20OffencePPSCODropdown>
+						<D20OffencePPSCODurationType>
+							<Years>0</Years>
+							<Months>0</Months>
+							<Days>0</Days>
+						</D20OffencePPSCODurationType>
+					</OffencePPSCO3>
+				</OffencePPSCO3Section>
+				<OffenceDisqTestPassed3>Not Applicable</OffenceDisqTestPassed3>
+				<OffenceInterimFinal3>Not Applicable</OffenceInterimFinal3>
+				<OffenceSentencingCourt3Section selected="false">
+					<OffenceSentencingCourt3 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceSentencingCourt3>
+					<OffenceDateOfSentence3>0001-01-01</OffenceDateOfSentence3>
+				</OffenceSentencingCourt3Section>
+				<OffenceDisqualificationRemoved3Section selected="false">
+					<OffenceDisqualificationRemoved3>0001-01-01</OffenceDisqualificationRemoved3>
+				</OffenceDisqualificationRemoved3Section>
+				<OffenceDisqualificationSuspended3Section selected="false">
+					<OffenceDisqualificationSuspended3>0001-01-01</OffenceDisqualificationSuspended3>
+				</OffenceDisqualificationSuspended3Section>
+				<OffenceDisqualificationReimposed3Section selected="false">
+					<OffenceDisqualificationReimposed3>0001-01-01</OffenceDisqualificationReimposed3>
+				</OffenceDisqualificationReimposed3Section>
+				<NoDisqualificationMitigatingCircumstances3>false</NoDisqualificationMitigatingCircumstances3>
+				<NoDisqualificationSpecialReasons3>false</NoDisqualificationSpecialReasons3>
+				<NotificationOfDisability3>false</NotificationOfDisability3>
+				<OffenceAppeal3Section selected="false">
+					<OffenceAppealCourt3 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceAppealCourt3>
+					<OffenceDateOfAppeal3Section selected="false">
+						<OffenceDateOfAppeal3>0001-01-01</OffenceDateOfAppeal3>
+					</OffenceDateOfAppeal3Section>
+					<AppealWasAgainstConviction3>false</AppealWasAgainstConviction3>
+					<AppealWasAgainstSentenceOnly3>false</AppealWasAgainstSentenceOnly3>
+					<AppealWasAllowed3>false</AppealWasAllowed3>
+					<AppealDismissed3Section selected="false">
+						<AppealDateDismissed3>0001-01-01</AppealDateDismissed3>
+					</AppealDismissed3Section>
+					<AppealWasAbandoned3Section selected="false">
+						<AppealDateAbandoned3>0001-01-01</AppealDateAbandoned3>
+					</AppealWasAbandoned3Section>
+					<SentenceWasVaried3>false</SentenceWasVaried3>
+					<AppealWasRemitted3Section selected="false">
+						<AppealDateRemitted3>0001-01-01</AppealDateRemitted3>
+					</AppealWasRemitted3Section>
+				</OffenceAppeal3Section>
+			</Offence3>
+			<Offence4 selected="false">
+				<OffenceCode4> </OffenceCode4>
+				<OffenceDate4Section selected="false">
+					<OffenceDate4>0001-01-01</OffenceDate4>
+				</OffenceDate4Section>
+				<OffenceFine4 selected="true">
+					<MonetaryValue>
+						<Amount>0.00</Amount>
+						<Currency>GBP</Currency>
+					</MonetaryValue>
+				</OffenceFine4>
+				<OffencePenaltyPoints4>0</OffencePenaltyPoints4>
+				<OffenceAlcoholLevel4>
+					<D20AlcoholLevelValue> </D20AlcoholLevelValue>
+					<D20AlcoholLevelDropdown>Not Applicable</D20AlcoholLevelDropdown>
+				</OffenceAlcoholLevel4>
+				<OffenceDisqualifiedPeriod4>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</OffenceDisqualifiedPeriod4>
+				<OffenceOtherSentence4Section selected="false">
+					<OffenceOtherSentence4>
+						<D20OffenceOtherSentenceDropdown>A - Imprisonment</D20OffenceOtherSentenceDropdown>
+						<D20OffenceOtherSentenceValue>0</D20OffenceOtherSentenceValue>
+						<D20OffenceOtherSentenceDurationType>hour(s)</D20OffenceOtherSentenceDurationType>
+					</OffenceOtherSentence4>
+				</OffenceOtherSentence4Section>
+				<OffencePPSCO4Section selected="false">
+					<OffencePPSCO4>
+						<D20OffencePPSCODropdown>Prison Sentence Suspended</D20OffencePPSCODropdown>
+						<D20OffencePPSCODurationType>
+							<Years>0</Years>
+							<Months>0</Months>
+							<Days>0</Days>
+						</D20OffencePPSCODurationType>
+					</OffencePPSCO4>
+				</OffencePPSCO4Section>
+				<OffenceDisqTestPassed4>Not Applicable</OffenceDisqTestPassed4>
+				<OffenceInterimFinal4>Not Applicable</OffenceInterimFinal4>
+				<OffenceSentencingCourt4Section selected="false">
+					<OffenceSentencingCourt4 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceSentencingCourt4>
+					<OffenceDateOfSentence4>0001-01-01</OffenceDateOfSentence4>
+				</OffenceSentencingCourt4Section>
+				<OffenceDisqualificationRemoved4Section selected="false">
+					<OffenceDisqualificationRemoved4>0001-01-01</OffenceDisqualificationRemoved4>
+				</OffenceDisqualificationRemoved4Section>
+				<OffenceDisqualificationSuspended4Section selected="false">
+					<OffenceDisqualificationSuspended4>0001-01-01</OffenceDisqualificationSuspended4>
+				</OffenceDisqualificationSuspended4Section>
+				<OffenceDisqualificationReimposed4Section selected="false">
+					<OffenceDisqualificationReimposed4>0001-01-01</OffenceDisqualificationReimposed4>
+				</OffenceDisqualificationReimposed4Section>
+				<NoDisqualificationMitigatingCircumstances4>false</NoDisqualificationMitigatingCircumstances4>
+				<NoDisqualificationSpecialReasons4>false</NoDisqualificationSpecialReasons4>
+				<NotificationOfDisability4>false</NotificationOfDisability4>
+				<OffenceAppeal4Section selected="false">
+					<OffenceAppealCourt4 selected="false">
+						<CourtHouseType>Crown Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</OffenceAppealCourt4>
+					<OffenceDateOfAppeal4Section selected="false">
+						<OffenceDateOfAppeal4>0001-01-01</OffenceDateOfAppeal4>
+					</OffenceDateOfAppeal4Section>
+					<AppealWasAgainstConviction4>false</AppealWasAgainstConviction4>
+					<AppealWasAgainstSentenceOnly4>false</AppealWasAgainstSentenceOnly4>
+					<AppealWasAllowed4>false</AppealWasAllowed4>
+					<AppealDismissed4Section selected="false">
+						<AppealDateDismissed4>0001-01-01</AppealDateDismissed4>
+					</AppealDismissed4Section>
+					<AppealWasAbandoned4Section selected="false">
+						<AppealDateAbandoned4>0001-01-01</AppealDateAbandoned4>
+					</AppealWasAbandoned4Section>
+					<SentenceWasVaried4>false</SentenceWasVaried4>
+					<AppealWasRemitted4Section selected="false">
+						<AppealDateRemitted4>0001-01-01</AppealDateRemitted4>
+					</AppealWasRemitted4Section>
+				</OffenceAppeal4Section>
+			</Offence4>
+		</D20>
+	</OrderData>
+	<State/>
+	<SaveNotes>Text here</SaveNotes>
+</Order>

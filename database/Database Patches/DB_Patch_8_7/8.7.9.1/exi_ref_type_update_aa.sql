@@ -1,0 +1,4 @@
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name, version) VALUES  ('13818', 23,2, 'Alcohol Abstinence and Monitoring Requirement', 'http://www.courtservice.gov.uk/schemas/courtservice','5.9');                                                                                                                                       
+INSERT INTO EXI_REF_TYPE (internal_code, group_id, operation_id, internal_name, schema_name, version) VALUES  ('13819', 23,2, 'Alcohol Abstinence and Monitoring Requirement', 'http://www.courtservice.gov.uk/schemas/courtservice','5.9');                                                                
+
+commit;

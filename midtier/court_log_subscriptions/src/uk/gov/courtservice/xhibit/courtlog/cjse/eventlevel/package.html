@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2 Final//EN">
+<html>
+<head>
+</head>
+<body bgcolor="white">
+
+Performs the population of the <code>EventParameters</code> object for different level CJSE Events.
+
+
+<h2>Package Specification</h2>
+<p>
+Each event which is sent to the CJSE has an event level which determines the amount of information
+which must be sent to the CJSE. The three main levels are CASE, DEFENDANT and CRN (which corresponds to defendant on offence).
+</p>
+<p>
+CASE level events will contain:
+<ul>
+<li>Information relating to the case</li>
+<li>Information relating to each defendant on the case</li>
+<li>Information relating to each CRN for each defendant on the case</li>
+</ul>
+</p>
+<p>
+DEFENDANT level events will contain:
+<ul>
+<li>Information relating to the case</li>
+<li>Information relating to the defendant</li>
+<li>Information relating to each CRN for this defendant on the case</li>
+</ul>
+</p>
+<p>
+CRN level events will contain:
+<ul>
+<li>Information relating to the case</li>
+<li>Information relating to the defendant for this CRN</li>
+<li>Information relating to this CRN</li>
+</ul>
+</p>
+<p>
+See below for a diagramatic representation.
+</p>
+
+<img src="./doc-files/eventlevel-1.bmp">
+
+<p>
+An <i>xxx</i>CjseEventLevelPopulator is defined for each level, the populator makes use of a combination of helper classes to
+populate the information required in the <code>EventParameters</code> object.
+<ul>
+<li>The <code>CasePopulatorHelper</code> will populate case information for a given array of case ids or an <code>XhbCase</code></li>
+<li>The <code>DefendantPopulatorHelper</code> will populate defendant information for a given <code>XhbDefendantOnCase</code> or a <code>Collection</code> of <code>XhbDefendantOnCase</code>s.</li>
+<li>The <code>CrnPopulatorHelper</code> will populate case information for a given <code>XhbDefendantOnCase</code> or a <code>Collection</code> of <code>XhbDefendantOnCase</code>s.</li>
+</ul>
+Thus each populator class calls each of the populator helper classes to retrieve the level of information they require.
+</p>
+<p>
+There are a number of special case populators where the event level may not be known at configuration time or a slight variation is
+required from the defined levels.
+<ul>
+<li><code>JoinderCjseEventLevelPopulator</code> considered case level, however contains case information for more than one case</li>
+<li><code>AppealWitnessSwornCjseEventLevelPopulator</code> CASE or DEFENDANT level</li>
+<li><code>LongAdjournCjseEventLevelPopulator</code> CASE or DEFENDANT level</li>PleaCjseEventLevelPopulator
+<li><code>PleaCjseEventLevelPopulator</code> DEFENDANT or CRN level</li>
+<li><code>TrialWitnessSwornCjseEventLevelPopulator</code> CASE or DEFENDANT level</li>
+<li><code>UnrelatedDisposalCjseEventLevelPopulator</code> DEFENDANT or CRN level</li>
+</ul>
+</p>
+<p>
+All the special case populators, excepting the <code>JoinderCjseEventLevelPopulator</code>, simply determine which
+level this event should be, then delegate to the relevant populator described above.
+</p>
+<p>
+See individual class documentation for further details.
+</p>
+<p>
+The event level populators are configured in <code>CjseEventLevelPopulatorFactory</code><br/>
+@see uk.gov.courtservice.xhibit.courtlog.cjse.eventlevel.CjseEventLevelPopulatorFactory
+</p>
+<h2>Summary of configuration files used</h2>
+<ul>
+<li>/config/components/cjse.event.level.properties - contains the valid event levels and the instances of CjseEventLevelPopulator that support them</li>
+</ul>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByWllControlIdAndStatus(java.lang.Integer wllControlId, java.lang.String status)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xxd) FROM XhbXmlDocument xxd, XhbWllDocument xwd WHERE xxd.xmlDocumentId = xwd.xmlDocumentId AND xwd.wllControlId = ?1 AND xxd.status = ?2"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByXmlDocumentClobId(java.lang.Long clobId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xxd) FROM XhbXmlDocument xxd WHERE xxd.xmlDocumentClobId = ?1 order by xxd.xmlDocumentId DESC"
+ * -------- end of custom finders --------
+  

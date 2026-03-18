@@ -1,0 +1,130 @@
+<project name="datamigration" basedir="." default="dist">
+    <description>Data Migration Application</description>
+
+    <target name="initialisation" description="Initialise project variables.">
+        <!-- Set version and build -->
+        <property name="version" value="1.0.0"/>
+
+        <tstamp>
+            <format property="build" pattern="yyyyMMddHHmmss"/>
+        </tstamp>
+
+        <property name="xhibit.home" value="..\..\.."/>
+        <property name="prerelease.dir" value="${xhibit.home}/build/prerelease"/>
+        <property name="thirdparty.dir" value="${xhibit.home}/lib"/>
+        <property name="antlib.dir" value="${xhibit.home}/tools/ant/lib"/>
+
+        <property environment="env"/>
+        <property name="weblogic.home" value="${env.WL_HOME}"/>
+        <property name="weblogiclib.dir" value="${weblogic.home}/server/lib"/>
+        
+        <!-- Set properties -->
+        <property name="src.dir" value="${basedir}/src"/>
+        <property name="resources.dir" value="${basedir}/resources"/>
+        <property name="build.dir" value="${basedir}/build"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+        <property name="jar.file" value="${build.dir}/${ant.project.name}.jar"/>
+        <property name="lib.dir" value="${basedir}/lib"/> 
+        <property name="dist.dir" value="${basedir}/dist"/>
+
+        <property name="dist.file.prefix" value="${ant.project.name}"/>
+        <property name="dist.file.postfix" value="zip"/>
+        <property name="dist.file" value="${ant.project.name}-${version}.${dist.file.postfix}"/>
+        <property name="dist.file.dir" value="${ant.project.name}-${version}"/>
+
+        <!-- Set paths -->
+        <path id="javac-class-path">
+            <fileset dir="${prerelease.dir}">
+                <include name="Framework.jar" />
+                <include name="XhibitXmlBinding.jar" />
+                <include name="Config.jar" />
+            </fileset>
+            <fileset dir="${thirdparty.dir}">
+                <include name="log4j-1.2.13.jar" />
+                <include name="commons-logging-1.0.3.jar" />
+                <include name="castor-1.0.jar" />
+                <include name="xalan-2.7.0.jar" />
+                <include name="xalan-2.7.0-xercesImpl.jar" />
+                <include name="xalan-2.7.0-xml-apis.jar" />
+                <include name="xalan.serializer-2.7.0.jar" />
+            </fileset> 
+            <fileset dir="${antlib.dir}">
+                <include name="xhibit.ant.custom-1.0.jar" />
+            </fileset>
+            <fileset dir="${weblogiclib.dir}">
+                <include name="ojdbc14.jar" />
+            </fileset>
+        </path>
+    </target>
+
+    <target name="compile" description="Compile the java src flles." depends="initialisation">
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" deprecation="true" classpathref="javac-class-path" />
+    </target>
+
+    <target name="resource" description="Copy the resource files substituting any parameters" depends="initialisation">
+        <filter token="build" value="${build}"/>
+        <filter token="version" value="${version}"/>
+
+        <property name="binary.files" value="**/*.gif,**/*.jar,**/*.exe "/>
+
+        <copy todir="${classes.dir}" filtering="true" overwrite="true">
+            <fileset dir="${resources.dir}" excludes="${binary.files}"/>
+        </copy>
+
+        <copy todir="${classes.dir}" filtering="false">
+            <fileset dir="${resources.dir}" includes="${binary.files}"/>
+        </copy>
+        
+        <copy todir="${lib.dir}" filtering="false">
+            <fileset dir="${prerelease.dir}">
+                <include name="Framework.jar" />
+                <include name="XhibitXmlBinding.jar" />
+                <include name="Config.jar" />
+            </fileset>
+            <fileset dir="${thirdparty.dir}">
+                <include name="log4j-1.2.13.jar" />
+                <include name="commons-logging-1.0.3.jar" />
+                <include name="castor-1.0.jar" />
+                <include name="xalan-2.7.0.jar" />
+                <include name="xalan-2.7.0-xercesImpl.jar" />
+                <include name="xalan-2.7.0-xml-apis.jar" />
+                <include name="xalan.serializer-2.7.0.jar" />
+            </fileset>            
+            <fileset dir="${antlib.dir}">
+                <include name="xhibit.ant.custom-1.0.jar" />
+            </fileset>
+            <fileset dir="${weblogiclib.dir}">
+                <include name="ojdbc14.jar" />
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="package" description="Package datamigration.jar file" depends="compile, resource" >
+        <jar destfile="${jar.file}" manifest="manifest.mf">
+            <fileset dir="${classes.dir}"/>
+        </jar>
+    </target>
+
+    <target name="clean" description="Remove all the files created by the build process." depends="initialisation">
+        <delete dir="${build.dir}" failonerror="true"/>
+        <delete dir="${dist.dir}/datamigration-X.X.X/lib" failonerror="true"/>
+        <delete dir="${dist.dir}/datamigration-X.X.X/properties" failonerror="true"/>
+    </target>
+
+    <target name="dist" description="Prepare the source distribution" depends="package" >
+        <mkdir dir="${dist.dir}/datamigration-X.X.X/lib"/>
+        <mkdir dir="${dist.dir}/datamigration-X.X.X/properties"/>
+        <copy todir="${dist.dir}/datamigration-X.X.X/lib">
+            <fileset dir="${build.dir}" includes="**/*.jar"/>
+        </copy>
+        <copy todir="${dist.dir}/datamigration-X.X.X/lib">
+            <fileset dir="${lib.dir}" includes="**/*.jar"/>
+        </copy>
+        <copy todir="${dist.dir}/datamigration-X.X.X/properties">
+            <fileset dir="${resources.dir}" includes="**/*.ini"/>
+        </copy>
+    </target>
+
+</project>
+

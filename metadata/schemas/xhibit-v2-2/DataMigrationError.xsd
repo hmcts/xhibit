@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/datamigrationerror" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/datamigrationerror" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="DataMigrationError">
+    <xsd:element name="Mode" type="xsd:string" use="optional"/>
+    <xsd:element name="CourtError" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="Mode"/>
+                <xsd:element ref="TotalDefendantOnCaseError"/>
+                <xsd:element ref="TotalDefendantOnOffenceError"/>
+                <xsd:element ref="DefendantsGroupError"/>
+            </xsd:sequence>
+            <xsd:attribute name="id" type="xsd:int" use="optional"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="crestCourtId" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="CourtsGroupError" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="CourtError" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DataMigrationError">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="CourtsGroupError"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DefendantOnCaseError" use="optional">
+        <xsd:complexType>
+            <xsd:attribute name="id" type="xsd:int" use="optional"/>
+            <xsd:attribute name="caseId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="caseType" type="xsd:string" use="optional"/> 
+            <xsd:attribute name="caseNumber" type="xsd:string" use="optional"/>
+            <xsd:attribute name="caseSubType" type="xsd:string" use="optional"/>
+            <xsd:attribute name="defendantId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="crestDefendantId" type="xsd:int" use="optional"/>
+            <xsd:attribute name="name" type="xsd:string" use="optional"/>
+            <xsd:attribute name="errorMessage" type="xsd:string" use="optional"/>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="DefendantsGroupError" use="optional">
+        <xsd:complexType>
+            <xsd:sequence minOccurs="0">
+                <xsd:element ref="DefendantOnCaseError" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="TotalDefendantOnCaseError" type="xsd:int" use="optional"/>
+    <xsd:element name="TotalDefendantOnOffenceError" type="xsd:int" use="optional"/>
+</xsd:schema>

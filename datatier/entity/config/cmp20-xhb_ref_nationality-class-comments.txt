@@ -1,0 +1,14 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findAllNationalities()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) 
+ *    FROM 
+ * 	XhbRefNationality AS c
+ *    WHERE 
+ *   	c.obsInd = 'N' OR c.obsInd IS NULL
+ *    ORDER BY c.refNationalityCode"
+ *
+ * -------- end of custom finders --------

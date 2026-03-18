@@ -1,0 +1,12 @@
+    /**
+     * Business method to check whether the def hearing record has ended
+     *
+     * @return <i>true</i> if the def hearing has ended, <i>false</i> otherwise
+     *
+     * @ejb.interface-method view-type="local"
+     */
+    public boolean isDefHearingEnded()
+    {
+        return (getHearingEndDate() != null);
+    }
+  

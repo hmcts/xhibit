@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel.  2 U  (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders E:\XHIBIT_8_2\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<YoungOffendersOrder5044>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<ConvictionDate>0001-01-01</ConvictionDate>
+			<CommittingCourt selected="false">
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</CommittingCourt>
+			<RiskVulnerabilityFactors selected="false">
+				<RiskText></RiskText>
+			</RiskVulnerabilityFactors>
+			<CustodialSentence Section236a="false">
+				<TermType selected="true">Not Applicable</TermType>
+				<Term>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Weeks>0</Weeks>
+					<Days>0</Days>
+				</Term>
+				<CustodialTerm selected="false" Concurrent="false" Consecutive="false" TermType="Not Applicable"> 
+					<Years>0</Years>
+					<Months>0</Months>
+					<Weeks>0</Weeks>
+					<Days>0</Days>
+				</CustodialTerm>
+				<s235-236 selected="false" Concurrent="false" Consecutive="false" TermType="Not Applicable">
+					<CSSectionType>section265</CSSectionType>
+					<CustodialPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Weeks>0</Weeks>
+						<Days>0</Days>
+					</CustodialPeriod>
+					<ExtensionPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Weeks>0</Weeks>
+						<Days>0</Days>
+					</ExtensionPeriod>
+				</s235-236>
+				<ExtendedSentence selected="false">
+					<CustodialPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Weeks>0</Weeks>
+						<Days>0</Days>
+					</CustodialPeriod>
+					<ExtensionPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Weeks>0</Weeks>
+						<Days>0</Days>
+					</ExtensionPeriod>
+					<SentenceType>Not Applicable</SentenceType>
+					<Section44 selected="false"/>
+					<SectionType>s226a</SectionType>
+				</ExtendedSentence>
+				<LifeSentence selected="false" Section224a="false" Section225="false" Section272="false" Section273="false" Section274="false" Section275="false" Section93="false" Section94="false">
+					<MinimumTerm selected="false">
+						<LifePeriod>
+							<Years>0</Years>
+							<Months>0</Months>
+							<Weeks>0</Weeks>
+							<Days>0</Days>
+						</LifePeriod>
+						<NoMinimumTerm selected="false"/>
+					</MinimumTerm>
+					<LifeType>AutomaticLife</LifeType>
+				</LifeSentence>
+				<ImprisonmentType>period</ImprisonmentType>
+			</CustodialSentence>
+			<CreditForRemand selected="false">
+				<Term>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</Term>
+			</CreditForRemand>
+			<CreditForBail selected="false">
+				<CreditForTimeOnBailSection>section325</CreditForTimeOnBailSection>
+				<Term>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</Term>
+			</CreditForBail>
+			<ChapterIII>no</ChapterIII>
+			<DomesticBurglary selected="false"/>
+			<ReturnToImprisonment selected="false">
+				<OffenceDate Qualifier="on">0001-01-01</OffenceDate>
+				<SentencingCourt>
+					<Date>0001-01-01</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+				</SentencingCourt>
+				<ReturnPeriod DetentionType="Detention" TermType="Concurrent">
+					<PeriodInMonths>0</PeriodInMonths>
+					<Max116>no</Max116>
+				</ReturnPeriod>
+				<TotalPeriodOfReturn selected="false" IncludesNewOffenceTerm="no">0</TotalPeriodOfReturn>
+			</ReturnToImprisonment>
+			<Section28 selected="false">
+				<DiscretionaryRelevantPart>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</DiscretionaryRelevantPart>
+			</Section28>
+			<Section86>no</Section86>
+			<AdditionalNotes selected="false"> </AdditionalNotes>
+			<AutomaticDeportation>no</AutomaticDeportation>
+			<RecommendedDeportation>no</RecommendedDeportation>
+			<AssociatedCases>
+			</AssociatedCases>
+			<PowerToImprison selected="false"/>
+		</YoungOffendersOrder5044>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

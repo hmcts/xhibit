@@ -1,0 +1,5 @@
+**/framework/**/*.class
+**/*Helper.class
+**/*Thread*.class
+**/*DisplayConfigurationWorker.class
+**/*EventWork*.class

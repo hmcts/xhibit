@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by James Saull (Microsoft Limited) -->
+<xs:schema targetNamespace="urn:BITS-cjsonline-gov-uk:pilot:BITS" xmlns:me="urn:integration-cjsonline-gov-uk:pilot:messaging" xmlns:be="urn:integration-cjsonline-gov-uk:pilot:entities" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:bi="urn:BITS-cjsonline-gov-uk:pilot:BITS" elementFormDefault="qualified">
+	<xs:import namespace="urn:integration-cjsonline-gov-uk:pilot:messaging" schemaLocation="cjse-integration-pilot-messaging.xsd"/>
+	<xs:import namespace="urn:integration-cjsonline-gov-uk:pilot:entities" schemaLocation="cjse-integration-pilot-entities.xsd"/>
+	<xs:import namespace="urn:integration-cjsonline-gov-uk:pilot:types" schemaLocation="cjse-integration-pilot-types.xsd"/>
+	<xs:import namespace="urn:integration-cjsonline-gov-uk:pilot:operations" schemaLocation="cjse-integration-pilot-operations.xsd"/>
+	<xs:complexType name="BITSRequestMessage" mixed="false">
+		<xs:complexContent mixed="false">
+			<xs:extension base="bi:BITSMessage">
+				<xs:sequence>
+					<xs:element name="CJODocumentRequest" type="bi:CJODocumentRequest" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="BITSMessage" abstract="true">
+		<xs:sequence>
+			<xs:element name="RoutingHeader" type="me:RoutingHeader" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CJODocumentRequest" mixed="false">
+		<xs:complexContent mixed="false">
+			<xs:extension base="me:OperationsContainerBase">
+				<xs:sequence>
+					<xs:element name="DocumentConfig" type="xs:string"/>
+					<xs:element name="DocumentRegistration" type="bi:DocumentRegistration" minOccurs="0"/>
+					<xs:element name="DocumentContent" nillable="true" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:any namespace="##any" processContents="skip" minOccurs="0"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:attribute name="SuccessResponseRequired" type="xs:boolean" use="required"/>
+				<xs:attribute name="TransactionRequired" type="xs:boolean" use="required"/>
+				<xs:attribute name="TransformationMessageCorrelationID" type="xs:string" use="optional"/>
+				<xs:attribute name="TransformationOperationCorrelationID" type="xs:string" use="optional"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DocumentRegistration">
+		<xs:sequence>
+			<xs:element name="Document" type="be:Document" minOccurs="0"/>
+			<xs:element name="DocumentAccess" type="bi:DocumentAccess" minOccurs="0"/>
+			<xs:element name="RegistrationEntities" type="bi:RegistrationEntities" minOccurs="0"/>
+			<xs:element name="NotificationsAndAlerts" type="be:NotificationsAndAlerts" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="RegistrationEntities">
+		<xs:choice>
+			<xs:element name="CRNs" type="bi:ArrayOfCRNIdentifier"/>
+			<xs:element name="Location" type="xs:boolean"/>
+			<xs:element name="Defendants" type="bi:ArrayOfDefendantIdentifier"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfCRNIdentifier">
+		<xs:sequence>
+			<xs:element name="CRNIdentifier" type="be:CRNIdentifier" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attribute name="RegisterAll" type="xs:boolean" use="required"/>
+		<xs:attribute name="RegisterWithLocation" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfDefendantIdentifier">
+		<xs:sequence>
+			<xs:element name="DefendantIdentifier" type="be:DefendantIdentifier" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="RegisterAll" type="xs:boolean" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DocumentAccess">
+		<xs:sequence>
+			<xs:element name="Roles" type="bi:ArrayOfRoleIdentifier" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ArrayOfRoleIdentifier">
+		<xs:sequence>
+			<xs:element name="RoleIdentifier" type="be:RoleIdentifier" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="RoleIdentifier" type="be:RoleIdentifier" nillable="true"/>
+	<xs:element name="BITSResponseMessage" type="bi:BITSResponseMessage" nillable="true"/>
+	<xs:complexType name="BITSResponseMessage" mixed="false">
+		<xs:complexContent mixed="false">
+			<xs:extension base="bi:BITSMessage">
+				<xs:sequence>
+					<xs:element name="CJODocumentResponse" type="bi:CJODocumentResponse" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CJODocumentResponse" mixed="false">
+		<xs:complexContent mixed="false">
+			<xs:extension base="me:OperationsContainerBase">
+				<xs:sequence>
+					<xs:element name="RequestStatus" type="bi:Escalation" minOccurs="0"/>
+					<xs:element name="Escalations" type="bi:ArrayOfEscalation" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="Escalation">
+		<xs:sequence>
+			<xs:element name="StatusClass" type="bi:EscalationStatusClass"/>
+			<xs:element name="Code" type="xs:int"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="EscalationStatusClass">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Completed"/>
+			<xs:enumeration value="CompletedWithErrors"/>
+			<xs:enumeration value="MessageFailed"/>
+			<xs:enumeration value="RetriableFailed"/>
+			<xs:enumeration value="SystemFailed"/>
+			<xs:enumeration value="TransactionFailed"/>
+			<xs:enumeration value="InitialDocumentContentValidationFailed"/>
+			<xs:enumeration value="MessageTimeOut"/>
+			<xs:enumeration value="Information"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="ArrayOfEscalation">
+		<xs:sequence>
+			<xs:element name="Escalation" type="bi:Escalation" nillable="true" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- The following parts are not part of the BITS solution but must be exposed -->
+	<xs:element name="ArrayOfBITSResponseMessage" type="bi:ArrayOfBITSResponseMessage" nillable="true"/>
+	<xs:complexType name="ArrayOfBITSResponseMessage">
+		<xs:sequence>
+			<xs:element ref="bi:BITSResponseMessage" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="MessageDateTime" type="bi:MessageDateTime" nillable="true"/>
+	<xs:complexType name="MessageDateTime">
+		<xs:simpleContent>
+			<xs:extension base="xs:dateTime"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<!--	The following parts are not part of the BITS solution but must be exposed for 
+			the WSDL to work as it does not understand xs:string for example so we wrap it
+			all up here
+	 -->
+	<xs:element name="BITSSubmit">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BITSRequestMessage" type="bi:BITSRequestMessage" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BITSSubmitResponse">
+		<xs:complexType/>
+	</xs:element>
+	<xs:element name="BITSRetrieve">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="systemIdentifier" type="xs:string" minOccurs="0"/>
+				<xs:element name="earliestDate" type="bi:MessageDateTime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BITSRetrieveResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BITSRetrieveResult" type="bi:ArrayOfBITSResponseMessage" minOccurs="0"/>
+				<xs:element name="latestDate" type="bi:MessageDateTime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BITSRetrieveByMessageCorrelationID">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="systemIdentifier" type="xs:string" minOccurs="0"/>
+				<xs:element name="messageCorrelationID" type="xs:string" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="BITSRetrieveByMessageCorrelationIDResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="BITSRetrieveByMessageCorrelationIDResult" type="bi:BITSResponseMessage" minOccurs="0"/>
+				<xs:element name="messageTime" type="bi:MessageDateTime" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

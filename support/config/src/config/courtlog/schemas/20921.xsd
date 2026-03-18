@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Taken Into Consideration-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20921_Defendant_List"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20921_Defendant_List">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20921_Defendant_Details" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20921_Defendant_Details">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20921_Defendant_ID"/>
+				<xs:element ref="E20921_Defendant_Name"/>
+				<xs:element ref="E20921_Defendant_TIC"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20921_Defendant_ID" type="xs:string"/>
+	<xs:element name="E20921_Defendant_Name" type="xs:string"/>
+	<xs:element name="E20921_Defendant_TIC" type="xs:string"/>
+</xs:schema>

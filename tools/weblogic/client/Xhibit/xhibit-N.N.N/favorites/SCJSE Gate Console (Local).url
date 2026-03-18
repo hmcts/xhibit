@@ -1,0 +1,2 @@
+[InternetShortcut]
+URL=http://@computer.name@:@scjsegateadmin.port@/console/j_security_check?j_username=@scjsegateadmin.username@&j_password=@scjsegateadmin.password@

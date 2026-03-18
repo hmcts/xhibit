@@ -1,0 +1,37 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Reporting Restrictions-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E21200_Reporting_Restrictions"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E21200_Reporting_Restrictions">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E21200_RR_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E21200_RR_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_4(2)_of_the_Contempt_of_Court_Act_1981"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_11_of_the_Contempt_of_Court_Act_1981"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_39_of_the_Children_and_Young_Person_Act_1963"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_4_of_the_Sexual_Offenders_(Amendment_Act)_1976"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_2_of_the_Sexual_Offenders_(Amendment_Act)_1992"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_45_of_the_Youth_Justice_and_Criminal_Evidence_Act_1999"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_45a_of_the_Youth_Justice_and_Criminal_Evidence_Act_1999"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_46_of_the_Youth_Justice_and_Criminal_Evidence_Act_1999"/>
+				<xs:enumeration value="E21200_An_order_has_been_made_under_Section_49_of_the_Children_and_Young_Persons_Act_1933"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

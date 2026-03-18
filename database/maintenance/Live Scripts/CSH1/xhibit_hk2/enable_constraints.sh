@@ -1,0 +1,26 @@
+#!/bin/bash
+#################################################################################
+# enable_constraints.sh								#
+#                                                                               #
+# Script to enable constraints after truncating tables				#
+#                                                                               #
+#                                                                               #
+#                                                                               #
+#################################################################################
+
+# wmb_debug affects the wmb_debug_clob table
+# xhb_disposal_reference affects teh xhb_disposal table
+
+
+. ${COMMON_VAR}/.common-variables
+
+${SQLPLUS} -s ${ORA}<<endsql
+set serveroutput on
+alter table wmb_debug enable constraint WMB_DEBUG_CREST_RESPONSE_ID_FK;
+alter table wmb_debug enable constraint WMB_DEBUG_XHIBIT_CALL_ID_FK;
+alter table xhb_disposal_reference enable constraint DISPOSAL_REFERENCE_DISP_ID_FK;
+endsql
+
+
+echo "Constraints enabled"
+exit

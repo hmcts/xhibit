@@ -1,0 +1,19 @@
+Run ID      - 190
+Case Status - 
+Reported Cases Deleted - 0
+Reported Cases Error   - 0
+Error Table Count      - 0
+------------------------------------------------------------
+MTBL_CASE_HISTORY - Before Run  - 15 records.
+MTBL_CASE_HISTORY - After Run   - 15 records.
+MTBL_CASE_HISTORY - Difference  - 0 records.
+------------------------------------------------------------
+XHB_CASES - Before Run - 576992 records.
+XHB_CASES - After  Run - 576992 records.
+XHB_CASES - Difference - 0 records.
+------------------------------------------------------------
+List Status - S
+Reported Lists Deleted - 798
+------------------------------------------------------------
+XHB_XML_DOCUMENT - Before Run - 339238
+XHB_XML_DOCUMENT - After Run - 338440

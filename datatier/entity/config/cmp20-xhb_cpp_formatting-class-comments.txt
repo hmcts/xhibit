@@ -1,0 +1,18 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findByCourtAndDocType(java.lang.Integer courtId, java.lang.String documentType, java.util.Date creationDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="Select object (o) from XhbCppFormatting AS o where o.courtId = ?1 and o.documentType = ?2 and o.creationDate >= ?3 and (o.obsInd IS NULL OR o.obsInd = 'N') and (o.formatStatus IS NULL OR o.formatStatus <> 'MF') order by o.creationDate desc"
+ *
+ *    signature="XhbCppFormatting findLatestByCourtDateInDoc(java.lang.Integer courtId, java.util.Date dateIn, java.lang.String documentType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="Select object (o) from XhbCppFormatting AS o where o.cppFormattingId =(select max(o2.cppFormattingId) from XhbCppFormatting AS o2 where o2.courtId = ?1 and o2.documentType = ?3 and o2.dateIn >= ?2 and (o2.obsInd IS NULL OR o2.obsInd = 'N'))"
+ *
+ *    signature="Collection findAllNewByDocType(java.lang.String documentType, java.util.Date creationDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="Select object (o) from XhbCppFormatting AS o where o.documentType = ?1 and o.formatStatus = 'ND' and o.creationDate >= ?2 order by o.creationDate"
+ * -------- end of custom finders --------

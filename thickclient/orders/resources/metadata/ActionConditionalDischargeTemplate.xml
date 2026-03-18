@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	 <form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+ 		<section name="Addressee" label="" switchLabel="" borderLabel="Addressee">
+			<courttype name="courttype" addressReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" 
+			crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false"  
+			ref="//ord:Addressee/ord:CourtHouseDetails/ord:CourtHouseName"/>
+  		</section>
+		<section name="DateOrder" label="" switchLabel="" borderLabel="Date Order Made by Original Court">
+			<date name="DateOfOrder" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:DateOfOrder"/>
+ 	    </section>
+		<section name="DateofConviction" label="" switchLabel="" borderLabel="Date of Conviction">
+ 			<date name="ConvictionDate" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:ConvictionDate"/>
+		</section>
+		<section name="CourtOrderedSelection" label="" switchLabel="" borderLabel="Court Ordered">
+			<choice name="CourtOrderedChoice" label="" ref="/ord:Order/ord:OrderData/*/ord:CourtOrdered/ord:CourtOrderedType">
+				<option name="DidNotDealWithDefendant" label="Con Discharge notices Not dealt with by this Court" value="DidNotDealWithDefendant" selected="false"></option>	
+				<option name="OrderForOffences" label="Order made in relation to the Con Discharge" value="OrderForOffences" selected="false"></option>
+			</choice>
+		</section>
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+ 	</form>
+</template>

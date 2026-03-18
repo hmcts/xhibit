@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	 <form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="Addresse" label="" switchLabel="" borderLabel="Addressee">
+			<courttype name="courttype" addressReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading"  
+			crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false"  dxRequired="true"
+			ref="//ord:Addresse/ord:CourtHouseDetails/ord:CourtHouseName"/>
+	    </section>
+ 	  	<section name="SuspendedPeriod" label="" switchLabel="" borderLabel="Date Suspended Sentence Imposed by Original Court" switchable="false">
+			<date name="suspendedPeriod" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:SuspendedDate"/>
+		</section>
+		<section name="ConvictionPeriod" label="" switchLabel="" borderLabel="Date of Conviction">
+		    <date name="ConvictionDate" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:ConvictionDate"/>
+		</section>
+		<section name="SubsequentOffences" label="" switchLabel="" borderLabel="Subsequent Offences">
+			<textarea name="subsequentOffences" ref="/ord:Order/ord:OrderData/*/ord:SubsequentOffences" label="" rows="5" cols="45" maxlength="1000"/>
+		</section>
+	    <section name="OrderEffectiveSelection" label="" switchLabel="" borderLabel="Order of this Court">
+				<section name="TermNBSS" label="" switchLabel="Term" borderLabel="" borderRaised="false" switchable="true" ref="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:TermNBSS/@selected" selectedValue="true" unselectedValue="false">
+					<choice name="OrderEffectiveChoice" label="" ref="/ord:Order/ord:OrderData/*/ord:OrderEffective/ord:OrderEffectiveType">
+						<option name="SuspendedSentenceOriginalTerm" label="Order to take effect with original term unaltered" value="SuspendedSentenceOriginalTerm">			 
+						</option>
+						<option name="SuspendedSentenceSubstitute" label="Order to take effect substituting a lesser term of " value="SuspendedSentenceSubstitute">				 
+							<durationdate name="durationdate" dayattribute="true" weekattribute="true" monthattribute="true" yearattribute="true" 
+							label="" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:TermNBSS/ord:SuspendedSentenceSubstitute"/>
+						</option>
+					</choice>
+				</section>
+	 			<section name="Fine" label="" switchLabel="Fine:"  switchable="true" ref="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:FineValue/@selected" selectedValue="true" unselectedValue="false">	
+ 					 <currency name="fineValue" label="" signLength="3" length="8" minVal="0" maxLength="10" required="false" type="float" ref="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:FineValue"/>
+			 	</section>
+				<section name="CommunityRequirement" switchLabel="More onerous community requirement(s) imposed" label="" value="CommunityRequirement" switchable="true" ref="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:CommunityReq/@selected"  selectedValue="true" unselectedValue="false">	
+					<textarea name="communityReq" ref="/ord:Order/ord:OrderData/*/ord:OrderEffective/ord:CommunityReq" label="" rows="8" cols="35" maxlength="1000"/>
+				</section>
+				<section name="SupervisionPeriod" switchLabel="Supervision period of the order extended" label="" value="SupervisionalPeriod" switchable="true" ref="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:SupervisionalPeriod/@selected" selectedValue="true" unselectedValue="false">	
+					<durationdate name="durationdate" dayattribute="true" weekattribute="true" monthattribute="true" yearattribute="true" 
+					label="" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:SupervisionalPeriod"/>
+	 			</section>
+				<section name="OperationalPeriod" switchLabel="Operational period of the order extended" label="" value="OperationPeriod" switchable="true" ref="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:OperationPeriod/@selected" selectedValue="true" unselectedValue="false">	
+ 					<durationdate name="durationdate" dayattribute="true" weekattribute="true" monthattribute="true" yearattribute="true" 
+					label="" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="//ord:Order/ord:OrderData/*/ord:OrderEffective/ord:OperationPeriod"/>
+ 	 			</section>
+   		</section>
+ 		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+ 	</form>
+</template>

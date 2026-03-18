@@ -1,0 +1,16 @@
+<html>
+	<body>
+		<p>
+This package consists of the event store related classes used by public display.
+		</p>
+		<p>
+<code><b>EventStore</b></code> defines a common interface for classes that can provide buffering functionality for the events. The method <code>pushEvent</code> is called to push an event to the store and the method <code>popEvent</code> is used to pop an event from the store.
+		</p>
+		<p>
+<code><b>EventStoreFactory</b></code> class is used to create event store instances. The event store type should be specified using the property <code>public.display.event.store.type</code>, which is the fully qualified class name of the event type. If the property is not specified the type that is created is <code>uk.gov.courtservice.xhibit.web.publicdisplay.messaging.event.DefaultEventStore</code>.
+		</p>
+		<p>
+<code><b>DefaultEventStore</b></code> provides a FIFO event store implementation. If the store is empty, the thread that calls the <code>popEvent</code> method will wait by releasing the monitor lock, so that other threads can push events to the store.
+		</p>
+	</body>
+</html>

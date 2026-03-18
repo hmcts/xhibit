@@ -1,0 +1,14 @@
+      /**
+     * Business method to check whether scheduled hearing is active
+     *
+     * @return the URN
+     *
+     * @ejb.interface-method view-type="local"
+     */
+  public boolean isActive()
+  {
+
+    return "Y".equals(getIsCaseActive());
+    
+  }
+  

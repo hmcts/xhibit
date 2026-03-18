@@ -1,0 +1,39 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Long Adjourn-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+				<xs:element ref="E30200_Long_Adjourn_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E30200_Long_Adjourn_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E30200_LAO_Type"/>
+				<xs:element name="E30200_LAO_Date" type="xs:string"/>
+				<xs:element name="E30200_LAO_Name" type="xs:string" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E30200_LAO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E30200_Case_to_be_listed_for_trial"/>
+				<xs:enumeration value="E30200_Case_to_be_listed_for_Further_Mention/PAD"/>
+				<xs:enumeration value="E30200_Case_to_be_listed_for_Sentence"/>
+				<xs:enumeration value="E30200_Case_to_be_listed_on_date_to_be_fixed"/>
+				<xs:enumeration value="E30200_Case_to_be_listed_on"/>
+				<xs:enumeration value="E30200_Case_to_be_listed_in_week_commencing"/>
+				<xs:enumeration value="E30200_Adjourned_for_Pre_Sentence_Report_to_[date]"/>
+				<xs:enumeration value="E30200_Case_reserved_to_[enter_Judge's_name]"/>
+				<xs:enumeration value="E30200_Not_reserved"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

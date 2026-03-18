@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="MercatorRequest">
+	<xsd:include schemaLocation="MercatorBody.xsd"/>
+	<xsd:element name="MercatorRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MsgDate" type="xsd:date"/>
+				<xsd:element name="MsgTime" type="xsd:time"/>
+				<xsd:element name="MapName" type="xsd:string"/>
+				<xsd:element name="InputCardNbr" type="xsd:int"/>
+				<xsd:element name="OutputCardNbr" type="xsd:int"/>
+				<xsd:element name="ResultOutputCardNbr" type="xsd:int" minOccurs="0"/>
+				<xsd:element name="InputData">
+					<xsd:complexType>
+						<xsd:choice>
+							<xsd:element ref="BreachMVO"/>
+							<xsd:element ref="ChargeBatchMVO"/>
+							<xsd:element ref="ChargeMVO"/>
+							<xsd:element ref="DeleteChargeMVO"/>
+							<xsd:element ref="DeleteOffenceMVO"/>
+							<xsd:element ref="LinkCountDefMVO"/>
+							<xsd:element ref="OffenceMVO"/>
+							<xsd:element ref="SignIndMVO"/>
+							<xsd:element ref="DefendantMVO"/>
+							<xsd:element ref="AddCaseMVO"/>
+							<xsd:element ref="UpdateCaseMVO"/>
+							<xsd:element ref="ResultsMVO"/>
+							<xsd:element ref="FormA"/>
+							<xsd:element ref="OriginalChargeBatchMVO"/>
+							<xsd:element ref="DefOnCaseMVO"/>
+						</xsd:choice>
+					</xsd:complexType>
+				</xsd:element>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

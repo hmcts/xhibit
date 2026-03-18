@@ -1,0 +1,1 @@
+On the link client this dir is "C:\Program Files\Xhibit".

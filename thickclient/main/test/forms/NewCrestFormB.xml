@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" ?>
+<crestformsbf:CrestForms xmlns:crestformsbf="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/crestformsbf">
+	<crestformsbf:CrestFormB>
+		<crestformsbf:Case>
+			<crestformsbf:CaseReference>A20020168</crestformsbf:CaseReference>
+		</crestformsbf:Case>
+		<crestformsbf:CourtClerk>
+			<crestformsbf:ClerkName>CC Name</crestformsbf:ClerkName>
+		</crestformsbf:CourtClerk>
+		<crestformsbf:Defendant>
+			<crestformsbf:DefendantID>20</crestformsbf:DefendantID>
+			<crestformsbf:DefendantNumber>1</crestformsbf:DefendantNumber>
+			<crestformsbf:DefendantName>
+				<crestformsbf:Forename>TEST</crestformsbf:Forename>
+				<crestformsbf:MiddleName>T</crestformsbf:MiddleName>
+				<crestformsbf:Surname>APPELLANT A20020168</crestformsbf:Surname>
+			</crestformsbf:DefendantName>
+		</crestformsbf:Defendant>
+		<crestformsbf:Charges>
+			<crestformsbf:Charge IndictmentNumber="123">
+				<crestformsbf:Offence>
+					<crestformsbf:OffenceNo>11</crestformsbf:OffenceNo>
+					<crestformsbf:OffenceCode>OffCode</crestformsbf:OffenceCode>
+					<crestformsbf:OffenceDesc>OffDesc</crestformsbf:OffenceDesc>
+					<crestformsbf:AppealType>Conviction</crestformsbf:AppealType>
+					<crestformsbf:Verdict>
+						<crestformsbf:VerdictType>Verdict</crestformsbf:VerdictType>
+						<crestformsbf:Date>2003-01-01</crestformsbf:Date>
+						<crestformsbf:VerdictCode>VerdictCode</crestformsbf:VerdictCode>
+						<crestformsbf:VerdictDesc>VerdictDesc</crestformsbf:VerdictDesc>
+						<crestformsbf:JurorsAssenting>1</crestformsbf:JurorsAssenting>
+						<crestformsbf:JurorsDissenting>2</crestformsbf:JurorsDissenting>
+					</crestformsbf:Verdict>
+					<crestformsbf:Plea>
+						<crestformsbf:PleaCode>PleaCode</crestformsbf:PleaCode>
+						<crestformsbf:PleaDesc>PleaDesc</crestformsbf:PleaDesc>
+						<crestformsbf:ArraignmentDate>2003-01-10</crestformsbf:ArraignmentDate>
+						<crestformsbf:BreachAdmitted>Yes</crestformsbf:BreachAdmitted>
+					</crestformsbf:Plea>
+					<crestformsbf:Disposal>
+						<crestformsbf:DisposalCode>DispCode</crestformsbf:DisposalCode>
+						<crestformsbf:DisposalDesc>DispDesc</crestformsbf:DisposalDesc>
+						<crestformsbf:DisposalDuration>Life</crestformsbf:DisposalDuration>
+						<crestformsbf:DisposalTerm>Consecutive</crestformsbf:DisposalTerm>
+						<crestformsbf:Period>
+							<crestformsbf:Years>1</crestformsbf:Years>
+							<crestformsbf:Months>2</crestformsbf:Months>
+							<crestformsbf:Days>3</crestformsbf:Days>
+						</crestformsbf:Period>
+						<crestformsbf:DisposalText>DisposalText</crestformsbf:DisposalText>
+					</crestformsbf:Disposal>
+				</crestformsbf:Offence>
+			</crestformsbf:Charge>
+			<crestformsbf:Charge IndictmentNumber="456">
+				<crestformsbf:Offence>
+					<crestformsbf:OffenceNo>22</crestformsbf:OffenceNo>
+					<crestformsbf:OffenceCode>OffCode2</crestformsbf:OffenceCode>
+					<crestformsbf:OffenceDesc>OffDesc2</crestformsbf:OffenceDesc>
+					<crestformsbf:AppealType>Sentence</crestformsbf:AppealType>
+					<crestformsbf:Verdict>
+						<crestformsbf:VerdictType>Other</crestformsbf:VerdictType>
+						<crestformsbf:Date>2004-01-01</crestformsbf:Date>
+						<crestformsbf:VerdictCode>VerdictCode2</crestformsbf:VerdictCode>
+						<crestformsbf:VerdictDesc>VerdictDesc2</crestformsbf:VerdictDesc>
+						<crestformsbf:JurorsAssenting>11</crestformsbf:JurorsAssenting>
+						<crestformsbf:JurorsDissenting>22</crestformsbf:JurorsDissenting>
+					</crestformsbf:Verdict>
+					<crestformsbf:Plea>
+						<crestformsbf:PleaCode>PleaCode2</crestformsbf:PleaCode>
+						<crestformsbf:PleaDesc>PleaDesc2</crestformsbf:PleaDesc>
+						<crestformsbf:ArraignmentDate>2004-01-10</crestformsbf:ArraignmentDate>
+						<crestformsbf:BreachAdmitted>No</crestformsbf:BreachAdmitted>
+					</crestformsbf:Plea>
+					<crestformsbf:Disposal>
+						<crestformsbf:DisposalCode>DispCode2</crestformsbf:DisposalCode>
+						<crestformsbf:DisposalDesc>DispDesc2</crestformsbf:DisposalDesc>
+						<crestformsbf:DisposalDuration>Period</crestformsbf:DisposalDuration>
+						<crestformsbf:DisposalTerm>Concurrent</crestformsbf:DisposalTerm>
+						<crestformsbf:Period>
+							<crestformsbf:Years>2</crestformsbf:Years>
+							<crestformsbf:Months>3</crestformsbf:Months>
+							<crestformsbf:Days>4</crestformsbf:Days>
+						</crestformsbf:Period>
+						<crestformsbf:DisposalText>DisposalText2</crestformsbf:DisposalText>
+					</crestformsbf:Disposal>
+					<crestformsbf:Disposal>
+						<crestformsbf:DisposalCode>DispCode3</crestformsbf:DisposalCode>
+						<crestformsbf:DisposalDesc>DispDesc3</crestformsbf:DisposalDesc>
+						<crestformsbf:DisposalDuration>Period</crestformsbf:DisposalDuration>
+						<crestformsbf:DisposalTerm>Concurrent</crestformsbf:DisposalTerm>
+						<crestformsbf:Period>
+							<crestformsbf:Years>22</crestformsbf:Years>
+							<crestformsbf:Months>33</crestformsbf:Months>
+							<crestformsbf:Days>44</crestformsbf:Days>
+						</crestformsbf:Period>
+						<crestformsbf:DisposalText>DisposalText3</crestformsbf:DisposalText>
+					</crestformsbf:Disposal>
+				</crestformsbf:Offence>
+			</crestformsbf:Charge>
+		</crestformsbf:Charges>
+		<crestformsbf:UnrelatedDisposals>
+			<crestformsbf:UnrelatedDisposal>
+				<crestformsbf:DisposalCode>UNR DisposalCode1</crestformsbf:DisposalCode>
+				<crestformsbf:DisposalDesc>UNR DisposalDesc1</crestformsbf:DisposalDesc>
+				<crestformsbf:DisposalTitle>UNR DisposalTitle1</crestformsbf:DisposalTitle>
+			</crestformsbf:UnrelatedDisposal>
+			<crestformsbf:UnrelatedDisposal>
+				<crestformsbf:DisposalCode>UNR DisposalCode2</crestformsbf:DisposalCode>
+				<crestformsbf:DisposalDesc>UNR DisposalDesc2</crestformsbf:DisposalDesc>
+				<crestformsbf:DisposalTitle>UNR DisposalTitle2</crestformsbf:DisposalTitle>
+			</crestformsbf:UnrelatedDisposal>
+			<crestformsbf:UnrelatedDisposal>
+				<crestformsbf:DisposalCode>UNR DisposalCode3</crestformsbf:DisposalCode>
+				<DisposalDesc>UNR DisposalDesc3</DisposalDesc>
+				<crestformsbf:DisposalTitle>UNR DisposalTitle3</crestformsbf:DisposalTitle>
+			</crestformsbf:UnrelatedDisposal>
+		</crestformsbf:UnrelatedDisposals>
+		<crestformsbf:TICS>12</crestformsbf:TICS>
+	</crestformsbf:CrestFormB>
+</crestformsbf:CrestForms>

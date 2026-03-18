@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Disposal (Delete Unrelated Disposal)-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E40755_Defendant_Name" />
+				<xs:element ref="E40755_Case_Type" />
+				<xs:element ref="E40755_Case_No" />
+				<xs:element ref="E40755_Ref_Disposal_Title" />
+				<xs:element ref="E40755_Ref_Disposal_Code" />
+				<xs:element ref="E40755_Disposal_Detail"/>
+				<xs:element ref="E40755_Magistrate_General_Disposal" minOccurs="0"/>
+				<xs:element ref="E40755_Variation_For_Magistrate_General_Disposal" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40755_Defendant_Name" type="xs:string"/>
+	<xs:element name="E40755_Case_Type" type="xs:string"/>
+	<xs:element name="E40755_Case_No" type="xs:string"/>
+	<xs:element name="E40755_Ref_Disposal_Title" type="xs:string"/>
+	<xs:element name="E40755_Ref_Disposal_Code" type="xs:string"/>
+	<xs:element name="E40755_Disposal_Detail" type="xs:string"/>
+	<xs:element name="E40755_Magistrate_General_Disposal" type="xs:boolean"/>
+	<xs:element name="E40755_Variation_For_Magistrate_General_Disposal" type="xs:boolean"/>
+</xs:schema>

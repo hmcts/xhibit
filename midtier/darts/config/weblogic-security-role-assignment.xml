@@ -1,0 +1,7 @@
+<!--
+  - Misc Security (internal remote calls)
+  -->
+   <security-role-assignment>
+      <role-name>XHBInternal</role-name>
+      <principal-name>xhibit_internal</principal-name>
+   </security-role-assignment>

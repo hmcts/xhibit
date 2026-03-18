@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="DocumentSchema">
+
+	<!-- Revision: $Id: build.xml,v 1.12 2015/06/23 18:43:02 hingstb Exp $ -->
+  
+	<import file="./../../../tools/ant/framework.xml" />
+  
+    <description>
+        This script is responsible for renaming the XSD schema files
+        where the version number below is added to the filename. The resultant
+        files are copied into a "dist" subfolder. 
+    </description>
+
+     <property name="version" value="6-5"/>
+	 <property name ="cpp_version" value ="1-0"/>
+     <property name="copyOriginals" value="AddressTypes.xsd,apd.xsd,BS7666.xsd,CaseInfo.xsd,CitizenIdentificationTypes.xsd,CommonSimpleTypes.xsd,ContactTypes.xsd,CourtService.xsd,CourtService_CPP.xsd,PersonalDetailsTypes.xsd,XHIBITDVLAdriversSimpleTypes.xsd,XHIBITDVLAdriversComplexTypes.xsd,FinancialTypes.xsd,Codelist-ISO4217.xsd"/>
+	 <property name="cppList" value="DailyList.xsd,apd.xsd,AddressTypes.xsd,CitizenIdentificationTypes.xsd,CommonSimpleTypes_CPP.xsd,ContactTypes.xsd,CourtService_CPP.xsd,FirmList.xsd,PersonalDetailsTypes.xsd,WarnedList.xsd,CPPX_InternetWebPage.xsd,CPPX_PublicDisplay.xsd"/>
+     <property name="notRename" value="CaseInfo.xsd,CommonSimpleTypes_CPP.xsd,CourtService_CPP.xsd,CPPX_InternetWebPage.xsd,CPPX_PublicDisplay.xsd" />
+     <property name="notRenameDist" value=""/>
+     
+	<!--
+	This filter set is used to update the schema names embedded in the schema files. It finds any of the specified schema names which are surrounded by the "" characters, and replaces with the specified value.
+
+	N.B. this will only update for the specified schema names, if a new schema is created a new entry will need to be added to this filterset.
+	-->
+	<filterset id="schemaNameFilter" begintoken="&quot;" endtoken="&quot;" >
+		<filter token="AddressTypes.xsd" value="&quot;AddressTypes-v${version}.xsd&quot;" />
+		<filter token="apd.xsd" value="&quot;apd-v${version}.xsd&quot;"  />
+		<filter token="AppealRecordSheet.xsd" value="&quot;AppealRecordSheet-v${version}.xsd&quot;"  />
+		<filter token="BailOrder.xsd" value="&quot;BailOrder-v${version}.xsd&quot;" />
+		<filter token="BenchWarrant.xsd" value="&quot;BenchWarrant-v${version}.xsd&quot;" />
+		<filter token="BenchWarrantOrder.xsd" value="&quot;WarrantAfterFailureOrder-v${version}.xsd&quot;" />
+		<filter token="BS7666.xsd" value="&quot;BS7666-v${version}.xsd&quot;" />
+		<filter token="CaseInfo.xsd" value="&quot;CaseInfo-v${version}.xsd&quot;" />
+		<filter token="CitizenIdentificationTypes.xsd" value="&quot;CitizenIdentificationTypes-v${version}.xsd&quot;" />
+		<filter token="CommittalRecordSheet.xsd" value="&quot;CommittalRecordSheet-v${version}.xsd&quot;" />
+		<filter token="CommonSimpleTypes.xsd" value="&quot;CommonSimpleTypes-v${version}.xsd&quot;"  />
+		<filter token="CommunityOrder.xsd" value="&quot;CommunityOrder-v${version}.xsd&quot;" />
+		<filter token="CommunityPunishmentOrder.xsd" value="&quot;CommunityPunishmentOrder-v${version}.xsd&quot;" />
+		<filter token="CommunityPunishmentRehabOrder.xsd" value="&quot;CommunityPunishmentRehabOrder-v${version}.xsd&quot;" />
+		<filter token="CommunityRehabOrder.xsd" value="&quot;CommunityRehabOrder-v${version}.xsd&quot;" />
+		<filter token="ContactTypes.xsd" value="&quot;ContactTypes-v${version}.xsd&quot;" />
+		<filter token="CourtService.xsd" value="&quot;CourtService-v${version}.xsd&quot;" />
+		<filter token="YoungOffenderCustodialOrder.xsd" value="&quot;YoungOffenderCustodialOrder-v${version}.xsd&quot;" />
+		<filter token="DailyList.xsd" value="&quot;DailyList-v${version}.xsd&quot;"  />
+		<filter token="XHIBITDVLAdriversComplexTypes.xsd" value="&quot;XHIBITDVLAdriversComplexTypes-v${version}.xsd&quot;"  />
+		<filter token="XHIBITDVLAdriversSimpleTypes.xsd" value="&quot;XHIBITDVLAdriversSimpleTypes-v${version}.xsd&quot;"  />
+		<filter token="FinancialTypes.xsd" value="&quot;FinancialTypes-v${version}.xsd&quot;"  />
+		<filter token="FirmList.xsd" value="&quot;FirmList-v${version}.xsd&quot;" />
+		<filter token="ImprisonmentOrder.xsd" value="&quot;ImprisonmentOrder-v${version}.xsd&quot;" />
+		<filter token="Indictment.xsd" value="&quot;Indictment-v${version}.xsd&quot;" />
+		<filter token="PersonalDetailsTypes.xsd" value="&quot;PersonalDetailsTypes-v${version}.xsd&quot;" />
+		<filter token="PreSentenceReport.xsd" value="&quot;PreSentenceReport-v${version}.xsd&quot;"  />
+		<filter token="RemandOrder.xsd" value="&quot;RemandOrder-v${version}.xsd&quot;" />
+		<filter token="RunningList.xsd" value="&quot;RunningList-v${version}.xsd&quot;"  />
+		<filter token="Skeleton.xsd" value="&quot;Skeleton-v${version}.xsd&quot;" />
+		<filter token="SuspendedSentenceOrder.xsd" value="&quot;SuspendedSentenceOrder-v${version}.xsd&quot;" />
+		<filter token="TrialRecordSheet.xsd" value="&quot;TrialRecordSheet-v${version}.xsd&quot;" />
+		<filter token="WarnedList.xsd" value="&quot;WarnedList-v${version}.xsd&quot;"  />
+		<filter token="YoungOffenderOrder.xsd" value="&quot;YoungOffenderOrder-v${version}.xsd&quot;" />
+	</filterset>
+
+	<filterset id="schemaCPPFilter" begintoken="&quot;" endtoken="&quot;" >
+		<filter token="CourtService.xsd" value="&quot;CourtService_CPP-v${cpp_version}.xsd&quot;" />
+		<filter token="CommonSimpleTypes.xsd" value="&quot;CommonSimpleTypes_CPP-v${cpp_version}.xsd&quot;" />
+		<filter token="apd.xsd" value="&quot;apd-v${cpp_version}.xsd&quot;" />
+		<filter token="AddressTypes.xsd" value="&quot;AddressTypes-v${cpp_version}.xsd&quot;" />
+		<filter token="ContactTypes.xsd" value="&quot;ContactTypes-v${cpp_version}.xsd&quot;" />
+		<filter token="PersonalDetailsTypes.xsd" value="&quot;PersonalDetailsTypes-v${cpp_version}.xsd&quot;" />
+		<filter token="CitizenIdentificationTypes.xsd" value="&quot;CitizenIdentificationTypes-v${cpp_version}.xsd&quot;" />
+	</filterset>
+
+	<target name="clean">
+		<delete dir="${basedir}/build"/>
+		<delete dir="${basedir}/dist"/>
+	</target>
+
+    <!--
+    =======================================================================
+        Do Copy
+    =======================================================================
+     -->
+
+	<!--
+		docopy creates two directories - build and dist. "dist" should be distributed to third parties. "build" will be copied
+		to the application servers to be used for schema validation prior to sending out documents.
+	-->
+    <target name="all">
+		<!--Create "dist" which will include all schemas, adding the version number to the filename-->
+		
+		
+		<copy todir="${basedir}/dist" overwrite="true">
+			<fileset dir="." includes="*.xsd" excludes="${notRenameDist}"/>
+			<mapper type="glob" from="*.xsd" to="*-v${version}.xsd" />
+			<filterset refid="schemaNameFilter" />			
+		</copy>
+		
+		<copy todir="${basedir}/dist" overwrite="true">
+			<fileset dir="." includes="${cppList}" />
+			<mapper type="glob" from="*.xsd" to="*-v${cpp_version}.xsd" />
+			<filterset refid="schemaCPPFilter" />
+		</copy>
+			
+				
+		<!-- Create "build" which will include all schemas. Only the main xsds (not those which are common) will include the version name -->
+		<copy todir="${basedir}/build" overwrite="true">
+			<fileset dir="." includes="*.xsd" excludes="${notRename}"/>
+			<mapper type="glob" from="*.xsd" to="*-v${version}.xsd" />
+			<filterset refid="schemaNameFilter" />
+		</copy>
+		
+		<copy todir="${basedir}/build" overwrite="true">
+			<fileset dir="." includes="${cppList}" />
+			<mapper type="glob" from="*.xsd" to="*-v${cpp_version}.xsd" />
+			<filterset refid="schemaCPPFilter" />
+		</copy>
+		
+		<copy todir="${basedir}/build" overwrite="true">
+			<fileset dir="." includes="${copyOriginals}" />
+		</copy>
+				
+     </target>
+
+  </project>

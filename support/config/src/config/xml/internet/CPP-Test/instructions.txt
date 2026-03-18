@@ -1,0 +1,17 @@
+Update currentCourtStatus.xsl as follows:
+
+Comment out these lines at the top of the file:
+<xsl:variable name="data" select="document('translation.xml')"/>
+<xsl:include href="..\documentdistribution\translation.xsl"/>
+
+Add this template at the bottom of the file (before </xsl:stylesheet>)
+<xsl:template name="getValue">
+    <xsl:param name="key"/>
+    <xsl:param name="context"/>
+    <xsl:param name="language"/>
+    <xsl:value-of select="$key"/>
+</xsl:template>
+
+Run InternetWebPageTemplate.xsl on each of the three XML files
+Note this may take a few seconds to load in CTC as it's attempting to import CSS files from the internet which is not available in CTC)
+Can also run currentCourtStatus.xsl against the XML files.

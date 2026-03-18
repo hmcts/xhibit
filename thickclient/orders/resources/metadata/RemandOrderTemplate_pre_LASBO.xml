@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<!--  $Revision: 1.1 $  $Author: hingstb $ $Date: 2014/07/16 12:45:42 $-->
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="itwasordered" label="" borderLabel="It was ordered" borderRaised="true">
+			<date name="xxx2" label="Order Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+			<textfield name="custodyLocation" type="string" label="Remand Establishment: " length="10" maxLength="255" ref="//ord:CustodyLocation"/>
+			<section name="reportIndicator" label="" switchLabel="Report Indicator" borderLabel="" switchable="true" ref="//ord:ReportDetails/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="reportDetailsValue" ref="//ord:ReportDetails" label="" topLabel="Report Details:" rows="10" cols="15"/>
+			</section>
+			<section name="date/time" borderLabel="" label="">
+				<choice name="date/timeOption" label="" ref="//ord:NextAppearance/ord:AppearanceDateTime/@selected">
+					<option name="toBeNotifiedOption" label="Date &amp; time to be notified" value="false" selected="true"/>
+					<option name="specificOption" label="Specific date &amp; time" value="true">
+						<date name="xxx2" label="Date:" ref="//ord:AppearanceDateTime/ord:AppearanceDate"/>
+						<timepanel name="timeValue" label="Time: " ref="//ord:AppearanceDateTime/ord:AppearanceTime"/>
+					</option>
+				</choice>
+			</section>
+			<section name="courtType" borderLabel="" label="">
+				<choice name="courtOption" label="" ref="//ord:NextAppearance/ord:AppearanceCourt/ord:CourtHouseType">
+					<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:NextAppearance/ord:AppearanceCourt/ord:CourtHouseName"/>
+				</choice>
+			</section>
+		</section>
+		<!--		<section name="defendant" label="" switchLabel="Remand Details" borderLabel="Defendant" borderRaised="true" switchable="true" ref="//ord:RemandReason/@selected" selectedValue="true" unselectedValue="false"> -->
+		<section name="defendant" borderLabel="Defendant" borderRaised="true">
+			<section name="commit/before" borderLabel="" label="">
+				<choice name="commitSentOption" label="" ref="/">
+					<option name="sentOption" label="Committed/Sent to the Crown Court" selected="true" ref="/">
+						<section name="committed/send" borderLabel="" label="">
+							<choice name="committed/sentOption" label="" ref="//ord:CommitSent">
+								<option name="committedOption" label="Committed to..." value="committed" selected="true"/>
+								<option name="sentOption" label="Sent to..." value="sent"/>
+							</choice>
+							<date name="xxx2" label="Date:" ref="//ord:CrownCourt//ord:Date"/>
+							<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:CrownCourt/ord:CourtHouse/ord:CourtHouseName"/>
+						</section>
+					</option>
+					<option name="beforeOption" label="Is before the Court" selectedValue="true" unselectedValue="false" ref="//ord:IsBefore/@selected">
+						<section name="isBefore" borderLabel="" label="">
+							<choice name="isBeforeOption" label="" ref="/">
+								<option name="voluntaryOption" label="Voluntary Bill" selected="true" ref="//ord:RemandReason/ord:VoluntaryBillOfIndictment/@selected" selectedValue="true" unselectedValue="false">
+									<date name="xxx2" label="Date:" ref="//ord:VoluntaryBillOfIndictment"/>
+								</option>
+								<option name="certificateOption" label="Certificate of Transfer" ref="//ord:RemandReason/ord:CertificateOfTransfer/@selected" selectedValue="true" unselectedValue="false">
+									<date name="xxx2" label="Date:" ref="//ord:CertificateOfTransfer"/>
+								</option>
+								<option name="appealOption" label="Appeal against bail Information" selectedValue="true" unselectedValue="false" ref="//ord:RemandReason/ord:AppealAgainstBailGranted/@selected"/>
+							</choice>
+						</section>
+					</option>
+					<section name="indict/convict" borderLabel="" label="">
+						<choice name="indictConvictOption" label="" ref="//ord:RemandType">
+							<option name="indictedOption" label="Indicted" selected="true" value="Indicted"/>
+							<option name="convictedOption" label="Convicted" value="Convicted"/>
+						</choice>
+					</section>
+				</choice>
+			</section>
+		</section>
+		<section name="additionalRequirements" label="" switchLabel="Additional Requirements Option" borderLabel="Additional Requirements" borderRaised="true" switchable="true" ref="//ord:AdditionalInfo/@selected" selectedValue="true" unselectedValue="false">
+			<textarea name="additonalReqValue" ref="//ord:AdditionalInfo" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+		</section>
+		<fixedlist name="associatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

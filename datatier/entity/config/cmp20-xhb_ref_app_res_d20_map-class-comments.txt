@@ -1,0 +1,17 @@
+ * -------- custom finders --------
+ *
+* @ejb.finder
+*    signature="java.util.Collection findByAppResultCode(java.lang.String appResultCode)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (o) FROM XhbRefAppResD20Map o WHERE 
+*	    o.appResultCode = ?1
+*    AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+*
+* @ejb.finder
+*    signature="java.util.Collection findAllMappings()"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (o) FROM XhbRefAppResD20Map o WHERE (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * -------- end of custom finders --------

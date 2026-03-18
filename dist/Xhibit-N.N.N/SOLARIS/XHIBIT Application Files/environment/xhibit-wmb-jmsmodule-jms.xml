@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-jms xmlns="http://www.bea.com/ns/weblogic/90" xmlns:sec="http://www.bea.com/ns/weblogic/90/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls" xsi:schemaLocation="http://www.bea.com/ns/weblogic/920 http://www.bea.com/ns/weblogic/920.xsd">
+  <foreign-server name="MQ-ForeignServer">
+    <default-targeting-enabled>true</default-targeting-enabled>
+    <foreign-destination name="WmbRouterIn">
+      <local-jndi-name>MQJMS_WmbRouterIn</local-jndi-name>
+      <remote-jndi-name>WMB_ROUTER_IN</remote-jndi-name>
+    </foreign-destination>
+    <foreign-destination name="WmbMonitorRawEjbEvent">
+      <local-jndi-name>MQJMS_WmbMonitorRawEjbEvent</local-jndi-name>
+      <remote-jndi-name>WMB_MONITOR_RAWEJBEVENT</remote-jndi-name>
+    </foreign-destination>
+    <foreign-connection-factory name="WmbConnectionFactory">
+      <local-jndi-name>MQJMS_WmbConnectionFactory</local-jndi-name>
+      <remote-jndi-name>WMB_CONNECTION_FACTORY</remote-jndi-name>
+    </foreign-connection-factory>
+    <initial-context-factory>com.sun.jndi.fscontext.RefFSContextFactory</initial-context-factory>
+    <connection-url>file:///opt/moj/bea/user_projects/domains/XHIBIT_LIVE/common/mqjms/JNDI-Directory</connection-url>
+  </foreign-server>
+</weblogic-jms>

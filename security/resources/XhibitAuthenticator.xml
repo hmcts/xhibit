@@ -1,0 +1,434 @@
+<?xml version="1.0" ?>
+<!DOCTYPE MBeanType SYSTEM "./commo.dtd">
+
+<!-- MBean Definition File (MDF) for the Simple Sample Authenticator.
+
+     Copyright (c) 2002 by BEA Systems, Inc.  All Rights Reserved.
+-->
+
+<!--
+  - Declare your mbean.
+  -
+  - Since it is for an authenticator, it must extend the
+  - weblogic.management.security.authentication.Authenticator mbean.
+  -
+  - The Name and DisplayName must be the same.
+  - They specify the name that will appear on the
+  - console for this provider.
+  -
+  - Set the PeristPolicy to "OnUpdate" so that if an attribute
+  - value is changed, the new value is written to disk immediately.
+  - See the "Developing Security Services" manual for more info.
+  -
+  - Note that since this is an xml document, you can't use double
+  - quotes directly.  Instead you need to use &quot;
+  -
+  - Note that setting "Writeable" to "false" on an attribute
+  - makes the attribute read-only.  The default is read-write.
+  -->
+<MBeanType
+    Name              = "XhibitAuthenticator"
+    DisplayName       = "XhibitAuthenticator"
+    Package           = "uk.gov.courtservice.framework.security.providers.authentication"
+    Extends           = "weblogic.management.security.authentication.Authenticator"
+    PersistPolicy     = "OnUpdate"
+>
+
+    <!--
+      - You must set the value of the ProviderClassName attribute
+      - (inherited from the weblogic.management.security.Provider mbean)
+      - to the name of the java class you wrote that implements the
+      - weblogic.security.spi.AuthenticationProvider interface.
+      -
+      - You can think of the provider's mbean as the factory
+      - for your provider's runtime implementation.
+      -->
+    <MBeanAttribute
+        Name          = "ProviderClassName"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+        Default       = "&quot;uk.gov.courtservice.framework.security.providers.authentication.XhibitAuthenticationProviderImpl&quot;"
+    />
+
+    <!--
+      - You must set the value of the Description attribute
+      - (inherited from the weblogic.management.security.Provider mbean)
+      - to a brief description of your provider.
+      - It is displayed in the console.
+      -->
+    <MBeanAttribute
+        Name          = "Description"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+        Default       = "&quot;Xhibit Authentication Provider&quot;"
+    />
+
+    <!--
+      - You must set the value of the Version attribute
+      - (inherited from the weblogic.management.security.Provider mbean)
+      - to your provider's version.  There is no required format.
+      -->
+    <MBeanAttribute
+        Name          = "Version"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+        Default       = "&quot;1.0&quot;"
+    />
+
+    <!--
+      - Active Directory
+      -->
+    <!--
+    <MBeanAttribute
+        Name          = "ActiveDirectoryConnection"
+        Default       = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+    />
+    -->
+
+    <MBeanAttribute
+        Name          = "Host"
+        Type          = "java.lang.String"
+        Default       = "&quot;localhost&quot;"
+        Description   = "A hostname to which to connect or a dotted string representing the IP address of this host.
+                         Alternatively, this can be a space-delimited list of host names. Each host name may include
+                         a trailing colon and port number. In the case where more than one host name is specified, the
+                         connection setup policy specified with the ConnSetupDelay property controls whether connection
+                         attempts are made serially or concurrently."
+    />
+
+    <MBeanAttribute
+        Name          = "Port"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(389)"
+        Min           = "1"
+        Max           = "65534"
+        Description   = "The TCP or UDP port number to which to connect or contact. The default LDAP port is 389.
+                         This is ignored for any host name which includes a colon and port number."
+    />
+
+    <MBeanAttribute
+        Name          = "Principal"
+        Type          = "java.lang.String"
+        Description   = "The Distinguished Name (DN) of the LDAP user that is used by WebLogic Server
+                         to connect to the LDAP server."
+    />
+
+    <MBeanAttribute
+        Name          = "Credential"
+        Type          = "java.lang.String"
+        Encrypted     = "true"
+        Description   = "The credential (generally a password) used to authenticate the LDAP
+                         user that is defined in the Principal attribute."
+    />
+
+    <!--
+      - Active Directory Pool Settings
+      -->
+    <!--
+    <MBeanAttribute
+        Name          = "ActiveDirectoryPool"
+        Default       = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+    />
+    -->
+
+
+    <MBeanAttribute
+        Name          = "ConnectionPoolSize"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(6)"
+        Min           = "0"
+        Description   = "The number of connections in the pool."
+    />
+
+    <!--
+      - Active Directory Cache Settings
+      -->
+    <!--
+    <MBeanAttribute
+        Name          = "ActiveDirectoryCache"
+        Default       = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+    />
+    -->
+
+    <MBeanAttribute
+        Name          = "CacheEnabled"
+        Type          = "java.lang.Boolean"
+        InterfaceType = "boolean"
+        IsIs          = "true"
+        Default       = "new java.lang.Boolean(true)"
+        Description   = "The option to enable caching of LDAP requests with the LDAP server."
+    />
+
+    <MBeanAttribute
+        Name          = "CacheSize"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(32)"
+        Min           = "0"
+        Description   = "The size of the cache in K."
+    />
+
+
+    <MBeanAttribute
+        Name          = "CacheTTL"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(60)"
+        Min           = "0"
+        Description   = "The time-to-live (TTL) of the cache in seconds."
+    />
+
+    <!--
+      - Active Directory Advanced Settings
+      -->
+    <!--
+    <MBeanAttribute
+        Name          = "ActiveDirectoryAdvanced"
+        Default       = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+    />
+    -->
+
+    <MBeanAttribute
+        Name          = "FollowReferrals"
+        Type          = "java.lang.Boolean"
+        InterfaceType = "boolean"
+        IsIs          = "true"
+        Default       = "new java.lang.Boolean(false)"
+        Description   = "The option to enable referrals to be followed within the LDAP directory. 
+						 If set to true referrals will be followed. If set to false generated referrals will be ignored, to improve performance ActiveDirectory will be requested not to generate domain referrals.
+					     Type: Boolean (false)"        				 
+    />
+
+    <MBeanAttribute
+        Name          = "BindAnonymouslyOnReferrals"
+        Type          = "java.lang.Boolean"
+        InterfaceType = "boolean"
+        IsIs          = "true"
+        Default       = "new java.lang.Boolean(false)"
+        Description   = "The option to enable anonymous binding when following referrals within the LDAP directory.
+                         If set to false, then the current Principal and Credential will be used."
+    />
+
+    <MBeanAttribute
+        Name          = "ResultsTimeLimit"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(0)"
+        Description   = "The maximum number of seconds to wait for results before timing out. If set to 0,
+                         there is no maximum time limit."
+    />
+
+    <MBeanAttribute
+        Name          = "ConnectTimeout"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(0)"
+        Description   = "The maximum number of seconds to wait for the LDAP connection to be established. If set to 0,
+                         there is no maximum time limit."
+    />
+
+    <MBeanAttribute
+        Name          = "ParallelConnectDelay"
+        Type          = "java.lang.Integer"
+        InterfaceType = "int"
+        Default       = "new java.lang.Integer(0)"
+        Description   = "The number of seconds to delay when making concurrent attempts to connect to multiple servers. If
+                         set to 0, connection attempts are serialized. An attempt is made to connect to the first server in the list.
+                         The next entry in the list is tried only if the attempt to connect to the current host fails. This might
+                         cause your application to block for unacceptably long time if a host is down. If set to greater than 0,
+                         another connection setup thread is started after this number of delay seconds has passed."
+     />
+
+    <!--
+      - User Search Settings
+      -->
+    <!--
+    <MBeanAttribute
+        Name          = "UserSearch"
+        Default       = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+    />
+    -->
+
+    <MBeanAttribute
+        Name          = "UserBaseDN"
+        Type          = "java.lang.String"
+        Default       = "&quot;DC=ops,DC=cs,DC=root&quot;"
+        Description   = "The base distinguished name (DN) of the tree in the LDAP directory that
+                         contains users."
+    />
+
+    <MBeanAttribute
+        Name          = "UserSearchScope"
+        Type          = "java.lang.String"
+        Default       = "&quot;subtree&quot;"
+        LegalValues   = "subtree,onelevel"
+        Description   = "Specifies how deep in the LDAP directory tree to search for users.
+                         Valid values are &lt;code&gt;subtree&lt;/code&gt;
+                         and &lt;code&gt;onelevel&lt;/code&gt;."
+    />
+
+    <MBeanAttribute
+        Name          = "UserFromNameFilter"
+        Type          = "java.lang.String"
+        Default       = "&quot;(objectClass=user)(!(userAccountControl:1.2.840.113556.1.4.803:=2))(!(samAccountName=XHTrain*))&quot;"
+        Description   = "Additional criterial for the LDAP search filter. These criteria are
+                         can be used to restrict the users selected."
+    />
+
+    <MBeanAttribute
+        Name          = "UserPrincipalAttribute"
+        Type          = "java.lang.String"
+        Default       = "&quot;samAccountName&quot;"
+        Description   = "The attribute of an LDAP user object that specifies the user's Principal name."
+    />
+
+
+    <MBeanAttribute
+        Name          = "DisplayNameAttribute"
+        Type          = "java.lang.String"
+        Default       = "&quot;givenName&quot;"
+        Description   = "The display name of the user."
+    />
+
+    <MBeanAttribute
+        Name          = "UserForenameAttribute"
+        Type          = "java.lang.String"
+        Default       = "&quot;givenName&quot;"
+        Description   = "The forename of the user."
+    />
+    
+    <MBeanAttribute
+        Name          = "UserSurnameAttribute"
+        Type          = "java.lang.String"
+        Default       = "&quot;givenName&quot;"
+        Description   = "The surname of the user."
+    />
+    
+    <!--
+      - Group Search
+      -->
+    <!--
+    <MBeanAttribute
+         Name         = "GroupSearch"
+         Default      = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+         Type         = "java.lang.String"
+         Writeable    = "false"
+     />
+     -->
+
+    <MBeanAttribute
+        Name          = "GroupBaseDN"
+        Type          = "java.lang.String"
+        Default       = "&quot;DC=ops,DC=cs,DC=root&quot;"
+        Description   = "The base distinguished name (DN) of the tree in the LDAP directory that
+                         contains groups."
+    />
+
+    <MBeanAttribute
+        Name          = "GroupSearchScope"
+        Type          = "java.lang.String"
+        Default       = "&quot;subtree&quot;"
+        LegalValues   = "subtree,onelevel"
+        Description   = "Specifies how deep in the LDAP directory tree to search for Groups.
+                         Valid values are &lt;code&gt;subtree&lt;/code&gt;
+                         and &lt;code&gt;onelevel&lt;/code&gt;."
+    />
+
+    <MBeanAttribute
+        Name          = "GroupFromNameFilter"
+        Type          = "java.lang.String"
+        Default       = "&quot;(objectClass=group)&quot;"
+        Description   = "Additional criterial for the LDAP search filter. These criteria are
+                         can be used to restrict the groups selected."
+    />
+
+    <MBeanAttribute
+        Name          = "GroupPrincipalAttribute"
+        Type          = "java.lang.String"
+        Default       = "&quot;cn&quot;"
+        Description   = "The attribute of an LDAP Group object that specifies the Principal name of the Group. This
+                         value is used as the Groups Principal!"
+    />
+
+    <MBeanAttribute
+        Name          = "GroupMemberOfAttribute"
+        Type          = "java.lang.String"
+        Default       = "&quot;memberOf&quot;"
+        Description   = "The attribute of an LDAP user object that specifies the groups the group is a member of."
+    />
+
+    <MBeanAttribute
+        Name          = "GroupRootPrincipal"
+        Type          = "java.lang.String"
+        Default       = "&quot;XHIBIT User&quot;"
+        Description   = "This specifies the Principal name of the root Xhibit group."
+    />
+
+    <!--
+      - Terminal Search
+      -->
+    <!--
+    <MBeanAttribute
+        Name          = "TerminalSearch"
+        Default       = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+        Type          = "java.lang.String"
+        Writeable     = "false"
+     />
+     -->
+
+    <MBeanAttribute
+        Name          = "TerminalSearchBase"
+        Type          = "java.lang.String"
+        Default       = "&quot;DC=ops,DC=cs,DC=root&quot;"
+        Description   = "The base distinguished name (DN) of the tree in the LDAP directory that
+                         contains Terminals."
+     />
+
+    <MBeanAttribute
+        Name          = "TerminalSearchScope"
+        Type          = "java.lang.String"
+        Default       = "&quot;subtree&quot;"
+        LegalValues   = "subtree,onelevel"
+        Description   = "Specifies how deep in the LDAP directory tree to search for Terminals.
+                         Valid values are &lt;code&gt;subtree&lt;/code&gt;
+                         and &lt;code&gt;onelevel&lt;/code&gt;."
+    />
+
+    <MBeanAttribute
+        Name          = "TerminalFilterExtension"
+        Type          = "java.lang.String"
+        Default       = "&quot;(objectClass=computer)&quot;"
+        Description   = "Additional criterial for the LDAP search filter. These criteria are
+                         can be used to restrict the Terminals selected."
+    />
+
+    <MBeanAttribute
+        Name        = "TerminalNameAttribute"
+        Type        = "java.lang.String"
+        Default     = "&quot;cn&quot;"
+        Description = "The attribute of an LDAP Terminal object that specifies the Terminal's name."
+    />
+
+    <MBeanAttribute
+        Name        = "TerminalLocationAttribute"
+        Type        = "java.lang.String"
+        Default     = "&quot;description&quot;"
+        Description = "The attribute of an LDAP Terminal object that specifies the Terminal's location."
+    />
+
+</MBeanType>
+
+
+

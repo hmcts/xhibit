@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+    <xsd:include schemaLocation="OrderTypes.xsd"/>
+    <xsd:complexType name="CommunityPunishmentOrderStructure">
+        <xsd:annotation>
+            <xsd:documentation>Schema V4.1 (08/06/2005)</xsd:documentation>
+        </xsd:annotation>
+        <xsd:complexContent>
+            <xsd:extension base="XHIBITCommunityOrderStructure"/>
+        </xsd:complexContent>
+    </xsd:complexType>
+</xsd:schema>

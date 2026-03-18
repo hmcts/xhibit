@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="D:\projects\XHIBIT\thickclient\orders\xml\documentTransforms\Bail Order.xsl"?>
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+../../../..\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<CPOrder>
+			<OrderHeader>
+				<OrderType/>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode>1234</CourtHouseCode>
+					<CourtHouseName>Newcastle</CourtHouseName>
+					<CourtHouseAddress>
+						<apd:Line>address1</apd:Line>
+						<apd:Line>address2</apd:Line>
+						<apd:Line>address3</apd:Line>
+						<apd:Line>address4</apd:Line>
+						<apd:Line>address5</apd:Line>
+						<apd:PostCode>GIR 0AA</apd:PostCode>
+					</CourtHouseAddress>
+					<CourtHouseDX>String</CourtHouseDX>
+					<CourtHouseTelephone>0</CourtHouseTelephone>
+					<CourtHouseFax>0</CourtHouseFax>
+					<Description>String</Description>
+				</CourtHouse>
+				<Judiciary>
+					<Judge>
+						<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>A</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+						<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+						<CRESTjudgeID>0</CRESTjudgeID>
+					</Judge>
+					<Justice>
+						<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>A</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+						<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+						<CRESTjusticeID>0</CRESTjusticeID>
+					</Justice>
+					<StartDate>1967-08-13</StartDate>
+					<EndDate>1967-08-13</EndDate>
+				</Judiciary>
+				<CaseNumber>T00000022</CaseNumber>
+				<SubjectType>Defendant</SubjectType>
+				<Defendant>
+					<PersonalDetails>
+						<Name>
+							<apd:CitizenNameTitle>Mr</apd:CitizenNameTitle>
+							<apd:CitizenNameForename>Andrew</apd:CitizenNameForename>
+							<apd:CitizenNameSurname>Smith</apd:CitizenNameSurname>
+							<apd:CitizenNameRequestedName>Andy</apd:CitizenNameRequestedName>
+						</Name>
+						<IsMasked>no</IsMasked>
+						<DateOfBirth>
+							<apd:BirthDate>1978-07-01</apd:BirthDate>
+							<apd:VerifiedBy>not verified</apd:VerifiedBy>
+						</DateOfBirth>
+						<Sex>male</Sex>
+						<Address>
+							<apd:Line>Address1</apd:Line>
+							<apd:Line>Address2</apd:Line>
+							<apd:Line>Address3</apd:Line>
+							<apd:Line>Address4</apd:Line>
+							<apd:Line>Address5</apd:Line>
+							<apd:PostCode>GIR 0AA</apd:PostCode>
+						</Address>
+					</PersonalDetails>
+					<ASNs>
+						<ASN>12345678901234567890</ASN>
+					</ASNs>
+					<Charges>
+						<Charge IndictmentCountNumber="1" ChargeType="indictment">
+							<OffenceStatement>Theft</OffenceStatement>
+						</Charge>
+					</Charges>
+				</Defendant>
+				<OrderDate>2003-01-21</OrderDate>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>A</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+						<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+							<apd:CitizenNameForename>A</apd:CitizenNameForename>
+							<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+							<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+							<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+							<CRESTjudgeID>0</CRESTjudgeID>
+						</Judge>
+						<Justice>
+							<apd:CitizenNameTitle>A</apd:CitizenNameTitle>
+							<apd:CitizenNameForename>A</apd:CitizenNameForename>
+							<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+							<apd:CitizenNameSuffix>A</apd:CitizenNameSuffix>
+							<apd:CitizenNameRequestedName>A</apd:CitizenNameRequestedName>
+							<CRESTjusticeID>0</CRESTjusticeID>
+						</Justice>
+						<StartDate>1967-08-13</StartDate>
+						<EndDate>1967-08-13</EndDate>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>1967-08-13</SignedDate>
+			</OrderHeader>
+			<AddressOption>AddressIs</AddressOption>
+			<Trial selected="true">
+				<ConvictionDate>0001-01-01</ConvictionDate>
+			</Trial>
+			<CommittingCourt selected="false">
+				<Date>2003-01-01</Date>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode>1234</CourtHouseCode>
+					<CourtHouseName>Newcastle</CourtHouseName>
+					<CourtHouseAddress>
+						<apd:Line>address1</apd:Line>
+						<apd:Line>address2</apd:Line>
+						<apd:Line>address3</apd:Line>
+						<apd:Line>address4</apd:Line>
+						<apd:Line>address5</apd:Line>
+						<apd:PostCode>GIR 0AA</apd:PostCode>
+					</CourtHouseAddress>
+					<CourtHouseDX>String</CourtHouseDX>
+					<CourtHouseTelephone>0</CourtHouseTelephone>
+					<CourtHouseFax>0</CourtHouseFax>
+					<Description>String</Description>
+				</CourtHouse>
+			</CommittingCourt>
+			<Breach selected="false">
+				<ConvictingCourt>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode>1234</CourtHouseCode>
+						<CourtHouseName>Newcastle</CourtHouseName>
+					</CourtHouse>
+				</ConvictingCourt>
+				<OriginatingCourt>
+					<Date>2003-01-01</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode>1234</CourtHouseCode>
+						<CourtHouseName>Newcastle</CourtHouseName>
+						<CourtHouseAddress>
+							<apd:Line>address1</apd:Line>
+							<apd:Line>address2</apd:Line>
+							<apd:Line>address3</apd:Line>
+							<apd:Line>address4</apd:Line>
+							<apd:Line>address5</apd:Line>
+							<apd:PostCode>GIR 0AA</apd:PostCode>
+						</CourtHouseAddress>
+						<CourtHouseDX>String</CourtHouseDX>
+						<CourtHouseTelephone>0</CourtHouseTelephone>
+						<CourtHouseFax>0</CourtHouseFax>
+						<Description>String</Description>
+					</CourtHouse>
+					<OriginalOrderType>text</OriginalOrderType>
+				</OriginatingCourt>
+				<BreachCourt breachCourtOption="false">
+					<Date>2003-01-01</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode>1234</CourtHouseCode>
+						<CourtHouseName>Newcastle</CourtHouseName>
+						<CourtHouseAddress>
+							<apd:Line>address1</apd:Line>
+							<apd:Line>address2</apd:Line>
+							<apd:Line>address3</apd:Line>
+							<apd:Line>address4</apd:Line>
+							<apd:Line>address5</apd:Line>
+							<apd:PostCode>GIR 0AA</apd:PostCode>
+						</CourtHouseAddress>
+						<CourtHouseDX>String</CourtHouseDX>
+						<CourtHouseTelephone>0</CourtHouseTelephone>
+						<CourtHouseFax>0</CourtHouseFax>
+						<Description>String</Description>
+					</CourtHouse>
+					<SentToCrownCourt>text</SentToCrownCourt>
+				</BreachCourt>
+			</Breach>
+			<OriginalOrderRevoked selected="false">
+				<BreachCourt>yes</BreachCourt>
+				<CurrentCourt>no</CurrentCourt>
+			</OriginalOrderRevoked>
+			<FailedToComply>no</FailedToComply>
+			<AfterHearingFrom>no</AfterHearingFrom>
+			<PettySessionalArea>
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode>1234</CourtHouseCode>
+				<CourtHouseName>Newcastle</CourtHouseName>
+				<CourtHouseAddress>
+					<apd:Line>address1</apd:Line>
+					<apd:Line>address2</apd:Line>
+					<apd:Line>address3</apd:Line>
+					<apd:Line>address4</apd:Line>
+					<apd:Line>address5</apd:Line>
+					<apd:PostCode>GIR 0AA</apd:PostCode>
+				</CourtHouseAddress>
+				<CourtHouseDX>String</CourtHouseDX>
+				<CourtHouseTelephone>0</CourtHouseTelephone>
+				<CourtHouseFax>0</CourtHouseFax>
+				<Description>String</Description>
+			</PettySessionalArea>
+			<CommunityPunishment>
+				<Hours TermType="Concurrent">100</Hours>
+				<Period>
+					<Years>2</Years>
+					<Months>2</Months>
+					<Days>0</Days>
+				</Period>
+			</CommunityPunishment>
+			<RehabilitationPeriod>
+				<Years>1</Years>
+				<Months>1</Months>
+				<Days>0</Days>
+			</RehabilitationPeriod>
+			<Conditions selected="false">
+				<Condition>
+					<Description>details of condition here</Description>
+				</Condition>
+			</Conditions>
+			<AssociatedCases>
+				<AssociatedCase selected="false">T10000001</AssociatedCase>
+				<AssociatedCase selected="false">T10000002</AssociatedCase>
+				<AssociatedCase selected="false">T10000003</AssociatedCase>
+				<AssociatedCase selected="false">T10000004</AssociatedCase>
+				<AssociatedCase selected="false">T10000005</AssociatedCase>
+				<AssociatedCase selected="false">T10000006</AssociatedCase>
+			</AssociatedCases>
+			<AdditionalNotes>text here</AdditionalNotes>
+		</CPOrder>
+	</OrderData>
+	<Narrative xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative">
+		<Header>Text</Header>
+		<Body>
+			<Section>
+				<Label/>
+				<Body>
+					<H1>Community Punishment Order
+					</H1>
+				</Body>
+			</Section>
+			<Section>
+				<Label>
+					<Line>The defendant</Line>
+				</Label>
+				<Body>
+					<Table>
+						<TR>
+							<TD>
+								<Line>
+									<DefendantFullName/>
+								</Line>
+								<Line>whose address <AddressOption/>
+								</Line>
+								<Line>has been convicted of <Conviction/>
+								</Line>
+								<Line>
+									<CPOTrialCommittedBreach/>
+								</Line>
+							</TD>
+							<TD>
+								<Line>Date of Birth</Line>
+								<Line>
+									<DefendantDOB/>
+								</Line>
+							</TD>
+						</TR>
+					</Table>
+				</Body>
+			</Section>
+			<Section>
+				<Label>
+					<Line>The Court ordered</Line>
+				</Label>
+				<Body>
+					<Table>
+						<TR>
+							<TD>
+								On <OrderDate/>
+								<FailedToComply/>
+        							<!-- RFC 1356 - change Petty Sessional Area to Local Justice Area -->
+								<RevokeOption/> the Court, after considering a report by the probation officer or social worker of a local authority social services department about the defendant and the defendants circumstances <HearingOption/> was satisfied that the defendant is a suitable person to perform community punishment work and that provisions can be made for the defendant to do so in the Local Justice Area of <PettySessionalArea/> Magistrates Court
+								<CPOOrderedText/>
+								<AdditionalRequirements/>
+							</TD>
+						</TR>
+					</Table>
+				</Body>
+			</Section>
+			<Section>
+				<Label/>
+				<Body>
+					<AssociatedCases/>
+				</Body>
+			</Section>
+		</Body>
+		<Footer>Text</Footer>
+	</Narrative>
+	<State/>
+	<SaveNotes>Text here</SaveNotes>
+</Order>

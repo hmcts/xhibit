@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cs:DailyList
+	xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+	xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice ListDistributionDailyList-v2-2.xsd">
+	<cs:DocumentID>
+		<cs:DocumentName>Daily Distribution List DRAFT v2 28-NOV-19</cs:DocumentName>
+		<cs:UniqueID>CSDDLD000000000029283</cs:UniqueID>
+		<cs:DocumentType>DLD</cs:DocumentType>
+		<cs:TimeStamp>2019-11-27T15:37:26.174</cs:TimeStamp>
+	</cs:DocumentID>
+	<cs:ListHeader>
+		<cs:ListCategory>Criminal</cs:ListCategory>
+		<cs:StartDate>2019-11-28</cs:StartDate>
+		<cs:EndDate>2019-11-28</cs:EndDate>
+		<cs:Version>DRAFT 2</cs:Version>
+		<cs:PublishedTime>2019-11-27T14:38:15.000</cs:PublishedTime>
+		<cs:CRESTlistID>678</cs:CRESTlistID>
+		<cs:Duration>0</cs:Duration>
+	</cs:ListHeader>
+	<cs:CrownCourt>
+		<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+		<cs:CourtHouseCode>0453</cs:CourtHouseCode>
+		<cs:CourtHouseName>SNARESBROOK</cs:CourtHouseName>
+		<cs:CourtHouseAddress>
+			<Line>snARESBROOK COURT HOUSETY ab</Line>
+			<Line>75 HOLLYBUSH HILL7 cd</Line>
+			<Line>45 ef</Line>
+			<Line>45 gh</Line>
+			<Line>SNARESBROOK4 ij,LONDON3 kl</Line>
+			<PostCode>E11 1QC</PostCode>
+		</cs:CourtHouseAddress>
+		<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+		<cs:Description>CROWN COURT</cs:Description>
+	</cs:CrownCourt>
+	<cs:CourtLists>
+		<cs:CourtList id="1633">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0081</cs:CourtHouseCode>
+				<cs:CourtHouseName>PRESTON3</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1635">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0044</cs:CourtHouseCode>
+				<cs:CourtHouseName>VILLAGE HALL</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1634">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0002</cs:CourtHouseCode>
+				<cs:CourtHouseName>VILNIUS</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1638">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0045</cs:CourtHouseCode>
+				<cs:CourtHouseName>Lewes/Brighton/Hove</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1660">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0001</cs:CourtHouseCode>
+				<cs:CourtHouseName>DEVTEST</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1664">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0002</cs:CourtHouseCode>
+				<cs:CourtHouseName>ANOTHER NEW</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1698">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0012</cs:CourtHouseCode>
+				<cs:CourtHouseName>est vs</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1670">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0001</cs:CourtHouseCode>
+				<cs:CourtHouseName>PHONE</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1681">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0012</cs:CourtHouseCode>
+				<cs:CourtHouseName>TEST2</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1673">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0044</cs:CourtHouseCode>
+				<cs:CourtHouseName>NEW</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1699">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0019</cs:CourtHouseCode>
+				<cs:CourtHouseName>errrr</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1696">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0001</cs:CourtHouseCode>
+				<cs:CourtHouseName>SITE</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1674">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0012</cs:CourtHouseCode>
+				<cs:CourtHouseName>TEST</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings></cs:Sittings>
+		</cs:CourtList>
+		<cs:CourtList id="1628">
+			<cs:CourtHouse>
+				<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+				<cs:CourtHouseCode>0001</cs:CourtHouseCode>
+				<cs:CourtHouseName>SNARESBROOK mu</cs:CourtHouseName>
+				<cs:CourtHouseDX>12345678900987654321123456789000001</cs:CourtHouseDX>
+				<cs:Description>CROWN COURT</cs:Description>
+			</cs:CourtHouse>
+			<cs:Sittings>
+				<cs:Sitting id="187">
+					<cs:CourtRoomNumber>99</cs:CourtRoomNumber>
+					<cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+					<cs:SittingAt>12:36:00</cs:SittingAt>
+					<cs:SittingPriority>T</cs:SittingPriority>
+					<cs:Judiciary>
+						<cs:Judge>
+							<CitizenNameSurname>N/A</CitizenNameSurname>
+							<CitizenNameRequestedName>N/A</CitizenNameRequestedName>
+						</cs:Judge>
+					</cs:Judiciary>
+					<cs:Hearings>
+						<cs:Hearing id="3264">
+							<cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+							<cs:HearingDetails HearingType="PLY"
+								CRESTListSequence="1">
+								<cs:HearingDescription>For Preliminary Hearing</cs:HearingDescription>
+								<cs:HearingDate>2019-11-28</cs:HearingDate>
+							</cs:HearingDetails>
+							<cs:CRESThearingID>3264</cs:CRESThearingID>
+							<cs:CaseNumber>U20190001</cs:CaseNumber>
+							<cs:Defendants></cs:Defendants>
+						</cs:Hearing>
+					</cs:Hearings>
+				</cs:Sitting>
+			</cs:Sittings>
+		</cs:CourtList>
+	</cs:CourtLists>
+</cs:DailyList>

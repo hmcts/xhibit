@@ -1,0 +1,115 @@
+<project name="echowebserviceclient" basedir="." default="dist">
+    <description>The echo web service client</description>
+
+    <target name="initialisation" description="Initialise project variables.">
+        <!-- Set version and build -->
+        <property name="version" value="1.0.0"/>
+
+        <tstamp>
+            <format property="build" pattern="yyyyMMddHHmmss"/>
+        </tstamp>
+
+        <property environment="env"/>
+        <property name="weblogic.home" value="${env.WL_HOME}"/>
+        <property name="computer.name" value="${env.COMPUTERNAME}"/>
+
+
+        <!-- Set properties -->
+        <property name="src.dir" value="${basedir}/src"/>
+        <property name="resources.dir" value="${basedir}/resources"/>
+        <property name="build.dir" value="${basedir}/build"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+        <property name="gen.source.dir" value="${build.dir}/gen_src"/>
+        <property name="jar.file" value="${build.dir}/${ant.project.name}.jar"/>
+        <property name="lib.dir" value="${basedir}/lib"/>
+        <property name="dist.dir" value="${basedir}/dist"/>
+
+        <property name="dist.file.prefix" value="${ant.project.name}"/>
+        <property name="dist.file.postfix" value="zip"/>
+        <property name="dist.file" value="${ant.project.name}-${version}.${dist.file.postfix}"/>
+        <property name="dist.file.dir" value="${ant.project.name}-${version}"/>
+        
+        <property name="wsdl.file" location="${basedir}/wsdl/Echo-v0-1.wsdl"/>
+        <property name="generate.wsclient.marker" location="${build.dir}/generate.wsclient.marker"/>
+        
+        <taskdef name="wlclientgen" classname="weblogic.wsee.tools.anttasks.ClientGenTask" loaderref="framework.loader"/>
+
+        <fileset id="wl.lib" dir="${weblogic.home}/server/lib">
+            <include name="weblogic.jar"/>           
+        </fileset>
+        
+        <!-- Set paths -->
+        <path id="javac-class-path">
+            <fileset refid="wl.lib"/>            
+        </path>
+    </target>
+   
+    <target name="generate.wsclient.check">
+        <uptodate property="generate.wsclient.uptodate" targetfile="${generate.wsclient.marker}">
+            <srcfiles file="${wsdl.file}"/>
+        </uptodate>
+    </target>
+
+    <target name="generate.wsclient" unless="generate.wsclient.uptodate" depends="generate.wsclient.check">
+        <mkdir dir="${build.dir}/gen_src"/>
+        <wlclientgen
+          wsdl="${wsdl.file}"
+          destDir="${gen.source.dir}"
+          handlerChainFile="${src.dir}/echowebserviceclient/EchoClientHandlerConfig.xml"
+          packagename="echowebserviceclient"/>
+        <touch file="${generate.wsclient.marker}"/>
+    </target>
+
+    <target name="compile.gen" description="Compile the java src flles." depends="generate.wsclient">
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="${gen.source.dir}" destdir="${classes.dir}" debug="true" deprecation="true" classpathref="javac-class-path" />
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="compile.gen"/>
+
+    <target name="compile" description="Compile the java src flles." depends="initialisation,generate">
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" deprecation="true" classpathref="javac-class-path" />
+    </target>
+    
+    <target name="resource" description="Copy the resource files substituting any parameters" depends="initialisation">
+        <filter token="build" value="${build}"/>
+        <filter token="version" value="${version}"/>
+
+        <property name="binary.files" value="**/*.gif,**/*.jar,**/*.exe "/>
+
+        <copy todir="${classes.dir}" filtering="true" overwrite="true">
+            <fileset dir="${resources.dir}" excludes="${binary.files}"/>
+        </copy>
+
+        <copy todir="${classes.dir}" filtering="false">
+            <fileset dir="${resources.dir}" includes="${binary.files}"/>
+        </copy>
+    </target>
+
+    <target name="package" description="Package Echo WS Client jar" depends="compile, resource" >
+        <jar destfile="${jar.file}" manifest="manifest.mf">
+            <fileset dir="${classes.dir}"/>
+        </jar>
+    </target>
+
+    <target name="add.wsdl" description="Adds wsdls to jar" depends="package">
+        <jar destfile="${jar.file}"
+             basedir="${gen.source.dir}"
+             includes="**/*.xml,**/*.wsdl"
+             update="true"/>
+    </target>
+
+    <target name="dist" description="Prepare the source distribution" depends="add.wsdl" >
+        <copy todir="${dist.dir}">
+            <fileset dir="${build.dir}" includes="**/*.jar"/>
+        </copy>
+        <copy todir="${dist.dir}/echowebserviceclient-X.X.X/properties">
+            <fileset dir="${build.dir}/classes" includes="**/*.txt"/>
+        </copy>        
+    </target>
+    
+    <target name="clean" description="Remove all the files created by the build process." depends="initialisation">
+        <delete dir="${build.dir}" failonerror="true"/>
+    </target>
+
+</project>

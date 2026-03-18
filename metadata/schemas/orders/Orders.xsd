@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Neil Entwistle (Electronic Data Systems LTD) -->
+<xs:schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="BailOrder.xsd"/>
+	<xs:include schemaLocation="BailOrderBCase.xsd"/>
+	<xs:include schemaLocation="BenchWarrant.xsd"/>
+	<xs:include schemaLocation="RemandOrder.xsd"/>
+	<xs:include schemaLocation="ImprisonmentOrder.xsd"/>
+	<xs:include schemaLocation="ImprisonmentOrder5035C.xsd"/>
+	<xs:include schemaLocation="DetentionAndTrainingOrder.xsd"/>
+	<xs:include schemaLocation="YoungOffendersInstitution.xsd"/>
+	<xs:include schemaLocation="YoungOffendersOrder5044.xsd"/>
+	<xs:include schemaLocation="CommunityPunishmentOrder.xsd"/>
+	<xs:include schemaLocation="CommuniytRehabOrder.xsd"/>
+	<xs:include schemaLocation="CommunityPunishmentRehabOrder.xsd"/>
+	<xs:include schemaLocation="CommunityOrder.xsd"/>
+	<xs:include schemaLocation="YouthRehabilitationOrder.xsd"/>
+	<xs:include schemaLocation="SuspendedSentenceOrder.xsd"/>
+	<xs:include schemaLocation="MonetaryOrder.xsd"/>
+	<xs:include schemaLocation="D20.xsd"/>
+	<xs:include schemaLocation="ReleaseFromPrisonOrder.xsd"/>
+	<xs:include schemaLocation="NoticeOfAcquittalOrder.xsd"/>
+	<xs:include schemaLocation="NoticeOfDefermentSentenceOrder.xsd"/>
+	<xs:include schemaLocation="BreachSuspendedSentenceOrder.xsd"/>
+	<xs:include schemaLocation="ActionConditionalDischargeOrder.xsd"/>
+	<xs:include schemaLocation="NoticeBreachSuspendedSentence.xsd"/>
+	<xs:include schemaLocation="BreachConditionalDischargeOrder.xsd"/>
+
+	<xs:import namespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" schemaLocation="Narrative.xsd"/>
+	<xs:complexType name="OrderType">
+		<xs:sequence>
+			<xs:element name="OrderData">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="BailOrder" type="BailOrderStructure"/>
+						<xs:element name="BailOrderBCase" type="BailOrderBCaseStructure"/>
+						<xs:element name="RemandOrder" type="RemandOrderStructure"/>
+						<xs:element name="RemandOrder_pre_LASBO" type="RemandOrderStructure"/>
+						<xs:element name="BenchWarrant" type="BenchWarrantStructure"/>
+						<xs:element name="ImprisonmentOrder" type="ImprisonmentOrderStructure"/>
+						<xs:element name="ImprisonmentOrder5035C" type="ImprisonmentOrder5035CStructure"/>
+						<xs:element name="ImprisonmentOrder5035C_pre_LASBO" type="ImprisonmentOrder5035CStructure"/>
+						<xs:element name="DetentionAndTrainingOrder" type="DetentionAndTrainingOrderStructure"/>
+						<xs:element name="YOIOrder" type="YoungOffenderOrderStructure"/>
+						<xs:element name="YoungOffendersOrder5044" type="YoungOffendersOrder5044Structure"/>
+						<xs:element name="CPOrder" type="CommunityPunishmentOrderStructure"/>
+						<xs:element name="CROrder" type="CommunityRehabOrder"/>
+						<xs:element name="CPROrder" type="CommunityPunishmentRehabOrder"/>
+						<xs:element name="COOrder" type="CommunityOrderStructure"/>
+						<xs:element name="COOrder_pre_LASBO" type="CommunityOrderStructure"/>
+						<xs:element name="YouthRehabilitationOrder" type="YouthRehabilitationOrderStructure"/>
+						<xs:element name="IO5035COrder" type="ImprisonmentOrder5035CStructure"/>
+						<xs:element name="YO5044COrder" type="YoungOffendersOrder5044Structure"/>
+						<xs:element name="YO5044COrder_pre_LASBO" type="YoungOffendersOrder5044Structure"/>
+						<xs:element name="YO5044DOrder" type="YoungOffendersOrder5044Structure"/>
+						<xs:element name="YO5044DOrder_pre_LASBO" type="YoungOffendersOrder5044Structure"/>
+						<xs:element name="SUSOrder" type="SuspendedSentenceOrderStructure"/>
+						<xs:element name="SUSOrder_pre_LASBO" type="SuspendedSentenceOrderStructure"/>
+						<xs:element name="BWAOrder" type="BenchWarrantStructure"/>
+						<xs:element name="BWCOrder" type="BenchWarrantStructure"/>
+						<xs:element name="MonetaryOrder" type="MonetaryOrderStructure"/>
+						<xs:element name="D20" type="D20OrderStructure"/>
+						<xs:element name="ReleaseFromPrisonOrder" type="ReleaseFromPrisonOrderStructure"/>
+						<xs:element name="NoticeOfAcquittalOrder" type="NoticeOfAcquittalOrderStructure"/>
+						<xs:element name="NoticeOfDefermentSentenceOrder" type="NoticeOfDefermentSentenceOrderStructure"/>
+						<xs:element name="NoticeBreachSuspendedSentence" type="NoticeBreachSuspendedSentenceOrderStructure"/>
+						<xs:element name="BreachSuspendedSentenceOrder" type="BreachSuspendedSentenceOrderStructure"/>
+						<xs:element name="ActionConditionalDischargeOrder" type="ActionConditionalDischargeOrderStructure"/>
+						<xs:element name="BreachConditionalDischargeOrder" type="BreachConditionalDischargeOrderStructure"/>
+ 
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="nar:Narrative" minOccurs="0"/>
+			<xs:element name="State" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>to be deleted</xs:documentation>
+				</xs:annotation>
+				<xs:complexType/>
+			</xs:element>
+			<xs:element name="SaveNotes" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>to be deleted</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Order" type="OrderType">
+		<xs:annotation>
+			<xs:documentation>Schema V4.1 (08/06/2005)</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+</xs:schema>

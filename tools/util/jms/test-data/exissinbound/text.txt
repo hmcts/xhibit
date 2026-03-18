@@ -1,0 +1,1 @@
+<Body>This is the message body and can may of any type</Body>

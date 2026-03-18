@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns="http://schemas.cjse.gov.uk/messages/messaging/2006-05" targetNamespace="http://schemas.cjse.gov.uk/messages/messaging/2006-05" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.2" id="cjseMessaging">
+	<xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="xmlMIME-2005-05.xsd"/>
+	<xs:complexType name="AbstractRequestStructure" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The abstract parent of any request message sent to CJSE Message Services.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MessageIdentifier" type="MessageIdentifierType"/>
+			<xs:element name="RequestingSystem" type="SystemIdentifierStructure"/>
+			<xs:element name="AckRequested" type="xs:boolean" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>
+						Whether this request demands an acknowledgement from the receiving system.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AbstractResponseStructure" abstract="true">
+		<xs:annotation>
+			<xs:documentation>
+				The abstract parent of any request message sent to CJSE Message Services.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="MessageIdentifier" type="MessageIdentifierType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MessageStructure">
+		<xs:annotation>
+			<xs:documentation>
+				Used to hold a single business message sent to or from the CJSE.  The business message may be either:
+				- a text message which is not XML - such as an EDI-style format
+				- a Base64 message which encodes a binary document as ASCII text
+				- a HexBinary message which encodes a binary document as ASCII text
+				- an element from a different namespace - for example a message based on a Criminal Justice Organisation schema.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:element name="TextMessage" type="TextMessageType"/>
+				<xs:element name="Base64Message" type="xmime:base64Binary"/>
+				<xs:element name="HexBinaryMessage" type="xmime:hexBinary"/>
+				<xs:any namespace="##other" processContents="skip"/>
+			</xs:choice>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SystemIdentifierStructure">
+		<xs:annotation>
+			<xs:documentation>
+				The label for a particular system that communicates with the CJS Exchange.  Consists of:
+				- System Name: the application's common name.
+				- Organisation Unit Code: the code used for uniquely identifying a Criminal Justice
+				Organisation or other organisation.
+				- Environment (optional): whether the system is production, pre-prod, test etc. If not
+				provided the receiver must assume "Production"/"Live".
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="SystemNameType"/>
+			<xs:element name="OrgUnitCode" type="OrganisationUnitCodeType"/>
+			<xs:element name="Environment" type="xs:string"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="DataControllerLinkStructure">
+		<xs:annotation>
+			<xs:documentation>
+				Represents a link between a data controller (DC) and the data items in a message which are
+				controlled by that DC.  The list of elements affected are carried in the ReferencedElement
+				URI elements.  In order to support multiple data controllers in a single message, use of the
+				ID tag on elements in the message is recommended.  If the entire message is controlled by
+				a single DC, the ControlsEntireMessage element is set to true.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Organisation" type="OrganisationUnitCodeType"/>
+			<xs:choice>
+				<xs:element name="ReferencedElementURI" type="xs:anyURI" maxOccurs="unbounded"/>
+				<xs:element name="ControlsEntireMessage" type="xs:boolean" minOccurs="0"/>
+			</xs:choice>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:simpleType name="TextMessageType">
+		<xs:annotation>
+			<xs:documentation>
+				Used for carrying information that is text-based but not XML.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="1"/>
+			<xs:whiteSpace value="preserve"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="MessageSchemaStructure">
+		<xs:annotation>
+			<xs:documentation>
+				This structure carries info about the schema associated with a message payload.
+				It assists message processors in selecting the correct schema (i.e. XSD, RELAX NG
+				or other specification) in order to carry out validation, transformation or other
+				processing tasks.  If the schema is not XML-based, the Identifier element is provided
+				so that message producers can provide enough details for the Exchange to select the
+				correct validation format.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="Namespace" type="xs:anyURI"/>
+					<xs:element name="Version" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+				<xs:element name="Identifier" type="xs:string"/>
+			</xs:choice>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="MessageTypeStructure">
+		<xs:annotation>
+			<xs:documentation>
+				This structure carries info about the type of the message, also known as the "data
+				stream type", i.e. what the message content represents.  It is used to route the
+				message both to its final destination(s) and within the Exchange.  Note that a
+				version number can be supplied to differentiate between versions of specific message
+				types.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Type" type="xs:string"/>
+			<xs:element name="Version" type="xs:string"/>
+			<xs:any namespace="##other" processContents="lax" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:anyAttribute namespace="##other" processContents="lax"/>
+	</xs:complexType>
+	<xs:simpleType name="SystemNameType">
+		<xs:annotation>
+			<xs:documentation>
+				This type corresponds to System ID.System Name in the Data Standards Catalogue.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="2"/>
+			<xs:maxLength value="32"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrganisationUnitCodeType">
+		<xs:annotation>
+			<xs:documentation>
+				This type corresponds to Organisation Unit in the Data Standards Catalogue, or
+				more accurately to the unique code for a single organisation, consisting of a
+				concatenation of:
+				- CJO OU Code Top Level (optional, 1 char, alphanumeric)
+				- CJO OU Code Second Level (mandatory, 2 char, alphanumeric)
+				- CJO OU Code Third Level (mandatory, 2 char, alphanumeric)
+				- CJO OU Code Bottom Level (mandatory, 2 char, alphanumeric)
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:minLength value="6"/>
+			<xs:maxLength value="7"/>
+			<xs:pattern value="[A-Z0-9]{6,7}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MessageIdentifierType">
+		<xs:annotation>
+			<xs:documentation>
+				The unique identifier for this request, which can be used as a correlation ID in asynchronous message processing.
+				The combination of Message Identifier and System ID must be unique.  However, implementers may
+				choose to add system node information into the format for their Message Identifier so that debugging in distributed
+				environments is possible.
+				Note that URIs and URNs are both allowable as message identifiers.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:anyURI">
+			<xs:maxLength value="128"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

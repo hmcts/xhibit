@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Case-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Directions_By_Case_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Directions_By_Case_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40713_List" minOccurs="0"/>
+				<xs:element ref="E40713_Placed_In" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40713_List">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40713_Sentence"/>
+				<xs:enumeration value="E40713_Directions"/>
+				<xs:enumeration value="E40713_Trial"/>
+				<xs:enumeration value="E40713_Mention"/>
+				<xs:enumeration value="E40713_Further_P_And_D"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40713_Placed_In">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40713_Placed_In_List_Options"/>
+				<xs:element name="E40713_List_Date" type="xs:string"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40713_Placed_In_List_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40713_Fixed_List"/>
+				<xs:enumeration value="E40713_Warned_List"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,70 @@
+<html>
+	<body>
+		<p>
+The configuration package contains the component concerned with 'presenting' the rendering that needs to be done as
+a result of the configuration of the application. The intent of the configuration component is to:
+			<ul>
+				<li>
+Abstract the structures and concepts of configuration in a way that simplifies and decouples the render process
+				</li>
+				<li>
+Allow the complete replacement of the user configuration components without impacting the render components.
+				</li>
+				<li>
+Reduce the render load by providing exact information on what needs rendering.
+				</li>
+				<li>
+Provide render change information both for configuration changes and for data changes.
+				</li>
+			</ul>
+		</p>
+		<p>
+This package sets out to achieve this by presenting a single unified interface, that of the
+<code>DisplayConfigurationReader</code>,the <code>RenderChanges</code>, the <code>CourtConfigurationChange</code>
+classes. Most other clasases can be changed without requiring rewrite of the rest of the application providing that
+the interface represented by these classes is honoured.
+		</p>
+		<p>
+This component's interface is aware of the following concepts with no deep understanding of what
+they mean:
+			<ul>
+				<li>
+<b>Court</b> - Major organisational unit of configuration.
+				</li>
+				<li>
+<b>Display</b> - A display has a rotation set and various court rooms assigned to it.
+				</li>
+				<li>
+<b>Rotation Set</b> - A rotation set is an ordered set of several Display Documents each of which
+has a specified page delay.
+				</li>
+				<li>
+<b>Display Document URI</b> - A display document that has been put together with court rooms to produce information
+on what needs rendering.
+				</li>
+				<li>
+<b>Display Rotation Set</b> - A representation of the ordered set display document URIs attached to a display.
+				</li>
+				<li>
+<b>Display Document Type</b> - A classification of the display documents and display document URIs that is used
+to access a subset of the configurarion information.
+				</li>
+				<li>
+<b>Court Room</b> - an identifier associated with displays, which again allows access to subsets of the configuration
+data.
+				</li>
+			</ul>
+		<p>
+		<p>
+There are three major classifications of 'processing' required of the configuration component, the first two are
+degenerate, initialisation and configuration changes are handled in the same way. If a
+<code>CourtConfigurationChange</code> or one of it's subclasses is supplied then the render changes associated with
+the change/initialisation is produced. <code>CourtConfigurationChange</code>s are usually assumed to be
+associated with initialisations and its subclasses are concerned with configuration changes. The third classification
+is to do with render changes as a result of data changing in the underlying system. The configuration component has
+no awareness of the data in the underlying system and so is asked 'What are the render changes if the involved if
+the data for this court rooms associated with these display document types is changed?'. The workflow component is
+concerned with the awareness of the underlying data and framing this question.
+		</p>
+	</body>
+</html>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Case-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Directions_By_Case_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Directions_By_Case_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40714_Defendants_To_Attend" minOccurs="0"/>
+				<xs:element ref="E40714_Defendants_Not_To_Attend" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40714_Defendants_Not_To_Attend">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E40714_Defendant_List" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40714_Defendants_To_Attend">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E40714_Defendant_List" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40714_Defendant_List">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E40714_Defendant_Details" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40714_Defendant_Details">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="E40714_Defendant_Id" type="xs:integer"/>
+				<xs:element name="E40714_Defendant_Name" type="xs:string"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

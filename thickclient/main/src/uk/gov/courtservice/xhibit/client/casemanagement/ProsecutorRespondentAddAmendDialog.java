@@ -1,0 +1,27 @@
+package uk.gov.courtservice.xhibit.client.casemanagement;
+
+import java.awt.Frame;
+
+import uk.gov.courtservice.framework.exception.CSRecoverableException;
+import uk.gov.courtservice.xhibit.client.util.XDialog;
+import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
+import uk.gov.courtservice.xhibit.client.util.XhibitBundles;
+
+public class ProsecutorRespondentAddAmendDialog extends XDialog {
+
+	private static final long serialVersionUID = 1L;
+
+	private ProsecutorRespondentAddAmendPanel prosBodyPanel;
+	private ProsecutorRespondentAddAmendModel prosModel;
+
+	public ProsecutorRespondentAddAmendDialog(Frame frame, ProsecutorRespondentAddAmendModel model)
+			throws CSRecoverableException {
+		super(frame, XHIBITConstant.getResource(XhibitBundles.CaseMaintenanceResources, "prosRes.MainTitle"), true,
+				XDialog.CUSTOM, XDialog.DEFAULTCANCEL);
+
+		this.prosModel = model;
+		this.prosBodyPanel = new ProsecutorRespondentAddAmendPanel(this, this.prosModel);
+		addBodyPanel(prosBodyPanel);
+		pack();
+	}
+}

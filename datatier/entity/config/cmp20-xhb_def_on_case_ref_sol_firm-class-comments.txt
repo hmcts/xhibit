@@ -1,0 +1,46 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefOnCaseId(java.lang.Integer defOnCase)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xdocrsf)
+ *    FROM 
+ * 	XhbDefOnCaseRefSolFirm AS xdocrsf, 
+ * 	XhbRefSolicitorFirm AS xrsf, 
+ * 	XhbAddress AS xa
+ * 	WHERE 
+ * 	xdocrsf.defendantOnCaseId = ?1
+ * 	AND xdocrsf.repEndDate IS NULL
+ * 	AND xdocrsf.refSolicitorFirmId = xrsf.refSolicitorFirmId
+ * 	AND xrsf.addressId = xa.addressId
+ *      ORDERBY xdocrsf.repStDate DESC"
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findPrivateRepByDefendantOnCaseId(java.lang.Integer defOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(def)
+ *    FROM 
+ * 		XhbDefOnCaseRefSolFirm AS def
+ * 			WHERE 
+ * 				def.defendantOnCaseId = ?1
+ *				AND (def.obsInd is null OR def.obsInd = 'N' OR def.obsInd = ' ')
+ *				ORDERBY def.defOnCaseRefSolFirmId DESC"
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findPublicRepByLegalAidOrderId(java.lang.Integer legalAidOrderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(def)
+ *    FROM 
+ * 		XhbDefOnCaseRefSolFirm AS def
+ * 			WHERE 
+ * 				def.legalAidOrderId is not null AND def.legalAidOrderId = ?1
+ *				AND (def.obsInd is null OR def.obsInd = 'N' OR def.obsInd = ' ')
+ *				ORDERBY def.defOnCaseRefSolFirmId DESC"
+ *
+ *
+ * -------- end of custom finders --------

@@ -1,0 +1,8 @@
+* -------- custom finders --------
+* @ejb.finder
+*    signature="uk.gov.courtservice.xhibit.business.entities.xhb_progress_trigger.XhbProgressTriggerBasicValue findByCaseId(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (pt) FROM XhbProgressTrigger pt WHERE pt.caseId = ?1"
+* 
+* -------- end of custom finders --------

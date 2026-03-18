@@ -1,0 +1,1 @@
+This is the application security provider directory, zip and jar files in this dir will be added to the available mbeantypes. Dirs are specified by the Java system property weblogic.alternateTypesDirectory a path seperator seperated list.

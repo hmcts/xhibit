@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE application PUBLIC "-//Sun Microsystems, Inc.//DTD J2EE Application 1.3//EN" "http://java.sun.com/dtd/application_1_3.dtd">
+<application>
+
+    <display-name>OrdersXMLBidingTest</display-name>
+
+    <module>
+        <ejb>HearingScheduleEntities.jar</ejb>
+    </module>
+
+    <module>
+        <ejb>OrdersEntities.jar</ejb>
+    </module>
+
+    <module>
+        <ejb>PreHearingEntities.jar</ejb>
+    </module>
+
+    <module>
+        <ejb>ResultsController.jar</ejb>
+    </module>
+
+    <module>
+        <ejb>ResultsEntities.jar</ejb>
+    </module>
+
+    <module>
+        <ejb>SysAdminEntities.jar</ejb>
+    </module>
+
+    <module>
+        <web>
+            <web-uri>testwebapp.war</web-uri>
+            <context-root>juniteetests</context-root>
+        </web>
+    </module>
+
+</application>

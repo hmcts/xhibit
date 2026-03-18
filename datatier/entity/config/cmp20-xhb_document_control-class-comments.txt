@@ -1,0 +1,17 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtId(java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(dc) FROM XhbDocumentControl dc WHERE dc.courtId = ?1"
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findActiveDocumentControlsByCourtId(java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(dc) FROM XhbDocumentControl dc WHERE dc.courtId = ?1 AND (dc.status IS NULL OR dc.status IN ('XA','XX'))"
+ *
+ * -------- end of custom finders --------
+  

@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Class-Path: ./Framework.jar ./Value.jar ./Config.jar ./Integration.jar ./mercjava.jar ./mercjavatypes.jar ./MercJXME.jar
+Name: META-INF/EJBStatefulMapBean.ser
+Enterprise-Bean: True
+
+Name: META-INF/EJBStatelessMapBean.ser
+Enterprise-Bean: True
+
+
+

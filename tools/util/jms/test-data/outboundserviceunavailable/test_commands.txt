@@ -1,0 +1,1 @@
+java -jar jmsutil.jar -u t3://w2szn20z03:8001,w2szn20z03:8501 -d scjsegateway/jms/ScjseOutboundQueue  -t ../test-data/outboundserviceunavailable/text-message.txt -p ../test-data/outboundserviceunavailable/test-message-default.properties -s

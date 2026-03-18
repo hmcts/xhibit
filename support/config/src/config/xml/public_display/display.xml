@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<screen-group>
+  <rotation-set id="3" description="ROTNISLEWJUR1" display-times="10:30">
+    <page id="6" description="Jury Current Status" name="ISLEW~I_JuryStatus_1" delay="10"/>
+  </rotation-set>
+  <rotation-set id="2" description="ROTNISLEWRCP2" display-times="10:30">
+    <page id="5" description="Court Detail" name="ISLEW~I_CourtDetail_1" delay="10"/>
+    <page id="4" description="Court List" name="ISLEW~I_CourtList_1" delay="10"/>
+  </rotation-set>
+  <rotation-set id="1" description="ROTNISLEWPUB1" display-times="10:30">
+    <page id="3" description="Daily List" name="ISLEW~I_DailyList_1" delay="10"/>
+    <page id="2" description="Summary By Name" name="ISLEW~I_SummaryByName_1" delay="10"/>
+    <page id="1" description="All Court Status" name="ISLEW~I_AllCourtStatus_1" delay="10"/>
+  </rotation-set>
+  <rotation-set id="4" description="ROTNSNAREJUR1" display-times="10:30">
+    <page id="7" description="Jury Current Status" name="SNARE~A_JuryStatus_1" delay="10"/>
+  </rotation-set>
+  <rotation-set id="5" description="ROTNSNARERCP2" display-times="10:30">
+    <page id="8" description="Court Detail" name="SNARE~A_CourtDetail_1" delay="10"/>
+    <page id="9" description="Court List" name="SNARE~A_CourtList_1" delay="10"/>
+  </rotation-set>
+  <rotation-set id="6" description="ROTNSNAREPUB1" display-times="10:30">
+    <page id="10" description="Daily List" name="SNARE~A_DailyList_1" delay="10"/>
+    <page id="11" description="Summary By Name" name="SNARE~A_SummaryByName_1" delay="10"/>
+    <page id="12" description="All Court Status" name="SNARE~A_AllCourtStatus_1" delay="10"/>
+  </rotation-set>
+</screen-group>

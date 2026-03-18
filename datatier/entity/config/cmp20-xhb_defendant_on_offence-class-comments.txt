@@ -1,0 +1,64 @@
+* -------- custom finders --------
+*
+* @ejb.finder
+*    signature="uk.gov.courtservice.xhibit.business.entities.xhb_defendant_on_offence.XhbDefendantOnOffenceBasicValue findByDefOnCaseAndOffence(java.lang.Integer defendantOnCaseId, java.lang.Integer offenceId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (doo) FROM XhbDefendantOnOffence doo WHERE doo.defendantOnCaseId = ?1 AND doo.offenceId = ?2  AND (doo.obsInd is null OR doo.obsInd = 'N' OR doo.obsInd = ' ')"
+*
+* @ejb.finder
+*    signature="Collection findByOffenceId(java.lang.Integer offenceId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT(doo) FROM XhbDefendantOnOffence doo WHERE doo.offenceId = ?1 AND (doo.obsInd is null OR doo.obsInd = 'N' OR doo.obsInd = ' ')"
+*
+* @ejb.finder
+*    signature="Collection findByChargeId(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (doo) FROM XhbDefendantOnOffence doo WHERE doo.xhbOffence.xhbCharge.chargeId = ?1 AND (doo.obsInd is null OR doo.obsInd = 'N' OR doo.obsInd = ' ')"
+*
+* @ejb.finder
+*    signature="Collection findByDefOnCaseId(java.lang.Integer defOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (doo) FROM XhbDefendantOnOffence doo WHERE doo.defendantOnCaseId = ?1 AND (doo.obsInd is null OR doo.obsInd = 'N' OR doo.obsInd = ' ')"
+*
+* @ejb.finder
+*    signature="Collection findByDefOnCaseIdAndObsInd(java.lang.Integer defOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (doo) FROM XhbDefendantOnOffence doo WHERE doo.defendantOnCaseId = ?1 AND (doo.obsInd is not null AND doo.obsInd = 'Y')"
+*
+* @ejb.finder
+*    signature="Collection findByCourtIdOrderCodeDefendantOnCaseId(java.lang.Integer courtId, java.lang.String orderCode, java.lang.Integer defendantOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT DISTINCT 
+*              OBJECT(doo)
+*          FROM 
+*              XhbDefendantOnOffence doo, 
+*              XhbRefDisposalType rdt,
+*              XhbOrderDisposalXref odx,
+*              XhbOrderType ot,
+*              XhbDisposal2 d
+*          WHERE
+*              rdt.courtId = ?1
+*          AND
+*              (rdt.obsInd is null OR rdt.obsInd = 'N' OR rdt.obsInd = ' ') 
+*          AND
+*              odx.orderTypeId = ot.orderTypeId
+*          AND
+*              ot.code = ?2   
+*          AND
+*              d.refDisposalTypeId = odx.rsRefDisposalTypeId
+*          AND
+*              (d.obsInd is null OR d.obsInd = 'N' OR d.obsInd = ' ')
+*          AND
+*              doo.defendantOnOffenceId = d.defendantOnOffenceId
+*          AND
+*              (doo.obsInd is null OR doo.obsInd = 'N' OR doo.obsInd = ' ')
+*          AND
+*    		doo.defendantOnCaseId = ?3"
+*
+* -------- end of custom finders --------

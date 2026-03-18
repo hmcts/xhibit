@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NewCaseMessage xmlns="http://www.hmcs.gov.uk/schemas/crowncourt/msg" 
+                xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	        xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice"
+	        xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails"
+                xsi:schemaLocation="http://www.hmcs.gov.uk/schemas/crowncourt/msg CaseInfo.xsd">
+	<DocumentID>
+		<cs:DocumentName>New Case</cs:DocumentName>
+		<cs:UniqueID>12345</cs:UniqueID>
+		<cs:DocumentType>Progress Case</cs:DocumentType>
+		<cs:TimeStamp>2006-03-17T10:25:00</cs:TimeStamp>
+		<cs:Version>1</cs:Version>
+		<cs:SecurityClassification>Unclassified</cs:SecurityClassification>
+		<cs:SellByDate>2004-03-17</cs:SellByDate>
+	</DocumentID>
+	<Case>
+		<CaseNumber>T20060001</CaseNumber>
+		<Court>
+			<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+			<cs:CourtHouseCode>1234</cs:CourtHouseCode>
+			<cs:CourtHouseName>Teesside</cs:CourtHouseName>
+		</Court>
+		<Hearing HearingType="TPH">
+			<cs:HearingDescription>R. v. Beech</cs:HearingDescription>
+			<cs:HearingDate>2003-04-02</cs:HearingDate>
+		</Hearing>
+		<Defendants>
+			<Defendant>
+				<cs:PersonalDetails>
+					<cs:Name>
+						<apd:CitizenNameForename>Simon</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>Bishop</apd:CitizenNameSurname>
+					</cs:Name>
+					<cs:IsMasked>no</cs:IsMasked>
+					<cs:DateOfBirth>
+						<apd:BirthDate>1944-12-24</apd:BirthDate>
+						<apd:VerifiedBy>not verified</apd:VerifiedBy>
+					</cs:DateOfBirth>
+					<cs:Sex>male</cs:Sex>
+					<cs:Address>
+						<apd:Line>19 Diamond Road</apd:Line>
+						<apd:Line>Sunderland</apd:Line>
+						<apd:PostCode>SX6 8AE</apd:PostCode>
+					</cs:Address>
+				</cs:PersonalDetails>
+				<cs:ASNs>
+					<cs:ASN>0305CE01000000245932</cs:ASN>
+				</cs:ASNs>
+				<cs:PNCnumber>20020007218E</cs:PNCnumber>
+				<cs:URN>What format is this?</cs:URN>
+				<cs:PrisonerID>LD1989</cs:PrisonerID>
+				<cs:PrisonLocation PrisonID="DHAM">
+					<cs:Location>Durham</cs:Location>
+				</cs:PrisonLocation>
+				<cs:CustodyStatus>In custody</cs:CustodyStatus>
+			</Defendant>
+		</Defendants>
+		<Prosecution ProsecutingAuthority="Crown Prosecution Service">
+			<cs:Advocate>
+				<cs:PersonalDetails>
+					<cs:Name>
+						<apd:CitizenNameTitle>Mrs</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>Sue</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>Allders</apd:CitizenNameSurname>
+					</cs:Name>
+					<cs:IsMasked>no</cs:IsMasked>
+				</cs:PersonalDetails>
+				<cs:StartDate>2002-12-16</cs:StartDate>
+			</cs:Advocate>
+			<cs:Advocate>
+				<cs:PersonalDetails>
+					<cs:Name>
+						<apd:CitizenNameTitle>Mr</apd:CitizenNameTitle>
+						<apd:CitizenNameForename>Ray</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>Kitin</apd:CitizenNameSurname>
+					</cs:Name>
+					<cs:IsMasked>no</cs:IsMasked>
+				</cs:PersonalDetails>
+				<cs:StartDate>2006-01-07</cs:StartDate>
+			</cs:Advocate>
+		</Prosecution>
+		<MethodOfInstigation>Execution</MethodOfInstigation>
+		<DateOfInstigation>2006-03-17</DateOfInstigation>
+		<CaseClassNumber>10</CaseClassNumber>
+		<PTIURN>what format is this?</PTIURN>
+	</Case>
+</NewCaseMessage>

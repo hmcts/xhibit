@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trial - Jury/Juror Discharged-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20915_Jury_Discharged"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20915_Jury_Discharged">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E20915_JSIO_juror1"/>
+				<xs:element ref="E20915_JSIO_jurorNo1"/>
+				<xs:element ref="E20915_JSIO_juror2"/>
+				<xs:element ref="E20915_JSIO_jurorNo2"/>
+				<xs:element ref="E20915_JSIO_juror3"/>
+				<xs:element ref="E20915_JSIO_jurorNo3"/>
+				<xs:element ref="E20915_JSIO_juror4"/>
+				<xs:element ref="E20915_JSIO_jurorNo4"/>
+				<xs:element ref="E20915_JSIO_juror5"/>
+				<xs:element ref="E20915_JSIO_jurorNo5"/>
+				<xs:element ref="E20915_JSIO_juror6"/>
+				<xs:element ref="E20915_JSIO_jurorNo6"/>
+				<xs:element ref="E20915_JSIO_juror7"/>
+				<xs:element ref="E20915_JSIO_jurorNo7"/>
+				<xs:element ref="E20915_JSIO_juror8"/>
+				<xs:element ref="E20915_JSIO_jurorNo8"/>
+				<xs:element ref="E20915_JSIO_juror9"/>
+				<xs:element ref="E20915_JSIO_jurorNo9"/>
+				<xs:element ref="E20915_JSIO_juror10"/>
+				<xs:element ref="E20915_JSIO_jurorNo10"/>
+				<xs:element ref="E20915_JSIO_juror11"/>
+				<xs:element ref="E20915_JSIO_jurorNo11"/>
+				<xs:element ref="E20915_JSIO_juror12"/>
+				<xs:element ref="E20915_JSIO_jurorNo12"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20915_JSIO_juror1" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror2" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror3" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror4" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror5" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror6" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror7" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror8" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror9" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror10" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror11" type="xs:string"/>
+	<xs:element name="E20915_JSIO_juror12" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo1" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo2" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo3" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo4" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo5" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo6" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo7" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo8" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo9" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo10" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo11" type="xs:string"/>
+	<xs:element name="E20915_JSIO_jurorNo12" type="xs:string"/>
+</xs:schema>

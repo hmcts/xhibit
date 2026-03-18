@@ -1,0 +1,5 @@
+USERID=DATA_MIG/DATA_MIG@O10TST5
+CONTROL=$xhb_ctl_filename
+LOG=$xhb_log_filename
+BAD=$xhb_bad_filename
+DISCARD=$xhb_dsc_filename

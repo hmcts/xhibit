@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="FirmListLetter">
+    <xsd:include schemaLocation="ListDistribution.xsd"/>
+    <xsd:complexType name="FirmListLetterStructure">
+        <xsd:sequence>
+            <xsd:element name="Recipient" type="RecipientStructure">
+                <xsd:annotation>
+                    <xsd:documentation>There is only ever one recipient for a letter. The information contained within the letter only relates to the recipient. Following CR42/52 there are three types of recipient: Solicitors (Defence or Prosecution), unrepresented Defendants and Prosecutors (non-CPS)</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="ListHeaderSummary" type="ListHeaderSummaryStructure">
+                <xsd:annotation>
+                    <xsd:documentation>Use the StartDate EndDate and Duration elements to determine title text ie "week commencing [date]" or "[date] to [date]"</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CrownCourt" type="CourtHouseStructure">
+                <xsd:annotation>
+                    <xsd:documentation>This holds the information for the Crown Court that issued the Firm List Letter.</xsd:documentation>
+                </xsd:annotation>
+            </xsd:element>
+            <xsd:element name="CourtListSummaries" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="CourtListSummary" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="CourtHouseSummary" type="CourtHouseSummaryStructure"/>
+                                    <xsd:element name="SittingSummaries">
+                                        <xsd:complexType>
+                                            <xsd:sequence>
+                                                <xsd:element name="SittingSummary" type="SittingSummaryStructure" minOccurs="0" maxOccurs="unbounded"/>
+                                            </xsd:sequence>
+                                        </xsd:complexType>
+                                    </xsd:element>
+                                </xsd:sequence>
+                                <xsd:attribute name="id" type="xsd:string" use="required"/>
+                                <xsd:attribute name="SittingDate" type="xsd:date"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="ReserveListSummary" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="HearingSummary" type="HearingSummaryStructure" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="FirmListLetter" type="FirmListLetterStructure">
+        <xsd:annotation>
+            <xsd:documentation>For every Firm List there are a collection of letters which are grouped by recipient and only contain information that is relevant to that recipient.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

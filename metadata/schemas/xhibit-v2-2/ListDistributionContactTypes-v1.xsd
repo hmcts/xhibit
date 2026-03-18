@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.1"
+    id="ListDistributionContactTypes">
+
+    <xsd:include schemaLocation="ListDistributionCommonSimpleTypes-v1.xsd"/>
+
+	<xsd:complexType name="EmailStructure">
+		<xsd:sequence>
+			<xsd:element name="EmailAddress" type="RestrictedStringType"/>
+		</xsd:sequence>
+		<xsd:attribute name="EmailUsage" type="WorkHomeType"/>
+		<xsd:attribute name="EmailPreferred" type="YesNoType"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="FaxStructure">
+		<xsd:sequence>
+			<xsd:element name="FaxNationalNumber" type="TelephoneNumberType"/>
+			<xsd:element name="FaxExtensionNumber" type="TelephoneExtensionType" minOccurs="0"/>
+			<xsd:element name="FaxCountryCode" type="TelCountryCodeType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="FaxUse" type="WorkHomeType"/>
+		<xsd:attribute name="FaxMobile" type="YesNoType"/>
+		<xsd:attribute name="FaxPreferred" type="YesNoType"/>
+	</xsd:complexType>
+
+	<xsd:complexType name="TelephoneStructure">
+		<xsd:sequence>
+			<xsd:element name="TelNationalNumber" type="TelephoneNumberType"/>
+			<xsd:element name="TelExtensionNumber" type="TelephoneExtensionType" minOccurs="0"/>
+			<xsd:element name="TelCountryCode" type="TelCountryCodeType" minOccurs="0"/>
+		</xsd:sequence>
+		<xsd:attribute name="TelUse" type="WorkHomeType"/>
+		<xsd:attribute name="TelMobile" type="YesNoType"/>
+		<xsd:attribute name="TelPreferred" type="YesNoType"/>
+	</xsd:complexType>
+
+</xsd:schema>

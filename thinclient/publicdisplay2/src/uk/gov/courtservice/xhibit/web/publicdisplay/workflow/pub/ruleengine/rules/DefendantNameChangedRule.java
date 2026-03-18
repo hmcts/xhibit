@@ -1,0 +1,47 @@
+package uk.gov.courtservice.xhibit.web.publicdisplay.workflow.pub.ruleengine.rules;
+
+import org.apache.log4j.Logger;
+
+import uk.gov.courtservice.xhibit.common.publicdisplay.events.PublicDisplayEvent;
+
+/**
+ * <p>
+ * Title: DefendantNameChangedRule
+ * </p>
+ * <p>
+ * Description: Checks if the event passed in is generated for a defendant name
+ * change
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2003
+ * </p>
+ * <p>
+ * Company: EDS
+ * </p>
+ * 
+ * @author Rakesh Lakhani
+ * @version $Id: DefendantNameChangedRule.java,v 1.2 2004/02/05 14:36:56 sz0t7n
+ *          Exp $
+ */
+
+public class DefendantNameChangedRule implements Rule {
+    private static final Logger log = Logger.getLogger(DefendantNameChangedRule.class);
+
+    public DefendantNameChangedRule() {
+    }
+
+    /**
+     * This rule has been removed as it relied on a court log event to identify
+     * a change. The event that is fed in is an UpdateCaseEvent. To re-enable
+     * this rule, a flag needs to be added to the UpdateCaseEvent to identify
+     * the type of change. This rule can then identify the change and return
+     * accordingly.
+     * 
+     * @param event
+     *            A case status event
+     * @return true if the court log event is a DefendantAmended event
+     */
+    public boolean isValid(PublicDisplayEvent event) {
+        return true;
+    }
+}

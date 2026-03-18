@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Class-Path: ./Config.jar ./Framework.jar ./ScjseGatewayMessaging.jar ./GdGatewayXmlBinding.jar ./GdGatewayController.jar ./GdGatewayMessaging.jar ./GdGatewayWebServiceClient.jar ./ScjseStub.jar ./ScjseStubWebServiceClient.jar
+
+

@@ -1,0 +1,11 @@
+EchoWebServiceIPAddress,130.177.3.71
+EchoWebServicePort,8001
+EchoWebServiceName,services/echo
+EchoWebServiceProxyEnabled,true
+EchoWebServiceProxyHost,W2QZ4RWX02
+EchoWebServiceProxyPort,1002
+EchoWebServiceProxyUser,gyles
+EchoWebServiceConnectionTimeout,0
+EchoWebServiceReadTimeout,0
+
+

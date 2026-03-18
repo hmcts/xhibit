@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseDiaryFixtureId(java.lang.Integer caseDiaryFixtureId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) FROM XhbFixtureDeftAttending c WHERE c.caseDiaryFixtureId = ?1"
+ * 
+ * -------- end of custom finders --------
+  

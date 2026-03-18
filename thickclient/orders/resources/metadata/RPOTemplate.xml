@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="order" label="" borderLabel="" borderRaised="true" ref="/">
+			<date name="orderDate" label="Order Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+		</section>
+		<section name="governor" label="" borderLabel="Governor" borderRaised="true" ref="/">
+			<textfield name="prison" type="string" label="Prison: " length="20" maxLength="255" ref="//ord:Governor"/>
+		</section>
+		<section name="originalCourt" label="" borderLabel="Original Court" borderRaised="true" ref="/">
+			<courttype name="courttype" addressReq="true" telephoneReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:OriginalCourt/ord:Court/ord:CourtHouseName"/>
+			<date name="originalWarrantDate" label="Original Warrant Date:" ref="//ord:OriginalCourt/ord:OriginalWarrantDate"/>
+		</section>
+		<section name="bail" label="" borderLabel="Bail" borderRaised="true"  ref="/">
+			<choice name="bailConditions" label="" ref="//ord:Bail/ord:BailCondition">
+				<option name="bailUnconditional" label="Granted unconditionally" value="Unconditional" selected="true"/>
+				<option name="bailSubject" label="Subject to conditions in Bail Order" value="SubjectToBailOrder">
+					<section name="bailDate" label="" ref="/">
+						<date name="bailOrderDate" label="Bail Order Date:" ref="//ord:Bail/ord:BailOrderDate"/>
+					</section>
+					<section name="ordered" label="" ref="/">
+						<choice name="conditions" label="" ref="//ord:Ordered">
+							<option name="subject" label="Subject to conditions which must be complied with before release" value="SubjectToConditions" selected="true"/>
+							<option name="complied" label="Already complied with conditions necessary before release" value="CompliedWithConditions"/>
+						</choice>
+					</section>
+				</option>
+			</choice>
+		</section>	
+	</form>
+</template>

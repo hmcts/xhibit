@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	 <form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="ConditionalDischargeOrder" label="" switchLabel="" borderLabel="Date of Conditional Discharge">
+			<date name="DateOfOrder" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:DateOfOrder"/>
+ 	    </section>
+		<section name="SubsequentConv" label="" switchLabel="" borderLabel="Subsequent Conviction">
+ 			<date name="SubsequentConvdate" label="Date:" ref="/ord:Order/ord:OrderData/*/ord:SubsequentConv/ord:SubsConvDate"/>
+			<section name="Court" addressReq="true" label="" switchLabel="" borderLabel="Court">
+				<textarea name="courtName" ref="/ord:Order/ord:OrderData/*/ord:SubsequentConv/ord:CourtName" label="" rows="2" cols="31" maxlength="100"/>
+			</section>
+		</section>
+		<section name="SummonedToAppearAt" label="" switchLabel="" borderLabel="Summoned To Appear At">
+		    <section name="date/time" borderLabel="" label="">
+					<choice name="date/timeOption" label="" ref="//ord:SummonedToAppearAt/ord:SummonedDateTime/@selected">
+						<option name="toBeNotifiedOption" label="Date &amp; time to be notified" value="false" selected="true"/>
+						<option name="specificOption" label="Specific date &amp; time" value="true">
+							<date name="xxx2" label="Date:" ref="//ord:SummonedToAppearAt/ord:SummonedDateTime/ord:SummonedDate"/>
+							<timepanel name="benchtimeValue" label="Time: " ref="//ord:SummonedToAppearAt/ord:SummonedDateTime/ord:SummonedTime"/>
+						</option>
+					</choice>
+					<courttype name="courttype" addressReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" 
+				crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false"
+				ref="//ord:SummonedToAppearAt/ord:CourtHouseDetails/ord:CourtHouseName"/>
+				</section>
+			</section>
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+ 	</form>
+</template>

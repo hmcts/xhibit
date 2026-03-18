@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *********************************************************************	-->
+<!-- Schema for Linking GovTalk Schemas					-->
+<!-- *********************************************************************	-->
+<!-- *********************************************************************	-->
+<!-- Update History											-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.0												-->
+<!-- Detail: Release 											-->
+<!-- *********************************************************************	-->
+<xsd:schema targetNamespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="apd">
+
+	<xsd:annotation>
+		<xsd:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/terms/" xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<dc:creator>Court Service</dc:creator>
+			<dc:date>2003-01-17</dc:date>
+			<dc:identifier>Apd</dc:identifier>
+			<dc:language>en</dc:language>
+			<dc:rights>
+				<dcq:copyright>Crown Copyright 2002</dcq:copyright>
+				<gms:SecurityClassification>Unclassified</gms:SecurityClassification>
+			</dc:rights>
+			<dc:subject>Crown Court GovTalk Link</dc:subject>
+		</xsd:appinfo>
+	</xsd:annotation>
+	
+	<!-- Schema to be linked -->
+	<xsd:include schemaLocation="AddressTypes-v1.xsd"/>
+	<xsd:include schemaLocation="PersonalDetailsTypes-v1.xsd"/>
+	
+</xsd:schema>

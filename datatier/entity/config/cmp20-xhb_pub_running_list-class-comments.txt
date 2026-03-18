@@ -1,0 +1,17 @@
+ * -------- custom finders --------
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findPreviouslyPublishedRunningLists(java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(pprl)
+ *    FROM 
+ * 		XhbPubRunningList AS pprl
+ * 			WHERE 
+ * 				pprl.courtId = ?1
+ *				AND (pprl.obsInd is null OR pprl.obsInd = 'N' OR pprl.obsInd = ' ')
+ *				ORDER BY pprl.publishedDate DESC"
+ * 
+ *
+ * -------- end of custom finders --------

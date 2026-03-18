@@ -1,0 +1,56 @@
+2006-07-20 10:23:28,828 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 1.
+2006-07-20 10:23:28,859 [main] ERROR exissmessagebrokerstub.Main - An error occured consuming messages.
+java.io.IOException: File D:\projects\XHIBIT\tools\util\exissmessagebrokerstub\outbox\1.header.properties already exists.
+	at exissmessagebrokerstub.Main.createWriter(Main.java:244)
+	at exissmessagebrokerstub.Main.receive(Main.java:214)
+	at exissmessagebrokerstub.Main.receive(Main.java:197)
+	at exissmessagebrokerstub.Main.receive(Main.java:182)
+	at exissmessagebrokerstub.Main.receive(Main.java:167)
+	at exissmessagebrokerstub.Main.receive(Main.java:157)
+	at exissmessagebrokerstub.Main.main(Main.java:124)
+2006-07-20 10:23:28,890 [main] ERROR exissmessagebrokerstub.Main - An error occured consuming messages.
+java.io.IOException: File D:\projects\XHIBIT\tools\util\exissmessagebrokerstub\outbox\1.header.properties already exists.
+	at exissmessagebrokerstub.Main.createWriter(Main.java:244)
+	at exissmessagebrokerstub.Main.receive(Main.java:214)
+	at exissmessagebrokerstub.Main.receive(Main.java:197)
+	at exissmessagebrokerstub.Main.receive(Main.java:182)
+	at exissmessagebrokerstub.Main.receive(Main.java:167)
+	at exissmessagebrokerstub.Main.receive(Main.java:157)
+	at exissmessagebrokerstub.Main.main(Main.java:124)
+2006-07-20 10:23:28,906 [main] ERROR exissmessagebrokerstub.Main - An error occured consuming messages.
+java.io.IOException: File D:\projects\XHIBIT\tools\util\exissmessagebrokerstub\outbox\1.header.properties already exists.
+	at exissmessagebrokerstub.Main.createWriter(Main.java:244)
+	at exissmessagebrokerstub.Main.receive(Main.java:214)
+	at exissmessagebrokerstub.Main.receive(Main.java:197)
+	at exissmessagebrokerstub.Main.receive(Main.java:182)
+	at exissmessagebrokerstub.Main.receive(Main.java:167)
+	at exissmessagebrokerstub.Main.receive(Main.java:157)
+	at exissmessagebrokerstub.Main.main(Main.java:124)
+2006-07-20 10:23:28,906 [main] ERROR exissmessagebrokerstub.Main - An error occured consuming messages.
+java.io.IOException: File D:\projects\XHIBIT\tools\util\exissmessagebrokerstub\outbox\1.header.properties already exists.
+	at exissmessagebrokerstub.Main.createWriter(Main.java:244)
+	at exissmessagebrokerstub.Main.receive(Main.java:214)
+	at exissmessagebrokerstub.Main.receive(Main.java:197)
+	at exissmessagebrokerstub.Main.receive(Main.java:182)
+	at exissmessagebrokerstub.Main.receive(Main.java:167)
+	at exissmessagebrokerstub.Main.receive(Main.java:157)
+	at exissmessagebrokerstub.Main.main(Main.java:124)
+2006-07-20 10:23:28,921 [main] ERROR exissmessagebrokerstub.Main - An error occured consuming messages.
+java.io.IOException: File D:\projects\XHIBIT\tools\util\exissmessagebrokerstub\outbox\1.header.properties already exists.
+	at exissmessagebrokerstub.Main.createWriter(Main.java:244)
+	at exissmessagebrokerstub.Main.receive(Main.java:214)
+	at exissmessagebrokerstub.Main.receive(Main.java:197)
+	at exissmessagebrokerstub.Main.receive(Main.java:182)
+	at exissmessagebrokerstub.Main.receive(Main.java:167)
+	at exissmessagebrokerstub.Main.receive(Main.java:157)
+	at exissmessagebrokerstub.Main.main(Main.java:124)
+2006-07-20 10:23:28,921 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 2.
+2006-07-20 10:23:28,968 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 3.
+2006-07-20 10:23:28,968 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 4.
+2006-07-20 10:23:28,984 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 5.
+2006-07-20 10:27:29,187 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 6.
+2006-07-20 10:35:26,468 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 7.
+2006-07-20 10:36:32,140 [main] DEBUG exissmessagebrokerstub.Main - Formatting: 8
+2006-07-20 10:36:32,156 [main] DEBUG exissmessagebrokerstub.Main - Formatting: 8
+2006-07-20 10:36:32,156 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 8.
+2006-07-20 10:38:19,406 [main] INFO exissmessagebrokerstub.Main - Wrtten message files for 9.

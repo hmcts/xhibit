@@ -1,0 +1,3 @@
+ALTER TABLE XHB_LEGAL_AID_ORDER DROP CONSTRAINT XHB_REASON_FOR_REV_ID_FK;
+--ALTER TABLE aud_legal_aid_order MODIFY defendant_on_case_id NULL;
+commit;

@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByHearingAndRefLegRep(java.lang.Integer hearingId, java.lang.Integer refLegalRepId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbHearingLegRep o WHERE o.hearingId = ?1 And o.refLegalRepId = ?2"
+ *
+ * -------- end of custom finders --------
+  

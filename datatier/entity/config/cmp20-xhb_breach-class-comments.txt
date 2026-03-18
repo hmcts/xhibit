@@ -1,0 +1,45 @@
+* -------- custom finders --------
+*
+* @ejb.finder
+*    signature="Collection findByCourtIdOrderCodeDefendantOnCaseId(java.lang.Integer courtId, java.lang.String orderCode, java.lang.Integer defendantOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT DISTINCT
+*              OBJECT(b)
+*          FROM
+*              XhbBreach b,
+*              XhbOffence o,
+*              XhbDefendantOnOffence doo,
+*              XhbRefDisposalType rdt, 
+*              XhbOrderDisposalXref odx,
+*              XhbOrderType ot,
+*              XhbDisposal2 d
+*          WHERE
+*              rdt.courtId = ?1
+*          AND
+*              (rdt.obsInd is null or rdt.obsInd = 'N' OR rdt.obsInd = ' ')
+*          AND
+*              odx.orderTypeId = ot.orderTypeId
+*          AND
+*              ot.code = ?2   
+*          AND
+*              d.refDisposalTypeId = odx.rsRefDisposalTypeId
+*          AND
+*              (d.obsInd is null OR d.obsInd = 'N' OR d.obsInd = ' ') 
+*          AND
+*              doo.defendantOnOffenceId = d.defendantOnOffenceId
+*          AND
+*              doo.defendantOnCaseId = ?3
+*          AND
+*              (doo.obsInd is null OR doo.obsInd = 'N' or doo.obsInd = ' ')
+*          AND
+*              o.offenceId = doo.offenceId
+*          AND
+*              (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')
+*          AND
+*              b.chargeId = o.chargeId
+*          AND
+*              (b.obsInd is null OR b.obsInd = 'N' OR b.obsInd = ' ')"
+*
+* -------- end of custom finders --------
+ 

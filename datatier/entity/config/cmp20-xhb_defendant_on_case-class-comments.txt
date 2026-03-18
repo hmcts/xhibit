@@ -1,0 +1,34 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="XhbDefendantOnCase findByDefendantAndCase(java.lang.Integer defendantId, java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCase o WHERE o.defendantId = ?1 And o.caseId = ?2 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCase o WHERE o.caseId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantIdInCustody(java.lang.Integer defendantId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCase o WHERE o.defendantId = ?1 AND o.currentBcStatus = 'C' AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantId(java.lang.Integer defendantId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCase o WHERE o.defendantId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findDefendantOnActiveCases(java.lang.Integer defendantId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCase o WHERE o.defendantId = ?1 AND (o.resultsVerified IS NULL OR NOT o.resultsVerified = 'E') AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * -------- end of custom finders --------
+  

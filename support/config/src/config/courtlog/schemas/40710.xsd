@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Case-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Directions_By_Case_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Directions_By_Case_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40710_P_And_D" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40710_P_And_D">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40710_Form_Handed_In"/>
+				<xs:enumeration value="E40710_Form_Not_Handed_In"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

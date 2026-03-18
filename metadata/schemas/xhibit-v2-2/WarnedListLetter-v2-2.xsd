@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="WarnedListLetter" >
+    <xsd:include schemaLocation="ListDistribution.xsd"/>
+    <xsd:complexType name="WarnedListLetterStructure">
+        <xsd:sequence>
+            <xsd:element name="Recipient" type="RecipientStructure"/>
+            <xsd:element name="ListHeaderSummary" type="ListHeaderSummaryStructure"/>
+            <xsd:element name="CrownCourt" type="CourtHouseStructure"/>
+            <xsd:element name="WarnedListDetail" type="WarnedListDetailStructure"/>
+            <xsd:element name="CourtListSummaries">
+                <xsd:complexType >
+                    <xsd:sequence>
+                        <xsd:element name="CourtListSummary" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="CourtHouseSummary" type="CourtHouseSummaryStructure"/>
+                                    <xsd:element name="WarnedForCourts" type="WarnedForCourtsStructure"/>
+                                    <xsd:element name="WithFixedDateSummary" type="FixtureSummariesStructure" minOccurs="0" maxOccurs="unbounded"/>
+                                    <xsd:element name="WithoutFixedDateSummary" type="FixtureSummariesStructure" minOccurs="0" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                                <xsd:attribute name="id" type="xsd:string" use="required"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="WarnedListLetter" type="WarnedListLetterStructure">
+        <xsd:annotation>
+            <xsd:documentation>For every Warned List there are a collection of letters which are grouped by recipient and only contain information that is relevant to that recipient.</xsd:documentation>
+        </xsd:annotation>
+    </xsd:element>
+</xsd:schema>

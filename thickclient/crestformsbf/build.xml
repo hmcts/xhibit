@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="CrestFormsBFClient">
+    <description>
+        Crest Forms B-F Rich Client.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.builds.jar" value="" />
+    <property name="project.type.requires.compilation" value="" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- Define Paths -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="ClientView.jar" />
+                <include name="Framework.jar" />
+                <include name="ThickClientFramework.jar" />
+            </fileset>
+        </path>
+    </target>
+</project>

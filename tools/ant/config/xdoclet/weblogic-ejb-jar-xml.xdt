@@ -1,0 +1,524 @@
+<?xml version="1.0" encoding="<XDtConfig:configParameterValue paramName="Xmlencoding"/>"?>
+
+<!DOCTYPE weblogic-ejb-jar PUBLIC "<XDtXml:publicId/>" "<XDtXml:systemId/>">
+
+<weblogic-ejb-jar>
+ <description><![CDATA[<XDtI18n:getString resource="generated_by_xdoclet"/>]]></description>
+ <XDtEjb:forAllBeans>
+  <XDtEjb:ifIsAConcreteEJBean>
+   <weblogic-enterprise-bean>
+      <ejb-name><XDtEjb:ejbName/></ejb-name>
+     <XDtEjbEntity:ifEntity>
+      <entity-descriptor>
+        <XDtClass:ifHasClassTag tagName="weblogic:pool">
+         <pool>
+           <XDtClass:ifHasClassTag tagName="weblogic:pool" paramName="max-beans-in-free-pool">
+            <max-beans-in-free-pool><XDtClass:classTagValue tagName="weblogic:pool" paramName="max-beans-in-free-pool" default="1"/></max-beans-in-free-pool>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:pool" paramName="initial-beans-in-free-pool">
+            <initial-beans-in-free-pool><XDtClass:classTagValue tagName="weblogic:pool" paramName="initial-beans-in-free-pool" default="0"/></initial-beans-in-free-pool>
+           </XDtClass:ifHasClassTag>
+         </pool>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:cache">
+         <entity-cache>
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="max-beans-in-cache">
+            <max-beans-in-cache><XDtClass:classTagValue tagName="weblogic:cache" paramName="max-beans-in-cache"/></max-beans-in-cache>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="idle-timeout-seconds">
+            <idle-timeout-seconds><XDtClass:classTagValue tagName="weblogic:cache" paramName="idle-timeout-seconds"/></idle-timeout-seconds>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="read-timeout-seconds">
+            <read-timeout-seconds><XDtClass:classTagValue tagName="weblogic:cache" paramName="read-timeout-seconds"/></read-timeout-seconds>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="concurrency-strategy">
+        <XDtConfig:ifConfigParamNotGreaterOrEquals paramName="Version" value="7.0">
+            <concurrency-strategy><XDtClass:classTagValue tagName="weblogic:cache" paramName="concurrency-strategy" values="Exclusive,Database,ReadOnly"/></concurrency-strategy>
+        </XDtConfig:ifConfigParamNotGreaterOrEquals>
+        <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+            <concurrency-strategy><XDtClass:classTagValue tagName="weblogic:cache" paramName="concurrency-strategy" values="Exclusive,Database,ReadOnly,Optimistic"/></concurrency-strategy>
+        </XDtConfig:ifConfigParamGreaterOrEquals>
+           </XDtClass:ifHasClassTag>
+         </entity-cache>
+        </XDtClass:ifHasClassTag>
+        <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+        <XDtClass:ifHasClassTag tagName="weblogic.cache-ref">
+         <entity-cache-ref>
+           <XDtClass:ifHasClassTag tagName="weblogic.cache-ref" paramName="cache-name">
+            <entity-cache-name><XDtClass:classTagValue tagName="weblogic.cache-ref" paramName="cache-name"/></entity-cache-name>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic.cache-ref" paramName="concurrency-strategy">
+            <concurrency-strategy><XDtClass:classTagValue tagName="weblogic.cache-ref" paramName="concurrency-strategy" values="Exclusive,Database,ReadOnly,Optimistic"/></concurrency-strategy>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic.cache-ref" paramName="cache-between-transactions">
+            <cache-between-transactions><XDtClass:classTagValue tagName="weblogic.cache-ref" paramName="cache-between-transactions"/></cache-between-transactions>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic.cache-ref" paramName="estimated-bean-size">
+            <estimated-bean-size><XDtClass:classTagValue tagName="weblogic.cache-ref" paramName="estimated-bean-size"/></estimated-bean-size>
+           </XDtClass:ifHasClassTag>
+         </entity-cache-ref>
+        </XDtClass:ifHasClassTag>
+        </XDtConfig:ifConfigParamGreaterOrEquals>
+        <XDtConfig:ifConfigParamNotGreaterOrEquals paramName="Version" value="7.0">
+         <XDtClass:ifHasClassTag tagName="weblogic:lifecycle">
+          <lifecycle>
+            <XDtClass:ifHasClassTag tagName="weblogic:lifecycle" paramName="passivation-strategy">
+             <passivation-strategy><XDtClass:classTagValue tagName="weblogic:lifecycle" paramName="passivation-strategy" values="transaction,default"/></passivation-strategy>
+            </XDtClass:ifHasClassTag>
+          </lifecycle>
+         </XDtClass:ifHasClassTag>
+        </XDtConfig:ifConfigParamNotGreaterOrEquals>
+        <XDtConfig:ifConfigParamEquals paramName="Persistence" value="weblogic">
+         <persistence>
+           <XDtClass:ifHasClassTag tagName="weblogic:persistence" paramName="is-modified-method-name">
+            <is-modified-method-name><XDtClass:classTagValue tagName="weblogic:persistence" paramName="is-modified-method-name"/></is-modified-method-name>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:persistence" paramName="delay-updates-until-end-of-tx">
+            <delay-updates-until-end-of-tx><XDtClass:classTagValue tagName="weblogic:persistence" paramName="delay-updates-until-end-of-tx" values="True,False"/></delay-updates-until-end-of-tx>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:persistence" paramName="finders-load-bean">
+            <finders-load-bean><XDtClass:classTagValue tagName="weblogic:persistence" paramName="finders-load-bean" values="True,False"/></finders-load-bean>
+           </XDtClass:ifHasClassTag>
+           <XDtEjbCmp:ifEntityIsCmp>
+           <XDtConfig:ifConfigParamEquals paramName="Version" value="6.1">
+            <persistence-type>
+               <type-identifier>WebLogic_CMP_RDBMS</type-identifier>
+              <XDtConfig:ifConfigParamEquals paramName="EjbSpec" value="1.1">
+               <type-version>5.1.0</type-version>
+              </XDtConfig:ifConfigParamEquals>
+              <XDtConfig:ifConfigParamNotEquals paramName="EjbSpec" value="1.1"> 
+               <type-version>6.0</type-version>
+              </XDtConfig:ifConfigParamNotEquals>
+               <type-storage>META-INF/weblogic-cmp-rdbms-jar.xml</type-storage>
+            </persistence-type>
+           </XDtConfig:ifConfigParamEquals>
+           </XDtEjbCmp:ifEntityIsCmp>
+           <XDtClass:ifHasClassTag tagName="weblogic:persistence" paramName="db-is-shared">
+            <db-is-shared><XDtClass:classTagValue tagName="weblogic:persistence" paramName="db-is-shared" values="True,False"/></db-is-shared>
+           </XDtClass:ifHasClassTag>
+           <XDtEjbCmp:ifEntityIsCmp>
+            <persistence-use>
+               <type-identifier>WebLogic_CMP_RDBMS</type-identifier>
+              <XDtConfig:ifConfigParamEquals paramName="EjbSpec" value="1.1">
+               <type-version>5.1.0</type-version>
+              </XDtConfig:ifConfigParamEquals>
+              <XDtConfig:ifConfigParamNotEquals paramName="EjbSpec" value="1.1"> 
+               <type-version>7.0</type-version>
+              </XDtConfig:ifConfigParamNotEquals>
+               <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+               <type-storage>META-INF/weblogic-cmp-rdbms-jar.xml</type-storage>
+               </XDtConfig:ifConfigParamGreaterOrEquals>
+            </persistence-use>
+           </XDtEjbCmp:ifEntityIsCmp>
+         </persistence>
+        </XDtConfig:ifConfigParamEquals>
+        <XDtClass:ifHasClassTag tagName="weblogic:clustering">
+         <entity-clustering>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-is-clusterable">
+            <home-is-clusterable><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-is-clusterable" values="True,False"/></home-is-clusterable>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-load-algorithm">
+            <home-load-algorithm><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-load-algorithm" values="RoundRobin,Random,WeightBased"/></home-load-algorithm>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-call-router-class-name">
+            <home-call-router-class-name><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-call-router-class-name"/></home-call-router-class-name>
+           </XDtClass:ifHasClassTag>
+         </entity-clustering>
+        </XDtClass:ifHasClassTag>
+       <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="6.1">
+        <XDtClass:ifHasClassTag tagName="weblogic:invalidation-target">
+         <invalidation-target>
+            <ejb-name><XDtClass:classTagValue tagName="weblogic:invalidation-target" paramName="ejb-name"/></ejb-name>
+         </invalidation-target>
+        </XDtClass:ifHasClassTag>
+       </XDtConfig:ifConfigParamGreaterOrEquals>
+       <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+        <XDtClass:ifHasClassTag tagName="weblogic:enable-dynamic-queries">
+          <enable-dynamic-queries><XDtClass:classTagValue tagName="weblogic:enable-dynamic-queries" values="True,False"/></enable-dynamic-queries>
+        </XDtClass:ifHasClassTag>
+       </XDtConfig:ifConfigParamGreaterOrEquals>
+      </entity-descriptor>
+     </XDtEjbEntity:ifEntity>
+     <XDtEjbSession:ifStatelessSession>
+      <stateless-session-descriptor>
+        <XDtClass:ifHasClassTag tagName="weblogic:pool">
+         <pool>
+           <XDtClass:ifHasClassTag tagName="weblogic:pool" paramName="max-beans-in-free-pool">
+            <max-beans-in-free-pool><XDtClass:classTagValue tagName="weblogic:pool" paramName="max-beans-in-free-pool" default="1"/></max-beans-in-free-pool>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:pool" paramName="initial-beans-in-free-pool">
+            <initial-beans-in-free-pool><XDtClass:classTagValue tagName="weblogic:pool" paramName="initial-beans-in-free-pool" default="0"/></initial-beans-in-free-pool>
+           </XDtClass:ifHasClassTag>
+         </pool>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:clustering">
+         <stateless-clustering>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-is-clusterable">
+            <home-is-clusterable><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-is-clusterable" values="True,False"/></home-is-clusterable>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-load-algorithm">
+            <home-load-algorithm><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-load-algorithm" values="RoundRobin,Random,WeightBased"/></home-load-algorithm>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-call-router-class-name">
+            <home-call-router-class-name><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-call-router-class-name"/></home-call-router-class-name>
+           </XDtClass:ifHasClassTag>
+           
+           <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+             <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="use-serverside-stubs">
+              <use-serverside-stubs><XDtClass:classTagValue tagName="weblogic:clustering" paramName="use-serverside-stubs" value="True,False"/></use-serverside-stubs>
+             </XDtClass:ifHasClassTag>           
+           </XDtConfig:ifConfigParamGreaterOrEquals>
+           
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="stateless-bean-is-clusterable">
+            <stateless-bean-is-clusterable><XDtClass:classTagValue tagName="weblogic:clustering" paramName="stateless-bean-is-clusterable" values="True,False"/></stateless-bean-is-clusterable>
+           </XDtClass:ifHasClassTag>
+           
+           <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+             <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="stateless-bean-load-algorithm">
+              <stateless-bean-load-algorithm><XDtClass:classTagValue tagName="weblogic:clustering" paramName="stateless-bean-load-algorithm" values="RoundRobin,Random,WeightBased,RoundRobinAffinity,RandomAffinity,WeightBasedAffinity"/></stateless-bean-load-algorithm>
+             </XDtClass:ifHasClassTag>
+           </XDtConfig:ifConfigParamGreaterOrEquals>
+           <XDtConfig:ifConfigParamNotGreaterOrEquals paramName="Version" value="8.1">
+             <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="stateless-bean-load-algorithm">
+              <stateless-bean-load-algorithm><XDtClass:classTagValue tagName="weblogic:clustering" paramName="stateless-bean-load-algorithm" values="RoundRobin,Random,WeightBased"/></stateless-bean-load-algorithm>
+             </XDtClass:ifHasClassTag>
+           </XDtConfig:ifConfigParamNotGreaterOrEquals>
+                      
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="stateless-bean-call-router-class-name">
+            <stateless-bean-call-router-class-name><XDtClass:classTagValue tagName="weblogic:clustering" paramName="stateless-bean-call-router-class-name"/></stateless-bean-call-router-class-name>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="stateless-bean-methods-are-idempotent">
+            <stateless-bean-methods-are-idempotent><XDtClass:classTagValue tagName="weblogic:clustering" paramName="stateless-bean-methods-are-idempotent" values="True,False"/></stateless-bean-methods-are-idempotent>
+           </XDtClass:ifHasClassTag>          
+         </stateless-clustering>
+        </XDtClass:ifHasClassTag>
+      </stateless-session-descriptor>
+     </XDtEjbSession:ifStatelessSession>
+     <XDtEjbSession:ifStatefulSession>
+      <stateful-session-descriptor>
+        <XDtClass:ifHasClassTag tagName="weblogic:cache">
+         <stateful-session-cache>
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="max-beans-in-cache">
+            <max-beans-in-cache><XDtClass:classTagValue tagName="weblogic:cache" paramName="max-beans-in-cache"/></max-beans-in-cache>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="idle-timeout-seconds">
+            <idle-timeout-seconds><XDtClass:classTagValue tagName="weblogic:cache" paramName="idle-timeout-seconds"/></idle-timeout-seconds>
+           </XDtClass:ifHasClassTag>
+          <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="6.1">
+           <XDtClass:ifHasClassTag tagName="weblogic:cache" paramName="cache-type">
+            <cache-type><XDtClass:classTagValue tagName="weblogic:cache" paramName="cache-type" values="NRU,LRU"/></cache-type>
+           </XDtClass:ifHasClassTag>
+          </XDtConfig:ifConfigParamGreaterOrEquals>
+         </stateful-session-cache>
+        </XDtClass:ifHasClassTag>
+        
+        <XDtConfig:ifConfigParamNotGreaterOrEquals paramName="Version" value="8.1">
+          <XDtClass:ifHasClassTag tagName="weblogic:lifecycle">
+           <lifecycle>
+             <XDtClass:ifHasClassTag tagName="weblogic:lifecycle" paramName="passivation-strategy">
+              <passivation-strategy><XDtClass:classTagValue tagName="weblogic:lifecycle" paramName="passivation-strategy" values="default,transaction"/></passivation-strategy>
+             </XDtClass:ifHasClassTag>
+           </lifecycle>
+          </XDtClass:ifHasClassTag>
+        </XDtConfig:ifConfigParamNotGreaterOrEquals>
+        
+        <XDtClass:ifHasClassTag tagName="weblogic:persistent-store-dir">
+         <persistent-store-dir><XDtClass:classTagValue tagName="weblogic:persistent-store-dir"/></persistent-store-dir>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:clustering">
+         <stateful-session-clustering>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-is-clusterable">
+            <home-is-clusterable><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-is-clusterable" values="True,False"/></home-is-clusterable>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-load-algorithm">
+            <home-load-algorithm><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-load-algorithm" values="RoundRobin,Random,WeightBased"/></home-load-algorithm>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="home-call-router-class-name">
+            <home-call-router-class-name><XDtClass:classTagValue tagName="weblogic:clustering" paramName="home-call-router-class-name"/></home-call-router-class-name>
+           </XDtClass:ifHasClassTag>
+           
+           <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+             <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="use-serverside-stubs">
+              <use-serverside-stubs><XDtClass:classTagValue tagName="weblogic:clustering" paramName="use-serverside-stubs" value="True,False"/></use-serverside-stubs>
+             </XDtClass:ifHasClassTag>
+           </XDtConfig:ifConfigParamGreaterOrEquals>
+           
+           <XDtClass:ifHasClassTag tagName="weblogic:clustering" paramName="replication-type">
+            <replication-type><XDtClass:classTagValue tagName="weblogic:clustering" paramName="replication-type" values="InMemory,None"/></replication-type>
+           </XDtClass:ifHasClassTag>
+         </stateful-session-clustering>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:allow-concurrent-calls">
+         <allow-concurrent-calls><XDtClass:classTagValue tagName="weblogic:allow-concurrent-calls" values="True,False"/></allow-concurrent-calls>
+        </XDtClass:ifHasClassTag>
+        
+        <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+          <XDtClass:ifHasClassTag tagName="weblogic:allow-remove-during-transaction">
+            <allow-remove-during-transaction><XDtClass:classTagValue tagName="weblogic:allow-remove-during-transaction" value="True,False"/></allow-remove-during-transaction>
+          </XDtClass:ifHasClassTag>
+        </XDtConfig:ifConfigParamGreaterOrEquals>
+        
+      </stateful-session-descriptor>
+     </XDtEjbSession:ifStatefulSession>
+     <XDtEjbMdb:ifMessageDriven>
+      <message-driven-descriptor>
+        <XDtClass:ifHasClassTag tagName="weblogic:pool">
+         <pool>
+           <XDtClass:ifHasClassTag tagName="weblogic:pool" paramName="max-beans-in-free-pool">
+            <max-beans-in-free-pool><XDtClass:classTagValue tagName="weblogic:pool" paramName="max-beans-in-free-pool" default="1"/></max-beans-in-free-pool>
+           </XDtClass:ifHasClassTag>
+           <XDtClass:ifHasClassTag tagName="weblogic:pool" paramName="initial-beans-in-free-pool">
+            <initial-beans-in-free-pool><XDtClass:classTagValue tagName="weblogic:pool" paramName="initial-beans-in-free-pool" default="0"/></initial-beans-in-free-pool>
+           </XDtClass:ifHasClassTag>
+         </pool>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:message-driven" paramName="destination-jndi-name">
+         <destination-jndi-name><XDtClass:classTagValue tagName="weblogic:message-driven" paramName="destination-jndi-name"/></destination-jndi-name>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:message-driven" paramName="initial-context-factory">
+         <initial-context-factory><XDtClass:classTagValue tagName="weblogic:message-driven" paramName="initial-context-factory"/></initial-context-factory>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:message-driven" paramName="provider-url">
+         <provider-url><XDtClass:classTagValue tagName="weblogic:message-driven" paramName="provider-url"/></provider-url>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:message-driven" paramName="connection-factory-jndi-name">
+         <connection-factory-jndi-name><XDtClass:classTagValue tagName="weblogic:message-driven" paramName="connection-factory-jndi-name"/></connection-factory-jndi-name>
+        </XDtClass:ifHasClassTag>
+       <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="6.1">
+        <XDtClass:ifHasClassTag tagName="weblogic:message-driven" paramName="jms-polling-interval-seconds">
+         <jms-polling-interval-seconds><XDtClass:classTagValue tagName="weblogic:message-driven" paramName="jms-polling-interval-seconds"/></jms-polling-interval-seconds>
+        </XDtClass:ifHasClassTag>
+       </XDtConfig:ifConfigParamGreaterOrEquals>
+       <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="6.1">
+        <XDtClass:ifHasClassTag tagName="weblogic:message-driven" paramName="jms-client-id">
+         <jms-client-id><XDtClass:classTagValue tagName="weblogic:message-driven" paramName="jms-client-id"/></jms-client-id>
+        </XDtClass:ifHasClassTag>
+       </XDtConfig:ifConfigParamGreaterOrEquals>
+      </message-driven-descriptor>
+     </XDtEjbMdb:ifMessageDriven>
+     <XDtClass:ifHasClassTag tagName="weblogic:transaction-descriptor">
+      <transaction-descriptor>
+        <XDtClass:ifHasClassTag tagName="weblogic:transaction-descriptor" paramName="trans-timeout-seconds">
+         <trans-timeout-seconds><XDtClass:classTagValue tagName="weblogic:transaction-descriptor" paramName="trans-timeout-seconds"/></trans-timeout-seconds>
+        </XDtClass:ifHasClassTag>
+      </transaction-descriptor>
+     </XDtClass:ifHasClassTag>
+        <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+          <XDtClass:ifHasClassTag tagName="weblogic:iiop-security-descriptor">
+            <iiop-security-descriptor>
+              <transport-requirements>
+                <XDtClass:ifHasClassTag tagName="weblogic:iiop-security-descriptor" paramName="integrity">
+                  <integrity>
+                    <XDtClass:classTagValue tagName="weblogic:iiop-security-descriptor" paramName="integrity"/>
+                  </integrity>
+                </XDtClass:ifHasClassTag>
+                <XDtClass:ifHasClassTag tagName="weblogic:iiop-security-descriptor" paramName="confidentiality">
+                  <confidentiality>
+                    <XDtClass:classTagValue tagName="weblogic:iiop-security-descriptor" paramName="confidentiality"/>
+                  </confidentiality>
+                </XDtClass:ifHasClassTag>
+                <XDtClass:ifHasClassTag tagName="weblogic:iiop-security-descriptor" paramName="client-cert-authentication">
+                  <client-cert-authentication>
+                    <XDtClass:classTagValue tagName="weblogic:iiop-security-descriptor" paramName="client-cert-authentication"/>
+                  </client-cert-authentication>
+                </XDtClass:ifHasClassTag>
+              </transport-requirements>
+              <XDtClass:ifHasClassTag tagName="weblogic:iiop-security-descriptor" paramName="client-authentication">
+                <client-authentication>
+                  <XDtClass:classTagValue tagName="weblogic:iiop-security-descriptor" paramName="client-authentication"/>
+                </client-authentication>
+              </XDtClass:ifHasClassTag>
+              <XDtClass:ifHasClassTag tagName="weblogic:iiop-security-descriptor" paramName="identity-assertion">
+                <identity-assertion>
+                  <XDtClass:classTagValue tagName="weblogic:iiop-security-descriptor" paramName="identity-assertion"/>
+                </identity-assertion>
+              </XDtClass:ifHasClassTag>
+            </iiop-security-descriptor>
+          </XDtClass:ifHasClassTag>
+        </XDtConfig:ifConfigParamGreaterOrEquals>     
+      <reference-descriptor>
+        <XDtClass:forAllClassTags tagName="weblogic:resource-description">
+         <resource-description>
+            <res-ref-name><XDtClass:classTagValue tagName="weblogic:resource-description" paramName="res-ref-name"/></res-ref-name>
+            <jndi-name><XDtClass:classTagValue tagName="weblogic:resource-description" paramName="jndi-name"/></jndi-name>
+         </resource-description>
+        </XDtClass:forAllClassTags>
+        <XDtClass:forAllClassTags tagName="weblogic:resource-env-description">
+         <resource-env-description>
+            <res-env-ref-name><XDtClass:classTagValue tagName="weblogic:resource-env-description" paramName="res-env-ref-name"/></res-env-ref-name>
+            <jndi-name><XDtClass:classTagValue tagName="weblogic:resource-env-description" paramName="jndi-name"/></jndi-name>
+         </resource-env-description>
+        </XDtClass:forAllClassTags>
+        <XDtClass:forAllClassTags tagName="weblogic:ejb-reference-description">
+         <ejb-reference-description>
+            <ejb-ref-name><XDtClass:classTagValue tagName="weblogic:ejb-reference-description" paramName="ejb-ref-name"/></ejb-ref-name>
+            <jndi-name><XDtClass:classTagValue tagName="weblogic:ejb-reference-description" paramName="jndi-name"/></jndi-name>
+         </ejb-reference-description>
+        </XDtClass:forAllClassTags>
+       <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="6.1">
+        <XDtClass:forAllClassTags tagName="weblogic:ejb-local-reference-description">
+         <ejb-local-reference-description>
+            <ejb-ref-name><XDtClass:classTagValue tagName="weblogic:ejb-local-reference-description" paramName="ejb-ref-name"/></ejb-ref-name>
+            <jndi-name><XDtClass:classTagValue tagName="weblogic:ejb-local-reference-description" paramName="jndi-name"/></jndi-name>
+         </ejb-local-reference-description>
+        </XDtClass:forAllClassTags>
+       </XDtConfig:ifConfigParamGreaterOrEquals>
+      </reference-descriptor>
+           
+     <XDtClass:ifHasClassTag tagName="weblogic:enable-call-by-reference">
+      <enable-call-by-reference><XDtClass:classTagValue tagName="weblogic:enable-call-by-reference" values="True,False"/></enable-call-by-reference>
+     </XDtClass:ifHasClassTag>
+     
+      <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+        <XDtClass:ifHasClassTag tagName="weblogic:clients-on-same-server">
+          <clients-on-same-server><XDtClass:classTagValue tagName="weblogic:clients-on-same-server" values="True,False"/></clients-on-same-server>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:run-as-principal-name">
+          <run-as-principal-name><XDtClass:classTagValue tagName="weblogic:run-as-principal-name"/></run-as-principal-name>
+        </XDtClass:ifHasClassTag>        
+      </XDtConfig:ifConfigParamGreaterOrEquals>
+     
+     <XDtConfig:ifConfigParamNotGreaterOrEquals paramName="Version" value="8.1">
+       <XDtClass:ifHasClassTag tagName="weblogic:run-as-identity-principal">
+        <run-as-identity-principal><XDtClass:classTagValue tagName="weblogic:run-as-identity-principal"/></run-as-identity-principal>
+       </XDtClass:ifHasClassTag>
+     </XDtConfig:ifConfigParamNotGreaterOrEquals>
+
+      <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+        <XDtClass:ifHasClassTag tagName="weblogic:create-as-principal-name">
+          <create-as-principal-name><XDtClass:classTagValue tagName="weblogic:create-as-principal-name"/></create-as-principal-name>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:remove-as-principal-name">
+          <remove-as-principal-name><XDtClass:classTagValue tagName="weblogic:remove-as-principal-name"/></remove-as-principal-name>
+        </XDtClass:ifHasClassTag>
+        <XDtClass:ifHasClassTag tagName="weblogic:passivate-as-principal-name">
+          <passivate-as-principal-name><XDtClass:classTagValue tagName="weblogic:passivate-as-principal-name"/></passivate-as-principal-name>
+        </XDtClass:ifHasClassTag>
+      </XDtConfig:ifConfigParamGreaterOrEquals>
+     
+     <XDtEjbMdb:ifNotMessageDriven>
+     <XDtEjbIntf:ifRemoteEjb>
+      <jndi-name><XDtEjbHome:jndiName type="remote"/></jndi-name>
+     </XDtEjbIntf:ifRemoteEjb>
+     <XDtEjbIntf:ifLocalEjb>
+      <local-jndi-name><XDtEjbHome:jndiName type="local"/></local-jndi-name>
+     </XDtEjbIntf:ifLocalEjb>
+     </XDtEjbMdb:ifNotMessageDriven>
+     
+      <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+        <XDtClass:ifHasClassTag tagName="weblogic:dispatch-policy">
+          <dispatch-policy><XDtClass:classTagValue tagName="weblogic:dispatch-policy"/></dispatch-policy>
+        </XDtClass:ifHasClassTag>
+      </XDtConfig:ifConfigParamGreaterOrEquals>
+     
+   </weblogic-enterprise-bean>
+   </XDtEjb:ifIsAConcreteEJBean>
+ </XDtEjb:forAllBeans>
+<XDtMerge:merge file="weblogic-enterprise-beans.xml"> 
+<!-- 
+To add enterprise beans that you have deployment descriptor info for, add 
+a file to your XDoclet merge directory called weblogic-enterprise-beans.xml that contains 
+the <weblogic-enterprise-bean></weblogic-enterprise-bean> markup for those beans. 
+--> 
+</XDtMerge:merge>
+
+ <XDtMerge:merge file="weblogic-security-role-assignment.xml">
+ </XDtMerge:merge>
+ <XDtComment:comment>
+  Issue: Security-role changed in 8.1 to add new tags (externally-defined,global-role) - will not work on older versions
+ </XDtComment:comment>
+
+ <XDtMerge:merge file="weblogic-run-as-role-assignment.xml">
+ </XDtMerge:merge>
+
+<XDtComment:comment>
+ Missing implementation of security-permission (from 7.0)
+</XDtComment:comment>
+
+ <XDtEjb:forAllBeans>
+ <XDtEjb:ifIsAConcreteEJBean>
+  <XDtClass:ifHasClassTag tagName="weblogic:transaction-isolation">
+   <transaction-isolation>
+      <isolation-level><XDtClass:classTagValue tagName="weblogic:transaction-isolation" values="TRANSACTION_SERIALIZABLE,TRANSACTION_READ_COMMITTED,TRANSACTION_READ_UNCOMMITTED,TRANSACTION_REPEATABLE_READ,TRANSACTION_READ_COMMITTED_FOR_UPDATE"/></isolation-level>
+      <method>
+         <description><![CDATA[Transaction isolation for <XDtEjb:ejbName/>]]></description>
+         <ejb-name><XDtEjb:ejbName/></ejb-name>
+         <method-name>*</method-name>
+      </method>
+   </transaction-isolation>
+  </XDtClass:ifHasClassTag>
+  <XDtMethod:forAllMethods>
+   <XDtMethod:ifHasMethodTag tagName="weblogic:transaction-isolation">
+    <XDtEjbIntf:ifIsInterfaceMethod>
+     <XDtEjbIntf:forAllInterfaceViewTypes>
+   <transaction-isolation>
+
+      <isolation-level><XDtMethod:methodTagValue tagName="weblogic:transaction-isolation" values="TRANSACTION_SERIALIZABLE,TRANSACTION_READ_COMMITTED,TRANSACTION_READ_UNCOMMITTED,TRANSACTION_REPEATABLE_READ,TRANSACTION_READ_COMMITTED_FOR_UPDATE"/></isolation-level>
+
+      <method>
+         <description><![CDATA[<XDtMethod:firstSentenceDescriptionOfCurrentMethod/>]]></description>
+         <ejb-name><XDtEjb:ejbName/></ejb-name>
+         <method-intf><XDtEjbIntf:methodIntf/></method-intf>
+         <method-name><XDtEjbIntf:interfaceMethodName/></method-name>
+         <method-params>
+           <XDtParameter:forAllMethodParams>
+            <method-param><XDtParameter:methodParamType/></method-param>
+           </XDtParameter:forAllMethodParams>
+         </method-params>
+      </method>
+   </transaction-isolation>
+     </XDtEjbIntf:forAllInterfaceViewTypes>
+    </XDtEjbIntf:ifIsInterfaceMethod>
+   </XDtMethod:ifHasMethodTag>
+  </XDtMethod:forAllMethods>
+  </XDtEjb:ifIsAConcreteEJBean>
+ </XDtEjb:forAllBeans>
+
+  <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="7.0">
+    <idempotent-methods>
+      <XDtEjb:forAllBeans>
+        <XDtEjb:ifIsAConcreteEJBean>
+          <XDtMethod:forAllMethods>
+            <XDtMethod:ifHasMethodTag tagName="weblogic:idempotent-method">
+              <XDtEjbIntf:ifIsInterfaceMethod>
+                <XDtEjbIntf:forAllInterfaceViewTypes>
+                  <method>
+                    <description><![CDATA[<XDtMethod:firstSentenceDescriptionOfCurrentMethod/>]]></description>
+                    <ejb-name>
+                      <XDtEjb:ejbName/>
+                    </ejb-name>
+                    <method-intf>
+                      <XDtEjbIntf:methodIntf/>
+                    </method-intf>
+                    <method-name>
+                      <XDtEjbIntf:interfaceMethodName/>
+                    </method-name>
+                    <method-params>
+                      <XDtParameter:forAllMethodParams>
+                        <method-param>
+                          <XDtParameter:methodParamType/>
+                        </method-param>
+                      </XDtParameter:forAllMethodParams>
+                    </method-params>
+                  </method>
+                </XDtEjbIntf:forAllInterfaceViewTypes>
+              </XDtEjbIntf:ifIsInterfaceMethod>
+            </XDtMethod:ifHasMethodTag>
+          </XDtMethod:forAllMethods>
+        </XDtEjb:ifIsAConcreteEJBean>
+      </XDtEjb:forAllBeans>
+    </idempotent-methods>
+  </XDtConfig:ifConfigParamGreaterOrEquals>
+ 
+ 
+ <XDtConfig:ifConfigParamGreaterOrEquals paramName="Version" value="8.1">
+  <XDtClass:ifHasClassTag tagName="weblogic:enable-bean-class-redeploy">
+   <enable-bean-class-redeploy><XDtClass:classTagValue tagName="weblogic:enable-bean-class-redeploy" values="True,False"/></enable-bean-class-redeploy>
+  </XDtClass:ifHasClassTag>  
+ </XDtConfig:ifConfigParamGreaterOrEquals>
+
+ <XDtComment:comment>
+  Missing implementation of disable-warning (from 8.1)
+ </XDtComment:comment>
+
+</weblogic-ejb-jar>

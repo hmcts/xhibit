@@ -1,0 +1,30 @@
+ * -------- custom finders --------
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findPrivateRepByCaseProsAgency(java.lang.Integer caseProsAgencyId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(pros)
+ *    FROM 
+ * 		XhbProsecutorRefSolFirm AS pros
+ * 			WHERE 
+ * 				pros.caseProsAgencyId = ?1
+ *				AND (pros.obsInd is null OR pros.obsInd = 'N' OR pros.obsInd = ' ')
+ *				ORDERBY pros.prosecutorRefSolFirmId DESC"
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findPublicRepByLegalAidOrderId(java.lang.Integer legalAidOrderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(pros)
+ *    FROM 
+ * 		XhbProsecutorRefSolFirm AS pros
+ * 			WHERE 
+ * 				pros.legalAidOrderId is not null AND pros.legalAidOrderId = ?1
+ *				AND (pros.obsInd is null OR pros.obsInd = 'N' OR pros.obsInd = ' ')
+ *				ORDERBY pros.prosecutorRefSolFirmId DESC"
+ * 
+ *
+ * -------- end of custom finders --------

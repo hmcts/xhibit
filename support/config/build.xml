@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Config">
+
+    <description>
+        The XHIBIT Configuration files. properties, xml, xsl etc.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <property name="java.jar.source.excludes" value="config/components/GUI.XhibitClientProject.properties config/application.properties"/>
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+    <target name="generate" unless="skip.generate" depends="framework.generate">
+        <!-- Set Build Timestamp Property -->
+        <log target="generate"/>
+        <if>
+            <isset property="build.type.candidate"/>
+            <then>
+                <tstamp>
+                    <format property="build" pattern="yyyyMMddHHmmss"/>
+                </tstamp>
+            </then>
+            <else>
+                <property name="build" value="&lt;&lt;&lt;development&gt;&gt;&gt;"/>
+            </else>
+        </if>
+        <!-- Set Today Datetime Property -->
+        <tstamp>
+            <format property="releasedate" pattern="d MMMM yyyy" locale="en"/>
+        </tstamp>
+
+        <!-- Filter, today, build and version(defined in build.properties or on command line)
+             Property -->
+        <copy todir="${classes.dir}" overwrite="true">
+            <fileset dir="${source.dir}" includes="${java.jar.source.excludes}"/>
+            <filterset>
+                <filter token="xhibit.tx.database.jndi" value="${xhibit.tx.database.jndi}"/>
+                <filter token="exiss.tx.database.jndi" value="${exiss.tx.database.jndi}"/>
+                <filter token="cjit.tx.database.jndi" value="${cjit.tx.database.jndi}"/>
+                <filter token="gdgate.tx.database.jndi" value="${gdgate.tx.database.jndi}"/>
+                <filter token="darts.tx.database.jndi" value="${darts.tx.database.jndi}"/>
+                <filter token="xhibit.version" value="${version}"/>
+                <filter token="xhibit.build" value="${build}"/>
+                <filter token="xhibit.releasedate" value="${releasedate}"/>
+            </filterset>
+        </copy>
+    </target>
+
+</project>

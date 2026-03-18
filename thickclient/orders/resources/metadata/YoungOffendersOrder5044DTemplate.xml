@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  $Revision: 1.9 $  $Author: hingstb $ $Date: 2016/10/05 16:17:39 $-->
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="defendant" label="" borderLabel="Defendant" ref="/">
+			<date name="xxx2" label="Conviction Date:" ref="//ord:ConvictionDate"/>
+			<section name="commitForSentence" label="" switchLabel="Committed for Sentence By" borderLabel="" borderRaised="false" switchable="true" ref="//ord:CommittingCourt/@selected" selectedValue="true" unselectedValue="false">
+				<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:CommittingCourt/ord:CourtHouseName"/>
+			</section>
+		</section>
+		<section name="risk" label="" borderLabel="" ref="/">
+			<section name="riskVulnerability" label="" switchLabel="Risk or Vulnerability factors if known to the court" borderLabel="" borderRaised="false" switchable="true" ref="//ord:RiskVulnerabilityFactors/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="riskText" ref="//ord:RiskVulnerabilityFactors/ord:RiskText" label="" topLabel="" rows="8" cols="14"/>			
+			</section>
+		</section>
+		<section name="courtOrdered" label="" borderLabel="Court Ordered" ref="/">
+			<date name="xxx2" label="Sentence Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+			<section name="custodialSentence" borderLabel="Custodial Sentence" label="">
+				<section name="sentenceType" borderLabel="" label="">
+					<choice name="sentenceType" label="" ref="//ord:CustodialSentence/ord:ImprisonmentType">
+						<option name="period" label="Period of Detention" value="period">
+							<section name="duration" label="" switchLabel="Duration" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:CustodialTerm/@selected" selectedValue="true" unselectedValue="false">
+								<durationdate name="durationdate" dayattribute="true" weekattribute="true" weeksMax="999" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:CustodialTerm"/>
+								<choice name="durationTermTypeOption" label="" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:CustodialTerm/@TermType">
+									<option name="consecutive" label="consecutive" value="Consecutive"/>
+									<option name="concurrent" label="concurrent" value="Concurrent"/>
+									<option name="notapplicable" label="not applicable" value="Not Applicable" selected="true"/>
+								</choice>
+							</section>
+							<section name="section235A" label="" switchLabel="Section 252A / 265" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:s235-236/@selected" selectedValue="true" unselectedValue="false">
+								<choice name="choose236sOr278" label="" ref="//ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:s235-236/ord:CSSectionType">
+									<option name="section252A" label="Section 252A" value="section252a"/>
+									<option name="section265" label="Section 265" value="section265" selected="true"/>
+								</choice>
+								<durationdate name="custodialdate" dayattribute="true" weekattribute="true" weeksMax="999" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="Custodial Term of:" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:s235-236/ord:CustodialPeriod"/>
+								<durationdate name="extensiondate" dayattribute="true" weekattribute="true" weeksMax="999" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="Extension Period:" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:s235-236/ord:ExtensionPeriod"/>
+								<choice name="s236TermTypeOption" label="" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:s235-236/@TermType">
+									<option name="consecutive" label="consecutive" value="Consecutive"/>
+									<option name="concurrent" label="concurrent" value="Concurrent"/>
+									<option name="notapplicable" label="not applicable" value="Not Applicable" selected="true"/>
+								</choice>
+							</section>
+						</option>
+						<option name="life" label="Detention for Life" value="life" selected="true">
+							<section name="section224a" label="" switchLabel="Section 224a" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section224a" selectedValue="true" unselectedValue = "false"/>
+							<section name="section225" label="" switchLabel="Section 225" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section225" selectedValue="true" unselectedValue = "false"/>
+							<section name="section272" label="" switchLabel="Section 272" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section272" selectedValue="true" unselectedValue = "false"/>
+							<section name="section273" label="" switchLabel="Section 273" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section273" selectedValue="true" unselectedValue = "false"/>
+							<section name="section274" label="" switchLabel="Section 274" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section274" selectedValue="true" unselectedValue = "false"/>
+							<section name="section275" label="" switchLabel="Section 275" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section275" selectedValue="true" unselectedValue = "false"/>
+							<section name="section93" label="" switchLabel="Section 93" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section93" selectedValue="true" unselectedValue = "false"/>
+							<section name="section94" label="" switchLabel="Section 94" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/@Section94" selectedValue="true" unselectedValue = "false"/>
+							<section name="minimumTerm" label="" switchLabel="Minimum Term" borderLabel="" borderRaised="false" switchable="true" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/ord:MinimumTerm/@selected" selectedValue="true" unselectedValue="false">
+								<choice name="minimumTermOption" label="" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/ord:MinimumTerm/ord:NoMinimumTerm/@selected">
+									<option name="minimumTerm" label="" value="false" selected="true">
+										<section name="minTerm" label="" ref="/">
+											<durationdate name="mintermdate" dayattribute="true" weekattribute="true" weeksMax="999" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/ord:MinimumTerm/ord:LifePeriod"/>
+										</section>
+									</option>
+									<option name="noMinimumTerm" label="court did not state minimum term" value="true" />
+								</choice>
+							</section>
+							<choice name="LifeOption" label="" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:LifeSentence/ord:LifeType">
+								<option name="automatic" label="Automatic Life" value="AutomaticLife" selected="true"/>
+								<option name="discretionary" label="Discretionary Life" value="DiscretionaryLife"/>
+								<option name="mandatory" label="Mandatory Life" value="MandatoryLife"/>
+								<option name="whole" label="Whole Life" value="WholeLife"/>
+							</choice>
+						</option>
+						<option name="extended" label="Extended Sentence" value="extended" >
+							<choice name="sectionOption" label="" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:ExtendedSentence/ord:SectionType">
+								<option name="s226a" label="Section 226A" value="s226a" selected="true"/>
+								<option name="s266" label="Section 266" value="s266"/>
+								<option name="s268a" label="Section 268A" value="s268a"/>
+							</choice>
+							<durationdate name="durationdate" dayattribute="true" weekattribute="true" weeksMax="999" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="Custodial Term of:" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:ExtendedSentence/ord:CustodialPeriod"/>
+							<durationdate name="extensiondate" dayattribute="true" weekattribute="true" weeksMax="999" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="Extension Period:" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:ExtendedSentence/ord:ExtensionPeriod"/>
+						</option>
+					</choice>
+					<choice name="termTypeOption" label="" ref="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:TermType">
+						<option name="consecutive" label="consecutive" value="Consecutive" selected="true"/>
+						<option name="concurrent" label="concurrent" value="Concurrent"/>
+						<option name="notapplicable" label="not applicable" value="Not Applicable"/>
+					</choice>
+				</section>
+			</section>
+			<section name="discretionaryLifeOption" label="" switchLabel="Discretionary Life Option" borderLabel="Discretionary Life Prisoners" borderRaised="false" switchable="true" ref="//ord:Section28/@selected" selectedValue="true" unselectedValue="false">
+				<durationdate name="durationdate" dayattribute="false" weekattribute="false" monthattribute="true" yearattribute="true" label="Relevant Part of Sentence" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:Section28/ord:DiscretionaryRelevantPart"/>
+			</section>
+			<!--ADDED/Ammended FOR CCN388 START -->
+			<section name="creditForRemand" label="" switchLabel="Time served in custody in a foreign jurisdiction" borderLabel="Time served in custody in a foreign jurisdiction" borderRaised="false" switchable="true" ref="//ord:CreditForRemand/@selected" selectedValue="true" unselectedValue="false">
+				<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="false" yearattribute="false" label="Number of days" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CreditForRemand/ord:Term"/>
+			</section>
+			<section name="creditForBail" label="" switchLabel="Credit for time spent on bail" borderLabel="Credit for time spent on bail" borderRaised="false" switchable="true" ref="//ord:CreditForBail/@selected" selectedValue="true" unselectedValue="false">
+				<choice name="chooseCreditForBailSection" label="" ref="/ord:Order/ord:OrderData/*/ord:CreditForBail/ord:CreditForTimeOnBailSection">
+					<option name="section240a" label="Section 240A Criminal Justice Act 2003" value="section240a"/>
+					<option name="section325" label="Section 325 Sentencing Act 2020" value="section325" selected="true"/>
+				</choice>
+				<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="false" yearattribute="false" label="Number of days" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CreditForBail/ord:Term"/>
+			</section>
+			<section name="requiredCustodial" label="" switchLabel="Required Custodial Option" borderLabel="Required Custodial Option" borderRaised="false" switchable="true" ref="//ord:ChapterIII" selectedValue="yes" unselectedValue="no"/>
+			<section name="AutomaticDeportationSection" label="Deportation" borderLabel="Automatic Deportation" borderRaised="false" switchLabel="Automatic Deportation Option" switchable="true" ref="//ord:AutomaticDeportation" selectedValue="yes" unselectedValue="no"/>
+			<section name="RecomendedDeportationSection" label="Deportation" borderLabel="Recommendation for Deportation" borderRaised="false" switchLabel="Recommendation for Deportation Option" switchable="true" ref="//ord:RecommendedDeportation" selectedValue="yes" unselectedValue="no"/>
+			<!-- ADDED FOR RFC 1344 XPATH TO DO START-->
+			<section name="domesticBurglary" label="" switchLabel="Domestic Burglary Option" borderLabel="Domestic Burglary" borderRaised="false" switchable="true" ref="//ord:DomesticBurglary/@selected" selectedValue="true" unselectedValue="false"/>
+			<!-- ADDED FOR RFC 1344 XPATH TO DO END-->
+			<section name="additionalNotes" label="" switchLabel="Additional Notes Option" borderLabel="Additional Notes" borderRaised="false" switchable="true" ref="//ord:AdditionalNotes/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="additonalNotesValue" ref="//ord:AdditionalNotes" label="" rows="10" cols="40" maxlength="4000"/>
+			</section>
+		</section>
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="20904.xsd">
+	<type>20904</type>
+	<date>2002-11-25</date>
+	<time/>
+	<Witness-Sworn-Options>
+		<WSO-Type>20904_Defence_witness_professional_sworn</WSO-Type>
+		<WSO-Name>Fred Bloggs</WSO-Name>
+		<WSO-Number>45</WSO-Number>
+	</Witness-Sworn-Options>
+</event>

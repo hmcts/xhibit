@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Case-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Directions_By_Case_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Directions_By_Case_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40711_Time_Estimate" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40711_Time_Estimate">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40711_Time_Estimate_Options"/>
+				<xs:element ref="E40711_Time"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40711_Time_Estimate_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40711_Hours"/>
+				<xs:enumeration value="E40711_Days"/>
+				<xs:enumeration value="E40711_Weeks"/>
+				<xs:enumeration value="E40711_Months"/>
+<!--				<xs:enumeration value="E40711_Years"/>-->
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40711_Time" type="xs:string"/>
+</xs:schema>

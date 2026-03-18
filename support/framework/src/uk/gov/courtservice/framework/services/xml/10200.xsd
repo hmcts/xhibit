@@ -1,0 +1,35 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<!-- Defendant Attendance Event -->
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E10200_Defendant_Attendance_Options"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E10200_Defendant_Attendance_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E10200_DEO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E10200_DEO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E10200_Not_Expected_Or_Required"/>
+				<xs:enumeration value="E10200_Bench_warrant_issued_backed_for_bail"/>
+				<xs:enumeration value="E10200_Bench_warrant_issued_not_backed_for_bail"/>
+				<xs:enumeration value="E10200_Bench_warrant_executed"/>
+				<xs:enumeration value="E10200_Bench_warrant_withdrawn"/>
+				<xs:enumeration value="E10200_Defendant_fails_to_attend"/>
+				<xs:enumeration value="E10200_Defendant_delayed"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

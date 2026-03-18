@@ -1,0 +1,17 @@
+15 11 * * * touch /tmp/o.o
+41 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_GATEWAY_LIVE/applogs/message_outbox/ -name "*client_message*" -mtime +5 |xargs rm -rf
+43 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_GATEWAY_LIVE/applogs/message_inbox/ -name "*client_message*" -mtime +5 |xargs rm -rf
+45 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_GATEWAY_LIVE/applogs/message_errorbox/ -name "*client_message*" -mtime +5 |xargs rm -rf
+47 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_GATEWAY_LIVE/servers/scjsegateLIVEM1/logs/ -name "*log*" -mtime +5 |xargs rm -rf
+49 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_GATEWAY_LIVE/applogs/ -name "*log*" -mtime +5 |xargs rm -rf
+50 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_GATEWAY_LIVE/servers/AdminServer/logs/ -name "*log*" -mtime +5 |xargs rm -f
+
+
+00 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/applogs/ -name "*log*" -type f -mtime +30|xargs rm
+00 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/applogs/ -name "*log*" -type f -mtime +3|xargs gzip -9
+00 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/applogs/*xml_error* -name "*" -type f -mtime +30|xargs rm
+00 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/applogs/*xml_error* -name "*" -type f -mtime +3|xargs gzip -9
+01 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/servers/LIVEmidM4/logs/ -name "*log*" -type f -mtime +30|xargs rm
+01 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/servers/LIVEmidM4/logs/ -name "*out*" -type f -mtime +30|xargs rm
+01 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/servers/LIVEmidM4/logs/ -name "*log*" -type f -mtime +3|xargs gzip -9
+01 23 * * * find /opt/customer/bea/user_projects/domains/XHIBIT_LIVE/servers/LIVEmidM4/logs/ -name "*out*" -type f -mtime +3|xargs gzip -9

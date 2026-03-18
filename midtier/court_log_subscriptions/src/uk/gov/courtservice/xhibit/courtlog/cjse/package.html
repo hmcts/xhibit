@@ -1,0 +1,127 @@
+<html>
+    <body>
+        <p>
+This package and it's children provide the functionality to convert an incoming XHIBIT court log event into an
+outgoing CJSE court log event.
+        </p>
+<h1>Event Processing</h1>
+        <p>
+The processing of an event has been broken down into the following steps:
+            <ul>
+                <li>
+Receive the incoming court log event as a JMS message and extract the value object representing the event.
+                </li>
+                <li>
+Analyse the value object and retrieve objects to do the following processing:
+                    <ul>
+                        <li>
+Map the XHIBIT event to a CJSE event identifier and message.
+                        </li>
+                        <li>
+Construct the human readable message that goes with the event.
+                        </li>
+                        <li>
+Construct the machine readable event parameter XML.
+                        </li>
+                    </ul>
+                </li>
+                <li>
+Write the event to the database so that Mercator can pass the event on.
+                </li>
+            </ul>
+        </p>
+<h1>Event Classification</h1>
+        <p>
+Events are classified in two main ways, by how the static ordinality of how they map from court log events
+to cjse events and by their event level. At present a single input event generates a single output event
+so the dynamic ordinality is always one to one. Static ordinality refers to how an incoming court log event
+maps to the outgoing cjse event.The major static ordinality types look like:
+            <ul>
+                <li>
+<b>One to one</b> means that a court log event of type CL-A can only ever map to a CJSE event of type CJSE-A.
+                </li>
+                <li>
+<b>One to many</b> means that a court log event of type CL-B depending on the data it is carry in can map to one
+of the CJSE events CJSE-B, CJSE-C or CJSE-D.
+                </li>
+                <li>
+<b>Many to one</b> means that court log events of type CL-C, CL-D or CL-E will all map to CJSE event CL-E.
+                </li>
+            </ul>
+The event level represents against which 'entity' the event occurs, the major event levels are: <b>Case</b>,
+<b>Defendant</b> and <b>Charge</b>.
+        </p>
+<h1>Package Structure</h1>
+        <p>
+The package structure is laid out to group the elements of the component in a rational way.
+            <ul>
+                <li>
+<b>uk.gov.courtservice.xhibit.courtlog.cjse</b>:<br>Contains the components that handle behaviour common to
+all events.
+                    <ul>
+                        <li>
+<b>uk.gov.courtservice.xhibit.courtlog.cjse.eventlevel</b>:<br>Contains components that perform processing
+specific to a certain event level, most especially the ones that construct the xml event parameters.
+                        </li>
+                        <li>
+<b>uk.gov.courtservice.xhibit.courtlog.cjse.eventmapper</b>:<br>Contains components that handle the mapping
+from a court log event to a cjse event.
+                        </li>
+                        <li>
+<b>uk.gov.courtservice.xhibit.courtlog.cjse.eventmessage</b>:<br>Contains components for constructing the
+human readable message.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </p>
+<h1>Event Configuration</h1>
+        <p>
+The components contained in this package have been designed to be highly configurable so that as much as possible,
+the addition of a new event will involve only an alteration to configuration files. This is facilitated as much
+as possible the use of the factory pattern to provide a consistent interface to the other portions of the
+application.
+        </p>
+        <p>
+The major configuration file is the <br/>
+<pre>/config/xml/cjse_integration/mapping.xml</pre><br/> file, which provides details of the overall mapping of events.
+This mapping file is parsed by more than one class, at the top level the <code>CjseSwitchHandler</code> provides
+the parsing of common elements, while specific implementations of <code>CjseEventMapper</code> parse more specific
+elements. For example:<pre>&lt;!-- Handled by CjseSwitchHandler --&gt;
+&lt;CJSE_CL_CONFIGURATION&gt;
+    &lt;!-- Handled by CjseSwitchHandler --&gt;
+    &lt;INCOMING_EVENT xhibitid="11111"
+                    level="CASE"
+                    type="ONETOMANY"&gt;
+        &lt;!-- Handled by OneToManyCjseEventMapper --&gt;
+        &lt;DIFFERENTIATING_FIELD xpath="XXX/YYY/ZZZ/text()"/&gt;
+        &lt;!-- Handled by OneToManyCjseEventMapper --&gt;
+        &lt;EVENT fieldvalue="ABC" cjseid="11112" cjsemessagecode="testGetMessageForMessageCode"/&gt;
+        &lt;!-- Handled by OneToManyCjseEventMapper --&gt;
+        &lt;EVENT fieldvalue="DEF" cjseid="11113" cjsemessagecode="testGetMessageForMessageCode"/&gt;
+    &lt;!-- Handled by CjseSwitchHandler --&gt;
+    &lt;/INCOMING_EVENT&gt;
+    ...
+&lt;!-- Handled by CjseSwitchHandler --&gt;
+&lt;/CJSE_CL_CONFIGURATION&gt;</pre>
+The attributes of incoming event are common to all events:
+            <ul>
+                <li>
+<b>xhibitid</b> the identifier value for the incoming event.
+                </li>
+                <li>
+<b>level</b> the level of the incoming event. Determines which event level this event has, the value of this field is
+passed to the CjseEventLevelPopulatorFactory to retrieve the CjseEventLevelPopulator appropriate for this event.
+                </li>
+                <li>
+<b>type</b> the mapping of the incoming event. Determines how the mapping is handled, the CjseEventMapperHandler that is
+used to configure the event mapper is retrieved from the CjseEventMapperHandlerFactory using this value.
+                </li>
+            </ul>
+For details of the individual event mapper configuration please refer to their documentation.
+        </p>
+@see uk.gov.courtservice.xhibit.courtlog.cjse.eventlevel<br/>
+@see uk.gov.courtservice.xhibit.courtlog.cjse.eventmapper<br/>
+@see uk.gov.courtservice.xhibit.courtlog.cjse.eventmessage<br/>
+    </body>
+</html>

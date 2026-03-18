@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<!--  $Revision: 1.14 $  $Author: atwells $ $Date: 2016/04/11 09:50:37 $-->
+<template>
+	<form>
+		<section name="D20" label="" borderLabel="" borderRaised="true">
+			<!-- Header -->
+			<section name="Header" label="" borderLabel="" borderRaised="true">
+				<section name="peronalDetailsSection" readonly="false" borderLabel="" borderRaised="true" ref="">
+					<dropdown name="title" type="thirteen" label="Title" length="30" readonly="false" ref="//ord:D20/ord:D20PersonalDetails/ord:Title"/>
+					<textfield name="otherTitle" type="name" maxLength="25" length="16" readonly="false" ref="//ord:D20/ord:D20PersonalDetails/ord:OtherTitle" label="Other Title"/>
+					<dropdown name="gender" type="fourteen" label="Gender" length="10" readonly="false" ref="//ord:D20/ord:D20PersonalDetails/ord:Gender"/>
+				</section>
+				<section name="conviction" readonly="false" switchable="true" switchLabel="Conviction Details"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:D20CommittingCourtSection/@selected">
+					<date name="xxx2" readonly="false" nullable="true" label="Conviction Date" ref="//ord:D20/ord:D20CommittingCourtSection/ord:D20CommittingCourt/ord:Date"/>
+					<section name="committalCourt" label="" borderLabel="Convicting Court" ref="/">
+						<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:D20/ord:D20CommittingCourtSection/ord:D20CommittingCourt/ord:CourtHouse/ord:CourtHouseName"/>
+					</section>
+				</section>
+				<section name="licenceDetails" label="" borderLabel="" borderRaised="false">	
+					<textfield name="driverNumber" type="alphanumeric" maxLength="16" length="16" ref="//ord:D20/ord:DriverNumber" label="Driver Number"/>
+					<section name="licenceTypeSection" label="" borderLabel="Licence produced in court" borderRaised="" ref="//ord:D20/LicenceTypeSection">
+						<dropdown name="licenceType" type="nine" label=" " length="30" ref="//ord:D20/ord:LicenceType"/>
+					</section>
+					<textfield name="licenceIssueNo" type="int" maxLength="2" length="2" ref="//ord:D20/ord:LicenceIssueNo" label="Licence Issue No"/>
+				</section>
+			</section>
+
+			<!-- This was Footer on original form -->
+			<section name="Footer" label="" borderLabel="" borderRaised="true">
+				<section name="SubFooter" label="" borderLabel="" borderRaised="true">
+					<section name="notificationalreadysent" label="" switchLabel="Notification Previously Sent" borderRaised="false" switchable="true" ref="//ord:D20/ord:NotificationPreviouslySent" selectedValue="true" unselectedValue="false" readonly="false"/>
+					<section name="differentAddressLabel" label="Name and/or address on licence if different from above" borderLabel="Name and/or address on licence if different from above">
+						<textfield name="differentName" type="name" maxLength="100" length="20" ref="//ord:D20/ord:DifferentAddress/ord:DifferentName" label="Name (if different): "/>
+						<addresstextfields name="addresstextfields" type="string" label="" required="false" ref="//ord:D20/ord:DifferentAddress/ord:Address/apd:Line"/>
+					</section>
+				</section>
+				<section name="FormNumber" label="" borderLabel="Form No." borderRaised="true">
+					<textfield name="formNumber" type="int" numeric="Y" maxLength="2" minLength="1" length="2" ref="//ord:D20/ord:Forms/ord:FormNumber" readonly="false" label="Form "/>
+					<textfield name="totalForms" type="int" numeric="Y" maxLength="2" minLength="1" length="2" ref="//ord:D20/ord:Forms/ord:TotalForms" readonly="false" label=" of "/>
+				</section>
+			</section>
+		</section>
+		
+		<!-- Offences -->
+		<section name="Offences" label="" borderLabel="" borderRaised="true">
+			
+			<!-- Offence 1 -->
+			<section name="Offence1" label="" switchLabel="" borderLabel="Offence 1" borderRaised="true" switchable="true" ref="//ord:D20/ord:Offence1/@selected" selectedValue="true" unselectedValue="false">
+				<section name="offenceCodeSection1" label="" borderLabel="" borderRaised="false">
+					<textfield name="offenceCode1" type="alphanumeric" maxLength="200" length="4" ref="//ord:D20/ord:Offence1/ord:OffenceCode1" label="Offence Code"/>
+				</section>
+				<section name="offenceDate1Section" switchable="true" switchLabel="Date of Offence"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceDate1Section/@selected">
+					<date name="offenceDate1" label="" ref="//ord:D20/ord:Offence1/ord:OffenceDate1Section/ord:OffenceDate1"/>
+				</section>
+				<section name="offenceFine1Section" label="" borderLabel="" borderRaised="false">
+					<currency name="offenceFine1" label="Fine" signLength="3" length="8" minVal="0" maxLength="8" required="false" type="float" ref="//ord:D20/ord:Offence1/ord:OffenceFine1/ord:MonetaryValue/ord:Amount"/>
+				</section>
+				<section name="offencePenaltyPointsSection1" label="" borderLabel="" borderRaised="false">
+					<textfield name="offencePenaltyPoints1" type="int" numeric="Y"  maxLength="2" length="3" ref="//ord:D20/ord:Offence1/ord:OffencePenaltyPoints1" label="Penalty Points"/>
+				</section>
+				<section name="offenceAlcoholLevel1Section" label="" borderLabel="" borderRaised="">
+					<textfield name="offenceAlcoholLevel1" type="int" numeric="Y" maxLength="4" length="4" ref="//ord:D20/ord:Offence1/ord:OffenceAlcoholLevel1/ord:D20AlcoholLevelValue" label="Alcohol Level / Drug Level"/>
+					<dropdown name="alcoholLevelType1" type="ten" label=" " length="30" ref="//ord:D20/ord:Offence1/ord:OffenceAlcoholLevel1/ord:D20AlcoholLevelDropdown"/>
+				</section>
+				<section name="OffenceDisqualifiedPeriodSection1" label="" borderLabel="Disqualified Period" borderRaised="false" ref="//ord:D20/ord:OffenceDisqualifiedPeriodSection1" readonly="false">
+					<durationdate name="offenceDisqualifiedPeriod1"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence1/ord:OffenceDisqualifiedPeriod1" readonly="false" />
+				</section>
+				<section name="OffenceOtherSentence1" label="" switchLabel="Other Sentence" switchable="true" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceOtherSentence1Section/@selected">
+					<dropdown name="offenceOtherSentence1" type="eleven" label="" length="30" ref="//ord:D20/ord:Offence1/ord:OffenceOtherSentence1Section/ord:OffenceOtherSentence1/ord:D20OffenceOtherSentenceDropdown"/>
+					<section borderLabel="Duration" borderRaised="false" name="OffenceOtherSentenceLabel1">
+						<textfield name="offenceOtherSentence1" type="int" numeric="Y" maxLength="3" length="3" ref="//ord:D20/ord:Offence1/ord:OffenceOtherSentence1Section/ord:OffenceOtherSentence1/ord:D20OffenceOtherSentenceValue" label=""/>
+						<dropdown name="offenceOtherSentenceDurationType1" type="five_1" label="" length="5" ref="//ord:D20/ord:Offence1/ord:OffenceOtherSentence1Section/ord:OffenceOtherSentence1/ord:D20OffenceOtherSentenceDurationType"/>
+					</section>
+				</section>
+				<!-- Drop down for Period Prison Sentence or Community Order -->
+				<section name="OffencePPSCO1Section" label="" borderLabel="" borderRaised="false" switchLabel="Prison Sentence Suspended / Community Order" switchable="true" selectedValue="true" unselectedValue="false" readonly="false" ref="//ord:D20/ord:Offence1/ord:OffencePPSCO1Section/@selected">
+					<dropdown name="OffencePPSCO1" type="twelve" label="" length="30" ref="//ord:D20/ord:Offence1/ord:OffencePPSCO1Section/ord:OffencePPSCO1/ord:D20OffencePPSCODropdown" readonly="false"/>
+					<durationdate name="OffencePPSCOPeriod1"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence1/ord:OffencePPSCO1Section/ord:OffencePPSCO1/ord:D20OffencePPSCODurationType" readonly="false"/>
+				</section>
+				
+				<!-- Drop down for DTTP or DTETP -->
+				<dropdown name="offenceDisqTestPassed1" type="seven" label="Disq Till Test Passed " length="30" ref="//ord:D20/ord:Offence1/ord:OffenceDisqTestPassed1"/>
+				<!-- Drop down for Interim / Final -->
+				<dropdown name="offenceInterimFinal1" type="fifteen" label="Interim / Final" length="30" ref="//ord:D20/ord:Offence1/ord:OffenceInterimFinal1"/>
+				<section name="SentencingIfDifferentSection1" label="" readonly="false" switchable="true" switchLabel="Date of Sentence (If Different)" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceSentencingCourt1Section/@selected">
+					<courttype name="sentencingCourt1" label="tests" readonly="false" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:D20/ord:Offence1/ord:OffenceSentencingCourt1Section/ord:OffenceSentencingCourt1/ord:CourtHouseName"/>
+					<date name="offenceDateOfSentence1" label="Date of Sentence (If Different)" readonly="false" nullable="true" ref="//ord:D20/ord:Offence1/ord:OffenceSentencingCourt1Section/ord:OffenceDateOfSentence1"/>
+				</section>
+				<section name="DateDisqRemovedSection1" label="" switchable="true" switchLabel="Date Disqualification Removed" borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceDisqualificationRemoved1Section/@selected">
+					<date name="offenceDisqualificationRemoved1" label="" ref="//ord:D20/ord:Offence1/ord:OffenceDisqualificationRemoved1Section/ord:OffenceDisqualificationRemoved1"/>
+				</section>
+				<section name="DateDisqSuspended" label="" switchable="true" switchLabel="Date Disqualification suspended pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceDisqualificationSuspended1Section/@selected">
+					<date name="offenceDisqualificationSuspended1" label="" ref="//ord:D20/ord:Offence1/ord:OffenceDisqualificationSuspended1Section/ord:OffenceDisqualificationSuspended1"/>
+				</section>
+				<section name="DateDisqReimposed" label="" switchable="true" switchLabel="Date Disqualification reimposed pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceDisqualificationReimposed1Section/@selected">
+					<date name="offenceDisqualificationReimposed1" label="" ref="//ord:D20/ord:Offence1/ord:OffenceDisqualificationReimposed1Section/ord:OffenceDisqualificationReimposed1"/>
+				</section>
+				
+				<section name="NoDisqualificationMitigatingCircumstances" label="" switchLabel="No Disqualification: Mitigating Circumstances S.35(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:NoDisqualificationMitigatingCircumstances1" selectedValue="true" unselectedValue="false"/>
+				<section name="NoDisqualificationSpecialReasons" label="" switchLabel="No Disqualification: Special Reasons S.34(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:NoDisqualificationSpecialReasons1" selectedValue="true" unselectedValue="false"/>
+				<section name="NotificationOfDisability" label="" switchLabel="Notification of Disability to Licencing Authority" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:NotificationOfDisability1" selectedValue="true" unselectedValue="false"/>
+				
+				<!-- Appeal Section - one per offence -->
+				<section name="AppealCourtSection1" label="" switchable="true" switchLabel="Appeal Court" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/@selected">
+					<courttype name="appealCourt1" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:OffenceAppealCourt1/ord:CourtHouseName"/>
+					<section name="AppealDateSection" label="" switchable="true" switchLabel="Appeal Date" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:OffenceDateOfAppeal1Section/@selected">
+						<date name="offenceDateOfAppeal1" label="" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:OffenceDateOfAppeal1Section/ord:OffenceDateOfAppeal1"/>
+					</section>
+					
+					<section name="appealwasagainstconviction" label="" switchLabel="Appeal Was Against Conviction" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasAgainstConviction1" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasagainstsentenceonly" label="" switchLabel="Appeal Was Against Sentence Only" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasAgainstSentenceOnly1" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasallowed" label="" switchLabel="Appeal Was Allowed" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasAllowed1" selectedValue="true" unselectedValue="false"/>
+					<section name="appealDismissed1Section" switchable="true" switchLabel="Appeal Dismissed"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealDismissed1Section/@selected">
+						<date name="appealdatedismissed" label="" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealDismissed1Section/ord:AppealDateDismissed1"/>
+					</section>
+					<section name="appealWasAbandoned1Section" switchable="true" switchLabel="Appeal Was Abandoned"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasAbandoned1Section/@selected">
+						<date name="appealdateabandoned" label="" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasAbandoned1Section/ord:AppealDateAbandoned1"/>
+					</section>
+					<section name="sentencewasvaried" label="" switchLabel="Sentence Was Varied" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:SentenceWasVaried1" selectedValue="true" unselectedValue="false"/>
+					<section name="appealWasRemitted1Section" switchable="true" switchLabel="Appeal Was Remitted"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasRemitted1Section/@selected">
+						<date name="appealdateremitted" label="" ref="//ord:D20/ord:Offence1/ord:OffenceAppeal1Section/ord:AppealWasRemitted1Section/ord:AppealDateRemitted1"/>
+					</section>
+					
+				</section>
+			</section>
+			
+			<!-- Offence 2 -->
+			<section name="Offence2" label="" switchLabel="" borderLabel="Offence 2" borderRaised="true" switchable="true" ref="//ord:D20/ord:Offence2/@selected" selectedValue="true" unselectedValue="false">
+				<section name="offenceCodeSection2" label="" borderLabel="" borderRaised="false">
+					<textfield name="offenceCode2" type="alphanumeric" maxLength="200" length="4" ref="//ord:D20/ord:Offence2/ord:OffenceCode2" label="Offence Code"/>
+				</section>
+				<section name="offenceDate2Section" switchable="true" switchLabel="Date of Offence"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceDate2Section/@selected">
+					<date name="offenceDate2" label="" ref="//ord:D20/ord:Offence2/ord:OffenceDate2Section/ord:OffenceDate2"/>
+				</section>
+				<section name="offenceFine2Section" label="" borderLabel="" borderRaised="false">
+					<currency name="offenceFine2" label="Fine" signLength="3" length="8" minVal="0" maxLength="8" required="false" type="float" ref="//ord:D20/ord:Offence2/ord:OffenceFine2/ord:MonetaryValue/ord:Amount"/>
+				</section>
+				<section name="offencePenaltyPointsSection2" label="" borderLabel="" borderRaised="false">
+					<textfield name="offencePenaltyPoints2" type="int" numeric="Y" maxLength="2" length="3" ref="//ord:D20/ord:Offence2/ord:OffencePenaltyPoints2" label="Penalty Points"/>
+				</section>
+				<section name="offenceAlcoholLevel2Section" label="" borderLabel="" borderRaised="">
+					<textfield name="offenceAlcoholLevel2" type="int" numeric="Y" maxLength="4" length="4" ref="//ord:D20/ord:Offence2/ord:OffenceAlcoholLevel2/ord:D20AlcoholLevelValue" label="Alcohol Level / Drug Level"/>
+					<dropdown name="alcoholLevelType2" type="ten" label=" " length="30" ref="//ord:D20/ord:Offence2/ord:OffenceAlcoholLevel2/ord:D20AlcoholLevelDropdown"/>
+				</section>
+				<section name="OffenceDisqualifiedPeriodSection2" label="" borderLabel="Disqualified Period" borderRaised="true" ref="//ord:D20/ord:OffenceDisqualifiedPeriodSection2" readonly="false">
+					<durationdate name="offenceDisqualifiedPeriod2"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence2/ord:OffenceDisqualifiedPeriod2" readonly="false" />
+				</section>
+				<section name="OffenceOtherSentence2" label="" switchLabel="Other Sentence" switchable="true" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceOtherSentence2Section/@selected">
+					<dropdown name="offenceOtherSentence2" type="eleven" label="" length="30" ref="//ord:D20/ord:Offence2/ord:OffenceOtherSentence2Section/ord:OffenceOtherSentence2/ord:D20OffenceOtherSentenceDropdown"/>
+					<section borderLabel="Duration" borderRaised="false" name="OffenceOtherSentenceLabel2">
+						<textfield name="offenceOtherSentenceText2" type="int" numeric="Y" maxLength="3" length="3" ref="//ord:D20/ord:Offence2/ord:OffenceOtherSentence2Section/ord:OffenceOtherSentence2/ord:D20OffenceOtherSentenceValue" label=""/>
+						<dropdown name="offenceOtherSentenceDurationType2" type="five_1" label="" length="5" ref="//ord:D20/ord:Offence2/ord:OffenceOtherSentence2Section/ord:OffenceOtherSentence2/ord:D20OffenceOtherSentenceDurationType"/>
+					</section>
+				</section>
+				<!-- Drop down for Period Prison Sentence or Community Order -->
+				<section name="OffencePPSCO2Section" label="" borderLabel="" borderRaised="false" switchLabel="Prison Sentence Suspended / Community Order" switchable="true" selectedValue="true" unselectedValue="false" readonly="false" ref="//ord:D20/ord:Offence2/ord:OffencePPSCO2Section/@selected">
+					<dropdown name="OffencePPSCO2" type="twelve" label="" length="30" ref="//ord:D20/ord:Offence2/ord:OffencePPSCO2Section/ord:OffencePPSCO2/ord:D20OffencePPSCODropdown" readonly="false"/>
+					<durationdate name="OffencePPSCOPeriod2"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence2/ord:OffencePPSCO2Section/ord:OffencePPSCO2/ord:D20OffencePPSCODurationType" readonly="false"/>
+				</section>
+				
+				<!-- Drop down for DTTP or DTETP -->
+				<dropdown name="offenceDisqTestPassed2" type="seven" label="Disq Till Test Passed " length="30" ref="//ord:D20/ord:Offence2/ord:OffenceDisqTestPassed2"/>
+				<!-- Drop down for Interim / Final -->
+				<dropdown name="offenceInterimFinal2" type="fifteen" label="Interim / Final" length="30" ref="//ord:D20/ord:Offence2/ord:OffenceInterimFinal2"/>
+				<section name="SentencingIfDifferentSection2" label="" readonly="false" switchable="true" switchLabel="Date of Sentence (If Different)" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceSentencingCourt2Section/@selected">
+					<courttype name="sentencingCourt2" label="tests" readonly="false" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:D20/ord:Offence2/ord:OffenceSentencingCourt2Section/ord:OffenceSentencingCourt2/ord:CourtHouseName"/>
+					<date name="offenceDateOfSentence2" label="Date of Sentence (If Different)" readonly="false" nullable="true" ref="//ord:D20/ord:Offence2/ord:OffenceSentencingCourt2Section/ord:OffenceDateOfSentence2"/>
+				</section>
+				<section name="DateDisqRemovedSection2" label="" switchable="true" switchLabel="Date Disqualification Removed" borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceDisqualificationRemoved2Section/@selected">
+					<date name="offenceDisqualificationRemoved2" label="" ref="//ord:D20/ord:Offence2/ord:OffenceDisqualificationRemoved2Section/ord:OffenceDisqualificationRemoved2"/>
+				</section>
+				<section name="DateDisqSuspended" label="" switchable="true" switchLabel="Date Disqualification suspended pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceDisqualificationSuspended2Section/@selected">
+					<date name="offenceDisqualificationSuspended2" label="" ref="//ord:D20/ord:Offence2/ord:OffenceDisqualificationSuspended2Section/ord:OffenceDisqualificationSuspended2"/>
+				</section>
+				<section name="DateDisqReimposed" label="" switchable="true" switchLabel="Date Disqualification reimposed pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceDisqualificationReimposed2Section/@selected">
+					<date name="offenceDisqualificationReimposed2" label="" ref="//ord:D20/ord:Offence2/ord:OffenceDisqualificationReimposed2Section/ord:OffenceDisqualificationReimposed2"/>
+				</section>
+				
+				<section name="NoDisqualificationMitigatingCircumstances" label="" switchLabel="No Disqualification: Mitigating Circumstances S.35(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:NoDisqualificationMitigatingCircumstances2" selectedValue="true" unselectedValue="false"/>
+				<section name="NoDisqualificationSpecialReasons" label="" switchLabel="No Disqualification: Special Reasons S.34(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:NoDisqualificationSpecialReasons2" selectedValue="true" unselectedValue="false"/>
+				<section name="NotificationOfDisability" label="" switchLabel="Notification of Disability to Licencing Authority" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:NotificationOfDisability2" selectedValue="true" unselectedValue="false"/>
+				
+				<section name="AppealCourtSection2" label="" switchable="true" switchLabel="Appeal Court" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/@selected">
+					<courttype name="appealCourt2" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:OffenceAppealCourt2/ord:CourtHouseName"/>
+					<section name="AppealDateSection" label="" switchable="true" switchLabel="Appeal Date" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:OffenceDateOfAppeal2Section/@selected">
+						<date name="offenceDateOfAppeal2" label="" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:OffenceDateOfAppeal2Section/ord:OffenceDateOfAppeal2"/>
+					</section>
+					
+					<section name="appealwasagainstconviction" label="" switchLabel="Appeal Was Against Conviction" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasAgainstConviction2" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasagainstsentenceonly" label="" switchLabel="Appeal Was Against Sentence Only" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasAgainstSentenceOnly2" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasallowed" label="" switchLabel="Appeal Was Allowed" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasAllowed2" selectedValue="true" unselectedValue="false"/>
+					<section name="appealDismissed2Section" switchable="true" switchLabel="Appeal Dismissed"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealDismissed2Section/@selected">
+						<date name="appealdatedismissed" label="" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealDismissed2Section/ord:AppealDateDismissed2"/>
+					</section>
+					<section name="appealWasAbandoned2Section" switchable="true" switchLabel="Appeal Was Abandoned"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasAbandoned2Section/@selected">
+						<date name="appealdateabandoned" label="" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasAbandoned2Section/ord:AppealDateAbandoned2"/>
+					</section>
+					<section name="sentencewasvaried" label="" switchLabel="Sentence Was Varied" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:SentenceWasVaried2" selectedValue="true" unselectedValue="false"/>
+					<section name="appealWasRemitted2Section" switchable="true" switchLabel="Appeal Was Remitted"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasRemitted2Section/@selected">
+						<date name="appealdateremitted" label="" ref="//ord:D20/ord:Offence2/ord:OffenceAppeal2Section/ord:AppealWasRemitted2Section/ord:AppealDateRemitted2"/>
+					</section>
+					
+				</section>
+			</section>
+			
+			<!-- Offence 3 -->
+			<section name="Offence3" label="" switchLabel="" borderLabel="Offence 3" borderRaised="true" switchable="true" ref="//ord:D20/ord:Offence3/@selected" selectedValue="true" unselectedValue="false">
+				<section name="offenceCodeSection3" label="" borderLabel="" borderRaised="false">
+					<textfield name="offenceCode3" type="alphanumeric" maxLength="200" length="4" ref="//ord:D20/ord:Offence3/ord:OffenceCode3" label="Offence Code"/>
+				</section>
+				<section name="offenceDate3Section" switchable="true" switchLabel="Date of Offence"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceDate3Section/@selected">
+					<date name="offenceDate3" label="" ref="//ord:D20/ord:Offence3/ord:OffenceDate3Section/ord:OffenceDate3"/>
+				</section>
+				<section name="offenceFine3Section" label="" borderLabel="" borderRaised="false">
+					<currency name="offenceFine3" label="Fine" signLength="3" length="8" minVal="0" maxLength="8" required="false" type="float" ref="//ord:D20/ord:Offence3/ord:OffenceFine3/ord:MonetaryValue/ord:Amount"/>
+				</section>
+				<section name="offencePenaltyPointsSection3" label="" borderLabel="" borderRaised="false">
+					<textfield name="offencePenaltyPoints3" type="int" numeric="Y" maxLength="2" length="3" ref="//ord:D20/ord:Offence3/ord:OffencePenaltyPoints3" label="Penalty Points"/>
+				</section>
+				<section name="offenceAlcoholLevel3Section" label="" borderLabel="" borderRaised="">
+					<textfield name="offenceAlcoholLevel3" type="int" numeric="Y" maxLength="4" length="4" ref="//ord:D20/ord:Offence3/ord:OffenceAlcoholLevel3/ord:D20AlcoholLevelValue" label="Alcohol Level / Drug Level"/>
+					<dropdown name="alcoholLevelType3" type="ten" label=" " length="30" ref="//ord:D20/ord:Offence3/ord:OffenceAlcoholLevel3/ord:D20AlcoholLevelDropdown"/>
+				</section>
+				<section name="OffenceDisqualifiedPeriodSection3" label="" borderLabel="Disqualified Period" borderRaised="true" ref="//ord:D20/ord:OffenceDisqualifiedPeriodSection3" readonly="false">
+					<durationdate name="offenceDisqualifiedPeriod3"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence3/ord:OffenceDisqualifiedPeriod3" readonly="false" />
+				</section>
+				<section name="OffenceOtherSentence3" label="" switchLabel="Other Sentence" switchable="true" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceOtherSentence3Section/@selected">
+					<dropdown name="offenceOtherSentence3" type="eleven" label="" length="30" ref="//ord:D20/ord:Offence3/ord:OffenceOtherSentence3Section/ord:OffenceOtherSentence3/ord:D20OffenceOtherSentenceDropdown"/>
+					<section borderLabel="Duration" borderRaised="false" name="OffenceOtherSentenceLabel3">
+						<textfield name="offenceOtherSentenceText3" type="int" numeric="Y" maxLength="3" length="3" ref="//ord:D20/ord:Offence3/ord:OffenceOtherSentence3Section/ord:OffenceOtherSentence3/ord:D20OffenceOtherSentenceValue" label=""/>
+						<dropdown name="offenceOtherSentenceDurationType3" type="five_1" label="" length="5" ref="//ord:D20/ord:Offence3/ord:OffenceOtherSentence3Section/ord:OffenceOtherSentence3/ord:D20OffenceOtherSentenceDurationType"/>
+					</section>
+				</section>
+				<!-- Drop down for Period Prison Sentence or Community Order -->
+				<section name="OffencePPSCO3Section" label="" borderLabel="" borderRaised="false" switchLabel="Prison Sentence Suspended / Community Order" switchable="true" selectedValue="true" unselectedValue="false" readonly="false" ref="//ord:D20/ord:Offence3/ord:OffencePPSCO3Section/@selected">
+					<dropdown name="OffencePPSCO3" type="twelve" label="" length="30" ref="//ord:D20/ord:Offence3/ord:OffencePPSCO3Section/ord:OffencePPSCO3/ord:D20OffencePPSCODropdown" readonly="false"/>
+					<durationdate name="OffencePPSCOPeriod3"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence3/ord:OffencePPSCO3Section/ord:OffencePPSCO3/ord:D20OffencePPSCODurationType" readonly="false"/>
+				</section>
+				
+				<!-- Drop down for DTTP or DTETP -->
+				<dropdown name="offenceDisqTestPassed3" type="seven" label="Disq Till Test Passed " length="30" ref="//ord:D20/ord:Offence3/ord:OffenceDisqTestPassed3"/>
+				<!-- Drop down for Interim / Final -->
+				<dropdown name="offenceInterimFinal3" type="fifteen" label="Interim / Final" length="30" ref="//ord:D20/ord:Offence3/ord:OffenceInterimFinal3"/>
+				<section name="SentencingIfDifferentSection3" label="" readonly="false" switchable="true" switchLabel="Date of Sentence (If Different)" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceSentencingCourt3Section/@selected">
+					<courttype name="sentencingCourt3" label="tests" readonly="false" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:D20/ord:Offence3/ord:OffenceSentencingCourt3Section/ord:OffenceSentencingCourt3/ord:CourtHouseName"/>
+					<date name="offenceDateOfSentence3" label="Date of Sentence (If Different)" readonly="false" nullable="true" ref="//ord:D20/ord:Offence3/ord:OffenceSentencingCourt3Section/ord:OffenceDateOfSentence3"/>
+				</section>
+				<section name="DateDisqRemovedSection3" label="" switchable="true" switchLabel="Date Disqualification Removed" borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceDisqualificationRemoved3Section/@selected">
+					<date name="offenceDisqualificationRemoved3" label="" ref="//ord:D20/ord:Offence3/ord:OffenceDisqualificationRemoved3Section/ord:OffenceDisqualificationRemoved3"/>
+				</section>
+				<section name="DateDisqSuspended" label="" switchable="true" switchLabel="Date Disqualification suspended pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceDisqualificationSuspended3Section/@selected">
+					<date name="offenceDisqualificationSuspended3" label="" ref="//ord:D20/ord:Offence3/ord:OffenceDisqualificationSuspended3Section/ord:OffenceDisqualificationSuspended3"/>
+				</section>
+				<section name="DateDisqReimposed" label="" switchable="true" switchLabel="Date Disqualification reimposed pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceDisqualificationReimposed3Section/@selected">
+					<date name="offenceDisqualificationReimposed3" label="" ref="//ord:D20/ord:Offence3/ord:OffenceDisqualificationReimposed3Section/ord:OffenceDisqualificationReimposed3"/>
+				</section>
+				
+				<section name="NoDisqualificationMitigatingCircumstances" label="" switchLabel="No Disqualification: Mitigating Circumstances S.35(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:NoDisqualificationMitigatingCircumstances3" selectedValue="true" unselectedValue="false"/>
+				<section name="NoDisqualificationSpecialReasons" label="" switchLabel="No Disqualification: Special Reasons S.34(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:NoDisqualificationSpecialReasons3" selectedValue="true" unselectedValue="false"/>
+				<section name="NotificationOfDisability" label="" switchLabel="Notification of Disability to Licencing Authority" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:NotificationOfDisability3" selectedValue="true" unselectedValue="false"/>
+				
+				<section name="AppealCourtSection3" label="" switchable="true" switchLabel="Appeal Court" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/@selected">
+					<courttype name="appealCourt3" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:OffenceAppealCourt3/ord:CourtHouseName"/>
+					<section name="AppealDateSection" label="" switchable="true" switchLabel="Appeal Date" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:OffenceDateOfAppeal3Section/@selected">
+						<date name="offenceDateOfAppeal3" label="" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:OffenceDateOfAppeal3Section/ord:OffenceDateOfAppeal3"/>
+					</section>
+					
+					<section name="appealwasagainstconviction" label="" switchLabel="Appeal Was Against Conviction" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasAgainstConviction3" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasagainstsentenceonly" label="" switchLabel="Appeal Was Against Sentence Only" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasAgainstSentenceOnly3" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasallowed" label="" switchLabel="Appeal Was Allowed" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasAllowed3" selectedValue="true" unselectedValue="false"/>
+					<section name="appealDismissed3Section" switchable="true" switchLabel="Appeal Dismissed"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealDismissed3Section/@selected">
+						<date name="appealdatedismissed" label="" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealDismissed3Section/ord:AppealDateDismissed3"/>
+					</section>
+					<section name="appealWasAbandoned3Section" switchable="true" switchLabel="Appeal Was Abandoned"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasAbandoned3Section/@selected">
+						<date name="appealdateabandoned" label="" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasAbandoned3Section/ord:AppealDateAbandoned3"/>
+					</section>
+					<section name="sentencewasvaried" label="" switchLabel="Sentence Was Varied" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:SentenceWasVaried3" selectedValue="true" unselectedValue="false"/>
+					<section name="appealWasRemitted3Section" switchable="true" switchLabel="Appeal Was Remitted"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasRemitted3Section/@selected">
+						<date name="appealdateremitted" label="" ref="//ord:D20/ord:Offence3/ord:OffenceAppeal3Section/ord:AppealWasRemitted3Section/ord:AppealDateRemitted3"/>
+					</section>
+					
+				</section>
+			</section>
+			
+			<!-- Offence 4 -->
+			<section name="Offence4" label="" switchLabel="" borderLabel="Offence 4" borderRaised="true" switchable="true" ref="//ord:D20/ord:Offence4/@selected" selectedValue="true" unselectedValue="false">
+				<section name="offenceCodeSection4" label="" borderLabel="" borderRaised="false">
+					<textfield name="offenceCode4" type="alphanumeric" maxLength="200" length="4" ref="//ord:D20/ord:Offence4/ord:OffenceCode4" label="Offence Code"/>
+				</section>
+				<section name="offenceDate4Section" switchable="true" switchLabel="Date of Offence" borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceDate4Section/@selected">
+					<date name="offenceDate4" label="" ref="//ord:D20/ord:Offence4/ord:OffenceDate4Section/ord:OffenceDate4"/>
+				</section>
+				<section name="offenceFine4Section" label="" borderLabel="" borderRaised="false">
+					<currency name="offenceFine4" label="Fine" signLength="3" length="8" minVal="0" maxLength="8" required="false" type="float" ref="//ord:D20/ord:Offence4/ord:OffenceFine4/ord:MonetaryValue/ord:Amount"/>
+				</section>
+				<section name="offencePenaltyPointsSection4" label="" borderLabel="" borderRaised="false">
+					<textfield name="offencePenaltyPoints4" type="int" numeric="Y" maxLength="2" length="3" ref="//ord:D20/ord:Offence4/ord:OffencePenaltyPoints4" label="Penalty Points"/>
+				</section>
+				<section name="offenceAlcoholLevel4Section" label="" borderLabel="" borderRaised="">
+					<textfield name="offenceAlcoholLevel4" type="int" numeric="Y" maxLength="4" length="4" ref="//ord:D20/ord:Offence4/ord:OffenceAlcoholLevel4/ord:D20AlcoholLevelValue" label="Alcohol Level / Drug Level"/>
+					<dropdown name="alcoholLevelType4" type="ten" label=" " length="30" ref="//ord:D20/ord:Offence4/ord:OffenceAlcoholLevel4/ord:D20AlcoholLevelDropdown"/>
+				</section>
+				<section name="OffenceDisqualifiedPeriodSection4" label="" borderLabel="Disqualified Period" borderRaised="true" ref="//ord:D20/ord:OffenceDisqualifiedPeriodSection4" readonly="false">
+					<durationdate name="offenceDisqualifiedPeriod4"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence4/ord:OffenceDisqualifiedPeriod4" readonly="false" />
+				</section>
+				<section name="OffenceOtherSentence4" label="" switchLabel="Other Sentence" switchable="true" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceOtherSentence4Section/@selected">
+					<dropdown name="offenceOtherSentence4" type="eleven" label="" length="30" ref="//ord:D20/ord:Offence4/ord:OffenceOtherSentence4Section/ord:OffenceOtherSentence4/ord:D20OffenceOtherSentenceDropdown"/>
+					<section borderLabel="Duration" borderRaised="false" name="OffenceOtherSentenceLabel4">
+						<textfield name="offenceOtherSentenceText4" type="int" numeric="Y" maxLength="3" length="3" ref="//ord:D20/ord:Offence4/ord:OffenceOtherSentence4Section/ord:OffenceOtherSentence4/ord:D20OffenceOtherSentenceValue" label=""/>
+						<dropdown name="offenceOtherSentenceDurationType4" type="five_1" label="" length="5" ref="//ord:D20/ord:Offence4/ord:OffenceOtherSentence4Section/ord:OffenceOtherSentence4/ord:D20OffenceOtherSentenceDurationType"/>
+					</section>
+				</section>
+				<!-- Drop down for Period Prison Sentence or Community Order -->
+				<section name="OffencePPSCO4Section" label="" borderLabel="" borderRaised="false" switchLabel="Prison Sentence Suspended / Community Order" switchable="true" selectedValue="true" unselectedValue="false" readonly="false" ref="//ord:D20/ord:Offence4/ord:OffencePPSCO4Section/@selected">
+					<dropdown name="OffencePPSCO4" type="twelve" label="" length="30" ref="//ord:D20/ord:Offence4/ord:OffencePPSCO4Section/ord:OffencePPSCO4/ord:D20OffencePPSCODropdown" readonly="false"/>
+					<durationdate name="OffencePPSCOPeriod4"  dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" daysMax="99" monthsMax="99" yearsMax="99" label="" defaultrequired="false" ref="/" ref1="//ord:D20/ord:Offence4/ord:OffencePPSCO4Section/ord:OffencePPSCO4/ord:D20OffencePPSCODurationType" readonly="false"/>
+				</section>
+				
+				<!-- Drop down for DTTP or DTETP -->
+				<dropdown name="offenceDisqTestPassed4" type="seven" label="Disq Till Test Passed " length="30" ref="//ord:D20/ord:Offence4/ord:OffenceDisqTestPassed4"/>
+				<!-- Drop down for Interim / Final -->
+				<dropdown name="offenceInterimFinal4" type="fifteen" label="Interim / Final" length="30" ref="//ord:D20/ord:Offence4/ord:OffenceInterimFinal4"/>
+				<section name="SentencingIfDifferentSection4" label="" readonly="false" switchable="true" switchLabel="Date of Sentence (If Different)" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceSentencingCourt4Section/@selected">
+					<courttype name="sentencingCourt4" label="tests" readonly="false" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="true" courtlabel="false" ref="//ord:D20/ord:Offence4/ord:OffenceSentencingCourt4Section/ord:OffenceSentencingCourt4/ord:CourtHouseName"/>
+					<date name="offenceDateOfSentence4" label="Date of Sentence (If Different)" readonly="false" nullable="true" ref="//ord:D20/ord:Offence4/ord:OffenceSentencingCourt4Section/ord:OffenceDateOfSentence4"/>
+				</section>
+				<section name="DateDisqRemovedSection4" label="" switchable="true" switchLabel="Date Disqualification Removed" borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceDisqualificationRemoved4Section/@selected">
+					<date name="offenceDisqualificationRemoved4" label="" ref="//ord:D20/ord:Offence4/ord:OffenceDisqualificationRemoved4Section/ord:OffenceDisqualificationRemoved4"/>
+				</section>
+				<section name="DateDisqSuspended" label="" switchable="true" switchLabel="Date Disqualification suspended pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceDisqualificationSuspended4Section/@selected">
+					<date name="offenceDisqualificationSuspended4" label="" ref="//ord:D20/ord:Offence4/ord:OffenceDisqualificationSuspended4Section/ord:OffenceDisqualificationSuspended4"/>
+				</section>
+				<section name="DateDisqReimposed" label="" switchable="true" switchLabel="Date Disqualification reimposed pending appeal/further sentence" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceDisqualificationReimposed4Section/@selected">
+					<date name="offenceDisqualificationReimposed4" label="" ref="//ord:D20/ord:Offence4/ord:OffenceDisqualificationReimposed4Section/ord:OffenceDisqualificationReimposed4"/>
+				</section>
+				
+				<section name="NoDisqualificationMitigatingCircumstances" label="" switchLabel="No Disqualification: Mitigating Circumstances S.35(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:NoDisqualificationMitigatingCircumstances4" selectedValue="true" unselectedValue="false"/>
+				<section name="NoDisqualificationSpecialReasons" label="" switchLabel="No Disqualification: Special Reasons S.34(1) RTOA 1988" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:NoDisqualificationSpecialReasons4" selectedValue="true" unselectedValue="false"/>
+				<section name="NotificationOfDisability" label="" switchLabel="Notification of Disability to Licencing Authority" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:NotificationOfDisability4" selectedValue="true" unselectedValue="false"/>
+				
+				<section name="AppealCourtSection4" label="" switchable="true" switchLabel="Appeal Court" borderLabel=""  borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/@selected">
+					<courttype name="appealCourt4" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:OffenceAppealCourt4/ord:CourtHouseName"/>
+					<section name="AppealDateSection" label="" switchable="true" switchLabel="Appeal Date" borderLabel="" borderRaised="true" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:OffenceDateOfAppeal4Section/@selected">
+						<date name="offenceDateOfAppeal4" label="" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:OffenceDateOfAppeal4Section/ord:OffenceDateOfAppeal4"/>
+					</section>
+					
+					<section name="appealwasagainstconviction" label="" switchLabel="Appeal Was Against Conviction" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasAgainstConviction4" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasagainstsentenceonly" label="" switchLabel="Appeal Was Against Sentence Only" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasAgainstSentenceOnly4" selectedValue="true" unselectedValue="false"/>
+					<section name="appealwasallowed" label="" switchLabel="Appeal Was Allowed" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasAllowed4" selectedValue="true" unselectedValue="false"/>
+					<section name="appealDismissed4Section" switchable="true" switchLabel="Appeal Dismissed"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealDismissed4Section/@selected">
+						<date name="appealdatedismissed" label="" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealDismissed4Section/ord:AppealDateDismissed4"/>
+					</section>
+					<section name="appealWasAbandoned4Section" switchable="true" switchLabel="Appeal Was Abandoned"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasAbandoned4Section/@selected">
+						<date name="appealdateabandoned" label="" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasAbandoned4Section/ord:AppealDateAbandoned4"/>
+					</section>
+					<section name="sentencewasvaried" label="" switchLabel="Sentence Was Varied" borderRaised="false" switchable="true" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:SentenceWasVaried4" selectedValue="true" unselectedValue="false"/>
+					<section name="appealWasRemitted4Section" switchable="true" switchLabel="Appeal Was Remitted"  borderLabel="" borderRaised="false" selectedValue="true" unselectedValue="false" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasRemitted4Section/@selected">
+						<date name="appealdateremitted" label="" ref="//ord:D20/ord:Offence4/ord:OffenceAppeal4Section/ord:AppealWasRemitted4Section/ord:AppealDateRemitted4"/>
+					</section>
+					
+				</section>
+			</section>
+			
+		</section>
+	</form>
+</template>

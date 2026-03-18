@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByAddressId(java.lang.Integer addressId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbContactDetail o WHERE o.addressId = ?1"
+ *
+ * -------- end of custom finders --------
+  

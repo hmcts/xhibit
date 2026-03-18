@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Joinder">
+
+    <description>
+        Description to be done...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.controller.bean"      value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="XhibitEntities.jar" />
+                <include name="Value.jar" />
+                <include name="DefendantController.jar" />
+                <include name="ChargeController.jar" />
+                <include name="CourtLog2Controller.jar" />
+                <include name="Results2Controller.jar" />
+            </fileset>
+        </path>
+    </target>
+</project>

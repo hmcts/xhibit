@@ -1,0 +1,33 @@
+Changes from 0_4_v to 0_4_w
+
+- Details for New Schemas changed by CR54
+- Document Name change for CR71
+
+Insert into CJI_DOCUMENT_TYPE values
+ (5,'IN','Indictment','INDICTMENT','http://www.courtservice.gov.uk/transforms/courtservice/Indictment-v2-2.xsl', 
+'http://www.courtservice.gov.uk/transforms/courtservice Indictment-v2-1.xsd','NPM',
+'BITS.IndictmentOrderHandler', 'BITS.XMLTransformHandler','Y', 'N','Y', 'N');
+
+becomes:
+
+Insert into CJI_DOCUMENT_TYPE values
+ (5,'CH','Charges','CHARGES','http://www.courtservice.gov.uk/transforms/courtservice/Indictment-v2-3.xsl', 
+'http://www.courtservice.gov.uk/transforms/courtservice Indictment-v2-1.xsd','NPM',
+'BITS.IndictmentOrderHandler', 'BITS.XMLTransformHandler','Y', 'N','Y', 'N');
+
+
+Also CR 77 
+
+Insert into CJI_DOCUMENT_TYPE values 
+ (11,'BO','Bail Order','BAILORDER','http://www.courtservice.gov.uk/transforms/courtservice/BailOrder-v2-2.xsl',
+'http://www.courtservice.gov.uk/transforms/courtservice BailOrder-v2-1.xsd' , 'NPM',
+'BITS.BailOrderHandler', 'BITS.XMLTransformHandler','Y', 'N','N', 'Y');
+
+
+becomes:
+
+Insert into CJI_DOCUMENT_TYPE values 
+ (11,'BO','Bail Order','BAILORDER','http://www.courtservice.gov.uk/transforms/courtservice/BailOrder-v2-3.xsl',
+'http://www.courtservice.gov.uk/transforms/courtservice BailOrder-v2-1.xsd' , 'NPM',
+'BITS.BailOrderHandler', 'BITS.XMLTransformHandler','Y', 'N','N', 'Y');
+

@@ -1,0 +1,4 @@
+**/*.class
+**/*TestDialog*
+**/*XTableTestPanel*
+**/client/test/**

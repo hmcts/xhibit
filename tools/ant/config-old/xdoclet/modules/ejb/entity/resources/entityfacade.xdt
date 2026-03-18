@@ -1,0 +1,122 @@
+ /*
+ * <XDtI18n:getString bundle="xdoclet.modules.ejb.XDocletModulesEjbMessages" resource="do_not_edit"/>
+ * 
+ */
+package <XDtPackage:packageOf><XDtEjbFacade:entityFacadeClass/></XDtPackage:packageOf>;
+
+import java.util.*;
+import uk.gov.courtservice.framework.services.CSServices;
+
+
+/**  This class is a helper class to allow quick EJB based actions.
+  *  it has strongly typed return value objects instead of EJB Collections. It
+  *  also supplies the basic CRUD methods which act upon the value objects.
+  *
+  *  @author XDoclet, Neil Ellis
+  *
+  */
+public  class <XDtClass:classOf><XDtEjbFacade:entityFacadeClass/></XDtClass:classOf>
+{
+
+<XDtEjbFacade:ifUseLocalInterface>
+
+private static <XDtEjbHome:homeInterface type="local"/> home;
+
+    static {
+      try {
+        home= (<XDtEjbHome:homeInterface type="local"/>) CSServices.getServiceLocator().getLocalHome(<XDtEjbHome:homeInterface type="local"/>.class);
+      } catch (Exception e) {
+      	e.printStackTrace();
+      }
+    }
+
+   public static <XDtEjbHome:homeInterface type="local"/> getLocalHome() 
+   {
+   	return home;
+   }
+
+</XDtEjbFacade:ifUseLocalInterface>
+
+
+   // finder methods
+<XDtEjbFacade:ifUseLocalInterface>
+  <XDtEjbHome:forAllHomeMethods type="local" tagName="ejb:finder">
+	 <XDtEjbHome:ifIsCollectionType>
+	  public static <XDtEjbDataObj:dataObjectClass/>[] <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>)  throws <XDtEjbHome:currentExceptions/>{
+	 </XDtEjbHome:ifIsCollectionType>
+	 <XDtEjbHome:ifIsEnumerationType>
+	  public  static <XDtEjbDataObj:dataObjectClass/>[] <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>)  throws <XDtEjbHome:currentExceptions/>{
+	 </XDtEjbHome:ifIsEnumerationType>
+	 <XDtEjbHome:ifIsInterfaceType>
+	  public  static <XDtEjbDataObj:dataObjectClass/> <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>) throws <XDtEjbHome:currentExceptions/> {
+	 </XDtEjbHome:ifIsInterfaceType>
+	  	 <XDtEjbHome:currentType/> selected = getLocalHome().<XDtEjbHome:currentMethod/>( <XDtEjbHome:parameterList/> );
+
+		 <XDtEjbHome:ifIsCollectionType>
+		 	<XDtEjbDataObj:dataObjectClass/>[] retval = new <XDtEjbDataObj:dataObjectClass/>[selected.size()];
+		 	int count=0;
+		 	for(Iterator i = selected.iterator(); i.hasNext();) {
+			   retval[count++]= (((<XDtEjbIntf:componentInterface type="local"/>)i.next()).getData());
+			}
+		 </XDtEjbHome:ifIsCollectionType>
+		 <XDtEjbHome:ifIsEnumerationType>
+		 	int count=0;
+		 	<XDtEjbDataObj:dataObjectClass/>[] retval = new <XDtEjbDataObj:dataObjectClass/>[selected.size()];
+		 	for(; selected.hasMoreElements();) {
+			   retval[count++]= (((<XDtEjbIntf:componentInterface type="local"/>)selected.nextElement()).getData());
+			}
+		 </XDtEjbHome:ifIsEnumerationType>
+		 <XDtEjbHome:ifIsInterfaceType>
+		        <XDtEjbDataObj:dataObjectClass/> retval = selected.getData();
+		 </XDtEjbHome:ifIsInterfaceType>
+
+		 return retval;
+	  }
+</XDtEjbHome:forAllHomeMethods>
+
+// create methods
+<XDtEjbHome:forAllHomeMethods  type="local" tagName="ejb:create-method">
+
+   public static <XDtEjbDataObj:dataObjectClass/> <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>)
+   throws <XDtEjbHome:currentExceptions/> 
+   {
+   	return getLocalHome().create(<XDtEjbHome:parameterList/>).getData();
+   }
+</XDtEjbHome:forAllHomeMethods>
+
+// update method
+ <XDtMethod:setCurrentMethod name="getData">
+  <XDtMethod:setCurrentMethod name="setData" parameters="<XDtEjbDataObj:dataObjectClass/>">
+   public static <XDtEjbDataObj:dataObjectClass/> update(<XDtEjbDataObj:dataObjectClass/> data)
+   	throws javax.ejb.FinderException 
+   {
+   <XDtEjbIntf:componentInterface type="local"/> obj = 	getLocalHome().findByPrimaryKey(data.getPrimaryKey());
+      obj.setData(data);
+      return obj.getData();
+   }
+  </XDtMethod:setCurrentMethod>
+</XDtMethod:setCurrentMethod>
+
+//remove method
+<XDtMethod:setCurrentMethod name="ejbRemove">
+    public static void remove(<XDtEjbDataObj:dataObjectClass/> data)
+        throws javax.ejb.RemoveException,  javax.ejb.FinderException
+    {
+    	getLocalHome().findByPrimaryKey(data.getPrimaryKey()).remove();
+    }
+</XDtMethod:setCurrentMethod>
+
+</XDtEjbFacade:ifUseLocalInterface>
+
+<XDtEjbFacade:ifUseRemoteInterface>
+
+/**
+ * nothing at the moment, I'm lazy right now.
+ * this pattern makes sense for using with local interfaces...
+ */
+
+</XDtEjbFacade:ifUseRemoteInterface>
+
+
+
+}

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Defendant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Direction_By_Defendant_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Direction_By_Defendant_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40708_Form_B" minOccurs="0"/>
+				<xs:element ref="Defendant_Name" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Defendant_Name" type="xs:string"/>
+	<xs:element name="E40708_Form_B">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40708_Form_B_Options"/>
+				<xs:element name="E40708_To_Be_Filed_Date" type="xs:string" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40708_Form_B_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40708_Filed"/>
+				<xs:enumeration value="E40708_To_Be_Filed"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

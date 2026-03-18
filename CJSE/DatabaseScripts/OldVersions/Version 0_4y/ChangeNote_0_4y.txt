@@ -1,0 +1,10 @@
+Changes from 0_4_x to 0_4_y
+
+
+To cover CJIP relocation:
+
+INSERT INTO CJI_CJIP_REQUEST_STATUS VALUES (5,'Pending');
+
+INSERT INTO CJI_DOCUMENT_STATUS VALUES (11,'Pending');
+
+

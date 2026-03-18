@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Defendant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Direction_By_Defendant_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Direction_By_Defendant_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40705_Arraignment" minOccurs="0"/>
+				<xs:element ref="Defendant_Name" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Defendant_Name" type="xs:string"/>
+	<xs:element name="E40705_Arraignment" type="xs:boolean"/>
+</xs:schema>

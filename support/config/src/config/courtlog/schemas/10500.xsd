@@ -1,0 +1,29 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<!--Resume-->
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Listed_Def_On_Case_Ids" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Listed_Def_On_Case_Ids">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Def_On_Case_Id" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Def_On_Case_Id">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="doc_id" type="xs:integer" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+	</xs:element>	
+</xs:schema>

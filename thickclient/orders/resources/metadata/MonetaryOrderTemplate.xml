@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<!--  $Revision: 1.9 $  $Author: hingstb $ $Date: 2016/10/05 16:17:39 $-->
+<template>
+	<form>
+		<section name="monetaryOrder" label="" borderLabel="" borderRaised="">
+		
+			<section name="CollectionCentreSection" label="" borderLabel="Collection Centre" borderRaised="">			
+				<collectioncentre name="collectionCentreType" label="Collection Centre" collectioncentre="true" courtlabel="false" ref="//ord:CollectionCentre/ord:CollectionCentreName"/>
+			</section>
+			
+			<section name="CommittingMagsCourtSection" label="" borderLabel="Committing Magistrates Court" borderRaised="">
+				<courttype name="commMagsCourt" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:MonetaryOrder/ord:MOCommittingMagsCourt/ord:CourtHouseName"/>
+			</section>
+			
+			<section name="CollectingMagsCourtSection" label="" borderLabel="Collecting Magistrates Court" borderRaised="">
+				<courttype name="collMagsCourt" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:MonetaryOrder/ord:MOCollectingMagsCourt/ord:CourtHouseName"/>
+			</section>
+			
+			<!--<section name="MagsCourtSupervisingSection" label="" borderLabel="Magistrates Court Supervising" borderRaised="">
+				<courttype name="collMagsCourt" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:MonetaryOrder/ord:MOSupervisingMagsCourt/ord:CourtHouseName"/>
+			</section>-->
+			
+			<section name="collectionOrderMadeSection" label="" borderLabel="Collection Order Made" borderRaised="">
+				<choice name="collectionOrderMadeOption" label="Collection Order Made" switchLabel="Collection Order Made" ref="//ord:MonetaryOrder/ord:CollectionOrderMade">
+					<option name="yesOption" label="Yes" value="Yes"/>
+					<option name="noOption" label="No" value="No"/>
+				</choice>
+			</section>
+			
+			<section name="inCustodySection" label="" borderLabel="" borderRaised="">
+				<choice name="inCustodyOption" label="In Custody" switchLabel="In Custody" ref="//ord:MonetaryOrder/ord:InCustody">
+					<option name="yesOption" label="In Custody" value="Yes"/>
+					<option name="noOption" label="Not in Custody" value="No"/>
+				</choice>
+			</section>
+			
+			<date name="sentenceDate" label="Sentence Date:" ref="//ord:MonetaryOrder/ord:SentenceDate"/>
+			
+			<textfield name="parentGuardianNameValue" ref="//ord:MonetaryOrder/ord:ParentGuardianName" label="Parent/Guardian Name" type="string" maxLength="100" length="22"/>
+			<textarea name="paymentRateValue" ref="//ord:MonetaryOrder/ord:PaymentRateValue" label="Payment Terms: " rows="8" cols="35" maxlength="1000"/>
+			
+			<textarea name="additionalDetails" ref="//ord:MonetaryOrder/ord:AdditionalDetails" label="Additional Details: " rows="8" cols="35" maxlength="1000"/>
+			
+			<section name="fine" label="" switchLabel="" borderLabel="Fine (default period)" borderRaised="" switchable="true" ref="//ord:MonetaryOrder/ord:Fine/@selected" selectedValue="true" unselectedValue="false">
+				<durationdate name="defaultperiod" dayattribute="true" weekattribute="true" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="" ref="/" ref1="//ord:MonetaryOrder/ord:Fine/ord:DefaultPeriod"/>
+			</section>
+			
+			<section name="imprisonment" label="" switchLabel="" borderLabel="Imprisonment (length of sentence)" borderRaised="" switchable="true" ref="//ord:MonetaryOrder/ord:Imprisonment/@selected" selectedValue="true" unselectedValue="false">
+				<durationdate name="lenghtofsentence" dayattribute="true" weekattribute="true" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="" ref="/" ref1="//ord:MonetaryOrder/ord:Imprisonment/ord:LengthOfSentence"/>
+			</section>
+		</section>
+	</form>
+</template>

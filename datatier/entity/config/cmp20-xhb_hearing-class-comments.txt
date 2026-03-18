@@ -1,0 +1,22 @@
+* -------- custom finders --------
+* @ejb.finder
+*    signature="uk.gov.courtservice.xhibit.business.entities.xhb_hearing.XhbHearing findByScheduledHearingId(java.lang.Integer scheduledHearingId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (h) FROM XhbHearing h, XhbScheduledHearing sh WHERE 
+*           h.hearingId = sh.hearingId AND
+*           sh.scheduledHearingId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findLinkedHearings(java.lang.Integer hearingId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT DISTINCT OBJECT(xh_2) FROM XhbHearing xh_1, XhbHearing xh_2 WHERE  xh_1.caseId <> xh_2.caseId AND xh_1.linkedHearingId = xh_2.linkedHearingId AND xh_1.hearingId = ?1"
+*
+*
+* @ejb.finder
+*    signature="java.util.Collection findLinkedHearingsFromSchedId(java.lang.Integer scheduledHearingId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT DISTINCT OBJECT(xh) FROM  XhbHearing xh, XhbScheduledHearing xsh WHERE xh.hearingId = xsh.hearingId  AND xsh.scheduledHearingId <> ?1 AND  xsh.linkedShId = (SELECT xsh1.linkedShId FROM XhbScheduledHearing xsh1 WHERE xsh1.scheduledHearingId=?1 ) "
+* -------- end of custom finders --------

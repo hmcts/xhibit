@@ -1,0 +1,1740 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by LCMG (LogicaCMG) -->
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Neil Entwistle (Electronic Data Systems LTD) -->
+<xs:schema xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xs:import namespace="http://www.govtalk.gov.uk/people/bs7666" schemaLocation="courtService/BS7666-v1.xsd"/>
+	<!--
+    -
+    - Start of Simple Type Definition
+    -
+    -->
+	<!--
+    -
+    -Schema V4.1 (08/06/2005)
+    -
+    -->
+	<xs:attributeGroup name="ConditionAttributeGroup">
+		<xs:attribute name="selected" type="xs:boolean" use="required"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="OptionalConditionAttributeGroup">
+		<xs:attribute name="selected" type="xs:boolean" use="optional"/>
+	</xs:attributeGroup>
+	<xs:simpleType name="OrganisationNameType">
+		<xs:restriction base="apd:RestrictedStringType">
+			<xs:minLength value="1"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ASnumberType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="20"/>
+			<xs:maxLength value="20"/>
+			<xs:pattern value="[0-9]{2}[A-Za-z0-9]{4}[0-9]{2}[0-9]{11}[A-Za-z0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BailDecisionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Conditional"/>
+			<xs:enumeration value="Unconditional"/>
+			<xs:enumeration value="Refused"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="BailStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="On bail"/>
+			<xs:enumeration value="On remand"/>
+			<xs:enumeration value="In care"/>
+			<xs:enumeration value="In custody"/>
+			<xs:enumeration value="Not applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CaseNumberType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[A-Z][0-9]{8}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CourtHouseCodeType">
+		<xs:restriction base="xs:string">
+			<xs:pattern value="[0-9]{3,4}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CreditForTimeOnBailSectionType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="section240a"/>
+			<xs:enumeration value="section325"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="CRnumberType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="23"/>
+			<xs:maxLength value="23"/>
+			<xs:pattern value="[0-9]{2}[A-Za-z0-9]{4}[0-9]{2}[0-9]{11}[A-Za-z0-9][0-9]{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DateQualifierType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="before"/>
+			<xs:enumeration value="on or before"/>
+			<xs:enumeration value="on"/>
+			<xs:enumeration value="on or after"/>
+			<xs:enumeration value="after"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="MoneyType">
+		<xs:restriction base="xs:decimal">
+			<xs:pattern value="[0-9]{1,8}(\d[0-9]{1,2})?"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="DetentionTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Detention"/>
+			<xs:enumeration value="Imprisonment"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrderTypes">
+		<xs:annotation>
+			<xs:documentation>Used to hold all the order types, these orders are used in this specific sequence in the</xs:documentation>
+			<xs:documentation>OrderXMLHelper.java object and must be maintained as of XHB_ORDER_TYPE</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="BailOrder"/>
+			<xs:enumeration value="BenchWarrant"/>
+			<xs:enumeration value="CPOrder"/>
+			<xs:enumeration value="CPROrder"/>
+			<xs:enumeration value="YOIOrder"/>
+			<xs:enumeration value="CROrder"/>
+			<xs:enumeration value="ImprisonmentOrder"/>
+			<xs:enumeration value="RemandOrder"/>
+			<xs:enumeration value="COOrder_pre_LASBO"/>
+			<xs:enumeration value="SUSOrder_pre_LASBO"/>
+			<xs:enumeration value="ImprisonmentOrder5035C_pre_LASBO"/>
+			<xs:enumeration value="YoungOffendersOrder5044C_pre_LASBO"/>
+			<xs:enumeration value="YoungOffendersOrder5044D_pre_LASBO"/>
+			<xs:enumeration value="BWAOrder"/>
+			<xs:enumeration value="BWCOrder"/>
+			<xs:enumeration value="ImprisonmentOrder5035C"/>
+			<xs:enumeration value="SUSOrder"/>
+			<xs:enumeration value="COOrder"/>
+			<xs:enumeration value="YoungOffendersOrder5044C"/>
+			<xs:enumeration value="YoungOffendersOrder5044D"/>
+			<xs:enumeration value="BailOrderBCase"/>
+			<xs:enumeration value="MonetaryOrder"/>
+			<xs:enumeration value="D20"/>
+			<xs:enumeration value="ReleaseFromPrisonOrder"/>
+			<xs:enumeration value="ActionConditionalDischargeOrder"/>
+			<xs:enumeration value="NoticeOfDefermentSentenceOrder"/>
+			<xs:enumeration value="NoticeBreachSuspendedSentence"/>
+			<xs:enumeration value="BreachSuspendedSentenceOrder"/>
+			<xs:enumeration value="BreachConditionalDischargeOrder"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="OrderTypeType">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="PNCnumberType">
+		<xs:restriction base="xs:string">
+			<xs:minLength value="12"/>
+			<xs:maxLength value="12"/>
+			<xs:pattern value="[0-9]{4}[0-9]{7}[A-Za-z0-9]"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="PrisonerIDtype">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="RemandType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Indicted"/>
+			<xs:enumeration value="Convicted"/>
+		</xs:restriction>
+		<!-- RemandTypeType -->
+	</xs:simpleType>
+	<xs:simpleType name="ResidenceStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="resident"/>
+			<xs:enumeration value="non-resident"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SentenceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Detention"/>
+			<xs:enumeration value="Imprisonment"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="SubjectTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Defendant"/>
+			<xs:enumeration value="Appellant"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TermTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Before"/>
+			<xs:enumeration value="Concurrent"/>
+			<xs:enumeration value="Consecutive"/>
+			<xs:enumeration value="Not Applicable"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="URNtype">
+		<xs:restriction base="xs:string"/>
+	</xs:simpleType>
+	<xs:simpleType name="XHIBITCourtType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Magistrates Court"/>
+			<xs:enumeration value="Crown Court"/>
+			<xs:enumeration value="Youth Court"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="ChargeTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="indictment"/>
+			<xs:enumeration value="summary"/>
+			<xs:enumeration value="breach"/>
+			<xs:enumeration value="committal"/>
+			<xs:enumeration value="appeal"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Section91TermTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="section91term"/>
+			<xs:enumeration value="section91life"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="Section250TermTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="section250term"/>
+			<xs:enumeration value="section250life"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="WarrantAfterFailureType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="failureToComply"/>
+			<xs:enumeration value="failureToAttend"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="AssociatedOrderType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="communityOrder"/>
+			<xs:enumeration value="suspendedSentenceOrder"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="XHIBITBailType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Unconditional"/>
+			<xs:enumeration value="SubjectToBailOrder"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="XHIBITOrderedType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="SubjectToConditions"/>
+			<xs:enumeration value="CompliedWithConditions"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="XHIBITCountType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="AllCounts"/>
+			<xs:enumeration value="SpecificCounts"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!--
+    -
+    - Start of Complex Type Definition
+    -
+    -->
+	<xs:complexType name="XHIBITNoteSection">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attributeGroup ref="OptionalConditionAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="OtherReasonsForRemandStructure">
+		<xs:sequence>
+			<xs:element name="WelfareReason" type="XHIBITNoteSection"/>
+			<xs:element name="OwnProtectionReason" type="XHIBITNoteSection"/>
+			<xs:element name="LackOfPlacementReason" type="XHIBITNoteSection"/>
+			<xs:element name="BailISSNotAvailableReason" type="XHIBITNoteSection"/>
+			<xs:element name="BailInadequateReason" type="XHIBITNoteSection"/>
+		</xs:sequence>		
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="ReasonsForRemandStructure">	
+		<xs:sequence>
+			<xs:element name="SeriousnessForRemand">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SeriousnessOfOffence"/>
+						<xs:element name="LikelyConviction" type="xs:boolean"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RemandHistory">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="HistoryForRemand"/>
+						<xs:element name="LikelyCustodialSentence" type="xs:boolean"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="NecessityCondition">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RiskOfHarm" type="xs:boolean"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OtherReasonsForRemand" type="OtherReasonsForRemandStructure"/>
+		</xs:sequence>		
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITRiskFactorsStructure">
+		<xs:sequence>
+			<xs:element name="RiskText" type="xs:string"/>
+		</xs:sequence>		
+	</xs:complexType>
+	<xs:complexType name="AttachmentTypeType">
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<!--ADDED FOR CCN400 - START -->
+	<xs:complexType name="DeportationStructure">
+		<xs:sequence>
+			<xs:element name="Reason" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- ADDED FOR CCN400 - END -->
+	<xs:complexType name="AdditionalInfoType">
+		<xs:sequence>
+			<xs:element name="AdditionalInformation" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="AdditionalOptionalInfoType">
+		<xs:simpleContent>
+			<xs:extension base="xs:string">
+				<xs:attributeGroup ref="OptionalConditionAttributeGroup"/>
+			</xs:extension>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="AddressStructure">
+		<xs:choice>
+			<xs:element name="UKAddress" type="apd:UKAddressStructure"/>
+			<xs:element name="InternationalAddress" type="apd:InternationalAddressStructure"/>
+			<!-- WDF: 24/02/03 - Changed names as CASTOR does not like names to be same as type -->
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="PersonalDetailsStructure">
+		<xs:sequence>
+			<xs:element name="Name" type="apd:CitizenNameStructure" minOccurs="0"/>
+			<xs:element name="MaskedName" type="xs:string" minOccurs="0"/>
+			<xs:element name="IsMasked" type="apd:YesNoType"/>
+			<xs:element name="DateOfBirth" type="apd:CitizenBirthDateStructure" minOccurs="0"/>
+			<xs:element name="Sex" type="apd:SexType" minOccurs="0"/>
+			<xs:element name="Address" type="apd:UKPostalAddressStructure" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PrisonLocationStructure">
+		<xs:sequence>
+			<xs:element name="Location" type="xs:string"/>
+		</xs:sequence>
+		<xs:attribute name="PrisonID" type="xs:string"/>
+	</xs:complexType>
+	<xs:complexType name="MonetaryValueType">
+		<xs:sequence>
+			<xs:element name="Amount" type="xs:decimal"/>
+			<xs:element name="Currency">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="EURO"/>
+						<xs:enumeration value="GBP"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdvocateStructure">
+		<xs:complexContent>
+			<xs:extension base="PersonStructure">
+				<xs:sequence>
+					<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+					<xs:element name="EndDate" type="xs:date" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PersonStructure">
+		<xs:sequence>
+			<xs:element name="PersonalDetails" type="PersonalDetailsStructure">
+				<xs:annotation>
+					<xs:documentation>PersonalDetails must include at least one of  Name or MaskedName (it may include both)</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ContactDetails" type="apd:CitizenContactDetailsStructure" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ConditionStructure">
+		<xs:sequence>
+			<xs:element name="Description" type="xs:string"/>
+			<xs:element name="Period" type="xs:duration" minOccurs="0"/>
+			<xs:element name="Date" type="xs:date" minOccurs="0"/>
+			<xs:element name="Surety" type="MoneyType" minOccurs="0"/>
+			<xs:element name="Security" type="MoneyType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OrganisationDetailsStructure">
+		<xs:sequence>
+			<xs:element name="OrganisationName" type="OrganisationNameType"/>
+			<xs:element name="OrganisationAddress" type="AddressStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="SolicitorStructure">
+		<xs:sequence>
+			<xs:element name="Party" type="PartyStructure"/>
+			<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="EndDate" type="xs:date" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DefenceStructure">
+		<xs:sequence>
+			<xs:element name="Solicitor" type="SolicitorStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="Advocate" type="AdvocateStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITCourtHouseStructure">
+		<xs:sequence>
+			<xs:element name="CourtHouseType" type="XHIBITCourtType" minOccurs="0"/>
+			<xs:element name="CourtHouseCode" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="CourtHouseCodeType">
+							<xs:attribute name="CourtHouseShortName" use="optional">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="[A-Z]{3,5}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:attribute>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CourtHouseName" type="xs:string"/>
+			<xs:element name="CourtHouseAddress" type="apd:UKPostalAddressStructure" minOccurs="0"/>
+			<xs:element name="CourtHouseDX" type="xs:string" minOccurs="0"/>
+			<xs:element name="CourtHouseTelephone" type="apd:TelephoneNumberType" minOccurs="0"/>
+			<xs:element name="CourtHouseFax" type="apd:TelephoneNumberType" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used to hold High and Combined</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OriginatingCourtStructure">
+		<xs:sequence>
+			<xs:element name="Date" type="xs:date" minOccurs="0"/>
+			<xs:element name="CourtHouse" type="XHIBITCourtHouseStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AssociatedCaseStructure">
+		<xs:sequence>
+			<xs:element name="AssociatedCase" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="CaseNumberType">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="ChargedWithStructure">
+		<xs:sequence>
+			<xs:element name="ChargedWith" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CrownCourtCommittalStructure">
+		<xs:sequence>
+			<xs:element name="CommittalDate" type="xs:date"/>
+			<xs:element name="CommittingCourt" type="XHIBITCourtHouseStructure"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="BreachStructure">
+		<xs:sequence>
+			<xs:element name="ConvictingCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="OriginatingCourtStructure"/>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OriginatingCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="OriginatingCourtStructure">
+							<xs:sequence>
+								<xs:element name="OriginalOrderType" type="xs:string"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="BreachCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="OriginatingCourtStructure">
+							<xs:sequence>
+								<xs:element name="SentToCrownCourt" type="xs:string"/>
+							</xs:sequence>
+							<xs:attribute name="breachCourtOption" type="xs:boolean"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="DefendantStructure">
+		<xs:complexContent>
+			<xs:extension base="PersonStructure">
+				<xs:sequence>
+					<xs:element name="ASNs" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="ASN" type="ASnumberType" maxOccurs="unbounded"/>
+							</xs:sequence>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="CRESTdefendantID" type="xs:int" minOccurs="0"/>
+					<xs:element name="PNCnumber" type="PNCnumberType" minOccurs="0"/>
+					<xs:element name="URN" type="URNtype" minOccurs="0"/>
+					<xs:element name="CROnumber" type="xs:string" minOccurs="0"/>
+					<xs:element name="MagistratesCourtRefNumber" type="xs:string" minOccurs="0"/>
+					<xs:element name="PrisonerID" type="PrisonerIDtype" minOccurs="0"/>
+					<xs:element name="PrisonLocation" type="PrisonLocationStructure" minOccurs="0"/>
+					<xs:element name="CustodyStatus" type="BailStatusType" minOccurs="0"/>
+					<xs:element name="Counsel" type="DefenceStructure" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="Charges" minOccurs="0">
+						<xs:complexType>
+							<xs:sequence>
+								<xs:element name="Charge" type="XHIBITChargeStructure" maxOccurs="unbounded"/>
+							</xs:sequence>
+							<xs:attribute name="NumberOfCharges" type="xs:integer" use="optional"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="AdditionalNotes" type="xs:string" minOccurs="0"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="JudiciaryStructure">
+		<xs:sequence>
+			<xs:element name="Judge">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="apd:CitizenNameStructure">
+							<xs:sequence>
+								<xs:element name="CRESTjudgeID" type="xs:int" minOccurs="0"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Justice" minOccurs="0" maxOccurs="4">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="apd:CitizenNameStructure">
+							<xs:sequence minOccurs="0">
+								<xs:element name="CRESTjusticeID" type="xs:int" minOccurs="0"/>
+							</xs:sequence>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="StartDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="EndDate" type="xs:date" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="LinkedOffenceStructure">
+		<xs:sequence>
+			<xs:element name="LinkedOffence" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="LinkedCaseNumber" type="CaseNumberType"/>
+						<xs:element name="LinkedOffenceStatement" type="xs:string"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="OrganisationStructure">
+		<xs:sequence>
+			<xs:element name="OrganisationCode" type="xs:string" minOccurs="0"/>
+			<xs:element name="OrganisationName" type="xs:string"/>
+			<xs:element name="OrganisationAddress" type="apd:UKPostalAddressStructure" minOccurs="0"/>
+			<xs:element name="ContactDetails" type="apd:CitizenContactDetailsStructure" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="PartyStructure">
+		<xs:choice>
+			<xs:element name="Person" type="PersonStructure"/>
+			<xs:element name="Organisation" type="OrganisationStructure"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="XHIBITCourtAppearanceStructure">
+		<xs:sequence>
+			<xs:element name="AppearanceCourt" type="XHIBITCourtHouseStructure"/>
+			<xs:element name="AppearanceDateTime">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="AppearanceDate" type="xs:date"/>
+						<xs:element name="AppearanceTime" type="xs:time"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITSUSPeriodStructure">
+		<xs:sequence>
+			<xs:element name="Years" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="99"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Months" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Weeks" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Days" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITPeriodStructure">
+		<xs:sequence>
+			<xs:element name="Years" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="99"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Months" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Weeks" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Days" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITExtendedPeriodStructure">
+		<xs:sequence>
+			<xs:element name="Years" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="99"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Months" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Weeks" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Days" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:short">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="999"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="selected" type="xs:boolean" default="false"/>
+		<xs:attribute name="TermType" type="TermTypeType"/>
+		<xs:attribute name="Concurrent" type="xs:boolean" default="false"/>
+		<xs:attribute name="Consecutive" type="xs:boolean" default="false"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITCourtOrderHeaderStructure">
+		<xs:sequence>
+			<xs:element name="OrderType" type="OrderTypeType"/>
+			<xs:element name="CourtHouse" type="XHIBITCourtHouseStructure"/>
+			<xs:element name="Judiciary" type="JudiciaryStructure" minOccurs="0"/>
+			<xs:element name="CaseNumber" type="CaseNumberType"/>
+			<xs:element name="SubjectType" type="SubjectTypeType" minOccurs="0"/>
+			<xs:element name="Defendant" type="DefendantStructure"/>
+			<xs:element name="OrderDate" type="xs:date"/>
+			<xs:element name="WelshTranslation" type="apd:YesNoType" minOccurs="0"/>
+			<xs:element name="SignedBy" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Temporarily made optional</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CourtOfficer">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="apd:CitizenNameStructure">
+										<xs:attributeGroup ref="ConditionAttributeGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Judiciary">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="JudiciaryStructure">
+										<xs:attributeGroup ref="ConditionAttributeGroup"/>
+									</xs:extension>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SignedDate" type="xs:date" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Temporarily made optional</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="RevisionDetails" minOccurs="0">
+				<xs:annotation>
+					<xs:documentation>Used to hold Revision Details</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="RevisedOrder" type="xs:boolean">
+							<xs:annotation>
+								<xs:documentation>Determine whether this ia a revised order</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="PreviousOrderDate" type="xs:date">
+							<xs:annotation>
+								<xs:documentation>Date of previous order to be replaced</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="RevisionNo" type="xs:int">
+							<xs:annotation>
+								<xs:documentation>Revision No of Order</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITCustodialSentenceStructure">
+		<xs:sequence>
+			<xs:element name="TermType">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="TermTypeType">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Term" type="XHIBITPeriodStructure"/>
+			<xs:element name="CustodialTerm" type="XHIBITExtendedPeriodStructure" minOccurs="0"/>
+			<xs:element name="s235-236" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CSSectionType">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="section236a"/>
+									<xs:enumeration value="section278"/>
+									<xs:enumeration value="section252a"/>
+									<xs:enumeration value="section265"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="CustodialPeriod" type="XHIBITPeriodStructure"/>
+						<xs:element name="ExtensionPeriod" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+					<xs:attribute name="Concurrent" type="xs:boolean" default="false"/>
+					<xs:attribute name="Consecutive" type="xs:boolean" default="false"/>
+					<xs:attribute name="TermType" type="TermTypeType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ExtendedSentence">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="CustodialPeriod" type="XHIBITPeriodStructure"/>
+						<xs:element name="ExtensionPeriod" type="XHIBITPeriodStructure"/>
+						<xs:element name="SentenceType">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="Consecutive"/>
+									<xs:enumeration value="Concurrent"/>
+									<xs:enumeration value="Not Applicable"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Section44" minOccurs="0">
+							<xs:complexType>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="SectionType" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="s226a"/>
+									<xs:enumeration value="s227"/>
+									<xs:enumeration value="s226b"/>
+									<xs:enumeration value="s228"/>
+									<xs:enumeration value="s254"/>
+									<xs:enumeration value="s279"/>
+									<xs:enumeration value="s266"/>
+									<xs:enumeration value="s268a"/>
+									<xs:enumeration value="s282a"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="LifeSentence">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="MinimumTerm" type="XHIBITMinimumTermStructure"/>
+						<xs:element name="LifeType" minOccurs="0">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="AutomaticLife"/>
+									<xs:enumeration value="DiscretionaryLife"/>
+									<xs:enumeration value="MandatoryLife"/>
+									<xs:enumeration value="WholeLife"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+					<xs:attribute name="Section224a" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section225" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section226" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section283" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section285" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section272" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section273" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section274" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section275" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section93" type="xs:boolean" default="false"/>
+					<xs:attribute name="Section94" type="xs:boolean" default="false"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ImprisonmentType" minOccurs="0">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="life"/>
+						<xs:enumeration value="section9394"/>
+						<xs:enumeration value="hmpleasure"/>
+						<xs:enumeration value="section91"/>
+						<xs:enumeration value="section250"/>
+						<xs:enumeration value="indeterminate"/>
+						<xs:enumeration value="period"/>
+						<xs:enumeration value="extended"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Section91TermType" minOccurs="0">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="Section91TermTypeType">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Section250TermType" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="TermType" type="Section250TermTypeType"/>
+						<xs:element name="Term" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attribute name="Section236a" type="xs:boolean" default="false"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITMinimumTermStructure">
+		<xs:sequence>
+			<xs:element name="LifePeriod" type="XHIBITPeriodStructure"/>
+			<xs:element name="NoMinimumTerm" minOccurs="0">
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITReturnToImprisonmentStructure">
+		<xs:annotation>
+			<xs:documentation>Changed to fit XHIBIT requirements</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="OffenceDate">
+				<xs:annotation>
+					<xs:documentation>Altered from date because of Castor bug. Should go back when Castor can cope with complex extensions of xs:date.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="Qualifier" type="DateQualifierType"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SentencingCourt" type="OriginatingCourtStructure"/>
+			<xs:element name="ReturnPeriod">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="PeriodInMonths" type="xs:short"/>
+						<xs:element name="Max116" default="yes">
+							<xs:simpleType>
+								<xs:restriction base="apd:YesNoType"/>
+							</xs:simpleType>
+						</xs:element>
+						<!-- WDF: 24/02/03 - Rewritten as CASTOR doesnt like it this way ho, hum! -->
+						<!--
+            <xs:element name="Max116" type="apd:YesNoType" default="yes"/>   
+            -->
+					</xs:sequence>
+					<xs:attribute name="DetentionType" type="DetentionTypeType"/>
+					<xs:attribute name="TermType" type="TermTypeType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TotalPeriodOfReturn">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:short">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							<xs:attribute name="IncludesNewOffenceTerm" type="apd:YesNoType"/>
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITCommunityOrderStructure">
+		<xs:sequence>
+			<xs:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xs:element name="AddressOption">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="AddressIs"/>
+						<xs:enumeration value="AddressWillBe"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="Trial">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ConvictionDate" type="xs:date"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CommittingCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="OriginatingCourtStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Breach">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="BreachStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="OriginalOrderRevoked">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="BreachCourt" type="apd:YesNoType" default="yes"/>
+						<xs:element name="CurrentCourt" type="apd:YesNoType" default="yes"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FailedToComply" type="apd:YesNoType" default="yes"/>
+			<xs:element name="AfterHearingFrom" type="apd:YesNoType" minOccurs="0"/>
+			<xs:element name="PettySessionalArea" type="XHIBITCourtHouseStructure"/>
+			<xs:element name="CommunityPunishment">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Hours">
+							<xs:complexType>
+								<xs:simpleContent>
+									<xs:extension base="xs:int">
+										<xs:attribute name="TermType" type="TermTypeType"/>
+									</xs:extension>
+								</xs:simpleContent>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Period" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="RehabilitationPeriod" type="XHIBITPeriodStructure"/>
+			<xs:element name="Conditions">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Condition" type="ConditionStructure" maxOccurs="unbounded"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+			<xs:element name="AdditionalNotes" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITChargeStructure">
+		<xs:sequence>
+			<xs:element name="CRN" type="CRnumberType" minOccurs="0"/>
+			<xs:element name="CRESTcountID" type="xs:integer" minOccurs="0"/>
+			<xs:element name="CRESTchargeID" type="xs:integer" minOccurs="0"/>
+			<xs:element name="CaseNumber" type="CaseNumberType" minOccurs="0"/>
+			<xs:element name="OffenceStatement" type="xs:string"/>
+			<xs:element name="OffenceDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="ArraignmentDate" type="xs:date" minOccurs="0"/>
+			<xs:element name="OffenceParticulars" type="xs:string" minOccurs="0"/>
+			<xs:element name="CRESToffenceNumber" type="xs:string" minOccurs="0"/>
+			<xs:element name="Plea" type="xs:string" minOccurs="0"/>
+			<xs:element name="Verdict" type="xs:string" minOccurs="0"/>
+			<xs:element name="DisposalDescription" type="xs:string" minOccurs="0"/>
+			<xs:element name="SentenceTerm" type="xs:duration" minOccurs="0"/>
+			<xs:element name="TermType" type="TermTypeType" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="IndictmentNumber" type="xs:int" use="optional"/>
+		<xs:attribute name="IndictmentCountNumber" type="xs:int" use="required"/>
+		<xs:attribute name="CJSoffenceCode" type="xs:string" use="optional"/>
+		<xs:attribute name="PNCoffenceCode" type="xs:string" use="optional"/>
+		<xs:attribute name="HOoffenceCode" type="xs:string" use="optional"/>
+		<xs:attribute name="ChargeType" type="ChargeTypeType" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITTreatmentStructure">
+		<xs:sequence>
+			<xs:element name="TreatmentLocation" type="XHIBITLocationStructure">
+				<xs:annotation>
+					<xs:documentation>??/TreatmentLocation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ResidenceStatus" type="ResidenceStatusType">
+				<xs:annotation>
+					<xs:documentation>??/ResidenceStatus</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITUnpaidWorkStructure">
+		<xs:sequence>
+			<xs:element name="Hours" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>/UnpaidWorkRequirement/Duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Concurrent">
+				<xs:annotation>
+					<xs:documentation>/UnpaidWorkRequirement/Concurrent</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="yes"/>
+						<xs:enumeration value="no"/>
+						<xs:enumeration value="none"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:element>
+			<xs:element name="WorkDetails" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/UnpaidWorkRequirement/ConcurrentOrConsecutiveWorkDetails</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="WorkEndDate" type="xs:date">
+				<xs:annotation>
+					<xs:documentation>/UnpaidWorkRequirement/EndDate</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditonalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/UnpaidWorkRequirement/AdditionalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITActivityStructure">
+		<xs:sequence>
+			<xs:element name="PresentDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Person" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>/ActivityRequirement/Contact</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="Place" type="XHIBITLocationStructure">
+							<xs:annotation>
+								<xs:documentation>/ActivityRequirement/Location</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ActivityDetails">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Activity" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>/ActivityRequirement/Activity</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ActivityPeriod" type="XHIBITPeriodStructure">
+							<xs:annotation>
+								<xs:documentation>/ActivityRequirement/??</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdditonalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>ActivityRequirement/AdditionalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITProgrammeStructure">
+		<xs:sequence>
+			<xs:element name="Programme" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/ProgrammeRequirement/Programme</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Place" type="XHIBITLocationStructure">
+				<xs:annotation>
+					<xs:documentation>/ProgrammeRequirement/Location</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="Days" type="xs:int">
+				<xs:annotation>
+					<xs:documentation>/ProgrammeRequirement/Duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/ProgrammeRequirement/AdditionalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITProhibitedStructure">
+		<xs:sequence>
+			<xs:element name="Activity" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/ProhibitedActivityRequirement/Activity</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ActivityPeriod" type="XHIBITPeriodStructure">
+				<xs:annotation>
+					<xs:documentation>/ProhibitedActivityRequirement/Duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/ProhibitedActivityRequirement/AdditonalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITCurfewStructure">
+		<xs:sequence>
+			<xs:element name="CurfewOption" type="apd:YesNoType">
+				<xs:annotation>
+					<xs:documentation>/CurfewRequirement/??</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="CurfewDuration">
+				<xs:annotation>
+					<xs:documentation>/CurfewRequirement/Duration</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Duration">
+							<xs:simpleType>
+								<xs:restriction base="xs:short">
+									<xs:minInclusive value="0"/>
+									<xs:maxInclusive value="999"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+						<xs:element name="Period">
+							<xs:simpleType>
+								<xs:restriction base="xs:string">
+									<xs:enumeration value="day(s)"/>
+									<xs:enumeration value="week(s)"/>
+									<xs:enumeration value="month(s)"/>
+									<xs:enumeration value="year(s)"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITExclusionStructure">
+		<xs:sequence>
+			<xs:element name="Place" type="XHIBITLocationStructure"/>
+			<xs:element name="BetweenPeriod">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ApplicablePeriod" type="xs:string"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ExclusionPeriod" type="XHIBITPeriodStructure"/>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITResidenceStructure">
+		<xs:sequence>
+			<xs:element name="Hostel" type="XHIBITLocationStructure"/>
+			<xs:element name="ObeyRules" type="XHIBITPeriodStructure"/>
+			<xs:element name="PlaceOption">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Place" type="XHIBITLocationStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITMentalHealthStructure">
+		<xs:sequence>
+			<xs:element name="TreatmentDirector" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/MentalHealthTreatmentRequirement/TreatmentDirector</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TreatmentOption" type="XHIBITTreatmentStructure"/>
+			<xs:element name="TreatmentPeriod" type="XHIBITPeriodStructure">
+				<xs:annotation>
+					<xs:documentation>/MentalHealthTreatmentRequirement/Duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/MentalHealthTreatmentRequirement/AdditonalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITDrugRehabStructure">
+		<xs:sequence>
+			<xs:element name="TreatmentDirector" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/DrugRehabilitationRequirement/TreatmentDirector</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TreatmentOption" type="XHIBITTreatmentStructure"/>
+			<xs:element name="TreatmentPeriod" type="XHIBITPeriodStructure">
+				<xs:annotation>
+					<xs:documentation>/DrugRehabilitationRequirement/Duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/DrugRehabilitationRequirement/AdditonalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="SampleOption">
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ReviewOption">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ReviewDetails" type="xs:string">
+							<xs:annotation>
+								<xs:documentation>/DrugRehabilitationRequirement/Review/Periodicity</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ReviewDate" type="xs:date">
+							<xs:annotation>
+								<xs:documentation>/DrugRehabilitationRequirement/Review/DateTime</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ReviewTime" type="xs:time">
+							<xs:annotation>
+								<xs:documentation>/DrugRehabilitationRequirement/Review/DateTime</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="ReviewCourt" type="XHIBITCourtHouseStructure">
+							<xs:annotation>
+								<xs:documentation>/DrugRehabilitationRequirement/Review/Location
+
+/DrugRehabilitationRequirement/Review/Telehone</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="TelephoneOption">
+							<xs:complexType>
+								<xs:attributeGroup ref="ConditionAttributeGroup"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="Attendance" type="apd:YesNoType">
+							<xs:annotation>
+								<xs:documentation>/DrugRehabilitationRequirement/Review/CompulsoryAttendance</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITAlcoholStructure">
+		<xs:sequence>
+			<xs:element name="TreatmentDirector" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/AlcoholTreatmentRequirement/TreatmentDirector</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="TreatmentOption" type="XHIBITTreatmentStructure"/>
+			<xs:element name="TreatmentPeriod" type="XHIBITPeriodStructure">
+				<xs:annotation>
+					<xs:documentation>/AlcoholTreatmentRequirement/Duration</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/AlcoholTreatmentRequirement/AdditonalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITSupervisionStructure">
+		<xs:sequence>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/SupervisionRequirement/AdditonalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITAttendanceStructure">
+		<xs:sequence>
+			<xs:element name="AttendanceOption" type="apd:YesNoType">
+				<xs:annotation>
+					<xs:documentation>/AttendanceCentreRequirement/??</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITElectronicMonitoringStructure">
+		<xs:sequence>
+			<xs:element name="UnpaidOption">
+				<xs:annotation>
+					<xs:documentation>Section A</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ActivityOption">
+				<xs:annotation>
+					<xs:documentation>Section B</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProgrammeOption">
+				<xs:annotation>
+					<xs:documentation>Section C</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ProhibitedOption">
+				<xs:annotation>
+					<xs:documentation>Section D</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="CurfewOption">
+				<xs:annotation>
+					<xs:documentation>Section E</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ExclusionOption">
+				<xs:annotation>
+					<xs:documentation>Section F</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ResidenceOption">
+				<xs:annotation>
+					<xs:documentation>Section G</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MentalHealthOption">
+				<xs:annotation>
+					<xs:documentation>Section H</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="DrugRehabOption">
+				<xs:annotation>
+					<xs:documentation>Section I</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AlcoholOption">
+				<xs:annotation>
+					<xs:documentation>Section J</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SupervisionOption">
+				<xs:annotation>
+					<xs:documentation>Section K</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AttendanceOption">
+				<xs:annotation>
+					<xs:documentation>Section L</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITReviewStructure">
+		<xs:sequence>
+			<xs:element name="ReviewDetails" type="xs:string"/>
+			<xs:element name="FirstReview" type="FirstReviewStructure"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="FirstReviewStructure">
+		<xs:sequence>
+			<xs:element name="ReviewDate" type="xs:date"/>
+			<xs:element name="ReviewTime" type="xs:time"/>
+			<xs:element name="ReviewCourt" type="XHIBITCourtHouseStructure"/>
+			<xs:element name="TelephoneOption">
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Attendance" type="apd:YesNoType">
+				<xs:annotation>
+					<xs:documentation>Attendanance Required?</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITLocationStructure">
+		<xs:sequence>
+			<xs:element name="Site" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AttachmentTypeStructure">
+		<xs:sequence>
+			<xs:element name="previousConvictionList" type="AttachmentTypeType" minOccurs="0"/>
+			<xs:element name="preSentenceReport" type="AttachmentTypeType" minOccurs="0"/>
+			<xs:element name="medicalReport" type="AttachmentTypeType" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="XHIBITForeignTravelProhibitionStructure">
+		<xs:sequence>
+			<xs:element name="Days" type="xs:string"/>
+			<xs:element name="FromToOption" type="XHIBITFromToStructure"/>
+			<xs:element name="ProhibitedFrom" type="xs:string"/>
+			<xs:element name="ExceptionOption" type="ExceptionOptionType">
+				<xs:annotation>
+					<xs:documentation>/ForeignTravelProhibitionRequirement/Exception</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITFromToStructure">
+		<xs:sequence>
+			<xs:element name="FromDate" type="xs:date"/>
+			<xs:element name="ToDate" type="xs:date"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="ExceptionOptionType">
+		<xs:sequence>
+			<xs:element name="Exception" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITRehabilitationActivityStructure">
+		<xs:sequence>
+			<xs:element name="Days" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITAlcoholAbstinenceAndMonitoringStructure">
+		<xs:sequence>
+			<xs:element name="Days" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+		<xs:complexType name="XHIBITTrailMonitoringStructure">
+		<xs:sequence>
+			<xs:element name="Duration" type="xs:string"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<!-- New entries for RFS4417 changes - BH Feb 2015 -->
+	<xs:complexType name="XHIBITLocalAuthorityResidenceStructure">
+		<xs:sequence>
+			<xs:element name="LocalAuthority" type="xs:string"/>
+			<xs:element name="PeriodOfResidence" type="XHIBITPeriodStructure"/>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITFosteringStructure">
+		<xs:sequence>
+			<xs:element name="LocalAuthority" type="xs:string"/>
+			<xs:element name="BeginningDate" type="xs:date"/>
+			<xs:element name="PeriodOfFostering" type="XHIBITPeriodStructure"/>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITDrugTestingStructure">
+		<xs:sequence>
+			<xs:element name="TestingType" type="DrugTestingType"/>
+			<xs:element name="NumberOfOccasions" type="xs:string"/>
+			<xs:element name="Requirements" type="xs:string"/>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType">
+				<xs:annotation>
+					<xs:documentation>/DrugTreatmentRequirement/AdditonalInformation</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITIntoxicatingSubstanceStructure">
+		<xs:complexContent>
+			<xs:extension base="XHIBITAlcoholStructure">
+				<xs:sequence>
+					<xs:element name="ISReviewOption" type="ReviewStructure"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ReviewStructure">
+		<xs:sequence>
+			<xs:element name="ReviewDetails" type="xs:string">
+				<xs:annotation>
+					<xs:documentation>/IntoxicatingSubstanceRequirement/Review/Periodicity</xs:documentation>
+				</xs:annotation>
+			</xs:element>
+			<xs:element name="ReviewDate" type="xs:date"/>
+			<xs:element name="ReviewTime" type="xs:time"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITEducationStructure">
+		<xs:sequence>
+			<xs:element name="ArrangedBy" type="xs:string"/>
+			<xs:element name="LocalAuthority" type="xs:string"/>
+			<xs:element name="PeriodOfCompliance" type="XHIBITPeriodStructure"/>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITExtendedActivityStructure">
+		<xs:sequence>
+			<xs:element name="Activities" type="xs:string"/>
+			<xs:element name="ActivityDuration" type="XHIBITPeriodStructure"/>
+			<xs:element name="ISSOption">
+				<xs:complexType>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITElectronicWhereaboutsStructure">
+		<xs:sequence>
+			<xs:element name="WhereaboutsDuration" type="XHIBITPeriodStructure"/>
+			<xs:element name="AdditionalRequirements" type="AdditionalInfoType"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:complexType name="XHIBITDetentionAndTrainingPeriodStructure">
+		<xs:sequence>
+			<xs:element name="Period" type="XHIBITPeriodStructure"/>
+			<xs:element name="Section105">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Period" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="DrugTestingType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ResponsibleOfficer"/>
+			<xs:enumeration value="NumberOfOccasions"/>
+			<xs:enumeration value="Requirements"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="AmendedType">
+		<xs:sequence>
+			<xs:element name="AmendedVaried" type="AmendedVariedType"/>
+			<xs:element name="AmendedVariedDate" type="xs:date"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="ConditionAttributeGroup"/>
+	</xs:complexType>
+	<xs:simpleType name="AmendedVariedType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Amended"/>
+			<xs:enumeration value="Varied"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- End of new entries for RFS4417 -->
+	<!-- New entries for 5048 Order types -->
+	<xs:complexType name="XHIBITBailStructure">
+		<xs:sequence>
+			<xs:element name="BailCondition" type="XHIBITBailType"/>
+			<xs:element name="BailOrderDate" type="xs:date"/>
+		</xs:sequence>
+	</xs:complexType>	
+	<xs:complexType name="XHIBITSummonedToAppearStructure">
+		<xs:sequence>
+			<xs:element name="CourtHouseDetails" type="XHIBITCourtHouseStructure"/>
+			<xs:element name="SummonedDateTime">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="SummonedDate" type="xs:date"/>
+						<xs:element name="SummonedTime" type="xs:time"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CourtOrderedStructure">
+	 	<xs:sequence>
+				<xs:element name="DidNotDealWithDefendant" type="xs:string" />
+				<xs:element name="OrderForOffences" type="xs:string" />
+				<xs:element name="CourtOrderedType" minOccurs="0">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="DidNotDealWithDefendant"/>
+							<xs:enumeration value="OrderForOffences"/>
+ 						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+		</xs:sequence>		
+	</xs:complexType>
+</xs:schema>

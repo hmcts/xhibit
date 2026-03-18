@@ -1,0 +1,67 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="uk.gov.courtservice.xhibit.business.entities.xhb_case.XhbCaseBasicValue findByNumberTypeAndCourt(java.lang.Integer caseNumber, java.lang.String caseType, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCase c WHERE c.caseNumber = ?1 AND c.caseType = ?2 AND c.courtId = ?3 AND 
+ ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantOnOffenceId(java.lang.Integer defendantOnOffenceId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) 
+ *    FROM XhbCase AS c, XhbDefendantOnCase AS doc, XhbDefendantOnOffence AS dof 
+ *    WHERE c.caseId = doc.caseId
+ *    AND doc.defendantOnCaseId = dof.defendantOnCaseId
+ *    AND (doc.obsInd IS NULL OR doc.obsInd = 'N')
+ *    AND (dof.obsInd IS NULL OR dof.obsInd = 'N')
+ *    AND dof.defendantOnOffenceId = ?1 AND ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByJoinderDefendantOnOffenceId(java.lang.Integer defendantOnOffenceId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) 
+ *    FROM XhbCase AS c, XhbCharge AS ch, XhbOffence AS o, XhbJoinderCharge AS jc, XhbDefendantOnOffence AS dof 
+ *    WHERE c.caseId = ch.caseId
+ *    AND ch.chargeId = o.chargeId
+ *    AND o.offenceId = dof.offenceId
+ *    AND ch.chargeId = jc.chargeId 
+ *    AND (dof.obsInd IS NULL OR dof.obsInd = 'N')
+ *    AND dof.defendantOnOffenceId = ?1 AND ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findAllCasesByDefendantId(java.lang.Integer defendantId, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT(c)
+ *    FROM XhbCase AS c, XhbDefendantOnCase AS d
+ *    WHERE d.defendantId = ?1 AND c.courtId = ?2
+ *    AND d.caseId = c.caseId
+ *    AND (d.obsInd IS NULL OR d.obsInd = ' ' OR d.obsInd = 'N') AND ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantNamesAndCaseNumber(java.lang.String defendantFirstName, java.lang.String defendantSurname,java.lang.String caseType, java.lang.String caseNumber, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c)
+ *    FROM XhbCase AS c, XhbDefendant AS d, XhbDefendantOnCase AS o
+ *    WHERE c.caseType = ?3 AND c.caseNumber like ?4 AND UPPER(d.surname) like UPPER(?2) AND UPPER(d.firstName) like UPPER(?1) AND c.courtId = ?5
+ *    AND o.caseId = c.caseId
+ *    AND d.defendantId = o.defendantId
+ *    AND (o.obsInd IS NULL OR o.obsInd = ' ' OR o.obsInd = 'N') AND ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantSurnameAndCaseNumber(java.lang.String defendantName, java.lang.String caseType, java.lang.String caseNumber, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c)
+ *    FROM XhbCase AS c, XhbDefendant AS d, XhbDefendantOnCase AS o
+ *    WHERE c.caseType = ?2 AND c.caseNumber like ?3 AND UPPER(d.surname) like UPPER(?1) AND c.courtId = ?4
+ *    AND o.caseId = c.caseId
+ *    AND d.defendantId = o.defendantId
+ *    AND (o.obsInd IS NULL OR o.obsInd = ' ' OR o.obsInd = 'N') AND ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ * -------- end of custom finders --------
+  

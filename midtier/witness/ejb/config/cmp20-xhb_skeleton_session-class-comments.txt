@@ -1,0 +1,21 @@
+ * -------- custom finders --------
+ * @ejb.finder
+ *    signature="XhbSkeletonSession findByCaseDayAndSession(java.lang.Integer caseId, java.lang.Integer day, java.lang.String session)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xs) FROM XhbSkeletonSession xs WHERE (xs.obsInd IS NULL OR xs.obsInd = 'N') AND xs.xhbSkeletonSchedule.caseId = ?1 AND xs.xhbSkeletonDay.dayNumber = ?2 AND  xs.morningOrAfternoon = ?3" 
+ *    description="Find session by case day and session."
+ *
+ * @ejb.finder
+ *    signature="Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xss) FROM XhbSkeletonSession xss, XhbSkeletonDay xsd, XhbSkeletonSchedule xssch WHERE (xss.obsInd IS NULL OR xss.obsInd = 'N') AND xss.skeletonDayId = xsd.skeletonDayId AND xss.skeletonId = xssch.skeletonId AND xssch.caseId=?1" 
+ *    description="Find a case by case id."
+ *
+
+ *
+ * -------- end of custom finders --------
+
+
+

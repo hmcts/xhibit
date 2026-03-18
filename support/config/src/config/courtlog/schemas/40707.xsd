@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Defendant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Direction_By_Defendant_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Direction_By_Defendant_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40707_Certificate_Of_Attendance" minOccurs="0"/>
+				<xs:element ref="Defendant_Name" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Defendant_Name" type="xs:string"/>
+	<xs:element name="E40707_Certificate_Of_Attendance">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40707_Granted"/>
+				<xs:enumeration value="E40707_Refused"/>
+				<xs:enumeration value="E40707_Not_Requested"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

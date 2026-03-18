@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="CppFileProcessor">
+    <description>
+        Creation of the CPP jar file
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+        <property name="java.jar.source.excludes" value=""/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+	<target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+		<path refid="lib.classpath"/>
+			<fileset dir="${build.dest.dir}">
+				<include name="Framework.jar"/>
+                <include name="PublicDisplayCommon.jar" />
+				<include name="Value.jar" />
+			</fileset>
+        </path>
+    </target>
+	
+</project>
+

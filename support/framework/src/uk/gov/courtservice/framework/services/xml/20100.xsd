@@ -1,0 +1,34 @@
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Bench Warrant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E20100_Bench_Warrant_Options"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20100_Bench_Warrant_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20100_BWO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20100_BWO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20100_Bench_warrant_issued_backed_for_bail"/>
+				<xs:enumeration value="E20100_Bench_warrant_issued_not_backed_for_bail"/>
+				<xs:enumeration value="E20100_Warrant_for_arrest_5061A_issued"/>
+				<xs:enumeration value="E20100_Warrant_for_arrest_5061B_issued"/>
+ 			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>
+ 

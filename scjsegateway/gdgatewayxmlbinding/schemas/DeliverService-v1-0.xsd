@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:msg="http://schemas.cjse.gov.uk/messages/messaging/2006-05" xmlns:mf="http://schemas.cjse.gov.uk/messages/format/2006-05" xmlns:mm="http://schemas.cjse.gov.uk/messages/metadata/2006-05" xmlns:ex="http://schemas.cjse.gov.uk/messages/exception/2006-06" xmlns="http://schemas.cjse.gov.uk/messages/deliver/2006-05" targetNamespace="http://schemas.cjse.gov.uk/messages/deliver/2006-05" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.3">
+	<xs:import namespace="http://www.w3.org/2005/05/xmlmime" schemaLocation="xmlMIME-2005-05.xsd"/>
+	<xs:import namespace="http://schemas.cjse.gov.uk/messages/messaging/2006-05" schemaLocation="MessagingTypes-v1-0.xsd"/>
+	<xs:import namespace="http://schemas.cjse.gov.uk/messages/format/2006-05" schemaLocation="MessageFormat-v1-0.xsd"/>
+	<xs:import namespace="http://schemas.cjse.gov.uk/messages/metadata/2006-05" schemaLocation="MessageMetadata-v1-0.xsd"/>
+	<xs:import namespace="http://schemas.cjse.gov.uk/messages/exception/2006-06" schemaLocation="Exception-v1-0.xsd"/>
+	<xs:element name="DeliverRequest" type="DeliverRequestStructure"/>
+	<xs:element name="DeliverResponse" type="DeliverResponseStructure"/>
+	<xs:complexType name="DeliverRequestStructure">
+		<xs:annotation>
+			<xs:documentation>The structure to be used for a request message body.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="msg:AbstractRequestStructure">
+				<xs:sequence>
+					<xs:element ref="mm:MessageMetadata"/>
+					<xs:element ref="mf:MessageFormat"/>
+					<xs:choice>
+						<xs:element name="Exception" type="ex:ExceptionStructure"/>
+						<xs:element name="Message" type="msg:MessageStructure"/>
+					</xs:choice>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##other" processContents="lax"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DeliverResponseStructure">
+		<xs:annotation>
+			<xs:documentation>The structure to be used for a response message body.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="msg:AbstractResponseStructure">
+				<xs:sequence>
+					<xs:any namespace="##other" processContents="lax" minOccurs="0"/>
+				</xs:sequence>
+				<xs:anyAttribute namespace="##other" processContents="lax"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+</xs:schema>

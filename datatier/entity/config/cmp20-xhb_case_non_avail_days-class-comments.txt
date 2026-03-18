@@ -1,0 +1,22 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) FROM XhbCaseNonAvailDays c WHERE c.caseId = ?1 AND (c.obsInd IS NULL OR c.obsInd = 'N')"
+ * 
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdAndDate(java.lang.Integer caseId, java.util.Date date)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) FROM XhbCaseNonAvailDays c WHERE c.caseId = ?1 AND (c.startDate = ?2 OR c.startDate < ?2) AND (c.endDate = ?2 OR c.endDate > ?2) AND (c.obsInd IS NULL OR c.obsInd = 'N')"
+ * 
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdAndDate(java.lang.Integer caseId, java.util.Date fromDate, java.util.Date toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) FROM XhbCaseNonAvailDays c WHERE c.caseId = ?1 AND (c.startDate = ?3 OR c.startDate < ?3) AND (c.endDate = ?2 OR c.endDate > ?2) AND (c.obsInd IS NULL OR c.obsInd = 'N')"
+ * 
+ * -------- end of custom finders --------
+  

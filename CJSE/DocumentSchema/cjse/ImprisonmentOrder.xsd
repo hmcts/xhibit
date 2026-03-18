@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by LCMG (LogicaCMG) -->
+<xsd:schema xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.3" id="ImprisonmentOrder">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Department for Constitutional Affairs</Creator>
+				<Created>2002-05-28</Created>
+				<Modified>2005-10-06</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>ImprisonmentOrder</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Department for Constitutional Affairs, Clive House, 70 Petty France, London, SW1H 9HD</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2006</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>final</Status>
+				<StatusDescription>definitive version for release</StatusDescription>
+				<Version>5.3</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>Crown Court Imprisonment Order</Title>
+				<Type>message</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="ImprisonmentOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="OrderHeader" type="CourtOrderHeaderStructure"/>
+			<xsd:element name="Conviction">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="ConvictionDate" type="xsd:date"/>
+						<xsd:element name="ConvictingCourt" type="OriginatingCourtStructure"/>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="RiskVulnerabilityFactors" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CustodialTerm" type="CustodialTermStructure"/>
+			<xsd:element name="RequiredCustodial" type="YesNoType" default="no" minOccurs="0"/>
+			<xsd:element name="CreditOnRemand" type="CreditOnRemandStructure" minOccurs="0"/>
+			<xsd:element name="CreditOnBail" type="CreditOnBailStructure" minOccurs="0"/>
+			<xsd:element name="CJA2003RequiredCustodial" type="YesNoType" default="no" minOccurs="0"/>
+			<xsd:element name="ClassAtrafficking" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="DomesticBurglary" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="ReturnToImprisonment" type="ReturnToImprisonmentStructure" minOccurs="0"/>
+			<xsd:element name="Section28" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DiscretionaryRelevantPart" type="xsd:duration"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Section86" type="YesNoType" default="no" minOccurs="0"/>
+			<xsd:element name="AdditionalNotes" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="RecommendedDeportation" type="YesNoType" default="no" minOccurs="0"/>
+			<xsd:element name="AutomaticDeportation" type="YesNoType" default="no" minOccurs="0"/>
+			<!--CCN400 START -->
+			<xsd:element name="DeportationSection" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DeportationReasons" type="DeportationStructure"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<!-- CCN400 END -->
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ImprisonmentOrder" type="ImprisonmentOrderStructure"/>
+</xsd:schema>

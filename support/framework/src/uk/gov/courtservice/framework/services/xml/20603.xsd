@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com)  -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Apeal - Witness Sworn-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E20603_Witness_Sworn_Options"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20603_Witness_Sworn_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E20603_Witness_No" minOccurs="0"/>
+				<xs:element ref="E20603_Witness_Name"/>
+				<xs:element ref="E20603_WS_List"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20603_Witness_Name" type="xs:string"/>
+	<xs:element name="E20603_Witness_No" type="xs:string"/>
+	<xs:element name="E20603_WS_List">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20603_Respondent_Witness_Sworn"/>
+				<xs:enumeration value="E20603_Appellant_Witness_Character_Sworn"/>
+				<xs:enumeration value="E20603_Appellant_Witness_Expert_Sworn"/>
+				<xs:enumeration value="E20603_Appellant_Witness_Professional_Sworn"/>
+				<xs:enumeration value="E20603_Appellant_Witness_Fact_Sworn"/>
+				<xs:enumeration value="E20603_Appellant_Sworn"/>
+				<xs:enumeration value="E20603_Interpreter_Sworn"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.3" id="RemandOrder">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Department for Constitutional Affairs</Creator>
+				<Created>2002-05-28</Created>
+				<Modified>2005-10-06</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>RemandOrder</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Department for Constitutional Affairs, Clive House, 70 Petty France, London, SW1H 9HD</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2006</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>final</Status>
+				<StatusDescription>definitive version for release</StatusDescription>
+				<Version>5.3</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>Crown Court Remand Order</Title>
+				<Type>message</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="RemandOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="OrderHeader" type="CourtOrderHeaderStructure"/>
+			<xsd:element name="RemandOrderType" type="RemandTypeStructure" minOccurs="0"/>
+			<xsd:element name="CustodyLocation" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ForReportOn" type="xsd:string"/>
+			<xsd:element name="NextAppearance" type="CourtAppearanceStructure"/>
+			<xsd:element name="ReasonsForRemand" type="ReasonsForRemandStructure" minOccurs="0"/>
+			<xsd:element name="RemandReason" type="RemandReasonStructure"/>
+			<xsd:element name="RemandType" type="RemandTypeType"/>
+			<xsd:element name="AdditionalNotes" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ChargedWith" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RemandOrder" type="RemandOrderStructure"/>
+</xsd:schema>

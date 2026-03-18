@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="FirmListLetter">
+    <xsd:include schemaLocation="FirmListLetter-v2-2.xsd"/>
+    <xsd:element name="FirmListLetters">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="FirmListLetter" type="FirmListLetterStructure" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+</xsd:schema>

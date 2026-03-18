@@ -1,0 +1,1 @@
+CREATE INDEX XHB_SOL_LISTID_OBSIND_IDX ON xhb_sitting_on_list(list_id, NVL(obs_ind,'N'));

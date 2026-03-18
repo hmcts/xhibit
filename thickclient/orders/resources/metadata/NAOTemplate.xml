@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="order" label="" borderLabel="" borderRaised="true" ref="/">
+			<date name="orderDate" label="Order Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+		</section>
+		<section name="governor" label="" borderLabel="Governor" borderRaised="true" ref="/">
+			<textfield name="prison" type="string" label="Prison: " length="20" maxLength="255" ref="//ord:Governor"/>
+		</section>
+		<section name="sentFromCourt" label="" borderLabel="Sent From Court" borderRaised="true" ref="/">
+			<courttype name="courttype" addressReq="true" telephoneReq="true" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:SentFromCourt/ord:Court/ord:CourtHouseName"/>
+			<date name="sentDate" label="Sent Date:" ref="//ord:SentFromCourt/ord:SentDate"/>
+		</section>
+		<section name="charges" label="" borderLabel="Charges" borderRaised="true"  ref="/">
+			<textarea name="chargesValue" ref="//ord:Charges" label="" topLabel="" rows="10" cols="15"/>
+		</section>
+		<section name="absenceConsent" label="" switchLabel="Consent to be heard in absence" borderLabel="" borderRaised="false" switchable="true" ref="//ord:Absence/@selected" selectedValue="true" unselectedValue="false"/>	
+		<section name="count" label="" borderLabel="Count" borderRaised="true"  ref="/">
+			<choice name="countOptions" label="" ref="//ord:Count/ord:WhichCounts">
+				<option name="allCounts" label="All Counts" value="AllCounts" selected="true"/>
+				<option name="selectedCounts" label="Specific Counts" value="SpecificCounts">
+					<section name="countNumbers" label="" ref="/">
+						<textfield name="countNo" type="string" label="Count Numbers: " length="20" maxLength="255" ref="//ord:Count/ord:CountNumbers"/>
+					</section>
+				</option>
+			</choice>
+		</section>	
+	</form>
+</template>

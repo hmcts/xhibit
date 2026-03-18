@@ -1,0 +1,10 @@
+[PropertyInfo]
+attachment,byte[],false,false, , ,false,<default>
+attachmentAsStream,InputStream,false,false, , ,true,<default>
+contentType,String,false,false, , ,true,<default>
+filename,String,false,false, , ,true,<default>
+[IconNames]
+
+
+
+

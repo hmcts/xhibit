@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="openjms-selector">
+
+    <description>
+        The XHIBIT Framework Code.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <!-- do not include any files from source dir -->
+        <filesetlist id="jar.source.filelist" />
+
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+        </path>
+    </target>
+
+
+    <!--
+      ========================================================================================
+        Generate -
+      ========================================================================================
+      -->
+    <target name="generate" description="Generate the java src flles." depends="framework.generate">
+        <property name="antlr.src.dir" location="${source.dir}/org/exolab/jms/selector/parser"/>
+        <property name="antlr.dest.dir" location="${gen.source.dir}/org/exolab/jms/selector/parser"/>
+
+        <mkdir dir="${antlr.dest.dir}"/>
+
+        <antlr target="${antlr.src.dir}\Selector.g" outputdirectory="${antlr.dest.dir}" >
+            <classpath>
+                <path refid="framework.classpath"/>
+                <pathelement path="${java.class.path}"/>
+            </classpath>
+        </antlr>
+
+        <antlr target="${antlr.src.dir}\SelectorTree.g" outputdirectory="${antlr.dest.dir}">
+            <classpath>
+                <path refid="framework.classpath"/>
+                <pathelement path="${java.class.path}"/>
+            </classpath>
+        </antlr>
+    </target>
+
+
+    <macrodef name="antlrtool">
+        <attribute name="target"/>
+        <sequential>
+            <java spawn="true"/>
+        </sequential>
+    </macrodef>
+
+</project>

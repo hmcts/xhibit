@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="BailOrder.xsd"/>
+	<xs:include schemaLocation="BenchWarrant.xsd"/>
+	<xs:include schemaLocation="RemandOrder.xsd"/>
+	<xs:include schemaLocation="ImprisonmentOrder.xsd"/>
+	<xs:include schemaLocation="YoungOffendersInstitution.xsd"/>
+	<xs:include schemaLocation="CommunityPunishmentOrder.xsd"/>
+	<xs:import namespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" schemaLocation="Narrative.xsd"/>
+	<xs:complexType name="OrderType">
+		<xs:sequence>
+			<xs:element name="OrderData">
+				<xs:complexType>
+					<xs:choice>
+						<xs:element name="BailOrder" type="BailOrderStructure"/>
+						<xs:element name="RemandOrder" type="RemandOrderStructure"/>
+						<xs:element name="BenchWarrant" type="BenchWarrantStructure"/>
+						<xs:element name="ImprisonmentOrder" type="ImprisonmentOrderStructure"/>
+						<xs:element name="YOIOrder" type="YoungOffenderOrderStructure"/>
+						<xs:element name="CPOrder" type="CommunityPunishmentOrderStructure"/>
+					</xs:choice>
+				</xs:complexType>
+			</xs:element>
+			<xs:element ref="nar:Narrative"/>
+			<xs:element name="State">
+				<xs:complexType/>
+			</xs:element>
+			<xs:element name="SaveNotes" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Order" type="OrderType"/>
+</xs:schema>

@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByFullName(java.lang.String fullName)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (d) FROM XhbCollectionCentre AS d WHERE 
+ *           d.fullName = ?1"
+ *
+ * -------- end of custom finders --------

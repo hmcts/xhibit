@@ -1,0 +1,31 @@
+
+    private String displayNameNoSite;
+    
+    public String getDisplayNameNoSite()
+    {
+      if (displayNameNoSite == null)
+      {
+        return getDisplayName();
+      } else {
+        return displayNameNoSite;
+      }
+    }
+    
+    public void setDisplayNameNoSite(String displayNameNoSite)
+    {
+      this.displayNameNoSite = displayNameNoSite;
+    }
+
+
+    private String courtSiteCode;
+    
+    public String getCourtSiteCode()
+    {
+      return courtSiteCode;
+    }
+    
+    public void setCourtSiteCode(String courtSiteCode)
+    {
+      this.courtSiteCode = courtSiteCode;
+    }
+    

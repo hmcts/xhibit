@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ScjseGateway">
+
+    <description>
+        Top level SCJSE Gateway build script.  This script is responsible for calling
+        the build on all child-projects, for constructing the ScjseGateway.ear file.
+    </description>
+
+    <import file="./../tools/ant/framework.xml" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="child.path">
+            <pathelement location="scjsegateway/build.xml" />
+            <pathelement location="gdgatewaywebserviceclient/build.xml" />
+            <pathelement location="gdgatewayxmlbinding/build.xml" />
+            <pathelement location="gdgateway/build.xml" />
+            <pathelement location="gdgatewaywebservice/build.xml" />
+            <pathelement location="scjsestubwebserviceclient/build.xml" />
+            <pathelement location="scjsestub/build.xml" />
+            <pathelement location="scjsestubwebservice/build.xml" />            
+            <pathelement location="echowebservice/build.xml" />
+        </path>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+    <target name="package" unless="skip.package" depends="framework.package">
+
+        <mkdir dir="${build.dir}/temp" />
+        <mkdir dir="${build.dir}/temp/ear" />
+        <mkdir dir="${lib.build.dir}" />
+
+        <copy todir="${build.dir}/temp/ear">
+            <fileset dir="./gdgatewaywebservice/build/temp/ear/CJSEService">
+                <include name="**/*.*" />                
+            </fileset>
+        </copy>
+        
+        <jar destfile="${lib.build.dir}/ScjseGateway.ear" >
+            <fileset dir="${build.dir}/temp/ear" includes="**/*.*"/>
+            <fileset dir="${build.dest.dir}">
+                <!-- Support Libraries -->
+                <include name="Config.jar" />
+                <include name="Value.jar" />
+                <include name="Framework.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="TimerProcess.war" />
+
+                <!-- Gateway Libraries -->
+                <include name="ScjseGatewayMessaging.jar" />
+                <include name="GdGatewayXmlBinding.jar" />
+                <include name="GdGatewayController.jar" />
+                <include name="GdGatewayMessaging.jar" />
+                <include name="GdGatewayWebServiceClient.jar" />
+                <include name="GdGatewayWebService.jar" />
+
+                <!-- Stub Libraries -->
+                <include name="ScjseStub.jar" />
+                <include name="ScjseStubWebServiceClient.jar" />
+                
+                <!-- ContentSwitchHeartbeat which is the same as the one used for the presentation tier -->
+                <include name="ContentSwitchHeartbeat.war" />
+            </fileset>
+        </jar>
+
+        <!-- ScjseStubWebService Ear -->
+        <ear destfile="${lib.build.dir}/ScjseStubWebService.ear"
+             appxml="${basedir}/scjsestubwebservice/resources/META-INF/application.xml">
+             <fileset dir="${build.dir}/temp/ear" includes="**/app-weblogic-webservices.xml"/>
+
+            <fileset dir="${basedir}\scjsestubwebservice\build\temp\ear\CJSEService">
+                <!-- Stub Libraries -->
+                <include name="CJSEService.war" />
+            </fileset>
+            <fileset dir="${build.dest.dir}">
+                <!-- Support Libraries -->
+                <include name="Config.jar" />
+                <include name="Framework.jar" />
+                
+                <!-- Gateway Libraries -->
+                <include name="ScjseGatewayMessaging.jar" />
+                <include name="GdGatewayController.jar" />
+                <include name="GdGatewayMessaging.jar" />
+                <include name="GdGatewayXmlBinding.jar" />
+                <include name="GdGatewayWebServiceClient.jar" />
+                
+                <!-- Stub Libraries -->
+                <include name="ScjseStub.jar" />
+                <include name="ScjseStubWebServiceClient.jar" />
+                <include name="ScjseStubWebServiceMessaging.jar" />                
+            </fileset>             
+        </ear>
+
+        <!-- EchoWebService Ear -->
+        <ear destfile="${lib.build.dir}/EchoWebService.ear"
+             appxml="${basedir}/echowebservice/build/temp/ear/EchoService/META-INF/application.xml">
+
+            <fileset dir="${basedir}\echowebservice\build\temp\ear\EchoService">
+                <include name="EchoService.war" />
+            </fileset>
+        </ear>
+
+    </target>
+</project>

@@ -1,0 +1,8 @@
+delete from xhb_security_group_role where role_name='XHBMaintainChamberData';
+
+commit;
+
+insert into xhb_security_group_role (group_name, role_name, is_enabled, is_enabled_by_default, last_update_date, creation_date, created_by, last_updated_by, version)  
+values ('CS Admin Super', 'XHBMaintainChamberData', 'Y','Y', sysdate, sysdate, 'XHIBIT', 'XHIBIT', 1);
+
+commit;

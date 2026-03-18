@@ -1,0 +1,99 @@
+<?xml version="1.0"?> 
+
+<schema xmlns="http://www.w3.org/1999/XMLSchema"> 
+<!-- The constraints here have been set for testing purposes only. TO DO: set constraints for real-->
+
+  <attribute name="breachID"> 
+    <simpleType baseType="Integer"> 
+      <minExclusive value="0" /> 
+      <minInclusive value="1" /> 
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="chargeID"> 
+    <simpleType baseType="Integer"> 
+        <minExclusive value="0" /> 
+	<minInclusive value="1" />      
+    </simpleType> 
+  </attribute>
+
+  <attribute name="caseID"> 
+    <simpleType baseType="Integer"> 
+       <minExclusive value="0" /> 
+       <minInclusive value="1" />      
+    </simpleType> 
+  </attribute>
+
+  <attribute name="refOffenceID"> 
+    <simpleType baseType="Integer"> 
+       <minExclusive value="0" /> 
+	 <minInclusive value="1" />      
+    </simpleType> 
+  </attribute>
+
+  <attribute name="originalSentence"> 
+    <simpleType baseType="String">      
+      <maxLength value="90"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="originalCourtType"> 
+    <simpleType baseType="String"> 
+	<enumeration value="C" /> 
+      <enumeration value="M" /> 
+      <enumeration value="CM" /> 
+      <minLength value="1"/>
+	<maxLength value="2"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="courtID"> 
+    <simpleType baseType="Integer"> 
+       <minExclusive value="0" /> 
+	 <minInclusive value="1" />      
+    </simpleType> 
+  </attribute>
+
+  <attribute name="breachType"> 
+    <simpleType baseType="String">      
+      <enumeration value="B" /> 
+      <enumeration value="C" /> 
+      <minLength value="1"/>
+      <maxLength value="1"/>
+    </simpleType> 
+  </attribute>
+
+  <attribute name="hoCode"> 
+    <simpleType baseType="String">      
+      <minLength value="1"/>
+      <maxLength value="10"/>
+    </simpleType> 
+  </attribute> 
+
+ <attribute name="hodescription"> 
+    <simpleType baseType="String">      
+      <minLength value="1"/>
+      <maxLength value="150"/>
+    </simpleType> 
+  </attribute>  
+
+  <attribute name="bringBack"> 
+    <simpleType baseType="String">      
+      <enumeration value="Y" /> 
+      <enumeration value="N" /> 
+      <minLength value="1"/>
+      <maxLength value="1"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="refBreachProcCodeID"> 
+    <simpleType baseType="Integer"> 
+       <minExclusive value="0" /> 
+	 <minInclusive value="1" />      
+    </simpleType> 
+  </attribute>
+
+
+
+</schema>

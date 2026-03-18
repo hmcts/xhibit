@@ -1,0 +1,271 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="dailyListHtml.xsl"?>
+
+<DailyList xmlns="http://www.courtservice.gov.uk/schemas/courtservice"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails"
+              xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice DailyList.xsd">
+
+  <DocumentID>
+    <DocumentName>Daily List Issue 1</DocumentName>
+    <UniqueID>12345</UniqueID>
+    <DocumentType>Daily List</DocumentType>
+    <TimeStamp>2002-12-18T14:00:00</TimeStamp>
+    <Version>1</Version>
+    <SecurityClassification>Unclassified</SecurityClassification>
+    <SellByDate>2003-01-18</SellByDate>
+    <XSLstylesheetURL>http://xsl.courtservice.gov.uk/stylesheets/dailylist</XSLstylesheetURL>
+  </DocumentID>
+
+  <ListHeader>
+    <ListCategory>Criminal</ListCategory>
+    <StartDate>2002-07-19</StartDate>
+    <EndDate>2002-12-19</EndDate>
+    <Version>1</Version>
+    <CRESTprintRef>Not sure what this is</CRESTprintRef>
+    <PublishedTime>2002-12-18T14:00:00</PublishedTime>
+    <CRESTlistID>100</CRESTlistID>
+  </ListHeader>
+
+  <CrownCourt>
+    <CourtHouseType>Crown Court</CourtHouseType>
+    <CourtHouseCode>TS</CourtHouseCode>
+    <CourtHouseName>Teeside Crown Court</CourtHouseName>
+  </CrownCourt>
+
+  <CourtHouseSittings>
+    <CourtHouse>
+      <CourtHouseType>Crown Court</CourtHouseType>
+      <CourtHouseCode>What is the format for a court code</CourtHouseCode>
+      <CourtHouseName>Teeside</CourtHouseName>
+      <CourtHouseAddress>
+        <apd:Line>The Old Court House</apd:Line>
+        <apd:Line>High Street</apd:Line>
+        <apd:Line>Teeside</apd:Line>
+        <apd:PostCode>TS1 1ST</apd:PostCode>
+      </CourtHouseAddress>
+    </CourtHouse>
+    <Sittings>
+      <Sitting>
+        <CourtRoomNumber>1</CourtRoomNumber>
+        <SittingSequenceNo>1</SittingSequenceNo>
+        <SittingAt>10:30:00</SittingAt>
+        <SittingPriority>T</SittingPriority>
+        <SittingNote>More info on the sitting</SittingNote>
+        <Judiciary>
+          <Judge>
+            <apd:CitizenNameTitle>His Honour Judge</apd:CitizenNameTitle>
+            <apd:CitizenNameForename>J</apd:CitizenNameForename>
+            <apd:CitizenNameSurname>Fox</apd:CitizenNameSurname>
+            <apd:CitizenNameSuffix>QC</apd:CitizenNameSuffix>
+            <CRESTjudgeID>123</CRESTjudgeID>
+          </Judge>
+        </Judiciary>
+        <Hearings>
+          <Hearing HearingType="TP">
+            <HearingSequenceNumber>1</HearingSequenceNumber>
+            <HearingDescription>Trial (part heard)</HearingDescription>
+            <CRESThearingID>1</CRESThearingID>
+            <TimeMarkingNote>Not before 10:30</TimeMarkingNote>
+            <CaseID>T20020371</CaseID>
+            <ProsecutingReference>12WR111401</ProsecutingReference>
+            <CommittingCourt>
+              <CourtHouseType>Magistrates Court</CourtHouseType>
+              <CourtHouseCode>TEES</CourtHouseCode>
+              <CourtHouseName>Teesside Magistrates</CourtHouseName>
+              <CourtHouseAddress>
+                <apd:Line>Teesside Magistrates</apd:Line>
+                <apd:Line>Side Street</apd:Line>
+                <apd:Line>Teeside</apd:Line>
+                <apd:PostCode>TS2 2ST</apd:PostCode>
+              </CourtHouseAddress>
+            </CommittingCourt>
+            <Defendants>
+              <Defendant>
+                <PersonalDetails>
+                  <Name>
+                    <apd:CitizenNameForename>A</apd:CitizenNameForename>
+                    <apd:CitizenNameSurname>Person</apd:CitizenNameSurname>
+                  </Name>
+                  <IsMasked>no</IsMasked>
+                </PersonalDetails>
+                <ASN>12345</ASN>
+                <CRESTdefendantID>12345</CRESTdefendantID>
+                <PNCnumber>1234</PNCnumber>
+                <Charges>
+                  <Charge IndictmentCountNumber="1" CJSoffenceCode="AANNNNN">
+                    <CRN>123456789-001</CRN>
+                    <OffenceStatement>Breaking and Entry</OffenceStatement>
+                    <OffenceParticulars>Broke into 12 Letsby Avenue and stole a camcorder.</OffenceParticulars>
+                    <CRESToffenceNumber>123</CRESToffenceNumber>
+                  </Charge>
+                </Charges>
+              </Defendant>
+            </Defendants>
+          </Hearing>
+          <Hearing HearingType="TP">
+            <HearingSequenceNumber>2</HearingSequenceNumber>
+            <HearingDescription>Trial (part heard)</HearingDescription>
+            <CRESThearingID>1</CRESThearingID>
+            <TimeMarkingNote>Not before 11:30</TimeMarkingNote>
+            <CaseID>T20020388</CaseID>
+            <ProsecutingReference>12ASD1401</ProsecutingReference>
+            <CommittingCourt>
+              <CourtHouseType>Magistrates Court</CourtHouseType>
+              <CourtHouseCode>COLCM</CourtHouseCode>
+              <CourtHouseName>Teesside Magistrates</CourtHouseName>
+              <CourtHouseAddress>
+                <apd:Line>Teesside Magistrates</apd:Line>
+                <apd:Line>Side Street</apd:Line>
+                <apd:Line>Teeside</apd:Line>
+                <apd:PostCode>TS2 2ST</apd:PostCode>
+              </CourtHouseAddress>
+            </CommittingCourt>
+            <Defendants>
+              <Defendant>
+                <PersonalDetails>
+                  <Name>
+                    <apd:CitizenNameForename>James</apd:CitizenNameForename>
+                    <apd:CitizenNameSurname>Lockheed</apd:CitizenNameSurname>
+                  </Name>
+                  <IsMasked>no</IsMasked>
+                </PersonalDetails>
+                <ASN>12345</ASN>
+                <CRESTdefendantID>12345</CRESTdefendantID>
+                <PNCnumber>1234</PNCnumber>
+                <Charges>
+                  <Charge IndictmentCountNumber="1" CJSoffenceCode="AANNNNN">
+                    <CRN>123456789-001</CRN>
+                    <OffenceStatement>Breaking and Entry</OffenceStatement>
+                    <OffenceParticulars>Broke into 12 Letsby Avenue and stole a camcorder.</OffenceParticulars>
+                    <CRESToffenceNumber>123</CRESToffenceNumber>
+                  </Charge>
+                </Charges>
+              </Defendant>
+            </Defendants>
+          </Hearing>
+        </Hearings>
+      </Sitting>
+      <Sitting>
+        <CourtRoomNumber>2</CourtRoomNumber>
+        <SittingSequenceNo>1</SittingSequenceNo>
+        <SittingAt>09:00:00</SittingAt>
+        <SittingPriority>T</SittingPriority>
+        <SittingNote>More info on the sitting</SittingNote>
+        <Judiciary>
+          <Judge>
+            <apd:CitizenNameTitle>His Honour Judge</apd:CitizenNameTitle>
+            <apd:CitizenNameForename>Peter</apd:CitizenNameForename>
+            <apd:CitizenNameSurname>Tockworth</apd:CitizenNameSurname>
+            <apd:CitizenNameSuffix>QC</apd:CitizenNameSuffix>
+            <CRESTjudgeID>123</CRESTjudgeID>
+          </Judge>
+        </Judiciary>
+        <Hearings>
+          <Hearing HearingType="TP">
+            <HearingSequenceNumber>1</HearingSequenceNumber>
+            <HearingDescription>Trial (part heard)</HearingDescription>
+            <CRESThearingID>1</CRESThearingID>
+            <TimeMarkingNote>Not before 10:30</TimeMarkingNote>
+            <CaseID>T20020371</CaseID>
+            <ProsecutingReference>12WR111401</ProsecutingReference>
+            <CommittingCourt>
+              <CourtHouseType>Magistrates Court</CourtHouseType>
+              <CourtHouseCode>TEES</CourtHouseCode>
+              <CourtHouseName>Teesside Magistrates</CourtHouseName>
+              <CourtHouseAddress>
+                <apd:Line>Teesside Magistrates</apd:Line>
+                <apd:Line>Side Street</apd:Line>
+                <apd:Line>Teeside</apd:Line>
+                <apd:PostCode>TS2 2ST</apd:PostCode>
+              </CourtHouseAddress>
+            </CommittingCourt>
+            <Defendants>
+              <Defendant>
+                <PersonalDetails>
+                  <Name>
+                    <apd:CitizenNameForename>A</apd:CitizenNameForename>
+                    <apd:CitizenNameSurname>Person</apd:CitizenNameSurname>
+                  </Name>
+                  <IsMasked>no</IsMasked>
+                </PersonalDetails>
+                <ASN>12345</ASN>
+                <CRESTdefendantID>12345</CRESTdefendantID>
+                <PNCnumber>1234</PNCnumber>
+                <Charges>
+                  <Charge IndictmentCountNumber="1" CJSoffenceCode="AANNNNN">
+                    <CRN>123456789-001</CRN>
+                    <OffenceStatement>Breaking and Entry</OffenceStatement>
+                    <OffenceParticulars>Broke into 12 Letsby Avenue and stole a camcorder.</OffenceParticulars>
+                    <CRESToffenceNumber>123</CRESToffenceNumber>
+                  </Charge>
+                </Charges>
+              </Defendant>
+            </Defendants>
+          </Hearing>
+          <Hearing HearingType="TP">
+            <HearingSequenceNumber>2</HearingSequenceNumber>
+            <HearingDescription>Trial (part heard)</HearingDescription>
+            <CRESThearingID>1</CRESThearingID>
+            <TimeMarkingNote>Not before 11:30</TimeMarkingNote>
+            <CaseID>T20020388</CaseID>
+            <ProsecutingReference>12ASD1401</ProsecutingReference>
+            <CommittingCourt>
+              <CourtHouseType>Magistrates Court</CourtHouseType>
+              <CourtHouseCode>COLCM</CourtHouseCode>
+              <CourtHouseName>Teesside Magistrates</CourtHouseName>
+              <CourtHouseAddress>
+                <apd:Line>Teesside Magistrates</apd:Line>
+                <apd:Line>Side Street</apd:Line>
+                <apd:Line>Teeside</apd:Line>
+                <apd:PostCode>TS2 2ST</apd:PostCode>
+              </CourtHouseAddress>
+            </CommittingCourt>
+            <Defendants>
+              <Defendant>
+                <PersonalDetails>
+                  <Name>
+                    <apd:CitizenNameForename>James</apd:CitizenNameForename>
+                    <apd:CitizenNameSurname>Lockheed</apd:CitizenNameSurname>
+                  </Name>
+                  <IsMasked>no</IsMasked>
+                </PersonalDetails>
+                <ASN>12345</ASN>
+                <CRESTdefendantID>12345</CRESTdefendantID>
+                <PNCnumber>1234</PNCnumber>
+                <Charges>
+                  <Charge IndictmentCountNumber="1" CJSoffenceCode="AANNNNN">
+                    <CRN>123456789-001</CRN>
+                    <OffenceStatement>Breaking and Entry</OffenceStatement>
+                    <OffenceParticulars>Broke into 12 Letsby Avenue and stole a camcorder.</OffenceParticulars>
+                    <CRESToffenceNumber>123</CRESToffenceNumber>
+                  </Charge>
+                </Charges>
+              </Defendant>
+              <Defendant>
+                <PersonalDetails>
+                  <Name>
+                    <apd:CitizenNameForename>William</apd:CitizenNameForename>
+                    <apd:CitizenNameSurname>Lewis</apd:CitizenNameSurname>
+                  </Name>
+                  <IsMasked>no</IsMasked>
+                </PersonalDetails>
+                <ASN>12345</ASN>
+                <CRESTdefendantID>12345</CRESTdefendantID>
+                <PNCnumber>1234</PNCnumber>
+                <Charges>
+                  <Charge IndictmentCountNumber="1" CJSoffenceCode="AANNNNN">
+                    <CRN>123456789-001</CRN>
+                    <OffenceStatement>Breaking and Entry</OffenceStatement>
+                    <OffenceParticulars>Broke into 12 Letsby Avenue and stole a camcorder.</OffenceParticulars>
+                    <CRESToffenceNumber>123</CRESToffenceNumber>
+                  </Charge>
+                </Charges>
+              </Defendant>
+            </Defendants>
+          </Hearing>
+        </Hearings>
+      </Sitting>
+    </Sittings>
+  </CourtHouseSittings>
+</DailyList>

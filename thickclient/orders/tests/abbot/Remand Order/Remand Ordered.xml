@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AWTTestScript slow="true" desc="Script (D:\projects\XHIBIT\thickclient\orders\tests\abbot\Remand Order.xml) ">
+  <component id="JPanel Instance" class="javax.swing.JPanel" parent="JViewport Instance" index="0" title="Order Screen (Editable)" />
+  <component id="JButton Instance" class="javax.swing.JButton" parent="JScrollBar Instance" index="0" title="Order Screen (Editable)" />
+  <component id="JScrollBar Instance" class="javax.swing.JScrollBar" parent="JScrollPane Instance" index="1" title="Order Screen (Editable)" />
+  <component id="DataEntryPanel Instance" class="uk.gov.courtservice.xhibit.client.order.gui.entry.DataEntryPanel" parent="JPanel Instance 1" index="0" title="Order Screen (Editable)" />
+  <component id="JScrollPane Instance" class="javax.swing.JScrollPane" parent="OrderMainPane Instance" index="1" title="Order Screen (Editable)" />
+  <component id="Is before the Court" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Is before the Court" />
+  <component id="JPanel under It was ordered" class="javax.swing.JPanel" index="0" title="Order Screen (Editable)" tag="JPanel under It was ordered" />
+  <component id="Additional Requirements Option" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Additional Requirements Option" />
+  <component id="Sent to..." class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Sent to..." />
+  <component id="Specific date &amp; time" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Specific date &amp; time" />
+  <component id="OrderMainPane Instance" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderMainPane" parent="OrderGUI Instance" index="1" title="Order Screen (Editable)" />
+  <component id="Order Screen (Editable) Root Pane" class="javax.swing.JRootPane" index="0" title="Order Screen (Editable)" tag="Order Screen (Editable) Root Pane" />
+  <component id="Convicted" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Convicted" />
+  <component id="Report Indicator" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Report Indicator" />
+  <component id="Remand Details" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Remand Details" />
+  <component id="Appeal against bail Information" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Appeal against bail Information" />
+  <component id="null.contentPane" class="javax.swing.JPanel" name="null.contentPane" parent="null.layeredPane" index="0" title="Order Screen (Editable)" />
+  <component id="JViewport Instance 1" class="javax.swing.JViewport" parent="JScrollPane Instance 1" index="0" title="Order Screen (Editable)" />
+  <component id="CustomFixedList Instance" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomFixedList" parent="JViewport Instance 1" index="0" title="Order Screen (Editable)" />
+  <component id="null.layeredPane" class="javax.swing.JLayeredPane" name="null.layeredPane" parent="Order Screen (Editable) Root Pane" index="1" title="Order Screen (Editable)" />
+  <component id="JPanel Instance 1" class="javax.swing.JPanel" parent="JPanel Instance" index="0" title="Order Screen (Editable)" />
+  <component id="Certificate of Transfer" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Certificate of Transfer" />
+  <component id="OrderGUI Instance" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderGUI" parent="null.contentPane" index="0" title="Order Screen (Editable)" />
+  <component id="Magistrates Court" class="uk.gov.courtservice.xhibit.client.order.gui.entry.courtlist.CourtOption" parent="JPanel under It was ordered" index="1" title="Order Screen (Editable)" tag="Magistrates Court" />
+  <component id="JScrollPane Instance 1" class="javax.swing.JScrollPane" parent="DataEntryPanel Instance" index="3" title="Order Screen (Editable)" />
+  <component id="Indicted/Convicted Option" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Indicted/Convicted Option" />
+  <component id="JViewport Instance" class="javax.swing.JViewport" parent="JScrollPane Instance" index="0" title="Order Screen (Editable)" />
+  <launch classpath="D:\projects\XHIBIT\midtier\orders\classes;D:\projects\XHIBIT\thickclient\orders\classes;D:\projects\XHIBIT\lib\abbot.jar;D:\projects\XHIBIT\lib\ant.jar;D:\projects\XHIBIT\lib\avalon-framework-cvs-20020806.jar;D:\projects\XHIBIT\lib\batik.jar;D:\projects\XHIBIT\lib\castor.jar;D:\projects\XHIBIT\lib\fop.jar;D:\projects\XHIBIT\lib\jaxp.jar;D:\projects\XHIBIT\lib\jdom.jar;D:\projects\XHIBIT\lib\junit.jar;D:\projects\XHIBIT\lib\JUnitDoclet.jar;D:\projects\XHIBIT\lib\junitee.jar;D:\projects\XHIBIT\lib\log4j.jar;D:\projects\XHIBIT\lib\MDateSelector.jar;D:\projects\XHIBIT\lib\Printing.jar;D:\projects\XHIBIT\lib\weblogic.jar;D:\projects\XHIBIT\lib\WIMercMapBean.jar;D:\projects\XHIBIT\lib\wlManagement.jar;D:\projects\XHIBIT\lib\wlSecurityProviders.jar;D:\projects\XHIBIT\lib\xalan.jar;D:\projects\XHIBIT\lib\xerces.jar;D:\projects\XHIBIT\lib\xercesImpl.jar;D:\projects\XHIBIT\lib\xml-apis.jar;D:\projects\XHIBIT\lib\xmlParserAPIs.jar;D:\projects\XHIBIT\release\CaseController.jar;D:\projects\XHIBIT\release\ChargeController.jar;D:\projects\XHIBIT\release\ChargeDifferenceEntities.jar;D:\projects\XHIBIT\release\ChargeDifferencesEntities.jar;D:\projects\XHIBIT\release\Client.jar;D:\projects\XHIBIT\release\ClientView.jar;D:\projects\XHIBIT\release\Client_orig.jar;D:\projects\XHIBIT\release\common.jar;D:\projects\XHIBIT\release\Config.jar;D:\projects\XHIBIT\release\CourtLogController.jar;D:\projects\XHIBIT\release\CourtLogEntities.jar;D:\projects\XHIBIT\release\DefendantController.jar;D:\projects\XHIBIT\release\Delegate.jar;D:\projects\XHIBIT\release\Framework.jar;D:\projects\XHIBIT\release\FrameworkController.jar;D:\projects\XHIBIT\release\GroupReaderController.jar;D:\projects\XHIBIT\release\HearingScheduleController.jar;D:\projects\XHIBIT\release\HearingScheduleEntities.jar;D:\projects\XHIBIT\release\InstantMessaging.jar;D:\projects\XHIBIT\release\Integration.jar;D:\projects\XHIBIT\release\OrdersClient.jar;D:\projects\XHIBIT\release\OrdersController.jar;D:\projects\XHIBIT\release\OrdersEntities.jar;D:\projects\XHIBIT\release\PreHearingEntities.jar;D:\projects\XHIBIT\release\Printing.jar;D:\projects\XHIBIT\release\PublicDisplayController.jar;D:\projects\XHIBIT\release\PublicNoticeController.jar;D:\projects\XHIBIT\release\PublicNoticeEntities.jar;D:\projects\XHIBIT\release\ResultEntities.jar;D:\projects\XHIBIT\release\ResultsController.jar;D:\projects\XHIBIT\release\SecurityEntities.jar;D:\projects\XHIBIT\release\SysAdminController.jar;D:\projects\XHIBIT\release\SysAdminEntities.jar;D:\projects\XHIBIT\release\TodaysScheduleController.jar;D:\projects\XHIBIT\release\UserSessionController.jar;D:\projects\XHIBIT\release\Value.jar;D:\apps\ant\lib\ant.jar;D:\apps\xDoclet\lib\xdoclet.jar;D:\projects\XHIBIT\thickclient\orders\src\resources;D:\JBuilder7\lib\junit.jar" args="[file:/d:/projects/XHIBIT/thickclient/orders/xml/exampleXML/Remand Order.xml, file:/d:/projects/XHIBIT/thickclient/orders/xml/exampleXML/RemandOrderTemplate.xml, file:/d:/projects/XHIBIT/thickclient/orders/xml/documentTransforms/Bail Order.xslt]" class="uk.gov.courtservice.xhibit.client.order.gui.test.GuiTestFrame" delegate="false" method="main" desc="Insert your launch information here" />
+  <action args="3000" method="actionDelay" />
+  <sequence>
+    <action args="Report Indicator" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Specific date &amp; time" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="1000" method="actionDelay" desc="Delay(100)" />
+    <action args="Magistrates Court" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="1000" method="actionDelay" desc="Delay(100)" />
+  </sequence>
+  <sequence>
+    <action args="Remand Details" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance,7,181" method="actionDrag" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance,0,443" method="actionDrop" />
+    <action args="100" method="actionDelay" />
+    <action args="Sent to..." class="javax.swing.AbstractButton" method="actionClick" />
+    <sequence>
+      <action args="Is before the Court" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="JScrollBar Instance,11,355" method="actionDrag" />
+      <action args="100" method="actionDelay" />
+      <action args="JScrollBar Instance,355,463" method="actionDrop" />
+      <action args="100" method="actionDelay" />
+      <action args="Additional Requirements Option" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="100" method="actionDelay" />
+      <action args="JScrollBar Instance,12,508" method="actionDrag" />
+      <action args="JScrollBar Instance,14,636" method="actionDrop" />
+      <action args="100" method="actionDelay" />
+      <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="100" method="actionDelay" />
+      <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="100" method="actionDelay" />
+      <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="100" method="actionDelay" />
+      <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="100" method="actionDelay" />
+      <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+      <action args="100" method="actionDelay" />
+      <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+    </sequence>
+  </sequence>
+  <terminate />
+</AWTTestScript>
+

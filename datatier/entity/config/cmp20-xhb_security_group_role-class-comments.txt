@@ -1,0 +1,11 @@
+ *
+ * -------- custom finders --------
+* @xhibit.auditable true
+ *
+ *
+ *
+ * -------- end of custom finders --------
+ *
+ * @weblogic.delay-database-insert-until ejbPostCreate
+ 
+  

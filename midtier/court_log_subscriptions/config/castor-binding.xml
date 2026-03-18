@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<n:binding xmlns:n="http://www.castor.org/SourceGenerator/Binding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.castor.org/SourceGenerator/Binding
+D:\apps\castor-0.9.4.3\doc\binding.xsd" defaultBindingType="element">
+	<package>
+		<name>uk.gov.courtservice.xhibit.xmlbinding.generated.cjse.types</name>
+		<namespace>urn:integration-cjsonline-gov-uk:pilot:types</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.xmlbinding.generated.cjse.entities</name>
+		<namespace>urn:integration-cjsonline-gov-uk:pilot:entities</namespace>
+	</package>
+	<n:complexTypeBinding name="complexType:OrganisationalUnit/Address">
+		<java-class name="OrgUnitAddress"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Contact/Address">
+		<java-class name="ContactAddress"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:ArrayOfAddress/Address">
+		<java-class name="ArrayAddress"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Document/DocumentType">
+		<java-class name="DocumentDocumentType"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DocumentCore/DocumentType">
+		<java-class name="DocumentCoreDocumentType"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantUpdate/AliasUpdates/AliasUpdate">
+		<java-class name="DefendantAliasUpdate"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantUpdate/AlternateAddressUpdates/AlternateAddressUpdate">
+		<java-class name="DefendantAlternateAddressUpdate"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:ArrayOfCourtAppearance/CourtAppearance">
+		<java-class name="ArrayCourtAppearance"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRNUpdate/CourtAppearanceUpdates/CourtAppearanceUpdate">
+		<java-class name="CRNCourtAppearanceUpdate"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:ArrayOfDefendantIdentifier/DefendantIdentifier">
+		<java-class name="ArrayDefendantIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:ArrayOfDefendantName/DefendantName">
+		<java-class name="ArrayDefendantName"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:ArrayOfObservation/Observation">
+		<java-class name="ArrayObservation"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CaseFile/CaseFileIdentifier">
+		<java-class name="CaseFileCaseFileIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CaseFileIdentifier/CaseFileID">
+		<java-class name="CaseFileIdentifierCaseFileID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CaseFileIdentifier/SystemID">
+		<java-class name="CaseFileIdentifierSystemID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CaseFileUpdate/CaseFileIdentifier">
+		<java-class name="CaseFileUpdateCaseFileIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Contact/LastName">
+		<java-class name="ContactLastName"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Contact/FirstName">
+		<java-class name="ContactFirstName"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Contact/PagerNumber">
+		<java-class name="ContactPagerNumber"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Contact/FaxNumber">
+		<java-class name="ContactFaxNumber"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRN/CRNIdentifier">
+		<java-class name="CRNCRNIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRN/CRNStatus">
+		<java-class name="CRNCRNStatus"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRN/BailStatus">
+		<java-class name="CRNBailStatus"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRN/VerdictStatus">
+		<java-class name="CRNVerdictStatus"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRNCore/CRNStatus">
+		<java-class name="CRNCoreCRNStatus"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRNCore/BailStatus">
+		<java-class name="CRNCoreBailStatus"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRNCore/VerdictStatus">
+		<java-class name="CRNCoreVerdictStatus"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRNIdentifier/CRNID">
+		<java-class name="CRNIdentifierCRNID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:CRNUpdate/CRNIdentifier">
+		<java-class name="CRNUpdateCRNIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Defendant/DateOfBirth">
+		<java-class name="DefendantDateOfBirth"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Defendant/Gender">
+		<java-class name="DefendantGender"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantCore/DateOfBirth">
+		<java-class name="DefendantCoreDateOfBirth"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantCore/Gender">
+		<java-class name="DefendantCoreGender"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantIdentifier/DefendantID">
+		<java-class name="DefIdentifierDefID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantIdentifier/DefendantIdentifierType">
+		<java-class name="DefIdentifierDefIdentifierType"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantName/LastName">
+		<java-class name="DefendantNameLastName"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantName/FirstName">
+		<java-class name="DefendantNameFirstName"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantUpdate/DefendantIdentifier">
+		<java-class name="DefendantUpdateDefendantIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DefendantUpdate/DefendantIdentifierUpdates/DefendantIdentifierUpdate">
+		<java-class name="DefUpdateDefIdUpdatesDefIdUpdate"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Document/DocumentIdentifier">
+		<java-class name="DocumentDocumentIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Document/DocumentSize">
+		<java-class name="DocumentDocumentSize"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DocumentContent/DocumentIdentifier">
+		<java-class name="DocumentContentDocumentIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DocumentIdentifier/DocumentID">
+		<java-class name="DocumentIdentifierDocumentID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DocumentIdentifier/SystemID">
+		<java-class name="DocumentIdentifierSystemID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DocumentUpdate/DocumentIdentifier">
+		<java-class name="DocumentUpdateDocumentIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:LinkedCRN/CRN">
+		<java-class name="LinkedCRNCRN"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Observation/ObservationTime">
+		<java-class name="ObservationObservationTime"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Observation/ObservationPoint">
+		<java-class name="ObservationObservationPoint"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:NotificationsAndAlerts/NarrativeText">
+		<java-class name="NotificationsAndAlertsNarrativeText"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:OrganisationalUnit/OrganisationalUnitID">
+		<java-class name="OrganisationalUnitOrganisationalUnitID"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:Role/RoleIdentifier">
+		<java-class name="RoleRoleIdentifier"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:RoleIdentifier/RoleID">
+		<java-class name="RoleIdentifierRoleID"/>
+	</n:complexTypeBinding>
+	<n:elementBinding name="CRN">
+		<java-class name="CRNElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="BailStatus">
+		<java-class name="BailStatusElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CaseFile">
+		<java-class name="CaseFileElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CaseFileIdentifier">
+		<java-class name="CaseFileIdentifierElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CaseFileUpdate">
+		<java-class name="CaseFileUpdateElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="Contact">
+		<java-class name="ContactElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CRNIdentifier">
+		<java-class name="CRNIdentifierElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CRNLinkType">
+		<java-class name="CRNLinkTypeElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CRNStatus">
+		<java-class name="CRNStatusElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="CRNUpdate">
+		<java-class name="CRNUpdateElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="Defendant">
+		<java-class name="DefendantElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DefendantIdentifier">
+		<java-class name="DefendantIdentifierElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DefendantIdentifierType">
+		<java-class name="DefendantIdentifierTypeElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DefendantUpdate">
+		<java-class name="DefendantUpdateElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="Document">
+		<java-class name="DocumentElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DocumentContent">
+		<java-class name="DocumentContentElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DocumentIdentifier">
+		<java-class name="DocumentIdentifierElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DocumentType">
+		<java-class name="DocumentTypeElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="DocumentUpdate">
+		<java-class name="DocumentUpdateElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="LinkedCRN">
+		<java-class name="LinkedCRNElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="NotificationsAndAlerts">
+		<java-class name="NotificationsAndAlertsElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="OrganisationalUnit">
+		<java-class name="OrganisationalUnitElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="Role">
+		<java-class name="RoleElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="RoleID">
+		<java-class name="RoleIDElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="ServiceTest">
+		<java-class name="ServiceTestElement"/>
+	</n:elementBinding>
+	<n:elementBinding name="VerdictStatus">
+		<java-class name="VerdictStatusElement"/>
+	</n:elementBinding>
+	
+</n:binding>

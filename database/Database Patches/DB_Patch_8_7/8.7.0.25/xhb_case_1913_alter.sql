@@ -1,0 +1,16 @@
+--ctx-1913
+--xhb_case
+ALTER TABLE xhb_case ADD PUB_RUNNING_LIST_ID NUMBER(8);
+ALTER TABLE xhb_case ADD DATE_CTL_REMINDER_PRINTED DATE;
+ALTER TABLE aud_case ADD DATE_CTL_REMINDER_PRINTED DATE;
+ALTER TABLE aud_case ADD PUB_RUNNING_LIST_ID NUMBER(8);
+
+-- Create/Recreate primary, unique and foreign key constraints 
+ALTER TABLE xhb_case ADD (CONSTRAINT xhb_case_pub_run_list_id_fk FOREIGN KEY (PUB_RUNNING_LIST_ID) REFERENCES XHB_PUB_RUNNING_LIST (PUB_RUNNING_LIST_ID));
+
+CREATE INDEX XHB_CASE_PUB_RUN_LIST ON XHB_CASE (PUB_RUNNING_LIST_ID);
+
+@@xhb_case_1913_bur_tr;
+@@xhb_case_1913_ai_tr;
+
+commit;

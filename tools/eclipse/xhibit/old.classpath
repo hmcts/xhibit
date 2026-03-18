@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.USER_LIBRARY/Weblogic User Library [weblogic9.2]"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry exported="true" kind="lib" path="lib/fop-0.20.5.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/fop-0.20.5-avalon-framework.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/fop-0.20.5-batik.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jdom-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/log4j-1.2.13.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/standard-1.0.6-jaxen-full.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/standard-1.0.6-jdbc2_0-stdext.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/standard-1.0.6-jstl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/standard-1.0.6-saxpath.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/standard-1.0.6-weblogic.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xalan.serializer-2.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xalan-2.7.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xalan-2.7.0-xercesImpl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/xalan-2.7.0-xml-apis.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/bsh-2.0b4.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/commons-logging-1.0.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/castor-1.0.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/aspectjrt.jar"/>
+<<<<<<< .classpath
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/naming-common-4.1.36.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/naming-java-5.0.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/saaj-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/saaj-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/axis.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/FastInfoset.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/jaxrpc-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/jaxrpc-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="F:/projects/XHIBIT_8_2/lib/jaxrpc-spi.jar"/>
+=======
+	<classpathentry exported="true" kind="lib" path="lib/mail.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/naming-common-4.1.36.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/naming-java-5.0.28.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/saaj-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/saaj-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/activation.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/axis.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/FastInfoset.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxrpc-api.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxrpc-impl.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/jaxrpc-spi.jar"/>
+>>>>>>> 1.10
+	<classpathentry kind="output" path=""/>
+</classpath>

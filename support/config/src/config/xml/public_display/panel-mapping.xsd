@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Alex Brown (EDS) -->
+<xs:schema targetNamespace="uri:XHIBIT/panel-mapping" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:panelmapping="uri:XHIBIT/panel-mapping" xmlns:panel="uri:XHIBIT/panel" xmlns:display="uri:XHIBIT/display" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="uri:XHIBIT/panel" schemaLocation=".\panel.xsd"/>
+	<xs:import namespace="uri:XHIBIT/display" schemaLocation=".\display.xsd"/>
+	<xs:element name="panelmappings">
+		<xs:annotation>
+			<xs:documentation>The collection of panel mappings</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="panelmapping" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>This provides the mappings between the pages and the panels</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="page"/>
+							<xs:element name="panel" type="xs:string" maxOccurs="unbounded"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

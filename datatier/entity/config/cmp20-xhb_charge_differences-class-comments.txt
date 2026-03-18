@@ -1,0 +1,11 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdAndDiffTime(java.lang.Integer caseId, java.util.Date expiryTime)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(s) FROM XhbChargeDifferences AS s WHERE s.caseId = ?1 AND s.diffTime > ?2"
+ *
+ *
+ * -------- end of custom finders --------
+  

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="30100.xsd">
+	<type>30100</type>
+	<date>2002-11-25</date>
+	<time/>
+	<free_text/>
+	<Short-Adjourn-Options>
+		<SAO-Type>30100_Case_adjourned_until</SAO-Type>
+		<SAO-Time/>
+	</Short-Adjourn-Options>
+</event>

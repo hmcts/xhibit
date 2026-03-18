@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by LCMG (LogicaCMG) -->
+<xsd:schema xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.7" id="YouthRehabilitationOrder">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Ministry of Justice</Creator>
+				<Created>2015-05-20</Created>
+				<Modified>2015-05-20</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>YouthRehabilitationOrder</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Ministry of Justice, 102 Petty France, London, SW1H 9HD</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2015</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>final</Status>
+				<StatusDescription>definitive version for release</StatusDescription>
+				<Version>5.7</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>Crown Court Youth Rehabilitation Order</Title>
+				<Type>message</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="YouthRehabOrder2015Structure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="OrderHeader" type="CourtOrderHeaderStructure"/>
+			<xsd:element name="ResponsibleOfficer1" type="xsd:string"/>
+			<xsd:element name="ResponsibleOfficer2" type="xsd:string"/>
+			<xsd:element name="CompletionDate" type="xsd:date"/>
+			<xsd:element name="LocalJusticeArea" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="OrderRequirements" type="YouthOrderRequirementsStructure"/>
+			<xsd:element name="AdditionalNotes" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="ExtendedInformation" type="ExtensionType" minOccurs="0"/>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="YouthRehabilitationOrder" type="YouthRehabOrder2015Structure"/>
+</xsd:schema>

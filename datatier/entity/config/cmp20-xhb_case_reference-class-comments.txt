@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="uk.gov.courtservice.xhibit.business.entities.xhb_case_reference.XhbCaseReferenceBasicValue findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) FROM XhbCaseReference c WHERE c.xhbCase.caseId = ?1"
+ * 
+ * -------- end of custom finders --------
+  

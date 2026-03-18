@@ -1,0 +1,169 @@
+<?xml version="1.0"?>
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN"
+                                 "mapping.dtd">
+<mapping>
+    <description>Description of the mapping</description>
+    	<class name="uk.gov.courtservice.framework.services.printing.PrintingValueObject">
+        	<map-to xml="remand_details"/>
+
+
+			<field name="caseNO"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCaseNumber"
+				set-method="setCaseNumber">
+				<bind-xml name="case_no" node="element"/>
+	       </field>
+
+			<field name="courtCode"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCourtCode"
+				set-method="setCourtCode">
+				<bind-xml name="court_code" node="element"/>
+		   </field>
+
+		   <field name="orderedDate"
+				type="java.lang.String"
+				direct="false"
+				get-method="getOrderedDate"
+				set-method="setOrderedDate">
+				<bind-xml name="ordered_date" node="element"/>
+		   </field>
+
+		   <field name="correspondent"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCorrespondent"
+				set-method="setCorrespondent">
+				<bind-xml name="correspondent" node="element"/>
+		   </field>
+
+			<field name="name"
+	       	    type="java.lang.String"
+	       	    direct="false"
+	        	get-method="getName"
+	        	set-method="setName">
+	            <bind-xml name="name" node="element"/>
+	       </field>
+
+			<field name="defendantDOB"
+				type="java.lang.String"
+				direct="false"
+				get-method="getDefendantDOB"
+				set-method="setDefendantDOB">
+				<bind-xml name="dob" node="element"/>
+	       </field>
+
+
+			<field name="remandedLocation"
+				type="java.lang.String"
+				direct="false"
+				get-method="getRemandedLocation"
+				set-method="setRemandedLocation">
+				<bind-xml name="remanded_location" node="element"/>
+	       </field>
+
+	       <field name="report"
+				type="java.lang.String"
+				direct="false"
+				get-method="getReport"
+				set-method="setReport">
+				<bind-xml name="report" node="element"/>
+		   </field>
+
+
+
+	       <field name="courtDate"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCourtDate"
+				set-method="setCourtDate">
+				<bind-xml name="court_date" node="element"/>
+		   </field>
+
+			<field name="action"
+				type="java.lang.String"
+				direct="false"
+				get-method="getAction"
+				set-method="setAction">
+				<bind-xml name="action" node="element"/>
+		   </field>
+
+			<field name="preTrialDate"
+				type="java.lang.String"
+				direct="false"
+				get-method="getPreTrialDate"
+				set-method="setPreTrialDate">
+				<bind-xml name="pretrial_date" node="element"/>
+	       </field>
+
+		   <field name="commitedOptions"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCommitedOptions"
+				set-method="setCommitedOptions">
+				<bind-xml name="commited_options" node="element"/>
+		   </field>
+
+			<field name="indictmentDate"
+				type="java.lang.String"
+				direct="false"
+				get-method="getIndictmentDate"
+				set-method="setIndictmentDate">
+				<bind-xml name="indictment_date" node="element"/>
+		   </field>
+
+			<field name="transferDate"
+				type="java.lang.String"
+				direct="false"
+				get-method="getTransferDate"
+				set-method="setTransferDate">
+				<bind-xml name="transfer_date" node="element"/>
+		   </field>
+
+		   <field name="offence"
+				type="java.lang.String"
+				direct="false"
+				get-method="getOffence"
+				set-method="setOffence">
+				<bind-xml name="offence" node="element"/>
+		   </field>
+
+		   <field name="signature"
+				type="java.lang.String"
+				direct="false"
+				get-method="getSignature"
+				set-method="setSignature">
+				<bind-xml name="signature" node="element"/>
+		   </field>
+
+			<field name="signatureDate"
+				type="java.lang.String"
+				direct="false"
+				get-method="getSignatureDate"
+				set-method="setSignatureDate">
+				<bind-xml name="signature_date" node="element"/>
+		   </field>
+
+			<field name="court"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCourt"
+				set-method="setCourt">
+				<bind-xml name="court" node="element"/>
+	       </field>
+
+			<field name="courtName"
+				type="java.lang.String"
+				direct="false"
+				get-method="getCourtName"
+				set-method="setCourtName">
+				<bind-xml name="court_location" node="element"/>
+	       </field>
+
+
+        </class>
+
+</mapping>
+

@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="Narrative" type="NarrativeType">
+		<xs:annotation>
+			<xs:documentation>Comment describing your root element</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="NarrativeType">
+		<xs:sequence>
+			<xs:element name="Header" type="NarrativeContainerType"/>
+			<xs:element name="Body" type="NarrativeMainBodyType"/>
+			<xs:element name="Footer" type="NarrativeContainerType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NarrativeContainerType" mixed="true">
+		<xs:annotation>
+			<xs:documentation>ANY NEW ELEMENTS SHOULD BE ADDED IN THE CORRECT LOCATION - ALPHABETICAL ORDER</xs:documentation>
+		</xs:annotation>
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Headings and Formatting</xs:documentation>
+				</xs:annotation>
+				<xs:element name="H1" type="NarrativeHeadingType"/>
+				<xs:element name="H2" type="NarrativeHeadingType"/>
+				<xs:element name="H3" type="NarrativeHeadingType"/>
+				<xs:element name="H4" type="NarrativeHeadingType"/>
+				<xs:element name="H5" type="NarrativeHeadingType"/>
+				<xs:element name="H6" type="NarrativeHeadingType"/>
+				<xs:element name="H7" type="NarrativeHeadingType"/>
+				<xs:element name="If" type="NarrativeIfType"/>
+				<xs:element name="Line" type="NarrativeContainerType"/>
+				<xs:element name="List">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="ListItem" type="NarrativeContainerType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="P">
+					<xs:complexType mixed="true">
+						<xs:complexContent mixed="true">
+							<xs:extension base="NarrativeContainerType"/>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="Table">
+					<xs:complexType mixed="true">
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="TR">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="TD" type="NarrativeContainerType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DTable">
+					<xs:complexType>
+						<xs:sequence maxOccurs="unbounded">
+							<xs:element name="TR">
+								<xs:complexType>
+									<xs:sequence maxOccurs="unbounded">
+										<xs:element name="TD" type="NarrativeContainerType"/>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<!-- WDF: 24/02/03 - Removed duplicate entry -->
+				<!--
+              <xs:element name="H1" type="NarrativeHeadingType"/>
+              -->
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Bail Order (BC)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="BC_BailGranted" type="NarrativeValueTagType"/>
+				<xs:element name="BC_BailGrantedType" type="NarrativeValueTagType"/>
+				<xs:element name="BC_RecordOfDecision" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part1" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part1_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="BC_AppellantDefendant" type="NarrativeValueTagType"/>
+				<xs:element name="BC_ApplyToCourt" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part2" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part2_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part2_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="BC_BailAct1976" type="NarrativeValueTagType"/>
+				<xs:element name="BC_BailWasGranted" type="NarrativeValueTagType"/>
+				<xs:element name="BC_PreConditions" type="NarrativeValueTagType"/>
+				<xs:element name="BC_PostConditions" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part3" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part3_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part3_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Reasons" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part4" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Part4_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="BC_ShallAppear" type="NarrativeValueTagType"/>
+				<xs:element name="BC_CourtText" type="NarrativeValueTagType"/>
+				<xs:element name="BC_PlaceNotified" type="NarrativeValueTagType"/>
+				<xs:element name="BC_Warning" type="NarrativeValueTagType"/>
+				<xs:element name="BC_ListItem1" type="NarrativeValueTagType"/>
+				<xs:element name="BC_ListItem2" type="NarrativeValueTagType"/>
+				<xs:element name="BC_InCustody" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Bench Warrant (BW)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="BW_AllConstables" type="NarrativeValueTagType"/>
+				<xs:element name="BW_ToArrest" type="NarrativeValueTagType"/>
+				<xs:element name="BW_The" type="NarrativeValueTagType"/>
+				<xs:element name="BW_Defendant" type="NarrativeValueTagType"/>
+				<xs:element name="BW_ReleaseText" type="NarrativeValueTagType"/>
+				<xs:element name="BW_Forthwith" type="NarrativeValueTagType"/>
+				<xs:element name="BW_ReleaseOnBail" type="NarrativeValueTagType"/>
+				<xs:element name="BW_AppearAtCourt" type="NarrativeValueTagType"/>
+				<xs:element name="BW_OtherPlace" type="NarrativeValueTagType"/>
+				<xs:element name="BW_NextAppearanceDate" type="NarrativeValueTagType"/>
+				<xs:element name="BW_DateTimeNotified" type="NarrativeValueTagType"/>
+				<xs:element name="BW_Surrender" type="NarrativeValueTagType"/>
+				<xs:element name="BW_Custody" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Bench Warrant After Failure (BWC and BWA)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="BW_AF_Title" type="NarrativeValueTagType"/>
+				<xs:element name="BW_AF_ToAllConstables" type="NarrativeValueTagType"/>
+				<xs:element name="BW_AF_ToAllConstablesText" type="NarrativeValueTagType"/>
+				<xs:element name="BW_AF_TheCourtOrderedTitle" type="NarrativeValueTagType"/>
+				<xs:element name="BW_AF_TheCourtOrderedText" type="NarrativeValueTagType"/>
+				<xs:element name="BW_AF_AppearAtCourt" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>D20 Order</xs:documentation>
+				</xs:annotation>
+				<xs:element name="D20_Notice" type="NarrativeValueTagType"/>
+				<xs:element name="D20_CaseOf" type="NarrativeValueTagType"/>
+				<xs:element name="D20_The" type="NarrativeValueTagType"/>
+				<xs:element name="D20_Defendant" type="NarrativeValueTagType"/>
+				<xs:element name="D20_ConvictionDate" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Monetary Order</xs:documentation>
+				</xs:annotation>
+				<xs:element name="MO_Notice" type="NarrativeValueTagType"/>
+				<xs:element name="MO_CaseOf" type="NarrativeValueTagType"/>
+				<xs:element name="MO_The" type="NarrativeValueTagType"/>
+				<xs:element name="MO_Defendant" type="NarrativeValueTagType"/>
+				<xs:element name="MO_ConvictionDate" type="NarrativeValueTagType"/>
+				<xs:element name="MO_OffenceText" type="NarrativeValueTagType"/>
+				<xs:element name="MO_OrderDate" type="NarrativeValueTagType"/>
+				<xs:element name="MO_MonetaryOrderDetailAndAmount" type="NarrativeValueTagType"/>
+				<xs:element name="MO_PayeeAddress" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Remand Condition (RC)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="RC_RemandTitle" type="NarrativeValueTagType"/>
+				<xs:element name="RC_ItWasOrdered" type="NarrativeValueTagType"/>
+				<xs:element name="RC_ThatTheDefendant" type="NarrativeValueTagType"/>
+				<xs:element name="RC_Remanded" type="NarrativeValueTagType"/>
+				<xs:element name="RC_CustodyLocation" type="NarrativeValueTagType"/>
+				<xs:element name="RC_ReportIndicator" type="NarrativeValueTagType"/>
+				<xs:element name="RC_CourtText" type="NarrativeValueTagType"/>
+				<xs:element name="RC_PlaceNotified" type="NarrativeValueTagType"/>
+				<xs:element name="RC_CommitSent" type="NarrativeValueTagType"/>
+				<xs:element name="RC_ToCrownCourt" type="NarrativeValueTagType"/>
+				<xs:element name="RC_CommittedDate" type="NarrativeValueTagType"/>
+				<xs:element name="RC_CommittingCourtHouseName" type="NarrativeValueTagType"/>
+				<xs:element name="RC_IndictedConvicted" type="NarrativeValueTagType"/>
+				<xs:element name="RC_BeforeTheCourt" type="NarrativeValueTagType"/>
+				<xs:element name="RC_VoluntaryBillOfIndictment" type="NarrativeValueTagType"/>
+				<xs:element name="RC_CertificateOfTransfer" type="NarrativeValueTagType"/>
+				<xs:element name="RC_AppealAgainstBailGranted" type="NarrativeValueTagType"/>
+				<xs:element name="RC_AdditionalInfo" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Commitment to Young Offenders (COMY)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="COMY_Title" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_CommittedForSentence" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_PeriodOf" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_DefendantBeDetained" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_ImprisonmentType" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_CustodialSentenceOption" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_ExSentence" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_ReturnDefendant_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_ReturnDefendant_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_ReturnDefendant_Title3" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_YOIPrison" type="NarrativeValueTagType"/>
+				<xs:element name="COMY_Return" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Commitment to Young Offenders (YO5044)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="YO5044C_IndeterminateSentence" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_ES_Text1" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_Days" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_ES_Text2" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_ES_Text3" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_CustDays" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_ES_Text4" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_ExPeriod" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_Section44" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_DomesticBurglaryTitle" type="NarrativeValueTagType"/>
+				<xs:element name="YO5044C_DomesticBurglary" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Imprisonment Order (IMPO)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="IMPO_Title" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_CommittedForSentence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_PeriodOfImprisonment" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_DefendantBeSentenced" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_SentenceOption" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_SeriousOffence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_SeriousOffenceText" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_MinimumSentenceTitle" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_MinimumSentence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_ExSentence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_ReturnDefendant_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_ReturnDefendant_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_Prison" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_Return" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO_DeportationSection" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Common COMY and IMPO</xs:documentation>
+				</xs:annotation>
+				<xs:element name="COMYIMP_ConvictedOfCrime" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ConvictionDate" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_CourtOrdered" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_CustodialSentences" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ChapterIII_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ChapterIII_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ChapterIII_Title3" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ChapterIII_Text" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_DrugTraffickingTitle" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_DrugTrafficking" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_DomesticBurglaryTitle" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_DomesticBurglary" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ExtendedSentence_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ExtendedSentence_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ExtendedSentence_Title3" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ES_Text1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ES_Text2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Days" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ES_Text3" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_CustDays" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ES_Text4" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ExPeriod" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Section44" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReturnDefendant_Line1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReturnDefendant_Line2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReturnDefendant_Line3" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReturnPeriod" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_TotalPeriod" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReleasePrisoners_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReleasePrisoners_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReleasePrisoners_Text1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_ReleasePrisoners_Text2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Section86_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Section86_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Section86_Title3" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Section86_Title4" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_Section86_Text" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_AddReq_Title" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_AdditionalNotes" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_IndeterminateSentence_title1" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_IndeterminateSentence_title2" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_AutomaticDeportation_title" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_RecommendedDeportation_title" type="NarrativeValueTagType"/>
+				<xs:element name="COMYIMP_RecommendedDeportation_text" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Imprisonment Order (IMPO5035C)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="IMPO5035C_Title" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_SubTitle" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_DefendantDetails" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_CommittedForSentence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_PeriodOfImprisonment" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_SentenceText" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_SentenceOption" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_SeriousOffence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_SeriousOffenceText" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_MinimumSentenceTitle" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_MinimumSentence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_ExSentence" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_ReturnDefendant_Title1" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_ReturnDefendant_Title2" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_Prison" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_Return" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_DeportationSection" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_ChapterIII_Text" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_DomesticBurglaryTitle" type="NarrativeValueTagType"/>
+				<xs:element name="IMPO5035C_DomesticBurglary" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Community Punishment Order (CPO)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="CPO_Title" type="NarrativeValueTagType"/>
+				<xs:element name="CPO_Text1" type="NarrativeValueTagType"/>
+				<xs:element name="CPO_Text2" type="NarrativeValueTagType"/>
+				<xs:element name="CPO_HearingOption" type="NarrativeValueTagType"/>
+				<xs:element name="CPO_Text3" type="NarrativeValueTagType"/>
+				<xs:element name="CPO_Text4" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Community Punishment Rehab Order (CPRO)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="CPRO_Title" type="NarrativeValueTagType"/>
+				<xs:element name="CPRO_LocalJustice" type="NarrativeValueTagType"/>
+				<xs:element name="CPRO_Text1" type="NarrativeValueTagType"/>
+				<xs:element name="CPRO_TheCourt" type="NarrativeValueTagType"/>
+				<xs:element name="CPRO_Text2" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Community Rehab Order (CRO)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="CRO_Title" type="NarrativeValueTagType"/>
+				<xs:element name="CRO_Text1" type="NarrativeValueTagType"/>
+				<xs:element name="CRO_Text2" type="NarrativeValueTagType"/>
+				<xs:element name="CRO_Text3" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>CPO CPRO CRO Common</xs:documentation>
+				</xs:annotation>
+				<xs:element name="Comm_WhoseAddress" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_AddressOption" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_ConvictedOf" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_Conviction" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_TheCourt" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_On" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_FailedToComply" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_RevokeOption" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_PettySessionalArea" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_AdditionalRequirements" type="NarrativeValueTagType"/>
+				<xs:element name="Comm_SignedInfoCommunity" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Community Order (CO)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="CO_Title" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Revision" type="NarrativeValueTagType"/>
+				<xs:element name="CO_OrderTitle" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Order" type="NarrativeValueTagType"/>
+				<xs:element name="CO_RequirementTitle" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Requirement" type="NarrativeValueTagType"/>
+				<xs:element name="CO_WarningTitle" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Warning" type="NarrativeValueTagType"/>
+				<xs:element name="CO_NoteTitle" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Note" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Signed" type="NarrativeValueTagType"/>
+				<xs:element name="CO_OffencesTitle" type="NarrativeValueTagType"/>
+				<xs:element name="CO_Offences" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>Suspended Sentece Order (SUS)</xs:documentation>
+				</xs:annotation>
+				<xs:element name="SUS_Title" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Revision" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_OrderTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Order" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_ImpTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Imp" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_RequirementTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Requirement" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_ReviewTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Review" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_WarningTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Warning" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Note" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Signed" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_OffencesTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Offences" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_AttachementsTitle" type="NarrativeValueTagType"/>
+				<xs:element name="SUS_Attachements" type="NarrativeValueTagType"/>
+			</xs:choice>
+			<xs:choice>
+				<xs:annotation>
+					<xs:documentation>All Orders Common</xs:documentation>
+				</xs:annotation>
+				<xs:element name="DefendantFullName" type="NarrativeValueTagType"/>
+				<xs:element name="DefendantAddress" type="NarrativeValueTagType"/>
+				<xs:element name="DOBText" type="NarrativeValueTagType"/>
+				<xs:element name="DefendantDOB" type="NarrativeValueTagType"/>
+				<xs:element name="OrderDate" type="NarrativeValueTagType"/>
+				<xs:element name="NextAppearanceDate" type="NarrativeContainerType"/>
+				<xs:element name="SignedInfo" type="NarrativeValueTagType"/>
+				<xs:element name="AssociatedCases" type="NarrativeValueTagType"/>
+				<xs:element name="Of" type="NarrativeValueTagType"/>
+				<xs:element name="NextAppearanceCourtHouseName" type="NarrativeValueTagType"/>
+				<xs:element name="HimHer" type="NarrativeValueTagType"/>
+				<xs:element name="On" type="NarrativeValueTagType"/>
+				<xs:element name="And" type="NarrativeValueTagType"/>
+				<xs:element name="TheDefendant" type="NarrativeValueTagType"/>
+				<xs:element name="Was" type="NarrativeValueTagType"/>
+				<xs:element name="ByThe" type="NarrativeValueTagType"/>
+			</xs:choice>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="NarrativeHeadingType" mixed="true">
+		<xs:complexContent mixed="true">
+			<xs:extension base="NarrativeContainerType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NarrativeValueTagType" mixed="true"/>
+	<xs:complexType name="NarrativeMainBodyType">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="Section">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Label" type="NarrativeContainerType"/>
+						<xs:element name="Body" type="NarrativeContainerType"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="If" type="NarrativeMainBodyIfType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:complexType name="NarrativeIfType">
+		<xs:sequence>
+			<xs:element name="Condition" type="NarrativeIfCondition"/>
+			<xs:element name="Body" type="NarrativeContainerType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="NarrativeMainBodyIfType">
+		<xs:sequence>
+			<xs:element name="Condition">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="NarrativeIfCondition"/>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Body" type="NarrativeMainBodyType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:simpleType name="NarrativeIfCondition">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ConditionalBail"/>
+			<xs:enumeration value="ReportIndicator"/>
+			<xs:enumeration value="RemandCommitted"/>
+			<xs:enumeration value="RemandIsBefore"/>
+			<xs:enumeration value="ChapterIII"/>
+			<xs:enumeration value="ExtendedSentence"/>
+			<xs:enumeration value="ReturnOfDefendant"/>
+			<xs:enumeration value="DiscretionaryLife"/>
+			<xs:enumeration value="Section86"/>
+			<xs:enumeration value="AdditionalNotes"/>
+			<xs:enumeration value="RemandAdditionalInfo"/>
+			<xs:enumeration value="DeportationSection"/>
+			<xs:enumeration value="CreditForRemand"/>
+			<xs:enumeration value="CreditForBail"/>
+			<xs:enumeration value="IndeterminateSentence"/>
+			<xs:enumeration value="AutomaticDeportation"/>
+			<xs:enumeration value="RecommendedDeportation"/>
+			<xs:enumeration value="DomesticBurglary"/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

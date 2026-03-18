@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *********************************************************************	-->
+<!-- Schema for Crown Court Running List					-->
+<!-- *********************************************************************	-->
+<!-- *********************************************************************	-->
+<!-- Update History											-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.1 - Draft 										-->
+<!-- Detail: Version update only								-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.0												-->
+<!-- Detail: Release 											-->
+<!-- *********************************************************************	-->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/terms/" xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<dc:creator>Court Service</dc:creator>
+			<dc:date>2003-02-21</dc:date>
+			<dc:identifier>RunningList</dc:identifier>
+			<dc:language>en</dc:language>
+			<dc:rights>
+				<dcq:copyright>Crown Copyright 2002</dcq:copyright>
+				<gms:SecurityClassification>Unclassified</gms:SecurityClassification>
+			</dc:rights>
+			<dc:subject>Crown Court Running List</dc:subject>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="RunningListStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="ListHeader" type="ListHeaderStructure"/>
+			<xsd:element name="CrownCourt" type="CourtHouseStructure"/>
+			<xsd:element name="TrialCases" type="CasesStructure" minOccurs="0"/>
+			<xsd:element name="CommitalCases" type="CasesStructure" minOccurs="0"/>
+			<xsd:element name="AppealCases" type="CasesStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="RunningList" type="RunningListStructure"/>
+</xsd:schema>

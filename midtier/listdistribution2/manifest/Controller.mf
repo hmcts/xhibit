@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: ./Config.jar ./Framework.jar ./XhibitXmlBinding.jar ./XhibitEntities.jar ./XhibitValues.jar ./Value.jar ./FormattingController.jar ./CppStagingInboundController.jar ./Validation.jar ./MigrateCaseController.jar
+

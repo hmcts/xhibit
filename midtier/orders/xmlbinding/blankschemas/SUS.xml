@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Neil Entwistle (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+E:\XHIBIT_8_2\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<SUSOrder>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<Name>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+							<apd:CitizenNameSuffix> </apd:CitizenNameSuffix>
+							<apd:CitizenNameRequestedName> </apd:CitizenNameRequestedName>
+						</Name>
+						<!-- <MaskedName>String</MaskedName> -->
+						<IsMasked>no</IsMasked>
+						<!--<DateOfBirth>
+							<apd:BirthDate>0001-01-01</apd:BirthDate>
+							<apd:VerifiedBy>not verified</apd:VerifiedBy>
+						</DateOfBirth>-->
+						<Sex>unknown</Sex>
+						<Address>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:PostCode>A1 1AA</apd:PostCode>
+						</Address>
+					</PersonalDetails>
+					<Charges>
+						<Charge CJSoffenceCode="Not Available" IndictmentCountNumber="0" ChargeType="indictment">
+							<CaseNumber>Z00000000</CaseNumber>
+							<OffenceStatement> </OffenceStatement>
+							<OffenceParticulars>tba</OffenceParticulars>
+						</Charge>
+					</Charges>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+				<RevisionDetails>
+					<RevisedOrder>false</RevisedOrder>
+					<PreviousOrderDate>0001-01-01</PreviousOrderDate>
+					<RevisionNo>0</RevisionNo>
+				</RevisionDetails>
+			</OrderHeader>
+			<ResponsibleOfficer1>Authorised Provider of Probation Services</ResponsibleOfficer1>
+			<ResponsibleOfficer2>Authorised Provider of Probation Services</ResponsibleOfficer2>
+			<CompletionDate>0001-01-01</CompletionDate>
+			<!--<ImprisonmentTerm>
+				<TermType selected="true">Before</TermType>
+				<Term>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</Term>
+				<ExtendedSentence selected="true">
+					<ExtensionPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</ExtensionPeriod>
+					<SentenceType>Consecutive</SentenceType>
+					<Section44 selected="true"/>
+				</ExtendedSentence>
+				<ImprisonmentType>life</ImprisonmentType>
+				<Section91TermType selected="true">section91term</Section91TermType>
+			</ImprisonmentTerm>-->
+			<ImprisonmentPeriod>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Weeks>0</Weeks>
+					<Days>0</Days>
+			</ImprisonmentPeriod>
+			<OperationalPeriod>
+				<Years>0</Years>
+				<Months>0</Months>
+				<Days>0</Days>
+			</OperationalPeriod>			
+			<SupervisionPeriod>
+				<Years>0</Years>
+				<Months>0</Months>
+				<Days>0</Days>
+			</SupervisionPeriod>
+			<OrderRequirements selected="false">
+				<!-- SECTION A -->
+				<UnpaidWorkRequirement selected="false">
+					<Hours>0</Hours>
+					<Concurrent>no</Concurrent>
+					<WorkDetails> </WorkDetails>
+					<WorkEndDate>0001-01-01</WorkEndDate>
+					<AdditonalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditonalRequirements>
+				</UnpaidWorkRequirement>
+				<!-- SECTION B -->
+				<ActivityRequirement selected="false">
+					<PresentDetails selected="false">
+						<Person> </Person>
+						<Place>
+							<Site> </Site>
+						</Place>
+					</PresentDetails>
+					<ActivityDetails selected="false">
+						<Activity> </Activity>
+						<ActivityPeriod>
+							<Years>0</Years>
+							<Months>0</Months>
+							<Days>0</Days>
+						</ActivityPeriod>
+					</ActivityDetails>
+					<AdditonalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditonalRequirements>
+				</ActivityRequirement>
+				<!-- SECTION C -->
+				<ProgrammeRequirement selected="false">
+					<Programme> </Programme>
+					<Place>
+						<Site> </Site>
+					</Place>
+					<Days>0</Days>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</ProgrammeRequirement>
+				<!-- SECTION D -->
+				<ProhibitedActivityRequirement selected="false">
+					<Activity> </Activity>
+					<ActivityPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</ActivityPeriod>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</ProhibitedActivityRequirement>
+				<!-- SECTION E -->
+				<CurfewRequirement>
+					<CurfewOption>no</CurfewOption>
+					<CurfewDuration>
+						<Duration>0</Duration>
+						<Period>day(s)</Period>
+					</CurfewDuration>
+				</CurfewRequirement>
+				<!-- SECTION F -->
+				<ExclusionRequirement selected="false">
+					<Place>
+						<Site> </Site>
+					</Place>
+					<BetweenPeriod selected="false">
+						<ApplicablePeriod> </ApplicablePeriod>
+					</BetweenPeriod>
+					<ExclusionPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</ExclusionPeriod>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</ExclusionRequirement>
+				<!-- SECTION G -->
+				<ResidenceRequirement selected="false">
+					<Hostel>
+						<Site> </Site>
+					</Hostel>
+					<ObeyRules>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</ObeyRules>
+					<PlaceOption selected="false">
+						<Place>
+							<Site> </Site>
+						</Place>
+					</PlaceOption>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</ResidenceRequirement>
+				<!-- SECTION H -->
+				<MentalHealthTreatmentRequirement selected="false">
+					<TreatmentDirector>Registered Medical Practitioner</TreatmentDirector>
+					<TreatmentOption selected="false">
+						<TreatmentLocation>
+							<Site> </Site>
+						</TreatmentLocation>
+						<ResidenceStatus>resident</ResidenceStatus>
+					</TreatmentOption>
+					<TreatmentPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</TreatmentPeriod>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</MentalHealthTreatmentRequirement>
+				<!-- SECTION I -->
+				<DrugRehabilitationRequirement selected="false">
+					<TreatmentDirector> </TreatmentDirector>
+					<TreatmentOption selected="false">
+						<TreatmentLocation>
+							<Site> </Site>
+						</TreatmentLocation>
+						<ResidenceStatus>resident</ResidenceStatus>
+					</TreatmentOption>
+					<TreatmentPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</TreatmentPeriod>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+					<SampleOption selected="false"/>
+					<ReviewOption selected="false">
+						<ReviewDetails>weekly</ReviewDetails>
+						<ReviewDate>0001-01-01</ReviewDate>
+						<ReviewTime>14:20:00-05:00</ReviewTime>
+						<ReviewCourt>
+							<CourtHouseType>Magistrates Court</CourtHouseType>
+							<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+							<CourtHouseName>String</CourtHouseName>
+							<CourtHouseAddress>
+								<apd:Line> </apd:Line>
+								<apd:Line> </apd:Line>
+								<apd:Line> </apd:Line>
+								<apd:Line> </apd:Line>
+								<apd:Line> </apd:Line>
+								<apd:PostCode>A1 1AA</apd:PostCode>
+							</CourtHouseAddress>
+							<CourtHouseTelephone> </CourtHouseTelephone>
+						</ReviewCourt>
+						<TelephoneOption selected="false"/>
+						<Attendance>no</Attendance>
+					</ReviewOption>
+				</DrugRehabilitationRequirement>
+				<!-- SECTION J -->
+				<AlcoholTreatmentRequirement selected="false">
+					<TreatmentDirector> </TreatmentDirector>
+					<TreatmentOption selected="false">
+						<TreatmentLocation>
+							<Site> </Site>
+						</TreatmentLocation>
+						<ResidenceStatus>resident</ResidenceStatus>
+					</TreatmentOption>
+					<TreatmentPeriod>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</TreatmentPeriod>
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</AlcoholTreatmentRequirement>
+				<!-- SECTION K -->
+				<SupervisionRequirement selected="false">
+					<AdditionalRequirements selected="false">
+						<AdditionalInformation> </AdditionalInformation>
+					</AdditionalRequirements>
+				</SupervisionRequirement>
+				<!-- SECTION L -->
+				<AttendanceCentreRequirement>
+					<AttendanceOption>no</AttendanceOption>
+				</AttendanceCentreRequirement>
+				<!-- SECTION M -->
+				<ForeignTravelProhibitionRequirement selected="false">
+					<Days> </Days>
+					<FromToOption selected="false">
+						<FromDate>0001-01-01</FromDate>
+						<ToDate>0001-01-01</ToDate>
+					</FromToOption>
+					<ProhibitedFrom> </ProhibitedFrom>
+					<ExceptionOption selected="false">
+						<Exception> </Exception>
+					</ExceptionOption>
+				</ForeignTravelProhibitionRequirement>
+				<!-- SECTION N -->
+				<RehabilitationActivityRequirement selected="false">
+					<Days>0</Days>
+				</RehabilitationActivityRequirement>
+				<AlcoholAbstinenceAndMonitoringRequirement selected="false">
+					<Days>0</Days>
+				</AlcoholAbstinenceAndMonitoringRequirement>
+				<TrailMonitoringRequirement selected="false">
+					<Duration>0</Duration>
+				</TrailMonitoringRequirement>
+			</OrderRequirements>
+			<ElectronicMonitoringRequirement selected="false"/>
+			<AdditionalNotes selected="false"> </AdditionalNotes>
+			<PettySessionalArea>
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName> </CourtHouseName>
+			</PettySessionalArea>
+			<ReviewType selected="false">
+				<ReviewDetails>weekly</ReviewDetails>
+				<FirstReview selected="false">
+					<ReviewDate>0001-01-01</ReviewDate>
+					<ReviewTime>14:20:00-05:00</ReviewTime>
+					<ReviewCourt>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+						<CourtHouseAddress>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:Line> </apd:Line>
+							<apd:PostCode>A0 0AA</apd:PostCode>
+						</CourtHouseAddress>
+						<CourtHouseDX>String</CourtHouseDX>
+						<CourtHouseTelephone> </CourtHouseTelephone>
+						<Description>String</Description>
+					</ReviewCourt>
+					<TelephoneOption selected="true"/>
+					<Attendance>yes</Attendance>
+				</FirstReview>
+			</ReviewType>
+			<WarningDetentionType>Imprisonment</WarningDetentionType>
+			<Attachments>
+				<previousConvictionList selected="false"/>
+				<preSentenceReport selected="false"/>
+				<medicalReport selected="false"/>
+			</Attachments>
+			<AssociatedCases/>
+		</SUSOrder>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

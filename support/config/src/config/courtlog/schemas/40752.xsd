@@ -1,0 +1,34 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Disposal (Edit Related Disposal)-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E40752_Defendant_Name" />
+				<xs:element ref="E40752_Crest_Offence_Seq_No" />
+				<xs:element ref="E40752_Crest_Charge_Seq_No" />
+				<xs:element ref="E40752_Case_Type" />
+				<xs:element ref="E40752_Case_No" />
+				<xs:element ref="E40752_Ref_Disposal_Title" />
+				<xs:element ref="E40752_Ref_Disposal_Code" />
+				<xs:element ref="E40752_Disposal_Detail"/>
+				<xs:element ref="E40752_Charge_Type" />
+				<xs:element ref="Disposal_Data" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40752_Defendant_Name" type="xs:string"/>
+	<xs:element name="E40752_Crest_Offence_Seq_No" type="xs:string"/>
+	<xs:element name="E40752_Crest_Charge_Seq_No" type="xs:string"/>
+	<xs:element name="E40752_Case_Type" type="xs:string"/>
+	<xs:element name="E40752_Case_No" type="xs:string"/>
+	<xs:element name="E40752_Ref_Disposal_Title" type="xs:string"/>
+	<xs:element name="E40752_Ref_Disposal_Code" type="xs:string"/>
+	<xs:element name="E40752_Disposal_Detail" type="xs:string"/>
+	<xs:element name="E40752_Charge_Type" type="xs:string"/>
+	<xs:element name="Disposal_Data" type="xs:string"/>
+</xs:schema>

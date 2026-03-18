@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Messaging">
+    <description>
+        Thin Client Messaging
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="component.author" value="Unknown"/>
+    <property name="component.name" value="Messaging"/>
+    
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.requires.jspc" value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.war" value="true" />
+    
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <!-- Shared Code Settings -->
+        <property name="shared.dir" value="${build.dir}/shared"/>
+        <property name="shared.classes.dir" value="${shared.dir}/classes"/>
+        <property name="shared.docroot.dir" value="${shared.dir}/docroot"/>
+        <property name="shared.resources.dir" value="${shared.dir}/resources"/>        
+       
+        <!-- Merge settings -->
+        <property name="build.resources.dir" value="${build.dir}/resources"/>
+        
+        <!-- Compile settings -->
+        <path id="compile.classpath">            
+            <pathelement path="${shared.classes.dir}"/>
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Value.jar" />
+                <include name="ClientView.jar" />                              
+                <include name="TimerProcess.jar" /><!-- Timer Process Support Framework (used by external messaging) -->
+                <include name="InstantMessaging.jar" /><!-- Instant Messaging Support Framework-->
+                <include name="ThinClientFramework.jar" />
+                <include name="Framework.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="Config.jar" />
+                <include name="UserTerminalLocationControllerClient.jar" />
+                <include name="XhibitValues.jar" />
+            </fileset>
+        </path>
+
+        <!-- War Settings -->
+        <filesetlist id="war.classes.fileset">
+            <fileset dir="${classes.dir}" />
+            <fileset dir="${shared.classes.dir}" />            
+            <fileset dir="${build.resources.dir}" />
+        </filesetlist>
+
+        <filesetlist id="war.source.fileset">
+            <!-- Exclude WEB-INF/web.xml as explicitly included -->
+            <fileset dir="${docroot.dir}" excludes="WEB-INF/web.xml" />
+            <!-- Exclude WEB-INF/* as only dummy for compiling shared jsps -->
+            <fileset dir="${shared.docroot.dir}"/>
+        </filesetlist>
+
+        <filesetlist id="war.lib.fileset">
+            <fileset dir="${build.dest.dir}">
+                <include name="Value.jar" />
+                <include name="ClientView.jar" />                              
+                <include name="TimerProcess.jar" /><!-- Timer Process Support Framework (used by external messaging) -->
+                <include name="InstantMessaging.jar" /><!-- Instant Messaging Support Framework-->
+                <include name="ThinClientFramework.jar" />
+                <include name="Framework.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="Config.jar" />
+                <include name="UserTerminalLocationControllerClient.jar" />
+                <include name="XhibitValues.jar" />
+            </fileset>
+        </filesetlist>      
+
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+    <target name="generate" unless="skip.generate" depends="framework.generate">
+        <log target="generate"/>
+        <mkdir dir="${shared.dir}"/>
+        <unzip src="${build.dest.dir}/ThinClientSharedTemp.zip" dest="${shared.dir}"/>
+        <mkdir dir="${build.resources.dir}"/>
+        <merge destination="${build.resources.dir}">
+            <fileset dir="${resources.dir}" excludes="${os.files}"/>                                  
+            <fileset dir="${shared.resources.dir}" excludes="${os.files}"/>   
+        </merge>
+    </target>
+
+</project>
+

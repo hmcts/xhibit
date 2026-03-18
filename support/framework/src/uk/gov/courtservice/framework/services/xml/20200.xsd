@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Bail and Custody-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E20200_Bail_And_Custody_Options"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20200_Bail_And_Custody_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E20200_BC_Type"/>
+				<xs:element ref="E20200_BC_Date" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20200_BC_Date">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-3][0-9]/[0-9][0-9]/[0-9][0-9][0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E20200_BC_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20200_Bail_granted"/>
+				<xs:enumeration value="E20200_Bail_refused"/>
+				<xs:enumeration value="E20200_Bail_varied"/>
+				<xs:enumeration value="E20200_Bail_granted_for_duration_of_trial_same_conditions"/>
+				<xs:enumeration value="E20200_Bail_extended_for_duration_of_trial_conditions_varied"/>
+				<xs:enumeration value="E20200_Bail_extended_for_duration_of_trial_same_conditions_and_for_short_adjournments"/>
+				<xs:enumeration value="E20200_Bail_rescinded_remanded_in_custody"/>
+				<xs:enumeration value="E20200_Remanded_in_custody"/>
+				<xs:enumeration value="E20200_Bail_within_the_court_building"/>
+				<xs:enumeration value="E20200_Custody_limits_extended_to"/>
+				<xs:enumeration value="E20200_Bail_as_before"/>
+				<xs:enumeration value="E20200_Bail_Conditions_Ceased_Sentence_Deferred"/>
+				<xs:enumeration value="E20200_Bail_Conditions_Ceased_Non-Custodial_Sentence_Imposed"/>
+				<xs:enumeration value="E20200_Bail_Conditions_Ceased_Defendant_Deceased"/>
+				<xs:enumeration value="E20200_Remand_to_Local_Authority_Accommodation"/>
+				<xs:enumeration value="E20200_Remand_to_Youth_Detention_Accommodation"/>
+				<xs:enumeration value="E20200_Bail_cease_custodial_sentence_imposed"/>
+				<xs:enumeration value="E20200_Bail_cease_defendant_acquitted"/>
+				<xs:enumeration value="E20200_Non_bail_case_breach_community_order"/>
+				<xs:enumeration value="E20200_Non_bail_case_already_sentenced"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

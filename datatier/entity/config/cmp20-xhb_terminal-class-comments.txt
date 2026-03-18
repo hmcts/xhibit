@@ -1,0 +1,27 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtSiteId(java.lang.Integer courtSiteId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminal o WHERE o.courtSiteId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtRoomId(java.lang.Integer courtRoomId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminal o WHERE o.courtRoomId = ?1"
+ *
+ * @ejb.finder
+ *    signature="XhbTerminal findByUniqueTerminalName(java.lang.String terminalName)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminal o WHERE o.terminalName = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtSiteIdNoCourtRoomNoRoam(java.lang.Integer courtSiteId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminal o WHERE o.courtSiteId = ?1 AND o.courtRoomId IS NULL AND o.roaming = 'N'"
+ *
+ * -------- end of custom finders --------

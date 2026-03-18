@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccm:DiscontinuedCaseMessage
+ xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" 
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+ xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails"
+ xmlns:ccm="http://www.hmcs.gov.uk/schemas/crowncourt/msg" 
+ xsi:schemaLocation="http://www.hmcs.gov.uk/schemas/crowncourt/msg CaseInfo.xsd">		
+	<ccm:DocumentID>	
+		<cs:DocumentName>DC T20061234 - 12/12/06</cs:DocumentName>
+		<cs:UniqueID>CSDDC000000000022320</cs:UniqueID>
+		<cs:DocumentType>DC</cs:DocumentType>
+		<cs:TimeStamp>2006-02-03T13:41:00.604</cs:TimeStamp>
+		<cs:Version>1.0</cs:Version>
+		<cs:SecurityClassification>NPM</cs:SecurityClassification>
+		<cs:SellByDate>2006-11-30</cs:SellByDate>
+	</ccm:DocumentID>	
+	<ccm:Case>	
+		<ccm:CaseNumber>T20011234</ccm:CaseNumber>
+		<ccm:Court>		
+			<cs:CourtHouseType>Crown Court</cs:CourtHouseType>	
+			<cs:CourtHouseCode CourtHouseShortName="SWANS">453</cs:CourtHouseCode>	
+			<cs:CourtHouseName>SWANSEA</cs:CourtHouseName>	
+			<cs:CourtHouseAddress>	
+				<apd:Line>THE LAW COURTS</apd:Line>
+				<apd:Line>ST HELENS ROAD</apd:Line>
+				<apd:Line>SWANSEA</apd:Line>
+				<apd:PostCode>SA1 4PF</apd:PostCode>
+			</cs:CourtHouseAddress>	
+			<cs:CourtHouseDX>99540 SWANSEA 4</cs:CourtHouseDX>	
+			<cs:CourtHouseTelephone>01792484700</cs:CourtHouseTelephone>	
+			<cs:CourtHouseFax>01792484714</cs:CourtHouseFax>	
+		</ccm:Court>		
+	</ccm:Case>	
+</ccm:DiscontinuedCaseMessage>		

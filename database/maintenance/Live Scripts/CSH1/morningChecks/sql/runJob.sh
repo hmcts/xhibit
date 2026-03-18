@@ -1,0 +1,2 @@
+./morningChecks.sh
+./SendTestEmail.sh

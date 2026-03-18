@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:complexType name="NoticeOfAcquittalOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xsd:element name="Governor" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Prison Governor</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="SentFromCourt">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Court" type="XHIBITCourtHouseStructure"/>
+						<xsd:element name="SentDate" type="xsd:date"/>
+					</xsd:sequence>
+				</xsd:complexType>			
+			</xsd:element>
+			<xsd:element name="Charges" type="xsd:string"/>
+			<xsd:element name="Absence">
+				<xsd:complexType>
+					<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Count">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="WhichCounts" type="XHIBITCountType"/>
+						<xsd:element name="CountNumbers" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NoticeOfAcquittalOrder" type="ord:NoticeOfAcquittalOrderStructure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V1.0 (30/11/2015)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

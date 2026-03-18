@@ -1,0 +1,17 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findByDocumentType(java.lang.String documentType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbFormatting o WHERE o.documentType = ?1"
+ *
+ *
+ * @ejb.finder
+ *    signature="Collection findByDocTypeCourtIdDateRange(java.lang.String documentType, java.lang.Integer courtId, java.util.Date startDate, java.util.Date endDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbFormatting o WHERE o.documentType = ?1 AND o.courtId = ?2 AND o.lastUpdateDate BETWEEN ?3 AND ?4"
+ *
+ * -------- end of custom finders --------
+  

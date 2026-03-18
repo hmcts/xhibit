@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Leave to Prefer Bill of Indictment-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20925_Charges_Put_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20925_Charges_Put_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E20925_Defendant_Name"/>
+				<xs:element ref="E20925_Count_Number"/>
+				<xs:element ref="E20925_Indictment_Number"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20925_Defendant_Name" type="xs:string"/>
+	<xs:element name="E20925_Count_Number" type="xs:string"/>
+	<xs:element name="E20925_Indictment_Number" type="xs:string"/>
+</xs:schema>

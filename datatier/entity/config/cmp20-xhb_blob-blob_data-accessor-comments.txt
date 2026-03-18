@@ -1,0 +1,3 @@
+* Problem with this. See CR112225 at http://e-docs.bea.com/wls/docs81/notes/resolved_sp02.html#1400280 
+* @weblogic.dbms-column-type OracleBlob
+

@@ -1,0 +1,4 @@
+**/*All*
+**/test/business/entities/sitting/**
+**/test/business/services/publicdisplay/**
+**/business/services/messaging/**

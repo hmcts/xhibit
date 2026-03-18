@@ -1,0 +1,33 @@
+
+PL/SQL procedure successfully completed.
+
+DOC>Selects the information to display in the file produced by the script.
+DOC>Contains details of the records updated with old and new values.
+DOC>*/
+
+CASE_ID CASE       HEARING_ID TYPE  OLD_HEARING_END_TIME   SH_ID OLD_SH_START_TIME     NEW_TIME                                                                                                                                                                                                                                                                                                                                                                                                                     
+------- ---------- ---------- ----- --------------------- ------ --------------------- ---------------------                                                                                                                                                                                                                                                                                                                                                                                                        
+   1545 A20020844         428 EBW                            445                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         429 EBW                            446                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         430 EBW                            447                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         431 EBW                            448                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         432 EBW                            449                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         433 EBW                            450                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         434 EBW                            451                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         435 EBW                            452                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         436 EBW                            453                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+   1545 A20020844         437 EBW                            454                       17/11/2003 16:05:00                                                                                                                                                                                                                                                                                                                                                                                                          
+
+10 rows selected.
+
+DOC>Updates the end date for the hearing
+DOC>*/
+
+10 rows updated.
+
+DOC>Sets the start date for the scheduled hearing so that this will not be
+DOC>processed again next time the script is run
+DOC>*/
+
+10 rows updated.
+

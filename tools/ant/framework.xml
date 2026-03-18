@@ -1,0 +1,1049 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+=======================================================================
+        Updated framework, the framework has been updated to include some of
+        the new features available in Ant version 1.6 to simplify and improve
+    things where appropriate.  The main alteration is the changing of the
+    build process to use the new "import" tag instead of entity includes.
+    This makes the builds easier to read and use due to the inheritance
+    options now open to us.
+=======================================================================
+-->
+
+<project basedir="." default="all" name="framework">
+    <!--
+    =======================================================================
+        Bootstrap
+            - Set all the properties and define all tasks required by framework
+    =======================================================================
+     -->
+    <target name="bootstrap" unless="skip.bootstrap">
+        <property name="log.level" value="info"/>
+        <log target="framework.bootstrap"/>
+        <!-- Set the TODAY variable -->
+        <tstamp/>
+        <!-- Acquire the name of the folder where this framework file is located -->
+        <dirname property="framework.dir" file="${ant.file.framework}"/>
+        <property name="top.level.dir" location="${framework.dir}/../.."/>
+        <property name="build.dest.dir" location="${top.level.dir}/build/prerelease"/>
+        <property name="lib.dir" location="${top.level.dir}/lib"/>
+        <property name="cjse.schema.dir" location="${top.level.dir}/CJSE/DocumentSchema"/>
+        <property name="cjse.schema.dir.cjse" location="${cjse.schema.dir}/cjse"/>
+        <property name="cjse.schema.dir.build" location="${cjse.schema.dir.cjse}/build"/>
+        <!-- Old config required for old middlegen and xdoclet -->
+        <property name="framework.config.old.dir" location="${framework.dir}/config-old"/>
+        <property name="framework.config.dir" location="${framework.dir}/config"/>
+        <!-- Old lib required for old middlegen and xdoclet -->
+        <property name="framework.lib.old.dir" location="${framework.dir}/lib-old"/>
+        <property name="framework.lib.dir" location="${framework.dir}/lib"/>
+        <property name="build.properties" location="${top.level.dir}/build.properties"/>
+        <property name="framework.build.properties" location="${framework.dir}/build.properties"/>
+        <property name="source.dir" location="${basedir}/src"/>
+        <property name="docroot.dir" location="${basedir}/docroot"/>
+        <property name="test.source.dir" location="${basedir}/test"/>
+        <property name="config.dir" location="${basedir}/config"/>
+        <property name="manifest.dir" location="${basedir}/manifest"/>
+        <property name="resources.dir" location="${basedir}/resources"/>
+        <property name="build.dir" location="${basedir}/build"/>
+        <property name="test.classes.dir" location="${build.dir}/testclasses"/>
+        <property name="test.data.dir" location="${build.dir}/testdata"/>
+        <property name="gen.test.source.dir" location="${build.dir}/gen_test"/>
+        <property name="classes.dir" location="${build.dir}/classes"/>
+        <property name="gen.source.dir" location="${build.dir}/gen_src"/>
+        <property name="ejb.build.dir" location="${build.dir}/ejb"/>
+        <property name="war.build.dir" location="${build.dir}/war"/>
+        <property name="client.build.dir" location="${build.dir}/client"/>
+        <property name="test.build.dir" location="${build.dir}/test"/>
+        <property name="config.build.dir" location="${build.dir}/config"/>
+        <!-- This needs be relative, to the user dir as velocity & log4j relative to current dir! -->
+        <property name="log.build.dir" location="${user.dir}/build/log"/>
+        <property name="webinf.dir" location="${basedir}/WEB-INF"/>
+        <property name="web.classes.dir" location="${basedir}/classes"/>
+        <!-- everything under this folder will get moved to prerelease once finished -->
+        <property name="lib.build.dir" location="${build.dir}/lib"/>
+        <property name="ejbc.compiler" value="javac"/>
+        <!-- Defaults -->
+        <property name="default.jar.includes" value="**/*"/>
+        <property name="default.jar.source.excludes" value="**/*.java,**/*.jbx,**/package.html,**/.cvs.marker"/>
+        <property name="default.jar.classes.excludes" value="**/.cvs.marker"/>
+
+        <property name="noappc.war.file" location="${war.build.dir}/${ant.project.name}-noappc.war"/>
+        <property name="war.file" location="${lib.build.dir}/${ant.project.name}.war"/>
+        <property name="jar.file" location="${lib.build.dir}/${ant.project.name}.jar"/>
+
+        <!-- Set Classpaths -->
+        <fileset id="default.empty.fileset" dir="${basedir}" includes="*" excludes="*"/>
+
+        <property environment="env"/>
+        <property name="weblogic.home" value="${env.WL_HOME}"/>
+        <property name="ant.home" value="${env.ANT_HOME}"/>
+        <property name="computer.name" value="${env.COMPUTERNAME}"/>
+        <property name="java.home" value="${env.JAVA_HOME}"/>
+
+        <path id="lib.classpath">
+            <fileset dir="${lib.dir}" includes="*.jar, *.zip"/>
+        </path>
+
+        <path id="framework.classpath">
+            <pathelement location="${framework.config.dir}"/>
+            <fileset dir="${framework.lib.dir}"/>
+        </path>
+
+        <path id="framework.old.classpath">
+            <pathelement location="${framework.config.old.dir}"/>
+            <fileset dir="${framework.lib.old.dir}"/>
+        </path>
+
+        <!-- Define Tasks -->
+        <!-- Note this defines loader framework.loader which should be used subsequently -->
+        <taskdef resource="net/sf/antcontrib/antlib.xml" loaderref="framework.loader">
+            <classpath>
+                <path refid="framework.classpath"/>
+                <path refid="lib.classpath"/>
+            </classpath>
+        </taskdef>
+        <taskdef resource="uk/gov/courtservice/ant/antlib.xml" loaderref="framework.loader"/>
+        <taskdef name="middlegen" classname="middlegen.MiddlegenTask" loaderref="framework.loader"/>
+        <taskdef name="ejbdoclet" classname="xdoclet.modules.ejb.EjbDocletTask" loaderref="framework.loader"/>
+
+        <taskdef name="wlserver" classname="weblogic.ant.taskdefs.management.WLServer" loaderref="framework.loader"/>
+        <taskdef name="wldeploy" classname="weblogic.ant.taskdefs.management.WLDeploy" loaderref="framework.loader"/>
+
+        <!-- Define Legacy Tasks -->
+        <!-- Note this defines loader framework.old.loader which should be used subsequently -->
+        <taskdef name="middlegen-old" classname="middlegen.MiddlegenTask" loaderref="framework.old.loader">
+            <classpath>
+                <path refid="framework.old.classpath"/>
+                <path refid="framework.classpath"/>
+                <path refid="lib.classpath"/>
+            </classpath>
+        </taskdef>
+        <taskdef name="ejbdoclet-old" classname="xdoclet.modules.ejb.EjbDocletTask" loaderref="framework.old.loader"/>
+
+        <!-- load properties first local overrides, then global-->
+        <mandatory file="${build.properties}"/>
+        <mandatory file="${framework.build.properties}"/>
+        <loadproperties srcFile="${build.properties}"/>
+        <loadproperties srcFile="${framework.build.properties}"/>
+        <!-- Check Mandatory Properties -->
+        <mandatory property="version"/>
+    </target>
+
+    <!-- Framework method to perform the initialiseialisation -->
+    <target name="initialise" unless="skip.generate" depends="bootstrap">
+        <log target="framework.initialise"/>
+        <property name="component.author" value="Unknown"/>
+    </target>
+
+    <!--
+    =======================================================================
+        Debug
+            - Dump Property & Path Settings
+    =======================================================================
+     -->
+    <target name="debug" depends="initialise">
+
+        <echo message="*********************************************************************"/>
+        <echo message="* Properties                                                        *"/>
+        <echo message="*********************************************************************"/>
+
+        <echoproperties/>
+
+        <echo message="*********************************************************************"/>
+        <echo message="* Paths                                                             *"/>
+        <echo message="*********************************************************************"/>
+
+        <pathconvert property="formated.sun.boot.class.path" pathsep="${path.separator}${line.separator}    ">
+                    <path>
+                        <pathelement path="${sun.boot.class.path}"/>
+                    </path>
+                </pathconvert>
+        <echo message="sun.boot.class.path:${line.separator}    ${formated.sun.boot.class.path}${line.separator}"/>
+
+        <pathconvert property="formated.java.class.path" pathsep="${path.separator}${line.separator}    ">
+            <path>
+                <pathelement path="${java.class.path}"/>
+            </path>
+        </pathconvert>
+        <echo message="java.class.path:${line.separator}    ${formated.java.class.path}${line.separator}"/>
+
+        <pathconvert property="formated.lib.classpath" refid="lib.classpath" pathsep="${path.separator}${line.separator}    "/>
+        <echo message="lib.classpath:${line.separator}    ${formated.lib.classpath}${line.separator}"/>
+
+        <pathconvert property="formated.framework.classpath" refid="framework.classpath" pathsep="${path.separator}${line.separator}    "/>
+        <echo message="framework.classpath:${line.separator}    ${formated.framework.classpath}${line.separator}"/>
+
+        <pathconvert property="formated.framework.old.classpath" refid="framework.old.classpath" pathsep="${path.separator}${line.separator}    "/>
+        <echo message="framework.old.classpath:${line.separator}    ${formated.framework.old.classpath}${line.separator}"/>
+
+        <pathconvert property="formated.compile.classpath" refid="compile.classpath" pathsep="${path.separator}${line.separator}    "/>
+        <echo message="compile.classpath:${line.separator}    ${formated.compile.classpath}${line.separator}"/>
+
+
+    </target>
+
+    <!--
+    =======================================================================
+        GENERATE SOURCE
+            - Generate all source code
+    =======================================================================
+     -->
+    <target name="generate.middlegen.initialise" depends="initialise">
+        <!-- Log dir is used by velocity and log4j -->
+        <mkdir dir="${log.build.dir}"/>
+        <!-- Preferences are allways overridden even if no change -->
+        <copy todir="${config.build.dir}">
+            <fileset dir="${config.dir}">
+                <include name="**/*.properties"/>
+            </fileset>
+        </copy>
+        <!-- Preferences are allways overridden even if no change -->
+        <property name="use.gui" value="false"/>
+    </target>
+    <target name="generate.middlegen" depends="generate.middlegen.initialise">
+        <log target="framework.generate.middlegen"/>
+    </target>
+    <target name="generate.middlegen.gui.initialise">
+        <param name="use.gui" value="true"/>
+    </target>
+    <target name="generate.middlegen.gui" depends="generate.middlegen.gui.initialise, generate.middlegen" description="Run the middlegen GUI application"/>
+
+    <!-- Generate XMLBinding Using Castor -->
+    <target name="generate.xmlbinding.check">
+        <if>
+            <or>
+                <isset property="skip.generate"/>
+                <not>
+                    <isreference refid="generate.xml.binding.dependencies"/>
+                </not>
+                <not>
+                    <isreference refid="generate.xml.binding.schemas"/>
+                </not>
+            </or>
+            <then>
+                <property name="skip.generate.xmlbinding" value="marker"/>
+            </then>
+            <elseif>
+                <available file="${gen.source.dir}" type="dir"/>
+                <then>
+                    <uptodatefileset property="skip.generate.xmlbinding" srcpathref="generate.xml.binding.dependencies">
+                        <destfiles dir="${gen.source.dir}"/>
+                    </uptodatefileset>
+                </then>
+            </elseif>
+        </if>
+    </target>
+
+    <target name="generate.xmlbinding" unless="skip.generate.xmlbinding" depends="generate.xmlbinding.check">
+        <mkdir dir="${gen.source.dir}"/>
+        <property name="generate.xml.binding.file" location="${config.dir}/castor-binding.xml" />
+
+        <for param="generate.xml.binding.schema">
+            <path refid="generate.xml.binding.schemas"/>
+            <sequential>
+                <echo message="Generating XML bindings for@{generate.xml.binding.schema} using Castor Bindings ${castor.binding} into ${gen.source.dir}." level="verbose"/>
+                <java fork="true" classname="org.exolab.castor.builder.SourceGenerator" failonerror="true">
+                    <jvmarg value="-Dorg.exolab.castor.builder.javaclassmapping=type"/>
+                    <classpath>
+                        <pathelement location="${config.dir}"/>
+                        <path refid="lib.classpath"/>
+                    </classpath>
+                    <arg value="-f"/>
+                    <arg value="-i"/>
+                    <arg value="@{generate.xml.binding.schema}"/>
+                    <arg value="-dest"/>
+                    <arg value="${gen.source.dir}"/>
+                    <arg value="-binding-file"/>
+                    <arg value="${generate.xml.binding.file}"/>
+                </java>
+            </sequential>
+        </for>
+    </target>
+
+    <target name="generate.controller" if="project.type.controller.bean">
+        <property name="controller.jar.file" location="${lib.build.dir}/${ant.project.name}Controller.jar"/>
+        <property name="controller.jar.file.no.ejbc" location="${ejb.build.dir}/${ant.project.name}Controller-noejbc.jar"/>
+        <property name="controller.jar.file.client" location="${client.build.dir}/${ant.project.name}ControllerClient.jar"/>
+        <property name="controller.manifest.file" location="${manifest.dir}/Controller.mf"/>
+        <property name="controller.meta.dir" location="${ejb.build.dir}/${ant.project.name}Controller"/>
+        <!-- The default values for the includes, can be overridden in child scripts if required -->
+        <property name="controller.jar.file.includes" value="**/*ControllerBean.java"/>
+        <property name="controller.jar.file.client.includes" value="**/*Delegate*.class, **/*Exception.class"/>
+        <property name="controller.jar.file.no.ejbc.excludes" value="**/messaging/**/*.class"/>
+        <!-- attempt to create all of the directories required -->
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${lib.build.dir}"/>
+        <mkdir dir="${ejb.build.dir}"/>
+        <mkdir dir="${client.build.dir}"/>
+        <mkdir dir="${log.build.dir}"/>
+        <!-- Execute the ejbdoclet task to create remote and local file, ejb-jar.xml and weblogic-ejb-jar.xml -->
+        <ejbdoclet mergedir="${config.dir}" destdir="${gen.source.dir}" excludedtags="@version,@author" addedtags="@xdoclet-generated at ${TODAY}" ejbspec="2.0">
+            <fileset dir="${source.dir}">
+                <include name="${controller.jar.file.includes}"/>
+            </fileset>
+            <remoteinterface pattern="{0}"/>
+            <homeinterface pattern="{0}Home"/>
+            <localinterface pattern="{0}Local"/>
+            <localhomeinterface pattern="{0}LocalHome"/>
+            <deploymentdescriptor destdir="${controller.meta.dir}/META-INF" templateFile="${framework.config.dir}/xdoclet/xhb_ejb-jar_xml.xdt" clientjar="${controller.jar.file.client}"/>
+            <!-- Specify a custom template file due to a bug in Xdoclet 1.2.2 -->
+            <!-- Cannot put in preferred location as causes problems where other builds are using the templates folder
+                 as a merge directory -->
+            <weblogic templateFile="${framework.config.dir}/xdoclet/weblogic-ejb-jar-xml.xdt" mergedir="${config.dir}" destdir="${controller.meta.dir}/META-INF" version="7.0"/>
+        </ejbdoclet>
+        <!-- If in the above step a remote file is created, then create a Business Delegate -->
+        <ejbdoclet mergedir="${config.dir}" destdir="${gen.source.dir}" excludedtags="@version,@author" addedtags="@xdoclet-generated at ${TODAY}">
+            <fileset dir="${source.dir}">
+                <include name="${controller.jar.file.includes}"/>
+                <present targetdir="${gen.source.dir}">
+                    <mapper type="unpackage" from="*ControllerBean.java" to="*ControllerHome.java"/>
+                </present>
+            </fileset>
+            <!-- This task is duplicated from above as XDoclet seems to require at least
+                 one sub task and it doesn't recognise template as a sub task -->
+            <remoteinterface pattern="{0}"/>
+            <template subTaskName="businessDelegate" destinationFile="{0}BusinessDelegate.java" templateFile="${framework.config.dir}/uk/gov/courtservice/codegen/delegate.xdt"/>
+        </ejbdoclet>
+    </target>
+
+    <target name="generate.message" if="project.type.message.bean">
+        <property name="message.jar.file" location="${lib.build.dir}/${ant.project.name}Messaging.jar"/>
+        <property name="message.jar.file.no.ejbc" location="${ejb.build.dir}/${ant.project.name}Messaging-noejbc.jar"/>
+        <property name="message.meta.dir" location="${ejb.build.dir}/${ant.project.name}Messaging"/>
+        <property name="message.manifest.file" location="${manifest.dir}/Message.mf"/>
+        <!-- The default values for the includes, can be overridden in child scripts if required -->
+        <property name="message.jar.file.includes" value="**/*MessageBean.java"/>
+        <!-- attempt to create all of the directories required -->
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${lib.build.dir}"/>
+        <mkdir dir="${ejb.build.dir}"/>
+        <mkdir dir="${log.build.dir}"/>
+        <echo>XDoclet now building Message Driven Beans</echo>
+        <ejbdoclet mergedir="${config.dir}" destdir="${gen.source.dir}" excludedtags="@version,@author" addedtags="@xdoclet-generated at ${TODAY}" ejbspec="2.0">
+            <fileset dir="${source.dir}">
+                <include name="${message.jar.file.includes}"/>
+            </fileset>
+            <deploymentdescriptor destdir="${message.meta.dir}/META-INF"/>
+            <weblogic mergedir="${config.dir}" destdir="${message.meta.dir}/META-INF" version="7.0"/>
+        </ejbdoclet>
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="initialise, generate.xmlbinding, generate.controller, generate.message">
+        <log target="framework.generate"/>
+    </target>
+
+    <!--
+    =======================================================================
+        COMPILE
+            - Compiles all java code for the project
+    =======================================================================
+     -->
+    <target name="compile.javac" if="project.type.requires.compilation">
+        <property name="compile.debug" value="true"/>
+        <property name="compile.deprecation" value="true"/>
+        <!-- default to an empty classpath if not previously defined -->
+        <if>
+            <not>
+                <isreference refid="compile.classpath"/>
+            </not>
+            <then>
+                <path id="compile.classpath"/>
+            </then>
+        </if>
+        <if>
+            <available file="${source.dir}"/>
+            <then>
+                <if>
+                    <available file="${gen.source.dir}"/>
+                    <then>
+                        <property name="framework.compile.src.dir" value="${gen.source.dir}:${source.dir}"/>
+                    </then>
+                    <else>
+                        <property name="framework.compile.src.dir" value="${source.dir}"/>
+                    </else>
+                </if>
+            </then>
+            <else>
+                <if>
+                    <available file="${gen.source.dir}"/>
+                    <then>
+                        <property name="framework.compile.src.dir" value="${gen.source.dir}"/>
+                    </then>
+                    <else>
+                        <fail>Attempting to compile but no source folders</fail>
+                    </else>
+                </if>
+            </else>
+        </if>
+        <!-- Now create the destination directory -->
+        <mkdir dir="${classes.dir}"/>
+			<javac srcdir="${framework.compile.src.dir}" destdir="${classes.dir}" debug="${compile.debug}" debuglevel="lines,vars,source" deprecation="${compile.deprecation}" target="1.6" source="1.6" encoding="cp1252" fork="true">
+				<classpath>
+					<pathelement location="${classes.dir}"/>
+					<pathelement path="${java.class.path}"/>
+					<path refid="lib.classpath"/>
+					<path refid="compile.classpath" />
+				</classpath>
+			</javac>
+    </target>
+    <target name="compile" unless="skip.compile" depends="generate, compile.javac">
+        <log target="framework.compile"/>
+    </target>
+    <!--
+    =======================================================================
+        TEST
+            - Compiles all java code for the project
+    =======================================================================
+     -->
+
+
+    <target name="test.compile" unless="skip.test" depends="initialise,compile">
+      <if>
+        <available file="${test.source.dir}" type="dir"/>
+        <then>
+          <echo message="DIR:${test.classes.dir}"/>
+          <echo message="RefId: compile.classpath"/>
+          <mkdir dir="${test.classes.dir}"/>
+          <javac srcdir="${test.source.dir}" destdir="${test.classes.dir}" fork="true">
+            <classpath>
+              <pathelement location="${classes.dir}"/>
+              <pathelement path="${java.class.path}"/>
+              <path refid="compile.classpath" />
+            </classpath>
+          </javac>
+          <antcall target="test" inheritRefs="true"/>
+        </then>
+        <else>
+          <echo message="${test.source.dir} not found - nothing to compile at this location"/>
+        </else>
+      </if>
+    </target>
+
+
+    <target name="test" unless="skip.test">
+        <log target="framework.test"/>
+
+        <available file="${test.data.dir}" type="dir" property="test.dir.exists" />
+        <if>
+          <not>
+            <isset property="${test.dir.exists}"/>
+          </not>
+          <then>
+            <mkdir dir="${test.data.dir}"/>
+          </then>
+        </if>
+
+        <available file="${test.classes.dir}" type="dir" property="test.dir.exists" />
+        <if>
+          <not>
+            <isset property="${test.dir.exists}"/>
+          </not>
+          <then>
+            <mkdir dir="${test.classes.dir}"/>
+          </then>
+        </if>
+
+        <junit printsummary="yes" forkmode="once" errorProperty="test.failed" failureProperty="test.failed" fork="yes">
+          <classpath>
+            <pathelement location="${classes.dir}"/>
+            <pathelement location="${test.classes.dir}"/>
+            <pathelement path="${java.class.path}"/>
+            <path refid="lib.classpath"/>
+            <path refid="compile.classpath" />
+          </classpath>
+
+          <batchtest todir="${test.data.dir}" unless="testcase">
+            <fileset dir="${test.classes.dir}">
+               <include name="**/*Test.class*"/>
+               <include name="**/Test*.class*"/>
+               <exclude name="**/*$*.class" />
+            </fileset>
+          </batchtest>
+          <!-- write to output files -->
+          <formatter type="xml" />
+          <!-- write to console also -->
+          <formatter type="brief" usefile="false" />
+        </junit>
+        <antcall target="test.reports" inheritRefs="true"/>
+     </target>
+
+     <target name="test.reports" >
+        <delete dir="${build.dir}/reports"/>
+        <mkdir dir="${build.dir}/reports"/>
+
+        <echo message="javax.xml.transform.TransformerFactory: ${javax.xml.transform.TransformerFactory}"/>
+
+        <junitreport todir="${build.dir}/reports">
+          <fileset dir="${build.dir}/testdata">
+            <include name="TEST-*.xml"/>
+          </fileset>
+          <report format="frames" todir="${build.dir}/report"/>
+        </junitreport>
+     </target>
+
+
+    <!--
+    =======================================================================
+        PACKAGE
+            - Compiles all java code for the project
+    =======================================================================
+     -->
+    <!-- To override files included in the jar can be done many ways
+         By default all files in classes and non java, javadoc and jbuilder files from
+         the src directory.
+         The source or classes path can be overriden in their entirity,
+         or specifiying new includes, excludes or basedir can be done as well.
+         Alternatively, if a completely custom fileset is required you can use the custom
+         filesetlist tag :
+            eg. <filesetlist id="jar.filesetlist">
+                    <fileset dir="..." />
+                    <fileset dir="..." />
+                </filesetlist>
+
+    -->
+    <target name="package.jar" unless="skip.package" if="project.type.builds.jar">
+        <!-- create all of the directories required -->
+        <mkdir dir="${lib.build.dir}"/>
+        <!-- overrideable properties for building the jar file -->
+        <!-- overide this to have a different base-dir -->
+        <property name="jar.file.basedir" location="${classes.dir}"/>
+        <!-- override either of these two to override the default include/excludes -->
+        <property name="java.jar.includes" value="${default.jar.includes}"/>
+        <property name="java.jar.excludes" value="${default.jar.classes.excludes}"/>
+        <!-- This is a second fileset that default to the source directory. -->
+        <!-- overide this to have a different base-dir -->
+        <property name="java.jar.source.basedir" location="${source.dir}"/>
+        <!-- override either of these two to override the default include/excludes -->
+        <property name="java.jar.source.includes" value="${default.jar.includes}"/>
+        <property name="java.jar.source.excludes" value="${default.jar.source.excludes}"/>
+        <!-- if the jar source path has not been overriden, then set to default -->
+
+
+        <!--
+          - jar.source.filelist setup
+          -->
+        <filesetlist id="jar.source.filelist.default">
+            <fileset dir="${java.jar.source.basedir}" includes="${java.jar.source.includes}" excludes="${java.jar.source.excludes}"/>
+        </filesetlist>
+        <if>
+            <isreference refid="jar.source.filelist"/>
+            <then>
+                <property name="jar.source.filelist.id" value="jar.source.filelist"/>
+            </then>
+            <else>
+                <property name="jar.source.filelist.id" value="jar.source.filelist.default"/>
+            </else>
+        </if>
+
+
+        <!--
+          - jar.classes.filelist setup
+          -->
+        <filesetlist id="jar.classes.filelist.both">
+            <fileset dir="${classes.dir}" includes="${java.jar.includes}" excludes="${java.jar.excludes}"/>
+            <fileset dir="${resources.dir}" includes="${java.jar.includes}" excludes="${java.jar.excludes}"/>
+        </filesetlist>
+        <filesetlist id="jar.classes.filelist.classes">
+             <fileset dir="${classes.dir}" includes="${java.jar.includes}" excludes="${java.jar.excludes}"/>
+        </filesetlist>
+        <filesetlist id="jar.classes.filelist.resources">
+             <fileset dir="${resources.dir}" includes="${java.jar.includes}" excludes="${java.jar.excludes}"/>
+        </filesetlist>
+        <filesetlist id="jar.classes.filelist.empty"/>
+
+        <if>
+            <isreference refid="jar.classes.filelist"/>
+            <then>
+                <property name="jar.classes.filelist.id" value="jar.classes.filelist"/>
+            </then>
+            <else>
+                <if>
+                    <available file="${classes.dir}"/>
+                    <then>
+                        <if>
+                            <available file="${resources.dir}"/>
+                            <then>
+                                <property name="jar.classes.filelist.id" value="jar.classes.filelist.both"/>
+                            </then>
+                            <else>
+                                <property name="jar.classes.filelist.id" value="jar.classes.filelist.classes"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <if>
+                            <available file="${resources.dir}"/>
+                            <then>
+                                <property name="jar.classes.filelist.id" value="jar.classes.filelist.resources"/>
+                            </then>
+                            <else>
+                                <property name="jar.classes.filelist.id" value="jar.classes.filelist.empty"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </else>
+        </if>
+
+        <!--
+          - jar.filesetlist setup
+          -->
+        <filesetlist id="jar.filesetlist.default">
+            <filesetlist refid="${jar.source.filelist.id}"/>
+            <filesetlist refid="${jar.classes.filelist.id}"/>
+        </filesetlist>
+
+        <if>
+            <isreference refid="jar.filesetlist"/>
+            <then>
+                <property name="jar.filesetlist.id" value="jar.filesetlist"/>
+            </then>
+            <else>
+                <property name="jar.filesetlist.id" value="jar.filesetlist.default"/>
+            </else>
+        </if>
+
+        <!--
+          - jar execute
+          -->
+        <if>
+            <available file="${manifest.dir}/Manifest.mf"/>
+            <then>
+                <jar2 destfile="${jar.file}" manifest="${manifest.dir}/Manifest.mf">
+                    <filesetlist refid="${jar.filesetlist.id}"/>
+                </jar2>
+            </then>
+            <else>
+                <jar2 destfile="${jar.file}">
+                    <filesetlist refid="${jar.filesetlist.id}"/>
+                </jar2>
+            </else>
+        </if>
+    </target>
+
+    <!-- Target to build the war. -->
+    <!-- May require more work when refactoring thinclient -->
+    <target name="package.war" unless="skip.package" if="project.type.builds.war">
+        <mkdir dir="${war.build.dir}"/>
+
+        <!-- By default:
+               - the classes dir is ${basedir}/classes  && resources dir
+               - the lib folder contains nothing,
+               - no additional source files are included
+                 and any other files that you want in the WEB-INF directory -->
+        <!-- To override for each type you need to specify a new filesetlist
+             containing the necessary filesets. The names to override are:
+             - war.classes.fileset
+             - war.lib.fileset
+             - war.source.fileset
+        -->
+        <mkdir dir="${build.dir}/temp"/>
+
+        <!--
+          - Setup war.classes.fileset
+          -->
+        <filesetlist id="war.classes.fileset.both">
+            <fileset dir="${classes.dir}" includes="**/*.class"/>
+            <fileset dir="${resources.dir}"/>
+        </filesetlist>
+        <filesetlist id="war.classes.fileset.classes">
+             <fileset dir="${classes.dir}" includes="**/*.class"/>
+        </filesetlist>
+        <filesetlist id="war.classes.fileset.resources">
+             <fileset dir="${resources.dir}"/>
+        </filesetlist>
+        <filesetlist id="war.classes.fileset.empty"/>
+
+        <if>
+            <isreference refid="war.classes.fileset"/>
+            <then>
+                <property name="war.classes.fileset.id" value="war.classes.fileset"/>
+            </then>
+            <else>
+                <if>
+                    <available file="${classes.dir}"/>
+                    <then>
+                        <if>
+                            <available file="${resources.dir}"/>
+                            <then>
+                                <property name="war.classes.fileset.id" value="war.classes.fileset.both"/>
+                            </then>
+                            <else>
+                                <property name="war.classes.fileset.id" value="war.classes.fileset.classes"/>
+                            </else>
+                        </if>
+                    </then>
+                    <else>
+                        <if>
+                            <available file="${resources.dir}"/>
+                            <then>
+                                <property name="war.classes.fileset.id" value="war.classes.fileset.resources"/>
+                            </then>
+                            <else>
+                                <property name="war.classes.fileset.id" value="war.classes.fileset.empty"/>
+                            </else>
+                        </if>
+                    </else>
+                </if>
+            </else>
+        </if>
+
+        <!--
+          - Setup war.lib.fileset
+          -->
+        <filesetlist id="war.lib.fileset.default">
+            <fileset dir="${basedir}" includes="*" excludes="*"/>
+        </filesetlist>
+        <if>
+            <isreference refid="war.lib.fileset"/>
+            <then>
+                <property name="war.lib.fileset.id" value="war.lib.fileset"/>
+            </then>
+            <else>
+                <property name="war.lib.fileset.id" value="war.lib.fileset.default"/>
+            </else>
+        </if>
+
+        <!--
+          - Setup war.source.fileset
+          -->
+        <filesetlist id="war.source.fileset.default">
+            <fileset dir="${docroot.dir}" includes="**/*" excludes="WEB-INF/web.xml"/>
+        </filesetlist>
+        <if>
+            <isreference refid="war.source.fileset"/>
+            <then>
+                <property name="war.source.fileset.id" value="war.source.fileset"/>
+            </then>
+            <else>
+                <property name="war.source.fileset.id" value="war.source.fileset.default"/>
+            </else>
+        </if>
+
+        <!--
+          - Execute
+          -->
+        <if>
+            <available file="${manifest.dir}/Web.mf"/>
+            <then>
+                <war2 destfile="${noappc.war.file}" webxml="${docroot.dir}/WEB-INF/web.xml" manifest="${manifest.dir}/Web.mf">
+                    <filesetlist refid="${war.source.fileset.id}"/>
+                    <classesfilesetlist refid="${war.classes.fileset.id}"/>
+                    <libfilesetlist refid="${war.lib.fileset.id}"/>
+                </war2>
+            </then>
+            <else>
+                <war2 destfile="${noappc.war.file}" webxml="${docroot.dir}/WEB-INF/web.xml">
+                    <filesetlist refid="${war.source.fileset.id}"/>
+                    <classesfilesetlist refid="${war.classes.fileset.id}"/>
+                    <libfilesetlist refid="${war.lib.fileset.id}"/>
+                </war2>
+            </else>
+        </if>
+        <uptodate property="skip.package.controller.ejbc"
+                  srcfile="${noappc.war.file}"
+                  targetfile="${war.file}"/>
+    </target>
+
+    <target name="package.war.appc.check" if="skip.package" depends="package.war">
+        <property name="skip.package.controller.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.war.appc" unless="skip.package.war.appc" if="project.type.builds.war" depends="package.war.appc.check">
+        <mkdir dir="${lib.build.dir}"/>
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="lib.classpath"/>
+                <path refid="compile.classpath" />
+            </classpath>
+            <arg value="-output"/>
+            <arg value="${war.file}" />
+            <arg value="${noappc.war.file}" />
+        </java>
+    </target>
+
+    <target name="package.controller" unless="skip.package" if="project.type.controller.bean">
+        <if>
+            <available file="${resources.dir}"/>
+            <then>
+                <jar destfile="${controller.jar.file.no.ejbc}" manifest="${controller.manifest.file}">
+                    <fileset dir="${classes.dir}">
+                        <exclude name="${controller.jar.file.no.ejbc.excludes}"/>
+						<exclude name="${controller.jar.file.no.ejbc.excludes2}"/>
+					</fileset>
+                    <fileset dir="${controller.meta.dir}">
+                        <include name="META-INF/**"/>
+                    </fileset>
+                    <fileset dir="${resources.dir}"/>
+                </jar>
+            </then>
+            <else>
+                <jar destfile="${controller.jar.file.no.ejbc}" manifest="${controller.manifest.file}">
+                    <fileset dir="${classes.dir}">
+                        <exclude name="${controller.jar.file.no.ejbc.excludes}"/>
+						<exclude name="${controller.jar.file.no.ejbc.excludes2}"/>
+					</fileset>
+                    <fileset dir="${controller.meta.dir}">
+                        <include name="META-INF/**"/>
+                    </fileset>
+                </jar>
+            </else>
+        </if>
+        <uptodate property="skip.package.controller.ejbc"
+                  srcfile="${controller.jar.file.no.ejbc}"
+                  targetfile="${controller.jar.file}"/>
+    </target>
+
+    <target name="package.controller.ejbc.check" if="skip.package" depends="package.controller">
+        <property name="skip.package.controller.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.controller.ejbc" unless="skip.package.controller.ejbc" if="project.type.controller.bean" depends="package.controller.ejbc.check">
+        <echo message="Attempting to execute ejbc on ${controller.jar.file.no.ejbc}"/>
+
+        <property name="package.controller.basicclientjar" value="-basicClientJar"/>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+			<classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="lib.classpath"/>
+                <path refid="compile.classpath" />
+            </classpath>
+            <arg value="-keepgenerated"/>
+            <arg value="${package.controller.basicclientjar}"/>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${controller.jar.file}" />
+            <arg value="${controller.jar.file.no.ejbc}" />
+        </java>
+        <echo message="Creating EJB client jar as ${controller.jar.file.client}"/>
+        <!-- Add any additional client files to the client.jar -->
+
+        <jar update="true" basedir="${classes.dir}" destfile="${controller.jar.file.client}" includes="${controller.jar.file.client.includes}"/>
+    </target>
+
+    <target name="package.message" if="project.type.message.bean">
+       
+        <property name="package.message.includes" value="**/messaging/**/*.class"/>
+        
+        <filesetlist id="message.package.filelist.default">
+            <fileset dir="${classes.dir}" includes="${package.message.includes}"/>
+            <fileset dir="${message.meta.dir}">
+                <include name="META-INF/**"/>
+            </fileset>
+        </filesetlist>
+        
+        <if>
+            <isreference refid="message.package.filelist"/>
+            <then>
+                <property name="message.package.filelist.id" value="message.package.filelist"/>
+            </then>
+            <else>
+                <property name="message.package.filelist.id" value="message.package.filelist.default"/>
+            </else>
+        </if>
+              
+        <jar2 destfile="${message.jar.file.no.ejbc}" manifest="${message.manifest.file}">
+            <filesetlist refid="${message.package.filelist.id}"/>
+        </jar2>
+        
+        <uptodate property="skip.package.message.ejbc" srcfile="${message.jar.file.no.ejbc}" targetfile="${message.jar.file}"/>
+    </target>
+
+    <target name="package.message.ejbc.check" if="skip.package" depends="package.message">
+        <property name="skip.package.message.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.message.ejbc" unless="skip.package.message.ejbc" if="project.type.message.bean" depends="package.message.ejbc.check">
+        <echo message="Attempting to execute ejbc on ${message.jar.file.no.ejbc}"/>
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="lib.classpath"/>
+                <path refid="compile.classpath" />
+            </classpath>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${message.jar.file}" />
+            <arg value="${message.jar.file.no.ejbc}" />
+        </java>
+    </target>
+
+   <!--target name="package" unless="skip.package" depends="test, package.jar, package.war.appc, package.controller.ejbc, package.message.ejbc" -->
+  <target name="package" unless="skip.package" depends="test.compile, package.jar, package.war.appc, package.controller.ejbc, package.message.ejbc">
+      <log target="framework.package"/>
+    </target>
+
+    <!--
+    =======================================================================
+        RELEASE
+            - Release the files to prerelease (aka staging, repository)
+    =======================================================================
+     -->
+    <!-- Move all required created files to the releases folder -->
+    <target name="release" unless="skip.release" depends="package">
+        <log target="framework.release"/>
+        <if>
+            <available file="${lib.build.dir}"/>
+            <then>
+                <copy todir="${build.dest.dir}">
+                    <fileset dir="${lib.build.dir}"/>
+                </copy>
+            </then>
+        </if>
+    </target>
+    <!--
+    =======================================================================
+        CHILD ALL/CHILD ALL
+            - Generate project metrics
+    =======================================================================
+     -->
+    <!--
+         The targets were originally in the child_processing.xml, but have been extracted
+         to allow simplification of the build scripts.  As there are considerably more
+         leaf nodes than parent nodes, it is more logical to specify that a node is a
+         parent node in a few files, than a child node in many files.
+    -->
+    <!-- Initialisation target for the child processing, allows the property
+         "project.type.parent.node" to be set if a "child.path" has been set -->
+    <target name="recurse.initialise" unless="skip.recurse" depends="initialise">
+        <condition property="project.type.parent.node">
+            <isreference refid="child.path"/>
+        </condition>
+    </target>
+
+    <target name="recurse.test" depends="recurse.initialise" if="project.type.parent.node" unless="skip.recurse">
+        <subant target="dotest" buildpathref="child.path" inheritall="false" inheritrefs="false"/>
+    </target>
+
+    <target name="recurse.all" depends="recurse.initialise" if="project.type.parent.node" unless="skip.recurse">
+        <subant target="all" buildpathref="child.path" inheritall="false" inheritrefs="false"/>
+    </target>
+
+    <target name="recurse.clean" depends="recurse.initialise" if="project.type.parent.node" unless="skip.recurse">
+        <subant target="clean" buildpathref="child.path" inheritall="false" inheritrefs="false"/>
+    </target>
+
+   <!--
+    =======================================================================
+        ALL TESTS
+            - Build the project executing all tasks
+    =======================================================================
+     -->
+    <target name="test2" depends="initialise, recurse.test" description="Entry point to process this script and all children">
+        <log target="framework.test"/>
+    </target>
+
+
+
+    <!--
+    =======================================================================
+        ALL
+            - Build the project executing all tasks
+    =======================================================================
+     -->
+    <target name="all" depends="initialise, recurse.all, release" description="Entry point to process this script and all children">
+        <log target="framework.all"/>
+    </target>
+    <!--
+    =======================================================================
+        CLEAN
+            - Remove all files produced by the build
+    =======================================================================
+     -->
+    <target name="clean" depends="initialise, recurse.clean" description="Deletes all items created by this script and all children">
+        <log target="framework.clean"/>
+        <delete dir="${build.dir}"/>
+    </target>
+    <!--
+    =======================================================================
+        all.leaf & clean.leaf
+            - Run the task without recursion
+    =======================================================================
+     -->
+    <!--
+         This target is supplied as a helper to allow parent nodes to be run without
+         performing any of the child processing.
+         This is to allow ears and jars to be built without recompiling sub projects
+    -->
+    <target name="common.leaf.initialise">
+        <property name="skip.recurse" value="true"/>
+    </target>
+    <target name="all.leaf" depends="common.leaf.initialise, all" description="Entry point to process the script without processing its children">
+        <log target="framework.all.leaf"/>
+    </target>
+    <target name="clean.leaf" depends="common.leaf.initialise, clean" description="Entry point to process the script without processing its children">
+        <log target="framework.clean.leaf"/>
+    </target>
+    <!--
+    =======================================================================
+        Macros
+            - Used by the build
+    =======================================================================
+     -->
+    <!--
+      - Macro - Used to print the target name, useful in a deeply nested build
+      -->
+    <macrodef name="log">
+        <attribute name="target"/>
+        <sequential>
+            <echo message="****** ${ant.project.name} - @{target}" level="${log.level}"/>
+        </sequential>
+    </macrodef>
+    <!--
+      - Macro - Used to fail unless mandatory property set
+      -->
+    <macrodef name="mandatory">
+        <attribute name="property" default="__NOT_SET__"/>
+        <attribute name="file" default="__NOT_SET__"/>
+        <attribute name="fileproperty" default="__NOT_SET__"/>
+        <sequential>
+            <if>
+                <not>
+                    <equals arg1="@{property}" arg2="__NOT_SET__"/>
+                </not>
+                <then>
+                    <fail unless="@{property}" message="Mandatory property &quot;@{property}&quot; has not been set."/>
+                </then>
+                <elseif>
+                    <not>
+                        <equals arg1="@{file}" arg2="__NOT_SET__"/>
+                    </not>
+                    <then>
+                        <if>
+                            <not>
+                                <available file="@{file}"/>
+                            </not>
+                            <then>
+                                <fail message="The mandatory file &quot;@{file}&quot; is not available."/>
+                            </then>
+                        </if>
+                    </then>
+                </elseif>
+                <elseif>
+                    <not>
+                        <equals arg1="@{fileproperty}" arg2="__NOT_SET__"/>
+                    </not>
+                    <then>
+                        <fail unless="@{fileproperty}" message="Mandatory property &quot;@{fileproperty}&quot; has not been set."/>
+                        <if>
+                            <not>
+                                <available file="${@{fileproperty}}"/>
+                            </not>
+                            <then>
+                                <fail message="The mandatory file &quot;${@{fileproperty}}&quot; is not available."/>
+                            </then>
+                        </if>
+                    </then>
+                </elseif>
+                <else>
+                    <fail message="The property, file or fileproperty attribute must be set."/>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+</project>

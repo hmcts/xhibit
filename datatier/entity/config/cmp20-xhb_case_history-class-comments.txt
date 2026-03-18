@@ -1,0 +1,14 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseHistoryId(java.lang.Integer caseHistoryId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbCaseHistory c WHERE c.caseHistoryId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseNumberCaseTypeAndCourtId(java.lang.String caseType, java.lang.String caseNumber, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbCaseHistory c WHERE c.caseType = ?1 and c.caseNumber = ?2 and c.courtId = ?3"
+ * -------- end of custom finders --------

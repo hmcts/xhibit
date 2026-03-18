@@ -1,0 +1,23 @@
+ * -------- custom finders --------
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByOffenceId(java.lang.Integer offenceId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (xjc) FROM XhbJoinderCharge xjc, XhbCharge xc, XhbOffence xo where xjc.chargeId = xc.chargeId and xc.chargeId = xo.chargeId and xo.offenceId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByJoinderId(java.lang.Integer joinderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (jc) FROM XhbJoinderCharge jc WHERE jc.joinderId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByChargeId(java.lang.Integer chargeId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (jc) FROM XhbJoinderCharge jc WHERE jc.chargeId = ?1"
+ *
+ * -------- end of custom finders --------
+  

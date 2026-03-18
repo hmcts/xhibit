@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<!--  $Revision: 1.3 $  $Author: valenzul $ $Date: 2010/04/13 08:43:28 $-->
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="orderDate" label="" borderLabel="" borderRaised="">
+			<section name="AssociatedOrder" label="" borderLabel="Associated Order type" borderRaised="true">
+				<choice name="associatedorder" label="" ref="/ord:Order/ord:OrderData/*/ord:AssociatedOrder">
+					<option name="SUS" label="Suspended Sentence Order" value="suspendedSentenceOrder"/>
+					<option name="COMSENT" label="Community Order" value="communityOrder"/>
+				</choice>
+			</section>
+			<section name="warrant" label="" borderLabel="Order Details" borderRaised="true">
+				<date name="xxx2" label="Order Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+				<choice name="either/releaseOption" label="" ref="/ord:Order/ord:OrderData//ord:Release">
+					<option name="eitherOption" label="Either... Bring forthwith" value="Refused" selected="true"/>
+					<option name="releaseOption" label="Or... Release on bail" value="Conditional">
+						<section name="condition" label="" switchLabel="" borderLabel="Conditions">
+							<section name="sectionA" label="" switchLabel="Section A - Conditions Before Release" borderLabel="" switchable="true" ref="//ord:PreConditions/@selected" selectedValue="true" unselectedValue="false">
+								<section name="sectionASurety" label="" switchLabel="Surety Option" borderLabel="" switchable="true" ref="//ord:PreConditions/ord:Surety/@selected" selectedValue="true" unselectedValue="false">
+									<choice name="pluralOption" label="" ref="//ord:Surety/ord:Plural">
+										<option name="surety" label="Surety" value="surety" selected="true"/>
+										<option name="sureties" label="Sureties" value="sureties"/>
+									</choice>
+									<currency name="suretyValue" label="Value :" signLength="3" length="8" minVal="0" maxLength="8" required="false" type="float" ref="//ord:Surety/ord:MonetaryValue/ord:Amount"/>
+								</section>
+								<section name="sectionAdetails" label="" switchLabel="Other Conditions" borderLabel="" switchable="true" ref="//ord:PreConditions/ord:PreConditionDetails/@selected" selectedValue="true" unselectedValue="false">
+									<textarea name="preConditionDetailsValue" label=""  ref="//ord:PreConditions/ord:PreConditionDetails" rows="10" cols="40"/>
+								</section>
+							</section>
+							<section name="sectionB" label="" switchLabel="Section B - Conditions After Release" borderLabel="" switchable="true" ref="//ord:PostConditions/@selected" selectedValue="true" unselectedValue="false">
+								<textarea name="postConditionDetailsValue" ref="//ord:PostConditions/ord:PostConditionDetails" label="" rows="10" cols="40"/>
+							</section>
+						</section>
+						<section name="appearance" label="" borderLabel="Appearance Details">
+							<section name="date/time" borderLabel="" label="">
+								<choice name="date/timeOption" label="" ref="//ord:NextAppearance/ord:AppearanceDateTime/@selected">
+									<option name="toBeNotifiedOption" label="Date &amp; time to be notified" value="false" selected="true"/>
+									<option name="specificOption" label="Specific date &amp; time" value="true">
+										<date name="xxx2" label="Date:" ref="//ord:NextAppearance/ord:AppearanceDateTime/ord:AppearanceDate"/>
+										<timepanel name="benchtimeValue" label="Time: " ref="//ord:NextAppearance/ord:AppearanceDateTime/ord:AppearanceTime"/>
+									</option>
+								</choice>
+							</section>
+							<section name="crownCourt" borderLabel="" label="">
+								<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="false" youthcourt="false" courtlabel="false" ref="//ord:NextAppearance//ord:CourtHouseName"/>
+							</section>
+						</section>
+					</option>
+				</choice>
+			</section>
+		</section>
+	</form>
+</template>

@@ -1,0 +1,3 @@
+GRANT SELECT ON CJI_DOCUMENT_TYPE to XHIBIT;
+/
+show errors

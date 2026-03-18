@@ -1,0 +1,76 @@
+/*
+ * Filename:    DB_Patch_Gdgate_X_X.sql
+ *
+ *
+ * PLEASE CHANGE :  Insert relevant release number in X_X - in Filename above, for generating logfile name
+ *                  and in gdg_version updates.
+ * HISTORY
+ * =======
+ * DATE		WHO	CHANGE ID	COMMENT
+ * ----         ---     ---------       -------
+   03/01/2007	K SHAH			Created
+ *
+ */ 
+
+set echo on
+set term off
+column filename new_value spool_filename
+  select 'DBPATCH_Gdgate_X_X_'||
+    to_char(sysdate,'YYYYMMDDHH24MI')||'.log' filename
+  from dual
+/
+set term on
+spool &&spool_filename
+
+
+/*
+ * Changes to GDG_ table definitions, indexes and foreign keys
+ *
+ * Additions or deletion of GDG_ tables, indexes and foreign keys
+ */
+
+
+/*
+ * Changes, additions or deletion of views
+ */
+
+
+/*
+ * Changes to AUDIT tables (AUD_) as a result of any GDG_ table modifications
+ */
+
+
+/*
+ * Changes, additions or deletion of sequences
+ */
+
+
+/*
+ * Changes to GDG_ table triggers as a result of any GDG_ table modifications
+ */
+
+
+/*
+ * Changes, additions or deletion of packages/procedures/functions
+ */
+
+
+/*
+ * Changes, additions or deletion of standing data
+ */
+
+
+/*
+ * Updating of version table 
+ */
+
+DELETE FROM GDG_VERSION;
+
+
+INSERT INTO GDG_VERSION
+            (SCHEMA_NAME,SCHEMA_VERSION,LAST_UPDATE_DATE,UPDATED_BY,DISPLAY_NAME,DISPLAY_SEQ) 
+VALUES ('GDGATE','X_X_X',sysdate,'GDGATE','GDGATE Database Schema X_X_X',1);
+
+COMMIT;
+
+spool off

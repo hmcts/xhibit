@@ -1,0 +1,31 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Appellant Attendance-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20601_Appellant_Attendance"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20601_Appellant_Attendance">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20601_AA_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20601_AA_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20601_Appellant_Identified"/>
+				<xs:enumeration value="E20601_Appellant_Delayed"/>
+				<xs:enumeration value="E20601_Appellant_Fails_To_Attend"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

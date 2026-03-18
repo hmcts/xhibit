@@ -1,0 +1,60 @@
+anonymous block completed
+--======================== Test 1 get_outc_report_test1 START ============================
+System is AMD64/SunOS-4.0-8.1.0, database is O10TST2
+ 
+DIARY_NOTE_ENTRY_ID|CASE_NUMBER | CASE_TITLE                            | Juv  | Commited_Sent | CLASS_CODE |HEARING_TYPE |mon_cat_cd | LOEST |CASE_GRP_NO |First_NAD |Listed |NOTE_CLASS |DIARY_NOTE_TEXT       |NOTE_TYPE |
+-------------------|------------|---------------------------------------|------|---------------|------------|-------------|-----------|-------|------------|----------|-------|-----------|----------------------|----------|
+373                |  T20170131 | TEST                                  |      | 10-11-2017    | 3          | AEH         | CO        | 30W   | 327        | -        | Y     | Priority  | Very Important High  | HN | | | 
+663                |  T20180208 | 4980TEST                              |      | 04-01-2018    | 3          | null        | AE        | W     | -1         | -        | N     | Priority  | Highlight Note       | HN | | | 
+79                 |  T20187074 | CTX-1306 TEST                         |      | 09-01-2018    | 3          | BCD         | NR        | W     | 233        | -        | N     | Priority  | Test                 | HN | | | 
+93                 |  T20187090 | MGG                                   |      | 07-02-2018    | 1          | TRN         | FT        | D     | 327        | 02-04-20 | Y     | Priority  | billy bob rggergerge | HN | | | 
+-1                 |  T20180356 | T                                     |      | 20-03-2018    | 3          | null        | CO        | 1     | -1         | -        | N     | null      | null                 | 
+504                | *T20140005 | TEST                                  |      | 02-04-2018    | 1          | BOO         | NR        | 0W    | 327        | 22-05-20 | Y     | Priority  | Highlight Note       | HN | | | 
+-1                 |  T20180380 | TEST                                  |      | 03-04-2018    | 3          | BCD         | AE        | W     | 327        | -        | N     | null      | null                 | 
+81                 |  T20180401 | TEST                                  |      | 12-04-2018    | 3          | null        | AE        | W     | 327        | -        | Y     | Priority  | note                 | HN | | | 
+-1                 |  T20180421 | TEST                                  |      | 24-04-2018    | 3          | null        | AE        | W     | 327        | -        | N     | null      | null                 | 
+-1                 | *T20180422 | TEST                                  | Juv  | 24-04-2018    | 3          | null        | CO        | W     | 327        | -        | N     | null      | null                 | 
+70                 | *T20180423 | CHRIS VINCENT TEST                    |      | 25-04-2018    | 3          | null        | DV        | W     | 327        | -        | N     | Priority  | note                 | HN | | | 
+-1                 |  T20187108 | SCOTT TEST2                           |      | 27-04-2018    | 3          | null        | DV        | 1M    | 327        | -        | N     | null      | null                 | 
+-1                 |  T20187109 | SCOTT TEST 100                        |      | 30-04-2018    | 3          | AEH         | DV        | 1W    | -1         | -        | N     | null      | null                 | 
+-1                 |  T20187118 | TEST                                  |      | 02-05-2018    | 3          | null        | AE        | D     | 327        | -        | N     | null      | null                 | 
+113                |  T20187119 | LIZ CASE                              |      | 16-05-2018    | 3          | TPH         | NR        | W     | -1         | 23-05-20 | Y     | Priority  | lizs highlight note  | HN | | | 
+297                |  T20147007 | TITLE                                 |      | 01-06-2018    | 1          | AEW         | AE        | 0D    | -1         | 21-03-20 | Y     | Priority  | hn2                  | HN | | | 
+-1                 |  T20140001 | TITLE                                 | Juv  | 04-06-2018    | 3          | null        | CO        | -     | 327        | -        | N     | null      | null                 | 
+648                | *T20180572 | MY CASE TITLE                         |      | 05-06-2018    | 2          | TRN         | DV        | 5W    | 327        | 18-06-20 | Y     | Priority  | T20180572 Highlight  | HN | | | 
+151                |  T20180580 | MY CASE TITLE                         |      | 07-06-2018    | 3          | null        | AE        | 1W    | 327        | -        | N     | Priority  | note                 | HN | | | 
+-1                 |  T20180593 | T                                     |      | 13-06-2018    | 3          | null        | AE        | 1W    | 327        | -        | N     | null      | null                 | 
+-1                 | *T20180594 | T                                     |      | 13-06-2018    | 1          | null        | AE        | 1M    | 327        | -        | N     | null      | null                 | 
+-1                 | T20147003  | TESTING CTX-2050                      |      | 19-06-2018    | 3          | null        | NR        | -     | 327        | -        | N     | null      | null                 | 
+-1                 | *T20180639 | T                                     |      | 28-06-2018    | 1          | BEX         | CO        | 1M    | 327        | -        | N     | null      | null                 | 
+-1                 |  T20180666 | TEST                                  |      | 02-07-2018    | 3          | BCD         | CO        | W     | 149        | -        | N     | null      | null                 | 
+-1                 | *T20180667 | TEST                                  |      | 02-07-2018    | 3          | AGA         | FT        | W     | 149        | -        | N     | null      | null                 | 
+-1                 |  T20180665 | TEST                                  |      | 03-07-2018    | 3          | APH         | CO        | W     | 149        | -        | N     | null      | null                 | 
+-1                 | *T20180664 | 2450 #2                               |      | 04-07-2018    | 3          | BEX         | AE        | W     | 149        | -        | Y     | null      | null                 | 
+-1                 |  T20147015 | TEST                                  |      | 05-07-2018    | 3          | null        | AE        | -     | 263        | -        | N     | null      | null                 | 
+-1                 | *T20180660 | CTX-2041                              |      | 05-07-2018    | 3          | null        | AE        | 5W    | 237        | -        | N     | null      | null                 | 
+-1                 |  T20180662 | TEST                                  |      | 05-07-2018    | 3          | APH         | AE        | W     | 327        | 20-01-20 | Y     | null      | null                 | 
+-1                 | T20087514  | MGG TESTING BENCH WARRANT             |      | 09-07-2018    | 3          | BEX         | AE        | W     | -1         | -        | N     | null      | null                 | 
+-1                 |  T20180655 | FORM A TEST 1                         |      | 09-07-2018    | 3          | BBO         | DV        | 2M    | 327        | -        | N     | null      | null                 | 
+-1                 | T20140006  | BOB                                   |      | 17-07-2018    | 3          | AEH         | DV        | 5     | -1         | 09-08-20 | Y     | null      | null                 | 
+660                |  T20180663 | TEST                                  |      | 23-07-2018    | 3          | null        | CO        | W     | 149        | -        | Y     | Priority  | Highlight Note       | HN | | | 
+-1                 |  T20140004 | CHRIS CO TEST                         |      | 02-08-2018    | 3          | null        | CO        | -     | -1         | -        | Y     | null      | null                 | 
+-1                 |  T20180683 | LIZTRIAL - TWO                        |      | 03-08-2018    | 3          | null        | NR        | W     | -1         | -        | Y     | null      | null                 | 
+-1                 |  T20187168 | LIZ TRIAL FOR WARNED                  |      | 03-08-2018    | 3          | PTP         | NR        | W     | 180        | -        | Y     | null      | null                 | 
+526                |  T20187167 | LIZ  TRIAL FOR WARNED LIST            |      | 03-08-2018    | 3          | PTP         | NR        | W     | 180        | -        | Y     | Priority  | highlight note       | HN | | | 
+-1                 |  T20180685 | WEN THE TEST CASE                     |      | 07-08-2018    | 3          | null        | NR        | W     | 310        | -        | Y     | null      | null                 | 
+-1                 | *T20187171 | TEST CASE                             |      | 08-08-2018    | 3          | AEH         | AE        | 88D   | 310        | -        | Y     | null      | null                 | 
+543                | *T20180694 | REVENGE OF THE DONKEY DUNGEON         |      | 10-08-2018    | 3          | CSE         | FM        | W     | 327        | -        | N     | Priority  | highlight note       | HN | | | 
+-1                 |  T20187166 | CTX-2227                              |      | 16-08-2018    | 1          | null        | CO        | W     | -1         | -        | N     | null      | null                 | 
+-1                 |  T20180717 | TEST                                  |      | 22-08-2018    | 3          | null        | CO        | 1D    | 243        | -        | N     | null      | null                 | 
+-1                 | *T20180718 | TEST                                  |      | 23-08-2018    | 3          | null        | DV        | W     | 245        | -        | N     | null      | null                 | 
+-1                 | *T20180728 | MGG TEST CASE 1                       |      | 20-09-2018    | 3          | TRN         | CO        | D     | -1         | -        | N     | null      | null                 | 
+-1                 |  T20187183 | TEST CASE                             |      | 08-10-2018    | 3          | BBO         | AE        | D     | 292        | -        | Y     | null      | null                 | 
+-1                 | *T20187182 | TEST CASE                             |      | 08-10-2018    | 3          | BBO         | FT        | D     | 292        | -        | Y     | null      | null                 | 
+ 
+Rows retrieved: 47
+ 
+Test Succeeded
+         ------------------- Test 1 get_outc_report_test1  END --------------------------
+
+

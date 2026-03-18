@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:include schemaLocation="ImprisonmentOrder5035C.xsd"/>
+	<xsd:complexType name="YoungOffendersOrder5044Structure">
+		<xsd:complexContent>
+			<xsd:extension base="ImprisonmentOrder5035CStructure">
+				<xsd:sequence>
+					<xsd:element name="PowerToImprison">
+						<xsd:complexType>
+							<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+						</xsd:complexType>
+					</xsd:element>
+				</xsd:sequence>
+			</xsd:extension>
+		</xsd:complexContent>
+	</xsd:complexType>
+	<xsd:element name="YoungOffendersOrder5044" type="YoungOffendersOrder5044Structure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V4.1 (08/06/2005)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

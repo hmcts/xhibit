@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByListId(java.lang.Integer listId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(sol) FROM XhbSittingOnList AS sol WHERE (sol.obsInd IS NULL OR sol.obsInd = 'N') AND sol.listId = ?1"
+ *
+ * -------- end of custom finders --------

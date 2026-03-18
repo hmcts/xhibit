@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Project>
+	<Folder FolderName="XML Files SAMPLES" ExtStr="xml;cml;math;mtx;rdf;smil;svg;wml">
+		<ExtMountFolder FolderName="f:\Projects\XHIBIT\XHIBIT_8_2\thickclient\orders\xml\exampleXML"/>
+	</Folder>
+	<Folder FolderName="XSL Files OLD" ExtStr="xsl;xslt">
+		<ExtMountFolder FolderName="f:\Projects\XHIBIT\XHIBIT_8_2\thickclient\orders\xml\documentTransforms"/>
+	</Folder>
+	<Folder FolderName="HTML Files" ExtStr="html;htm;xhtml;asp"/>
+	<Folder FolderName="CS DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+			<ExtMountFolder FolderName="f:\Projects\XHIBIT\XHIBIT_8_2\thickclient\orders\xml\schemas"/>
+	</Folder>
+	<Folder FolderName="EDS DTD/Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<ExtMountFolder FolderName="f:\Projects\XHIBIT\XHIBIT_8_2\metadata\schemas\orders"/>
+	</Folder>
+	<Folder FolderName="Blank Schemas" ExtStr="dtd;dcd;xdr;biz;xsd">
+			<ExtMountFolder FolderName="f:\Projects\XHIBIT\XHIBIT_8_2\midtier\orders\xmlbinding\blankschemas"/>
+	</Folder>
+	<Folder FolderName="Resource" ExtStr="dtd;dcd;xdr;biz;xsd">
+		<ExtMountFolder FolderName="f:\Projects\XHIBIT\XHIBIT_8_2\thickclient\orders\resources\metadata"/>
+	</Folder>
+
+	<Folder FolderName="Entities" ExtStr="ent"/>
+</Project>

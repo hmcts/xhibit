@@ -1,0 +1,138 @@
+<?xml version="1.0" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!--
+  - Title:       Web Deployment Descriptor
+  -
+  - Description: This describes how to deploy the application. Note as we are using a default servlet
+  -              we need to reference the weblogic file servlet (weblogic.servlet.FileServlet) to serve
+  -              up the non jsp and servlet content, if anouther servlet engine is used this will need
+  -              to be changed.
+  -
+  - Copyright:   Copyright (c) 2003
+  - Company:     EDS
+  -
+  - Author:      William Fardell, Xdevelopment LLP (2003)
+  - Version:     V1.0.0
+  -->
+
+<web-app>
+
+    <!--
+      -
+      - Configure the name of the resource bundle to use (jstl)
+      -
+      -->
+    <context-param>
+        <param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+        <param-value>Messages</param-value>
+    </context-param>
+
+    <!--
+      -
+      - Add the Serialization Checker (this provides debug information for the replicatability of sessions!) Setting the system property "DisableSerializationChecker" to
+      - true will disable this expensive check.
+      -
+      -->
+
+    <listener>
+        <listener-class>uk.gov.courtservice.xhibit.web.framework.listener.SerializationCheckerHttpSessionAttributeListener</listener-class>
+    </listener>
+
+    <!--
+      -
+      - Declare Servlets
+      -
+      -->
+
+    <servlet>
+        <servlet-name>ControlServlet</servlet-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.framework.servlet.ControlServlet</servlet-class>
+        <init-param>
+            <param-name>action.resource.name</param-name>
+            <param-value>Action.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>commonaction.resource.name</param-name>
+            <param-value>CommonAction.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>response.resource.name</param-name>
+            <param-value>Response.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>commonresponse.resource.name</param-name>
+            <param-value>CommonResponse.properties</param-value>
+        </init-param>
+        <init-param>
+            <param-name>default.request.path</param-name>
+            <param-value>/home</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+
+    <!--
+      -
+      - Map the controlservlet to respond to all requests except jsps
+      -
+      -->
+
+    <servlet-mapping>
+        <servlet-name>ControlServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+
+    <!--
+      -
+      - Map the default (weblogic) file servlet to handle image (jpeg and gif), stylesheet and javascript requests
+      -
+      -->
+
+    <!-- Use the setting in weblogic config -->
+    <session-config>
+        <session-timeout>-2</session-timeout>
+    </session-config>
+
+    <!--
+      -
+      - Configure the location of the error page to use
+      -
+      -->
+
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/error.jsp</location>
+    </error-page>
+
+    <!--
+      -
+      - Taglib discriptors
+      -
+      -->
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/core</taglib-uri>
+        <taglib-location>/WEB-INF/tld/c.tld</taglib-location>
+    </taglib>
+    <taglib>
+        <taglib-uri>http://java.sun.com/jstl/fmt</taglib-uri>
+        <taglib-location>/WEB-INF/tld/fmt.tld</taglib-location>
+    </taglib>
+
+    <!--
+      -
+      - set up the logon
+      -
+      -->
+    <security-constraint>
+        <display-name>Security Constraint</display-name>
+        <web-resource-collection>
+            <web-resource-name>Web Resource Collection</web-resource-name>
+            <url-pattern>/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>NONE</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+
+</web-app>
+

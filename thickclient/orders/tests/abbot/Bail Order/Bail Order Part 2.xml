@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AWTTestScript slow="true" desc="Script (D:\projects\XHIBIT\thickclient\orders\tests\abbot\Bail Order.xml) ">
+  <component id="JScrollBar Instance" class="javax.swing.JScrollBar" parent="JScrollPane Instance" index="1" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="Conditional 1" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Conditional" />
+  <component id="JScrollPane Instance" class="javax.swing.JScrollPane" parent="OrderMainPane Instance" index="2" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="Retained by" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Retained by" />
+  <component id="Notify Police Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Notify Police Condition" />
+  <component id="OrderOption under Part 4" class="uk.gov.courtservice.xhibit.client.order.gui.entry.components.OrderOption" index="1" title="Order Screen (Editable)" tag="OrderOption under Part 4" />
+  <component id="12/Feb/2003 1" class="mseries.ui.MDateEntryField" parent="12/Feb/2003" index="0" title="Order Screen (Editable)" tag="12/Feb/2003" />
+  <component id="Message" class="javax.swing.JDialog" title="Message" tag="Message" />
+  <component id="#test.OrderScreen~Order Screen (editable)# Root Pane" class="javax.swing.JRootPane" index="0" title="#test.OrderScreen~Order Screen (editable)#" tag="#test.OrderScreen~Order Screen (editable)# Root Pane" />
+  <component id="MetalArrowButton under 12/Feb/2003" class="mseries.plaf.Metal.MetalArrowButton" parent="12/Feb/2003 1" index="1" title="Order Screen (Editable)" tag="MetalArrowButton under 12/Feb/2003" />
+  <component id="Conditional" class="javax.swing.JCheckBox" index="1" title="#test.OrderScreen~Order Screen (editable)#" tag="Conditional" />
+  <component id="Part 2" class="uk.gov.courtservice.xhibit.client.order.gui.entry.components.OrderSection" index="0" title="Order Screen (Editable)" tag="Part 2" />
+  <component id="Before Release Conditions 1" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Before Release Conditions" />
+  <component id="#test.OrderScreen~Order Screen (editable)#" class="uk.gov.courtservice.xhibit.client.order.gui.test.GuiTestFrame" title="#test.OrderScreen~Order Screen (editable)#" tag="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="CustomAddressText under Part 2" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomAddressText" index="1" title="Order Screen (Editable)" tag="CustomAddressText under Part 2" />
+  <component id="OK" class="javax.swing.JButton" index="0" title="No value given" tag="OK" />
+  <component id="Contact Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Contact Condition" />
+  <component id="15:26" class="uk.gov.courtservice.xhibit.client.util.XTimePanel" parent="OrderPanel under Part 4" index="3" title="Order Screen (Editable)" tag="15:26" />
+  <component id="14/Feb/2003" class="uk.gov.courtservice.xhibit.client.util.XDatePanel" parent="OrderPanel under Part 4" index="1" title="Order Screen (Editable)" tag="14/Feb/2003" />
+  <component id="MetalComboBoxButton under Part 4" class="javax.swing.JButton" index="0" title="Order Screen (Editable)" tag="MetalComboBoxButton under Part 4" />
+  <component id="OrderGUI Instance 1" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderGUI" parent="null.contentPane 1" index="0" title="Order Screen (Editable)" />
+  <component id="At following address" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="At following address" />
+  <component id="Surety Condition" class="javax.swing.JCheckBox" index="1" title="#test.OrderScreen~Order Screen (editable)#" tag="Surety Condition" />
+  <component id="OrderPreviewPane Instance" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderPreviewPane" parent="JViewport Instance" index="0" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="Curfew Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Curfew Condition" />
+  <component id="Before Release Conditions" class="javax.swing.JCheckBox" index="1" title="#test.OrderScreen~Order Screen (editable)#" tag="Before Release Conditions" />
+  <component id="Police Report Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Police Report Condition" />
+  <component id="null.layeredPane" class="javax.swing.JLayeredPane" name="null.layeredPane" parent="#test.OrderScreen~Order Screen (editable)# Root Pane" index="1" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="Live/Sleep Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Live/Sleep Condition" />
+  <component id="CalendarPanel Instance" class="mseries.Calendar.CalendarPanel" parent="MDateSelectorPanel Instance" index="2" title="Order Screen (Editable)" />
+  <component id="CustomFixedList under Part 4" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomFixedList" index="0" title="Order Screen (Editable)" tag="CustomFixedList under Part 4" />
+  <component id="13/Feb/2003 3" class="mseries.ui.MDateEntryField" parent="13/Feb/2003 2" index="0" title="Order Screen (Editable)" tag="13/Feb/2003" />
+  <component id="13/Feb/2003 2" class="uk.gov.courtservice.xhibit.client.util.XDatePanel" parent="OrderPanel under Part 4" index="1" title="Order Screen (Editable)" tag="13/Feb/2003" />
+  <component id="CustomCurrencyPanel under Before Release Conditions" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomCurrencyPanel" index="2" title="#test.OrderScreen~Order Screen (editable)#" tag="CustomCurrencyPanel under Before Release Conditions" />
+  <component id="Other Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Other Condition" />
+  <component id="13/Feb/2003 1" class="mseries.ui.MDateEntryField" parent="13/Feb/2003" index="0" title="Order Screen (Editable)" tag="13/Feb/2003" />
+  <component id="JScrollBar Instance 1" class="javax.swing.JScrollBar" parent="JScrollPane Instance 2" index="1" title="Order Screen (Editable)" />
+  <component id="OrderGUI Instance" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderGUI" parent="null.contentPane" index="0" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="Magistrates Court" class="uk.gov.courtservice.xhibit.client.order.gui.entry.courtlist.CourtOption" index="1" title="Order Screen (Editable)" tag="Magistrates Court" />
+  <component id="MDateEntryField$1 under 21/Feb/2003" class="mseries.ui.MDateField" index="0" title="Order Screen (Editable)" tag="MDateEntryField$1 under 21/Feb/2003" />
+  <component id="JViewport Instance" class="javax.swing.JViewport" parent="JScrollPane Instance 1" index="0" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="MDateEntryField$1 under 13/Feb/2003" class="mseries.ui.MDateField" parent="13/Feb/2003 1" index="0" title="Order Screen (Editable)" tag="MDateEntryField$1 under 13/Feb/2003" />
+  <component id="Specific date" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Specific date" />
+  <component id="Security Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Security Condition" />
+  <component id="13/Feb/2003" class="uk.gov.courtservice.xhibit.client.util.XDatePanel" parent="OrderPanel under Part 2" index="1" title="Order Screen (Editable)" tag="13/Feb/2003" />
+  <component id="JButton Instance" class="javax.swing.JButton" parent="JScrollBar Instance 1" index="0" title="Order Screen (Editable)" />
+  <component id="OrderMainPane Instance 1" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderMainPane" parent="OrderGUI Instance 1" index="1" title="Order Screen (Editable)" />
+  <component id="Distance Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Distance Condition" />
+  <component id="CustomAddressText under Part 2 2" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomAddressText" index="3" title="Order Screen (Editable)" tag="CustomAddressText under Part 2" />
+  <component id="CustomAddressText under Part 2 1" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomAddressText" index="2" title="Order Screen (Editable)" tag="CustomAddressText under Part 2" />
+  <component id="null.contentPane 1" class="javax.swing.JPanel" name="null.contentPane" parent="null.layeredPane 1" index="0" title="Order Screen (Editable)" />
+  <component id="14/Feb/2003 1" class="mseries.ui.MDateEntryField" parent="14/Feb/2003" index="0" title="Order Screen (Editable)" tag="14/Feb/2003" />
+  <component id="Sureties 1" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Sureties" />
+  <component id="Surety Condition 1" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Surety Condition" />
+  <component id="OrderMainPane Instance" class="uk.gov.courtservice.xhibit.client.order.gui.general.OrderMainPane" parent="OrderGUI Instance" index="1" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="MetalArrowButton under 14/Feb/2003" class="mseries.plaf.Metal.MetalArrowButton" parent="14/Feb/2003 1" index="1" title="Order Screen (Editable)" tag="MetalArrowButton under 14/Feb/2003" />
+  <component id="Order Screen (Editable) Root Pane" class="javax.swing.JRootPane" index="0" title="Order Screen (Editable)" tag="Order Screen (Editable) Root Pane" />
+  <component id="CustomTextArea under Part 3" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomTextArea" index="0" title="Order Screen (Editable)" tag="CustomTextArea under Part 3" />
+  <component id="Crown Court" class="uk.gov.courtservice.xhibit.client.order.gui.entry.courtlist.CourtOption" index="0" title="Order Screen (Editable)" tag="Crown Court" />
+  <component id="null.layeredPane 1" class="javax.swing.JLayeredPane" name="null.layeredPane" parent="Order Screen (Editable) Root Pane" index="1" title="Order Screen (Editable)" />
+  <component id="Order Screen (Editable)" class="uk.gov.courtservice.xhibit.client.order.gui.test.GuiTestFrame" title="Order Screen (Editable)" tag="Order Screen (Editable)" />
+  <component id="12/Feb/2003" class="uk.gov.courtservice.xhibit.client.util.XDatePanel" parent="OrderPanel under Part 4" index="1" title="Order Screen (Editable)" tag="12/Feb/2003" />
+  <component id="null.contentPane" class="javax.swing.JPanel" name="null.contentPane" parent="null.layeredPane" index="0" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="OrderPanel under Part 4" class="uk.gov.courtservice.xhibit.client.order.gui.components.OrderPanel" parent="OrderOption under Part 4" index="1" title="Order Screen (Editable)" tag="OrderPanel under Part 4" />
+  <component id="Sureties" class="javax.swing.JRadioButton" index="0" title="#test.OrderScreen~Order Screen (editable)#" tag="Sureties" />
+  <component id="OrderPanel under Part 2" class="uk.gov.courtservice.xhibit.client.order.gui.components.OrderPanel" parent="Part 2" index="0" title="Order Screen (Editable)" tag="OrderPanel under Part 2" />
+  <component id="Date &amp; time to be notified" class="javax.swing.JRadioButton" index="0" title="Order Screen (Editable)" tag="Date &amp; time to be notified" />
+  <component id="Surrendered to" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Surrendered to" />
+  <component id="Availability Condition" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Availability Condition" />
+  <component id="BasicComboPopup$2 under Part 4" class="javax.swing.JList" index="0" title="Order Screen (Editable)" tag="BasicComboPopup$2 under Part 4" />
+  <component id="After Release Conditions" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="After Release Conditions" />
+  <component id="Container Instance" class="java.awt.Container" parent="OrderMainPane Instance" index="1" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="MDateField under 15:26" class="mseries.ui.MDateField" parent="15:26" index="0" title="Order Screen (Editable)" tag="MDateField under 15:26" />
+  <component id="MPopupPanel Instance" class="mseries.ui.MPopupPanel" parent="null.layeredPane 1" index="0" title="Order Screen (Editable)" />
+  <component id="JTextField under Before Release Conditions" class="javax.swing.JTextField" parent="CustomCurrencyPanel under Before Release Conditions" index="1" title="#test.OrderScreen~Order Screen (editable)#" tag="JTextField under Before Release Conditions" />
+  <component id="MDateSelectorPanel Instance" class="mseries.Calendar.MDateSelectorPanel" parent="MPopupPanel Instance" index="2" title="Order Screen (Editable)" />
+  <component id="JScrollPane Instance 2" class="javax.swing.JScrollPane" parent="OrderMainPane Instance 1" index="1" title="Order Screen (Editable)" />
+  <component id="JScrollPane Instance 1" class="javax.swing.JScrollPane" parent="OrderMainPane Instance" index="3" title="#test.OrderScreen~Order Screen (editable)#" />
+  <component id="MetalArrowButton under 13/Feb/2003" class="mseries.plaf.Metal.MetalArrowButton" parent="13/Feb/2003 3" index="1" title="Order Screen (Editable)" tag="MetalArrowButton under 13/Feb/2003" />
+  <component id="Passport Conditions" class="javax.swing.JCheckBox" index="1" title="Order Screen (Editable)" tag="Passport Conditions" />
+  <component id="CustomComboBox under Part 4" class="uk.gov.courtservice.xhibit.client.order.gui.components.CustomComboBox" index="4" title="Order Screen (Editable)" tag="CustomComboBox under Part 4" />
+  <launch classpath="D:\projects\XHIBIT\midtier\orders\classes;D:\projects\XHIBIT\thickclient\orders\classes;D:\projects\XHIBIT\lib\abbot.jar;D:\projects\XHIBIT\lib\ant.jar;D:\projects\XHIBIT\lib\avalon-framework-cvs-20020806.jar;D:\projects\XHIBIT\lib\batik.jar;D:\projects\XHIBIT\lib\castor.jar;D:\projects\XHIBIT\lib\fop.jar;D:\projects\XHIBIT\lib\jaxp.jar;D:\projects\XHIBIT\lib\jdom.jar;D:\projects\XHIBIT\lib\junit.jar;D:\projects\XHIBIT\lib\JUnitDoclet.jar;D:\projects\XHIBIT\lib\junitee.jar;D:\projects\XHIBIT\lib\log4j.jar;D:\projects\XHIBIT\lib\MDateSelector.jar;D:\projects\XHIBIT\lib\Printing.jar;D:\projects\XHIBIT\lib\weblogic.jar;D:\projects\XHIBIT\lib\WIMercMapBean.jar;D:\projects\XHIBIT\lib\wlManagement.jar;D:\projects\XHIBIT\lib\wlSecurityProviders.jar;D:\projects\XHIBIT\lib\xalan.jar;D:\projects\XHIBIT\lib\xerces.jar;D:\projects\XHIBIT\lib\xercesImpl.jar;D:\projects\XHIBIT\lib\xml-apis.jar;D:\projects\XHIBIT\lib\xmlParserAPIs.jar;D:\projects\XHIBIT\release\CaseController.jar;D:\projects\XHIBIT\release\ChargeController.jar;D:\projects\XHIBIT\release\ChargeDifferenceEntities.jar;D:\projects\XHIBIT\release\ChargeDifferencesEntities.jar;D:\projects\XHIBIT\release\Client.jar;D:\projects\XHIBIT\release\ClientView.jar;D:\projects\XHIBIT\release\Client_orig.jar;D:\projects\XHIBIT\release\common.jar;D:\projects\XHIBIT\release\Config.jar;D:\projects\XHIBIT\release\CourtLogController.jar;D:\projects\XHIBIT\release\CourtLogEntities.jar;D:\projects\XHIBIT\release\DefendantController.jar;D:\projects\XHIBIT\release\Delegate.jar;D:\projects\XHIBIT\release\Framework.jar;D:\projects\XHIBIT\release\FrameworkController.jar;D:\projects\XHIBIT\release\GroupReaderController.jar;D:\projects\XHIBIT\release\HearingScheduleController.jar;D:\projects\XHIBIT\release\HearingScheduleEntities.jar;D:\projects\XHIBIT\release\InstantMessaging.jar;D:\projects\XHIBIT\release\Integration.jar;D:\projects\XHIBIT\release\OrdersClient.jar;D:\projects\XHIBIT\release\OrdersController.jar;D:\projects\XHIBIT\release\OrdersEntities.jar;D:\projects\XHIBIT\release\PreHearingEntities.jar;D:\projects\XHIBIT\release\Printing.jar;D:\projects\XHIBIT\release\PublicDisplayController.jar;D:\projects\XHIBIT\release\PublicNoticeController.jar;D:\projects\XHIBIT\release\PublicNoticeEntities.jar;D:\projects\XHIBIT\release\ResultEntities.jar;D:\projects\XHIBIT\release\ResultsController.jar;D:\projects\XHIBIT\release\SecurityEntities.jar;D:\projects\XHIBIT\release\SysAdminController.jar;D:\projects\XHIBIT\release\SysAdminEntities.jar;D:\projects\XHIBIT\release\TodaysScheduleController.jar;D:\projects\XHIBIT\release\UserSessionController.jar;D:\projects\XHIBIT\release\Value.jar;D:\apps\ant\lib\ant.jar;D:\apps\xDoclet\lib\xdoclet.jar;D:\projects\XHIBIT\thickclient\orders\src\resources;D:\JBuilder7\lib\junit.jar;" args="[file:/d:/projects/XHIBIT/thickclient/orders/xml/exampleXML/Bail Order.xml, file:/d:/projects/XHIBIT/thickclient/orders/xml/exampleXML/DataEntryTemplate.xml, file:/d:/projects/XHIBIT/thickclient/orders/xml/documentTransforms/Bail Order.xslt]" class="uk.gov.courtservice.xhibit.client.order.gui.test.GuiTestFrame" delegate="false" method="main" desc="Insert your launch information here" />
+  <action args="3000" method="actionDelay" />
+  <sequence desc="Before Release (20)">
+    <action args="Conditional 1" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Before Release Conditions 1" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Surety Condition 1" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Passport Conditions" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Surrendered to" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" desc="Delay(1000)" />
+    <action args="Retained by" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Security Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+  </sequence>
+  <sequence desc="After Release (26)">
+    <action args="JScrollBar Instance 1,9,229" method="actionDrag" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance 1,372,604" method="actionDrop" />
+    <action args="100" method="actionDelay" />
+    <action args="After Release Conditions" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Live/Sleep Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Notify Police Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Curfew Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Police Report Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance 1,3,341" method="actionDrag" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance 1,0,515" method="actionDrop" />
+    <action args="100" method="actionDelay" />
+    <action args="Availability Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Contact Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Distance Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Other Condition" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+  </sequence>
+  <sequence>
+    <action args="JScrollBar Instance 1,9,410" method="actionDrag" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance 1,1,561" method="actionDrop" />
+    <action args="100" method="actionDelay" />
+    <action args="CustomFixedList under Part 4,43,27" method="actionDrag" />
+    <action args="100" method="actionDelay" />
+    <action args="JScrollBar Instance 1,0,612" method="actionDrop" />
+    <action args="100" method="actionDelay" />
+    <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="JButton Instance" class="javax.swing.AbstractButton" method="actionClick" />
+  </sequence>
+  <sequence>
+    <action args="Magistrates Court" class="javax.swing.AbstractButton" method="actionClick" />
+    <action args="100" method="actionDelay" />
+    <action args="Crown Court" class="javax.swing.AbstractButton" method="actionClick" />
+    <sequence>
+      <action args="CustomTextArea under Part 3,40,31" method="actionClick" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="VK_BACK_SPACE" method="actionKeyStroke" />
+      <action args="Part 3 Text" method="actionKeyString" />
+    </sequence>
+  </sequence>
+  <terminate />
+</AWTTestScript>
+

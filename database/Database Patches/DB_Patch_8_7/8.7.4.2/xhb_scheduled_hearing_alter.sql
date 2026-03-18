@@ -1,0 +1,1 @@
+CREATE INDEX XHB_SCHED_HEAR_STARTTIME_IDX ON xhb_scheduled_hearing(start_time, sitting_id);

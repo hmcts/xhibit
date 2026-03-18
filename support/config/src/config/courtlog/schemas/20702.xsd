@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Mentions and Applications - Defence Application-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20702_Def_App_List"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20702_Def_App_List">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20702_DAL_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20702_DAL_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20702_Disclosure_Of_Further_Evidence"/>
+				<xs:enumeration value="E20702_Witness_Problems"/>
+				<xs:enumeration value="E20702_Further_Time_Needed"/>
+				<xs:enumeration value="E20702_Other"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

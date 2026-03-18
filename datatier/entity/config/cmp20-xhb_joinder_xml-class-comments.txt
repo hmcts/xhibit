@@ -1,0 +1,11 @@
+ * -------- custom finders --------
+ *
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByJoinderId(java.lang.Integer joinderId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (jx) FROM XhbJoinderXml jx WHERE jx.joinderId = ?1"
+ *
+ * -------- end of custom finders --------
+  

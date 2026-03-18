@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ContentSwitchHeartbeat">
+    <description>
+        ContentSwitchHeartbeat - Contains the content switch keepalive page.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="component.author" value="Will Fardell, Ed Cawley"/>
+    <property name="component.name" value="ContentSwitchHeartBeat"/>
+
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.builds.war" value="true" />
+
+    <!-- local overrides to define project specific values -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <!-- None required -->
+    </target>
+
+</project>
+

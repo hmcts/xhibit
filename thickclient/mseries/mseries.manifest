@@ -1,0 +1,15 @@
+Main-Class: mseries/ui/MDateEntryFieldDemo
+
+Name: mseries/Calendar/MDateSelectorPanel.class
+Java-Bean: True
+
+Name: mseries/Calendar/MDateDisplay.class
+Java-Bean: True
+
+Name: mseries/ui/MDateEntryField.class
+Java-Bean: True
+
+Name: mseries/ui/MSpinner.class
+Java-Bean: True
+
+

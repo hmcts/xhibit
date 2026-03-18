@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 (http://www.xmlspy.com) by l (e) -->
+<!-- *********************************************************************	-->
+<!-- Schema for Crown Court Imprisonment Order				-->
+<!-- *********************************************************************	-->
+<!-- *********************************************************************	-->
+<!-- Update History											-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.1 - Draft 										-->
+<!-- Detail: Version update only								-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version:1.0												-->
+<!-- Detail: Release											-->
+<!-- *********************************************************************	-->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/terms/" xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<dc:creator>Court Service</dc:creator>
+			<dc:date>2003-02-21</dc:date>
+			<dc:identifier>ImprisonmentOrder</dc:identifier>
+			<dc:language>en</dc:language>
+			<dc:rights>
+				<dcq:copyright>Crown Copyright 2002</dcq:copyright>
+				<gms:SecurityClassification>Unclassified</gms:SecurityClassification>
+			</dc:rights>
+			<dc:subject>Crown Court Imprisonment Order</dc:subject>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="ImprisonmentOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="OrderHeader" type="CourtOrderHeaderStructure"/>
+			<xsd:element name="Conviction">
+				<xsd:complexType>
+					<xsd:choice>
+						<xsd:element name="ConvictionDate" type="xsd:date"/>
+						<xsd:element name="ConvictingCourt" type="OriginatingCourtStructure"/>
+					</xsd:choice>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="CustodialSentence" type="CustodialSentenceStructure"/>
+			<xsd:element name="ChapterIII" type="YesNoType" default="no" minOccurs="0"/>
+			<xsd:element name="ReturnToImprisonment" type="ReturnToImprisonmentStructure" minOccurs="0"/>
+			<xsd:element name="Section28" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DiscretionaryRelevantPart" type="xsd:duration"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Section86" type="YesNoType" default="no" minOccurs="0"/>
+			<xsd:element name="AdditionalNotes" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ImprisonmentOrder" type="ImprisonmentOrderStructure"/>
+</xsd:schema>

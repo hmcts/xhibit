@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ListDistributionThickClient">
+    <description>
+        List Distribution Thick Client
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- Initialize the build path -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="ThickClientFramework.jar" />
+                <include name="ClientView.jar" />
+                <include name="XhibitXmlBinding.jar" />
+                <include name="Value.jar" />
+            </fileset>
+        </path>
+    </target>
+</project>

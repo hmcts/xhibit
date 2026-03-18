@@ -1,0 +1,1793 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2008 sp1 (http://www.altova.com) by LCMG (LogicaCMG) -->
+<DARTS_CL_CONFIGURATION>
+	<INCOMING_EVENT xhibitid="10100" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10100" cjsemessagecode="1000"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="10200" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E10200_Defendant_Attendance_Options/E10200_DEO_Type/text()"/>
+		<EVENT fieldvalue="E10200_Not_Expected_Or_Required" cjseid="10200" cjsemessagecode="1002"/>
+		<EVENT fieldvalue="E10200_Defendant_delayed" cjseid="10201" cjsemessagecode="1007"/>
+		<EVENT fieldvalue="E10200_Defendant_fails_to_attend" cjseid="10202" cjsemessagecode="1008"/>
+		<EVENT fieldvalue="E10200_Defendant_identified" cjseid="10203" cjsemessagecode="1009"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="10300" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10102" cjsemessagecode="1010"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="10400" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10103" cjsemessagecode="1011"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="10500" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10101" cjsemessagecode="1001"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20100" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20100_Bench_Warrant_Options/E20100_BWO_Type/text()"/>
+		<EVENT fieldvalue="E20100_Bench_warrant_issued_backed_for_bail" cjseid="10400" cjsemessagecode="1003"/>
+		<EVENT fieldvalue="E20100_Bench_warrant_issued_not_backed_for_bail" cjseid="10401" cjsemessagecode="1004"/>
+		<EVENT fieldvalue="E20100_Warrant_for_arrest_5061A_issued" cjseid="10407" cjsemessagecode="1004.1"/>
+		<EVENT fieldvalue="E20100_Warrant_for_arrest_5061B_issued" cjseid="10408" cjsemessagecode="1004.2"/>
+	</INCOMING_EVENT>
+	
+	<INCOMING_EVENT xhibitid="20101" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20101_Bench_Warrant_Options/E20101_OPTION_Type/text()"/>
+		<EVENT fieldvalue="E20101_Bench_warrant_withdrawn" cjseid="10403" cjsemessagecode="1006"/>		
+		<EVENT fieldvalue="E20101_Bench_warrant_executed_put_admitted" cjseid="10404" cjsemessagecode="1026"/>
+		<EVENT fieldvalue="E20101_Bench_warrant_executed_put_not_admitted" cjseid="10405" cjsemessagecode="1027"/>
+		<EVENT fieldvalue="E20101_Bench_warrant_executed_not_put" cjseid="10406" cjsemessagecode="1028"/>		
+	</INCOMING_EVENT>
+	
+	
+	<INCOMING_EVENT xhibitid="20200" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20200_Bail_And_Custody_Options/E20200_BC_Type/text()"/>
+		<EVENT fieldvalue="E20200_Bail_granted" cjseid="10300" cjsemessagecode="1013"/>
+		<EVENT fieldvalue="E20200_Bail_refused" cjseid="10310" cjsemessagecode="1299"/>
+		<EVENT fieldvalue="E20200_Bail_varied" cjseid="10309" cjsemessagecode="1314"/>
+		<EVENT fieldvalue="E20200_Bail_granted_for_duration_of_trial_same_conditions" cjseid="10301" cjsemessagecode="1014"/>
+		<EVENT fieldvalue="E20200_Bail_extended_for_duration_of_trial_conditions_varied" cjseid="10302" cjsemessagecode="1015"/>
+		<EVENT fieldvalue="E20200_Bail_extended_for_duration_of_trial_same_conditions_and_for_short_adjournments" cjseid="10303" cjsemessagecode="1016"/>
+		<EVENT fieldvalue="E20200_Bail_rescinded_remanded_in_custody" cjseid="10304" cjsemessagecode="1017"/>
+		<EVENT fieldvalue="E20200_Remanded_in_custody" cjseid="10305" cjsemessagecode="1018"/>
+		<EVENT fieldvalue="E20200_Bail_within_the_court_building" cjseid="10306" cjsemessagecode="1019"/>
+		<EVENT fieldvalue="E20200_Custody_limits_extended_to" cjseid="10307" cjsemessagecode="1020"/>
+		<EVENT fieldvalue="E20200_Bail_as_before" cjseid="10308" cjsemessagecode="1021"/>
+		<EVENT fieldvalue="E20200_Bail_Conditions_Ceased_Sentence_Deferred" cjseid="10311" cjsemessagecode="1330"/>
+		<EVENT fieldvalue="E20200_Bail_Conditions_Ceased_Non-Custodial_Sentence_Imposed" cjseid="10313" cjsemessagecode="1331"/>
+		<EVENT fieldvalue="E20200_Bail_Conditions_Ceased_Defendant_Deceased" cjseid="10312" cjsemessagecode="1332"/>
+		<EVENT fieldvalue="E20200_Remand_to_Local_Authority_Accommodation" cjseid="10314" cjsemessagecode="1333"/>
+		<EVENT fieldvalue="E20200_Remand_to_Youth_Detention_Accommodation" cjseid="10315" cjsemessagecode="1334"/>
+		<EVENT fieldvalue="E20200_Bail_cease_custodial_sentence_imposed" cjseid="10316" cjsemessagecode="1335"/>
+		<EVENT fieldvalue="E20200_Bail_cease_defendant_acquitted" cjseid="10317" cjsemessagecode="1336"/>
+		<EVENT fieldvalue="E20200_Non_bail_case_breach_community_order" cjseid="10318" cjsemessagecode="1337"/>
+		<EVENT fieldvalue="E20200_Non_bail_case_already_sentenced" cjseid="10319" cjsemessagecode="1338"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="21400" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E21400_Disqualified_From_Working_With_Children_Options/E21400_DWCO_Type/text()"/>
+		<EVENT fieldvalue="E21400_Defendant_Disqualified_Working_With_Children_Life_(Defendant_Under_18)" cjseid="12414" cjsemessagecode="1340"/>
+		<EVENT fieldvalue="E21400_Defendant_Disqualified_Working_With_Children_Life_(Defendant_Over_18)" cjseid="12415" cjsemessagecode="1341"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="21500" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E21500_Electronic_Monitoring_Options/E21500_EM_Type/text()"/>
+		<EVENT fieldvalue="E21500_Defendant_Ordered_To_Be_Electronically_Monitored" cjseid="13700" cjsemessagecode="1350"/>
+		<EVENT fieldvalue="E21500_Electronic_Monitoring_Requirement_Amended" cjseid="13701" cjsemessagecode="1351"/>
+		<EVENT fieldvalue="E21500_Electronic_MonitoringFlag_To_Be_Removed" cjseid="13702" cjsemessagecode="1352"/>
+		<EVENT fieldvalue="E21500_Defendant_Subject_To_An_Electronically_Monitored_Curfew" cjseid="13703" cjsemessagecode="1353"/>
+		<EVENT fieldvalue="E21500_Terms_Of_Electronically_Monitored_Curfew_Amended" cjseid="13704" cjsemessagecode="1354"/>
+		<EVENT fieldvalue="E21500_Requirement_For_An_Electronically_Monitored_Curfew_Removed" cjseid="13705" cjsemessagecode="1355"/>
+	</INCOMING_EVENT>
+ 	<INCOMING_EVENT xhibitid="21600" level="DEFENDANT" type="ONETOMANY">
+       <DIFFERENTIATING_FIELD xpath="event/E21600_Conviction_Of_A_Sexual_Offence_Options/E21600_CSO_Type/text()"/>
+        <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Under_18_Years_Of_Age_For_An_Indefinite_Period" cjseid="13600" cjsemessagecode="1356"/>
+        <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Under_18_Years_Of_Age_For_10_Years" cjseid="13601" cjsemessagecode="1357"/>
+		<EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Under_18_Years_Of_Age_For_3-7_Years" cjseid="13602" cjsemessagecode="1358"/>
+        <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Under_18_Years_Of_Age_Period_To_Be_Specified_Later" cjseid="13603" cjsemessagecode="1359"/> 
+		<EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Under_18_Years_Of_Age_For_Another_Period" cjseid="13604" cjsemessagecode="1360"/>
+        <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Over_18_Years_Of_Age_For_An_Indefinite_Period" cjseid="13605" cjsemessagecode="1361"/>
+		<EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Over_18_Years_Of_Age_For_10_Years" cjseid="13606" cjsemessagecode="1362"/>
+        <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Over_18_Years_Of_Age_For_3-7_Years" cjseid="13607" cjsemessagecode="1363"/>
+	    <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Over_18_Years_Of_Age_Period_To_Be_Specified_Later" cjseid="13608" cjsemessagecode="1364"/>
+	    <EVENT fieldvalue="E21600_Convicted_Of_A_Sexual_Offence_Victim_Over_18_Years_Of_Age_For_Another_Period" cjseid="13609" cjsemessagecode="1365"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20501" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10500" cjsemessagecode="1054"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20502" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10501" cjsemessagecode="1055"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20503" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10502" cjsemessagecode="1056"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20504" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10503" cjsemessagecode="1057"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20601" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20601_Appellant_Attendance/E20601_AA_Type/text()"/>
+		<EVENT fieldvalue="E20601_Appellant_Identified" cjseid="10809" cjsemessagecode="1111"/>
+		<EVENT fieldvalue="E20601_Appellant_Delayed" cjseid="10810" cjsemessagecode="1112"/>
+		<EVENT fieldvalue="E20601_Appellant_Fails_To_Attend" cjseid="10811" cjsemessagecode="1113"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20602" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20602_Respondent_Case_Opened/E20602_RCO_Type/text()"/>
+		<EVENT fieldvalue="E20602_Respondent_Case_Opened" cjseid="10800" cjsemessagecode="1114"/>
+		<EVENT fieldvalue="E20602_TV_Link_In_Progress" cjseid="10812" cjsemessagecode="1115"/>
+		<EVENT fieldvalue="E20602_Video_Being_Played" cjseid="10812" cjsemessagecode="1116"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20603" level="APPEAL_WITNESS_SWORN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20603_Witness_Sworn_Options/E20603_WS_List/text()"/>
+		<EVENT fieldvalue="E20603_Respondent_Witness_Sworn" cjseid="10801" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20603_Appellant_Witness_Character_Sworn" cjseid="10801" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20603_Appellant_Witness_Expert_Sworn" cjseid="10801" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20603_Appellant_Witness_Professional_Sworn" cjseid="10801" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20603_Appellant_Witness_Fact_Sworn" cjseid="10801" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20603_Appellant_Sworn" cjseid="10813" cjsemessagecode="1103"/>
+		<EVENT fieldvalue="E20603_Interpreter_Sworn" cjseid="10814" cjsemessagecode="1063"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20604" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10802" cjsemessagecode="1064"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20605" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10803" cjsemessagecode="1117"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20606" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10804" cjsemessagecode="1106"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20607" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10805" cjsemessagecode="1107"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20608" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10806" cjsemessagecode="1108"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20609" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10807" cjsemessagecode="1109"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20612" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10814" cjsemessagecode="1063"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20613" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10816" cjsemessagecode="1076"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20701" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10700" cjsemessagecode="1098"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20702" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10701" cjsemessagecode="1099"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20704" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10702" cjsemessagecode="1100"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20705" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10703" cjsemessagecode="1101"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20703" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10104" cjsemessagecode="1012"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20933" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10622" cjsemessagecode="1315"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20901" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10620" cjsemessagecode="1078"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20902" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10600" cjsemessagecode="1058"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20903" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20903_Prosecution_Case_Options/E20903_PCO_Type/text()"/>
+		<EVENT fieldvalue="E20903_Prosecution_Opening" cjseid="10601" cjsemessagecode="1059"/>
+		<EVENT fieldvalue="E20903_Prosecution_Case_TV_Link_in_Progress" cjseid="10602" cjsemessagecode="1060"/>
+		<EVENT fieldvalue="E20903_Prosecution_Case_Video_Being_Played" cjseid="10602" cjsemessagecode="1060"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20904" level="TRIAL_WITNESS_SWORN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20904_Witness_Sworn_Options/E20904_WSO_Type/text()"/>
+		<EVENT fieldvalue="E20904_Prosecution_witness_sworn" cjseid="10603" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20904_Defence_witness_character_sworn" cjseid="10603" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20904_Defence_witness_expert_sworn" cjseid="10603" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20904_Defence_witness_professional_sworn" cjseid="10603" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20904_Defence_witness_fact_sworn" cjseid="10603" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20904_Prosecution_witness_expert_sworn" cjseid="10603" cjsemessagecode="1061"/>
+		<EVENT fieldvalue="E20904_Defendant_sworn" cjseid="10605" cjsemessagecode="1062"/>
+		<EVENT fieldvalue="E20904_Interpreter_sworn" cjseid="10617" cjsemessagecode="1063"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20905" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10604" cjsemessagecode="1064"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20906" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10607" cjsemessagecode="1066"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20907" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10608" cjsemessagecode="1067"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20908" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10606" cjsemessagecode="1065"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20909" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10609" cjsemessagecode="1068"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20910" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="10619" cjsemessagecode="1077"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20911" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10610" cjsemessagecode="1069"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20912" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10611" cjsemessagecode="1070"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20913" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20913_Jury_Returns_Options/E20913_JTO_Type/text()"/>
+		<EVENT fieldvalue="E20913_Verdict" cjseid="10613" cjsemessagecode="1316"/>
+		<EVENT fieldvalue="E20913_Majority_Direction_Given" cjseid="10612" cjsemessagecode="1071"/>
+		<EVENT fieldvalue="E20913_Jury_Note" cjseid="10612" cjsemessagecode="1071"/>
+		<EVENT fieldvalue="E20913_Video_Replayed" cjseid="10612" cjsemessagecode="1071"/>
+		<EVENT fieldvalue="E20913_Sent_Home" cjseid="10612" cjsemessagecode="1071"/>
+		<EVENT fieldvalue="E20913_Other" cjseid="10612" cjsemessagecode="1071"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20935" level="TRIAL_WITNESS_READ" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20935_Witness_Read_Options/E20935_WR_Type/text()"/>
+		<EVENT fieldvalue="E20935_Prosecution_witness_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20935_Defence_witness_character_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20935_Defence_witness_expert_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20935_Defence_witness_professional_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20935_Defence_witness_fact_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20935_Prosecution_witness_expert_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20935_Defendant_Read" cjseid="10631" cjsemessagecode="1401"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20936" level="APPEAL_WITNESS_READ" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20936_Witness_Read_Options/E20936_WR_Type/text()"/>
+		<EVENT fieldvalue="E20936_Respondent_witness_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20936_Appellant_witness_character_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20936_Appellant_witness_expert_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20936_Appellant_witness_professional_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20936_Appellant_witness_fact_Read" cjseid="10630" cjsemessagecode="1400"/>
+		<EVENT fieldvalue="E20936_Appellant_Read" cjseid="10633" cjsemessagecode="1403"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20937" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20937_Sentence_Recorded_For_Broadcast_Options/E20937_SRB_Type/text()"/>
+		<EVENT fieldvalue="E20937_YES" cjseid="10624" cjsemessagecode="1466"/>
+		<EVENT fieldvalue="E20937_NO" cjseid="10625" cjsemessagecode="1467"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20934" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10623" cjsemessagecode="1323"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20914" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10614" cjsemessagecode="1073"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20915" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10615" cjsemessagecode="1074"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20917" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10617" cjsemessagecode="1063"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20918" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E20918_Cracked_Trial_Options/E20918_CTO_Type/text()"/>
+		<EVENT fieldvalue="E20918_A" cjseid="13900" cjsemessagecode="1260"/>
+		<EVENT fieldvalue="E20918_B" cjseid="13901" cjsemessagecode="1261"/>
+		<EVENT fieldvalue="E20918_C" cjseid="13902" cjsemessagecode="1262"/>
+		<EVENT fieldvalue="E20918_D" cjseid="13903" cjsemessagecode="1263"/>
+		<EVENT fieldvalue="E20918_E" cjseid="13904" cjsemessagecode="1264"/>
+		<EVENT fieldvalue="E20918_E1" cjseid="13905" cjsemessagecode="1265"/>
+		<EVENT fieldvalue="E20918_F" cjseid="13906" cjsemessagecode="1266"/>
+		<EVENT fieldvalue="E20918_G" cjseid="13907" cjsemessagecode="1267"/>
+		<EVENT fieldvalue="E20918_H" cjseid="13908" cjsemessagecode="1268"/>
+		<EVENT fieldvalue="E20918_I" cjseid="13909" cjsemessagecode="1269"/>
+		<EVENT fieldvalue="E20918_J" cjseid="13910" cjsemessagecode="1270"/>
+		<EVENT fieldvalue="E20918_K" cjseid="13911" cjsemessagecode="1271"/>
+		<EVENT fieldvalue="E20918_L" cjseid="13912" cjsemessagecode="1272"/>
+		<EVENT fieldvalue="E20918_M1" cjseid="13913" cjsemessagecode="1273"/>
+		<EVENT fieldvalue="E20918_M2" cjseid="13914" cjsemessagecode="1274"/>
+		<EVENT fieldvalue="E20918_M3" cjseid="13915" cjsemessagecode="1275"/>
+		<EVENT fieldvalue="E20918_N1" cjseid="13916" cjsemessagecode="1276"/>
+		<EVENT fieldvalue="E20918_N2" cjseid="13917" cjsemessagecode="1277"/>
+		<EVENT fieldvalue="E20918_N3" cjseid="13918" cjsemessagecode="1278"/>
+		<EVENT fieldvalue="E20918_O1" cjseid="13919" cjsemessagecode="1279"/>
+		<EVENT fieldvalue="E20918_O2" cjseid="13920" cjsemessagecode="1280"/>
+		<EVENT fieldvalue="E20918_P" cjseid="13921" cjsemessagecode="1281"/>
+		<EVENT fieldvalue="E20918_Q1" cjseid="13922" cjsemessagecode="1282"/>
+		<EVENT fieldvalue="E20918_Q2" cjseid="13923" cjsemessagecode="1283"/>
+		<EVENT fieldvalue="E20918_Q3" cjseid="13924" cjsemessagecode="1284"/>
+		<EVENT fieldvalue="E20918_R" cjseid="13925" cjsemessagecode="1285"/>
+		<EVENT fieldvalue="E20918_S1" cjseid="13926" cjsemessagecode="1286"/>
+		<EVENT fieldvalue="E20918_S2" cjseid="13927" cjsemessagecode="1287"/>
+		<EVENT fieldvalue="E20918_S3" cjseid="13928" cjsemessagecode="1470"/>
+		<EVENT fieldvalue="E20918_S4" cjseid="13929" cjsemessagecode="1471"/>
+		<EVENT fieldvalue="E20918_T" cjseid="13930" cjsemessagecode="1472"/>
+		<EVENT fieldvalue="E20918_U1" cjseid="13931" cjsemessagecode="1473"/>
+		<EVENT fieldvalue="E20918_U2" cjseid="13932" cjsemessagecode="1474"/>
+		<EVENT fieldvalue="E20918_V" cjseid="13933" cjsemessagecode="1475"/>
+		<EVENT fieldvalue="E20918_W1" cjseid="13934" cjsemessagecode="1476"/>
+		<EVENT fieldvalue="E20918_W2" cjseid="13935" cjsemessagecode="1477"/>
+		<EVENT fieldvalue="E20918_W3" cjseid="13936" cjsemessagecode="1478"/>
+		<EVENT fieldvalue="E20918_W4" cjseid="13937" cjsemessagecode="1479"/>
+		<EVENT fieldvalue="E20918_W5" cjseid="13938" cjsemessagecode="1480"/>
+		<EVENT fieldvalue="E20918_X" cjseid="13939" cjsemessagecode="1481"/>
+		<EVENT fieldvalue="E20918_Y" cjseid="13940" cjsemessagecode="1482"/>
+		<EVENT fieldvalue="E20918_Z" cjseid="13941" cjsemessagecode="1483"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="20920" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10618" cjsemessagecode="1076"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="21200" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E21200_Reporting_Restrictions/E21200_RR_Type/text()"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_4(2)_of_the_Contempt_of_Court_Act_1981" cjseid="11000" cjsemessagecode="1120"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_11_of_the_Contempt_of_Court_Act_1981" cjseid="11001" cjsemessagecode="1121"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_39_of_the_Children_and_Young_Person_Act_1963" cjseid="11002" cjsemessagecode="1122"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_4_of_the_Sexual_Offenders_(Amendment_Act)_1976" cjseid="11003" cjsemessagecode="1123"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_2_of_the_Sexual_Offenders_(Amendment_Act)_1992" cjseid="11004" cjsemessagecode="1124"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_45_of_the_Youth_Justice_and_Criminal_Evidence_Act_1999" cjseid="11006" cjsemessagecode="1490"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_45a_of_the_Youth_Justice_and_Criminal_Evidence_Act_1999" cjseid="11007" cjsemessagecode="1491"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_46_of_the_Youth_Justice_and_Criminal_Evidence_Act_1999" cjseid="11008" cjsemessagecode="1492"/>
+		<EVENT fieldvalue="E21200_An_order_has_been_made_under_Section_49_of_the_Children_and_Young_Persons_Act_1933" cjseid="11009" cjsemessagecode="1493"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="21201" level="CASE" type="ONETOONE">
+		<EVENT cjseid="11005" cjsemessagecode="1125"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="21300" level="CASE" type="ONETOONE">
+		<EVENT cjseid="21300" cjsemessagecode="1125"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="30100" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E30100_Short_Adjourn_Options/E30100_SAO_Type/text()"/>
+		<EVENT fieldvalue="E30100_Case_released_until" cjseid="11100" cjsemessagecode="1253"/>
+		<EVENT fieldvalue="E30100_Case_adjourned_until" cjseid="11101" cjsemessagecode="1254"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="302001" level="LONG_ADJOURN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E30200_Long_Adjourn_Options/E30200_LAO_Type/text()"/>
+		<EVENT fieldvalue="E30200_Case_to_be_listed_for_trial" cjseid="11102" cjsemessagecode="1053"/>
+		<EVENT fieldvalue="E30200_Case_to_be_listed_for_Further_Mention/PAD" cjseid="11103" cjsemessagecode="1052"/>
+		<EVENT fieldvalue="E30200_Case_to_be_listed_for_Sentence" cjseid="11104" cjsemessagecode="1051"/>
+		<EVENT fieldvalue="E30200_Case_to_be_listed_on_date_to_be_fixed" cjseid="11105" cjsemessagecode="1255"/>
+		<EVENT fieldvalue="E30200_Case_to_be_listed_on" cjseid="11106" cjsemessagecode="1050"/>
+		<EVENT fieldvalue="E30200_Case_to_be_listed_in_week_commencing" cjseid="11107" cjsemessagecode="1049"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="302002" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E30200_Long_Adjourn_Options/E30200_LAO_PSR_Required/text()"/>
+		<EVENT fieldvalue="*" cjseid="11108" cjsemessagecode="1256"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="302003" level="LONG_ADJOURN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E30200_Long_Adjourn_Options/E30200_LAO_Reserved_To_Judge_Name/text()"/>
+		<EVENT fieldvalue="*" cjseid="11109" cjsemessagecode="1257"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="302004" level="LONG_ADJOURN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E30200_Long_Adjourn_Options/E30200_LAO_Not_Reserved/text()"/>
+		<EVENT fieldvalue="*" cjseid="11110" cjsemessagecode="1258"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="30300" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10105" cjsemessagecode="1259"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="30500" level="CASE" type="ONETOONE">
+		<EVENT cjseid="11111" cjsemessagecode="1291"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="30501" level="CASE" type="ONETOONE">
+		<EVENT cjseid="11113" cjsemessagecode="1324"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="30600" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="11112" cjsemessagecode="1292"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="30601" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="11113" cjsemessagecode="1324"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40203" level="JOINDER" type="ONETOONE">
+		<EVENT cjseid="10621" cjsemessagecode="1289"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40410" level="CASE" type="ONETOONE">
+		<EVENT cjseid="13100" cjsemessagecode="1293"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40601" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10106" cjsemessagecode="1288"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40706" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Direction_By_Defendant_Options/E40706_Bail_Or_Custody/E40706_Bail_Or_Custody_Options/text()"/>
+		<EVENT fieldvalue="E40706_RIC" cjseid="10305" cjsemessagecode="1018"/>
+		<EVENT fieldvalue="E40706_Bail_As_Before" cjseid="10308" cjsemessagecode="1021"/>
+		<EVENT fieldvalue="E40706_Bail_Varied" cjseid="10309" cjsemessagecode="1048"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40711" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Directions_By_Case_Options/E40711_Time_Estimate/E40711_Time_Estimate_Options/text()"/>
+		<EVENT fieldvalue="*" cjseid="10620" cjsemessagecode="1078"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="407131" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Directions_By_Case_Options/E40713_Placed_In/E40713_Placed_In_List_Options/text()"/>
+		<EVENT fieldvalue="E40713_Warned_List" cjseid="11107" cjsemessagecode="1049"/>
+		<EVENT fieldvalue="E40713_Fixed_List" cjseid="11106" cjsemessagecode="1050"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="407132" level="CASE" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Directions_By_Case_Options/E40713_List/text()"/>
+		<EVENT fieldvalue="E40713_Sentence" cjseid="11104" cjsemessagecode="1051"/>
+		<EVENT fieldvalue="E40713_Mention" cjseid="11103" cjsemessagecode="1052"/>
+		<EVENT fieldvalue="E40713_Further_P_And_D" cjseid="11103" cjsemessagecode="1052"/>
+		<EVENT fieldvalue="E40713_Directions" cjseid="11103" cjsemessagecode="1052"/>
+		<EVENT fieldvalue="E40713_Trial" cjseid="11102" cjsemessagecode="1053"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40720" level="CRN" type="ONETOONE">
+		<EVENT cjseid="11400" cjsemessagecode="1034"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40721" level="CRN" type="ONETOONE">
+		<EVENT cjseid="11400" cjsemessagecode="1034"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40722" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40722_Ref_Verdict_Code/text()"/>
+		<EVENT fieldvalue="NG" cjseid="11401" cjsemessagecode="1035"/>
+		<EVENT fieldvalue="NGJJ" cjseid="11412" cjsemessagecode="1092"/>
+		<EVENT fieldvalue="NGJU" cjseid="11413" cjsemessagecode="1093"/>
+		<EVENT fieldvalue="NGJA" cjseid="11423" cjsemessagecode="1312"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40731" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10808" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40732" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10808" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40733" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10808" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40735" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10808" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40725" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40725_Ref_Verdict_Code/text()"/>
+		<EVENT fieldvalue="GA" cjseid="11405" cjsemessagecode="1082"/>
+		<EVENT fieldvalue="GAOJ" cjseid="11421" cjsemessagecode="1297"/>
+		<EVENT fieldvalue="GAJ" cjseid="11406" cjsemessagecode="1083"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40726" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40726_Ref_Verdict_Code/text()"/>
+		<EVENT fieldvalue="GL" cjseid="11408" cjsemessagecode="1084"/>
+		<EVENT fieldvalue="GLOJ" cjseid="11422" cjsemessagecode="1298"/>
+		<EVENT fieldvalue="GLJ" cjseid="11409" cjsemessagecode="1085"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40727" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40727_Ref_Verdict_Code/text()"/>
+		<EVENT fieldvalue="AA" cjseid="11402" cjsemessagecode="1029"/>
+		<EVENT fieldvalue="AC" cjseid="11403" cjsemessagecode="1030"/>
+		<EVENT fieldvalue="DUD" cjseid="11404" cjsemessagecode="1088"/>
+		<EVENT fieldvalue="JUTA" cjseid="11410" cjsemessagecode="1090"/>
+		<EVENT fieldvalue="NGIS" cjseid="11411" cjsemessagecode="1091"/>
+		<EVENT fieldvalue="NV" cjseid="11414" cjsemessagecode="1094"/>
+		<EVENT fieldvalue="O" cjseid="11415" cjsemessagecode="1095"/>
+		<EVENT fieldvalue="RTG" cjseid="11416" cjsemessagecode="1096"/>
+		<EVENT fieldvalue="RTNG" cjseid="11417" cjsemessagecode="1097"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40730" level="CASE" type="ONETOONE">
+		<EVENT cjseid="10808" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40736" level="CRN" type="ONETOONE">
+		<EVENT cjseid="11407" cjsemessagecode="1089"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40737" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="13010" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40738" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="13011" cjsemessagecode="1081"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40750" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40750_Ref_Disposal_Code/text()"/>
+		<EVENT fieldvalue="IMP" cjseid="11500" cjsemessagecode="1126"/>
+		<EVENT fieldvalue="YOI" cjseid="11501" cjsemessagecode="1127"/>
+		<EVENT fieldvalue="IMPMYO" cjseid="11502" cjsemessagecode="1128"/>
+		<EVENT fieldvalue="CSSP" cjseid="11503" cjsemessagecode="1129"/>
+		<EVENT fieldvalue="LIFE" cjseid="11504" cjsemessagecode="1130"/>
+		<EVENT fieldvalue="LIMM" cjseid="11505" cjsemessagecode="1130"/>
+		<EVENT fieldvalue="CTFL" cjseid="11506" cjsemessagecode="1132"/>
+		<EVENT fieldvalue="LIFESEC" cjseid="11507" cjsemessagecode="1130"/>
+		<EVENT fieldvalue="LIFESYO" cjseid="11508" cjsemessagecode="1134"/>
+		<EVENT fieldvalue="DWLT" cjseid="11509" cjsemessagecode="1135"/>
+		<EVENT fieldvalue="DET" cjseid="11510" cjsemessagecode="1136"/>
+		<EVENT fieldvalue="DTO" cjseid="11511" cjsemessagecode="1137"/>
+		<EVENT fieldvalue="ODIMP" cjseid="11512" cjsemessagecode="1138"/>
+		<EVENT fieldvalue="IMPMIN" cjseid="11513" cjsemessagecode="1139"/>
+		<EVENT fieldvalue="IMPX" cjseid="11514" cjsemessagecode="1140"/>
+		<EVENT fieldvalue="CUSTEXT" cjseid="11515" cjsemessagecode="1141"/>
+		<EVENT fieldvalue="PARLIC" cjseid="11516" cjsemessagecode="1142"/>
+		<EVENT fieldvalue="HOLIDIR" cjseid="11517" cjsemessagecode="1143"/>
+		<EVENT fieldvalue="SS" cjseid="11518" cjsemessagecode="1144"/>
+		<EVENT fieldvalue="PASU" cjseid="11519" cjsemessagecode="1145"/>
+		<EVENT fieldvalue="SSSO" cjseid="11520" cjsemessagecode="1146"/>
+		<EVENT fieldvalue="INIMP" cjseid="11521" cjsemessagecode="1305"/>
+		<EVENT fieldvalue="INDET" cjseid="11522" cjsemessagecode="1306"/>
+		<EVENT fieldvalue="LIFELIS" cjseid="11523" cjsemessagecode="1375"/>
+		<EVENT fieldvalue="LIFELYO" cjseid="11524" cjsemessagecode="1376"/>
+		<EVENT fieldvalue="IMPE" cjseid="11525" cjsemessagecode="1386"/>
+		<EVENT fieldvalue="IMPMYOE" cjseid="11526" cjsemessagecode="1387"/>
+		<EVENT fieldvalue="IMPMINE" cjseid="11527" cjsemessagecode="1388"/>
+		<EVENT fieldvalue="YOIE" cjseid="11528" cjsemessagecode="1389"/>
+		<EVENT fieldvalue="CPO" cjseid="11600" cjsemessagecode="1147"/>
+		<EVENT fieldvalue="CPODAR" cjseid="11601" cjsemessagecode="1147"/>
+		<EVENT fieldvalue="CROG" cjseid="11602" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRCR" cjseid="11603" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRHR" cjseid="11604" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRNH" cjseid="11605" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRDC" cjseid="11606" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRRA" cjseid="11607" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRDA" cjseid="11608" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CROCUR" cjseid="11609" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRODAR" cjseid="11610" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CROEXC" cjseid="11611" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CPROG" cjseid="11612" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROR" cjseid="11613" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRHR" cjseid="11614" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRNH" cjseid="11615" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROC" cjseid="11616" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROA" cjseid="11617" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROD" cjseid="11618" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRCUR" cjseid="11619" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRDAR" cjseid="11620" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPREXC" cjseid="11621" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPDROG" cjseid="11622" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROR" cjseid="11623" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRHR" cjseid="11624" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRNH" cjseid="11625" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROC" cjseid="11626" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROA" cjseid="11627" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROD" cjseid="11628" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRCUR" cjseid="11629" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDREXC" cjseid="11630" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRDAR" cjseid="11631" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="SOCDS" cjseid="11700" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SOCDO" cjseid="11701" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SORR" cjseid="11702" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SORFA" cjseid="11703" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SOPCCA" cjseid="11704" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SOSA" cjseid="11705" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SONR" cjseid="11706" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="ATCO" cjseid="11707" cjsemessagecode="1151"/>
+		<EVENT fieldvalue="APO" cjseid="11708" cjsemessagecode="1152"/>
+		<EVENT fieldvalue="PAREN" cjseid="11709" cjsemessagecode="1153"/>
+		<EVENT fieldvalue="CONEM" cjseid="11800" cjsemessagecode="1154"/>
+		<EVENT fieldvalue="COWEM" cjseid="11801" cjsemessagecode="1155"/>
+		<EVENT fieldvalue="ABDIS" cjseid="11802" cjsemessagecode="1156"/>
+		<EVENT fieldvalue="CD" cjseid="11803" cjsemessagecode="1157"/>
+		<EVENT fieldvalue="DISWP" cjseid="11804" cjsemessagecode="1158"/>
+		<EVENT fieldvalue="BOCOND" cjseid="11805" cjsemessagecode="1159"/>
+		<EVENT fieldvalue="BOGB" cjseid="11806" cjsemessagecode="1160"/>
+		<EVENT fieldvalue="BOJDG" cjseid="11807" cjsemessagecode="1161"/>
+		<EVENT fieldvalue="BOJDGD" cjseid="11808" cjsemessagecode="1162"/>
+		<EVENT fieldvalue="PGBO" cjseid="11809" cjsemessagecode="1163"/>
+		<EVENT fieldvalue="ASBOSEN" cjseid="11810" cjsemessagecode="1164"/>
+		<EVENT fieldvalue="ASBOCD" cjseid="11811" cjsemessagecode="1165"/>
+		<EVENT fieldvalue="DTTO" cjseid="11900" cjsemessagecode="1166"/>
+		<EVENT fieldvalue="DAO" cjseid="11901" cjsemessagecode="1167"/>
+		<EVENT fieldvalue="PREDTO" cjseid="11902" cjsemessagecode="1168"/>
+		<EVENT fieldvalue="HOSPOR" cjseid="12000" cjsemessagecode="1169"/>
+		<EVENT fieldvalue="INTHOSP" cjseid="12001" cjsemessagecode="1170"/>
+		<EVENT fieldvalue="REMMENT" cjseid="12002" cjsemessagecode="1171"/>
+		<EVENT fieldvalue="REMTREA" cjseid="12003" cjsemessagecode="1172"/>
+		<EVENT fieldvalue="CO" cjseid="12004" cjsemessagecode="1173"/>
+		<EVENT fieldvalue="COCC" cjseid="12005" cjsemessagecode="1174"/>
+		<EVENT fieldvalue="CC" cjseid="12006" cjsemessagecode="1175"/>
+		<EVENT fieldvalue="GOAUTH" cjseid="12007" cjsemessagecode="1176"/>
+		<EVENT fieldvalue="GOREL" cjseid="12008" cjsemessagecode="1177"/>
+		<EVENT fieldvalue="GOOTH" cjseid="12009" cjsemessagecode="1178"/>
+		<EVENT fieldvalue="RESNL" cjseid="12010" cjsemessagecode="1179"/>
+		<EVENT fieldvalue="RESL" cjseid="12011" cjsemessagecode="1180"/>
+		<EVENT fieldvalue="SFORO" cjseid="12012" cjsemessagecode="1181"/>
+		<EVENT fieldvalue="EXPO" cjseid="12200" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="EXPD" cjseid="12201" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="EXPTIME" cjseid="12202" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="EXPINST" cjseid="12203" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="DCO" cjseid="12204" cjsemessagecode="1183"/>
+		<EVENT fieldvalue="DCOTC" cjseid="12205" cjsemessagecode="1183"/>
+		<EVENT fieldvalue="DCOTCM" cjseid="12206" cjsemessagecode="1183"/>
+		<EVENT fieldvalue="RDCO" cjseid="12207" cjsemessagecode="1184"/>
+		<EVENT fieldvalue="NRDCO" cjseid="12208" cjsemessagecode="1185"/>
+		<EVENT fieldvalue="LACPD" cjseid="12209" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="LACREM" cjseid="12210" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="LACREF" cjseid="12211" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="LACRET" cjseid="12212" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="AREM" cjseid="12213" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="APAID" cjseid="12214" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="FORSEC" cjseid="12215" cjsemessagecode="1187"/>
+		<EVENT fieldvalue="DISQ" cjseid="12300" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DISTEST" cjseid="12301" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DISTOA" cjseid="12302" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DISPCCA" cjseid="12303" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DDSPAS" cjseid="12309" cjsemessagecode="1366"/>
+		<EVENT fieldvalue="DISREM" cjseid="12310" cjsemessagecode="1367"/>
+		<EVENT fieldvalue="DISDISC" cjseid="12312" cjsemessagecode="1469"/>
+		<EVENT fieldvalue="DISINT" cjseid="12314" cjsemessagecode="1485"/>
+		<EVENT fieldvalue="DISOBLG" cjseid="12311" cjsemessagecode="1468"/>
+		<EVENT fieldvalue="DISTOT" cjseid="12313" cjsemessagecode="1484"/>
+		<EVENT fieldvalue="LEND" cjseid="12304" cjsemessagecode="1189"/>
+		<EVENT fieldvalue="LENDPP" cjseid="12305" cjsemessagecode="1190"/>
+		<EVENT fieldvalue="NOTLA" cjseid="12306" cjsemessagecode="1191"/>
+		<EVENT fieldvalue="MITCIRC" cjseid="12307" cjsemessagecode="1192"/>
+		<EVENT fieldvalue="SPECREA" cjseid="12308" cjsemessagecode="1192"/>
+		<EVENT fieldvalue="ADISQU" cjseid="12400" cjsemessagecode="1193"/>
+		<EVENT fieldvalue="JDISQU" cjseid="12401" cjsemessagecode="1194"/>
+		<EVENT fieldvalue="NODISQU" cjseid="12402" cjsemessagecode="1195"/>
+		<EVENT fieldvalue="TRO" cjseid="12403" cjsemessagecode="1196"/>
+		<EVENT fieldvalue="DIRDIS" cjseid="12404" cjsemessagecode="1197"/>
+		<EVENT fieldvalue="FOOTRES" cjseid="12405" cjsemessagecode="1198"/>
+		<EVENT fieldvalue="FOOTBAN" cjseid="12406" cjsemessagecode="1198"/>
+		<EVENT fieldvalue="LICPREM" cjseid="12407" cjsemessagecode="1199"/>
+		<EVENT fieldvalue="FOOTEX" cjseid="12408" cjsemessagecode="1198"/>
+		<EVENT fieldvalue="RESOR" cjseid="12409" cjsemessagecode="1200"/>
+		<EVENT fieldvalue="ROWOC" cjseid="12413" cjsemessagecode="1313"/>		
+		<EVENT fieldvalue="SEXRESO" cjseid="12410" cjsemessagecode="1200"/>
+		<EVENT fieldvalue="EXMON" cjseid="12411" cjsemessagecode="1201"/>
+		<EVENT fieldvalue="EXNOMON" cjseid="12412" cjsemessagecode="1202"/>
+		<EVENT fieldvalue="FIRCERT" cjseid="12500" cjsemessagecode="1203"/>
+		<EVENT fieldvalue="FORPCCA" cjseid="12501" cjsemessagecode="1204"/>
+		<EVENT fieldvalue="FOVPCCA" cjseid="12502" cjsemessagecode="1205"/>
+		<EVENT fieldvalue="DEPR" cjseid="12503" cjsemessagecode="1206"/>
+		<EVENT fieldvalue="FORFIRE" cjseid="12504" cjsemessagecode="1207"/>
+		<EVENT fieldvalue="FORDRUG" cjseid="12505" cjsemessagecode="1208"/>
+		<EVENT fieldvalue="FORPOA" cjseid="12506" cjsemessagecode="1209"/>
+		<EVENT fieldvalue="DTCOR" cjseid="12507" cjsemessagecode="1210"/>
+		<EVENT fieldvalue="CJCO" cjseid="12508" cjsemessagecode="1211"/>
+		<EVENT fieldvalue="FORGERY" cjseid="12509" cjsemessagecode="1212"/>
+		<EVENT fieldvalue="FOROBS" cjseid="12510" cjsemessagecode="1213"/>
+		<EVENT fieldvalue="DT94CON" cjseid="12511" cjsemessagecode="1210"/>
+		<EVENT fieldvalue="POCCON" cjseid="12512" cjsemessagecode="1215"/>
+		<EVENT fieldvalue="FORMODS" cjseid="12513" cjsemessagecode="1383"/>
+		<EVENT fieldvalue="RDEP" cjseid="12600" cjsemessagecode="1216"/>
+		<EVENT fieldvalue="RDEPD" cjseid="12601" cjsemessagecode="1216"/>
+		<EVENT fieldvalue="RDEPND" cjseid="12602" cjsemessagecode="1216"/>
+		<EVENT fieldvalue="NOBSS" cjseid="12700" cjsemessagecode="1217"/>
+		<EVENT fieldvalue="ORDVAR" cjseid="12701" cjsemessagecode="1218"/>
+		<EVENT fieldvalue="USS" cjseid="12702" cjsemessagecode="1219"/>
+		<EVENT fieldvalue="ISS" cjseid="12703" cjsemessagecode="1220"/>
+		<EVENT fieldvalue="SSSOC" cjseid="12704" cjsemessagecode="1221"/>
+		<EVENT fieldvalue="SSSOD" cjseid="12705" cjsemessagecode="1222"/>
+		<EVENT fieldvalue="NORDB" cjseid="12706" cjsemessagecode="1223"/>
+		<EVENT fieldvalue="SODIS" cjseid="12707" cjsemessagecode="1224"/>
+		<EVENT fieldvalue="CSOREV" cjseid="12708" cjsemessagecode="1225"/>
+		<EVENT fieldvalue="PODIS" cjseid="12709" cjsemessagecode="1226"/>
+		<EVENT fieldvalue="RECTIME" cjseid="12710" cjsemessagecode="1227"/>
+		<EVENT fieldvalue="RECINST" cjseid="12711" cjsemessagecode="1227"/>
+		<EVENT fieldvalue="REMFILE" cjseid="12800" cjsemessagecode="1229"/>
+		<EVENT fieldvalue="QUASH" cjseid="12801" cjsemessagecode="1230"/>
+		<EVENT fieldvalue="UNDIS" cjseid="12802" cjsemessagecode="1231"/>
+		<EVENT fieldvalue="NSP" cjseid="12803" cjsemessagecode="1232"/>
+		<EVENT fieldvalue="REMJUV" cjseid="12804" cjsemessagecode="1233"/>
+		<EVENT fieldvalue="REMMAG" cjseid="12805" cjsemessagecode="1234"/>
+		<EVENT fieldvalue="DEFDEC" cjseid="12806" cjsemessagecode="1235"/>
+		<EVENT fieldvalue="DEFSUIC" cjseid="12807" cjsemessagecode="1235"/>
+		<EVENT fieldvalue="CERTINS" cjseid="12808" cjsemessagecode="1236"/>
+		<EVENT fieldvalue="FREE" cjseid="12809" cjsemessagecode="1237"/>
+		<EVENT fieldvalue="REMOVE" cjseid="12810" cjsemessagecode="1238"/>
+		<EVENT fieldvalue="TIMP" cjseid="12900" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TSUSP" cjseid="12901" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TORD" cjseid="12902" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TFINE" cjseid="12903" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TCOSTS" cjseid="12904" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TCOMP" cjseid="12905" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TPAY" cjseid="12906" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TPP" cjseid="12907" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TDISQ" cjseid="12908" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="DISMISS" cjseid="13000" cjsemessagecode="1240"/>
+		<EVENT fieldvalue="MISSREM" cjseid="13001" cjsemessagecode="1241"/>
+		<EVENT fieldvalue="DISCPRO" cjseid="13002" cjsemessagecode="1242"/>
+		<EVENT fieldvalue="DISCREM" cjseid="13003" cjsemessagecode="1243"/>
+		<EVENT fieldvalue="STFREE" cjseid="13004" cjsemessagecode="1244"/>
+		<EVENT fieldvalue="FINE" cjseid="12100" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="FD" cjseid="12101" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="FDTIME" cjseid="12102" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="FDINST" cjseid="12103" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="PC" cjseid="12104" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTIME" cjseid="12105" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCINST" cjseid="12106" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCT" cjseid="12107" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTTIME" cjseid="12108" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTINST" cjseid="12109" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTA" cjseid="12110" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTAT" cjseid="12111" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTAI" cjseid="12112" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCCF" cjseid="12113" cjsemessagecode="1247"/>
+		<EVENT fieldvalue="COM" cjseid="12114" cjsemessagecode="1248"/>
+		<EVENT fieldvalue="COMTIME" cjseid="12115" cjsemessagecode="1248"/>
+		<EVENT fieldvalue="COMINST" cjseid="12116" cjsemessagecode="1248"/>
+		<EVENT fieldvalue="REWARD" cjseid="12117" cjsemessagecode="1249"/>
+		<EVENT fieldvalue="REPAR" cjseid="12118" cjsemessagecode="1250"/>
+		<EVENT fieldvalue="RESTORD" cjseid="12119" cjsemessagecode="1251"/>
+		<EVENT fieldvalue="VISUR" cjseid="12120" cjsemessagecode="1325"/>
+		<EVENT fieldvalue="CRIMCC" cjseid="12121" cjsemessagecode="1326"/>
+		<EVENT fieldvalue="SLATRO" cjseid="12122" cjsemessagecode="1327"/>
+		<EVENT fieldvalue="SLATRTP" cjseid="12123" cjsemessagecode="1328"/>
+		<EVENT fieldvalue="SLATRIN" cjseid="12124" cjsemessagecode="1329"/>
+		<EVENT fieldvalue="POPSA" cjseid="12423" cjsemessagecode="1342"/>
+		<EVENT fieldvalue="CWRKCS" cjseid="13200" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="PSACTCS" cjseid="13201" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="PACOBCS" cjseid="13202" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="PRACTCS" cjseid="13203" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="CURFCS" cjseid="13204" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="EXCARCS" cjseid="13205" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="RESRQCS" cjseid="13206" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="MHTRTCS" cjseid="13207" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="DRGRQCS" cjseid="13208" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="ALTRTCS" cjseid="13209" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="SPVRQCS" cjseid="13210" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="ATCRQCS" cjseid="13211" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="EXCURCS" cjseid="13212" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="AAMRCS" cjseid="13819" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="FTPRCS" cjseid="13213" cjsemessagecode="1368"/>
+		<EVENT fieldvalue="CUSMSEC" cjseid="13300" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="CUSMCUR" cjseid="13301" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="CWRKSS" cjseid="13302" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="PSACTSS" cjseid="13303" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="PACOBSS" cjseid="13304" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="PRACTSS" cjseid="13305" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="CURFSS" cjseid="13306" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="EXCARSS" cjseid="13307" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="RESRQSS" cjseid="13308" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="MHTRTSS" cjseid="13309" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="DRGRQSS" cjseid="13310" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="ALTRTSS" cjseid="13311" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="AAMRSS" cjseid="13818" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="SPVRQSS" cjseid="13312" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="ATCRQSS" cjseid="13313" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="EXCURSS" cjseid="13314" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="TMCS" cjseid="13816" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="TMSS" cjseid="13817" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="FTPRSS" cjseid="13315" cjsemessagecode="1369"/>
+		<EVENT fieldvalue="CUSMSSE" cjseid="13316" cjsemessagecode="1370"/>
+		<EVENT fieldvalue="EARLREL" cjseid="13400" cjsemessagecode="1303"/>
+		<EVENT fieldvalue="DOFU18" cjseid="13500" cjsemessagecode="1304"/>
+		<EVENT fieldvalue="DOFO18" cjseid="13501" cjsemessagecode="1304"/>
+		<EVENT fieldvalue="EXDO18" cjseid="13503" cjsemessagecode="1371"/>
+		<EVENT fieldvalue="EXAO18" cjseid="13504" cjsemessagecode="1372"/>
+		<EVENT fieldvalue="EXDU18" cjseid="13505" cjsemessagecode="1373"/>
+		<EVENT fieldvalue="EXAU18" cjseid="13506" cjsemessagecode="1374"/>
+		<EVENT fieldvalue="REHARCS" cjseid="13214" cjsemessagecode="1377"/>
+		<EVENT fieldvalue="REHARSS" cjseid="13317" cjsemessagecode="1378"/>
+		<EVENT fieldvalue="CRIBO" cjseid="11812" cjsemessagecode="1379"/>
+		<EVENT fieldvalue="SHPO" cjseid="12416" cjsemessagecode="1380"/>
+		<EVENT fieldvalue="ISHPO" cjseid="12417" cjsemessagecode="1381"/>
+		<EVENT fieldvalue="BARR" cjseid="12418" cjsemessagecode="1382"/>
+		<EVENT fieldvalue="STPO" cjseid="12419" cjsemessagecode="1384"/>
+		<EVENT fieldvalue="ISTPO" cjseid="12420" cjsemessagecode="1385"/>
+		<EVENT fieldvalue="PSACTYR" cjseid="13800" cjsemessagecode="1450"/>
+		<EVENT fieldvalue="SPVRQYR" cjseid="13801" cjsemessagecode="1451"/>
+		<EVENT fieldvalue="CWRKYR" cjseid="13802" cjsemessagecode="1452"/>
+		<EVENT fieldvalue="PACOYR" cjseid="13803" cjsemessagecode="1453"/>
+		<EVENT fieldvalue="ATCRQYR" cjseid="13804" cjsemessagecode="1454"/>
+		<EVENT fieldvalue="PRACTYR" cjseid="13805" cjsemessagecode="1455"/>
+		<EVENT fieldvalue="CURFYR" cjseid="13806" cjsemessagecode="1456"/>
+		<EVENT fieldvalue="EXCARYR" cjseid="13807" cjsemessagecode="1457"/>
+		<EVENT fieldvalue="RESRQYR" cjseid="13808" cjsemessagecode="1458"/>
+		<EVENT fieldvalue="LARYR" cjseid="13809" cjsemessagecode="1459"/>
+		<EVENT fieldvalue="FOSTYR" cjseid="13810" cjsemessagecode="1460"/>
+		<EVENT fieldvalue="MHTRTYR" cjseid="13811" cjsemessagecode="1461"/>
+		<EVENT fieldvalue="DRGRQYR" cjseid="13812" cjsemessagecode="1462"/>
+		<EVENT fieldvalue="DTYR" cjseid="13813" cjsemessagecode="1463"/>
+		<EVENT fieldvalue="ISTYR" cjseid="13814" cjsemessagecode="1464"/>
+		<EVENT fieldvalue="EDUCYR" cjseid="13815" cjsemessagecode="1465"/>
+		<EVENT fieldvalue="SCPO" cjseid="12421" cjsemessagecode="1390"/>
+		<EVENT fieldvalue="DFL" cjseid="11529" cjsemessagecode="1391"/>
+		<EVENT fieldvalue="FGMPO" cjseid="12422" cjsemessagecode="1392"/>
+		<EVENT fieldvalue="STS" cjseid="11530" cjsemessagecode="1393"/>
+		<EVENT fieldvalue="DETTO" cjseid="11531" cjsemessagecode="1394"/>
+		<EVENT fieldvalue="EXD1820" cjseid="13507" cjsemessagecode="1395"/>
+		<EVENT fieldvalue="EXDO21" cjseid="13508" cjsemessagecode="1396"/>
+		<EVENT fieldvalue="STS1821" cjseid="11532" cjsemessagecode="1397"/>
+		<EVENT fieldvalue="ALTCT" cjseid="12811" cjsemessagecode="1419"/>
+		<EVENT fieldvalue="JDIS" cjseid="12812" cjsemessagecode="1420"/>
+		<EVENT fieldvalue="DISCH" cjseid="12813" cjsemessagecode="1421"/>
+		<EVENT fieldvalue="NGDIR" cjseid="12814" cjsemessagecode="1422"/>
+		<EVENT fieldvalue="NGINS" cjseid="12815" cjsemessagecode="1423"/>
+		<EVENT fieldvalue="NOEV" cjseid="12816" cjsemessagecode="1424"/>
+		<EVENT fieldvalue="NOEVS" cjseid="12817" cjsemessagecode="1425"/>
+		<EVENT fieldvalue="UTA" cjseid="12818" cjsemessagecode="1426"/>
+		<EVENT fieldvalue="DTCO" cjseid="12514" cjsemessagecode="1398"/>
+		<EVENT fieldvalue="IMPMESW" cjseid="11533" cjsemessagecode="1399"/>
+		<EVENT fieldvalue="DLFMESW" cjseid="11534" cjsemessagecode="1404"/>
+		<EVENT fieldvalue="EWMYR" cjseid="13820" cjsemessagecode="1486"/>
+		<EVENT fieldvalue="ACTYR" cjseid="13821" cjsemessagecode="1487"/>
+		<EVENT fieldvalue="SVRO" cjseid="13822" cjsemessagecode="1488"/>
+		<EVENT fieldvalue="SDPOC" cjseid="13823" cjsemessagecode="1494"/>
+		<EVENT fieldvalue="SDPOV" cjseid="13824" cjsemessagecode="1495"/>
+		<EVENT fieldvalue="SDPOD" cjseid="13825" cjsemessagecode="1496"/>
+		<EVENT fieldvalue="SDPOR" cjseid="13826" cjsemessagecode="1497"/>
+		<EVENT fieldvalue="SFOP" cjseid="13827" cjsemessagecode="1498"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40751" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40751_Ref_Disposal_Code/text()"/>
+		<EVENT fieldvalue="IMP" cjseid="11500" cjsemessagecode="1126DL"/>
+		<EVENT fieldvalue="YOI" cjseid="11501" cjsemessagecode="1127DL"/>
+		<EVENT fieldvalue="IMPMYO" cjseid="11502" cjsemessagecode="1128DL"/>
+		<EVENT fieldvalue="CSSP" cjseid="11503" cjsemessagecode="1129DL"/>
+		<EVENT fieldvalue="LIFE" cjseid="11504" cjsemessagecode="1130DL"/>
+		<EVENT fieldvalue="LIMM" cjseid="11505" cjsemessagecode="1130DL"/>
+		<EVENT fieldvalue="CTFL" cjseid="11506" cjsemessagecode="1132DL"/>
+		<EVENT fieldvalue="LIFESEC" cjseid="11507" cjsemessagecode="1130DL"/>
+		<EVENT fieldvalue="LIFESYO" cjseid="11508" cjsemessagecode="1134DL"/>
+		<EVENT fieldvalue="DWLT" cjseid="11509" cjsemessagecode="1135DL"/>
+		<EVENT fieldvalue="DET" cjseid="11510" cjsemessagecode="1136DL"/>
+		<EVENT fieldvalue="DTO" cjseid="11511" cjsemessagecode="1137DL"/>
+		<EVENT fieldvalue="ODIMP" cjseid="11512" cjsemessagecode="1138DL"/>
+		<EVENT fieldvalue="IMPMIN" cjseid="11513" cjsemessagecode="1139DL"/>
+		<EVENT fieldvalue="IMPX" cjseid="11514" cjsemessagecode="1140DL"/>
+		<EVENT fieldvalue="CUSTEXT" cjseid="11515" cjsemessagecode="1141DL"/>
+		<EVENT fieldvalue="PARLIC" cjseid="11516" cjsemessagecode="1142DL"/>
+		<EVENT fieldvalue="HOLIDIR" cjseid="11517" cjsemessagecode="1143DL"/>
+		<EVENT fieldvalue="SS" cjseid="11518" cjsemessagecode="1144DL"/>
+		<EVENT fieldvalue="PASU" cjseid="11519" cjsemessagecode="1145DL"/>
+		<EVENT fieldvalue="SSSO" cjseid="11520" cjsemessagecode="1146DL"/>
+		<EVENT fieldvalue="INIMP" cjseid="11521" cjsemessagecode="1305DL"/>
+		<EVENT fieldvalue="INDET" cjseid="11522" cjsemessagecode="1306DL"/>
+		<EVENT fieldvalue="LIFELIS" cjseid="11523" cjsemessagecode="1375DL"/>
+		<EVENT fieldvalue="LIFELYO" cjseid="11524" cjsemessagecode="1376DL"/>
+		<EVENT fieldvalue="IMPE" cjseid="11525" cjsemessagecode="1386DL"/>
+		<EVENT fieldvalue="IMPMYOE" cjseid="11526" cjsemessagecode="1387DL"/>
+		<EVENT fieldvalue="IMPMINE" cjseid="11527" cjsemessagecode="1388DL"/>
+		<EVENT fieldvalue="YOIE" cjseid="11528" cjsemessagecode="1389DL"/>
+		<EVENT fieldvalue="CPO" cjseid="11600" cjsemessagecode="1147DL"/>
+		<EVENT fieldvalue="CPODAR" cjseid="11601" cjsemessagecode="1147DL"/>
+		<EVENT fieldvalue="CROG" cjseid="11602" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRCR" cjseid="11603" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRHR" cjseid="11604" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRNH" cjseid="11605" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRDC" cjseid="11606" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRRA" cjseid="11607" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRDA" cjseid="11608" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CROCUR" cjseid="11609" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRODAR" cjseid="11610" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CROEXC" cjseid="11611" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CPROG" cjseid="11612" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROR" cjseid="11613" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRHR" cjseid="11614" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRNH" cjseid="11615" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROC" cjseid="11616" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROA" cjseid="11617" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROD" cjseid="11618" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRCUR" cjseid="11619" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRDAR" cjseid="11620" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPREXC" cjseid="11621" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPDROG" cjseid="11622" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROR" cjseid="11623" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRHR" cjseid="11624" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRNH" cjseid="11625" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROC" cjseid="11626" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROA" cjseid="11627" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROD" cjseid="11628" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRCUR" cjseid="11629" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDREXC" cjseid="11630" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRDAR" cjseid="11631" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="SOCDS" cjseid="11700" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SOCDO" cjseid="11701" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SORR" cjseid="11702" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SORFA" cjseid="11703" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SOPCCA" cjseid="11704" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SOSA" cjseid="11705" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SONR" cjseid="11706" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="ATCO" cjseid="11707" cjsemessagecode="1151DL"/>
+		<EVENT fieldvalue="APO" cjseid="11708" cjsemessagecode="1152DL"/>
+		<EVENT fieldvalue="PAREN" cjseid="11709" cjsemessagecode="1153DL"/>
+		<EVENT fieldvalue="CONEM" cjseid="11800" cjsemessagecode="1154DL"/>
+		<EVENT fieldvalue="COWEM" cjseid="11801" cjsemessagecode="1155DL"/>
+		<EVENT fieldvalue="ABDIS" cjseid="11802" cjsemessagecode="1156DL"/>
+		<EVENT fieldvalue="CD" cjseid="11803" cjsemessagecode="1157DL"/>
+		<EVENT fieldvalue="DISWP" cjseid="11804" cjsemessagecode="1158DL"/>
+		<EVENT fieldvalue="BOCOND" cjseid="11805" cjsemessagecode="1159DL"/>
+		<EVENT fieldvalue="BOGB" cjseid="11806" cjsemessagecode="1160DL"/>
+		<EVENT fieldvalue="BOJDG" cjseid="11807" cjsemessagecode="1161DL"/>
+		<EVENT fieldvalue="BOJDGD" cjseid="11808" cjsemessagecode="1162DL"/>
+		<EVENT fieldvalue="PGBO" cjseid="11809" cjsemessagecode="1163DL"/>
+		<EVENT fieldvalue="ASBOSEN" cjseid="11810" cjsemessagecode="1164DL"/>
+		<EVENT fieldvalue="ASBOCD" cjseid="11811" cjsemessagecode="1165DL"/>
+		<EVENT fieldvalue="DTTO" cjseid="11900" cjsemessagecode="1166DL"/>
+		<EVENT fieldvalue="DAO" cjseid="11901" cjsemessagecode="1167DL"/>
+		<EVENT fieldvalue="PREDTO" cjseid="11902" cjsemessagecode="1168DL"/>
+		<EVENT fieldvalue="HOSPOR" cjseid="12000" cjsemessagecode="1169DL"/>
+		<EVENT fieldvalue="INTHOSP" cjseid="12001" cjsemessagecode="1170DL"/>
+		<EVENT fieldvalue="REMMENT" cjseid="12002" cjsemessagecode="1171DL"/>
+		<EVENT fieldvalue="REMTREA" cjseid="12003" cjsemessagecode="1172DL"/>
+		<EVENT fieldvalue="CO" cjseid="12004" cjsemessagecode="1173DL"/>
+		<EVENT fieldvalue="COCC" cjseid="12005" cjsemessagecode="1174DL"/>
+		<EVENT fieldvalue="CC" cjseid="12006" cjsemessagecode="1175DL"/>
+		<EVENT fieldvalue="GOAUTH" cjseid="12007" cjsemessagecode="1176DL"/>
+		<EVENT fieldvalue="GOREL" cjseid="12008" cjsemessagecode="1177DL"/>
+		<EVENT fieldvalue="GOOTH" cjseid="12009" cjsemessagecode="1178DL"/>
+		<EVENT fieldvalue="RESNL" cjseid="12010" cjsemessagecode="1179DL"/>
+		<EVENT fieldvalue="RESL" cjseid="12011" cjsemessagecode="1180DL"/>
+		<EVENT fieldvalue="SFORO" cjseid="12012" cjsemessagecode="1181DL"/>
+		<EVENT fieldvalue="EXPO" cjseid="12200" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="EXPD" cjseid="12201" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="EXPTIME" cjseid="12202" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="EXPINST" cjseid="12203" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="DCO" cjseid="12204" cjsemessagecode="1183DL"/>
+		<EVENT fieldvalue="DCOTC" cjseid="12205" cjsemessagecode="1183DL"/>
+		<EVENT fieldvalue="DCOTCM" cjseid="12206" cjsemessagecode="1183DL"/>
+		<EVENT fieldvalue="RDCO" cjseid="12207" cjsemessagecode="1184DL"/>
+		<EVENT fieldvalue="NRDCO" cjseid="12208" cjsemessagecode="1185DL"/>
+		<EVENT fieldvalue="LACPD" cjseid="12209" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="LACREM" cjseid="12210" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="LACREF" cjseid="12211" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="LACRET" cjseid="12212" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="AREM" cjseid="12213" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="APAID" cjseid="12214" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="FORSEC" cjseid="12215" cjsemessagecode="1187DL"/>
+		<EVENT fieldvalue="DISQ" cjseid="12300" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DISTEST" cjseid="12301" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DISTOA" cjseid="12302" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DISPCCA" cjseid="12303" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="LEND" cjseid="12304" cjsemessagecode="1189DL"/>
+		<EVENT fieldvalue="LENDPP" cjseid="12305" cjsemessagecode="1190DL"/>
+		<EVENT fieldvalue="NOTLA" cjseid="12306" cjsemessagecode="1191DL"/>
+		<EVENT fieldvalue="MITCIRC" cjseid="12307" cjsemessagecode="1192DL"/>
+		<EVENT fieldvalue="SPECREA" cjseid="12308" cjsemessagecode="1192DL"/>
+		<EVENT fieldvalue="ADISQU" cjseid="12400" cjsemessagecode="1193DL"/>
+		<EVENT fieldvalue="JDISQU" cjseid="12401" cjsemessagecode="1194DL"/>
+		<EVENT fieldvalue="NODISQU" cjseid="12402" cjsemessagecode="1195DL"/>
+		<EVENT fieldvalue="TRO" cjseid="12403" cjsemessagecode="1196DL"/>
+		<EVENT fieldvalue="DDSPAS" cjseid="12309" cjsemessagecode="1366DL"/>
+		<EVENT fieldvalue="DISREM" cjseid="12310" cjsemessagecode="1367DL"/>	
+		<EVENT fieldvalue="DIRDIS" cjseid="12404" cjsemessagecode="1197DL"/>
+		<EVENT fieldvalue="FOOTRES" cjseid="12405" cjsemessagecode="1198DL"/>
+		<EVENT fieldvalue="FOOTBAN" cjseid="12406" cjsemessagecode="1198DL"/>
+		<EVENT fieldvalue="LICPREM" cjseid="12407" cjsemessagecode="1199DL"/>
+		<EVENT fieldvalue="FOOTEX" cjseid="12408" cjsemessagecode="1198DL"/>
+		<EVENT fieldvalue="RESOR" cjseid="12409" cjsemessagecode="1200DL"/>
+		<EVENT fieldvalue="ROWOC" cjseid="12413" cjsemessagecode="1313DL"/>		
+		<EVENT fieldvalue="SEXRESO" cjseid="12410" cjsemessagecode="1200DL"/>
+		<EVENT fieldvalue="EXMON" cjseid="12411" cjsemessagecode="1201DL"/>
+		<EVENT fieldvalue="EXNOMON" cjseid="12412" cjsemessagecode="1202DL"/>
+		<EVENT fieldvalue="FIRCERT" cjseid="12500" cjsemessagecode="1203DL"/>
+		<EVENT fieldvalue="FORPCCA" cjseid="12501" cjsemessagecode="1204DL"/>
+		<EVENT fieldvalue="FOVPCCA" cjseid="12502" cjsemessagecode="1205DL"/>
+		<EVENT fieldvalue="DEPR" cjseid="12503" cjsemessagecode="1206DL"/>
+		<EVENT fieldvalue="FORFIRE" cjseid="12504" cjsemessagecode="1207DL"/>
+		<EVENT fieldvalue="FORDRUG" cjseid="12505" cjsemessagecode="1208DL"/>
+		<EVENT fieldvalue="FORPOA" cjseid="12506" cjsemessagecode="1209DL"/>
+		<EVENT fieldvalue="DTCOR" cjseid="12507" cjsemessagecode="1210DL"/>
+		<EVENT fieldvalue="CJCO" cjseid="12508" cjsemessagecode="1211DL"/>
+		<EVENT fieldvalue="FORGERY" cjseid="12509" cjsemessagecode="1212DL"/>
+		<EVENT fieldvalue="FOROBS" cjseid="12510" cjsemessagecode="1213DL"/>
+		<EVENT fieldvalue="DT94CON" cjseid="12511" cjsemessagecode="1210DL"/>
+		<EVENT fieldvalue="POCCON" cjseid="12512" cjsemessagecode="1215DL"/>
+		<EVENT fieldvalue="FORMODS" cjseid="12513" cjsemessagecode="1383DL"/>
+		<EVENT fieldvalue="RDEP" cjseid="12600" cjsemessagecode="1216DL"/>
+		<EVENT fieldvalue="RDEPD" cjseid="12601" cjsemessagecode="1216DL"/>
+		<EVENT fieldvalue="RDEPND" cjseid="12602" cjsemessagecode="1216DL"/>
+		<EVENT fieldvalue="NOBSS" cjseid="12700" cjsemessagecode="1217DL"/>
+		<EVENT fieldvalue="ORDVAR" cjseid="12701" cjsemessagecode="1218DL"/>
+		<EVENT fieldvalue="USS" cjseid="12702" cjsemessagecode="1219DL"/>
+		<EVENT fieldvalue="ISS" cjseid="12703" cjsemessagecode="1220DL"/>
+		<EVENT fieldvalue="SSSOC" cjseid="12704" cjsemessagecode="1221DL"/>
+		<EVENT fieldvalue="SSSOD" cjseid="12705" cjsemessagecode="1222DL"/>
+		<EVENT fieldvalue="NORDB" cjseid="12706" cjsemessagecode="1223DL"/>
+		<EVENT fieldvalue="SODIS" cjseid="12707" cjsemessagecode="1224DL"/>
+		<EVENT fieldvalue="CSOREV" cjseid="12708" cjsemessagecode="1225DL"/>
+		<EVENT fieldvalue="PODIS" cjseid="12709" cjsemessagecode="1226DL"/>
+		<EVENT fieldvalue="RECTIME" cjseid="12710" cjsemessagecode="1227DL"/>
+		<EVENT fieldvalue="RECINST" cjseid="12711" cjsemessagecode="1227DL"/>
+		<EVENT fieldvalue="REMFILE" cjseid="12800" cjsemessagecode="1229DL"/>
+		<EVENT fieldvalue="QUASH" cjseid="12801" cjsemessagecode="1230DL"/>
+		<EVENT fieldvalue="UNDIS" cjseid="12802" cjsemessagecode="1231DL"/>
+		<EVENT fieldvalue="NSP" cjseid="12803" cjsemessagecode="1232DL"/>
+		<EVENT fieldvalue="REMJUV" cjseid="12804" cjsemessagecode="1233DL"/>
+		<EVENT fieldvalue="REMMAG" cjseid="12805" cjsemessagecode="1234DL"/>
+		<EVENT fieldvalue="DEFDEC" cjseid="12806" cjsemessagecode="1235DL"/>
+		<EVENT fieldvalue="DEFSUIC" cjseid="12807" cjsemessagecode="1235DL"/>
+		<EVENT fieldvalue="CERTINS" cjseid="12808" cjsemessagecode="1236DL"/>
+		<EVENT fieldvalue="FREE" cjseid="12809" cjsemessagecode="1237DL"/>
+		<EVENT fieldvalue="REMOVE" cjseid="12810" cjsemessagecode="1238DL"/>
+		<EVENT fieldvalue="TIMP" cjseid="12900" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TSUSP" cjseid="12901" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TORD" cjseid="12902" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TFINE" cjseid="12903" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TCOSTS" cjseid="12904" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TCOMP" cjseid="12905" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TPAY" cjseid="12906" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TPP" cjseid="12907" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TDISQ" cjseid="12908" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="DISMISS" cjseid="13000" cjsemessagecode="1240DL"/>
+		<EVENT fieldvalue="MISSREM" cjseid="13001" cjsemessagecode="1241DL"/>
+		<EVENT fieldvalue="DISCPRO" cjseid="13002" cjsemessagecode="1242DL"/>
+		<EVENT fieldvalue="DISCREM" cjseid="13003" cjsemessagecode="1243DL"/>
+		<EVENT fieldvalue="STFREE" cjseid="13004" cjsemessagecode="1244DL"/>
+		<EVENT fieldvalue="FINE" cjseid="12100" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="FD" cjseid="12101" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="FDTIME" cjseid="12102" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="FDINST" cjseid="12103" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="PC" cjseid="12104" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTIME" cjseid="12105" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCINST" cjseid="12106" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCT" cjseid="12107" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTTIME" cjseid="12108" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTINST" cjseid="12109" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTA" cjseid="12110" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTAT" cjseid="12111" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTAI" cjseid="12112" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCCF" cjseid="12113" cjsemessagecode="1247DL"/>
+		<EVENT fieldvalue="COM" cjseid="12114" cjsemessagecode="1248DL"/>
+		<EVENT fieldvalue="COMTIME" cjseid="12115" cjsemessagecode="1248DL"/>
+		<EVENT fieldvalue="COMINST" cjseid="12116" cjsemessagecode="1248DL"/>
+		<EVENT fieldvalue="REWARD" cjseid="12117" cjsemessagecode="1249DL"/>
+		<EVENT fieldvalue="REPAR" cjseid="12118" cjsemessagecode="1250DL"/>
+		<EVENT fieldvalue="RESTORD" cjseid="12119" cjsemessagecode="1251DL"/>
+		<EVENT fieldvalue="VISUR" cjseid="12120" cjsemessagecode="1325DL"/>
+		<EVENT fieldvalue="CRIMCC" cjseid="12121" cjsemessagecode="1326DL"/>
+		<EVENT fieldvalue="SLATRO" cjseid="12122" cjsemessagecode="1327DL"/>
+		<EVENT fieldvalue="SLATRTP" cjseid="12123" cjsemessagecode="1328DL"/>
+		<EVENT fieldvalue="SLATRIN" cjseid="12124" cjsemessagecode="1329DL"/>
+		<EVENT fieldvalue="POPSA" cjseid="12423" cjsemessagecode="1342DL"/>
+		<EVENT fieldvalue="CWRKCS" cjseid="13200" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="PSACTCS" cjseid="13201" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="PACOBCS" cjseid="13202" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="PRACTCS" cjseid="13203" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="CURFCS" cjseid="13204" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="EXCARCS" cjseid="13205" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="RESRQCS" cjseid="13206" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="MHTRTCS" cjseid="13207" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="DRGRQCS" cjseid="13208" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="ALTRTCS" cjseid="13209" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="SPVRQCS" cjseid="13210" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="ATCRQCS" cjseid="13211" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="EXCURCS" cjseid="13212" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="AAMRCS" cjseid="13819" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="FTPRCS" cjseid="13213" cjsemessagecode="1368DL"/>
+		<EVENT fieldvalue="CUSMSEC" cjseid="13300" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="CUSMCUR" cjseid="13301" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="CWRKSS" cjseid="13302" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="PSACTSS" cjseid="13303" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="PACOBSS" cjseid="13304" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="PRACTSS" cjseid="13305" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="CURFSS" cjseid="13306" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="EXCARSS" cjseid="13307" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="RESRQSS" cjseid="13308" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="MHTRTSS" cjseid="13309" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="DRGRQSS" cjseid="13310" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="ALTRTSS" cjseid="13311" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="AAMRSS" cjseid="13818" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="SPVRQSS" cjseid="13312" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="ATCRQSS" cjseid="13313" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="EXCURSS" cjseid="13314" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="TMCS" cjseid="13816" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="TMSS" cjseid="13817" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="FTPRSS" cjseid="13315" cjsemessagecode="13069DL"/>
+		<EVENT fieldvalue="CUSMSSE" cjseid="13316" cjsemessagecode="1370DL"/>
+		<EVENT fieldvalue="EARLREL" cjseid="13400" cjsemessagecode="1303DL"/>
+		<EVENT fieldvalue="DOFU18" cjseid="13500" cjsemessagecode="1304DL"/>
+		<EVENT fieldvalue="DOFO18" cjseid="13501" cjsemessagecode="1304DL"/>
+		<EVENT fieldvalue="EXDO18" cjseid="13503" cjsemessagecode="1371DL"/>
+		<EVENT fieldvalue="EXAO18" cjseid="13504" cjsemessagecode="1372DL"/>
+		<EVENT fieldvalue="EXDU18" cjseid="13505" cjsemessagecode="1373DL"/>
+		<EVENT fieldvalue="EXAU18" cjseid="13506" cjsemessagecode="1374DL"/>
+		<EVENT fieldvalue="REHARCS" cjseid="13214" cjsemessagecode="1377DL"/>
+		<EVENT fieldvalue="REHARSS" cjseid="13317" cjsemessagecode="1378DL"/>
+		<EVENT fieldvalue="CRIBO" cjseid="11812" cjsemessagecode="1379DL"/>
+		<EVENT fieldvalue="SHPO" cjseid="12416" cjsemessagecode="1380DL"/>
+		<EVENT fieldvalue="ISHPO" cjseid="12417" cjsemessagecode="1381DL"/>
+		<EVENT fieldvalue="BARR" cjseid="12418" cjsemessagecode="1382DL"/>
+		<EVENT fieldvalue="STPO" cjseid="12419" cjsemessagecode="1384DL"/>
+		<EVENT fieldvalue="ISTPO" cjseid="12420" cjsemessagecode="1385DL"/>
+		<EVENT fieldvalue="PSACTYR" cjseid="13800" cjsemessagecode="1450DL"/>
+		<EVENT fieldvalue="SPVRQYR" cjseid="13801" cjsemessagecode="1451DL"/>
+		<EVENT fieldvalue="CWRKYR" cjseid="13802" cjsemessagecode="1452DL"/>
+		<EVENT fieldvalue="PACOYR" cjseid="13803" cjsemessagecode="1453DL"/>
+		<EVENT fieldvalue="ATCRQYR" cjseid="13804" cjsemessagecode="1454DL"/>
+		<EVENT fieldvalue="PRACTYR" cjseid="13805" cjsemessagecode="1455DL"/>
+		<EVENT fieldvalue="CURFYR" cjseid="13806" cjsemessagecode="1456DL"/>
+		<EVENT fieldvalue="EXCARYR" cjseid="13807" cjsemessagecode="1457DL"/>
+		<EVENT fieldvalue="RESRQYR" cjseid="13808" cjsemessagecode="1458DL"/>
+		<EVENT fieldvalue="LARYR" cjseid="13809" cjsemessagecode="1459DL"/>
+		<EVENT fieldvalue="FOSTYR" cjseid="13810" cjsemessagecode="1460DL"/>
+		<EVENT fieldvalue="MHTRTYR" cjseid="13811" cjsemessagecode="1461DL"/>
+		<EVENT fieldvalue="DRGRQYR" cjseid="13812" cjsemessagecode="1462DL"/>
+		<EVENT fieldvalue="DTYR" cjseid="13813" cjsemessagecode="1463DL"/>
+		<EVENT fieldvalue="ISTYR" cjseid="13814" cjsemessagecode="1464DL"/>
+		<EVENT fieldvalue="EDUCYR" cjseid="13815" cjsemessagecode="1465DL"/>
+		<EVENT fieldvalue="SCPO" cjseid="12421" cjsemessagecode="1390DL"/>
+		<EVENT fieldvalue="DFL" cjseid="11529" cjsemessagecode="1391DL"/>
+		<EVENT fieldvalue="FGMPO" cjseid="12422" cjsemessagecode="1392DL"/>
+		<EVENT fieldvalue="STS" cjseid="11530" cjsemessagecode="1393DL"/>
+		<EVENT fieldvalue="DETTO" cjseid="11531" cjsemessagecode="1394DL"/>
+		<EVENT fieldvalue="EXD1820" cjseid="13507" cjsemessagecode="1395DL"/>
+		<EVENT fieldvalue="EXDO21" cjseid="13508" cjsemessagecode="1396DL"/>
+		<EVENT fieldvalue="STS1821" cjseid="11532" cjsemessagecode="1397DL"/>
+		<EVENT fieldvalue="ALTCT" cjseid="12811" cjsemessagecode="1419DL"/>
+		<EVENT fieldvalue="JDIS" cjseid="12812" cjsemessagecode="1420DL"/>
+		<EVENT fieldvalue="DISCH" cjseid="12813" cjsemessagecode="1421DL"/>
+		<EVENT fieldvalue="NGDIR" cjseid="12814" cjsemessagecode="1422DL"/>
+		<EVENT fieldvalue="NGINS" cjseid="12815" cjsemessagecode="1423DL"/>
+		<EVENT fieldvalue="NOEV" cjseid="12816" cjsemessagecode="1424DL"/>
+		<EVENT fieldvalue="NOEVS" cjseid="12817" cjsemessagecode="1425DL"/>
+		<EVENT fieldvalue="UTA" cjseid="12818" cjsemessagecode="1426DL"/>
+		<EVENT fieldvalue="DTCO" cjseid="12514" cjsemessagecode="1398DL"/>
+		<EVENT fieldvalue="IMPMESW" cjseid="11533" cjsemessagecode="1399DL"/>
+		<EVENT fieldvalue="DLFMESW" cjseid="11534" cjsemessagecode="1404DL"/>
+		<EVENT fieldvalue="EWMYR" cjseid="13820" cjsemessagecode="1486DL"/>
+		<EVENT fieldvalue="ACTYR" cjseid="13821" cjsemessagecode="1487DL"/>
+		<EVENT fieldvalue="SVRO" cjseid="13822" cjsemessagecode="1488DL"/>
+		<EVENT fieldvalue="SDPOC" cjseid="13823" cjsemessagecode="1494DL"/>
+		<EVENT fieldvalue="SDPOV" cjseid="13824" cjsemessagecode="1495DL"/>
+		<EVENT fieldvalue="SDPOD" cjseid="13825" cjsemessagecode="1496DL"/>
+		<EVENT fieldvalue="SDPOR" cjseid="13826" cjsemessagecode="1497DL"/>
+		<EVENT fieldvalue="SFOP" cjseid="13827" cjsemessagecode="1498DL"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40752" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40752_Ref_Disposal_Code/text()"/>
+		<EVENT fieldvalue="IMP" cjseid="11500" cjsemessagecode="1126"/>
+		<EVENT fieldvalue="YOI" cjseid="11501" cjsemessagecode="1127"/>
+		<EVENT fieldvalue="IMPMYO" cjseid="11502" cjsemessagecode="1128"/>
+		<EVENT fieldvalue="CSSP" cjseid="11503" cjsemessagecode="1129"/>
+		<EVENT fieldvalue="LIFE" cjseid="11504" cjsemessagecode="1130"/>
+		<EVENT fieldvalue="LIMM" cjseid="11505" cjsemessagecode="1130"/>
+		<EVENT fieldvalue="CTFL" cjseid="11506" cjsemessagecode="1132"/>
+		<EVENT fieldvalue="LIFESEC" cjseid="11507" cjsemessagecode="1130"/>
+		<EVENT fieldvalue="LIFESYO" cjseid="11508" cjsemessagecode="1134"/>
+		<EVENT fieldvalue="DWLT" cjseid="11509" cjsemessagecode="1135"/>
+		<EVENT fieldvalue="DET" cjseid="11510" cjsemessagecode="1136"/>
+		<EVENT fieldvalue="DTO" cjseid="11511" cjsemessagecode="1137"/>
+		<EVENT fieldvalue="ODIMP" cjseid="11512" cjsemessagecode="1138"/>
+		<EVENT fieldvalue="IMPMIN" cjseid="11513" cjsemessagecode="1139"/>
+		<EVENT fieldvalue="IMPX" cjseid="11514" cjsemessagecode="1140"/>
+		<EVENT fieldvalue="CUSTEXT" cjseid="11515" cjsemessagecode="1141"/>
+		<EVENT fieldvalue="PARLIC" cjseid="11516" cjsemessagecode="1142"/>
+		<EVENT fieldvalue="HOLIDIR" cjseid="11517" cjsemessagecode="1143"/>
+		<EVENT fieldvalue="SS" cjseid="11518" cjsemessagecode="1144"/>
+		<EVENT fieldvalue="PASU" cjseid="11519" cjsemessagecode="1145"/>
+		<EVENT fieldvalue="SSSO" cjseid="11520" cjsemessagecode="1146"/>
+		<EVENT fieldvalue="INIMP" cjseid="11521" cjsemessagecode="1305"/>
+		<EVENT fieldvalue="INDET" cjseid="11522" cjsemessagecode="1306"/>
+		<EVENT fieldvalue="LIFELIS" cjseid="11523" cjsemessagecode="1375"/>
+		<EVENT fieldvalue="LIFELYO" cjseid="11524" cjsemessagecode="1376"/>
+		<EVENT fieldvalue="IMPE" cjseid="11525" cjsemessagecode="1386"/>
+		<EVENT fieldvalue="IMPMYOE" cjseid="11526" cjsemessagecode="1387"/>
+		<EVENT fieldvalue="IMPMINE" cjseid="11527" cjsemessagecode="1388"/>
+		<EVENT fieldvalue="YOIE" cjseid="11528" cjsemessagecode="1389"/>
+		<EVENT fieldvalue="CPO" cjseid="11600" cjsemessagecode="1147"/>
+		<EVENT fieldvalue="CPODAR" cjseid="11601" cjsemessagecode="1147"/>
+		<EVENT fieldvalue="CROG" cjseid="11602" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRCR" cjseid="11603" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRHR" cjseid="11604" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRNH" cjseid="11605" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRDC" cjseid="11606" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRRA" cjseid="11607" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRDA" cjseid="11608" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CROCUR" cjseid="11609" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CRODAR" cjseid="11610" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CROEXC" cjseid="11611" cjsemessagecode="1290"/>
+		<EVENT fieldvalue="CPROG" cjseid="11612" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROR" cjseid="11613" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRHR" cjseid="11614" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRNH" cjseid="11615" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROC" cjseid="11616" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROA" cjseid="11617" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPROD" cjseid="11618" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRCUR" cjseid="11619" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPRDAR" cjseid="11620" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPREXC" cjseid="11621" cjsemessagecode="1148"/>
+		<EVENT fieldvalue="CPDROG" cjseid="11622" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROR" cjseid="11623" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRHR" cjseid="11624" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRNH" cjseid="11625" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROC" cjseid="11626" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROA" cjseid="11627" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDROD" cjseid="11628" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRCUR" cjseid="11629" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDREXC" cjseid="11630" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="CPDRDAR" cjseid="11631" cjsemessagecode="1149"/>
+		<EVENT fieldvalue="SOCDS" cjseid="11700" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SOCDO" cjseid="11701" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SORR" cjseid="11702" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SORFA" cjseid="11703" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SOPCCA" cjseid="11704" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SOSA" cjseid="11705" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="SONR" cjseid="11706" cjsemessagecode="1150"/>
+		<EVENT fieldvalue="ATCO" cjseid="11707" cjsemessagecode="1151"/>
+		<EVENT fieldvalue="APO" cjseid="11708" cjsemessagecode="1152"/>
+		<EVENT fieldvalue="PAREN" cjseid="11709" cjsemessagecode="1153"/>
+		<EVENT fieldvalue="CONEM" cjseid="11800" cjsemessagecode="1154"/>
+		<EVENT fieldvalue="COWEM" cjseid="11801" cjsemessagecode="1155"/>
+		<EVENT fieldvalue="ABDIS" cjseid="11802" cjsemessagecode="1156"/>
+		<EVENT fieldvalue="CD" cjseid="11803" cjsemessagecode="1157"/>
+		<EVENT fieldvalue="DISWP" cjseid="11804" cjsemessagecode="1158"/>
+		<EVENT fieldvalue="BOCOND" cjseid="11805" cjsemessagecode="1159"/>
+		<EVENT fieldvalue="BOGB" cjseid="11806" cjsemessagecode="1160"/>
+		<EVENT fieldvalue="BOJDG" cjseid="11807" cjsemessagecode="1161"/>
+		<EVENT fieldvalue="BOJDGD" cjseid="11808" cjsemessagecode="1162"/>
+		<EVENT fieldvalue="PGBO" cjseid="11809" cjsemessagecode="1163"/>
+		<EVENT fieldvalue="ASBOSEN" cjseid="11810" cjsemessagecode="1164"/>
+		<EVENT fieldvalue="ASBOCD" cjseid="11811" cjsemessagecode="1165"/>
+		<EVENT fieldvalue="DTTO" cjseid="11900" cjsemessagecode="1166"/>
+		<EVENT fieldvalue="DAO" cjseid="11901" cjsemessagecode="1167"/>
+		<EVENT fieldvalue="PREDTO" cjseid="11902" cjsemessagecode="1168"/>
+		<EVENT fieldvalue="HOSPOR" cjseid="12000" cjsemessagecode="1169"/>
+		<EVENT fieldvalue="INTHOSP" cjseid="12001" cjsemessagecode="1170"/>
+		<EVENT fieldvalue="REMMENT" cjseid="12002" cjsemessagecode="1171"/>
+		<EVENT fieldvalue="REMTREA" cjseid="12003" cjsemessagecode="1172"/>
+		<EVENT fieldvalue="CO" cjseid="12004" cjsemessagecode="1173"/>
+		<EVENT fieldvalue="COCC" cjseid="12005" cjsemessagecode="1174"/>
+		<EVENT fieldvalue="CC" cjseid="12006" cjsemessagecode="1175"/>
+		<EVENT fieldvalue="GOAUTH" cjseid="12007" cjsemessagecode="1176"/>
+		<EVENT fieldvalue="GOREL" cjseid="12008" cjsemessagecode="1177"/>
+		<EVENT fieldvalue="GOOTH" cjseid="12009" cjsemessagecode="1178"/>
+		<EVENT fieldvalue="RESNL" cjseid="12010" cjsemessagecode="1179"/>
+		<EVENT fieldvalue="RESL" cjseid="12011" cjsemessagecode="1180"/>
+		<EVENT fieldvalue="SFORO" cjseid="12012" cjsemessagecode="1181"/>
+		<EVENT fieldvalue="EXPO" cjseid="12200" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="EXPD" cjseid="12201" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="EXPTIME" cjseid="12202" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="EXPINST" cjseid="12203" cjsemessagecode="1182"/>
+		<EVENT fieldvalue="DCO" cjseid="12204" cjsemessagecode="1183"/>
+		<EVENT fieldvalue="DCOTC" cjseid="12205" cjsemessagecode="1183"/>
+		<EVENT fieldvalue="DCOTCM" cjseid="12206" cjsemessagecode="1183"/>
+		<EVENT fieldvalue="RDCO" cjseid="12207" cjsemessagecode="1184"/>
+		<EVENT fieldvalue="NRDCO" cjseid="12208" cjsemessagecode="1185"/>
+		<EVENT fieldvalue="LACPD" cjseid="12209" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="LACREM" cjseid="12210" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="LACREF" cjseid="12211" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="LACRET" cjseid="12212" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="AREM" cjseid="12213" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="APAID" cjseid="12214" cjsemessagecode="1186"/>
+		<EVENT fieldvalue="FORSEC" cjseid="12215" cjsemessagecode="1187"/>
+		<EVENT fieldvalue="DISQ" cjseid="12300" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DISTEST" cjseid="12301" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DISTOA" cjseid="12302" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DISPCCA" cjseid="12303" cjsemessagecode="1188"/>
+		<EVENT fieldvalue="DDSPAS" cjseid="12309" cjsemessagecode="1366"/>
+		<EVENT fieldvalue="DISREM" cjseid="12310" cjsemessagecode="1367"/>
+		<EVENT fieldvalue="LEND" cjseid="12304" cjsemessagecode="1189"/>
+		<EVENT fieldvalue="LENDPP" cjseid="12305" cjsemessagecode="1190"/>
+		<EVENT fieldvalue="NOTLA" cjseid="12306" cjsemessagecode="1191"/>
+		<EVENT fieldvalue="MITCIRC" cjseid="12307" cjsemessagecode="1192"/>
+		<EVENT fieldvalue="SPECREA" cjseid="12308" cjsemessagecode="1192"/>
+		<EVENT fieldvalue="ADISQU" cjseid="12400" cjsemessagecode="1193"/>
+		<EVENT fieldvalue="JDISQU" cjseid="12401" cjsemessagecode="1194"/>
+		<EVENT fieldvalue="NODISQU" cjseid="12402" cjsemessagecode="1195"/>
+		<EVENT fieldvalue="TRO" cjseid="12403" cjsemessagecode="1196"/>
+		<EVENT fieldvalue="DIRDIS" cjseid="12404" cjsemessagecode="1197"/>
+		<EVENT fieldvalue="FOOTRES" cjseid="12405" cjsemessagecode="1198"/>
+		<EVENT fieldvalue="FOOTBAN" cjseid="12406" cjsemessagecode="1198"/>
+		<EVENT fieldvalue="LICPREM" cjseid="12407" cjsemessagecode="1199"/>
+		<EVENT fieldvalue="FOOTEX" cjseid="12408" cjsemessagecode="1198"/>
+		<EVENT fieldvalue="RESOR" cjseid="12409" cjsemessagecode="1200"/>
+		<EVENT fieldvalue="ROWOC" cjseid="12413" cjsemessagecode="1313"/>		
+		<EVENT fieldvalue="SEXRESO" cjseid="12410" cjsemessagecode="1200"/>
+		<EVENT fieldvalue="EXMON" cjseid="12411" cjsemessagecode="1201"/>
+		<EVENT fieldvalue="EXNOMON" cjseid="12412" cjsemessagecode="1202"/>
+		<EVENT fieldvalue="FIRCERT" cjseid="12500" cjsemessagecode="1203"/>
+		<EVENT fieldvalue="FORPCCA" cjseid="12501" cjsemessagecode="1204"/>
+		<EVENT fieldvalue="FOVPCCA" cjseid="12502" cjsemessagecode="1205"/>
+		<EVENT fieldvalue="DEPR" cjseid="12503" cjsemessagecode="1206"/>
+		<EVENT fieldvalue="FORFIRE" cjseid="12504" cjsemessagecode="1207"/>
+		<EVENT fieldvalue="FORDRUG" cjseid="12505" cjsemessagecode="1208"/>
+		<EVENT fieldvalue="FORPOA" cjseid="12506" cjsemessagecode="1209"/>
+		<EVENT fieldvalue="DTCOR" cjseid="12507" cjsemessagecode="1210"/>
+		<EVENT fieldvalue="CJCO" cjseid="12508" cjsemessagecode="1211"/>
+		<EVENT fieldvalue="FORGERY" cjseid="12509" cjsemessagecode="1212"/>
+		<EVENT fieldvalue="FOROBS" cjseid="12510" cjsemessagecode="1213"/>
+		<EVENT fieldvalue="DT94CON" cjseid="12511" cjsemessagecode="1210"/>
+		<EVENT fieldvalue="POCCON" cjseid="12512" cjsemessagecode="1215"/>
+		<EVENT fieldvalue="FORMODS" cjseid="12513" cjsemessagecode="1383"/>
+		<EVENT fieldvalue="RDEP" cjseid="12600" cjsemessagecode="1216"/>
+		<EVENT fieldvalue="RDEPD" cjseid="12601" cjsemessagecode="1216"/>
+		<EVENT fieldvalue="RDEPND" cjseid="12602" cjsemessagecode="1216"/>
+		<EVENT fieldvalue="NOBSS" cjseid="12700" cjsemessagecode="1217"/>
+		<EVENT fieldvalue="ORDVAR" cjseid="12701" cjsemessagecode="1218"/>
+		<EVENT fieldvalue="USS" cjseid="12702" cjsemessagecode="1219"/>
+		<EVENT fieldvalue="ISS" cjseid="12703" cjsemessagecode="1220"/>
+		<EVENT fieldvalue="SSSOC" cjseid="12704" cjsemessagecode="1221"/>
+		<EVENT fieldvalue="SSSOD" cjseid="12705" cjsemessagecode="1222"/>
+		<EVENT fieldvalue="NORDB" cjseid="12706" cjsemessagecode="1223"/>
+		<EVENT fieldvalue="SODIS" cjseid="12707" cjsemessagecode="1224"/>
+		<EVENT fieldvalue="CSOREV" cjseid="12708" cjsemessagecode="1225"/>
+		<EVENT fieldvalue="PODIS" cjseid="12709" cjsemessagecode="1226"/>
+		<EVENT fieldvalue="RECTIME" cjseid="12710" cjsemessagecode="1227"/>
+		<EVENT fieldvalue="RECINST" cjseid="12711" cjsemessagecode="1227"/>
+		<EVENT fieldvalue="REMFILE" cjseid="12800" cjsemessagecode="1229"/>
+		<EVENT fieldvalue="QUASH" cjseid="12801" cjsemessagecode="1230"/>
+		<EVENT fieldvalue="UNDIS" cjseid="12802" cjsemessagecode="1231"/>
+		<EVENT fieldvalue="NSP" cjseid="12803" cjsemessagecode="1232"/>
+		<EVENT fieldvalue="REMJUV" cjseid="12804" cjsemessagecode="1233"/>
+		<EVENT fieldvalue="REMMAG" cjseid="12805" cjsemessagecode="1234"/>
+		<EVENT fieldvalue="DEFDEC" cjseid="12806" cjsemessagecode="1235"/>
+		<EVENT fieldvalue="DEFSUIC" cjseid="12807" cjsemessagecode="1235"/>
+		<EVENT fieldvalue="CERTINS" cjseid="12808" cjsemessagecode="1236"/>
+		<EVENT fieldvalue="FREE" cjseid="12809" cjsemessagecode="1237"/>
+		<EVENT fieldvalue="REMOVE" cjseid="12810" cjsemessagecode="1238"/>
+		<EVENT fieldvalue="TIMP" cjseid="12900" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TSUSP" cjseid="12901" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TORD" cjseid="12902" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TFINE" cjseid="12903" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TCOSTS" cjseid="12904" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TCOMP" cjseid="12905" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TPAY" cjseid="12906" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TPP" cjseid="12907" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="TDISQ" cjseid="12908" cjsemessagecode="1239"/>
+		<EVENT fieldvalue="DISMISS" cjseid="13000" cjsemessagecode="1240"/>
+		<EVENT fieldvalue="MISSREM" cjseid="13001" cjsemessagecode="1241"/>
+		<EVENT fieldvalue="DISCPRO" cjseid="13002" cjsemessagecode="1242"/>
+		<EVENT fieldvalue="DISCREM" cjseid="13003" cjsemessagecode="1243"/>
+		<EVENT fieldvalue="STFREE" cjseid="13004" cjsemessagecode="1244"/>
+		<EVENT fieldvalue="FINE" cjseid="12100" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="FD" cjseid="12101" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="FDTIME" cjseid="12102" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="FDINST" cjseid="12103" cjsemessagecode="1245"/>
+		<EVENT fieldvalue="PC" cjseid="12104" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTIME" cjseid="12105" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCINST" cjseid="12106" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCT" cjseid="12107" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTTIME" cjseid="12108" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTINST" cjseid="12109" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTA" cjseid="12110" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTAT" cjseid="12111" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCTAI" cjseid="12112" cjsemessagecode="1246"/>
+		<EVENT fieldvalue="PCCF" cjseid="12113" cjsemessagecode="1247"/>
+		<EVENT fieldvalue="COM" cjseid="12114" cjsemessagecode="1248"/>
+		<EVENT fieldvalue="COMTIME" cjseid="12115" cjsemessagecode="1248"/>
+		<EVENT fieldvalue="COMINST" cjseid="12116" cjsemessagecode="1248"/>
+		<EVENT fieldvalue="REWARD" cjseid="12117" cjsemessagecode="1249"/>
+		<EVENT fieldvalue="REPAR" cjseid="12118" cjsemessagecode="1250"/>
+		<EVENT fieldvalue="RESTORD" cjseid="12119" cjsemessagecode="1251"/>
+		<EVENT fieldvalue="VISUR" cjseid="12120" cjsemessagecode="1325"/>
+		<EVENT fieldvalue="CRIMCC" cjseid="12121" cjsemessagecode="1326"/>
+		<EVENT fieldvalue="SLATRO" cjseid="12122" cjsemessagecode="1327"/>
+		<EVENT fieldvalue="SLATRTP" cjseid="12123" cjsemessagecode="1328"/>
+		<EVENT fieldvalue="SLATRIN" cjseid="12124" cjsemessagecode="1329"/>
+		<EVENT fieldvalue="POPSA" cjseid="12423" cjsemessagecode="1342"/>
+		<EVENT fieldvalue="CWRKCS" cjseid="13200" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="PSACTCS" cjseid="13201" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="PACOBCS" cjseid="13202" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="PRACTCS" cjseid="13203" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="CURFCS" cjseid="13204" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="EXCARCS" cjseid="13205" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="RESRQCS" cjseid="13206" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="MHTRTCS" cjseid="13207" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="DRGRQCS" cjseid="13208" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="ALTRTCS" cjseid="13209" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="SPVRQCS" cjseid="13210" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="ATCRQCS" cjseid="13211" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="EXCURCS" cjseid="13212" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="AAMRCS" cjseid="13819" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="FTPRCS" cjseid="13213" cjsemessagecode="1368"/>
+		<EVENT fieldvalue="CUSMSEC" cjseid="13300" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="CUSMCUR" cjseid="13301" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="CWRKSS" cjseid="13302" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="PSACTSS" cjseid="13303" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="PACOBSS" cjseid="13304" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="PRACTSS" cjseid="13305" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="CURFSS" cjseid="13306" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="EXCARSS" cjseid="13307" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="RESRQSS" cjseid="13308" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="MHTRTSS" cjseid="13309" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="DRGRQSS" cjseid="13310" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="ALTRTSS" cjseid="13311" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="SPVRQSS" cjseid="13312" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="ATCRQSS" cjseid="13313" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="AAMRSS" cjseid="13818" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="EXCURSS" cjseid="13314" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="TMCS" cjseid="13816" cjsemessagecode="1301"/>
+		<EVENT fieldvalue="TMSS" cjseid="13817" cjsemessagecode="1302"/>
+		<EVENT fieldvalue="FTPRSS" cjseid="13315" cjsemessagecode="1369"/>
+		<EVENT fieldvalue="CUSMSSE" cjseid="13316" cjsemessagecode="1370"/>
+		<EVENT fieldvalue="EARLREL" cjseid="13400" cjsemessagecode="1303"/>
+		<EVENT fieldvalue="DOFU18" cjseid="13500" cjsemessagecode="1304"/>
+		<EVENT fieldvalue="DOFO18" cjseid="13501" cjsemessagecode="1304"/>
+		<EVENT fieldvalue="EXDO18" cjseid="13503" cjsemessagecode="1371"/>
+		<EVENT fieldvalue="EXAO18" cjseid="13504" cjsemessagecode="1372"/>
+		<EVENT fieldvalue="EXDU18" cjseid="13505" cjsemessagecode="1373"/>
+		<EVENT fieldvalue="EXAU18" cjseid="13506" cjsemessagecode="1374"/>
+		<EVENT fieldvalue="REHARCS" cjseid="13214" cjsemessagecode="1377"/>
+		<EVENT fieldvalue="REHARSS" cjseid="13317" cjsemessagecode="1378"/>
+		<EVENT fieldvalue="CRIBO" cjseid="11812" cjsemessagecode="1379"/>
+		<EVENT fieldvalue="SHPO" cjseid="12416" cjsemessagecode="1380"/>
+		<EVENT fieldvalue="ISHPO" cjseid="12417" cjsemessagecode="1381"/>
+		<EVENT fieldvalue="BARR" cjseid="12418" cjsemessagecode="1382"/>
+		<EVENT fieldvalue="STPO" cjseid="12419" cjsemessagecode="1384"/>
+		<EVENT fieldvalue="ISTPO" cjseid="12420" cjsemessagecode="1385"/>
+		<EVENT fieldvalue="PSACTYR" cjseid="13800" cjsemessagecode="1450"/>
+		<EVENT fieldvalue="SPVRQYR" cjseid="13801" cjsemessagecode="1451"/>
+		<EVENT fieldvalue="CWRKYR" cjseid="13802" cjsemessagecode="1452"/>
+		<EVENT fieldvalue="PACOYR" cjseid="13803" cjsemessagecode="1453"/>
+		<EVENT fieldvalue="ATCRQYR" cjseid="13804" cjsemessagecode="1454"/>
+		<EVENT fieldvalue="PRACTYR" cjseid="13805" cjsemessagecode="1455"/>
+		<EVENT fieldvalue="CURFYR" cjseid="13806" cjsemessagecode="1456"/>
+		<EVENT fieldvalue="EXCARYR" cjseid="13807" cjsemessagecode="1457"/>
+		<EVENT fieldvalue="RESRQYR" cjseid="13808" cjsemessagecode="1458"/>
+		<EVENT fieldvalue="LARYR" cjseid="13809" cjsemessagecode="1459"/>
+		<EVENT fieldvalue="FOSTYR" cjseid="13810" cjsemessagecode="1460"/>
+		<EVENT fieldvalue="MHTRTYR" cjseid="13811" cjsemessagecode="1461"/>
+		<EVENT fieldvalue="DRGRQYR" cjseid="13812" cjsemessagecode="1462"/>
+		<EVENT fieldvalue="DTYR" cjseid="13813" cjsemessagecode="1463"/>
+		<EVENT fieldvalue="ISTYR" cjseid="13814" cjsemessagecode="1464"/>
+		<EVENT fieldvalue="EDUCYR" cjseid="13815" cjsemessagecode="1465"/>
+		<EVENT fieldvalue="SCPO" cjseid="12421" cjsemessagecode="1390"/>
+		<EVENT fieldvalue="DFL" cjseid="11529" cjsemessagecode="1391"/>
+		<EVENT fieldvalue="FGMPO" cjseid="12422" cjsemessagecode="1392"/>
+		<EVENT fieldvalue="STS" cjseid="11530" cjsemessagecode="1393"/>
+		<EVENT fieldvalue="DETTO" cjseid="11531" cjsemessagecode="1394"/>
+		<EVENT fieldvalue="EXD1820" cjseid="13507" cjsemessagecode="1395"/>
+		<EVENT fieldvalue="EXDO21" cjseid="13508" cjsemessagecode="1396"/>
+		<EVENT fieldvalue="STS1821" cjseid="11532" cjsemessagecode="1397"/>
+		<EVENT fieldvalue="ALTCT" cjseid="12811" cjsemessagecode="1419"/>
+		<EVENT fieldvalue="JDIS" cjseid="12812" cjsemessagecode="1420"/>
+		<EVENT fieldvalue="DISCH" cjseid="12813" cjsemessagecode="1421"/>
+		<EVENT fieldvalue="NGDIR" cjseid="12814" cjsemessagecode="1422"/>
+		<EVENT fieldvalue="NGINS" cjseid="12815" cjsemessagecode="1423"/>
+		<EVENT fieldvalue="NOEV" cjseid="12816" cjsemessagecode="1424"/>
+		<EVENT fieldvalue="NOEVS" cjseid="12817" cjsemessagecode="1425"/>
+		<EVENT fieldvalue="UTA" cjseid="12818" cjsemessagecode="1426"/>
+		<EVENT fieldvalue="DTCO" cjseid="12514" cjsemessagecode="1398"/>
+		<EVENT fieldvalue="IMPMESW" cjseid="11533" cjsemessagecode="1399"/>
+		<EVENT fieldvalue="DLFMESW" cjseid="11534" cjsemessagecode="1404"/>
+		<EVENT fieldvalue="EWMYR" cjseid="13820" cjsemessagecode="1486"/>
+		<EVENT fieldvalue="ACTYR" cjseid="13821" cjsemessagecode="1487"/>
+		<EVENT fieldvalue="SVRO" cjseid="13822" cjsemessagecode="1488"/>
+		<EVENT fieldvalue="SDPOC" cjseid="13823" cjsemessagecode="1494"/>
+		<EVENT fieldvalue="SDPOV" cjseid="13824" cjsemessagecode="1495"/>
+		<EVENT fieldvalue="SDPOD" cjseid="13825" cjsemessagecode="1496"/>
+		<EVENT fieldvalue="SDPOR" cjseid="13826" cjsemessagecode="1497"/>
+		<EVENT fieldvalue="SFOP" cjseid="13827" cjsemessagecode="1498"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40753" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/E40753_Ref_Disposal_Code/text()"/>
+		<EVENT fieldvalue="IMP" cjseid="11500" cjsemessagecode="1126DL"/>
+		<EVENT fieldvalue="YOI" cjseid="11501" cjsemessagecode="1127DL"/>
+		<EVENT fieldvalue="IMPMYO" cjseid="11502" cjsemessagecode="1128DL"/>
+		<EVENT fieldvalue="CSSP" cjseid="11503" cjsemessagecode="1129DL"/>
+		<EVENT fieldvalue="LIFE" cjseid="11504" cjsemessagecode="1130DL"/>
+		<EVENT fieldvalue="LIMM" cjseid="11505" cjsemessagecode="1130DL"/>
+		<EVENT fieldvalue="CTFL" cjseid="11506" cjsemessagecode="1132DL"/>
+		<EVENT fieldvalue="LIFESEC" cjseid="11507" cjsemessagecode="1130DL"/>
+		<EVENT fieldvalue="LIFESYO" cjseid="11508" cjsemessagecode="1134DL"/>
+		<EVENT fieldvalue="DWLT" cjseid="11509" cjsemessagecode="1135DL"/>
+		<EVENT fieldvalue="DET" cjseid="11510" cjsemessagecode="1136DL"/>
+		<EVENT fieldvalue="DTO" cjseid="11511" cjsemessagecode="1137DL"/>
+		<EVENT fieldvalue="ODIMP" cjseid="11512" cjsemessagecode="1138DL"/>
+		<EVENT fieldvalue="IMPMIN" cjseid="11513" cjsemessagecode="1139DL"/>
+		<EVENT fieldvalue="IMPX" cjseid="11514" cjsemessagecode="1140DL"/>
+		<EVENT fieldvalue="CUSTEXT" cjseid="11515" cjsemessagecode="1141DL"/>
+		<EVENT fieldvalue="PARLIC" cjseid="11516" cjsemessagecode="1142DL"/>
+		<EVENT fieldvalue="HOLIDIR" cjseid="11517" cjsemessagecode="1143DL"/>
+		<EVENT fieldvalue="SS" cjseid="11518" cjsemessagecode="1144DL"/>
+		<EVENT fieldvalue="PASU" cjseid="11519" cjsemessagecode="1145DL"/>
+		<EVENT fieldvalue="SSSO" cjseid="11520" cjsemessagecode="1146DL"/>
+		<EVENT fieldvalue="INIMP" cjseid="11521" cjsemessagecode="1305DL"/>
+		<EVENT fieldvalue="INDET" cjseid="11522" cjsemessagecode="1306DL"/>
+		<EVENT fieldvalue="LIFELIS" cjseid="11523" cjsemessagecode="1375DL"/>
+		<EVENT fieldvalue="LIFELYO" cjseid="11524" cjsemessagecode="1376DL"/>
+		<EVENT fieldvalue="IMPE" cjseid="11525" cjsemessagecode="1386DL"/>
+		<EVENT fieldvalue="IMPMYOE" cjseid="11526" cjsemessagecode="1387DL"/>
+		<EVENT fieldvalue="IMPMINE" cjseid="11527" cjsemessagecode="1388DL"/>
+		<EVENT fieldvalue="YOIE" cjseid="11528" cjsemessagecode="1389DL"/>
+		<EVENT fieldvalue="CPO" cjseid="11600" cjsemessagecode="1147DL"/>
+		<EVENT fieldvalue="CPODAR" cjseid="11601" cjsemessagecode="1147DL"/>
+		<EVENT fieldvalue="CROG" cjseid="11602" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRCR" cjseid="11603" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRHR" cjseid="11604" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRNH" cjseid="11605" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRDC" cjseid="11606" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRRA" cjseid="11607" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRDA" cjseid="11608" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CROCUR" cjseid="11609" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CRODAR" cjseid="11610" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CROEXC" cjseid="11611" cjsemessagecode="1290DL"/>
+		<EVENT fieldvalue="CPROG" cjseid="11612" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROR" cjseid="11613" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRHR" cjseid="11614" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRNH" cjseid="11615" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROC" cjseid="11616" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROA" cjseid="11617" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPROD" cjseid="11618" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRCUR" cjseid="11619" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPRDAR" cjseid="11620" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPREXC" cjseid="11621" cjsemessagecode="1148DL"/>
+		<EVENT fieldvalue="CPDROG" cjseid="11622" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROR" cjseid="11623" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRHR" cjseid="11624" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRNH" cjseid="11625" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROC" cjseid="11626" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROA" cjseid="11627" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDROD" cjseid="11628" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRCUR" cjseid="11629" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDREXC" cjseid="11630" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="CPDRDAR" cjseid="11631" cjsemessagecode="1149DL"/>
+		<EVENT fieldvalue="SOCDS" cjseid="11700" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SOCDO" cjseid="11701" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SORR" cjseid="11702" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SORFA" cjseid="11703" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SOPCCA" cjseid="11704" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SOSA" cjseid="11705" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="SONR" cjseid="11706" cjsemessagecode="1150DL"/>
+		<EVENT fieldvalue="ATCO" cjseid="11707" cjsemessagecode="1151DL"/>
+		<EVENT fieldvalue="APO" cjseid="11708" cjsemessagecode="1152DL"/>
+		<EVENT fieldvalue="PAREN" cjseid="11709" cjsemessagecode="1153DL"/>
+		<EVENT fieldvalue="CONEM" cjseid="11800" cjsemessagecode="1154DL"/>
+		<EVENT fieldvalue="COWEM" cjseid="11801" cjsemessagecode="1155DL"/>
+		<EVENT fieldvalue="ABDIS" cjseid="11802" cjsemessagecode="1156DL"/>
+		<EVENT fieldvalue="CD" cjseid="11803" cjsemessagecode="1157DL"/>
+		<EVENT fieldvalue="DISWP" cjseid="11804" cjsemessagecode="1158DL"/>
+		<EVENT fieldvalue="BOCOND" cjseid="11805" cjsemessagecode="1159DL"/>
+		<EVENT fieldvalue="BOGB" cjseid="11806" cjsemessagecode="1160DL"/>
+		<EVENT fieldvalue="BOJDG" cjseid="11807" cjsemessagecode="1161DL"/>
+		<EVENT fieldvalue="BOJDGD" cjseid="11808" cjsemessagecode="1162DL"/>
+		<EVENT fieldvalue="PGBO" cjseid="11809" cjsemessagecode="1163DL"/>
+		<EVENT fieldvalue="ASBOSEN" cjseid="11810" cjsemessagecode="1164DL"/>
+		<EVENT fieldvalue="ASBOCD" cjseid="11811" cjsemessagecode="1165DL"/>
+		<EVENT fieldvalue="DTTO" cjseid="11900" cjsemessagecode="1166DL"/>
+		<EVENT fieldvalue="DAO" cjseid="11901" cjsemessagecode="1167DL"/>
+		<EVENT fieldvalue="PREDTO" cjseid="11902" cjsemessagecode="1168DL"/>
+		<EVENT fieldvalue="HOSPOR" cjseid="12000" cjsemessagecode="1169DL"/>
+		<EVENT fieldvalue="INTHOSP" cjseid="12001" cjsemessagecode="1170DL"/>
+		<EVENT fieldvalue="REMMENT" cjseid="12002" cjsemessagecode="1171DL"/>
+		<EVENT fieldvalue="REMTREA" cjseid="12003" cjsemessagecode="1172DL"/>
+		<EVENT fieldvalue="CO" cjseid="12004" cjsemessagecode="1173DL"/>
+		<EVENT fieldvalue="COCC" cjseid="12005" cjsemessagecode="1174DL"/>
+		<EVENT fieldvalue="CC" cjseid="12006" cjsemessagecode="1175DL"/>
+		<EVENT fieldvalue="GOAUTH" cjseid="12007" cjsemessagecode="1176DL"/>
+		<EVENT fieldvalue="GOREL" cjseid="12008" cjsemessagecode="1177DL"/>
+		<EVENT fieldvalue="GOOTH" cjseid="12009" cjsemessagecode="1178DL"/>
+		<EVENT fieldvalue="RESNL" cjseid="12010" cjsemessagecode="1179DL"/>
+		<EVENT fieldvalue="RESL" cjseid="12011" cjsemessagecode="1180DL"/>
+		<EVENT fieldvalue="SFORO" cjseid="12012" cjsemessagecode="1181DL"/>
+		<EVENT fieldvalue="EXPO" cjseid="12200" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="EXPD" cjseid="12201" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="EXPTIME" cjseid="12202" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="EXPINST" cjseid="12203" cjsemessagecode="1182DL"/>
+		<EVENT fieldvalue="DCO" cjseid="12204" cjsemessagecode="1183DL"/>
+		<EVENT fieldvalue="DCOTC" cjseid="12205" cjsemessagecode="1183DL"/>
+		<EVENT fieldvalue="DCOTCM" cjseid="12206" cjsemessagecode="1183DL"/>
+		<EVENT fieldvalue="RDCO" cjseid="12207" cjsemessagecode="1184DL"/>
+		<EVENT fieldvalue="NRDCO" cjseid="12208" cjsemessagecode="1185DL"/>
+		<EVENT fieldvalue="LACPD" cjseid="12209" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="LACREM" cjseid="12210" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="LACREF" cjseid="12211" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="LACRET" cjseid="12212" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="AREM" cjseid="12213" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="APAID" cjseid="12214" cjsemessagecode="1186DL"/>
+		<EVENT fieldvalue="FORSEC" cjseid="12215" cjsemessagecode="1187DL"/>
+		<EVENT fieldvalue="DISQ" cjseid="12300" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DISTEST" cjseid="12301" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DISTOA" cjseid="12302" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DISPCCA" cjseid="12303" cjsemessagecode="1188DL"/>
+		<EVENT fieldvalue="DDSPAS" cjseid="12309" cjsemessagecode="1366DL"/>
+		<EVENT fieldvalue="DISREM" cjseid="12310" cjsemessagecode="1367DL"/>
+		<EVENT fieldvalue="LEND" cjseid="12304" cjsemessagecode="1189DL"/>
+		<EVENT fieldvalue="LENDPP" cjseid="12305" cjsemessagecode="1190DL"/>
+		<EVENT fieldvalue="NOTLA" cjseid="12306" cjsemessagecode="1191DL"/>
+		<EVENT fieldvalue="MITCIRC" cjseid="12307" cjsemessagecode="1192DL"/>
+		<EVENT fieldvalue="SPECREA" cjseid="12308" cjsemessagecode="1192DL"/>
+		<EVENT fieldvalue="ADISQU" cjseid="12400" cjsemessagecode="1193DL"/>
+		<EVENT fieldvalue="JDISQU" cjseid="12401" cjsemessagecode="1194DL"/>
+		<EVENT fieldvalue="NODISQU" cjseid="12402" cjsemessagecode="1195DL"/>
+		<EVENT fieldvalue="TRO" cjseid="12403" cjsemessagecode="1196DL"/>
+		<EVENT fieldvalue="DIRDIS" cjseid="12404" cjsemessagecode="1197DL"/>
+		<EVENT fieldvalue="FOOTRES" cjseid="12405" cjsemessagecode="1198DL"/>
+		<EVENT fieldvalue="FOOTBAN" cjseid="12406" cjsemessagecode="1198DL"/>
+		<EVENT fieldvalue="LICPREM" cjseid="12407" cjsemessagecode="1199DL"/>
+		<EVENT fieldvalue="FOOTEX" cjseid="12408" cjsemessagecode="1198DL"/>
+		<EVENT fieldvalue="RESOR" cjseid="12409" cjsemessagecode="1200DL"/>
+		<EVENT fieldvalue="ROWOC" cjseid="12413" cjsemessagecode="1313DL"/>		
+		<EVENT fieldvalue="SEXRESO" cjseid="12410" cjsemessagecode="1200DL"/>
+		<EVENT fieldvalue="EXMON" cjseid="12411" cjsemessagecode="1201DL"/>
+		<EVENT fieldvalue="EXNOMON" cjseid="12412" cjsemessagecode="1202DL"/>
+		<EVENT fieldvalue="FIRCERT" cjseid="12500" cjsemessagecode="1203DL"/>
+		<EVENT fieldvalue="FORPCCA" cjseid="12501" cjsemessagecode="1204DL"/>
+		<EVENT fieldvalue="FOVPCCA" cjseid="12502" cjsemessagecode="1205DL"/>
+		<EVENT fieldvalue="DEPR" cjseid="12503" cjsemessagecode="1206DL"/>
+		<EVENT fieldvalue="FORFIRE" cjseid="12504" cjsemessagecode="1207DL"/>
+		<EVENT fieldvalue="FORDRUG" cjseid="12505" cjsemessagecode="1208DL"/>
+		<EVENT fieldvalue="FORPOA" cjseid="12506" cjsemessagecode="1209DL"/>
+		<EVENT fieldvalue="DTCOR" cjseid="12507" cjsemessagecode="1210DL"/>
+		<EVENT fieldvalue="CJCO" cjseid="12508" cjsemessagecode="1211DL"/>
+		<EVENT fieldvalue="FORGERY" cjseid="12509" cjsemessagecode="1212DL"/>
+		<EVENT fieldvalue="FOROBS" cjseid="12510" cjsemessagecode="1213DL"/>
+		<EVENT fieldvalue="DT94CON" cjseid="12511" cjsemessagecode="1210DL"/>
+		<EVENT fieldvalue="POCCON" cjseid="12512" cjsemessagecode="1215DL"/>
+		<EVENT fieldvalue="FORMODS" cjseid="12513" cjsemessagecode="1383DL"/>
+		<EVENT fieldvalue="RDEP" cjseid="12600" cjsemessagecode="1216DL"/>
+		<EVENT fieldvalue="RDEPD" cjseid="12601" cjsemessagecode="1216DL"/>
+		<EVENT fieldvalue="RDEPND" cjseid="12602" cjsemessagecode="1216DL"/>
+		<EVENT fieldvalue="NOBSS" cjseid="12700" cjsemessagecode="1217DL"/>
+		<EVENT fieldvalue="ORDVAR" cjseid="12701" cjsemessagecode="1218DL"/>
+		<EVENT fieldvalue="USS" cjseid="12702" cjsemessagecode="1219DL"/>
+		<EVENT fieldvalue="ISS" cjseid="12703" cjsemessagecode="1220DL"/>
+		<EVENT fieldvalue="SSSOC" cjseid="12704" cjsemessagecode="1221DL"/>
+		<EVENT fieldvalue="SSSOD" cjseid="12705" cjsemessagecode="1222DL"/>
+		<EVENT fieldvalue="NORDB" cjseid="12706" cjsemessagecode="1223DL"/>
+		<EVENT fieldvalue="SODIS" cjseid="12707" cjsemessagecode="1224DL"/>
+		<EVENT fieldvalue="CSOREV" cjseid="12708" cjsemessagecode="1225DL"/>
+		<EVENT fieldvalue="PODIS" cjseid="12709" cjsemessagecode="1226DL"/>
+		<EVENT fieldvalue="RECTIME" cjseid="12710" cjsemessagecode="1227DL"/>
+		<EVENT fieldvalue="RECINST" cjseid="12711" cjsemessagecode="1227DL"/>
+		<EVENT fieldvalue="REMFILE" cjseid="12800" cjsemessagecode="1229DL"/>
+		<EVENT fieldvalue="QUASH" cjseid="12801" cjsemessagecode="1230DL"/>
+		<EVENT fieldvalue="UNDIS" cjseid="12802" cjsemessagecode="1231DL"/>
+		<EVENT fieldvalue="NSP" cjseid="12803" cjsemessagecode="1232DL"/>
+		<EVENT fieldvalue="REMJUV" cjseid="12804" cjsemessagecode="1233DL"/>
+		<EVENT fieldvalue="REMMAG" cjseid="12805" cjsemessagecode="1234DL"/>
+		<EVENT fieldvalue="DEFDEC" cjseid="12806" cjsemessagecode="1235DL"/>
+		<EVENT fieldvalue="DEFSUIC" cjseid="12807" cjsemessagecode="1235DL"/>
+		<EVENT fieldvalue="CERTINS" cjseid="12808" cjsemessagecode="1236DL"/>
+		<EVENT fieldvalue="FREE" cjseid="12809" cjsemessagecode="1237DL"/>
+		<EVENT fieldvalue="REMOVE" cjseid="12810" cjsemessagecode="1238DL"/>
+		<EVENT fieldvalue="TIMP" cjseid="12900" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TSUSP" cjseid="12901" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TORD" cjseid="12902" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TFINE" cjseid="12903" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TCOSTS" cjseid="12904" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TCOMP" cjseid="12905" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TPAY" cjseid="12906" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TPP" cjseid="12907" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="TDISQ" cjseid="12908" cjsemessagecode="1239DL"/>
+		<EVENT fieldvalue="DISMISS" cjseid="13000" cjsemessagecode="1240DL"/>
+		<EVENT fieldvalue="MISSREM" cjseid="13001" cjsemessagecode="1241DL"/>
+		<EVENT fieldvalue="DISCPRO" cjseid="13002" cjsemessagecode="1242DL"/>
+		<EVENT fieldvalue="DISCREM" cjseid="13003" cjsemessagecode="1243DL"/>
+		<EVENT fieldvalue="STFREE" cjseid="13004" cjsemessagecode="1244DL"/>
+		<EVENT fieldvalue="FINE" cjseid="12100" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="FD" cjseid="12101" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="FDTIME" cjseid="12102" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="FDINST" cjseid="12103" cjsemessagecode="1245DL"/>
+		<EVENT fieldvalue="PC" cjseid="12104" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTIME" cjseid="12105" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCINST" cjseid="12106" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCT" cjseid="12107" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTTIME" cjseid="12108" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTINST" cjseid="12109" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTA" cjseid="12110" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTAT" cjseid="12111" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCTAI" cjseid="12112" cjsemessagecode="1246DL"/>
+		<EVENT fieldvalue="PCCF" cjseid="12113" cjsemessagecode="1247DL"/>
+		<EVENT fieldvalue="COM" cjseid="12114" cjsemessagecode="1248DL"/>
+		<EVENT fieldvalue="COMTIME" cjseid="12115" cjsemessagecode="1248DL"/>
+		<EVENT fieldvalue="COMINST" cjseid="12116" cjsemessagecode="1248DL"/>
+		<EVENT fieldvalue="REWARD" cjseid="12117" cjsemessagecode="1249DL"/>
+		<EVENT fieldvalue="REPAR" cjseid="12118" cjsemessagecode="1250DL"/>
+		<EVENT fieldvalue="RESTORD" cjseid="12119" cjsemessagecode="1251DL"/>
+		<EVENT fieldvalue="VISUR" cjseid="12120" cjsemessagecode="1325DL"/>
+		<EVENT fieldvalue="CRIMCC" cjseid="12121" cjsemessagecode="1326DL"/>
+		<EVENT fieldvalue="SLATRO" cjseid="12122" cjsemessagecode="1327DL"/>
+		<EVENT fieldvalue="SLATRTP" cjseid="12123" cjsemessagecode="1328DL"/>
+		<EVENT fieldvalue="SLATRIN" cjseid="12124" cjsemessagecode="1329DL"/>
+		<EVENT fieldvalue="POPSA" cjseid="12423" cjsemessagecode="1342DL"/>
+		<EVENT fieldvalue="CWRKCS" cjseid="13200" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="PSACTCS" cjseid="13201" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="PACOBCS" cjseid="13202" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="PRACTCS" cjseid="13203" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="CURFCS" cjseid="13204" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="EXCARCS" cjseid="13205" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="RESRQCS" cjseid="13206" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="MHTRTCS" cjseid="13207" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="DRGRQCS" cjseid="13208" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="ALTRTCS" cjseid="13209" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="SPVRQCS" cjseid="13210" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="ATCRQCS" cjseid="13211" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="EXCURCS" cjseid="13212" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="AAMRCS" cjseid="13819" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="FTPRCS" cjseid="13213" cjsemessagecode="1368DL"/>
+		<EVENT fieldvalue="CUSMSEC" cjseid="13300" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="CUSMCUR" cjseid="13301" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="CWRKSS" cjseid="13302" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="PSACTSS" cjseid="13303" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="PACOBSS" cjseid="13304" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="PRACTSS" cjseid="13305" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="CURFSS" cjseid="13306" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="EXCARSS" cjseid="13307" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="RESRQSS" cjseid="13308" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="MHTRTSS" cjseid="13309" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="DRGRQSS" cjseid="13310" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="ALTRTSS" cjseid="13311" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="SPVRQSS" cjseid="13312" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="ATCRQSS" cjseid="13313" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="AAMRSS" cjseid="13818" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="EXCURSS" cjseid="13314" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="TMCS" cjseid="13816" cjsemessagecode="1301DL"/>
+		<EVENT fieldvalue="TMSS" cjseid="13817" cjsemessagecode="1302DL"/>
+		<EVENT fieldvalue="FTPRSS" cjseid="13315" cjsemessagecode="1369DL"/>
+		<EVENT fieldvalue="CUSMSSE" cjseid="13316" cjsemessagecode="1370DL"/>
+		<EVENT fieldvalue="EARLREL" cjseid="13400" cjsemessagecode="1303DL"/>
+		<EVENT fieldvalue="DOFU18" cjseid="13500" cjsemessagecode="1304DL"/>
+		<EVENT fieldvalue="DOFO18" cjseid="13501" cjsemessagecode="1304DL"/>
+		<EVENT fieldvalue="EXDO18" cjseid="13503" cjsemessagecode="1371DL"/>
+		<EVENT fieldvalue="EXAO18" cjseid="13504" cjsemessagecode="1372DL"/>
+		<EVENT fieldvalue="EXDU18" cjseid="13505" cjsemessagecode="1373DL"/>
+		<EVENT fieldvalue="EXAU18" cjseid="13506" cjsemessagecode="1374DL"/>
+		<EVENT fieldvalue="REHARCS" cjseid="13214" cjsemessagecode="1377DL"/>
+		<EVENT fieldvalue="REHARSS" cjseid="13317" cjsemessagecode="1378DL"/>
+		<EVENT fieldvalue="CRIBO" cjseid="11812" cjsemessagecode="1379DL"/>
+		<EVENT fieldvalue="SHPO" cjseid="12416" cjsemessagecode="1380DL"/>
+		<EVENT fieldvalue="ISHPO" cjseid="12417" cjsemessagecode="1381DL"/>
+		<EVENT fieldvalue="BARR" cjseid="12418" cjsemessagecode="1382DL"/>
+		<EVENT fieldvalue="STPO" cjseid="12419" cjsemessagecode="1384DL"/>
+		<EVENT fieldvalue="ISTPO" cjseid="12420" cjsemessagecode="1385DL"/>
+		<EVENT fieldvalue="PSACTYR" cjseid="13800" cjsemessagecode="1450DL"/>
+		<EVENT fieldvalue="SPVRQYR" cjseid="13801" cjsemessagecode="1451DL"/>
+		<EVENT fieldvalue="CWRKYR" cjseid="13802" cjsemessagecode="1452DL"/>
+		<EVENT fieldvalue="PACOYR" cjseid="13803" cjsemessagecode="1453DL"/>
+		<EVENT fieldvalue="ATCRQYR" cjseid="13804" cjsemessagecode="1454DL"/>
+		<EVENT fieldvalue="PRACTYR" cjseid="13805" cjsemessagecode="1455DL"/>
+		<EVENT fieldvalue="CURFYR" cjseid="13806" cjsemessagecode="1456DL"/>
+		<EVENT fieldvalue="EXCARYR" cjseid="13807" cjsemessagecode="1457DL"/>
+		<EVENT fieldvalue="RESRQYR" cjseid="13808" cjsemessagecode="1458DL"/>
+		<EVENT fieldvalue="LARYR" cjseid="13809" cjsemessagecode="1459DL"/>
+		<EVENT fieldvalue="FOSTYR" cjseid="13810" cjsemessagecode="1460DL"/>
+		<EVENT fieldvalue="MHTRTYR" cjseid="13811" cjsemessagecode="1461DL"/>
+		<EVENT fieldvalue="DRGRQYR" cjseid="13812" cjsemessagecode="1462DL"/>
+		<EVENT fieldvalue="DTYR" cjseid="13813" cjsemessagecode="1463DL"/>
+		<EVENT fieldvalue="ISTYR" cjseid="13814" cjsemessagecode="1464DL"/>
+		<EVENT fieldvalue="EDUCYR" cjseid="13815" cjsemessagecode="1465DL"/>
+		<EVENT fieldvalue="SCPO" cjseid="12421" cjsemessagecode="1390DL"/>
+		<EVENT fieldvalue="DFL" cjseid="11529" cjsemessagecode="1391DL"/>
+		<EVENT fieldvalue="FGMPO" cjseid="12422" cjsemessagecode="1392DL"/>
+		<EVENT fieldvalue="STS" cjseid="11530" cjsemessagecode="1393DL"/>
+		<EVENT fieldvalue="DETTO" cjseid="11531" cjsemessagecode="1394DL"/>
+		<EVENT fieldvalue="EXD1820" cjseid="13507" cjsemessagecode="1395DL"/>
+		<EVENT fieldvalue="EXDO21" cjseid="13508" cjsemessagecode="1396DL"/>
+		<EVENT fieldvalue="STS1821" cjseid="11532" cjsemessagecode="1397DL"/>
+		<EVENT fieldvalue="ALTCT" cjseid="12811" cjsemessagecode="1419DL"/>
+		<EVENT fieldvalue="JDIS" cjseid="12812" cjsemessagecode="1420DL"/>
+		<EVENT fieldvalue="DISCH" cjseid="12813" cjsemessagecode="1421DL"/>
+		<EVENT fieldvalue="NGDIR" cjseid="12814" cjsemessagecode="1422DL"/>
+		<EVENT fieldvalue="NGINS" cjseid="12815" cjsemessagecode="1423DL"/>
+		<EVENT fieldvalue="NOEV" cjseid="12816" cjsemessagecode="1424DL"/>
+		<EVENT fieldvalue="NOEVS" cjseid="12817" cjsemessagecode="1425DL"/>
+		<EVENT fieldvalue="UTA" cjseid="12818" cjsemessagecode="1426DL"/>
+		<EVENT fieldvalue="DTCO" cjseid="12514" cjsemessagecode="1398DL"/>
+		<EVENT fieldvalue="IMPMESW" cjseid="11533" cjsemessagecode="1399DL"/>
+		<EVENT fieldvalue="DLFMESW" cjseid="11534" cjsemessagecode="1404DL"/>
+		<EVENT fieldvalue="EWMYR" cjseid="13820" cjsemessagecode="1486DL"/>
+		<EVENT fieldvalue="ACTYR" cjseid="13821" cjsemessagecode="1487DL"/>
+		<EVENT fieldvalue="SVRO" cjseid="13822" cjsemessagecode="1488DL"/>
+		<EVENT fieldvalue="SDPOC" cjseid="13823" cjsemessagecode="1494DL"/>
+		<EVENT fieldvalue="SDPOV" cjseid="13824" cjsemessagecode="1495DL"/>
+		<EVENT fieldvalue="SDPOD" cjseid="13825" cjsemessagecode="1496DL"/>
+		<EVENT fieldvalue="SDPOR" cjseid="13826" cjsemessagecode="1497DL"/>
+		<EVENT fieldvalue="SFOP" cjseid="13827" cjsemessagecode="1498DL"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40754" level="CRN" type="ONETOONE">
+		<EVENT cjseid="13005" cjsemessagecode="1252"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40755" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="13005" cjsemessagecode="1252DL"/>
+	</INCOMING_EVENT>
+	<!--CCN1263-->
+	<INCOMING_EVENT xhibitid="40756" level="CRN" type="ONETOONE">
+		<EVENT cjseid="11420" cjsemessagecode="1296"/>
+	</INCOMING_EVENT>
+	<!--end-->
+	<INCOMING_EVENT xhibitid="40790" level="DEFENDANT" type="ONETOONE">
+		<EVENT cjseid="13101" cjsemessagecode="1294"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40791" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/defendant_deportationReason/text()"/>
+		<EVENT fieldvalue="custodial" cjseid="13502" cjsemessagecode="1295"/>
+		<EVENT fieldvalue="suspended" cjseid="13502" cjsemessagecode="1309"/>
+		<EVENT fieldvalue="recommendedDeportation" cjseid="13502" cjsemessagecode="1310"/>
+		<EVENT fieldvalue="seriousDrugOffence" cjseid="13502" cjsemessagecode="1311"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="40792" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/defendant_hateCrimeReason/text()"/>
+		<EVENT fieldvalue="general_disability" cjseid="13510" cjsemessagecode="1410"/>
+		<EVENT fieldvalue="victim_disability" cjseid="13510" cjsemessagecode="1411"/>
+		<EVENT fieldvalue="racially_aggravated" cjseid="13510" cjsemessagecode="1412"/>
+		<EVENT fieldvalue="religiously_aggravated" cjseid="13510" cjsemessagecode="1413"/>
+		<EVENT fieldvalue="racially_and_religiously_aggravated" cjseid="13510" cjsemessagecode="1414"/>
+		<EVENT fieldvalue="general_sex" cjseid="13510" cjsemessagecode="1415"/>
+		<EVENT fieldvalue="victim_sex" cjseid="13510" cjsemessagecode="1416"/>
+		<EVENT fieldvalue="general_transgender" cjseid="13510" cjsemessagecode="1417"/>
+		<EVENT fieldvalue="victim_transgender" cjseid="13510" cjsemessagecode="1418"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="60101" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Ref_Plea_Code/text()"/>
+		<EVENT fieldvalue="AA" cjseid="11300" cjsemessagecode="1029"/>
+		<EVENT fieldvalue="AC" cjseid="11301" cjsemessagecode="1030"/>
+		<EVENT fieldvalue="CPG" cjseid="11302" cjsemessagecode="1031"/>
+		<EVENT fieldvalue="CPGJ" cjseid="11303" cjsemessagecode="1032"/>
+		<EVENT fieldvalue="CPNG" cjseid="11304" cjsemessagecode="1033"/>
+		<EVENT fieldvalue="G" cjseid="11305" cjsemessagecode="1034"/>
+		<EVENT fieldvalue="NG" cjseid="11308" cjsemessagecode="1035"/>
+		<EVENT fieldvalue="NPT" cjseid="11309" cjsemessagecode="1036"/>
+		<EVENT fieldvalue="O" cjseid="11310" cjsemessagecode="1037"/>
+		<EVENT fieldvalue="P" cjseid="11311" cjsemessagecode="1038"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="60102" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Ref_Plea_Code/text()"/>
+		<EVENT fieldvalue="GLO" cjseid="11307" cjsemessagecode="1039"/>
+		<EVENT fieldvalue="GAO" cjseid="11306" cjsemessagecode="1040"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="60103" level="CRN" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Ref_Plea_Code/text()"/>
+		<EVENT fieldvalue="G" cjseid="11312" cjsemessagecode="1041"/>
+		<EVENT fieldvalue="NG" cjseid="11313" cjsemessagecode="1042"/>
+		<EVENT fieldvalue="NPT" cjseid="11314" cjsemessagecode="1043"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="60104" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Admitted/text()"/>
+		<EVENT fieldvalue="true" cjseid="11315" cjsemessagecode="1044"/>
+		<EVENT fieldvalue="false" cjseid="11316" cjsemessagecode="1045"/>
+	</INCOMING_EVENT>
+	<INCOMING_EVENT xhibitid="60106" level="DEFENDANT" type="ONETOMANY">
+		<DIFFERENTIATING_FIELD xpath="event/Admitted/text()"/>
+		<EVENT fieldvalue="true" cjseid="11317" cjsemessagecode="1307"/>
+		<EVENT fieldvalue="false" cjseid="11318" cjsemessagecode="1308"/>
+	</INCOMING_EVENT>
+</DARTS_CL_CONFIGURATION>

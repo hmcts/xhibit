@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="20902.xsd">
+	<type>20902</type>
+	<date>2002-11-25</date>
+	<time/>
+	<Jury-Sworn-In>
+		<JSIO-juror1>Name 1</JSIO-juror1>
+		<JSIO-jurorNo1>12</JSIO-jurorNo1>		
+		<JSIO-juror2/>
+		<JSIO-jurorNo2/>
+		<JSIO-juror3/>
+		<JSIO-jurorNo3/>
+		<JSIO-juror4/>
+		<JSIO-jurorNo4/>
+		<JSIO-juror5/>
+		<JSIO-jurorNo5/>
+		<JSIO-juror6/>
+		<JSIO-jurorNo6/>
+		<JSIO-juror7/>
+		<JSIO-jurorNo7/>
+		<JSIO-juror8/>
+		<JSIO-jurorNo8/>
+		<JSIO-juror9/>
+		<JSIO-jurorNo9/>
+		<JSIO-juror10/>
+		<JSIO-jurorNo10/>
+		<JSIO-juror11/>
+		<JSIO-jurorNo11/>
+		<JSIO-juror12/>
+		<JSIO-jurorNo12/>
+	</Jury-Sworn-In>
+</event>

@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="XhbRefMessageType findByMessageType(java.lang.String pddaMessageType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbRefPddaMessageType AS o WHERE o.pddaMessageType = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ * -------- end of custom finders --------
+  

@@ -1,0 +1,55 @@
+<project default="all" basedir="." name="GdGatewayXmlBinding">
+    <description>
+            Description to be done...
+    </description>
+    <import file="./../../tools/ant/framework.xml"/>
+
+    <property name="project.type.requires.compilation" value="marker"/>
+
+    <property name="project.type.builds.jar" value="marker"/>
+
+    <!--
+      =======================================================================
+          Initialise Override
+      =======================================================================
+       -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- Generate Configuration -->
+        <property name="schemas.dir" location="${basedir}/schemas"/>
+
+        <path id="generate.xml.binding.dependencies">
+            <fileset dir="${schemas.dir}" includes="**/*.xsd"/>
+        </path>
+
+        <path id="generate.xml.binding.schemas">
+            <fileset dir="${schemas.dir}">
+                <include name="Exception-v1-0.xsd"/>
+                <include name="ReceiveService-v1-0.xsd"/>
+                <include name="DeliverService-v1-0.xsd"/>
+                <include name="MessageFormat-v1-0.xsd"/>
+                <include name="MessageMetadata-v1-0.xsd"/>
+                <include name="MessagingTypes-v1-0.xsd"/>
+                <include name="xmlMIME-2005-05.xsd"/>
+            </fileset>
+        </path>
+
+        <!-- Compile Configuration -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="Config.jar"/>
+           </fileset>
+        </path>
+
+        <!-- Jar Includes (Include the schemas in the jar)-->
+        <filesetlist id="jar.classes.filelist">
+            <fileset dir="${classes.dir}" includes="${default.jar.includes}" excludes="${default.jar.classes.excludes}"/>
+            <fileset dir="${resources.dir}" includes="${default.jar.includes}" excludes="${default.jar.classes.excludes}"/>
+            <fileset dir="${schemas.dir}" includes="${default.jar.includes}" excludes="${default.jar.classes.excludes}"/>
+        </filesetlist>
+
+    </target>
+</project>

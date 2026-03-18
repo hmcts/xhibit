@@ -1,0 +1,2 @@
+update XHB_REF_DISPOSAL_LINE set VALIDATION='V24' where DISPOSAL_CODE in ('DISOBLG') and DIL_SEQ_NO = 240;
+commit;

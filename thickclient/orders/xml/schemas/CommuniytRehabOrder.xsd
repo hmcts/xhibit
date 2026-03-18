@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<xsd:schema
+  targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders"
+  xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="qualified" attributeFormDefault="unqualified">
+	
+  <xsd:include schemaLocation="OrderTypes.xsd"/>
+
+  <xsd:element name="CommunityRehabOrder" type="XHIBITCommunityOrderStructure">
+    <xsd:annotation>
+      <xsd:documentation>Comment describing your root element</xsd:documentation>
+    </xsd:annotation>
+  </xsd:element>
+
+</xsd:schema>

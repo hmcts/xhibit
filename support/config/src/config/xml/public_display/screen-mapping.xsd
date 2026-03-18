@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Alex Brown (EDS) -->
+<xs:schema targetNamespace="uri:XHIBIT/screen-mapping" xmlns:display="uri:XHIBIT/display" xmlns:location="uri:XHIBIT/location" xmlns:screenmapping="uri:XHIBIT/screen-mapping" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:import namespace="uri:XHIBIT/location" schemaLocation=".\location.xsd"/>
+	<xs:import namespace="uri:XHIBIT/display" schemaLocation=".\display.xsd"/>
+	<xs:element name="screenmappings">
+		<xs:annotation>
+			<xs:documentation>The colection of mappings between the screens and the rotation-sets</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="screenmapping" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>Creates unique mappings between screens and rotation sets</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="screen" type="xs:string" maxOccurs="unbounded"/>
+							<xs:choice>
+								<xs:element name="rotation-set" type="xs:string" maxOccurs="unbounded"/>
+								<xs:element name="screen-group" type="xs:string" maxOccurs="unbounded"/>
+								<xs:element name="defaultpage" type="xs:anyURI">
+									<xs:annotation>
+										<xs:documentation>Only to be used when no valid rotation-set found</xs:documentation>
+									</xs:annotation>
+								</xs:element>
+							</xs:choice>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:int" use="required"/>
+						<xs:attribute name="description" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,16 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantAndCase(java.lang.String referenceName, java.lang.String referenceValue)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (o) FROM XhbDefendantReference o WHERE o.referenceName like ?1 AND o.referenceValue like ?2"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantIdAndReferenceName(java.lang.Integer defendantId, java.lang.String referenceName)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (o) FROM XhbDefendantReference o WHERE o.defendantId = ?1 AND o.referenceValue = ?2"
+ *
+ * -------- end of custom finders --------
+  

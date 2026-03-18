@@ -1,0 +1,30 @@
+<html>
+    <body>
+        <p>
+This package contains the classes concerned with the addition of a Directions for Case entity and event</p>
+<h1>Package Usage</h1>
+        <p>
+The main entry points to this package are via the DirectionsWorkFlow class.
+            <ul>
+                <li>
+<b>DirectionsWorkFlow - </b> provide an instance of DirectionsHelper class by passing it the DirectionsValue via the saveDirections method.
+                </li>
+
+                <li>
+<b>DirectionsHelper - </b> via the <b>saveDirections</b> method, then iterates through the elements of the <b>DirectionsValue</b> to create or update Directions for case and defendant entities.  Use is made of the <b>DirectionsForCaseMaintainer</b> and <b>DirForDefMaintainer</b> classes to update and add directions.
+The class is also repsonsible for calling the <b>DirectionsEventHelper</b> class to handles the CourtLogCRUDValues set on the DirectionValue.
+                </li>
+
+                <li>
+<b>DirectionsEventHelper - </b> via the <b>orderAndCreateUpdateCourtLogEvents</b> method, iterates through elements of the ArrayList of CourtLogCRUDValues. After ordering, court log entries created or existing entries are updated.
+The CourtLog entries are created by calling <b>CourtLogController</b> class methods.
+                </li>
+
+            </ul>
+
+@see uk.gov.courtservice.xhibit.business.results.directions
+@see DirectionsWorkFlow
+@see DirectionsHelper
+@see DirectionsEventHelper
+    </body>
+</html>

@@ -1,0 +1,7 @@
+ * @ejb.finder
+ *    signature="CjiAhm findByResponseCodeAndLowDate(java.lang.String responseCode, java.sql.Timestamp lowDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM CjiAhm o WHERE o.responseCode = ?1 AND o.sentAggDate > ?2"
+ *    description="Finds any messages with the given response code that are younger than the passed in date."
+ * 

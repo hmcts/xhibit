@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 3 U (http://www.xmlspy.com) by Sandip (EDS) -->
+<!-- version 0.7-->
+<!-- Author Brett Williams-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<xs:complexType name="caseDetailsType">
+		<xs:sequence>
+			<xs:element name="casenumber" type="xs:integer"/>
+			<xs:element name="casetype" type="xs:string"/>
+			<xs:element name="hearingtype" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="defendantNameType">
+		<xs:sequence>
+			<xs:element name="firstname" type="xs:string" minOccurs="0"/>
+			<xs:element name="middlename" type="xs:string" minOccurs="0"/>
+			<xs:element name="lastname" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="courtRoomType" mixed="true">
+		<xs:sequence>
+			<xs:element name="cases" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="caseDetails" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:complexContent>
+									<xs:extension base="caseDetailsType"/>
+								</xs:complexContent>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="defendants" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="defendant" type="defendantNameType" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="currentstatus"/>
+			<xs:element name="timestatusset" minOccurs="0"/>
+			<xs:element name="statushelpcode" minOccurs="0"/>
+			<xs:element name="courtroomname"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="currentcourtstatus">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="court">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="courtname" type="xs:string"/>
+							<xs:element name="courtsites">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="courtsite" maxOccurs="unbounded">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:element name="courtsitename" type="xs:string"/>
+													<xs:element name="courtrooms">
+														<xs:complexType>
+															<xs:sequence>
+																<xs:element name="courtroom" type="courtRoomType" maxOccurs="unbounded"/>
+															</xs:sequence>
+														</xs:complexType>
+													</xs:element>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="datetimestamp">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="dayofweek"/>
+							<xs:element name="date"/>
+							<xs:element name="month"/>
+							<xs:element name="year"/>
+							<xs:element name="hour"/>
+							<xs:element name="min"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

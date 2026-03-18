@@ -1,0 +1,120 @@
+package uk.gov.courtservice.framework.services.audittrail;
+
+import java.util.Properties;
+
+import uk.gov.courtservice.framework.exception.CSConfigurationException;
+import uk.gov.courtservice.framework.services.CSServices;
+
+/**
+ * <p>
+ * Title: AuditTrailService
+ * </p>
+ * <p>
+ * Description: This is the AuditTrailService class
+ * </p>
+ * <p>
+ * Copyright: Copyright (c) 2008
+ * </p>
+ * <p>
+ * Company: Logica
+ * </p>
+ * 
+ * @author James Powell
+ * @version 1.0
+ */
+
+public class AuditTrailService {
+    private static final String AUDIT_PROVIDER_JMS = "JMS";
+    private static final String AUDIT_PROVIDER_FILE = "FILE";
+    
+    private static final String PROPERTY_AUDIT_PROVIDER = "auditProvider";
+    private static final String PROPERTY_MESSAGE_FORMAT = "messageFormatString";
+    private static final String FACTORY_CLASS = "uk.gov.courtservice.xhibit.business.audittrail.AuditTrailEventFactoryImpl";
+    
+    private String messageFormatString;
+    private String auditProviderString;
+    
+    private AuditProvider auditProvider = null;
+    private static AuditTrailEventFactory auditTrailEventFactory = null;
+    
+    private static AuditTrailService instance = new AuditTrailService();
+    
+    /**
+     * Private constructor for this singleton class. Gets and sets properties
+     * from the Resource Bundle
+     *
+     */
+    private AuditTrailService(){
+        Properties prop = CSServices.getConfigServices().getProperties("audittrail"); 
+        auditProviderString = prop.getProperty(PROPERTY_AUDIT_PROVIDER);
+        messageFormatString = prop.getProperty(PROPERTY_MESSAGE_FORMAT);
+    }
+    
+    /**
+     * Return the singleton instance of this class
+     * 
+     * @return AuditTrailService
+     */
+    public static AuditTrailService getInstance(){
+        return instance;
+    }
+    
+    /**
+     * Accepts an AuditTrailEvent and sends the formatted message
+     * to the appropriate AuditProvider
+     * 
+     * @param evt - AuditTrailEvent to create AuditRecrod for
+     */
+    public void createAuditRecord(AuditTrailEvent evt){
+        AuditTrailMessage mess = new AuditTrailMessage(messageFormatString);
+        AuditProvider ap = getAuditProvider();
+        ap.sendMessage(mess.getFormattedMessage(evt));                
+    }
+    
+    /**
+     * This class takes in an object and returns an appropriate AuditTrailEvent by using the
+     * AuditTrailEventFactory
+     * 
+     * @param argument - Arbitrary object to create AuditTrailEvent for
+     * @return
+     */
+    public AuditTrailEvent getAuditTrailEvent(Object argument){
+        if(auditTrailEventFactory == null){
+            try {
+                //Class is in another package to avoid circular reference so load at runtime
+                auditTrailEventFactory = 
+                    (AuditTrailEventFactory) Class.forName(FACTORY_CLASS).newInstance();
+            } catch (Exception ex) {
+                CSConfigurationException e = new CSConfigurationException(ex);
+                CSServices.getDefaultErrorHandler().handleError(e, CSServices.class);
+                throw e;
+            }
+        }
+        return auditTrailEventFactory.getAuditTrailEvent(argument);
+    }
+
+    /**
+     * Gets the auditProvider based on the property in the ResourceBundle.
+     * <p/>
+     * Currently there are 2 types of AuditProvider:
+     * <UL>
+     * <li>FileAuditProvider - Log messages directly to file (only used for development)</li>
+     * <li>JMSAuditProvider - Send messages to a queue for asynchronous processing</li>
+     * </UL>
+     * 
+     * @return AuditProvider
+     */    
+    private AuditProvider getAuditProvider(){
+        if(auditProvider == null){
+            if(auditProviderString.equals(AUDIT_PROVIDER_JMS)){
+                auditProvider =  new JMSAuditProvider();
+            }else if(auditProviderString.equals(AUDIT_PROVIDER_FILE)){
+                auditProvider = new FileAuditProvider();
+            }else{
+                //By Default, use FileAuditProvider
+                auditProvider = new FileAuditProvider();
+            }
+        }
+        return auditProvider;
+    }
+}

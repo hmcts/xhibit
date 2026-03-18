@@ -1,0 +1,16 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbImportExportStatus o WHERE o.caseId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtId(java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbImportExportStatus o WHERE o.courtId = ?1 And o.caseId IS NULL"
+ * 
+ * -------- end of custom finders --------
+  

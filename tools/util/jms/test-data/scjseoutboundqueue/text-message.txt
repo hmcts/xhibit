@@ -1,0 +1,161 @@
+<ccm:NewCaseMessage xmlns:ccm="http://www.hmcs.gov.uk/schemas/crowncourt/msg" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xsi:schemaLocation="http://www.hmcs.gov.uk/schemas/crowncourt/msg">
+        <ccm:DocumentID>
+            <cs:DocumentName>NC T19971658 - 08/08/06</cs:DocumentName>
+            <cs:UniqueID>CSNC T19971658 20060808143419</cs:UniqueID>
+            <cs:DocumentType>NC</cs:DocumentType>
+            <cs:TimeStamp>2006-08-08T14:34:19.084</cs:TimeStamp>
+            <cs:Version>1.0</cs:Version>
+            <cs:SecurityClassification>NPM</cs:SecurityClassification>
+            <cs:SellByDate>2007-06-04</cs:SellByDate>
+        </ccm:DocumentID>
+        <ccm:Case>
+            <ccm:CaseNumber>T19971658</ccm:CaseNumber>
+            <ccm:Court>
+                <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+                <cs:CourtHouseCode>415</cs:CourtHouseCode>
+                <cs:CourtHouseName>CHESTER</cs:CourtHouseName>
+                <cs:CourtHouseAddress>
+                    <apd:Line>THE CASTLE</apd:Line>
+                    <apd:Line>-</apd:Line>
+                    <apd:Line>CHESTER</apd:Line>
+                    <apd:Line>CHESHIRE</apd:Line>
+                    <apd:PostCode>CH1 2AN</apd:PostCode>
+                </cs:CourtHouseAddress>
+                <cs:CourtHouseDX>702527 CHESTER 5</cs:CourtHouseDX>
+                <cs:CourtHouseTelephone>01244 317606</cs:CourtHouseTelephone>
+                <cs:CourtHouseFax>01244 350773</cs:CourtHouseFax>
+            </ccm:Court>
+            <ccm:Defendants>
+                <ccm:Defendant>
+                    <cs:PersonalDetails>
+                        <cs:Name>
+                            <apd:CitizenNameForename>PJCCM</apd:CitizenNameForename>
+                            <apd:CitizenNameForename>NACLXISKAUC</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>LXADO</apd:CitizenNameSurname>
+                        </cs:Name>
+                        <cs:IsMasked>no</cs:IsMasked>
+                        <cs:DateOfBirth>
+                            <apd:BirthDate>1970-04-01</apd:BirthDate>
+                            <apd:VerifiedBy>not verified</apd:VerifiedBy>
+                        </cs:DateOfBirth>
+                        <cs:Sex>male</cs:Sex>
+                        <cs:Address>
+                            <apd:Line>a DDDO DNDDDA</apd:Line>
+                            <apd:Line>-</apd:Line>
+                            <apd:Line>-</apd:Line>
+                            <apd:Line>-</apd:Line>
+                            <apd:Line>KINMEL BAY, CONWY</apd:Line>
+                        </cs:Address>
+                    </cs:PersonalDetails>
+                    <cs:CRESTdefendantID>22875</cs:CRESTdefendantID>
+                    <cs:URN>60DE49197</cs:URN>
+                    <cs:CustodyStatus>In custody</cs:CustodyStatus>
+                    <cs:Counsel>
+                        <cs:Solicitor>
+                            <cs:Party>
+                                <cs:Organisation>
+                                    <cs:OrganisationCode>11391</cs:OrganisationCode>
+                                    <cs:OrganisationName>HUMPHREYS &amp; CO/DENBIGH</cs:OrganisationName>
+                                    <cs:OrganisationAddress>
+                                        <Line>17 A BRIDGE STREET</Line>
+                                        <Line>-</Line>
+                                        <Line>-</Line>
+                                        <Line>17 A BRIDGE STREET</Line>
+                                        <Line>DENBIGH, DENBIGHSHIRE</Line>
+                                        <PostCode>LL16 3LF</PostCode>
+                                    </cs:OrganisationAddress>
+                                    <cs:ContactDetails>
+                                        <Telephone>
+                                            <TelNationalNumber>01745 813644</TelNationalNumber>
+                                        </Telephone>
+                                        <Fax>
+                                            <FaxNationalNumber>01745 815722</FaxNationalNumber>
+                                        </Fax>
+                                    </cs:ContactDetails>
+                                </cs:Organisation>
+                            </cs:Party>
+                        </cs:Solicitor>
+                    </cs:Counsel>
+                    <cs:Charges>
+                        <cs:Charge ChargeType="I" IndictmentNumber="1" IndictmentCountNumber="1" HOoffenceCode="PU86003">
+                            <cs:CRESTchargeID>415I00039548</cs:CRESTchargeID>
+                            <cs:OffenceStatement>Affray</cs:OffenceStatement>
+                            <cs:Plea>Not guilty</cs:Plea>
+                            <cs:Verdict>Not guilty</cs:Verdict>
+                            <cs:Disposals>
+                                <cs:Disposal>Defendant's Cost Order in the sum of 30 </cs:Disposal>
+                            </cs:Disposals>
+                        </cs:Charge>
+                    </cs:Charges>
+                </ccm:Defendant>
+                <ccm:Defendant>
+                    <cs:PersonalDetails>
+                        <cs:Name>
+                            <apd:CitizenNameForename>JHIASHM</apd:CitizenNameForename>
+                            <apd:CitizenNameForename>SJSLS</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>LXADO</apd:CitizenNameSurname>
+                        </cs:Name>
+                        <cs:IsMasked>no</cs:IsMasked>
+                        <cs:DateOfBirth>
+                            <apd:BirthDate>1970-04-01</apd:BirthDate>
+                            <apd:VerifiedBy>not verified</apd:VerifiedBy>
+                        </cs:DateOfBirth>
+                        <cs:Sex>male</cs:Sex>
+                        <cs:Address>
+                            <apd:Line>a NPDXKDA XNUXD</apd:Line>
+                            <apd:Line>-</apd:Line>
+                            <apd:Line>-</apd:Line>
+                            <apd:Line>-</apd:Line>
+                            <apd:Line>RHYL, DENBIGHSHIRE</apd:Line>
+                        </cs:Address>
+                    </cs:PersonalDetails>
+                    <cs:CRESTdefendantID>23133</cs:CRESTdefendantID>
+                    <cs:URN>60DE49197</cs:URN>
+                    <cs:Counsel>
+                        <cs:Solicitor>
+                            <cs:Party>
+                                <cs:Organisation>
+                                    <cs:OrganisationCode>11391</cs:OrganisationCode>
+                                    <cs:OrganisationName>HUMPHREYS &amp; CO/DENBIGH</cs:OrganisationName>
+                                    <cs:OrganisationAddress>
+                                        <Line>17 A BRIDGE STREET</Line>
+                                        <Line>-</Line>
+                                        <Line>-</Line>
+                                        <Line>17 A BRIDGE STREET</Line>
+                                        <Line>DENBIGH, DENBIGHSHIRE</Line>
+                                        <PostCode>LL16 3LF</PostCode>
+                                    </cs:OrganisationAddress>
+                                    <cs:ContactDetails>
+                                        <Telephone>
+                                            <TelNationalNumber>01745 813644</TelNationalNumber>
+                                        </Telephone>
+                                        <Fax>
+                                            <FaxNationalNumber>01745 815722</FaxNationalNumber>
+                                        </Fax>
+                                    </cs:ContactDetails>
+                                </cs:Organisation>
+                            </cs:Party>
+                        </cs:Solicitor>
+                    </cs:Counsel>
+                    <cs:Charges>
+                        <cs:Charge ChargeType="I" IndictmentNumber="1" IndictmentCountNumber="1" HOoffenceCode="PU86003">
+                            <cs:CRESTchargeID>415I00039548</cs:CRESTchargeID>
+                            <cs:OffenceStatement>Affray</cs:OffenceStatement>
+                            <cs:Plea>Not guilty</cs:Plea>
+                            <cs:Verdict>Not guilty</cs:Verdict>
+                            <cs:Disposals>
+                                <cs:Disposal>Defendant's Cost Order in the sum of 30 </cs:Disposal>
+                            </cs:Disposals>
+                        </cs:Charge>
+                    </cs:Charges>
+                </ccm:Defendant>
+            </ccm:Defendants>
+            <ccm:Prosecution>
+                <cs:ProsecutingReference>CPS:60DE49197</cs:ProsecutingReference>
+                <cs:ProsecutingOrganisation>
+                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                </cs:ProsecutingOrganisation>
+            </ccm:Prosecution>
+            <ccm:CaseClassNumber>4</ccm:CaseClassNumber>
+        </ccm:Case>
+    </ccm:NewCaseMessage>

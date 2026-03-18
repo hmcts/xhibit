@@ -1,0 +1,43 @@
+
+BODY 	{
+}
+
+DIV.body-area 
+{
+   	margin-left: 10;
+   	margin-right: 10;
+}
+
+TABLE.results, TABLE.non-scrolling-results, TABLE.case-progress {
+	width:95%;
+	font-size: 14pt;
+	font-weight: bold;
+}
+
+.reporting-restrictions
+{
+	padding-top: 15pt;
+	color: red;
+	font-size: 25pt;
+	background-color:transparent;
+	position:relative;
+	top: 0pt;
+}
+
+DIV.defendant-name-restricted-size {
+    width: 450px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+DIV.defendant-name-restricted-size350 {
+    width: 350px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}
+
+DIV.judge-name-restricted-size {
+    width: 180px;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+}

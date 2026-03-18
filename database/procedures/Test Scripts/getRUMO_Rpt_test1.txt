@@ -1,0 +1,12 @@
+anonymous block completed
+--======================== Test 1 getRUMO_Rpt START ============================
+System is AMD64/SunOS-4.0-8.1.0, database is O10TST2
+ MO Track ID | Iss.Court Name,           |    Rec. Court,                           | Rec Ct Phone,      | Case No.  |      Defendant                 | Order Date | Fine Amt  | Compensation Amt | Costs AmtD |
+|------------|---------------------------|------------------------------------------|--------------------|-----------|--------------------------------|------------|-----------|------------------|------------|
+|4           | SNARESBROOK               | SOUTH EAST HAMPSHIRE MAGISTRATES' COURT  | 020 8530 0000      | T20180572 | CAMPBELL                       | 18-DEC-17  | -         | £500             | £100       |
+|6           | SNARESBROOK               | THAME AND HENLEY MAGISTRATES'  COURT     | 020 8530 0000      | A20080092 | GOLDFINGER SNARE AURIC1 SNARE  | 10-NOV-17  | £250      | -                | £50        |
+|3           | SNARESBROOK               | THAME AND HENLEY MAGISTRATES'  COURT     | 020 8530 0000      | T20180356 | TEST1 TEST1212005 TESTMN1      | 01-MAR-18  | £100      | -                | £200       |
+Test Succeeded
+         ------------------- Test 1 getRUMO_Rpt  END --------------------------
+
+

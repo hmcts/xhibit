@@ -1,0 +1,3 @@
+java -jar jmsutil.jar -u t3://w2szn20z03:8001,w2szn20z03:8501 -d scjsegateway/jms/GdInboundGatewayQueue -t ../test-data/scjseinboundqueue/text-message.txt -p ../test-data/scjseinboundqueue/test-message.properties -s
+
+java -jar jmsutil.jar -u t3://w2szn20z03:8001,w2szn20z03:8501 -d scjsegateway/jms/GdMessageBrokerQueue -t ../test-data/scjseinboundqueue/text-message.txt -p ../test-data/scjseinboundqueue/test-message.properties -s

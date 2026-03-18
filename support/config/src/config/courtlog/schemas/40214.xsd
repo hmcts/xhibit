@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Lie On File Count-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E40214_Lie_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40214_Lie_Options">
+		<xs:complexType>
+			<xs:all>
+                <xs:element ref="E40214_Lie_Count_Number"/>
+                <xs:element ref="E40214_Lie_Indictment_Number"/>
+                <xs:element ref="E40214_Lie_Case_Number"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40214_Lie_Count_Number" type="xs:string"/>
+	<xs:element name="E40214_Lie_Indictment_Number" type="xs:string"/>
+	<xs:element name="E40214_Lie_Case_Number" type="xs:string"/>
+</xs:schema>

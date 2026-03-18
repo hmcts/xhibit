@@ -1,0 +1,48 @@
+/*
+ * Filename:    DB_Patch_8_1_cr_user_gdg.sql
+ *
+ * HISTORY
+ * =======
+ * DATE		WHO	CHANGE ID	COMMENT
+ * ----         ---     ---------       -------
+   18/10/2006	K SHAH			changes made to comprise release 8.1
+ *
+ */ 
+
+
+set echo on
+set term off
+column filename new_value spool_filename
+  select 'DBPATCH_8_1_cr_user_gdg_'||
+    to_char(sysdate,'YYYYMMDDHH24MI')||'.log' filename
+  from dual
+/
+set term on
+spool &&spool_filename
+
+
+
+CREATE  USER GDGATE
+  IDENTIFIED BY GDGATE
+  DEFAULT TABLESPACE GDGATED
+  TEMPORARY TABLESPACE TEMP
+  PROFILE DEFAULT
+  ACCOUNT UNLOCK;
+  GRANT RESOURCE TO GDGATE;
+  ALTER USER GDGATE DEFAULT ROLE ALL;
+  GRANT CREATE SESSION TO GDGATE;
+  GRANT CREATE PUBLIC SYNONYM TO GDGATE;
+  GRANT UNLIMITED TABLESPACE TO GDGATE;
+
+CREATE  USER CJSEGATE
+  IDENTIFIED BY CJSEGATE
+  DEFAULT TABLESPACE CJSEGATED
+  TEMPORARY TABLESPACE TEMP
+  PROFILE DEFAULT
+  ACCOUNT UNLOCK;
+  GRANT RESOURCE TO CJSEGATE;
+  ALTER USER CJSEGATE DEFAULT ROLE ALL;
+  GRANT CREATE SESSION TO CJSEGATE;
+  GRANT UNLIMITED TABLESPACE TO CJSEGATE;
+
+spool off

@@ -1,0 +1,115 @@
+/* Implicit*/
+
+body {
+	margin-top: 0;
+    margin-left: 0;
+	margin-right: 0;
+	font-family: Arial, Verdana, sans-serif;
+	cursor: default;
+}
+
+
+/* Explicit */
+
+.heading {
+	margin-top: 20px;
+	font-size: 36pt;
+	font-weight: bold;
+	letter-spacing: 0px;
+	height:40pt;
+}
+
+.pageInfo {
+		color: #FFFFF;
+		font-size: 8pt;
+	}
+
+TD.last-updated-date {
+		text-align: left;
+}
+
+.emphasized {
+	color:blue;
+}
+
+
+.error-holding-page-tag, .error-no-server-tag, .error-rotation-set-tag, .error-exception-tag, .error-missing-tag, .error-unavailable-tag    {
+	font-weight: bolder;
+	color: white;
+	position: absolute;
+	font-size: 30pt;
+	border: 2px solid #003366;
+	height: 100px;
+	width: 92%;
+	text-align: center;
+	vertical-align: middle;
+	padding-top: 20px;
+	position: absolute;
+	left: 4%;
+	top: 45%;
+}
+
+.error-holding-page-tag {
+	background: GrayText;
+	cursor: pointer;
+}
+
+.error-no-server-tag {
+	background: Black;
+	cursor: not-allowed;
+}
+
+.error-rotation-set-tag {
+	background: Red;
+	cursor: pointer;
+}
+
+.error-exception-tag {
+	background: Yellow;
+	cursor: pointer;
+}
+
+
+.error-unavailable-tag {
+	background: Purple;
+	cursor: not-allowed;
+}
+
+.error-missing-tag {
+	background: Blue;
+	cursor: not-allowed;
+}
+
+.error-empty-tag {
+}
+
+.no-information {
+	font-size: 30pt;
+	border: 2px solid #003366;
+	height: 100px;
+	width: 90%;
+	text-align: center;
+	vertical-align: middle;
+	background-color: #ffffcc;
+	font-family: Arial, Verdana, Helvetica;
+	font-weight: bold;
+	font-variant: normal;
+	color: #003366;
+	padding-top: 20px;
+	position: absolute;
+	left: 5%;
+	top: 45%;
+	z-index: 100;
+}
+
+/*
+     ERROR REPORTING
+*/
+
+.stack-trace {
+	visibility: hidden;
+	font: normal bold smaller monospace;
+	font-family: Courier;
+	white-space: pre;
+}
+

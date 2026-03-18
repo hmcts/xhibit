@@ -1,0 +1,23 @@
+<html>
+	<body>
+		<p>
+This package contains the two message driven beans used to couple the Public Display component to the existing
+Xhibit middle tier. They are present due to the fact that the rewrite of the Court Log Entry Event behaviour
+has not occurred and they should be replaced as this work is done.
+		</p>
+		<p>
+Both beans are concerned with processing relevant Court Log Entry Events that are posted to Public Display relevant
+queues. In the case of the <code>PublicDisplayNotification</code> there are messages to do with other events,
+but these are handled by direct code in the xhibit middle tier.
+		</p>
+		<p>
+<code>PublicDisplayListener</code> is concerned with events to do with standard court log events that cause
+re-renders of public display events. As far as I can tell at present, the mapping is to case status events, but
+that needs checking.
+		</p>
+		<p>
+<code>PublicNoticeListener</code> is concerned with the events to do with public notices. There seem to be
+no complications to the mapping.
+		</p>
+	</body>
+</html>

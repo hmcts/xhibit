@@ -1,0 +1,14 @@
+      /**
+     * Business method to get the event type
+     *
+     * @return the URN
+     *
+     * @ejb.interface-method view-type="local"
+     */
+  public Integer getEventType()
+  {
+
+    return getXhbCourtLogEventDesc().getEventType();
+    
+  }
+  

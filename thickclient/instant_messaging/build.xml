@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="InstantMessagingClient">
+
+    <description>
+        Instant Messaging Rich Client.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+	<target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+		<path id="compile.classpath">
+			<path refid="lib.classpath"/>
+			<fileset dir="${build.dest.dir}">
+				<include name="Framework.jar"/>
+                <include name="InstantMessaging.jar" />
+                <include name="ClientView.jar" />
+                <include name="ThickClientFramework.jar" />
+                <include name="ThickClientTestingFramework.jar" />
+                <include name="Value.jar" />
+			</fileset>
+		</path>
+	</target>
+
+</project>

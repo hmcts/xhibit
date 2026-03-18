@@ -1,0 +1,4 @@
+**/hearingschedule/*Delegate*.class
+**/hearingschedule/*Exception.class
+**/hearingschedule/**/*Exception.class
+uk/gov/courtservice/xhibit/business/services/hearingschedule/hearingrecord/HearingRecordConstants.class

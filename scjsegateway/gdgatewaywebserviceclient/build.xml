@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="GdGatewayWebServiceClient">
+
+    <description>
+        This project contains ...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.jar" value="marker"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="Config.jar" />
+                <include name="ScjseGatewayMessageBeans.jar" />
+            </fileset>
+        </path>
+
+        <property name="wsdl.file" location="${basedir}/wsdl/CJSEService.wsdl"/>
+        <property name="generate.wsclient.marker" location="${build.dir}/generate.wsclient.marker"/>
+
+        <taskdef name="wlclientgen" classname="weblogic.wsee.tools.anttasks.ClientGenTask" loaderref="framework.loader"/>
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+
+    <target name="generate.wsclient.check">
+        <uptodate property="generate.wsclient.uptodate" targetfile="${generate.wsclient.marker}">
+            <srcfiles file="${wsdl.file}"/>
+        </uptodate>
+    </target>
+
+    <target name="generate.wsclient" unless="generate.wsclient.uptodate" depends="generate.wsclient.check">
+        <mkdir dir="${gen.source.dir}"/>
+        <wlclientgen
+          wsdl="${wsdl.file}"
+          destDir="${gen.source.dir}"
+          handlerChainFile="${source.dir}/uk/gov/courtservice/xhibit/webservice/gdgateway/cjseservice/client/CJSEClientHandlerConfig.xml"
+          packagename="uk.gov.courtservice.xhibit.webservice.gdgateway.cjseservice.client"/>
+        <touch file="${generate.wsclient.marker}"/>
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="framework.generate, generate.wsclient"/>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+      <target name="package.ws.check" description="Generate src from wsdl check." >
+          <!--
+          <uptodate property="package.ws.uptodate" targetfile="${gen.src.dir}/server.marker">
+              <srcfiles dir="${source.dir}"/>
+              <srcfiles file="${gen.source.dir}/jws/ReliableHelloWorld_wsdl.jar"/>
+          </uptodate>
+          -->
+      </target>
+
+    <!-- UPDATE JAR with WSDL -->
+    <target name="add.wsdl" description="Adds wsdls to GdGatewayWebService.jar">
+        <jar destfile="${build.dir}/lib/GdGatewayWebServiceClient.jar"
+             basedir="${gen.source.dir}"
+             includes="**/*.xml,**/*.wsdl"
+             update="true"/>
+    </target>
+
+    <target name="package" unless="skip.package" depends="framework.package, add.wsdl"/>
+
+</project>

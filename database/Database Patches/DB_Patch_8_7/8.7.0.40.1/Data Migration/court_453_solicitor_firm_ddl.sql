@@ -1,0 +1,32 @@
+CREATE TABLE XHBSTG_SOLICITOR_FIRM_DM
+(
+SOF_ID                                  NUMBER (8) NOT NULL,
+FIRM_NAME                               VARCHAR2(35)   ,
+ADDR1                                   VARCHAR2(30)   ,
+ADDR2                                   VARCHAR2(30)   ,
+ADDR3                                   VARCHAR2(30)   ,
+ADDR4                                   VARCHAR2(30)   ,
+TOWN                                    VARCHAR2(30)   ,
+COUNTY                                  VARCHAR2(30)   ,
+POSTCODE                                VARCHAR2(8)   ,
+TEL_NO                                  VARCHAR2(14)   ,
+VAT_NO                                  VARCHAR2(9)   ,
+LA_CODE                                 VARCHAR2(6)   ,
+LONDON_WEIGHTING                        VARCHAR2(1)   ,
+FAX_NO                                  VARCHAR2(14)   ,
+OBS_IND                                 VARCHAR2(1)   ,
+CREATOR_ID                              VARCHAR2(10)   ,
+DATE_CREATED                            VARCHAR2(17)   ,
+DX_REF                                  VARCHAR2(35)   ,
+SHORT_NAME                              VARCHAR2(28)   ,
+SOF_EMAIL                               VARCHAR2(255)   ,
+SOF_EMAIL_SECURE                        VARCHAR2(255)   ,
+CREST_COURT_ID                          VARCHAR2(3),
+XHIBIT_COURT_ID                         VARCHAR2(3),
+XHIBIT_ETL_STATUS                       CHAR(1),
+XHIBIT_LOADED_DATE                      DATE DEFAULT SYSDATE,
+XHIBIT_ENRICH_DATE                      DATE,
+XHIBIT_ETL_DATE                         DATE,
+XHIBIT_ETL_ERR_MESSAGE                  VARCHAR2(500)
+)
+/

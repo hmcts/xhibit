@@ -1,0 +1,20 @@
+The files here can be used for PDDA to compare the changes in defined database tables.
+Generally these will all be reference data tables, some of which can be updated semi-regularly in Oracle and therefore changes could be missed for Postgres.
+Specifically it's used to compare the Oracle and Postgres data, as there is no automated way to update to update the Postgres data for PDDA if Oracle XHIBIt data has been updated.
+
+
+How to use:
+- On XHIBIT: run 'get_table_stats.sh'
+-- This will create the file oracle_table_stats.csv
+-- The equivalent sql for postgres can be run and a postgres_table_stats.csv file will be created, ensure the postgres_table_stats.csv file is copied here
+- On XHIBIT: run 'compare_table_stats_counts_only.sh'
+-- This will create the files comparison_report_counts_only.csv and mismatches.csv
+
+
+The following file have been created:
+- Folder ~/bin/pdda
+- Files:
+--- get_table_stats.sh
+--- get_table_stats.sql
+--- compare_table_stats_counts_only.sh
+--- compare_table_stats.sh

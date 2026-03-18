@@ -1,0 +1,2 @@
+Manifest-Version: 1.0
+Class-Path: ./Framework.jar ./Config.jar ./openjms-selector.jar ./ExissEntities.jar ./ExissValues.jar ./Value.jar ./MessageBrokerMessaging.jar

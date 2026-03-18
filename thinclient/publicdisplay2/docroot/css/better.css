@@ -1,0 +1,87 @@
+BODY 
+{
+	background-color: #1c4780;
+	background-image: none;
+	color: #FAFAD2;
+}
+
+TABLE.results TD, TABLE.results TD, TABLE.non-scrolling-results TD, TABLE.case-progress TD
+{
+		border: 1px black solid;
+		color: #FAFAD2;
+
+}
+
+TR.column-headers TD, TABLE.case-progress TD.case-progress-time 
+{
+		border: 1px black solid;
+		color: #FAFAD2;
+
+		
+		
+}
+
+TABLE.results, TABLE.non-scrolling-results, TABLE.case-progress
+{
+	  border: 1px solid black;
+		background-color: #22579B;
+}
+ 
+.outerScroller 
+{	
+	filter:progid:DXImageTransform.Microsoft.Fade(duration=0.25,overlap=1.0) ;
+}
+
+.heading 
+{
+	color: white;
+}
+
+TD 
+{
+	background-color: #22579B;
+}
+
+TR 
+{
+	background-color: #22579B;
+}
+
+TR.evenRow TD
+{
+	background-color: #22579B;
+}
+
+TR.oddRow TD
+{
+	background-color: #183D6E;
+	
+}
+
+
+.moved-highlight {
+    font: 20px;
+    font-weight: bold;
+    color: orange;
+}
+
+.emphasized {
+	
+	color: orange;
+}
+
+TABLE.case-progress TD.case-progress-status 
+{
+
+		background-color: #183D6E;
+}
+
+TABLE.defendant-names TD 
+{
+	border: none;		
+}
+
+TABLE.results 
+{
+		background-color: #183D6E;
+}

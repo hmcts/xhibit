@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ccm:NewCaseMessage
+	xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails"
+	xmlns:ccm="http://www.hmcs.gov.uk/schemas/crowncourt/msg" 
+	xsi:schemaLocation="http://www.hmcs.gov.uk/schemas/crowncourt/msg CaseInfo.xsd">		
+
+	<ccm:DocumentID>	
+		<cs:DocumentName>NC T20061234 - 12/12/06</cs:DocumentName>
+		<cs:UniqueID>CSDNC000000000022320</cs:UniqueID>
+		<cs:DocumentType>NC</cs:DocumentType>
+		<cs:TimeStamp>2006-02-03T13:41:00.604</cs:TimeStamp>
+		<cs:Version>1.0</cs:Version>
+		<cs:SecurityClassification>NPM</cs:SecurityClassification>
+		<cs:SellByDate>2006-11-30</cs:SellByDate>
+	</ccm:DocumentID>	
+	<ccm:Case>	
+		<ccm:CaseNumber>T20011234</ccm:CaseNumber>
+		<ccm:Court>		
+			<cs:CourtHouseType>Crown Court</cs:CourtHouseType>	
+			<cs:CourtHouseCode CourtHouseShortName="SWANS">453</cs:CourtHouseCode>	
+			<cs:CourtHouseName>SWANSEA</cs:CourtHouseName>	
+			<cs:CourtHouseAddress>	
+				<apd:Line>THE LAW COURTS</apd:Line>
+				<apd:Line>ST HELENS ROAD</apd:Line>
+				<apd:Line>SWANSEA</apd:Line>
+				<apd:PostCode>SA1 4PF</apd:PostCode>
+			</cs:CourtHouseAddress>	
+			<cs:CourtHouseDX>99540 SWANSEA 4</cs:CourtHouseDX>	
+			<cs:CourtHouseTelephone>01792484700</cs:CourtHouseTelephone>	
+			<cs:CourtHouseFax>01792484714</cs:CourtHouseFax>	
+		</ccm:Court>		
+		<ccm:CaseArrivedFrom>		
+			<ccm:OriginatingCourt>		
+				<cs:CourtHouseType>Magistrates Court</cs:CourtHouseType>	
+				<cs:CourtHouseCode CourtHouseShortName="BAM">2725</cs:CourtHouseCode>	
+				<cs:CourtHouseName>BARNET MAGISTRATES&apos; COURT</cs:CourtHouseName>	
+				<cs:CourtHouseAddress>	
+					<apd:Line>7C HIGH STREET</apd:Line>
+					<apd:Line>BARNET</apd:Line>
+					<apd:PostCode>EN5 5UE</apd:PostCode>
+				</cs:CourtHouseAddress>	
+				<cs:CourtHouseDX>DX 8626 BARNET</cs:CourtHouseDX>	
+				<cs:CourtHouseTelephone>02084419042</cs:CourtHouseTelephone>	
+				<cs:CourtHouseFax>02084419043</cs:CourtHouseFax>	
+			</ccm:OriginatingCourt>		
+		</ccm:CaseArrivedFrom>			
+		<ccm:Defendants>				
+			<ccm:Defendant>			
+				<cs:PersonalDetails>		
+					<cs:Name>	
+						<apd:CitizenNameForename>Samuel Leonard</apd:CitizenNameForename>
+						<apd:CitizenNameForename>William Jack</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>Smith</apd:CitizenNameSurname>
+					</cs:Name>	
+					<cs:IsMasked>no</cs:IsMasked>	
+					<cs:DateOfBirth>	
+						<apd:BirthDate>1967-08-13</apd:BirthDate>
+						<apd:VerifiedBy>not verified</apd:VerifiedBy>
+					</cs:DateOfBirth>	
+					<cs:Sex>male</cs:Sex>	
+					<cs:Address>	
+						<apd:Line>10 The Street</apd:Line>
+						<apd:Line>The Village</apd:Line>
+						<apd:PostCode>TS21 4TH</apd:PostCode>
+					</cs:Address>	
+				</cs:PersonalDetails>		
+				<cs:ASNs>		
+					<cs:ASN>0601XJ0100000077128Z</cs:ASN>	
+					<cs:ASN>0601XJ0100000077129A</cs:ASN>	
+				</cs:ASNs>		
+				<cs:CRESTdefendantID>49661</cs:CRESTdefendantID>		
+				<cs:PNCnumber>20060022996L</cs:PNCnumber>		
+				<cs:URN>04RE1019800</cs:URN>					
+				<cs:CROnumber>13334006Y</cs:CROnumber>					
+				<cs:MagistratesCourtRefNumber>JB/LAC/5546815 &amp; 5575093</cs:MagistratesCourtRefNumber>					
+				<cs:PrisonerID>MT7983</cs:PrisonerID>					
+				<cs:PrisonLocation PrisonID="HOBM">					
+					<cs:Location>HIGH DOWN</cs:Location>				
+				</cs:PrisonLocation>					
+				<cs:CustodyStatus>On bail</cs:CustodyStatus>					
+				<cs:Counsel>					
+					<cs:Solicitor>				
+						<cs:Party>			
+							<cs:Organisation>		
+								<cs:OrganisationCode>10807</cs:OrganisationCode>	
+								<cs:OrganisationName>STOKOE PARTNERSHIP</cs:OrganisationName>	
+								<cs:OrganisationAddress>	
+									<apd:Line>646-648 HIGH ROAD</apd:Line>
+									<apd:Line>LONDON</apd:Line>	
+									<apd:PostCode>E11 3AA</apd:PostCode>	
+								</cs:OrganisationAddress>		
+								<cs:ContactDetails>		
+									<apd:Telephone>	
+										<apd:TelNationalNumber>0181-558-8884</apd:TelNationalNumber>
+									</apd:Telephone>	
+								</cs:ContactDetails>		
+							</cs:Organisation>			
+						</cs:Party>					
+					</cs:Solicitor>					
+				</cs:Counsel>			
+				<cs:Charges NumberOfCharges="2">			
+					<cs:Charge IndictmentNumber="1" IndictmentCountNumber="1" CJSoffenceCode="PC53001">		
+						<cs:CRN>0601XJ0100000077128Z001</cs:CRN>	
+						<cs:CRESTchargeID>457S00057969</cs:CRESTchargeID>	
+						<cs:CaseNumber>T20011234</cs:CaseNumber>	
+						<cs:OffenceStatement>tba</cs:OffenceStatement>	
+						<cs:OffenceParticulars>tba</cs:OffenceParticulars>	
+						<cs:CRESToffenceNumber>1</cs:CRESToffenceNumber>	
+						<cs:Plea>Not guilty</cs:Plea>	
+						<cs:Verdict>Guilty</cs:Verdict>	
+						<cs:Disposals>	
+							<cs:Disposal>12 months imprisonment</cs:Disposal>
+						</cs:Disposals>
+						<cs:SentenceTerm>P0Y44M0DT0H</cs:SentenceTerm>
+						<cs:TermType>Concurrent</cs:TermType>
+						<cs:ForLife>no</cs:ForLife>
+					</cs:Charge>	
+					<cs:Charge IndictmentNumber="1" IndictmentCountNumber="2" CJSoffenceCode="PC53001">		
+						<cs:CRN>0601XJ0100000077129A001</cs:CRN>	
+						<cs:CRESTchargeID>457S00057970</cs:CRESTchargeID>	
+						<cs:CaseNumber>T20011234</cs:CaseNumber>	
+						<cs:OffenceStatement>tba</cs:OffenceStatement>	
+						<cs:OffenceParticulars>tba</cs:OffenceParticulars>	
+						<cs:CRESToffenceNumber>2</cs:CRESToffenceNumber>	
+						<cs:Plea>Not guilty</cs:Plea>	
+						<cs:Verdict>Guilty</cs:Verdict>	
+						<cs:Disposals>	
+							<cs:Disposal>12 months imprisonment</cs:Disposal>
+						</cs:Disposals>
+						<cs:SentenceTerm>P0Y44M0DT0H</cs:SentenceTerm>
+						<cs:TermType>Concurrent</cs:TermType>
+						<cs:ForLife>no</cs:ForLife>
+					</cs:Charge>	
+				</cs:Charges>		
+			</ccm:Defendant>			
+		</ccm:Defendants>				
+		<ccm:Prosecution ProsecutingAuthority="Crown Prosecution Service">				
+			<cs:ProsecutingReference>CPS Ref: 04RE1019744</cs:ProsecutingReference>			
+			<cs:ProsecutingOrganisation>			
+				<cs:OrganisationName>CPS - Saxon House</cs:OrganisationName>		
+				<cs:OrganisationAddress>		
+					<apd:Line>3 ONSLOW STREET</apd:Line>	
+					<apd:Line>GUILDFORD</apd:Line>	
+					<apd:PostCode>GU1 4YS</apd:PostCode>	
+				</cs:OrganisationAddress>		
+				<cs:ContactDetails>		
+					<apd:Telephone>	
+						<apd:TelNationalNumber>01483468200</apd:TelNationalNumber>
+					</apd:Telephone>	
+				</cs:ContactDetails>		
+			</cs:ProsecutingOrganisation>			
+		</ccm:Prosecution>				
+		<ccm:MethodOfInstigation>Committal</ccm:MethodOfInstigation>				
+		<ccm:DateOfInstigation>1967-08-13</ccm:DateOfInstigation>				
+		<ccm:CaseClassNumber>2</ccm:CaseClassNumber>				
+		<ccm:PTIURN>04RE1019800</ccm:PTIURN>
+	</ccm:Case>	
+</ccm:NewCaseMessage>		
+
+

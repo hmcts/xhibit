@@ -1,0 +1,598 @@
+<?xml version="1.0" ?>
+
+<project name="release.build" default="project.help" basedir=".">
+
+   <target name="project.help">
+      <echo message=""/>
+      <echo message=""/>
+      <echo message="****************************************************************"/>
+      <echo message=" Available targets:"/>
+      <echo message="       candidate.build        builds a release candidate using weblogic 9.1"/>
+      <echo message="       alternative.build      builds a release candidate using weblogic 9.2"/>
+      <echo message="       branch.build           builds a weblogic 9.1 release from a given branch"/>
+      <echo message="       newbranch.build        builds a weblogic 9.2 release from a given branch"/>
+      <echo message="       promote.nightly        promotes a nightly build to a release candidate"/>
+      <echo message="       promote.candidate      promotes a candidate to a full release"/>
+      <echo message="       project.help           displays this message"/>
+      <echo message="****************************************************************"/>
+      <echo message=""/>
+      <echo message=""/>
+   </target>
+
+   <target name="candidate.build">
+      <!-- import build.properties --> 
+      <property file="/build/artifacts/build.properties"/> 
+
+      <!-- delete the work DIR to make sure we are starting fresh -->
+      <delete dir="./work/XHIBIT"/>
+    
+      <input
+         message="Please Enter the name of this candidate release (i.e 8_0_RC3)"
+         addproperty="release.name"
+      />
+      
+      <input
+         message="Please Enter a suffix for the zip filed created (i.e -RC1 will produce Xhibit-(version)-All-RC1.zip)"
+         addproperty="suffix"
+      />
+      <property name="cvs.tag" value="RELEASE_${release.name}"/> 
+      <property name="release.zip" value="xhibit-RELEASE_${release.name}.zip"/> 
+      <property name="release.client.zip" value="xhibit-RELEASE_${release.name}-client.zip"/> 
+      
+      <echo message="**********************************************************************************************************************"/>
+      <echo message=""/> 
+      <echo message="a TAG will be created in CVS called ${cvs.tag} from the current HEAD branch"/>
+      <echo message="the version number for this release will be ${version}, if this is wrong please edit build.properties and try again..."/>
+      <echo message="three zip files will be built Xhibit-${version}${suffix}-Client.zip Xhibit-${version}${suffix}-Client.zip"/>
+      <echo message="and Xhibit-${version}${suffix}-Client.zip"/> 
+      <echo message=""/> 
+      <echo message="**********************************************************************************************************************"/>
+    
+      <input
+         message="is this information correct and do you want to continue ?"
+         validargs="y,n"
+         addproperty="do.release"
+      />
+      <condition property="do.abort">
+         <equals arg1="n" arg2="${do.release}"/>
+      </condition>
+      <fail if="do.abort">Release aborted by user.</fail>
+      
+      <echo message="Tagging CVS - ${cvs.tag}"/>
+      <cvs command="rtag ${cvs.tag} XHIBIT"/>
+
+      <echo message="Checking out code from ${cvs.tag} to work dir..."/>
+      <cvs command="-q co -r ${cvs.tag} -P XHIBIT" dest="./work"/>
+
+      <!-- install build.properties for this build -->
+      <copy file="/build/artifacts/build.properties" tofile="./work/XHIBIT/build.properties"/>
+      
+      <!-- exec the build -->
+      <exec dir="./work/XHIBIT" executable="/opt/bea/weblogic91/server/bin/ant" failonerror="true">
+         <arg line="-f build.xml"/>
+         <env key="ANT_HOME" value="/opt/bea/weblogic91/server"/>
+         <env key="CLASSPATH" value="/opt/bea/weblogic91/server/lib/ant/junit.jar"/>         
+         <env key="ANT_OPTS" value="-XX:PermSize=256m -XX:MaxPermSize=512m"/>
+         <env key="BEA_HOME" value="/opt/bea"/>
+         <env key="WL_HOME" value="/opt/bea/weblogic91"/>
+         <env key="JAVA_VENDOR" value="SUN"/>
+      </exec>
+
+     <!-- copy jre in place for notifier --> 
+      <echo message="copy notifer JRE..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/jre-1.5.0_04" 
+            executable="/bin/tar">
+        <arg line="zxfp /build/artifacts/jre-1.5.04-solaris.tar.gz"/>
+      </exec>
+      
+      <!-- chmod notify.sh --> 
+      <echo message="setting perms on notify.sh..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/bin" 
+            executable="/bin/chmod">
+            <arg line="744 notify.sh"/>
+      </exec>
+   
+
+      <echo message="packaging notifier - publicDisplayNotifier-${version}.tar.gz"/> 
+      
+      <property name="sh.dir" value="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files"/>
+      <sh dir="${sh.dir}">tar zcpf publicDisplayNotifier-${version}.tar.gz publicDisplayNotifier-${version}/*</sh>        
+
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}"/> 
+
+      <echo message="copy client JRE..."/>
+      <unzip src="/build/artifacts/jre-1.5.04-windows.zip" 
+           dest="./work/XHIBIT/build/dist/Xhibit-${version}/WINDOWS/Workstation/XHIBIT Application Files/jre-1.5.0_04/"/>
+   
+      <echo message="copying xhibithelp.war"/>
+
+      <copy file="/build/artifacts/xhibithelp.war" 
+         todir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}/staging/"/>
+      
+      <echo message="packaging xhibit-${version}.tar.gz"/>
+      
+      <sh dir="${sh.dir}">tar zcpf xhibit-${version}.tar.gz xhibit-${version}/*</sh>
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}"/>
+      
+      <echo message="creating zip files...."/> 
+      <!-- All.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-All.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+      />
+      
+      <!-- Server.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Server.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/WINDOWS, Xhibit-${version}/WINDOWS/**/*"
+      />
+      
+      <!-- Client.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Client.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/SOLARIS, Xhibit-${version}/SOLARIS/**/*"
+      />
+    
+    </target>
+    
+    <target name="alternative.build">
+      <!-- import build.properties --> 
+      <property file="/build/artifacts/build.properties"/> 
+
+      <!-- delete the work DIR to make sure we are starting fresh -->
+      <delete dir="./work/XHIBIT"/>
+    
+      <input
+         message="Please Enter the name of this alternative Weblogic 9.2 candidate release (i.e 8_0_RC3)"
+         addproperty="release.name"
+      />
+      
+      <input
+         message="Please Enter a suffix for the zip filed created (i.e -RC1 will produce Xhibit-(version)-All-RC1.zip)"
+         addproperty="suffix"
+      />
+      <property name="cvs.tag" value="RELEASE_${release.name}"/> 
+      <property name="release.zip" value="xhibit-RELEASE_${release.name}.zip"/> 
+      <property name="release.client.zip" value="xhibit-RELEASE_${release.name}-client.zip"/> 
+      
+      <echo message="**********************************************************************************************************************"/>
+      <echo message=""/> 
+      <echo message="a TAG will be created in CVS called ${cvs.tag} from the current HEAD branch"/>
+      <echo message="the version number for this release will be ${version}, if this is wrong please edit build.properties and try again..."/>
+      <echo message="three zip files will be built Xhibit-${version}${suffix}-Client.zip Xhibit-${version}${suffix}-Client.zip"/>
+      <echo message="and Xhibit-${version}${suffix}-Client.zip"/> 
+      <echo message=""/> 
+      <echo message="**********************************************************************************************************************"/>
+    
+      <input
+         message="is this information correct and do you want to continue ?"
+         validargs="y,n"
+         addproperty="do.release"
+      />
+      <condition property="do.abort">
+         <equals arg1="n" arg2="${do.release}"/>
+      </condition>
+      <fail if="do.abort">Release aborted by user.</fail>
+      
+      <echo message="Tagging CVS - ${cvs.tag}"/>
+      <cvs command="rtag ${cvs.tag} XHIBIT"/>
+
+      <echo message="Checking out code from ${cvs.tag} to work dir..."/>
+      <cvs command="-q co -r ${cvs.tag} -P XHIBIT" dest="./work"/>
+
+      <!-- install build.properties for this build -->
+      <copy file="/build/artifacts/build.properties" tofile="./work/XHIBIT/build.properties"/>
+      
+      <!-- exec the build -->
+      <exec dir="./work/XHIBIT" executable="/opt/bea92/weblogic92/server/bin/ant" failonerror="true">
+         <arg line="-f build.xml"/>
+         <env key="ANT_HOME" value="/opt/bea92/weblogic92/server"/>
+         <env key="CLASSPATH" value="/opt/bea92/weblogic92/server/lib/ant/junit.jar"/>         
+         <env key="ANT_OPTS" value="-XX:PermSize=256m -XX:MaxPermSize=512m"/>
+         <env key="BEA_HOME" value="/opt/bea92"/>
+         <env key="WL_HOME" value="/opt/bea92/weblogic92"/>
+         <env key="JAVA_VENDOR" value="SUN"/>
+      </exec>
+
+     <!-- copy jre in place for notifier --> 
+      <echo message="copy notifer JRE..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/jre-1.5.0_04" 
+            executable="/bin/tar">
+        <arg line="zxfp /build/artifacts/jre-1.5.04-solaris.tar.gz"/>
+      </exec>
+      
+      <!-- chmod notify.sh --> 
+      <echo message="setting perms on notify.sh..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/bin" 
+            executable="/bin/chmod">
+            <arg line="744 notify.sh"/>
+      </exec>
+   
+
+      <echo message="packaging notifier - publicDisplayNotifier-${version}.tar.gz"/> 
+      
+      <property name="sh.dir" value="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files"/>
+      <sh dir="${sh.dir}">tar zcpf publicDisplayNotifier-${version}.tar.gz publicDisplayNotifier-${version}/*</sh>        
+
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}"/> 
+
+      <echo message="copy client JRE..."/>
+      <unzip src="/build/artifacts/jre-1.5.04-windows.zip" 
+           dest="./work/XHIBIT/build/dist/Xhibit-${version}/WINDOWS/Workstation/XHIBIT Application Files/jre-1.5.0_04/"/>
+   
+      <echo message="copying xhibithelp.war"/>
+
+      <copy file="/build/artifacts/xhibithelp.war" 
+         todir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}/staging/"/>
+      
+      <echo message="packaging xhibit-${version}.tar.gz"/>
+      
+      <sh dir="${sh.dir}">tar zcpf xhibit-${version}.tar.gz xhibit-${version}/*</sh>
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}"/>
+      
+      <!-- Package SCJSEGate folders into zip files -->
+      <echo message="packaging scjsegate-${version}.tar.gz"/>
+      
+      <sh dir="${sh.dir}">tar zcpf scjsegateway-${version}.tar.gz scjsegateway-${version}/*</sh>
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/scjsegateway-${version}"/>
+      
+      <echo message="creating zip files...."/> 
+      <!-- All.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-All.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+      />
+      
+      <!-- Server.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Server.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/WINDOWS, Xhibit-${version}/WINDOWS/**/*"
+      />
+      
+      <!-- Client.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Client.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/SOLARIS, Xhibit-${version}/SOLARIS/**/*"
+      />
+      
+          
+    </target>
+
+   <target name="branch.build">
+      <!-- import build.properties --> 
+      <property file="/build/artifacts/build.properties"/> 
+
+      <!-- delete the work DIR to make sure we are starting fresh -->
+      <delete dir="./work/XHIBIT"/>
+    
+      <input
+         message="Please Enter the name of this candidate release (i.e 8_0_RC3)"
+         addproperty="release.name"
+      />
+      
+      <input
+         message="Please Enter a suffix for the zip filed created (i.e -RC1 will produce Xhibit-(version)-All-RC1.zip)"
+         addproperty="suffix"
+      />
+      
+      <input
+         message="Please enter the cvs branch to build from"
+         addproperty="cvs.branch"
+      />
+      
+      <input
+         message="Please enter the new cvs tag.)"
+         addproperty="cvs.tag"
+      />
+      <property name="cvs.tag" value="RELEASE_${release.name}"/> 
+      <property name="release.zip" value="xhibit-RELEASE_${release.name}.zip"/> 
+      <property name="release.client.zip" value="xhibit-RELEASE_${release.name}-client.zip"/> 
+      
+      <echo message="**********************************************************************************************************************"/>
+      <echo message=""/> 
+      <echo message="a TAG will be created in CVS called ${cvs.tag} from the current HEAD branch"/>
+      <echo message="the version number for this release will be ${version}, if this is wrong please edit build.properties and try again..."/>
+      <echo message="three zip files will be built Xhibit-${version}${suffix}-Client.zip Xhibit-${version}${suffix}-Client.zip"/>
+      <echo message="and Xhibit-${version}${suffix}-Client.zip"/> 
+      <echo message=""/> 
+      <echo message="**********************************************************************************************************************"/>
+    
+      <input
+         message="is this information correct and do you want to continue ?"
+         validargs="y,n"
+         addproperty="do.release"
+      />
+      <condition property="do.abort">
+         <equals arg1="n" arg2="${do.release}"/>
+      </condition>
+      <fail if="do.abort">Release aborted by user.</fail>
+      
+      <echo message="Tagging CVS - ${cvs.tag}"/>
+      <cvs command="rtag -r ${cvs.branch} ${cvs.tag} XHIBIT"/>
+
+      <echo message="Checking out code from ${cvs.tag} to work dir..."/>
+      <cvs command="-q co -r ${cvs.tag} -P XHIBIT" dest="./work"/>
+
+      <!-- install build.properties for this build -->
+      <copy file="/build/artifacts/build.properties" tofile="./work/XHIBIT/build.properties"/>
+      
+      <!-- exec the build -->
+      <exec dir="./work/XHIBIT" executable="/opt/bea/weblogic91/server/bin/ant" failonerror="true">
+         <arg line="-f build.xml"/>
+         <env key="ANT_HOME" value="/opt/bea/weblogic91/server"/>
+         <env key="CLASSPATH" value="/opt/bea/weblogic91/server/lib/ant/junit.jar"/>         
+         <env key="ANT_OPTS" value="-XX:PermSize=256m -XX:MaxPermSize=512m"/>
+         <env key="BEA_HOME" value="/opt/bea"/>
+         <env key="WL_HOME" value="/opt/bea/weblogic91"/>
+         <env key="JAVA_VENDOR" value="SUN"/>
+      </exec>
+
+     <!-- copy jre in place for notifier --> 
+      <echo message="copy notifer JRE..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/jre-1.5.0_04" 
+            executable="/bin/tar">
+        <arg line="zxfp /build/artifacts/jre-1.5.04-solaris.tar.gz"/>
+      </exec>
+      
+      <!-- chmod notify.sh --> 
+      <echo message="setting perms on notify.sh..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/bin" 
+            executable="/bin/chmod">
+            <arg line="744 notify.sh"/>
+      </exec>
+   
+
+      <echo message="packaging notifier - publicDisplayNotifier-${version}.tar.gz"/> 
+      
+      <property name="sh.dir" value="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files"/>
+      <sh dir="${sh.dir}">tar zcpf publicDisplayNotifier-${version}.tar.gz publicDisplayNotifier-${version}/*</sh>        
+
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}"/> 
+
+      <echo message="copy client JRE..."/>
+      <unzip src="/build/artifacts/jre-1.5.04-windows.zip" 
+           dest="./work/XHIBIT/build/dist/Xhibit-${version}/WINDOWS/Workstation/XHIBIT Application Files/jre-1.5.0_04/"/>
+   
+      <echo message="copying xhibithelp.war"/>
+
+      <copy file="/build/artifacts/xhibithelp.war" 
+         todir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}/staging/"/>
+      
+      <echo message="packaging xhibit-${version}.tar.gz"/>
+      
+      <sh dir="${sh.dir}">tar zcpf xhibit-${version}.tar.gz xhibit-${version}/*</sh>
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}"/>
+      
+      <echo message="creating zip files...."/> 
+      <!-- All.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-All.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+      />
+      
+      <!-- Server.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Server.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/WINDOWS, Xhibit-${version}/WINDOWS/**/*"
+      />
+      
+      <!-- Client.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Client.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/SOLARIS, Xhibit-${version}/SOLARIS/**/*"
+      />
+    
+    </target>
+    
+    <target name="newbranch.build">
+      <!-- import build.properties --> 
+      <property file="/build/artifacts/build.properties"/> 
+
+      <!-- delete the work DIR to make sure we are starting fresh -->
+      <delete dir="./work/XHIBIT"/>
+    
+      <input
+         message="Please Enter the name of this Weblogic 9.2 candidate branch release (i.e 8_0_RC3)"
+         addproperty="release.name"
+      />
+      
+      <input
+         message="Please Enter a suffix for the zip filed created (i.e -RC1 will produce Xhibit-(version)-All-RC1.zip)"
+         addproperty="suffix"
+      />
+      
+      <input
+         message="Please enter the cvs branch to build from"
+         addproperty="cvs.branch"
+      />
+      
+      <input
+         message="Please enter the new cvs tag.)"
+         addproperty="cvs.tag"
+      />
+      <property name="cvs.tag" value="RELEASE_${release.name}"/> 
+      <property name="release.zip" value="xhibit-RELEASE_${release.name}.zip"/> 
+      <property name="release.client.zip" value="xhibit-RELEASE_${release.name}-client.zip"/> 
+      
+      <echo message="**********************************************************************************************************************"/>
+      <echo message=""/> 
+      <echo message="a TAG will be created in CVS called ${cvs.tag} from the $(cvs.branch) branch"/>
+      <echo message="the version number for this release will be ${version}, if this is wrong please edit build.properties and try again..."/>
+      <echo message="three zip files will be built Xhibit-${version}${suffix}-Client.zip Xhibit-${version}${suffix}-Client.zip"/>
+      <echo message="and Xhibit-${version}${suffix}-Client.zip"/> 
+      <echo message=""/> 
+      <echo message="**********************************************************************************************************************"/>
+    
+      <input
+         message="is this information correct and do you want to continue ?"
+         validargs="y,n"
+         addproperty="do.release"
+      />
+      <condition property="do.abort">
+         <equals arg1="n" arg2="${do.release}"/>
+      </condition>
+      <fail if="do.abort">Release aborted by user.</fail>
+      
+      <echo message="Tagging CVS - ${cvs.tag}"/>
+      <cvs command="rtag -r ${cvs.branch} ${cvs.tag} XHIBIT"/>
+
+      <echo message="Checking out code from ${cvs.tag} to work dir..."/>
+      <cvs command="-q co -r ${cvs.tag} -P XHIBIT" dest="./work"/>
+
+      <!-- install build.properties for this build -->
+      <copy file="/build/artifacts/build.properties" tofile="./work/XHIBIT/build.properties"/>
+      
+      <!-- exec the build -->
+      <exec dir="./work/XHIBIT" executable="/opt/bea92/weblogic92/server/bin/ant" failonerror="true">
+         <arg line="-f build.xml"/>
+         <env key="ANT_HOME" value="/opt/bea92/weblogic92/server"/>
+         <env key="CLASSPATH" value="/opt/bea92/weblogic92/server/lib/ant/junit.jar"/>         
+         <env key="ANT_OPTS" value="-XX:PermSize=256m -XX:MaxPermSize=512m"/>
+         <env key="BEA_HOME" value="/opt/bea92"/>
+         <env key="WL_HOME" value="/opt/bea92/weblogic92"/>
+         <env key="JAVA_VENDOR" value="SUN"/>
+      </exec>
+
+     <!-- copy jre in place for notifier --> 
+      <echo message="copy notifer JRE..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/jre-1.5.0_04" 
+            executable="/bin/tar">
+        <arg line="zxfp /build/artifacts/jre-1.5.04-solaris.tar.gz"/>
+      </exec>
+      
+      <!-- chmod notify.sh --> 
+      <echo message="setting perms on notify.sh..."/>
+      <exec dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}/bin" 
+            executable="/bin/chmod">
+            <arg line="744 notify.sh"/>
+      </exec>
+   
+
+      <echo message="packaging notifier - publicDisplayNotifier-${version}.tar.gz"/> 
+      
+      <property name="sh.dir" value="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files"/>
+      <sh dir="${sh.dir}">tar zcpf publicDisplayNotifier-${version}.tar.gz publicDisplayNotifier-${version}/*</sh>        
+
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/publicDisplayNotifier-${version}"/> 
+
+      <echo message="copy client JRE..."/>
+      <unzip src="/build/artifacts/jre-1.5.04-windows.zip" 
+           dest="./work/XHIBIT/build/dist/Xhibit-${version}/WINDOWS/Workstation/XHIBIT Application Files/jre-1.5.0_04/"/>
+   
+      <echo message="copying xhibithelp.war"/>
+
+      <copy file="/build/artifacts/xhibithelp.war" 
+         todir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}/staging/"/>
+      
+      <echo message="packaging xhibit-${version}.tar.gz"/>
+      
+      <sh dir="${sh.dir}">tar zcpf xhibit-${version}.tar.gz xhibit-${version}/*</sh>
+      <delete dir="./work/XHIBIT/build/dist/Xhibit-${version}/SOLARIS/XHIBIT Application Files/xhibit-${version}"/>
+      
+      <echo message="creating zip files...."/> 
+      <!-- All.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-All.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+      />
+      
+      <!-- Server.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Server.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/WINDOWS, Xhibit-${version}/WINDOWS/**/*"
+      />
+      
+      <!-- Client.zip --> 
+      <zip destfile="./dist/Xhibit-${version}${suffix}-Client.zip"
+        basedir="./work/XHIBIT/build/dist"
+        includes="Xhibit-${version}/**/*"
+        excludes="Xhibit-${version}/SOLARIS, Xhibit-${version}/SOLARIS/**/*"
+      />
+    
+    </target>
+   
+   <target name="promote.nightly">
+     <property file="build.properties"/>
+     <input
+        message="Please Enter the name of the Existing nightly TAG to promote"
+        addproperty="existing.tag"
+     />
+      
+     <buildnumber/> 
+     <property name="rc.tag" value="RELEASE${cvs_safe_version}_RC${build.number}" />
+     <echo message=""/>
+     <echo message="****************************************************************"/>
+     <echo message="       A new cvs TAG will be created called ${rc.tag} "/>
+     <echo message="       From the Exising CVS tag ${existing.tag}"/>
+     <echo message="****************************************************************"/>
+     <echo message=""/>
+      
+      <input
+        message="is this information correct and do you want to continue ?"
+        validargs="y,n"
+        addproperty="do.promo"
+      />
+      <condition property="do.abort">
+         <equals arg1="n" arg2="${do.promo}"/>
+      </condition>
+      <fail if="do.abort">Promotion aborted by user.</fail>
+
+      <cvs command="rtag -r${existing.tag} ${rc.tag} XHIBIT" />
+      <echo message="Candidate Promotion Complete - please RECORD THIS PROMOTION ON THE WIKI !"/>
+   </target>
+   
+   <target name="promote.candidate">
+      <!-- import build.properties --> 
+      <property file="./build.properties"/> 
+     <input
+        message="Please Enter the name of the Existing Release Candidate TAG to promote"
+        addproperty="existing.tag"
+     />
+    
+     <property name="new.tag" value="RELEASE_${cvs_safe_version}"/>
+
+     <echo message=""/>
+     <echo message="****************************************************************"/>
+     <echo message="       A new cvs TAG will be created called ${new.tag} "/>
+     <echo message="       From the Exising CVS tag ${existing.tag}"/>
+     <echo message="       if the version is incorect you should edit the build.properties"/>
+     <echo message="       in the /build/release directory and update version and cvs_safe_version"/>
+     <echo message="       values as appropriate "/>
+     <echo message="****************************************************************"/>
+     <echo message=""/>
+      
+      <input
+        message="is this information correct and do you want to continue ?"
+        validargs="y,n"
+        addproperty="do.promo"
+      />
+
+      <condition property="do.abort">
+         <equals arg1="n" arg2="${do.promo}"/>
+      </condition>
+      
+      <fail if="do.abort">Promotion aborted by user.</fail>
+      
+      <cvs command="rtag -r${existing.tag} ${new.tag} XHIBIT" />
+
+   </target>     
+
+    <macrodef name="sh">
+      <attribute name="dir" default="${basedir}"/>
+      <text name="cmd" trim="true"/>
+      <sequential>
+        <exec executable="sh" dir="@{dir}" failonerror="true">
+          <arg value="-c"/>
+          <arg value="@{cmd}"/>
+        </exec>
+      </sequential>
+    </macrodef>
+                                                                                                 
+</project>

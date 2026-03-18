@@ -1,0 +1,6 @@
+<XDtComment:comment>
+    Add an ejb-specifc merge to the dataobject.    
+</XDtComment:comment>
+
+<XDtMerge:merge file="<XDtEjb:ejbName/>-dataobject-custom.xdt">
+</XDtMerge:merge>

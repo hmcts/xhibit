@@ -1,0 +1,12 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findAllReasonDescriptions()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(rrd) 
+ *    FROM XhbRemandReasonDescription AS rrd
+ *    WHERE (rrd.obsInd IS NULL OR rrd.obsInd = 'N')
+ *    orderby rrd.reasonCategory, rrd.reasonDescription"
+ *
+ * -------- end of custom finders --------

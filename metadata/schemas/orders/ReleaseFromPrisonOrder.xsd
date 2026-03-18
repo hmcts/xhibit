@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:complexType name="ReleaseFromPrisonOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xsd:element name="Governor" type="xsd:string">
+				<xsd:annotation>
+					<xsd:documentation>Prison Governor</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="OriginalCourt">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Court" type="XHIBITCourtHouseStructure"/>
+						<xsd:element name="OriginalWarrantDate" type="xsd:date"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Bail" type="XHIBITBailStructure"/>
+			<xsd:element name="Ordered" type="XHIBITOrderedType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ReleaseFromPrisonOrder" type="ord:ReleaseFromPrisonOrderStructure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V1.0 (30/11/2015)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

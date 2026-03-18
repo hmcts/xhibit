@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ScjseStubWebServiceClient">
+
+    <description>
+        This project contains ...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.jar" value="marker"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+            <log target="initialise"/>
+            <path id="compile.classpath">
+                <path refid="lib.classpath"/>
+                <path refid="framework.classpath"/>
+                <fileset dir="${build.dest.dir}">
+                    <include name="Framework.jar" />
+                    <include name="Config.jar" />
+                    <include name="Value.jar" />
+                    <include name="ScjseGatewayMessageBeans.jar" />
+                    <include name="GdGatewayWebService.jar" />
+                    <include name="GdGatewayXmlBinding.jar" />
+                    <include name="ScjseGatewayMessaging.jar" />
+                    <include name="GdGatewayWebServiceClient.jar" />
+                    <include name="GdGatewayWebService.jar" />
+                </fileset>
+            </path>
+    </target>
+
+</project>

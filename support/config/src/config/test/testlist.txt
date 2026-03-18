@@ -1,0 +1,12 @@
+uk.gov.courtservice.framework.test.services.TestRemoteEJBServices
+uk.gov.courtservice.framework.test.services.TestRemoteLocatorServices
+uk.gov.courtservice.framework.test.patterns.fastlanereader.TestFastLaneReader
+uk.gov.courtservice.framework.test.patterns.valuelisthandler.TestValueListHandler
+uk.gov.courtservice.framework.test.patterns.valuelisthandler.TestValueListHandlerWrapper
+uk.gov.courtservice.framework.test.services.printing.TestPrintingFormatter
+uk.gov.courtservice.framework.test.services.TestAuditService
+uk.gov.courtservice.framework.test.services.TestConfigServices
+uk.gov.courtservice.framework.test.services.TestDBServices
+uk.gov.courtservice.framework.test.services.TestErrorHandling
+uk.gov.courtservice.framework.test.services.TestLogging
+uk.gov.courtservice.framework.test.services.TestLoggingBean

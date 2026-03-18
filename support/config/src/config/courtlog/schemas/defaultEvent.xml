@@ -1,0 +1,9 @@
+<xs:element ref="id" minOccurs="0"/>
+<xs:element ref="flagged" minOccurs="0"/>
+<xs:element ref="free_text" minOccurs="0"/>
+<xs:element ref="type"/>
+<xs:element name="defendant_on_case_id" type="xs:integer" minOccurs="0"/>
+<xs:element name="defendant_name" type="xs:string" minOccurs="0"/>
+<xs:element name="defendant_masked_name" type="xs:string" minOccurs="0"/>
+<xs:element name="defendant_masked_flag" type="xs:string" minOccurs="0"/>
+<xs:element name="process_linked_cases" type="xs:boolean" default="true" minOccurs="0"/>

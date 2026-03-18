@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="thickclient" basedir="." default="all">
+
+    <description>
+        Top-Level Build Script For The Thick Client
+    </description>
+
+    <import file="./../tools/ant/framework.xml" />
+    
+    <!--
+      =======================================================================
+        Initialisation override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="child.path">
+            <pathelement location="mseries/build.xml" />
+            <pathelement location="framework/build.xml" />
+            <pathelement location="testing_framework/build.xml" />
+            <pathelement location="results/build.xml" />
+            <pathelement location="instant_messaging/build.xml" />
+            <pathelement location="listdistribution/build.xml" />
+            <pathelement location="publicdisplay/build.xml" />
+            <pathelement location="main/build.xml" />
+            <pathelement location="orders/build.xml" />
+            <pathelement location="witness/build.xml" />
+            <pathelement location="crestformsbf/build.xml" />
+        </path>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+    <target name="package" unless="skip.package" depends="framework.package">
+        <mkdir dir="${lib.build.dir}" />
+        <jar destfile="${lib.build.dir}/Client.jar">
+            <zipgroupfileset dir="${basedir}" includes="*/**/build/lib/*.jar" />
+        </jar>
+    </target>
+
+</project>

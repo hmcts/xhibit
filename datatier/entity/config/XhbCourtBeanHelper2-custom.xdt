@@ -1,0 +1,55 @@
+
+public static uk.gov.courtservice.xhibit.business.vos.services.court.CourtStructureValue getCourtStructure(Integer courtId)
+{
+    uk.gov.courtservice.xhibit.business.vos.services.court.CourtStructureValue courtStructureValue =
+        new uk.gov.courtservice.xhibit.business.vos.services.court.CourtStructureValue();
+
+    uk.gov.courtservice.xhibit.business.entities.xhb_court.XhbCourt court = findByPrimaryKey(courtId);
+
+    courtStructureValue.setCourt(court.getData());
+
+    java.util.Collection courtSites = court.getXhbCourtSites();
+
+    java.util.ArrayList courtSitesList = new java.util.ArrayList();
+
+    for (java.util.Iterator i = courtSites.iterator(); i.hasNext(); )
+    {
+       uk.gov.courtservice.xhibit.business.entities.xhb_court_site.XhbCourtSite courtSite =
+           (uk.gov.courtservice.xhibit.business.entities.xhb_court_site.XhbCourtSite) i.next();
+
+       if (courtSite.getObsInd() == null || !courtSite.getObsInd().equals("Y"))
+       {
+
+           courtSitesList.add(courtSite.getData());
+
+           uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue[] courtRooms;
+           if (courtSites.size() > 1)
+           {
+               courtRooms = courtSite.getMultiSiteXhbCourtRoomsData();
+           } else {
+               courtRooms = courtSite.getXhbCourtRoomsData();
+           }
+
+           java.util.ArrayList courtRoomsList = new java.util.ArrayList();
+
+           for (int k = 0; k < courtRooms.length; k++)
+           {
+               uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue courtRoom = courtRooms[k];
+               if (courtRoom.getObsInd() == null || !courtRoom.getObsInd().equals("Y"))
+               {
+                   courtRoomsList.add(courtRoom);
+               }
+           }
+           courtStructureValue.addCourtRooms(courtSite.getCourtSiteId(),
+               (uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue[])
+               courtRoomsList.toArray(new uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue[courtRoomsList.size()]) );
+       }
+
+    }
+
+    courtStructureValue.setCourtSites(
+        (uk.gov.courtservice.xhibit.business.entities.xhb_court_site.XhbCourtSiteBasicValue[])
+        courtSitesList.toArray(new uk.gov.courtservice.xhibit.business.entities.xhb_court_site.XhbCourtSiteBasicValue[courtSitesList.size()]) );
+
+    return courtStructureValue;
+}

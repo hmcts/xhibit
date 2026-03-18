@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 4 U (http://www.xmlspy.com) by EDS (Electronic Data Systems LTD) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:complexType name="AcceleratorType">
+		<xs:attribute name="key" type="xs:string" use="required"/>
+		<xs:attribute name="modifiers" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="ALT"/>
+					<xs:enumeration value="CTRL"/>
+					<xs:enumeration value="CTRLALT"/>
+					<xs:enumeration value="SHIFT"/>
+					<xs:enumeration value="SHIFTALT"/>
+					<xs:enumeration value="SHIFTCTRL"/>
+					<xs:enumeration value="SHIFTCTRLALT"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:complexType>
+	<xs:complexType name="ToolbarType">
+		<xs:attribute name="id" type="xs:ID" use="required"/>
+		<xs:attribute name="name" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="ACTIONType">
+		<xs:sequence>
+			<xs:choice>
+				<xs:sequence>
+					<xs:element name="NAME">
+						<xs:complexType>
+							<xs:attribute name="propertyname" type="xs:string" use="required"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="SHORTDESC">
+						<xs:complexType>
+							<xs:attribute name="propertyname" type="xs:string" use="required"/>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="LONGDESC">
+						<xs:complexType>
+							<xs:attribute name="propertyname" type="xs:string" use="required"/>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+				<xs:element name="QUICKPROPERTY">
+					<xs:complexType>
+						<xs:attribute name="propertyname" type="xs:string" use="required"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:element name="ICON" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="value" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ACCELERATORKEY" type="AcceleratorType" minOccurs="0"/>
+			<xs:element name="MNEMONICKEY" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="propertyname" type="xs:string" use="required"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="AdHocActionType">
+		<xs:sequence>
+			<xs:element name="ACTIONBUNDLENAME">
+				<xs:complexType>
+					<xs:attribute name="BundleName" type="xs:string" use="required"/>
+					<xs:attribute name="AddToMenu" type="xs:boolean" use="required"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="TOOLBARENTRY" minOccurs="0">
+				<xs:complexType>
+					<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:attributeGroup name="eventIDType">
+		<xs:attribute name="id" type="xs:int" use="required">
+			<xs:annotation>
+				<xs:documentation>This is the event_id as specified by the mid-tier</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="schema" type="xs:string" use="required"/>
+		<xs:attribute name="deleted" type="xs:boolean" use="optional"/>
+		<xs:attribute name="IsEditable" type="xs:boolean" use="optional"/>
+	</xs:attributeGroup>
+	<xs:attributeGroup name="mediumEventIDType">
+		<xs:attributeGroup ref="eventIDType"/>
+		<xs:attribute name="subschema" type="xs:string" use="optional"/>
+		<xs:attribute name="selectionRequired" type="xs:boolean" use="optional"/>
+	</xs:attributeGroup>
+	 
+	<xs:element name="COURTLOGEVENTS">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="TOOLBARS">
+					<xs:annotation>
+						<xs:documentation>A list of all the toolbars. These are referenced in ToolBarEntry below.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="unbounded">
+							<xs:element name="TOOLBAR" type="ToolbarType"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="EVENTS" type="EVENTSType">
+					<xs:annotation>
+						<xs:documentation>The application menu will be built using the order the events are specified.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="EVENTSType">
+		<xs:choice maxOccurs="unbounded">
+			<xs:element name="SIMPLEEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="eventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MEDIUMCHOICEEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MULTIDEFENDANT" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="required" type="xs:boolean" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="mediumEventIDType"/>
+				</xs:complexType>
+			<xs:element name="BWEVENT">
+				 <xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MULTIDEFENDANT" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="required" type="xs:boolean" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="mediumEventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ENDBWEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="MULTIDEFENDANT" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="required" type="xs:boolean" use="required"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="mediumEventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MEDIUMDATEEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="mediumEventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MEDIUMTEXTEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="mediumEventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="COMPLEXEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTIONBUNDLE">
+							<xs:complexType>
+								<xs:attribute name="value" type="xs:string" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="VO">
+							<xs:complexType>
+								<xs:attribute name="name" type="xs:string" use="required"/>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="eventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="FREETEXTEVENT">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="ACTION" type="ACTIONType"/>
+						<xs:element name="TOOLBARENTRY" minOccurs="0">
+							<xs:complexType>
+								<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+					<xs:attributeGroup ref="eventIDType"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="SUBMENU">
+				<xs:annotation>
+					<xs:documentation>This adds a sub-menu structure in the application menus.</xs:documentation>
+				</xs:annotation>
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="EVENTSType">
+							<xs:attribute name="propertyname" type="xs:string" use="required"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MENUSPACER">
+				<xs:complexType>
+					<xs:attribute name="toolbarname" type="xs:IDREF" use="optional"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="ADHOCACTION" type="AdHocActionType"/>
+		</xs:choice>
+	</xs:complexType>
+</xs:schema>

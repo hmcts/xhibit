@@ -1,0 +1,33 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="uk.gov.courtservice.xhibit.business.entities.refprosecutoragency.RefProsecutorAgency findByRefProsecutorAgencyId(java.lang.Integer refProsecutorAgencyId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(r) FROM XhbRefProsecutorAgency AS r WHERE r.refProsecutorAgencyId = ?1 AND (r.obsInd is null OR r.obsInd = 'N' OR r.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtId(java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefProsecutorAgency AS o WHERE o.courtId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtIdAndProsecutorName(java.lang.Integer courtId, java.lang.String prosecutorName3)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefProsecutorAgency AS o WHERE o.courtId = ?1 AND lower(o.prosecutorName3) LIKE lower(?2) AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtIdAndCpsCode(java.lang.Integer courtId, java.lang.String cpsCode)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefProsecutorAgency AS o WHERE o.courtId = ?1 AND lower(o.cpsCode) LIKE lower(?2) AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtIdProsecutorNameAndCpsCode(java.lang.Integer courtId, java.lang.String prosecutorName3, java.lang.String cpsCode)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefProsecutorAgency AS o WHERE o.courtId = ?1 AND lower(o.prosecutorName3) LIKE lower(?2) AND lower(o.cpsCode) LIKE lower(?3) AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * -------- end of custom finders --------

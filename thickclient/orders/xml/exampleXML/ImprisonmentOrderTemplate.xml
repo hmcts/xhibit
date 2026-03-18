@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  $Revision: 1.14 $  $Author: gz257j $ $Date: 2003/03/17 10:21:13 $-->
+<template>
+	<form>
+		<section name="defendant" label="" borderLabel="Defendant" ref="/">
+			<date name="xxx2" label="Conviction Date:" ref="//ord:ConvictionDate"/>
+			<section name="commitForSentence" label="" switchLabel="Committed for Sentence By" borderLabel="" borderRaised="false" switchable="true" ref="//ord:CommittingCourt/@selected" selectedValue="true" unselectedValue="false">
+				<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:CommittingCourt/ord:CourtHouseName"/>
+			</section>
+		</section>
+		<section name="courtOrdered" label="" borderLabel="Court Ordered" ref="/">
+			<date name="xxx2" label="Sentence Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+			<section name="custodialSentence" borderLabel="Custodial Sentence" label="">
+				<section name="sentenceType" borderLabel="" label="">
+					<choice name="sentenceType" label="" ref="//ord:CustodialSentence/ord:ImprisonmentType">
+						<option name="life" label="Life Imprisonment" value="life" selected="true">
+							<section name="discretionaryLifeOption" label="" switchLabel="Discretionary Life Option" borderLabel="Discretionary Life Prisoners" borderRaised="false" switchable="true" ref="//ord:Section28/@selected" selectedValue="true" unselectedValue="false">
+								<durationdate name="durationdate" dayattribute="false" monthattribute="true" yearattribute="true" label="Relevant Part of Sentence" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1 = "/ord:Order/ord:OrderData/*/ord:Section28/ord:DiscretionaryRelevantPart"/>
+							</section>
+						</option>
+						<option name="period" label="Period of Imprisonment" value="period">
+							<durationdate name="durationdate" dayattribute="false" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:Term"/>
+							<section name="extendedSentenceOption" label="" switchLabel="Extended Sentence Option" borderLabel="" borderRaised="false" switchable="true" ref="//ord:CustodialSentence/ord:ExtendedSentence/@selected" selectedValue="true" unselectedValue="false">
+								<durationdate name="durationdate" dayattribute="false" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="Extension Period:" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:ExtendedSentence/ord:ExtensionPeriod"/>
+								<choice name="extendedsentenceOption" label="" ref="//ord:ExtendedSentence/ord:SentenceType">
+									<option name="consecutive" label="consecutive" value="Consecutive" selected="true"/>
+									<option name="concurrent" label="concurrent" value="Concurrent"/>
+								</choice>
+								<section name="section44" label="" switchLabel="Section 44 applies" switchable="true" ref="//ord:ExtendedSentence/ord:Section44/@selected" selectedValue="true" unselectedValue="false">
+								</section>
+							</section>
+						</option>
+					</choice>
+				</section>
+				<section name="sentenceOption" label="" switchLabel="Sentence To Be Option" borderLabel="" borderRaised="false" switchable="true" ref="//ord:CustodialSentence/ord:TermType/@selected" selectedValue="true" unselectedValue="false">
+					<choice name="sentenceOption" label="" ref="//ord:CustodialSentence/ord:TermType">
+						<option name="consecutive" label="consecutive" value="Consecutive" selected="true"/>
+						<option name="concurrent" label="concurrent" value="Concurrent"/>
+					</choice>
+				</section>
+			</section>
+			<section name="requiredCustodial" label="" switchLabel="Required Custodial Option" borderLabel="Required Custodial Sentence" borderRaised="false" switchable="true" ref="//ord:ChapterIII" selectedValue="yes" unselectedValue="no">
+			</section>
+			<section name="returnOfDefendants" label="" switchLabel="Return of Defendants Option" borderLabel="Return of Defendants" borderRaised="false" switchable="true" ref="//ord:ReturnToImprisonment/@selected" selectedValue="true" unselectedValue="false">
+				<section name="returnDate" label="" borderLabel="Return Date" ref="/">
+					<choice name="returnDateOption" label="" ref="//ord:OffenceDate/@Qualifier">
+						<option name="on" label="On" value="on" selected="true"/>
+						<option name="noLaterThan" label="No later than" value="on or before"/>
+					</choice>
+					<date name="xxx2" label="Return Date:" ref="//ord:ReturnToImprisonment/ord:OffenceDate"/>
+				</section>
+				<section name="sentenceCourt" label="" borderLabel="Sentence Court" ref="/">
+					<!--<choice name="sentenceCourtOption" label="" ref="//ReturnToImprisonment/SentencingCourt/CourtHouse/CourtHouseType">
+						<option name="crown" label="Crown Court" value="crown court" selected="true"/>
+						<option name="magistrates" label="Magistrates Court" value="magistrates court"/>
+					</choice>-->
+					<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:SentencingCourt/ord:CourtHouse/ord:CourtHouseName"/>
+					<date name="xxx2" label="Sentence Imposed Date:" ref="//ord:SentencingCourt/ord:Date"/>
+				</section>
+				<section name="section116" label="" borderLabel="Section 116" ref="/">
+					<section name="maxSpecified" label="" borderLabel="" ref="/">
+						<choice name="sentenceCourtOption" label="" ref="//ord:ReturnPeriod/ord:Max116">
+							<option name="max" label="Maximum Period" value="yes" selected="true"/>
+							<option name="specified" label="Specified Period" value="no">
+								<textfield name="monthsValue" type="string" label="Months: " length="5" ref="//ord:ReturnPeriod/ord:PeriodInMonths"/>
+							</option>
+						</choice>
+					</section>
+					<section name="period" label="" borderLabel="" ref="/">
+						<choice name="periodOption" label="" ref="//ord:ReturnPeriod/@TermType">
+							<option name="before" label="Period Before" value="Before" selected="true"/>
+							<option name="concurrently" label="Period concurrently" value="Concurrent"/>
+						</choice>
+					</section>
+				</section>
+				<section name="termless12" label="" switchLabel="Term less than 12 months indicator" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReturnToImprisonment/ord:TotalPeriodOfReturn/@selected" selectedValue="true" unselectedValue="false">
+					<section name="custodialTermIndicator" label="" switchLabel="Custodial Term Indicator" switchable="true" ref="//ord:ReturnToImprisonment/ord:TotalPeriodOfReturn/@IncludesNewOffenceTerm" selectedValue="yes" unselectedValue="no"/>
+					<textfield name="returnPeriodValue" type="string" label="Total Period of Return (Months): " length="5" ref="//ord:ReturnToImprisonment/ord:TotalPeriodOfReturn"/>
+				</section>
+			</section>
+			<section name="pre1998" label="" switchLabel="Sexual Offences Information Option" borderLabel="Pre 1998 Sexual Offences" borderRaised="false" switchable="true" ref="//ord:Section86" selectedValue="yes" unselectedValue="no">
+			</section>
+			<section name="additionalNotes" label="" switchLabel="Additional Notes Option" borderLabel="Additional Notes" borderRaised="false" switchable="true" ref="//ord:AdditionalNotes/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="additonalNotesValue" ref="//ord:AdditionalNotes" label="" topLabel="Additional Notes:" rows="10" cols="15"/>
+			</section>
+		</section>
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

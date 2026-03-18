@@ -1,0 +1,19 @@
+ * -------- custom finders --------
+ * @ejb.finder
+ *    signature="java.util.Collection findNonObsoleteByCaseIdAndChargeType(java.lang.Integer caseId, java.lang.String chargeType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (ch) FROM XhbCharge AS ch WHERE ch.caseId = ?1 AND ch.chargeType = ?2 AND (ch.obsInd IS NULL OR ch.obsInd = 'N')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findJoinedCharges(java.lang.Integer chargeId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (ch) FROM XhbCharge AS ch, XhbJoinderCharge jc
+ *           WHERE jc.joinderId IN 
+ *              (SELECT jc2.joinderId FROM XhbJoinderCharge jc2
+ *               WHERE jc2.chargeId = ?1)
+ *           AND ch.chargeId = jc.chargeId
+ *           AND (ch.obsInd IS NULL OR ch.obsInd = 'N')"
+ * -------- end of custom finders --------
+  

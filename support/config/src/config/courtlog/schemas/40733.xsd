@@ -1,0 +1,18 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!-- Case Level Appeal Result (Misc Appeals)-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Appeal_Result"/>
+				<xs:element ref="Appeal_Result_Date"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Appeal_Result" type="xs:string"/>
+	<xs:element name="Appeal_Result_Date" type="xs:string"/>
+</xs:schema>

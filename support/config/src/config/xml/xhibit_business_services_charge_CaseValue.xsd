@@ -1,0 +1,48 @@
+<?xml version="1.0"?> 
+
+<schema xmlns="http://www.w3.org/1999/XMLSchema">  
+
+  <attribute name="caseNumber"> 
+    <simpleType baseType="Integer">        
+	<minInclusive value="1" />	
+	<minInclusive value="99999999" />
+	<maxLength value="8" />
+	<minLength value="1" />
+    </simpleType> 
+  </attribute>
+
+  <attribute name="caseType"> 
+    <simpleType baseType="String"> 
+      <enumeration value="S" /> 
+      <enumeration value="T" /> 
+      <enumeration value="A" />
+      <enumeration value="U" />	
+      <enumeration value="B" />
+      <enumeration value="C" />      
+      <maxLength value="1"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute>
+
+  <attribute name="caseSubType"> 
+    <simpleType baseType="String">      
+      <maxLength value="1"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="caseTitle"> 
+    <simpleType baseType="String">      
+      <maxLength value="72"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="caseDescription"> 
+    <simpleType baseType="String">      
+      <maxLength value="70"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute>  
+
+</schema>

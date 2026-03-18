@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"  xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="ListDistributionWarnedList">
+    <xsd:include schemaLocation="ListDistribution.xsd"/>
+    <xsd:complexType name="ListDistributionWarnedListStructure">
+        <xsd:annotation>
+            <xsd:documentation>
+                    Modified to use ListDistributionFixtureStructure and ListDistributionCourtHouseStructure.
+                    Added WarnedListDetail Element.
+                    Added CRESTListSequence.
+            </xsd:documentation>
+        </xsd:annotation>
+        <xsd:sequence>
+            <xsd:element name="DocumentID" type="DocumentIDstructure"/>
+            <xsd:element name="ListHeader" type="ListDistributionListHeaderStructure"/>
+            <xsd:element name="CrownCourt" type="CourtHouseStructure"/>
+            <xsd:element name="WarnedListDetail" type="WarnedListDetailStructure"/>
+            <xsd:element name="CourtLists">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="CourtList" maxOccurs="unbounded">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="CourtHouse" type="CourtHouseStructure"/>
+                                    <xsd:element name="WarnedForCourts" type="WarnedForCourtsStructure"/>
+                                    <xsd:element name="WithFixedDate" type="ListDistributionFixtuersStructure" minOccurs="0" maxOccurs="unbounded"/>
+                                    <xsd:element name="WithoutFixedDate" type="ListDistributionFixtuersStructure" minOccurs="0" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                                <xsd:attribute name="id" type="xsd:string" use="required"/>
+                            </xsd:complexType>
+                        </xsd:element>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:element name="WarnedList" type="ListDistributionWarnedListStructure"/>
+</xsd:schema>

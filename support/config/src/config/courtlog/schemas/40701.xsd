@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Defendant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E40701_Direction_By_Defendant_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40701_Direction_By_Defendant_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40701_Identification" minOccurs="0"/>
+				<xs:element ref="E40701_Certificate_Of_Attendance" minOccurs="0"/>
+				<xs:element ref="E40701_Bail_Or_Custody" minOccurs="0"/>
+				<xs:element ref="E40701_Arraignment" minOccurs="0"/>
+				<xs:element ref="E40701_Form_B" minOccurs="0"/>
+				<xs:element ref="E40701_Name" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<!--
+	<xs:element name="E40701_To_Be_Filed_Date">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-3][0-9]/[0-1][0-9]/[0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+-->
+	<xs:element name="E40701_Name" type="xs:string"/>
+	<xs:element name="E40701_Identification">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40701_Defendant_Identified"/>
+				<xs:enumeration value="E40701_No_Reply"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40701_Bail_Or_Custody">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40701_Bail_Or_Custody_Options"/>
+				<xs:element ref="E40701_Bail_Or_Custody_Conditions" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40701_Bail_Or_Custody_Conditions" type="xs:string"/>
+	<xs:element name="E40701_Bail_Or_Custody_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40701_RIC"/>
+				<xs:enumeration value="E40701_Bail_As_Before"/>
+				<xs:enumeration value="E40701_Bail_Varied"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40701_Arraignment" type="xs:boolean"/>
+	<xs:element name="E40701_Certificate_Of_Attendance">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40701_Granted"/>
+				<xs:enumeration value="E40701_Refused"/>
+				<xs:enumeration value="E40701_Not_Requested"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40701_Form_B">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40701_Form_B_Options"/>
+				<xs:element name="E40701_To_Be_Filed_Date" type="xs:string" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40701_Form_B_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40701_Filed"/>
+				<xs:enumeration value="E40701_To_Be_Filed"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

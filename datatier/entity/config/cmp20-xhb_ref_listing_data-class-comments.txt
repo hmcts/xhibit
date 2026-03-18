@@ -1,0 +1,22 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByRefDataType(java.lang.String refDataType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(rld) 
+ *    FROM XhbRefListingData AS rld
+ *    WHERE rld.refDataType = ?1
+ *    AND (rld.obsInd IS NULL OR rld.obsInd = 'N')
+ *    orderby rld.creationDate asc"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByRefDataTypeAndDataValue(java.lang.String refDataType, java.lang.String refDataValue)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(rld) 
+ *    FROM XhbRefListingData AS rld
+ *    WHERE rld.refDataType = ?1
+ *    AND (rld.obsInd IS NULL OR rld.obsInd = 'N') 
+ *    AND rld.refDataValue = ?2"
+ * -------- end of custom finders --------

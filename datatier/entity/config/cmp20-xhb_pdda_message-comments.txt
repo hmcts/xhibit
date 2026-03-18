@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findByBatchId(Integer pddaBatchId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbPddaMessage AS o WHERE o.pddaBatchId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') ORDER BY o.pddaMessageId"
+ *
+ * -------- end of custom finders -------- *

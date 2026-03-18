@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<n:binding xmlns:n="http://www.castor.org/SourceGenerator/Binding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.castor.org/SourceGenerator/Binding
+D:\apps\castor-0.9.4.3\doc\binding.xsd" defaultBindingType="element">
+	<package>
+		<name>uk.gov.courtservice.xhibit.xmlbinding.generated.orders</name>
+		<namespace>http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.xmlbinding.generated.address</name>
+		<namespace>http://www.govtalk.gov.uk/people/AddressAndPersonalDetails</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.xmlbinding.generated.narrative</name>
+		<namespace>http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.xmlbinding.generated.bs7666</name>
+		<namespace>http://www.govtalk.gov.uk/people/bs7666</namespace>
+	</package>
+	<n:complexTypeBinding name="complexType:BailOrderStructure/PreConditions">
+		<java-class name="BailPreConditions"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BailOrderStructure/PostConditions">
+		<java-class name="BailPostConditions"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BailOrderBCaseStructure/PreConditions">
+		<java-class name="BailPreConditions"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BailOrderBCaseStructure/PostConditions">
+		<java-class name="BailPostConditions"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BenchWarrantStructure/PreConditions">
+		<java-class name="BWPreConditions"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BenchWarrantStructure/PostConditions">
+		<java-class name="BWPostConditions"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:XHIBITCommunityOrderStructure/CommittingCourt">
+		<java-class name="COCommittingCourt"/>
+	</n:complexTypeBinding>
+	
+	<n:complexTypeBinding name="ImprisonmentOrderStructure">
+		<java-class name="ImprisonmentOrderStructure">
+			<implements>uk.gov.courtservice.xhibit.xmlbinding.orders.ImprisonmentOrderCommonStructure</implements>
+		</java-class>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="ImprisonmentOrder5035CStructure">
+		<java-class name="ImprisonmentOrder5035CStructure">
+			<implements>uk.gov.courtservice.xhibit.xmlbinding.orders.ImprisonmentOrderCommonStructure</implements>
+		</java-class>
+	</n:complexTypeBinding>	
+
+	
+	<n:complexTypeBinding name="complexType:ImprisonmentOrderStructure/CommittingCourt">
+		<java-class name="IOCommittingCourt"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:ImprisonmentOrder5035CStructure/CommittingCourt">
+	<!-- this value is the same as above - if the schema for CommittingCourt changes this will need a few days to sort out-->
+		<java-class name="IOCommittingCourt"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:YoungOffendersOrder5044Structure/CommittingCourt">
+	<!-- this value is the same as above - if the schema for CommittingCourt changes this will need a few days to sort out-->
+		<java-class name="IOCommittingCourt"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:DetentionAndTrainingOrderStructure/CommittingCourt">
+	<!-- this value is the same as above - if the schema for CommittingCourt changes this will need a few days to sort out-->
+		<java-class name="IOCommittingCourt"/>
+	</n:complexTypeBinding>
+	
+	<n:complexTypeBinding name="complexType:BailOrderStructure/PreConditions/Surety">
+		<java-class name="BailSurety"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BailOrderBCaseStructure/PreConditions/Surety">
+		<java-class name="BailSurety"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:BenchWarrantStructure/PreConditions/Surety">
+		<java-class name="BWSurety"/>
+	</n:complexTypeBinding>
+	<n:complexTypeBinding name="complexType:XHIBITCourtOrderHeaderStructure/SignedBy/Judiciary">
+		<java-class name="SigningJudiciary"/>
+	</n:complexTypeBinding>
+</n:binding>

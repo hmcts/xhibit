@@ -1,0 +1,63 @@
+* -------- custom finders --------
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByCaseId(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (dl) FROM XhbRefDisposalType rdt, XhbDisposalLine dl, XhbDisposal2 d, XhbDefendantOnCase doc WHERE
+*           dl.obsInd = 'N' AND
+*           d.disposal2Id = dl.disposal2Id AND
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           doc.defendantOnCaseId = d.defendantOnCaseId AND
+*           doc.caseId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByChargeId(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (dl) FROM XhbRefDisposalType rdt, XhbDisposalLine dl, XhbDisposal2 d, XhbDefendantOnOffence doo, XhbOffence o WHERE
+*           dl.obsInd = 'N' AND
+*           d.disposal2Id = dl.disposal2Id AND
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           doo.defendantOnOffenceId = d.defendantOnOffenceId AND
+*           o.offenceId = doo.offenceId AND
+*           o.chargeId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByDefendantOnOffenceId(java.lang.Integer defendantOnOffenceId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (dl) FROM XhbRefDisposalType rdt, XhbDisposalLine dl, XhbDisposal2 d WHERE
+*           dl.obsInd = 'N' AND
+*           d.disposal2Id = dl.disposal2Id AND
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           d.defendantOnOffenceId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByDisposal2Id(java.lang.Integer disposal2Id)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (dl) FROM XhbDisposalLine dl WHERE dl.obsInd = 'N' AND dl.disposal2Id = ?1 orderby dl.disposalLineId"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSOffencesByCaseId(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (dl) FROM XhbRefDisposalType rdt, XhbDisposal2 d, XhbDisposalLine dl, XhbDefendantOnOffence dof, XhbDefendantOnCase doc WHERE 
+*           dl.obsInd = 'N' AND
+*           d.disposal2Id = dl.disposal2Id AND
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           (d.obsInd = 'N' or d.obsInd IS NULL) AND
+*           d.defendantOnCaseId IS NULL AND
+*           d.defendantOnOffenceId = dof.defendantOnOffenceId AND (dof.obsInd = 'N' or dof.obsInd IS NULL) AND
+*           dof.defendantOnCaseId = doc.defendantOnCaseId AND doc.caseId = ?1
+*           ORDER BY dl.disposal2Id, dl.disposalLineId"
+*
+* -------- end of custom finders --------

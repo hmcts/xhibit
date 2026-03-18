@@ -1,0 +1,3 @@
+Main-Class: jmsutil.Main
+Class-Path: ./weblogic.jar
+

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="MercatorResponse">
+	<xsd:include schemaLocation="MercatorBody.xsd"/>
+	<xsd:element name="MercatorResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="MsgDate" type="xsd:date"/>
+				<xsd:element name="MsgTime" type="xsd:time"/>
+				<xsd:element name="OutputData">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="ReturnMVO"/>
+						</xsd:sequence>						
+					</xsd:complexType>
+				</xsd:element>				
+				<xsd:element name="ResultOutputData" minOccurs="0">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element ref="AddCaseMVO" minOccurs="0"/>
+							<xsd:element ref="PrimaryKeysMVO" minOccurs="0"/>
+							<xsd:element ref="ResultsMVO" minOccurs="0"/>
+						</xsd:sequence>
+					</xsd:complexType>
+				</xsd:element>				
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

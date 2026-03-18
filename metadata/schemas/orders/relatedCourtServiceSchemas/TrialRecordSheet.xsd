@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *********************************************************************	-->
+<!-- Schema for Trail Record Sheet							-->
+<!-- *********************************************************************	-->
+<!-- *********************************************************************	-->
+<!-- Update History											-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.1 - Draft 										-->
+<!-- Detail: Updated as part of CR007							-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.0												-->
+<!-- Detail: Release 											-->
+<!-- *********************************************************************	-->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/terms/" xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<dc:creator>Court Service</dc:creator>
+			<dc:date>2003-02-21</dc:date>
+			<dc:identifier>TrialRecordSheet</dc:identifier>
+			<dc:language>en</dc:language>
+			<dc:rights>
+				<dcq:copyright>Crown Copyright 2002</dcq:copyright>
+				<gms:SecurityClassification>Unclassified</gms:SecurityClassification>
+			</dc:rights>
+			<dc:subject>Crown Court Trial Record Sheet</dc:subject>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="TrialRecordSheetStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="RecordSheetHeader" type="RecordSheetHeaderStructure"/>
+			<xsd:element name="BenchWarrantDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DefenceAdvocates" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="DefenceAdvocate" type="DefenceStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Prosection" type="ProsecutionStructure" minOccurs="0"/>
+			<xsd:element name="CourtReportingFirms" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CourtReportingFirm" type="CourtReportingStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Judiciaries" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Judiciary" type="JudiciaryStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="BailStatusOnCommittal" type="BailStatusType" minOccurs="0"/>
+			<xsd:element name="BailStatusAfterBenchWarrantExecuted" type="BailStatusType" minOccurs="0"/>
+			<xsd:element name="BailStatusAtStartOfHearing" type="BailStatusType" minOccurs="0"/>
+			<xsd:element name="Hearings" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Hearing" type="HearingTypeStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="DateArraigned" minOccurs="0"/>
+			<xsd:element name="DateTried" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DateConvicted" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="DateSentenceOrOrderMade" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="NumberOfProsecutionWitnesses" type="xsd:positiveInteger"/>
+			<xsd:element name="PagesOfEvidence" type="xsd:positiveInteger"/>
+			<xsd:element name="SeveredIndictment" type="YesNoType"/>
+			<xsd:element name="LinkedCases" type="LinkedCasesStructure" minOccurs="0"/>
+			<xsd:element name="TotalSentence" type="xsd:duration" minOccurs="0"/>
+			<xsd:element name="OtherOrders" minOccurs="0">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="OrderDetails" type="xsd:string" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="TrialRecordSheet" type="TrialRecordSheetStructure"/>
+</xsd:schema>

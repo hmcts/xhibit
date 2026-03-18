@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://schemas.cjse.gov.uk/messages/exception/2006-06" targetNamespace="http://schemas.cjse.gov.uk/messages/exception/2006-06" elementFormDefault="qualified" attributeFormDefault="unqualified" version="0.2">
+	<xs:complexType name="ExceptionStructure">
+		<xs:annotation>
+			<xs:documentation>
+				The structure used for carrying error and exception information within the CJS Exchange.
+				The Name element is a human readable error code (for example "ValidationError")
+				The Code element carries a machine readable code - perhaps an integer, depending on the protocol
+				The Detail element carries more information on what caused the error
+				The RelatesTo element (optional) may carry one or more identifiers which allow the receiving system to correlate the exception with the message or object which caused it
+				The InnerException element (optional) is a way of carrying nested exceptions.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="Name" type="xs:string"/>
+			<xs:element name="Code" type="xs:string"/>
+			<xs:element name="Detail" type="xs:string"/>
+			<xs:element name="RelatesTo" type="RelatedIdentifiersStructure" minOccurs="0"/>
+			<xs:element name="OriginalExceptionData" type="xs:string" minOccurs="0"/>
+			<xs:element name="InnerException" type="ExceptionStructure" minOccurs="0"/>
+			<xs:any namespace="##local" processContents="lax" minOccurs="0"/>
+		</xs:sequence>
+		<xs:attribute name="SchemaVersion" use="required" fixed="1.0" type="xs:string"/>
+		<xs:anyAttribute namespace="##any" processContents="lax"/>
+	</xs:complexType>
+	<xs:complexType name="RelatedIdentifiersStructure">
+		<xs:annotation>
+			<xs:documentation>
+				A container for any identifier element - for example a RouteData CorrelationID or a Receive/Deliver MessageIdentifier - 
+				which allows the exception thrower to inform the receiver of the exception of which message caused the problem.				
+			</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:any namespace="##other" processContents="lax" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:element name="Exception" type="ExceptionStructure"/>
+</xs:schema>

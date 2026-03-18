@@ -1,0 +1,29 @@
+DECLARE
+
+	ln_clob_id	xhb_clob.clob_id%TYPE;
+
+BEGIN
+
+
+	SELECT XHB_CLOB_SEQ.NEXTVAL INTO ln_clob_id FROM DUAL;
+
+	INSERT INTO XHB_CLOB (CLOB_ID, CLOB_DATA)
+	VALUES(ln_clob_id, '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="InternetWebPageTemplate.xsl"?><currentcourtstatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><court><courtname>SNARESBROOK</courtname><courtsites><courtsite><courtsitename>SNARESBROOKmu</courtsitename><courtrooms><courtroom><cases><caseDetails><casenumber>20187229</casenumber><casetype>T</casetype><hearingtype>ForTrial(Backer)</hearingtype></caseDetails></cases><defendants><defendant><firstname>AUBERGINE</firstname><middlename>BEANBURGER</middlename><lastname>LIZTHREE</lastname></defendant><defendant><firstname>LIZFEMALE</firstname><middlename>MIDDLENAMES</middlename><lastname>LIZNEWTWO</lastname></defendant><defendant><firstname>LIZZZZ</firstname><lastname>LIZTESTAGFAIN</lastname></defendant><defendant><firstname>MALEONE</firstname><middlename>MIDDLETESTNAME</middlename><lastname>LIZTESTONE</lastname></defendant><defendant><firstname>VERY</firstname><middlename>MAYPOLE</middlename><lastname>LIZFORMAY</lastname></defendant></defendants><currentstatus><event><time>11:49</time><date>08/11/19</date><free_text/><E30200_Long_Adjourn_Options><E30200_LAO_Name>VERYMAYPOLELIZFORMAY</E30200_LAO_Name><E30200_LAO_PSR_Required>true</E30200_LAO_PSR_Required><E30200_LAO_Date>29-Nov-2019</E30200_LAO_Date><E30200_LAO_PSR_Deft_ID>133802</E30200_LAO_PSR_Deft_ID><E30200_LAO_Type>E30200_Case_to_be_listed_for_Sentence</E30200_LAO_Type></E30200_Long_Adjourn_Options><defendant_on_case_id>956915</defendant_on_case_id><type>30200</type><defendant_name>VERYMAYPOLELIZFORMAY</defendant_name><defendant_masked_name/><defendant_masked_flag>N</defendant_masked_flag></event></currentstatus><timestatusset>11:49</timestatusset><courtroomname>Court1</courtroomname></courtroom><courtroom><currentstatus/><courtroomname>Court2</courtroomname></courtroom></courtrooms></courtsite></courtsites></court><datetimestamp><dayofweek>Friday</dayofweek><date>08</date><month>November</month><year>2019</year><hour>11</hour><min>49</min></datetimestamp><pagename>snaresbrook</pagename></currentcourtstatus>');
+
+	INSERT INTO XHB_FORMATTING(date_in,format_status,Distribution_type,mime_type,document_type,created_by,court_id,xml_document_clob_id,language) VALUES
+(SYSDATE,'ND','FTP','HTM','IWP','TESTDATAIWP',5,ln_clob_id,'cy');
+
+SELECT XHB_CLOB_SEQ.NEXTVAL INTO ln_clob_id FROM DUAL;
+
+	INSERT INTO XHB_CLOB (CLOB_ID, CLOB_DATA)
+	VALUES(ln_clob_id, '<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type="text/xsl" href="InternetWebPageTemplate.xsl"?><currentcourtstatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><court><courtname>SNARESBROOK</courtname><courtsites><courtsite><courtsitename>Lewes/Brighton/Hove</courtsitename><courtrooms><courtroom><currentstatus/><courtroomname>Court1</courtroomname></courtroom><courtroom><currentstatus/><courtroomname>Court9</courtroomname></courtroom></courtrooms></courtsite></courtsites></court><datetimestamp><dayofweek>Friday</dayofweek><date>08</date><month>November</month><year>2019</year><hour>11</hour><min>49</min></datetimestamp><pagename>snaresbrook</pagename></currentcourtstatus>');
+
+	INSERT INTO XHB_FORMATTING(date_in,format_status,Distribution_type,mime_type,document_type,created_by,court_id,xml_document_clob_id,language) VALUES
+(SYSDATE,'ND','FTP','HTM','IWP','TESTDATAIWP',5,ln_clob_id,'cy');
+
+
+	COMMIT;
+	
+END;
+
+/

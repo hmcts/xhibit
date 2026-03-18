@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *********************************************************************	-->
+<!-- Schema for Crown Court Memorandum of Conviction		-->
+<!-- *********************************************************************	-->
+<!-- *********************************************************************	-->
+<!-- Update History											-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.1 - Draft 										-->
+<!-- Detail: Updated as part of CR007							-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version:1.0												-->
+<!-- Detail: Release											-->
+<!-- *********************************************************************	-->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/terms/" xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<dc:creator>Court Service</dc:creator>
+			<dc:date>2003-02-21</dc:date>
+			<dc:identifier>MemorandumOfConviction</dc:identifier>
+			<dc:language>en</dc:language>
+			<dc:rights>
+				<dcq:copyright>Crown Copyright 2002</dcq:copyright>
+				<gms:SecurityClassification>Unclassified</gms:SecurityClassification>
+			</dc:rights>
+			<dc:subject>Memorandum of Conviction</dc:subject>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="MemorandumOfConvictionStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="IssuingCourtHouse" type="CourtHouseStructure"/>
+			<xsd:element name="CourtReceivingCommittal" type="CourtHouseStructure"/>
+			<xsd:element name="RegisterEntryDate" type="xsd:date"/>
+			<xsd:element name="DefendantOrApplicant" type="DefendantStructure"/>
+			<xsd:element name="Informant" type="OrganisationStructure" minOccurs="0"/>
+			<xsd:element name="Plea" type="xsd:string"/>
+			<xsd:element name="AdjournmentDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="RemandFromLastHearing" type="apd:YesNoType" minOccurs="0"/>
+			<xsd:element name="LastPreconvictionDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="JusticeID" type="xsd:string"/>
+			<xsd:element name="ProcessCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="RemandCode" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="CrimeNumber" type="xsd:string" minOccurs="0"/>
+			<xsd:element name="LegalAidContributionPaid" type="MoneyType" minOccurs="0"/>
+			<xsd:element name="DefendantPresent" type="apd:YesNoType" minOccurs="0"/>
+			<xsd:element name="ConvictionDate" type="xsd:date" minOccurs="0"/>
+			<xsd:element name="Bail" type="BailStatusType"/>
+			<xsd:element name="TimelyGuiltyPlea" type="YesNoType" minOccurs="0"/>
+			<xsd:element name="CaseCountedForMISstatistics" type="apd:YesNoType" minOccurs="0"/>
+			<xsd:element name="PrintingDate" type="xsd:date" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="MemorandumOfConviction">
+		<xsd:complexType>
+			<xsd:complexContent>
+				<xsd:extension base="MemorandumOfConvictionStructure">
+					<xsd:attribute name="HomeOfficeOffenceCode" type="xsd:string" use="required"/>
+				</xsd:extension>
+			</xsd:complexContent>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

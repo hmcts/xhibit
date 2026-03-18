@@ -1,0 +1,56 @@
+<project name="XhibitXmlBinding" default="all" basedir=".">
+    <description>
+            Description to be done...
+    </description>
+    <import file="./../tools/ant/framework.xml"/>
+
+    <property name="project.type.requires.compilation" value="marker"/>
+
+    <property name="project.type.builds.jar" value="marker"/>
+
+    <!--
+      =======================================================================
+          Initialise Override
+      =======================================================================
+       -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- Generate Configuration -->
+        <property name="schemas.dir" value="${basedir}/schemas"/>
+        
+        <path id="generate.xml.binding.dependencies">
+            <fileset dir="${schemas.dir}/xhibit-v2-2/" includes="**/*.xsd"/>
+        </path>
+
+        <path id="generate.xml.binding.schemas">
+            <fileset dir="${schemas.dir}/xhibit-v2-2/">
+                <include name="ListDistributionWarnedList-v2-2.xsd"/>
+                <include name="WarnedListLetters-v2-2.xsd"/>
+                <include name="ListDistributionFirmList-v2-2.xsd"/>
+                <include name="FirmListLetters-v2-2.xsd"/>
+                <include name="ListDistributionDailyList-v2-2.xsd"/>
+                <include name="DailyListLetters-v2-2.xsd"/>
+                <include name="FormattingConfig-v2-2.xsd"/>
+                <include name="DistributionStatusPrint-v2-2.xsd"/>
+                <include name="XTable-v2-2.xsd"/>
+                <include name="MercatorBody.xsd"/> 
+                <include name="MercatorRequest.xsd"/> 
+                <include name="MercatorResponse.xsd"/>
+                <include name="DataMigrationReport.xsd"/>
+                <include name="DataMigrationError.xsd"/>
+            </fileset>
+        </path>
+
+        <!-- Compile Configuration -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="Config.jar"/>
+            </fileset>
+        </path>
+    </target>
+
+</project>
+

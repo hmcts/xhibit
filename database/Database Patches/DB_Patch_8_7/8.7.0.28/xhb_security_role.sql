@@ -1,0 +1,3 @@
+INSERT INTO XHB_SECURITY_ROLE VALUES('XHBCourtOfAppeal','N');
+
+commit;

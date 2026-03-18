@@ -1,0 +1,2 @@
+[InternetShortcut]
+URL=http://@computer.name@:@admin.port@/console/j_security_check?j_username=@admin.username@&j_password=@admin.password@

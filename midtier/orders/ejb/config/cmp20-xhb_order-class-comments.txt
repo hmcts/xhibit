@@ -1,0 +1,25 @@
+ * @ejb.finder
+ *    signature="XhbOrder findByDefendantOnCaseAndOrderType(java.lang.Integer defendantOnCaseId, java.lang.Integer orderType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xo) FROM XhbOrder xo  WHERE xo.defendantOnCaseId = ?1 and xo.xhbOrderTemplate.orderTypeId = ?2"
+ *    description="Used to see if an order exists already."
+ * @ejb.finder
+ *    signature="Collection findMultipleUsingDefendantOnCaseAndOrderType(java.lang.Integer defendantOnCaseId, java.lang.Integer orderType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xo) FROM XhbOrder xo  WHERE xo.defendantOnCaseId = ?1 and xo.xhbOrderTemplate.orderTypeId = ?2"
+ *    description="Used to see if any orders of the type exist already."
+ * @ejb.finder
+ *    signature="Collection findMultipleReplaceableUsingDefendantOnCaseAndOrderType(java.lang.Integer defendantOnCaseId, java.lang.Integer orderType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xo) FROM XhbOrder xo, XhbOrderTemplate xte, XhbOrderType xt, XhbOrderTypeMapping xtm WHERE xo.defendantOnCaseId = ?1 and xo.orderTemplateId = xte.orderTemplateId and xte.orderTypeId = xt.orderTypeId and xt.orderTypeId = xtm.orderTypeId and xtm.replacedBy = ?2"
+ *    description="Used to see if any orders that can be replaced exist already."
+ * @ejb.finder
+ *    signature="Collection findMultipleReplaceableUsingDefendantOnCaseAndOrderTypeAndStatus(java.lang.Integer defendantOnCaseId, java.lang.Integer orderType, java.lang.Integer status)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xo) FROM XhbOrder xo, XhbOrderTemplate xte, XhbOrderType xt, XhbOrderTypeMapping xtm WHERE xo.defendantOnCaseId = ?1 and xo.orderTemplateId = xte.orderTemplateId and xte.orderTypeId = xt.orderTypeId and xt.orderTypeId = xtm.orderTypeId and xtm.replacedBy = ?2 and xo.orderStatusId = ?3"
+ *    description="Used to see if any orders that can be replaced exist already."
+

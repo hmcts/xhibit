@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="MDateSelector" default="all" basedir=".">
+
+    <description>
+        Build Script For The mseries calendar utility
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->    
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+        </path>
+    </target>
+        
+    <!--
+      =======================================================================
+        Package Override
+            - do not use ant framework jar command because of large excludes 
+              list. 
+      =======================================================================
+      -->
+    <target name="package" unless="skip.package" depends="framework.package">
+        <copy todir="${classes.dir}">
+            <fileset dir="${source.dir}" includes="mseries/**/*.properties" />
+        </copy>
+
+		<mkdir dir="${lib.build.dir}" />
+		
+        <jar basedir="${classes.dir}" 
+             file="${lib.build.dir}/${ant.project.name}.jar" 
+             manifest="mseries.manifest"
+             includes="**/mseries/**, *.properties" 
+             excludesfile="excludeslist.txt" />
+    </target>
+</project>
+

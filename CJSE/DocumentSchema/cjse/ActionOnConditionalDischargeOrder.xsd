@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.9" id="ActionConditionalDischargeOrder">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Ministry of Justice</Creator>
+				<Created>2018-05-18</Created>
+				<Modified>2018-05-18</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>ActionOnConditionalDischargeAfterFurtherConvictionOrder</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Ministry of Justice, 102 Petty France, London</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2018</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>final</Status>
+				<StatusDescription>definitive version for release</StatusDescription>
+				<Version>5.9</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>Crown Court Action On Conditional Discharge After Further Conviction Order</Title>
+				<Type>message</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="ActionOnConditionalDischargeOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="OrderHeader" type="CourtOrderHeaderStructure"/>
+			<xsd:element name="AddresseeCourt" type="CourtHouseStructure"/>
+			<xsd:element name="OriginalOrderDate" type="xsd:date"/>
+			<xsd:element name="DateOfConviction" type="xsd:date"/>
+			<xsd:element name="CourtOrdered" type="xsd:string"/>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ActionOnConditionalDischargeOrder" type="ActionOnConditionalDischargeOrderStructure"/>
+</xsd:schema>

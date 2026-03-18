@@ -1,0 +1,21 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdAndHearingDate(java.lang.Integer caseId, java.util.Date hearingDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT(o) FROM XhbScheduledHearing o WHERE o.xhbHearing.caseId = ?1 AND o.xhbSitting.xhbHearingList.startDate = ?2"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByHearingId(java.lang.Integer hearingId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT(o) FROM XhbScheduledHearing o WHERE o.hearingId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findLinkedScheduledHearings(java.lang.Integer scheduledHearingId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT(xsh_2) FROM XhbScheduledHearing xsh_1, XhbScheduledHearing xsh_2 WHERE  xsh_1.xhbHearing.caseId <> xsh_2.xhbHearing.caseId AND xsh_1.linkedShId = xsh_2.linkedShId AND xsh_1.scheduledHearingId = ?1"
+ *
+ * -------- end of custom finders --------

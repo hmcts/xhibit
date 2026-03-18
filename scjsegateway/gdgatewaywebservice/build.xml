@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="GdGatewayWebService">
+
+    <description>
+        This project contains ...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.jar" value="marker"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="Config.jar" />
+                <include name="GdGatewayController.jar" />
+                <include name="GdGatewayWebServiceClient.jar" />
+            </fileset>
+        </path>
+
+        <property name="wsdl.file" location="${basedir}/wsdl/CJSEService.wsdl"/>
+        <property name="generate.ws.marker" location="${build.dir}/generate.ws.marker"/>
+
+        <taskdef name="wlwsdlc" classname="weblogic.wsee.tools.anttasks.WsdlcTask" loaderref="framework.loader"/>
+        <taskdef name="wljwsc" classname="weblogic.wsee.tools.anttasks.JwscTask" loaderref="framework.loader"/>
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+
+    <target name="generate.ws.check" description="Generate src from wsdl check." >
+        <uptodate property="generate.ws.uptodate" targetfile="${generate.ws.marker}">
+            <srcfiles file="${wsdl.file}"/>
+        </uptodate>
+    </target>
+
+    <target name="generate.ws" unless="generate.ws.uptodate" depends="generate.ws.check" description="Generate src from wsdl." >
+        <mkdir dir="${build.dir}/temp/jws"/>
+        <mkdir dir="${build.dir}/temp/impl"/>
+
+        <wlwsdlc srcWsdl="${wsdl.file}"
+                 destJwsDir="${build.dir}/temp/jws"
+                 destImplDir="${build.dir}/temp/impl"
+                 packageName="uk.gov.courtservice.xhibit.webservice.gdgateway.cjseservice.server" />
+
+        <!-- Extract The java files from the compiled wsdl -->
+        <mkdir dir="${gen.source.dir}"/>
+        <unzip src="${build.dir}/temp/jws/CJSEService_wsdl.jar" dest="${gen.source.dir}">
+            <patternset>
+                <include name="**/server/*.java"/>
+            </patternset>
+        </unzip>
+
+        <touch file="${generate.ws.marker}"/>
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="framework.generate, generate.ws"/>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+      <target name="package.ws.check" description="Generate src from wsdl check." >
+          <!--
+          <uptodate property="package.ws.uptodate" targetfile="${gen.src.dir}/server.marker">
+              <srcfiles dir="${source.dir}"/>
+              <srcfiles file="${gen.source.dir}/jws/ReliableHelloWorld_wsdl.jar"/>
+          </uptodate>
+          -->
+      </target>
+
+      <target name="package.ws" unless="package.ws.uptodate" description="Generate src from wsdl." depends="package.ws.check">
+        <mkdir dir="${build.dir}/temp/ear/CJSEService"/>
+        <mkdir dir="${build.dir}/temp/ear/CJSEService/META-INF"/>
+        <mkdir dir="${build.dir}/temp/working/CJSEService"/>
+
+        <copy todir="${build.dir}/temp/ear/CJSEService/META-INF">
+            <fileset dir="./../META-INF">
+                <include name="application.xml" />
+            </fileset>
+        </copy>
+
+        <!-- Do not include the gen-src extracted from compiled wsdl. This is compiled and added directly -->
+        <wljwsc
+              srcdir="${source.dir}"
+              destdir="${build.dir}/temp/ear/CJSEService"
+              tempdir="${build.dir}/temp/working/CJSEService"
+              keepGenerated="false"
+              enableAsyncService="false"
+              classpathref="compile.classpath">
+            <jws file="uk/gov/courtservice/xhibit/webservice/gdgateway/cjseservice/server/CJSEPortImpl.java"
+                 compiledWsdl="${build.dir}/temp/jws/CJSEService_wsdl.jar"
+                 explode="false"
+                 name="CJSEService">
+               <WLHttpTransport
+                    contextPath="delivery/services"
+                    serviceUri="Delivery"
+                    portName="Delivery"/>
+               <descriptor file="./../WEB-INF/weblogic.xml" />
+            </jws>
+        </wljwsc>
+
+        <!--
+        <touch file="${build.dir}/server.marker"/>
+        -->
+      </target>
+
+      <!-- UPDATE WAR with SOAP Handler -->
+      <target name="add-webservice-handlers" description="Adds handler classes to the Web Service">
+        <war destfile="${build.dir}/temp/ear/CJSEService/CJSEService.war"
+             update="true">
+            <classes dir="${build.dir}/classes"/>
+        </war>
+      </target>
+
+      <!--
+        This works but can a WAR file reference outside files ???
+        maybe!
+            see -> http://java.sun.com/j2ee/verified/packaging.html
+      -->
+      <target name="package.ws.update.manifest" description="removes generated endpoint types from WAR." depends="package.ws">
+        <war destfile="${build.dir}/temp/ear/CJSEService/CJSEService.war"
+             manifest="./manifest/manifest.mf"
+             update="true" />
+
+      </target>
+
+
+    <target name="package" unless="skip.package" depends="framework.package, package.ws, add-webservice-handlers, package.ws.update.manifest"/>
+
+</project>

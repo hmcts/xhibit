@@ -1,0 +1,1 @@
+CREATE INDEX AUD_DEF_ON_OFFENCE_OFF_DOO ON aud_defendant_on_offence(offence_id, defendant_on_offence_id);

@@ -1,0 +1,7 @@
+ * @ejb.finder
+ *    signature="java.util.Collection findByStatusTextAndLowDate(java.lang.String statusText, java.sql.Timestamp lowDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM CjiAhmReply o WHERE o.cjiAhmReplyStatus.statusText = ?1 AND o.cjiAhm.sentAggDate > ?2"
+ *    description="Finds any message replies with a given status that is younger than the passed in date."
+ * 

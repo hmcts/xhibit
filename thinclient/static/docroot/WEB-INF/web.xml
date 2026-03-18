@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<!--
+  - Title:       Web Deployment Descriptor
+  -
+  - Description: This describes how to deploy the application. This is empty as there are no servlets and jsps, this is a holding
+  -              place for static resources only. Because the control servlet is the default servlet and has to be secured. The
+  -              resources have to be in a seperate application so they are not secured. These resources dont need to be secured and
+  -              are required by login.
+  -
+  - Copyright:   Copyright (c) 2003
+  - Company:     EDS
+  -
+  - Author:      William Fardell, Xdevelopment LLP (2003)
+  - Version:     V1.0.0
+  -->
+
+<web-app/>
+

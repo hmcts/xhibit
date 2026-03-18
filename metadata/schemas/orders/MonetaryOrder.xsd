@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="OrderTypes.xsd"/>
+	<xs:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xs:complexType name="MonetaryOrderStructure">
+		<xs:sequence>
+			<xs:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xs:element name="CollectionCentre" type="CollectionCentreStructure"/>
+			<xs:element name="MOCommittingMagsCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITCourtHouseStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="MOCollectingMagsCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITCourtHouseStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>
+			<!--<xs:element name="MOSupervisingMagsCourt">
+				<xs:complexType>
+					<xs:complexContent>
+						<xs:extension base="XHIBITCourtHouseStructure">
+							<xs:attributeGroup ref="ConditionAttributeGroup"/>
+						</xs:extension>
+					</xs:complexContent>
+				</xs:complexType>
+			</xs:element>-->
+			<xs:element name="CollectionOrderMade" type="CollectionOrderMadeType"/>
+			<xs:element name="SentenceDate" type="xs:date"/>
+			<xs:element name="InCustody" type="InCustodyType"/>
+			<xs:element name="ParentGuardianName" type="xs:string"/>
+			<xs:element name="PaymentRateValue" type="xs:string"/>
+			<xs:element name="AdditionalDetails" type="xs:string"/>
+			<xs:element name="MonetaryDisposals" type="MonetaryDisposalsType"/>
+			<xs:element name="MonetaryTotals" type="MonetaryTotalsType"/>
+			<xs:element name="Fine" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="DefaultPeriod" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="Imprisonment" minOccurs="0">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="LengthOfSentence" type="XHIBITPeriodStructure"/>
+					</xs:sequence>
+					<xs:attributeGroup ref="ConditionAttributeGroup"/>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CollectionCentreStructure">
+		<xs:sequence>
+			<xs:element name="CollectionCentreName" type="xs:string"/>
+			<xs:element name="CollectionCentreAddress" type="apd:UKPostalAddressStructure" minOccurs="0"/>
+			<xs:element name="CollectionCentreTelephone" type="apd:TelephoneNumberType" minOccurs="0"/>
+			<xs:element name="CollectionCentreFax" type="apd:TelephoneNumberType" minOccurs="0"/>
+			<xs:element name="Description" type="xs:string" minOccurs="0"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="CollectionOrderMadeType">
+		<xs:simpleContent>
+			<xs:extension base="apd:YesNoType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="InCustodyType">
+		<xs:simpleContent>
+			<xs:extension base="apd:YesNoType"/>
+		</xs:simpleContent>
+	</xs:complexType>
+	<xs:complexType name="MonetaryDisposalsType">
+		<xs:sequence>
+			<xs:element name="MonetaryDisposalsList" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="MonetaryTotalsType">
+		<xs:sequence>
+			<xs:element name="MonetaryTotalsList" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

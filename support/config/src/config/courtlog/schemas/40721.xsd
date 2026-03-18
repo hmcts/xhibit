@@ -1,0 +1,24 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Verdict (Guilty - Unanimous)-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="Defendant_Name"/>
+				<xs:element ref="Crest_Offence_Seq_No"/>
+				<xs:element ref="Crest_Charge_Seq_No"/>
+				<xs:element ref="Verdict_Desc"/>
+				<xs:element ref="E40721_Ref_Verdict_Code"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Defendant_Name" type="xs:string"/>
+	<xs:element name="Crest_Offence_Seq_No" type="xs:string"/>
+	<xs:element name="Crest_Charge_Seq_No" type="xs:string"/>
+	<xs:element name="Verdict_Desc" type="xs:string"/>
+	<xs:element name="E40721_Ref_Verdict_Code" type="xs:string"/>
+</xs:schema>

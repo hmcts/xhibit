@@ -1,0 +1,5 @@
+UPDATE XHB_CONFIG_PROP SET PROPERTY_VALUE = 'CPPX_InternetWebPage-v1-0.xsd' where PROPERTY_NAME = 'CPPX_SchemaWP';
+
+UPDATE XHB_CONFIG_PROP SET PROPERTY_VALUE = 'CPPX_PublicDisplay-v1-0.xsd' where PROPERTY_NAME = 'CPPX_SchemaPD';
+
+commit;

@@ -1,0 +1,1 @@
+Files placed under this dir will be available on the classpath when the application is run.

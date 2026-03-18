@@ -1,0 +1,78 @@
+<?xml version="1.0"?> 
+
+<schema xmlns="http://www.w3.org/1999/XMLSchema"> 
+
+  <attribute name="offenceID"> 
+    <simpleType baseType="Integer"> 
+      <minExclusive value="0" /> 
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="refOffenceID"> 
+    <simpleType baseType="Integer"> 
+       <minExclusive value="0" />       
+    </simpleType> 
+  </attribute>
+
+  <attribute name="chargeID"> 
+    <simpleType baseType="Integer"> 
+       <minExclusive value="0" />       
+    </simpleType> 
+  </attribute>
+
+  <attribute name="crestOffenceID">
+    <simpleType baseType="Integer">      
+	<maxLength value="8"/>
+	<minLength value="1" />
+      <minInclusive value="1"/>
+	<minExclusive value="0"/>
+	<maxInclusive value="99999999"/>
+	<maxExclusive value="100000000"/>
+    </simpleType>
+  </attribute> 
+  
+
+  <attribute name="crestOffenceSeqNo">
+    <simpleType baseType="Integer">
+       <minExclusive value="0"/>
+	 <minInclusive value="1"/>
+       <maxExclusive value = "1000"/>
+	 <maxInclusive value = "999"/>
+	 <maxLength value="3"/>
+	 <minLength value="1" />
+    </simpleType>
+  </attribute>
+
+
+  <attribute name="crestOffenceFreeText"> 
+    <simpleType baseType="String">      
+      <maxLength value="40"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute> 
+
+
+  <attribute name="mulitiple"> 
+    <simpleType baseType="Integer"> 
+	<minExclusive value="0"/>
+	<minInclusive value="1"/>
+      	<maxExclusive value = "100"/>
+	<maxInclusive value = "99"/>     
+      <maxLength value="2"/>
+      <minLength value="1"/>
+    </simpleType> 
+  </attribute> 
+
+  <attribute name="crestHOOClassFreetext"> 
+    <simpleType baseType="String">      
+      <maxLength value="3"/>      
+    </simpleType> 
+  </attribute>
+
+  <attribute name="crestHOOSubClassFreetext"> 
+    <simpleType baseType="String">      
+      <maxLength value="3"/>      
+    </simpleType> 
+  </attribute>
+
+</schema>

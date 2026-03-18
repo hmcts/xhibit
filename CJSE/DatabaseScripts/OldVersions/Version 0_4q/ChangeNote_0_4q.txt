@@ -1,0 +1,6 @@
+Changes from 0_4_p to 0_4_q
+
+- Added extra column to the CJI_DOCUMENT table
+
+SRC_DOCUMENT_KEY VarChar2(255)
+

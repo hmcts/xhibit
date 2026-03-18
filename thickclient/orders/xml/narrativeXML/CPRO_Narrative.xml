@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nar:Narrative xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative">
+        <nar:Header>Text</nar:Header>
+        <nar:Body>
+            <nar:Section>
+                <nar:Label/>
+                <nar:Body>
+                    <nar:H1>Community Punishment &amp; Rehabilitation Order
+					</nar:H1>
+                </nar:Body>
+            </nar:Section>
+            <nar:Section>
+                <nar:Label>
+                    <nar:Line>The defendant</nar:Line>
+                </nar:Label>
+                <nar:Body>
+                    <nar:Table>
+                        <nar:TR>
+                            <nar:TD>
+                                <nar:Line>
+                                    <nar:DefendantFullName/>
+                                </nar:Line>
+                                <nar:Line>whose address <nar:AddressOption/>
+                                </nar:Line>
+			        <!-- RFC 1356 - change Petty Sessional Area to Local Justice Area -->            
+                                <nar:Line>in the Local Justice Area of <nar:PettySessionalArea/>
+                                </nar:Line>
+                                <nar:Line>has been convicted of <nar:Conviction/>
+                                </nar:Line>
+                                <nar:Line>
+                                    <nar:CPROTrialCommittedBreach/>
+                                </nar:Line>
+                            </nar:TD>
+                            <nar:TD>
+                                <nar:Line>Date of Birth</nar:Line>
+                                <nar:Line>
+                                    <nar:DefendantDOB/>
+                                </nar:Line>
+                            </nar:TD>
+                        </nar:TR>
+                    </nar:Table>
+                </nar:Body>
+            </nar:Section>
+            <nar:Section>
+                <nar:Label>
+                    <nar:Line>The Court ordered</nar:Line>
+                </nar:Label>
+                <nar:Body>
+                    <nar:Table>
+                        <nar:TR>
+                            <nar:TD>
+								On <nar:OrderDate/> the Court:
+								<nar:CPROOrderedText/>
+                                <nar:AdditionalRequirements/>
+                            </nar:TD>
+                        </nar:TR>
+                    </nar:Table>
+                </nar:Body>
+            </nar:Section>
+            <nar:Section>
+                <nar:Label/>
+                <nar:Body>
+                    <nar:AssociatedCases/>
+                </nar:Body>
+            </nar:Section>
+        </nar:Body>
+        <nar:Footer>Text</nar:Footer>
+    </nar:Narrative>
+

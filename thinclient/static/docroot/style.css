@@ -1,0 +1,709 @@
+/*
+ * Title:       Style Sheet
+ *
+ * Description: This style sheet is used to describe how to format the various elements
+ *              that make up the web pages. As a general rule it should only contain 
+ *              font and other formating information, layout information is better
+ *              described in the pages.
+ *
+ * Copyright:   Copyright (c) 2003
+ * Company:     EDS
+ *
+ * Author:      William Fardell, Xdevelopment LLP (2003)
+ * Version:     V1.0.0
+ */
+
+/*
+ * Skeleton styles
+ */
+
+td.verticalBorder {
+    background-color: 0C397D;
+    width: 1;
+}
+td.horizontalBorder {
+    background-color: 0C397D;
+    height: 1;
+}
+td.bodyHeight {
+    vertical-align: top;
+    height: 350;
+}
+
+/*
+ * Header Styles
+ */
+ 
+td.headerText {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 18pt;     
+    text-align: center;
+}
+
+/*
+ * Footer Styles
+ */
+ 
+td.footerText {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt;
+    text-align: center;
+}
+
+/*
+ * Holding Styles
+ */
+ 
+td.holdingBodyText {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 12pt;
+    text-align: center;
+}
+
+/*
+ * Error Styles
+ */ 
+ 
+td.errorBodyText {
+    color: DD0000;
+    font-family: verdana, arial, sans serif; 
+    font-size: 12pt;
+    text-align: left;
+}
+pre.errorStackTraceText {
+    color: DD0000;
+    font-size: 8pt;
+    text-align: left;
+}
+
+/*
+ * Button Styles
+ */
+ 
+td.buttonMain {
+    background-color:FFCC00;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt;     
+    text-align: center;    
+}
+td.buttonMainOW {
+    background-color:FFCC00;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt;     
+    text-align: center;    
+    cursor: hand;
+}
+td.buttonSpace {
+    background-color:FFCC00;
+    width=5;
+}
+a.buttonLink {
+    text-decoration: none;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt; 
+}
+td.buttonVerticalBorder {
+    background-color: 0C397D;
+    width: 1;
+}
+td.buttonHorizontalBorder {
+    background-color: 0C397D;
+    height: 1;
+}
+
+/*
+ * Button spacer Styles
+ */
+ 
+td.buttonSpacerMain {
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt;     
+    text-align: center;    
+}
+td.buttonSpacerSpace {
+    width=5;
+}
+td.buttonSpacerVerticalBorder {
+    width: 1;
+}
+td.buttonSpacerHorizontalBorder {
+    height: 1;
+}
+
+
+/*
+ * PS Menu Style
+ */ 
+ 
+td.psMenuVerticalSpace {
+    width: 5;
+}
+td.psMenuHorizontalSpace {
+    height: 5;
+}
+
+td.psMenu {
+    text-align: center;
+}
+
+
+/*
+ * PS Page Style
+ */
+ 
+td.psPageHorizontalSpace { /* Top and Bottom */
+    height: 5;
+}
+
+td.psPageVerticalSpace { /* Left and Right */
+    width: 5;
+}
+
+td.psPageTitleHorizontalSpace { /* Top and Bottom */
+    height: 15;
+}
+
+td.psPageTitleVerticalSpace { /* Left and Right */
+    width: 0;
+}
+
+td.psPageTitle {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt;     
+    text-align: left;
+}
+
+td.psPageErrorTitle {
+    color: FF0000;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt;     
+    text-align: left;
+}
+
+td.psPageMessage {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 10pt;     
+    text-align: left;
+}
+
+td.psPageActionHorizontalSpace { /* Top and Bottom */
+    height: 15;
+}
+
+td.psPageActionVerticalSpace { /* Left and Right */
+    width: 0;
+}
+
+td.psPageAction {
+    text-align: left;
+}
+
+
+/*
+ * Print specific stuff
+ */
+
+td.psPrintTitle {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 12pt;     
+    text-align: center;
+}
+
+td.psPrintText {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 10pt;     
+    text-align: left;
+}
+
+td.psPrintTextData {
+    color: ff0000;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;    
+    font-size: 10pt;     
+    text-align: left;
+}
+
+span.psPrintTextData {
+    color: ff0000;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;    
+    font-size: 10pt;     
+    text-align: left;
+}
+
+span.psPrintTextError {
+    color: DD0000;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt;     
+    text-align: left;
+}
+
+
+/*
+ * PS Form Style
+ */
+
+td.psFormHeaderHorizontalBorder { /* Top and Bottom */
+    background-color: 0C397D;
+    height: 1;
+}
+
+td.psFormHeaderVerticalBorder { /* Left and Right */
+    background-color: 0C397D;
+    width: 1;
+}
+
+td.psFormHeaderSpace { /* Left and Right */
+    background-color:0C397D;
+    width=5;
+}
+
+td.psFormHeader {
+    text-align: center;
+    background-color: 0C397D;
+    color: FFCC00;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+    font-weight: bold;
+    text-align: left;
+}
+
+td.psFormMainInset { /* Left */
+    width=100;
+}
+
+td.psFormVerticalSpace { /* Left and Right*/
+    width=5;
+}
+
+td.psFormHorizontalSpace { /* Top, inbetween rows and Bottom */
+    height=5;
+}
+
+td.psFormName {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+    font-weight: bold;
+    text-align: right;
+}
+
+td.psFormNameLeft {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+    font-weight: bold;
+}
+
+td.psFormValue {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+    text-align: left
+}
+
+td.psFormError {
+    color: FF0000;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+}
+
+/*
+ * PS Table Style
+ */
+ 
+td.psTableVerticalBorder {
+    background-color: 0C397D;
+    width: 1;
+}
+td.psTableVerticalSpace {
+    width: 5;
+}
+td.psTableHorizontalBorder {
+    background-color: 0C397D;
+    height: 1;
+}
+td.psTableHorizontalSpace {
+    height: 5;
+}
+td.psTableHeader {
+    text-align: center;
+    background-color: 0C397D;
+    color: FFCC00;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+    font-weight: bold;
+}
+td.psTableHeaderSpace {
+    background-color:0C397D;
+    width=5;
+}
+td.psTableMain {
+    background-color: ffffcc;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+}
+td.psTableMainSpace {
+    background-color:ffffcc;
+    width=5;
+}
+
+form.psForm {
+    margin-bottom:0;
+}
+
+/*
+* WF table styles
+*/
+
+td.wfTableMainTop {
+    vertical-align: top;
+    background-color: ffffcc;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 10pt; 
+}
+
+/*
+ * Counsel Facilities( CF ) Menu Style
+ */ 
+ 
+td.cfMenuVerticalSpace {
+    width: 5;
+}
+td.cfMenuHorizontalSpace {
+    height: 5;
+}
+
+td.cfMenu {
+    text-align: center;
+}
+
+
+/*
+ * CF Page Style
+ */
+ 
+td.cfPageHorizontalSpace { /* Top and Bottom */
+    height: 5;
+}
+
+td.cfPageVerticalSpace { /* Left and Right */
+    width: 5;
+}
+
+td.cfPageTitleHorizontalSpace { /* Top and Bottom */
+    height: 15;
+}
+
+td.cfPageTitleVerticalSpace { /* Left and Right */
+    width: 0;
+}
+
+td.cfPageTitle {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 10pt;     
+    text-align: left;
+}
+
+td.cfPageErrorTitle {
+    color: FF0000;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 10pt;     
+    text-align: left;
+}
+
+td.cfPageMessage {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 8pt;     
+    text-align: left;
+}
+
+td.cfPageActionHorizontalSpace { /* Top and Bottom */
+    height: 15;
+}
+
+td.cfPageActionVerticalSpace { /* Left and Right */
+    width: 0;
+}
+
+td.cfPageAction {
+    text-align: left;
+}
+
+
+/*
+ * Print specific stuff
+ */
+
+td.cfPrintTitle {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 10pt;     
+    text-align: center;
+}
+
+td.cfPrintText {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 8pt;     
+    text-align: left;
+}
+
+td.cfPrintTextRBG {
+    background-color: ff0000;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 8pt;     
+    text-align: left;
+}
+
+span.cfDPrintText {
+    color: ff0000;
+    font-family: verdana, arial, sans serif; 
+    font-weight: bold;
+    font-size: 8pt;     
+    text-align: left;
+}
+
+/*
+ * CF Form Style
+ */
+
+td.cfFormHeaderHorizontalBorder { /* Top and Bottom */
+    background-color: 0C397D;
+    height: 1;
+}
+
+td.cfFormHeaderVerticalBorder { /* Left and Right */
+    background-color: 0C397D;
+    width: 1;
+}
+
+td.cfFormHeaderSpace { /* Left and Right */
+    background-color:0C397D;
+    width: 5;
+}
+
+td.cfFormHeader {
+    text-align: center;
+    background-color: 0C397D;
+    color: FFCC00;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+    font-weight: bold;
+    text-align: left;
+}
+
+td.cfFormMainInset { /* Left */
+    width: 100;
+}
+
+td.cfFormVerticalSpace { /* Left and Right*/
+    width: 5;
+}
+
+td.cfFormHorizontalSpace { /* Top, inbetween rows and Bottom */
+    height: 5;
+}
+
+td.cfFormName {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+    font-weight: bold;
+    text-align: right;
+}
+
+td.cfFormValue {
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+    text-align: left
+}
+
+td.cfFormError {
+    color: FF0000;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+}
+
+/*
+ * CF Table Style
+ */
+ 
+td.cfTableVerticalBorder {
+    background-color: 0C397D;
+    width: 1;
+}
+td.cfTableVerticalSpace {
+    width: 5;
+}
+td.cfTableHorizontalBorder {
+    background-color: 0C397D;
+    height: 1;
+}
+td.cfTableHorizontalSpace {
+    height: 5;
+}
+td.cfTableHeader {
+    text-align: center;
+    background-color: 0C397D;
+    color: FFCC00;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+    font-weight: bold;
+}
+td.cfTableHeaderSpace {
+    background-color:0C397D;
+    width: 5;
+}
+td.cfTableMain {
+    background-color: ffffcc;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+}
+td.cfTableMainCentered {
+    background-color: ffffcc;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+    text-align: center;
+}
+td.cfTableMainSpace {
+    background-color:ffffcc;
+    width: 5;
+}
+td.cfTableMainTop {
+    vertical-align: top;
+    background-color: ffffcc;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+}
+td.cfTableMainTopCentered {
+    vertical-align: top;
+    background-color: ffffcc;
+    color: 0C397D;
+    font-family: verdana, arial, sans serif; 
+    font-size: 8pt; 
+    text-align: center;
+}
+td.cfFormLabel{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:bold;
+    text-align:right;
+    vertical-align:top;
+    background-color:#ffffff;
+    color: 0C397D;
+    padding:2px;
+}
+td.cfFormData{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:bold;
+    text-align:left;
+    vertical-align:top;
+    background-color:#ffffff;
+    color: 0C397D;
+    padding:2px;
+}
+
+form.cfForm {
+    margin-bottom:0;
+}
+.cfFormDropDown{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:normal;
+    color:#0C397D;
+    background-color:#ffffff;
+    border-style:solid;
+    border-width:1;
+    vertical-align:top;
+}
+.cfFormTextBox{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:normal;
+    color:#0C397D;
+    background-color:#ffffff;
+    border-style:solid;
+    border-width:1;
+    vertical-align:top;
+}
+.cfFormTextBoxRead{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:normal;
+    color:#0C397D;
+    background-color:#eeecec;
+    border-style:solid;
+    border-width:1;
+    vertical-align:top;
+    disabled:true;
+}
+.cfFormButton{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:normal;
+    vertical-align:top;
+    width:75;
+    cursor:hand;
+}
+.cfFormRadio{
+    font-family: verdana, arial, sans serif; 
+    font-size:8pt;
+    font-style:plain;
+    font-weight:normal;
+    color:#0C397D;
+    background-color:#ffffff;
+    border-style:normal;
+    border-width:1;
+    vertical-align:top;
+}
+.cfFormRadioInTable{
+    font:normal 8pt Verdana;
+    color:#0C397D;
+    background-color:#ffffcc;
+    border-style:normal;
+    border-width:1;
+    vertical-align:top;
+}

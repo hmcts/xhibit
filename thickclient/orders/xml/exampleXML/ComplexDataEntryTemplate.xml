@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<template>
+	<form>
+		<section label="Part 1">
+			<textfield name="surname" selectable="true" editable="true" ref="//CitizenNameSurname" label="Surname"/>
+			<textfield name="forename" selectable="true" editable="true" ref="//Defendant//Name//CitizenNameForename" label="Forename"/>
+			<!--<textfield name="initial" ref="" label="Initial"/>-->
+			<textfield name="birthdate" selectable="true" editable="true" ref="//Defendant//BirthDate" label="Birth Date"/>
+			<textfield name="streetdescription" selectable="true" editable="true" ref="//Defendant/descendant::StreetDescription" label="Street"/>
+			<textfield name="locality" selectable="true" editable="true" ref="//Defendant/descendant::Locality" label="Locality"/>
+			<textfield name="town" selectable="true" editable="true" ref="//Defendant/descendant::Town" label="Town"/>
+			<textfield name="postcode" selectable="true" editable="true" ref="//Defendant/descendant::Postcode" label="Postcode"/>
+		</section>
+		
+		<section label="Conditional/Unconditional">
+			<textfield name="town" selectable="true" editable="true" ref="//Defendant/descendant::Town" label="Town"/>
+			<switch name="conditional" label="Confitional" >
+				<section>
+				        <date label="Date" ref=""/>
+				 	  <choice ref="">
+				 	  		<option name="appelllant" label="Appelalnt" value="appellant"/>
+				 	  		<option name="defendant" label="Defendant" value="defendant"/>
+				 	  </choice>       
+				 	  <switch name="beforeReleaseConditions" label="Before Release Conditions">
+				 	  	<switch name="suretyCondition" label="Surety">
+				 	  		<textfield name="suretyValue" type="int" label="Value: £" ref=""/>
+				 	  	</switch>
+				 	  	<switch name="passportConditions" label="Passport Conditions">
+					 	  <choice ref="">
+					 	  		<option name="surrenderedTo" label="Surrendered to" value="surrendered"/>
+					 	  		<option name="retainedBy" label="Retained by" value="retained"/>
+					 	  </choice>       				 	  		
+				 	  	</switch>
+				 	  </switch>
+				 </section>
+			</switch>
+		</section>
+	</form>
+</template>

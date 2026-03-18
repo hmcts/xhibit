@@ -1,0 +1,31 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<!--Disqualified from Working with Children-->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Bench Warrant-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E21400_Disqualified_From_Working_With_Children_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E21400_Disqualified_From_Working_With_Children_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E21400_DWCO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E21400_DWCO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E21400_Defendant_Disqualified_Working_With_Children_Life_(Defendant_Under_18)"/>
+				<xs:enumeration value="E21400_Defendant_Disqualified_Working_With_Children_Life_(Defendant_Over_18)"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<NewCaseMessage xmlns="http://www.hmcs.gov.uk/schemas/crowncourt/msg" 
+	 xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" 
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	 xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails"
+	 xmlns:ccm="http://www.hmcs.gov.uk/schemas/crowncourt/msg" 
+	 xsi:schemaLocation="http://www.hmcs.gov.uk/schemas/crowncourt/msg CaseInfo.xsd">		
+
+	<DocumentID>
+		<cs:DocumentName>NC LOUISE TOLMAN</cs:DocumentName>
+		<cs:UniqueID>CSDNC000000000330501</cs:UniqueID>
+		<cs:DocumentType>NC</cs:DocumentType>
+		<cs:TimeStamp>2006-06-02T16:10:28.250</cs:TimeStamp>
+		<cs:Version>1.0</cs:Version>
+		<cs:SecurityClassification>NPM</cs:SecurityClassification>
+		<cs:SellByDate>2007-06-02</cs:SellByDate>
+	</DocumentID>
+	<Case>
+		<CaseNumber>T20069999</CaseNumber>
+		<Court>
+			<cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+			<cs:CourtHouseCode>1234</cs:CourtHouseCode>
+			<cs:CourtHouseName>Teesside</cs:CourtHouseName>
+		</Court>
+		<CaseArrivedFrom>
+			<OriginatingCourt>
+				<cs:CourtHouseType>Magistrates Court</cs:CourtHouseType>
+				<cs:CourtHouseCode CourtHouseShortName="GLOSM">1692</cs:CourtHouseCode>
+				<cs:CourtHouseName>GLOUCESTER MAGISTRATES' COURT</cs:CourtHouseName>
+			<cs:CourtHouseAddress>
+				<apd:Line>BARBICAN WAY</apd:Line>
+				<apd:Line>BEARLAND</apd:Line>
+				<apd:Line>GLOUCESTER</apd:Line>
+				<apd:PostCode>GL1 2JH</apd:PostCode>
+			</cs:CourtHouseAddress>
+			<cs:CourtHouseTelephone>01452426130</cs:CourtHouseTelephone>
+		</OriginatingCourt>
+		</CaseArrivedFrom>
+		<Defendants>
+			<Defendant>
+				<cs:PersonalDetails>
+					<cs:Name>
+						<apd:CitizenNameForename>Louise</apd:CitizenNameForename>
+						<apd:CitizenNameForename>Adele</apd:CitizenNameForename>
+						<apd:CitizenNameSurname>TOLMAN</apd:CitizenNameSurname>
+					</cs:Name>
+					<cs:IsMasked>no</cs:IsMasked>
+					<cs:DateOfBirth>
+						<apd:BirthDate>1972-04-09</apd:BirthDate>
+						<apd:VerifiedBy>not verified</apd:VerifiedBy>
+					</cs:DateOfBirth>
+					<cs:Sex>female</cs:Sex>
+					<cs:Address>
+						<apd:Line>286 Beulah Hill</apd:Line>
+						<apd:Line>Upper Norwood</apd:Line>
+						<apd:Line>-</apd:Line>
+						<apd:Line>-</apd:Line>
+						<apd:Line>LONDON</apd:Line>
+						<apd:PostCode>SE19 3HF</apd:PostCode>
+					</cs:Address>
+				</cs:PersonalDetails>
+				<cs:CRESTdefendantID>20092</cs:CRESTdefendantID>
+				<cs:URN>53B/006359</cs:URN>
+				<cs:MagistratesCourtRefNumber>AC/DG/01/02999715</cs:MagistratesCourtRefNumber>
+				<cs:PrisonLocation>
+					<cs:Location>Not Available</cs:Location>
+				</cs:PrisonLocation>
+				<cs:CustodyStatus>On bail</cs:CustodyStatus>
+				<cs:Counsel>
+					<cs:Solicitor>
+						<cs:Party>
+							<cs:Organisation>
+								<cs:OrganisationName>Hughes &amp; Hughes &amp; Hughes</cs:OrganisationName>
+								<cs:OrganisationAddress>
+									<apd:Line>900 Purley Way</apd:Line>
+									<apd:Line>-</apd:Line>
+									<apd:Line>-</apd:Line>
+									<apd:Line>-</apd:Line>
+									<apd:Line>LONDON</apd:Line>
+									<apd:PostCode>SW16 8JW</apd:PostCode>
+								</cs:OrganisationAddress>
+								<cs:ContactDetails>
+									<apd:Telephone>
+										<apd:TelNationalNumber>02086472929</apd:TelNationalNumber>
+									</apd:Telephone>
+									<apd:Fax>
+										<apd:FaxNationalNumber>02086473838</apd:FaxNationalNumber>
+									</apd:Fax>
+								</cs:ContactDetails>
+							</cs:Organisation>
+						</cs:Party>
+						<cs:StartDate>2006-01-17</cs:StartDate>
+					</cs:Solicitor>
+				</cs:Counsel>
+				<cs:AdditionalNotes>Assault occasioning actual bodily harm</cs:AdditionalNotes>
+			</Defendant>
+		</Defendants>
+		<Prosecution ProsecutingAuthority="Crown Prosecution Service">
+			<cs:ProsecutingReference>53B/006359</cs:ProsecutingReference>
+			<cs:ProsecutingOrganisation>
+				<cs:OrganisationName>CPS - 2 Kimbrose Way</cs:OrganisationName>
+				<cs:OrganisationAddress>
+					<apd:Line>2 KIMBROSE WAY</apd:Line>
+					<apd:Line>GLOUCESTER</apd:Line>
+					<apd:PostCode>GL1 2DB</apd:PostCode>
+				</cs:OrganisationAddress>
+				<cs:ContactDetails>
+					<apd:Telephone>
+						<apd:TelNationalNumber>01452308989</apd:TelNationalNumber>
+					</apd:Telephone>
+					<apd:Fax>
+						<apd:FaxNationalNumber>01452317711</apd:FaxNationalNumber>
+					</apd:Fax>
+				</cs:ContactDetails>
+			</cs:ProsecutingOrganisation>
+		</Prosecution>
+		<MethodOfInstigation>Sending</MethodOfInstigation>
+		<DateOfInstigation>2006-04-09</DateOfInstigation>
+		<CaseClassNumber>3</CaseClassNumber>
+		<PTIURN>53B/006359</PTIURN>
+	</Case>
+</NewCaseMessage>

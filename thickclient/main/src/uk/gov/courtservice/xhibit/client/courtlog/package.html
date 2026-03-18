@@ -1,0 +1,165 @@
+<html>
+    <body>
+        <p>
+This package and it's children provide the functionality to add, change and
+delete court log events and to view the resultant changes in the court log
+screen.
+        </p>
+<h1>Package Structure</h1>
+        <p>
+Excluding those items described below, there is no specific package structure
+supported since the majority of user generated court log events are defined in
+this, the main level.
+            <ul>
+                <li>
+<b>uk.gov.courtservice.xhibit.client.courtlog</b>:<br>Contains the components
+that support the majority of court log events. These in turn are grouped by name
+thus, files concerning one specific court log event share the same stem (see
+also <a href="#namingConvention">Naming Convention</a> below)
+<ul>
+                        <li>
+<b>uk.gov.courtservice.xhibit.client.courtlog.directions</b>:<br>Contains components that perform processing
+specific to directions court log events.
+                        </li>
+                        <li>
+<b>uk.gov.courtservice.xhibit.client.courtlog.util</b>:<br>Contains components that perform
+common processing.
+                        </li>
+</ul>
+                </li>
+            </ul>
+<h1>Event Types</h1>
+<h2>Generic Events</h2>
+        <p>These court log events may be further categorised by the types of screen components they reveal to the user.  These are:</p>
+            <ul>
+                <li>
+<b>SimpleEvent&lt;Dialog/Model/Panel&gt;</b> - where the user is presented with only the freetext, log date and log time screen components.  A number of court log events are supported by this mechanism
+                </li>
+                <li>
+<b>MediumEventMD&lt;Dialog/Model/Panel&gt;</b> - where the user is presented with a date widget plus the freetext, log date and log time screen components.  A number of court log events are supported by this mechanism
+                </li>
+                <li>
+<b>MediumEventML&lt;Dialog/Model/Panel&gt;</b> - where the user is presented with some form of list plus the freetext, log date and log time screen components.  A number of court log events are supported by this mechanism
+                </li>
+                <li>
+<b>MediumEventMT&lt;Dialog/Model/Panel&gt;</b> - where the user is presented with a textbox plus the freetext, log date and log time screen components.  A number of court log events are supported by this mechanism
+                </li>
+            </ul>
+<h2>Bespoke Events</h2>
+        <p>These are written to support specific court log events and may consist of a number of textboxes, lists, tables, radio buttons and checkboxes, etc., etc.
+        The file name indicates the event it supports:</p>
+        <ul>
+                <li>
+<b><i>eventName</i>&lt;Dialog/Model/Panel&gt;</b>
+                </li>
+        </ul>
+<a name="namingConvention"><h1>Naming Convention</h1></a>
+        <p>File names take a predictable form and consist of the following
+        common components shown below with a general description of the use:</p>
+            <ul>
+                <li>
+<b><i>eventName</i>Dialog</b> - controls the popup dialog box in which the
+court log event panel sits
+                </li>
+                <li>
+<b><i>eventName</i>Panel</b> - the screen that support the event including all screen components and associated processing
+                </li>
+                <li>
+<b><i>eventName</i>Model</b> - used to pass data to and from the panel/dialog files and the midtier platform.  It contains a representation of the data on the screen
+                </li>
+                <li>
+<b><i>eventName</i>TableModel</b> - where applicable, manages the behaviour of a given table component on the panel - where there is more than one table,
+the name of this file will reflect which table it represents
+                </li>
+                <li>
+<b><i>eventName</i>TableRowModel</b> - where applicable, used to pass data to and from the panel/dialog files and a table
+component.  It contains a representation of the data in the table component
+                </li>
+            </ul>
+<h1>Court Log Events</h1>
+<h2>Components</h2>
+<p>Court log events that follow the pattern named above extend three bespoke
+classes and comprise a framework:
+<ul>
+<li><b>XDialog</b> - the superclass of the Dialog component
+<li><b>XPanel</b> - the superclass of the Panel component
+<li><b>FreeTextModel</b> - the superclass of the Model component
+</ul>
+<p>The Panel supports a number of <b>life-cycle</b> methods which may be called by the Dialog at various times in response to user input.  The table below describes these methods and their uses:
+        <table border="1" width="50%">
+          <tr>
+            <td width="33%">Method Name</td>
+            <td width="33%">When Called</td>
+            <td width="34%">Typical Use</td>
+          </tr>
+          <tr>
+            <td width="33%" valign="top">stepInitialise()</td>
+            <td width="33%" valign="top">Under the control of the developer: the
+              framework will NOT call it.
+              <p>It is normally called in the panel's constructor after saving
+              any constructor parameters</td>
+            <td width="34%" valign="top">Obtain reference data or data that is
+              unlikely to change while the screen is in use.
+              <p>Where applicable, this data may be saved in the model for later
+              use within panel or to pass to another dialog</td>
+          </tr>
+          <tr>
+            <td width="33%" valign="top">stepActivate()</td>
+            <td width="33%" valign="top">Under the control of the framework and
+              is called when the screen is made visible</td>
+            <td width="34%" valign="top">Obtain non-reference data which is
+              normally saved in the model for later use</td>
+          </tr>
+          <tr>
+            <td width="33%" valign="top">stepValidate()</td>
+            <td width="33%" valign="top">Called by the framework whenever the OK
+              button is clicked by the user.
+              <p>Explicit calls may also be made to it from within the panel</td>
+            <td width="34%" valign="top">Validation of data on the screen, i.e.
+              client-side only.
+              <p>If the data is valid, processing may continue.</p>
+              <p>If there is any error, an exception is thrown</td>
+          </tr>
+          <tr>
+            <td width="33%" valign="top">stepDeactivate()</td>
+            <td width="33%" valign="top">Under the control of the framework and
+              called when the screen is made invisible.
+              <p>Explicit calls should NOT be made to this method from within
+              the panel.</p>
+              <p>It is called after stepValidate() but only if no validation
+              exception occurred</td>
+            <td width="34%" valign="top">Normally used to save data from the
+              screen in the model.
+              <p>Under some circumstances, it may also be appropriate to make
+              business delegate calls at this time to persist the data</td>
+          </tr>
+          <tr>
+            <td width="33%" valign="top">stepDeinitialise(boolean)</td>
+            <td width="33%" valign="top">Under the control of the framework and
+              called whenever the user requests to close the screen, i.e. both
+              OK and Cancel.
+              <p>Explicit calls should NOT be made to this method from within
+              the panel</td>
+            <td width="34%" valign="top">The boolean parameter indicates whether
+              or not data should be persisted.
+              <p>In some circumstances, for example when the screen is part of a
+              wizard, it may be more appropriate to persist data in the
+              stepDeactivate() method of each panel in the wizard</td>
+          </tr>
+          <tr>
+            <td width="33%" valign="top">stepUpdateViewState()</td>
+            <td width="33%" valign="top">After some user interaction with a
+              component on the screen, for example, as part of component
+              listeners, when text has been entered into a text fied, when a row
+              is selected in a table or a command button is clicked.
+              <p>It is also commonly called as the last step in stepActivate()</td>
+            <td width="34%" valign="top">Change the state of the screen
+              depending on available or selected data, e.g. enable/disable
+              screen components.
+              <p>Enable the OK/Apply, Next/Prev and Finish buttons as and when
+              appropriate</td>
+          </tr>
+        </table>
+
+</body>
+</html>

@@ -1,0 +1,8 @@
+uk/gov/courtservice/xhibit/business/entities/nationality/*.class
+uk/gov/courtservice/xhibit/business/entities/court/*.class
+uk/gov/courtservice/xhibit/business/entities/courtroom/*.class
+uk/gov/courtservice/xhibit/business/entities/courtsite/*.class
+uk/gov/courtservice/xhibit/business/entities/configuredpublicnotice/*.class
+uk/gov/courtservice/xhibit/business/entities/publicnotice/*.class
+uk/gov/courtservice/xhibit/business/entities/terminal/*.class
+uk/gov/courtservice/xhibit/business/services/systemadmin/ReferenceDataMaintainer.class

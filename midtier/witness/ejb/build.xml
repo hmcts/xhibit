@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Witness">
+
+    <description>
+        Description to be done...
+    </description>
+
+    <import file="./../../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Local Initialise
+      =======================================================================
+      -->
+
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <!-- property set up to allow style task to use xalan(2+) parser that should be installed as a jar in ant lib dir -->
+        <property name="build.repository" location="${build.dir}/repository"/>
+        <property name="build.instrument" location="${build.dir}/instrument"/>
+        <property name="manifest.dir" location="${basedir}/manifest"/>
+
+        <!-- for compiling source (also used to build junit.classpath) -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Value.jar"/>
+                <include name="PreHearingEntities.jar"/>
+                <include name="SysAdminEntities.jar"/>
+                <include name="HearingScheduleController.jar"/>
+                <include name="HearingScheduleEntities.jar"/>
+                <include name="Framework.jar"/>
+                <include name="TimerProcess.jar"/>
+                <include name="PublicDisplay2Controller.jar"/>
+                <include name="UserTerminalLocationController.jar"/>
+                <include name="ViewScheduleController.jar"/>
+                <include name="XhibitEntities.jar"/>
+                <include name="MessagingController.jar"/>
+            </fileset>
+        </path>
+
+        <!-- classpath for running ejbc on entities -->
+        <path id="package.entities.ejbc.classpath">
+            <path refid="lib.classpath"/>
+            <pathelement location="${build.dest.dir}/Framework.jar"/>
+        </path>
+
+        <!-- classpath for running ejbc on controller -->
+        <path id="package.controller.ejbc.classpath">
+            <path refid="package.entities.ejbc.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="CaseController.jar"/>
+                <include name="HearingScheduleController.jar"/>
+                <include name="PreHearingEntities.jar"/>
+                <include name="UserTerminalLocationController.jar"/>
+                <include name="Value.jar"/>
+                <include name="CourtLogCommon.jar"/>
+                <include name="ViewScheduleController.jar"/>
+                <include name="SysAdminEntities.jar"/>
+                <include name="HearingScheduleEntities.jar"/>
+            </fileset>
+            <pathelement path="${ejb.build.dir}/WitnessEntities-noejbc.jar"/>
+        </path>
+
+        <path id="ejbc.message.classpath.ref">
+            <path refid="package.controller.ejbc.classpath"/>
+            <pathelement path="${ejb.build.dir}/WitnessController-noejbc.jar"/>
+        </path>
+
+    </target>
+
+    <!--
+      =======================================================================
+        Local Generate
+      =======================================================================
+      -->
+
+
+    <target name="generate.middlegen" unless="skip.generate" depends="framework.generate.middlegen">
+        <middlegen-old
+            appname="Witness"
+            prefsdir="${config.build.dir}"
+            gui="${middlegen.use.gui}"
+            databaseurl="${xhibit.tx.database.url}"
+            driver="${xhibit.tx.database.driver}"
+            datasourceJNDIName="${xhibit.tx.database.jndi}"
+            providerURL="${weblogic.provider.url}"
+            initialContextFactory="${java.naming.factory.initial}"
+            username="${xhibit.tx.database.user}"
+            password="${xhibit.tx.database.password}"
+            schema="${xhibit.tx.database.user}"
+            >
+
+            <table name="XHB_WITNESS" pktable="XHB_WITNESS_SEQ" pkcachesize="1"/>
+            <table name="XHB_CASE" pktable="XHB_CASE_SEQ" pkcachesize="1"/>
+            <table name="XHB_COURT" pktable="XHB_COURT_SEQ" pkcachesize="1"/>
+            <table name="XHB_TERMINAL" pktable="XHB_TERMINAL_SEQ" pkcachesize="1"/>
+            <table name="XHB_SKELETON_SCHEDULE" pktable="XHB_SKELETON_SCHEDULE_SEQ" pkcachesize="1"/>
+            <table name="XHB_SKELETON_DAY" pktable="XHB_SKELETON_DAY_SEQ" pkcachesize="1"/>
+            <table name="XHB_SKELETON_DELIVERY_STATUS" singular="xhbSkeletonDeliveryStatus" plural="xhbSkeletonDeliveryStatuses" pktable="XHB_SKELETON_DEL_STATUS_SEQ" pkcachesize="1"/>
+            <table name="XHB_SKELETON_SESSION" pktable="XHB_SKELETON_SESSION_SEQ" pkcachesize="1"/>
+
+            <cmp20
+                destination="${gen.source.dir}"
+                package="uk.gov.courtservice.xhibit.business.entities.witness"
+                interfacepackage="uk.gov.courtservice.xhibit.business.entities.witness"
+                mergedir="${basedir}/config"
+                localsuffix=""
+                localhomesuffix="Home"
+                pkclass="false"
+                dataobject="true"
+                datasuffix="Value"
+                viewtype="local"
+                readonly="false"
+                fkcmp="true"
+                >
+                <weblogic pkgen="VENDOR_SEQ"/>
+            </cmp20>
+        </middlegen-old>
+    </target>
+
+    <!-- generate remaining EJB code / descriptors -->
+    <target name="generate.entity" unless="skip.generate">
+
+        <!-- define tasks -->
+
+        <echo>XDoclet on Entity Beans</echo>
+        <!-- Session -->
+        <ejbdoclet-old
+            destdir="${gen.source.dir}"
+            excludedtags="@version,@author"
+            addedtags="@xdoclet-generated at ${TODAY}"
+            ejbspec="2.0"
+            >
+            <fileset dir="${gen.source.dir}">
+                <include name="**/*Bean.java"/>
+                <include name="**/*EJB.java"/>
+                <exclude name="**/services/**/*Bean.java"/>
+            </fileset>
+            <dataobject pattern="{0}Value"/>
+            <localinterface pattern="{0}"/>
+            <localhomeinterface pattern="{0}Home"/>
+            <deploymentdescriptor destdir="${ejb.build.dir}/WitnessEntities/META-INF"/>
+            <localinterface pattern="{0}"/>
+            <entityfacade pattern="{0}Helper"/>
+            <entitycmp pattern="{0}BeanCMP"/>
+            <weblogic
+                version="7.0"
+                xmlencoding="UTF-8"
+                destdir="${ejb.build.dir}/WitnessEntities/META-INF"
+                validatexml="true"
+                datasource="${xhibit.tx.database.jndi}"
+                persistence="weblogic"
+                />
+        </ejbdoclet-old>
+
+        <echo>XDoclet now building Controller Beans</echo>
+
+        <fileset id="ejbdoclet.controller.beans" dir="${source.dir}">
+            <include name="**/services/**/*Bean.java"/>
+        </fileset>
+
+        <property name="ejbdoclet.controller.beans" refid="ejbdoclet.controller.beans"/>
+        <echo message="ejbdoclet.controller.beans: ${ejbdoclet.controller.beans}"/>
+    </target>
+
+    <target name="generate.controller" unless="skip.generate" depends="generate.middlegen, generate.entity, framework.generate.controller">
+        <!-- Session -->
+        <ejbdoclet-old
+            destdir="${gen.source.dir}"
+            excludedtags="@version,@author"
+            addedtags="@xdoclet-generated at ${TODAY}"
+            ejbspec="2.0"
+            mergedir="config">
+
+            <fileset refid="ejbdoclet.controller.beans"/>
+
+            <remoteinterface pattern="{0}"/>
+            <homeinterface/>
+            <deploymentdescriptor destdir="${ejb.build.dir}/WitnessController/META-INF"/>
+            <template
+                destinationFile="{0}BusinessDelegate.java"
+                templateFile="${framework.config.dir}/uk/gov/courtservice/codegen/delegate.xdt"/>
+            <weblogic version="7.0" destdir="${ejb.build.dir}/WitnessController/META-INF" />
+        </ejbdoclet-old>
+    </target>
+
+    <!--
+      =======================================================================
+        Local Package
+      =======================================================================
+      -->
+
+    <target name="package.client" unless="skip.package">
+        <mkdir dir="${build.dir}/client"/>
+        <jar destfile="${build.dir}/client/WitnessMidTierClient.jar"
+        manifest="${manifest.dir}/WitnessMidTierClient.mf">
+            <fileset dir="${classes.dir}">
+                <include name="**/services/**/*.class"/>
+                <include name="**/exceptions/**/*.class"/>
+                <include name="**/*Value.class"/>
+                <exclude name="**/services/**/*Bean.class"/>
+                <exclude name="**/Test*.class"/>
+                <exclude name="**/courtlog/*.class"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="package.entity" unless="skip.package">
+        <!-- entities -->
+        <mkdir dir="${ejb.build.dir}"/>
+        <jar destfile="${ejb.build.dir}/WitnessEntities-noejbc.jar"
+             manifest="${manifest.dir}/WitnessEntities.mf">
+            <fileset dir="${classes.dir}">
+                <include name="**/entities/**/*.class"/>
+                <include name="**/*Value.class"/>
+                <exclude name="**/Test*.class"/>
+                <exclude name="**/courtlog/*.class"/>
+            </fileset>
+            <fileset dir="${ejb.build.dir}/WitnessEntities">
+                <include name="META-INF/**"/>
+            </fileset>
+        </jar>
+
+        <uptodate
+            property="skip.package.entity.ejbc"
+            srcfile="${ejb.build.dir}/WitnessEntities-noejbc.jar"
+            targetfile="${lib.build.dir}/WitnessEntities.jar" />
+    </target>
+
+    <target name="package.entity.ejbc.check" if="skip.package" depends="package.entity">
+        <property name="skip.package.entity.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.entity.ejbc" unless="skip.package.entity.ejbc" depends="package.entity.ejbc.check">
+        <mkdir dir="${lib.build.dir}"/>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="package.entities.ejbc.classpath" />
+            </classpath>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${lib.build.dir}/WitnessEntities.jar" />
+            <arg value="${ejb.build.dir}/WitnessEntities-noejbc.jar" />
+        </java>
+    </target>
+
+    <target name="package.controller" unless="skip.package.controller" depends="package.client, package.entity.ejbc, framework.package.controller">
+        <!-- controller -->
+        <jar destfile="${ejb.build.dir}/WitnessController-noejbc.jar"
+             manifest="${manifest.dir}/WitnessController.mf">
+            <fileset dir="${classes.dir}">
+                <include name="**/services/**/*.class"/>
+                <include name="**/exceptions/**/*.class"/>
+                <include name="**/services/vos/**/*.class"/>
+                <include name="**/*Value.class"/>
+                <include name="**/*.xml"/>
+                <exclude name="**/Test*.class"/>
+                <exclude name="**/courtlog/*.class"/>
+            </fileset>
+            <fileset dir="${ejb.build.dir}/WitnessController">
+                <include name="META-INF/**"/>
+            </fileset>
+        </jar>
+
+        <uptodate
+            property="skip.package.controller.ejbc"
+            srcfile="${ejb.build.dir}/WitnessController-noejbc.jar"
+            targetfile="${lib.build.dir}/WitnessController.jar" />
+    </target>
+
+    <target name="package.controller.ejbc" unless="skip.package.controller.ejbc" depends="framework.package.controller.ejbc">
+        <mkdir dir="${lib.build.dir}"/>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="package.controller.ejbc.classpath" />
+            </classpath>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${lib.build.dir}/WitnessController.jar" />
+            <arg value="${ejb.build.dir}/WitnessController-noejbc.jar" />
+        </java>
+    </target>
+
+    <!--
+      =======================================================================
+        Local Release
+      =======================================================================
+      -->
+
+    <target name="release" unless="skip.release" depends="framework.release">
+        <log target="release"/>
+        <copy todir="${build.dest.dir}">
+            <fileset dir="${client.build.dir}" />
+        </copy>
+    </target>
+
+</project>

@@ -1,0 +1,6 @@
+ * @ejb.finder
+ *    signature="XhbRefDisposal findByCodeAndCourt(java.lang.String code, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefDisposal o WHERE o.disposalCode = ?1 AND o.courtId = ?2"
+ *    description="Each court will have distinct disposal types."

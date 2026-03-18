@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.1"
+    id="ListDistributionPersonalDetailsTypes">
+    
+    <xsd:include schemaLocation="ListDistributionContactTypes-v1.xsd"/>
+    <xsd:include schemaLocation="ListDistributionCommonSimpleTypes-v1.xsd"/>
+
+    <xsd:simpleType name="CitizenNameTitleType">
+        <xsd:restriction base="RestrictedStringType">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CitizenNameForenameType">
+        <xsd:restriction base="RestrictedStringType">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CitizenNameSurnameType">
+        <xsd:restriction base="RestrictedStringType">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CitizenNameSuffixType">
+        <xsd:restriction base="RestrictedStringType">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="35"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="CitizenNameRequestedNameType">
+        <xsd:restriction base="RestrictedStringType">
+            <xsd:minLength value="1"/>
+            <xsd:maxLength value="70"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+
+	<xsd:simpleType name="VerifiedByType">
+		<xsd:annotation>
+			<xsd:documentation>A Change of Address specific data type</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="RestrictedStringType">
+			<xsd:enumeration value="not verified"/>
+			<xsd:enumeration value="accepted on balance of probabilities"/>
+			<xsd:enumeration value="secondary certificate"/>
+			<xsd:enumeration value="certified copy of birth certificate"/>
+			<xsd:enumeration value="short form birth certificate or certificate of registration of birth"/>
+			<xsd:enumeration value="birth certificate"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+	<xsd:complexType name="CitizenBirthDateStructure">
+		<xsd:sequence>
+			<xsd:annotation>
+				<xsd:documentation>This might change to allow codes as well as descriptions of for verification</xsd:documentation>
+			</xsd:annotation>
+			<xsd:element name="BirthDate" type="DateType"/>
+			<xsd:element name="VerifiedBy" type="VerifiedByType"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:complexType name="CitizenContactDetailsStructure">
+		<xsd:sequence>
+			<xsd:element name="Email" type="EmailStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Telephone" type="TelephoneStructure" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Fax" type="FaxStructure" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+
+    <xsd:complexType name="CitizenNameStructure">
+        <xsd:sequence>
+            <xsd:element name="CitizenNameTitle" type="CitizenNameTitleType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="CitizenNameForename" type="CitizenNameForenameType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="CitizenNameSurname" type="CitizenNameSurnameType"/>
+            <xsd:element name="CitizenNameSuffix" type="CitizenNameSuffixType" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="CitizenNameRequestedName" type="CitizenNameRequestedNameType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

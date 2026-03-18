@@ -1,0 +1,119 @@
+* -------- custom finders --------
+* @xhibit.auditable true
+* @ejb.finder
+*    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (vl) FROM XhbVerdict vl, XhbDefendantOnOffence dof, XhbDefendantOnCase doc WHERE 
+*           (vl.obsInd IS NULL OR vl.obsInd = 'N') AND
+*           vl.defendantOnOffenceId = dof.defendantOnOffenceId AND 
+*           (dof.obsInd IS NULL OR dof.obsInd = 'N') AND
+*           dof.defendantOnCaseId = doc.defendantOnCaseId AND 
+*           (doc.obsInd IS NULL OR doc.obsInd = 'N') AND
+*           doc.caseId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByChargeIdForOffence(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v, XhbDefendantOnOffence do, XhbOffence off WHERE
+*    (v.obsInd IS NULL OR v.obsInd = 'N') AND
+*    v.defendantOnOffenceId = do.defendantOnOffenceId AND
+*    do.offenceId = off.offenceId AND
+*    off.chargeId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByChargeIdForCharge(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v, XhbDefendantCharge doc WHERE
+*    (v.obsInd IS NULL OR v.obsInd = 'N') AND
+*    v.defendantChargeId = doc.defendantChargeId AND
+*    doc.chargeId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByCaseIdForCase(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v WHERE
+*    (v.obsInd IS NULL OR v.obsInd = 'N') AND
+*    v.caseId = ?1 AND
+*    v.disposal2Id IS NULL"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByDefendantOnCaseId(java.lang.Integer defendantOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v WHERE
+*           (v.obsInd IS NULL OR v.obsInd = 'N') AND
+*           v.defendantOnCaseId = ?1" AND
+*           v.disposal2Id IS NOT NULL"
+*
+* @ejb.finder
+*    signature="uk.gov.courtservice.xhibit.business.entities.xhb_verdict.XhbVerdict findByDisposal2Id(java.lang.Integer disposal2Id)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v WHERE (v.obsInd IS NULL OR v.obsInd = 'N') AND v.disposal2Id = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByDefendantOnOffenceId(java.lang.Integer defendantOnOffenceId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v WHERE
+*           v.defOnChargeOrOffence = 'O' AND
+*           (v.obsInd IS NULL OR v.obsInd = 'N') AND
+*           v.defendantOnOffenceId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findByDefendantChargeId(java.lang.Integer defendantChargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (v) FROM XhbVerdict v WHERE
+*           v.defOnChargeOrOffence = 'C' AND
+*           (v.obsInd IS NULL OR v.obsInd = 'N') AND
+*           v.defendantChargeId = ?1"
+*
+* @ejb.finder
+*    signature="Collection findByCourtIdOrderCodeDefendantOnCaseId(java.lang.Integer courtId, java.lang.String orderCode, java.lang.Integer defendantOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT DISTINCT
+*               OBJECT(v)
+*           FROM
+*               XhbDefendantOnOffence doo,
+*               XhbRefDisposalType rdt,
+*               XhbOrderDisposalXref odx,
+*               XhbDisposal2 d,
+*               XhbVerdict v,
+*               XhbOrderType ot,
+*               XhbRefSystemCode rsc
+*           WHERE
+*               rdt.courtId = ?1
+*           AND
+*               (rdt.obsInd is null or rdt.obsInd = 'N' or rdt.obsInd = ' ')
+*           AND
+*               odx.orderTypeId = ot.orderTypeId
+*           AND
+*              ot.code = ?2   
+*           AND
+*               d.refDisposalTypeId = odx.rsRefDisposalTypeId
+*           AND
+*               (d.obsInd is null or d.obsInd = 'N' or d.obsInd = ' ')
+*           AND
+*               doo.defendantOnOffenceId = d.defendantOnOffenceId
+*           AND
+*               doo.defendantOnCaseId = ?3
+*           AND
+*               (doo.obsInd is null or d.obsInd = 'N' or d.obsInd = ' ')
+*           AND
+*               v.defendantOnOffenceId = doo.defendantOnOffenceId
+*           AND
+*               (v.obsInd is null or d.obsInd = 'N' or d.obsInd = ' ')
+*           AND
+*               rsc.refSystemCodeId = v.refVerdictId
+*           AND
+*               (rsc.obsInd is null or d.obsInd = 'N' or rsc.obsInd = ' ')
+*           AND
+*               rsc.code in ('G', 'GL', 'AC', 'GAJ', 'NV', 'GJJ', 'DUD', 'GLOJ', 'GJ')"
+*
+* -------- end of custom finders --------

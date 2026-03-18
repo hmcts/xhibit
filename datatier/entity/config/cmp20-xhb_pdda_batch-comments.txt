@@ -1,0 +1,21 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findOpenBatch(Integer refStatusCodesId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbPddaBatch AS o WHERE o.batchStatusId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') ORDER BY o.batchStatusId DESC"
+ *
+ * @ejb.finder
+ *    signature="Collection findReadyToSendBatches(Integer refStatusCodesId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbPddaBatch AS o WHERE o.batchClosedDatetime is not null AND o.batchStatusId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') ORDER BY o.batchStatusId DESC"
+ *
+ * @ejb.finder
+ *    signature="Collection findBatchesToResend(Integer maxResends, Integer refStatusCodesId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbPddaBatch AS o WHERE o.batchNoResends < ?1 AND o.batchStatusId = ?2 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') ORDER BY o.batchStatusId DESC"
+ *
+ * -------- end of custom finders -------- *

@@ -1,0 +1,32 @@
+gcsUtility.xsl changed:
+
+         CCN400 - Updated to include deportation reason text
+         CCN1263 - Updated to include the vulnerable victim indicator text
+
+TrialRecordSheet-v2-4 changed:
+
+        CCN400 - Updated to include deportation reason text
+        CCN1263 - Updated to include the vulnerable victim indicator text
+
+AppealRecordSheet-v2-5
+
+	CCN400 - Updated to include deportation reason text
+      CCN1263 - Updated to include the vulnerable victim indicator text
+
+ImprisonmentOrder-v2-2 changed
+
+	CCN400 - Updated to include deportation reason text
+      CCN1263 - Updated to include the vulnerable victim indicator text
+
+CommitalRecordSheet-v2-5
+
+	CCN400 - Updated to include deportation reason text
+      CCN1263 - Updated to include the vulnerable victim indicator text
+
+WarnedList-v2-1
+
+       Added URN element
+
+RunningList-v2-1
+
+       Added URN element

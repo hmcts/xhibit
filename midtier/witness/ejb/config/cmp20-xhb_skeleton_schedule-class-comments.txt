@@ -1,0 +1,19 @@
+ * @ejb.finder
+ *    signature="Collection findByCase(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xss) FROM XhbSkeletonSchedule xss  WHERE xss.caseId=?1" 
+ *    description="Find schedule for a case."
+ *
+ * @ejb.finder
+ *    signature="Collection findEmptySchedules(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT(xss) FROM XhbSkeletonSchedule xss, XhbSkeletonDay day, XhbCase case WHERE xss.caseId = case.caseId AND case.courtId = ?1 AND day.xhbSkeletonSchedule = xss AND xss.deliverable = 'Y' AND xss.xhbSkeletonDeliveryStatus is not null AND xss.xhbSkeletonDeliveryStatus.code in ('READY','DELIVERED','FAILED')" 
+ *    description="Find empty schedules."
+ * @ejb.finder
+ *    signature="Collection findUndeliverableEmptySchedules()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xss) FROM XhbSkeletonSchedule xss WHERE xss.deliverable = 'N'" 
+ *    description="Find empty schedules." 

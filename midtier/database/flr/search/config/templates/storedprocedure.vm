@@ -1,0 +1,66 @@
+package $queryClassPackage;
+
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import uk.gov.courtservice.framework.jdbc.core.ReflectionRowProcessor;
+import uk.gov.courtservice.framework.jdbc.core.StoredProcedure;
+import uk.gov.courtservice.framework.services.CSServices;
+import uk.gov.courtservice.xhibit.business.vos.entities.${valueClassName};
+import uk.gov.courtservice.xhibit.business.vos.services.systemadmin.criteria.${criteriaClassName};
+
+
+/**
+ * @author Meeraj
+ * @title ${queryClassName}
+ * @description This class acts as a wrapper on the stored procedure
+ * that searches the ${queryClassName} table
+ */
+public class ${queryClassName} extends StoredProcedure {
+	/**
+	 * Logger instance
+	 */
+    private static Logger log = CSServices.getLogger(${queryClassName}.class);
+
+	/**
+	 * Cached SQL
+	 */
+	private static final String SQL = "${procedure.callString}";
+	
+	/**
+	 * Parameter types
+	 */
+	private int types[] = { ${procedure.typeArray} };
+
+	/**
+	 * Instantiates the datasource and SQL
+	 */
+	public ${queryClassName}() {
+		super(CSServices.getServiceLocator().getDataSource(), SQL);
+		log.debug("Query initialized");
+		registerInTypes(types);
+		log.debug("Parameter registered");
+	}
+
+	/**
+	 * Returns the matching courts
+	 * @param ${criteriaClassName}Criteria
+	 * @return List of ${valueClassName} Objects
+	 */
+	public List search(final ${criteriaClassName} criteria) {		
+		//Set the row processor for the query
+		final ReflectionRowProcessor processor = 
+			new ReflectionRowProcessor(${valueClassName}.class);
+		processor.registerDefaultBindings();
+		setRowProcessor(processor);
+		log.debug("Row processor set");
+
+		//Execute the stored procedure
+		final int numResults = execute(criteria.getArgs());
+		log.debug("Number of results returned: " + numResults);
+
+		//Get the list of courts
+		return processor.getResults();
+	}
+}

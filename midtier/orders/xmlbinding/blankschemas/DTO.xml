@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders E:\XHIBIT_8_2\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<DetentionAndTrainingOrder>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Crown Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<OrderMadeUnder>Section100</OrderMadeUnder>
+			<ConvictionDate>0001-01-01</ConvictionDate>
+			<CommittingCourt selected="false">
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</CommittingCourt>
+			<RiskVulnerabilityFactors selected="false">
+				<RiskText></RiskText>
+			</RiskVulnerabilityFactors>
+			<OrderPeriod>
+				<Period>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</Period>
+				<Section105 selected="false">
+					<Period>
+						<Years>0</Years>
+						<Months>0</Months>
+						<Days>0</Days>
+					</Period>
+				</Section105>
+			</OrderPeriod>
+			<CreditForBail selected="false">
+				<CreditForTimeOnBailSection>section325</CreditForTimeOnBailSection>
+				<Term>
+					<Years>0</Years>
+					<Months>0</Months>
+					<Days>0</Days>
+				</Term>
+			</CreditForBail>
+			<DTOrderRequirements selected="false">
+				<TrailMonitoringRequirement selected="false">
+					<Duration>0</Duration>
+				</TrailMonitoringRequirement>
+			</DTOrderRequirements>
+			<AdditionalNotes selected="false"> </AdditionalNotes>
+			<AssociatedCases/>
+		</DetentionAndTrainingOrder>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

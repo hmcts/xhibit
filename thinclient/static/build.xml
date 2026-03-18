@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Static">
+
+    <description>
+        Application containing static resources
+    </description>
+
+    <property name="component.author" value="Will Fardell"/>
+    <property name="component.name" value="Thinclient Static"/>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.war" value="true" />
+
+
+</project>
+

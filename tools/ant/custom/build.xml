@@ -1,0 +1,132 @@
+<project name="xhibit.ant.custom" default="all">
+
+    <!-- 
+      - Build
+      -->
+
+    <target name="initialise">
+        <property name="version" value="1.0"/>
+        <property name="src.dir" value="src"/>
+        <property name="build.dir" value="build"/>
+        <property name="resources.dir" value="resources"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>        
+        <property name="jar.file" value="${build.dir}/${ant.project.name}-${version}.jar"/>
+        <property name="lib.dir" location="../../../lib"/>
+        <property name="framework.lib.dir" location="../lib"/>
+
+        <path id="javac-class-path">
+            <fileset dir="${framework.lib.dir}" excludes="${ant.project.name}-*.jar"/>
+            <fileset dir="${lib.dir}" includes="*.jar, *.zip"/>
+        </path>
+    </target>
+    
+    <target name="clean" depends="initialise">
+        <delete dir="${build.dir}"/>
+    </target>
+
+    <target name="compile" depends="initialise">
+        <mkdir dir="${classes.dir}"/>
+        <javac destdir="${classes.dir}" debug="yes" classpathref="javac-class-path">
+            <src path="${src.dir}"/>
+        </javac>
+    </target>
+
+    <target name="package" depends="compile">
+        <jar destfile="${jar.file}">
+            <fileset dir="${classes.dir}"/>
+            <fileset dir="${resources.dir}"/>
+        </jar>
+    </target>
+    
+    <target name="release" depends="package">
+        <copy file="${jar.file}" todir="${framework.lib.dir}"/>
+    </target>
+
+    <target name="all" depends="release" />
+
+    <!-- 
+      - Test
+      -->
+
+	<target name="test.ipaddress" depends="package">
+		<taskdef resource="uk/gov/courtservice/ant/antlib.xml">
+			<classpath>
+				<pathelement path="${jar.file}"/>
+				<path refid="javac-class-path"/>
+			</classpath>
+		</taskdef>
+
+		<hostnumber property="w2jzj6wd04.ipaddress" />
+		<hostnumber property="w2jzj6wd04.ipaddress.-100.100" min="-100" max="100"/>
+		<hostnumber property="w2jzj6wd04.ipaddress.0.1000" max="1000"/>
+		<hostnumber property="w2jzj6wd04.ipaddress.10000.20000" min="10000" max="20000"/>
+
+
+		<hostnumber property="w2jzj6wd04.ipaddress.xxxxx" offset="-90" min="-100" max="100"/>
+
+		<hostnumber host="w2jzj6wd01" property="w2jzj6wd01.ipaddress" />
+		<hostnumber host="w2jzj6wd01" property="w2jzj6wd01.ipaddress.-100.100" min="-100" max="100"/>
+		<hostnumber host="w2jzj6wd01" property="w2jzj6wd01.ipaddress.0.1000" max="1000"/>
+		<hostnumber host="w2jzj6wd01" property="w2jzj6wd01.ipaddress.10000.20000" min="10000" max="20000"/>
+
+		<hostnumber host="internetabh" property="internetabh.ipaddress" />
+		<hostnumber host="internetabh" property="internetabh.ipaddress.-100.100" min="-100" max="100"/>
+		<hostnumber host="internetabh" property="internetabh.ipaddress.0.1000" max="1000"/>
+		<hostnumber host="internetabh" property="internetabh.ipaddress.10000.20000" min="10000" max="20000"/>
+
+	</target>
+
+    <target name="test.uptodatefileset" depends="package">
+        <taskdef name="uptodatefileset" classname="uk.gov.courtservice.ant.taskdefs.UpToDateFileSetTask" classpath="${jar.file}"/>
+
+        <uptodatefileset property="test01">
+            <srcfiles dir="${src.dir}"/>
+            <destfiles dir="${classes.dir}"/>
+        </uptodatefileset>
+        <fail unless="test01" message="property not set when src older than dest"/>
+        <echo message="Passed Test 01"/>
+
+        <uptodatefileset property="test02">
+            <srcfiles dir="${classes.dir}"/>
+            <destfiles dir="${src.dir}"/>
+        </uptodatefileset>
+        <fail if="test02" message="property set when src newer than dest"/>
+        <echo message="Passed Test 02"/>
+
+        <uptodatefileset property="test03">
+            <srcpath>
+                <fileset dir="${src.dir}"/>
+            </srcpath>
+            <destpath>
+                <fileset dir="${classes.dir}"/>
+            </destpath>
+        </uptodatefileset>
+        <fail unless="test03" message="could not identify path data"/>
+        <echo message="Passed Test 03"/>
+
+        <path id="testsrcpath">
+            <fileset dir="${src.dir}"/>
+        </path>
+        <path id="testdestpath">
+            <fileset dir="${classes.dir}"/>
+        </path>
+        <uptodatefileset property="test04" srcpathref="testsrcpath" destpathref="testdestpath"/>
+        <fail unless="test03" message="could not identify path ref attribute"/>
+        <echo message="Passed Test 04"/>
+
+        <mkdir dir="${build.dir}/test-empty"/>
+        <uptodatefileset property="test05">
+            <srcfiles dir="${classes.dir}"/>
+            <destfiles dir="${build.dir}/test-empty"/>
+        </uptodatefileset>
+        <fail if="test05" message="property set when no dest files"/>
+        <echo message="Passed Test 05"/>
+        <delete dir="${build.dir}/test-empty"/>
+    </target>
+
+    <target name="test">
+        <antcall target="test.uptodatefilesettask"/>
+    </target>
+
+</project>
+

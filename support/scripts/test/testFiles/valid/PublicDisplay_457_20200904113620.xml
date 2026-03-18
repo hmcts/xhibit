@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<currentcourtstatus>
+    <court>
+        <courtname>Swansea Crown Court</courtname>
+        <courtsites>
+            <courtsite>
+                <courtsitename>SWANSEA</courtsitename>
+                <courtrooms>
+                    <courtroom>
+                        <cases>
+                            <caseDetails>
+                                <cppurn>TVL875217JG99</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <activecase>0</activecase>
+                                <hearingtype>Plea and Trial Preparation</hearingtype>
+                                <defendants>
+                                    <defendant>
+                                        <firstname>Dastan Dastan Dastan</firstname>
+                                        <lastname>Smith</lastname>
+                                    </defendant>
+                                </defendants>
+                                <judgename>His Honour Judge Brian Cummings Esq QC</judgename>
+                                <notbeforetime>15:00</notbeforetime>
+                                <currentstatus>
+                                    <event>
+                                        <time>01:34</time>
+                                        <date>04/09/20</date>
+                                        <free_text></free_text>
+                                        <type>30500</type>
+                                    </event>
+                                </currentstatus>
+                                <timestatusset>01:34</timestatusset>
+                                <hearingprogress>9</hearingprogress>
+                            </caseDetails>
+                            <caseDetails>
+                                <cppurn>TFL3124472471</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <activecase>1</activecase>
+                                <hearingtype>Plea and Trial Preparation</hearingtype>
+                                <defendants>
+                                    <defendant>
+                                        <firstname>John</firstname>
+                                        <lastname>Protractor-3124472471</lastname>
+                                    </defendant>
+                                </defendants>
+                                <judgename>His Honour Judge Brian Cummings Esq QC</judgename>
+                                <notbeforetime>10:00</notbeforetime>
+                                <currentstatus>
+                                    <event>
+                                        <time>12:46</time>
+                                        <date>04/09/20</date>
+                                        <free_text></free_text>
+                                        <type>10100</type>
+                                    </event>
+                                </currentstatus>
+                                <timestatusset>12:46</timestatusset>
+                                <hearingprogress>5</hearingprogress>
+                            </caseDetails>
+                        </cases>
+                        <courtroomname>Court 1</courtroomname>
+                    </courtroom>
+                    <courtroom>
+                        <cases>
+                            <caseDetails>
+                                <cppurn>TVL87521HM2ZZ</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <activecase>0</activecase>
+                                <hearingtype>For Sentence</hearingtype>
+                                <defendants>
+                                    <defendant>
+                                        <firstname>Korneliusz Korneliusz Korneliusz</firstname>
+                                        <lastname>Callender</lastname>
+                                    </defendant>
+                                </defendants>
+                                <judgename>His Honour Judge Anthony Dennis Watson Esq QC</judgename>
+                                <notbeforetime>15:00</notbeforetime>
+                                <timestatusset>15:00</timestatusset>
+                                <hearingprogress>0</hearingprogress>
+                            </caseDetails>
+                            <caseDetails>
+                                <cppurn>TVL875213B7HZ</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <activecase>1</activecase>
+                                <hearingtype>For Plea/Pre-Trial Review</hearingtype>
+                                <defendants>
+                                    <defendant>
+                                        <firstname>Esah Esah Esah</firstname>
+                                        <lastname>Davidson</lastname>
+                                    </defendant>
+                                </defendants>
+                                <judgename>His Honour Judge Anthony Dennis Watson Esq QC</judgename>
+                                <notbeforetime>10:00</notbeforetime>
+                                <currentstatus>
+                                    <event>
+                                        <time>12:28</time>
+                                        <date>04/09/20</date>
+                                        <free_text></free_text>
+                                        <type>10500</type>
+                                    </event>
+                                </currentstatus>
+                                <timestatusset>12:28</timestatusset>
+                                <hearingprogress>5</hearingprogress>
+                            </caseDetails>
+                        </cases>
+                        <courtroomname>Court 4</courtroomname>
+                    </courtroom>
+                </courtrooms>
+                <floating/>
+            </courtsite>
+            <courtsite>
+                <courtsitename>CARMARTHEN</courtsitename>
+                <courtrooms>
+                    <courtroom>
+                        <cases>
+                            <caseDetails>
+                                <cppurn>TVL87521VQUC6</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <activecase>0</activecase>
+                                <hearingtype>For Plea</hearingtype>
+                                <defendants>
+                                    <defendant>
+                                        <firstname>Ramel Ramel Ramel</firstname>
+                                        <lastname>Mcculloch</lastname>
+                                    </defendant>
+                                </defendants>
+                                <judgename>His Honour Judge Neil Flewitt QC</judgename>
+                                <notbeforetime>15:00</notbeforetime>
+                                <timestatusset>15:00</timestatusset>
+                                <hearingprogress>0</hearingprogress>
+                            </caseDetails>
+                            <caseDetails>
+                                <cppurn>TVL87521TAPCW</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <activecase>1</activecase>
+                                <hearingtype>Plea and Trial Preparation</hearingtype>
+                                <defendants>
+                                    <defendant>
+                                        <firstname>Alfie Alfie Alfie</firstname>
+                                        <lastname>Ryther</lastname>
+                                    </defendant>
+                                </defendants>
+                                <judgename>His Honour Judge Neil Flewitt QC</judgename>
+                                <notbeforetime>10:00</notbeforetime>
+                                <currentstatus>
+                                    <event>
+                                        <time>07:30</time>
+                                        <date>04/09/20</date>
+                                        <free_text></free_text>
+                                        <type>10500</type>
+                                    </event>
+                                </currentstatus>
+                                <timestatusset>07:30</timestatusset>
+                                <hearingprogress>5</hearingprogress>
+                            </caseDetails>
+                        </cases>
+                        <courtroomname>Court 1</courtroomname>
+                    </courtroom>
+                </courtrooms>
+                <floating/>
+            </courtsite>
+        </courtsites>
+    </court>
+    <datetimestamp>
+        <dayofweek>Friday</dayofweek>
+        <date>04</date>
+        <month>September</month>
+        <year>2020</year>
+        <hour>12</hour>
+        <min>46</min>
+    </datetimestamp>
+    <pagename>swansea crown court</pagename>
+</currentcourtstatus>

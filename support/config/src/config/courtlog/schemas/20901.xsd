@@ -1,0 +1,33 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trial - Time Estimate -->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20901_Time_Estimate_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20901_Time_Estimate_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20901_TEO_time"/>
+				<xs:element ref="E20901_TEO_units"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20901_TEO_time" type="xs:string"/>
+	<xs:element name="E20901_TEO_units">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20901_days"/>
+				<xs:enumeration value="E20901_weeks"/>
+				<xs:enumeration value="E20901_months"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

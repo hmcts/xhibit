@@ -1,0 +1,15 @@
+sourceId,Z00CJSE
+destinationId,C00CourtServicesHub
+execMode,ASYNCH
+requestTimestamp,2006-10-30T19:40:47-05:00
+timeoutTestEnabled,false
+delay,150000
+
+
+
+
+
+
+
+
+

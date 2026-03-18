@@ -1,0 +1,17 @@
+**/com/**
+**/ant/**
+**/mseriestest/**
+**/ejbtest/**/*
+**/CalendarAWT/**/*
+**/*BeanInfo.class
+**/MDateFormatEditor.class
+**/MFirstDayEditor.class
+**/MDateValueEditor.class
+**/MDateTimeValueEditor.class
+**/MDateDisplay.class
+**/MDateEntryFieldDemo*.class
+**/Test*.class
+**/TableTest*.class
+**/MyTableModel*.class
+**/MTextLocaliserEditor*.class
+

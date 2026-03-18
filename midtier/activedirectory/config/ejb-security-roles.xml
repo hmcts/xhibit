@@ -1,0 +1,4 @@
+      <security-role>
+         <description>Role added from config</description>
+         <role-name>XHBWeblogic</role-name>
+      </security-role>

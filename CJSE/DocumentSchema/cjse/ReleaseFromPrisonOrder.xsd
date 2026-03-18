@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.8" id="ReleaseFromPrisonOrder">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo>
+			<Metadata xmlns="http://www.govtalk.gov.uk/metadata/egms">
+				<Creator>Ministry Of Justice</Creator>
+				<Created>2016-01-06</Created>
+				<Modified>2016-01-06</Modified>
+				<Format Schema="http://www.iana.org/assignments/media-types">text/xml</Format>
+				<Identifier>ReleaseFromPrisonOrder</Identifier>
+				<Language codeListID="ISO639-2" codeListURI="http://www.loc.gov/standards/iso639-2/langcodes.html">eng</Language>
+				<Publisher>Ministry Of Justice, 102 Petty France, London</Publisher>
+				<ConformsTo>http://www.w3.org/2001/XMLSchema</ConformsTo>
+				<Copyright>Crown Copyright 2016</Copyright>
+				<ProtectiveMarking>unclassified</ProtectiveMarking>
+				<Status>final</Status>
+				<StatusDescription>definitive version for release</StatusDescription>
+				<Version>5.8</Version>
+				<Category codeListID="GCL">Justice System</Category>
+				<Title>Crown Court Release From Prison Order</Title>
+				<Type>message</Type>
+			</Metadata>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="ReleaseFromPrisonOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="OrderHeader" type="CourtOrderHeaderStructure"/>
+			<xsd:element name="Governor" type="xsd:string"/>
+			<xsd:element name="OriginalCourt" type="OriginatingCourtStructure"/>
+			<xsd:element name="BailConditions">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="OrderDate" type="xsd:date" minOccurs="0"/>
+					</xsd:sequence>
+					<xsd:attribute name="Conditions" type="BailConditionsType"/>
+					<xsd:attribute name="Ordered" type="BailOrderedType"/>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="ReleaseFromPrisonOrder" type="ReleaseFromPrisonOrderStructure"/>
+</xsd:schema>

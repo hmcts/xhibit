@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="OrdersClient">
+    <description>
+        Description to be done...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.builds.jar" value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="ThickClientFramework.jar" />
+                <include name="ThickClientTestingFramework.jar" />
+                <include name="RichClient.jar" />
+                <include name="ClientView.jar" />
+                <include name="OrdersMidTierCommon.jar" />
+                <include name="Value.jar" />
+                <include name="MDateSelector.jar" />
+                <!-- The following is required for test classes only -->
+                <include name="OrdersEntities.jar" />
+                <include name="OrdersController.jar" />
+                <include name="DefendantController.jar" />
+                <include name="XhibitEntities.jar"/>
+            </fileset>
+        </path>
+    </target>
+</project>

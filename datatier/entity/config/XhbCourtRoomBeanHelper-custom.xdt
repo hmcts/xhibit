@@ -1,0 +1,22 @@
+
+
+public static String getUrn(Integer courtRoomId)
+{
+
+  try
+  {
+    uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoom room = null;
+    uk.gov.courtservice.xhibit.business.entities.xhb_court_site.XhbCourtSite site = null;
+    uk.gov.courtservice.xhibit.business.entities.xhb_court.XhbCourt court = null;
+    
+    room = findByPrimaryKey(courtRoomId);
+    site = room.getXhbCourtSite();
+    court = site.getXhbCourt();
+    
+    return "//" + court.getShortName() + "/" + site.getCourtSiteCode() + "/" + room.getCrestCourtRoomNo();
+  }
+  catch(Exception ex)
+  {
+    throw new EJBException("Court room not found", ex);
+  }
+}

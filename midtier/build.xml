@@ -1,0 +1,238 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="MidTier">
+
+    <description>
+        Top level midtier build script.  This script is responsible for calling
+        the build on all child-projects, for constructing the MidTier.ear file,
+        and the required helper jar files for calling through to the midtier
+        (e.g. the delegate jar files).
+    </description>
+
+    <import file="./../tools/ant/framework.xml" />
+
+
+     <!--
+      =======================================================================
+        Midtier Tests
+      =======================================================================
+      -->
+     <target name="test" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="child.path">
+             <pathelement location="orders/ejb/build.xml" />
+        </path>  
+   </target>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="child.path">			
+            <pathelement location="dartsstartup/build.xml" />
+            <pathelement location="activedirectory/build.xml" />
+            <pathelement location="userterminal/build.xml" />
+            <pathelement location="rolemapping/build.xml" />
+            <pathelement location="testing_framework/build.xml" />
+            <pathelement location="court_log/build.xml" />
+            <pathelement location="cr_live_status/build.xml" />
+            <pathelement location="viewschedule/build.xml" />
+            <pathelement location="database/flr/search/build.xml" />
+            <pathelement location="importexportstatus/build.xml" />
+            <pathelement location="email/build.xml" />
+            <pathelement location="validation/build.xml"/>
+            <pathelement location="main/build.xml" />
+            <pathelement location="formatting/build.xml" />
+            <pathelement location="listdistribution/build.xml" />
+            <pathelement location="listdistribution2/build.xml" />
+            <pathelement location="results2/build.xml" />
+            <pathelement location="orders/common/build.xml" />
+            <pathelement location="orders/ejb/build.xml" />
+            <pathelement location="orders/xmlbinding/build.xml" />
+            <pathelement location="publicdisplay2/build.xml" />
+            <pathelement location="probationservice/build.xml" />
+            <pathelement location="instant_messaging/build.xml" />
+            <pathelement location="thinclient-shared/build.xml" />
+            <pathelement location="witness/ejb/build.xml" />
+            <pathelement location="crestformsbf/build.xml" />
+            <pathelement location="darts/build.xml" />
+            <pathelement location="court_log_subscriptions/build.xml" />
+            <pathelement location="joinder/build.xml" />
+            <pathelement location="version/build.xml" />
+            <pathelement location="messageoftheday/build.xml" />
+            <pathelement location="admin/refdataadmin/build.xml" />
+            <pathelement location="translation/build.xml" />
+            <pathelement location="messagebroker/build.xml" />
+            <pathelement location="messagegenerator/build.xml" />
+            <pathelement location="exiss/build.xml" />
+            <pathelement location="audittrail/build.xml"/>
+            <pathelement location="datareset/build.xml" />
+            <pathelement location="../wmbbridge/build.xml"/>
+        </path>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+    <target name="package" unless="skip.package" depends="framework.package">
+
+        <mkdir dir="${lib.build.dir}" />
+
+        <!-- Database -->
+        <jar destfile="${lib.build.dir}/database.jar" >
+            <fileset dir="main/build/classes" includes="**/database/**/*.class" />
+        </jar>
+
+        <!-- Client View -->
+        <jar destfile="${lib.build.dir}/ClientView.jar" duplicate="preserve">
+            <!-- these really ought to be built in a standard location in subprojects (build/client) -->
+            <zipgroupfileset dir="orders/ejb/build/client"         includes="*Client.jar" />
+            <!-- the clients do not need to be aware of the following client files -->
+            <!--
+            <zipgroupfileset dir="formatting/build/client"         includes="*Client.jar" />
+            <zipgroupfileset dir="messagegenerator/build/client"   includes="*Client.jar" />
+            -->
+            <zipgroupfileset dir="crestformsbf/build/client"       includes="*Client.jar" />
+            <zipgroupfileset dir="court_log/build/client"          includes="*Client.jar" />
+            <zipgroupfileset dir="importexportstatus/build/client" includes="*Client.jar" />
+            <zipgroupfileset dir="instant_messaging/build/client"  includes="*Client.jar" />
+            <zipgroupfileset dir="joinder/build/client"            includes="*Client.jar" />
+            <zipgroupfileset dir="listdistribution/build/client"   includes="*Client.jar" />
+            <zipgroupfileset dir="listdistribution2/build/client"  includes="*Client.jar" />
+            <zipgroupfileset dir="main/build/client"               includes="*Client.jar" />
+            <zipgroupfileset dir="probationservice/build/client"   includes="*Client.jar" />
+            <zipgroupfileset dir="publicdisplay2/build/client"     includes="*Client.jar" />
+            <zipgroupfileset dir="results2/build/client"           includes="*Client.jar" />
+            <zipgroupfileset dir="rolemapping/build/client"        includes="*Client.jar" />
+            <zipgroupfileset dir="thinclient-shared/build/client"  includes="*Client.jar" />
+            <zipgroupfileset dir="userterminal/build/client"       includes="*Client.jar" />
+            <zipgroupfileset dir="version/build/client"            includes="*Client.jar" />
+            <zipgroupfileset dir="messageoftheday/build/client"    includes="*Client.jar" />
+            <zipgroupfileset dir="viewschedule/build/client"       includes="*Client.jar" />
+            <zipgroupfileset dir="witness/ejb/build/client"        includes="*Client.jar" />
+            <zipgroupfileset dir="translation/build/client"        includes="*Client.jar" />
+            <zipgroupfileset dir="datareset/build/client"          includes="*Client.jar" />
+        </jar>
+
+        <!-- Midtier Ear -->
+        <ear destfile="${lib.build.dir}/MidTier.ear"
+             appxml="${basedir}/META-INF/application.xml">
+
+            <!-- Libraries produced by this build script (top-level midtier) -->
+            <fileset dir="${lib.build.dir}">
+                <include name="database.jar" />
+            </fileset>
+            <!-- EJBs produced by midtier main -->
+            <fileset dir="${build.dest.dir}">				
+                <include name="CaseController.jar" />
+				<include name="CaseHistoryController.jar" />
+				<include name="CaseProsecutorAgencyController.jar" />
+                <include name="GenerateCaseNumberController.jar"/>
+				<include name="GenerateCaseGroupController.jar"/>
+                <include name="ChargeController.jar" />
+                <include name="CounselFacilitiesController.jar" />
+				<include name="CppFormattingController.jar"/>
+				<include name="CppListController.jar"/>
+				<include name="CppStagingInboundController.jar"/>
+                <include name="CrestImportController.jar" />
+				<include name="ContactDetailController.jar" />
+                <include name="XhibitDartsController.jar" />
+                <include name="DefendantController.jar" />
+				<include name="DefOnCaseRefSolFirmController.jar" />
+				<include name="DefendantReferenceController.jar" />
+                <include name="HearingScheduleController.jar" />
+                <include name="SchedHearingDefendantController.jar" />
+                <include name="HearingScheduleEntities.jar" />
+				<include name="ListingsController.jar" />
+				<include name="MigrateCaseController.jar" />
+                <include name="PreHearingEntities.jar" />
+                <include name="ProsecutorRefSolFirmController.jar" />
+                <include name="PublicNoticeController.jar" />
+                <include name="DirectionsController.jar" />
+                <include name="BisRefController.jar" />
+                <include name="SysAdminEntities.jar" />
+                <include name="DartsMessaging.jar" />
+                <include name="AuditTrailMessaging.jar" />
+                <include name="Validation.jar"/>
+                <include name="RefProsecutorAgencyController.jar"/>
+                <include name="RefSolicitorFirmController.jar"/>
+                <include name="BwHistoryController.jar"/>
+                <include name="LegalAidOrderController.jar"/>
+                <include name="MonetaryOrderTrackingController.jar"/>
+                <include name="SHJusticeController.jar"/>
+            </fileset>
+
+            <!-- EJBs and libraries produced elsewhere in midtier -->
+            <fileset dir="${build.dest.dir}">
+                <include name="AddressHelper.jar" />
+                <include name="ExissEntities.jar" />
+                <include name="ExissValues.jar" />
+                <include name="CjitEntities.jar" />
+                <include name="CjitValues.jar" />
+                <include name="Darts.jar" />
+                <include name="ClSubscriptions.jar" />
+                <include name="Config.jar" />
+                <include name="ActiveDirectoryController.jar" />
+                <include name="CourtLog2Controller.jar" />
+                <include name="CrestFormsBFController.jar" />
+                <include name="CrLiveStatus.jar" />
+                <include name="EmailHelper.jar" />
+                <include name="FormattingController.jar" />
+                <include name="flrSearch.jar" />
+                <include name="Framework.jar" />
+                <include name="ImportExportStatusController.jar" />
+                <include name="InstantMessaging.jar" />
+                <include name="Integration.jar" />
+                <include name="JoinderController.jar" />
+                <include name="ListDistributionController.jar" />
+                <include name="ListDistribution2Controller.jar" />
+                <include name="ListDistributionEntities.jar" />
+                <include name="MessagingController.jar" />
+                <include name="OrdersController.jar" />
+                <include name="OrdersEntities.jar" />
+                <include name="OrdersMidTierCommon.jar" />
+                <include name="OrdersXMLBindings.jar" />
+                <include name="ProbationServiceController.jar" />
+                <include name="PublicDisplay2Controller.jar" />
+                <include name="PublicDisplayMessageBeans.jar" />
+                <include name="PublicNoticeController.jar" />
+                <include name="Results2Controller.jar" />
+                <include name="RefDataAdminController.jar" />
+                <include name="RoleMappingController.jar" />
+                <include name="ThinClientSharedController.jar" />
+                <include name="TranslationController.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="TimerProcess.war" />
+                <include name="UserTerminalLocationController.jar" />
+                <include name="Value.jar" />
+                <include name="VersionController.jar" />
+                <include name="MessageOfTheDayController.jar" />
+                <include name="ViewScheduleController.jar" />
+                <include name="ViewScheduleMessageBean.jar" />
+                <include name="WitnessController.jar" />
+                <include name="WitnessEntities.jar" />
+                <include name="WitnessMidTierClient.jar" />
+                <include name="XhibitEntities.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="XhibitXmlBinding.jar" />
+                <include name="openjms-selector.jar" />
+                <include name="MessageBrokerMessaging.jar" />
+                <include name="MessageGeneratorController.jar" />
+                <include name="ExissMessaging.jar" />
+                <include name="DartsController.jar" />
+                <include name="DataResetController.jar" />
+            </fileset>
+            
+            <!-- Special Case EJB produced elsewhere -->
+            <fileset dir="${build.dest.dir}">
+                <include name="WmbBridge.jar" />
+            </fileset>
+        </ear>
+    </target>
+
+</project>

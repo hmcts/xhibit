@@ -1,0 +1,56 @@
+* -------- custom finders --------
+* @xhibit.auditable true
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByCaseId(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (d) FROM XhbRefDisposalType rdt, XhbDisposal2 d, XhbDefendantOnCase doc WHERE 
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           doc.defendantOnCaseId = d.defendantOnCaseId AND
+*           doc.caseId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByChargeId(java.lang.Integer chargeId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (d) FROM XhbRefDisposalType rdt, XhbDisposal2 d, XhbDefendantOnOffence doo, XhbOffence o WHERE 
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           d.defendantOnOffenceId = doo.defendantOnOffenceId AND
+*           doo.offenceId = o.offenceId AND
+*           o.chargeId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByDefendantOnOffenceId(java.lang.Integer defendantOnOffenceId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (d) FROM XhbRefDisposalType rdt, XhbDisposal2 d WHERE 
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           d.defendantOnOffenceId = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByPsdDisposal2Id(java.lang.Integer psdDisposal2Id)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (d) FROM XhbRefDisposalType rdt, XhbDisposal2 d WHERE 
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           d.psdDisposal2Id = ?1"
+*
+* @ejb.finder
+*    signature="java.util.Collection findRSByDefendantOnCaseId(java.lang.Integer defendantOnCaseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (d) FROM XhbRefDisposalType rdt, XhbDisposal2 d WHERE 
+*           rdt.menuGroup = 'RS' AND
+*           rdt.refDisposalTypeId = d.refDisposalTypeId AND
+*           d.obsInd = 'N' AND
+*           d.defendantOnCaseId = ?1"
+* -------- end of custom finders --------

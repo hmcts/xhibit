@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefusedBroadcastCase o WHERE o.caseId = ?1 AND (o.obsInd IS NULL OR o.obsInd = 'N')"
+ *
+ * -------- end of custom finders --------
+  

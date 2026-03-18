@@ -1,0 +1,372 @@
+/*
+ * <XDtI18n:getString bundle="xdoclet.modules.ejb.XDocletModulesEjbMessages" resource="do_not_edit"/>
+ */
+package <XDtPackage:packageOf><XDtEjbFacade:entityFacadeClass/></XDtPackage:packageOf>;
+
+import java.util.*;
+import javax.ejb.*;
+import javax.naming.*;
+
+import uk.gov.courtservice.framework.services.CSServices;
+import uk.gov.courtservice.framework.exception.OptimisticLockException;
+<XDtClass:ifClassTagValueEquals tagName="xhibit.auditable" value="true">
+import uk.gov.courtservice.framework.services.audittrail.AuditTrailService;
+import uk.gov.courtservice.framework.services.audittrail.AuditTrailEvent;
+</XDtClass:ifClassTagValueEquals>
+
+public  class <XDtEjb:ejbName/>BeanHelper2
+{
+
+  private static <XDtEjbHome:homeInterface type="local"/> home = null;
+  private static Class clazz = <XDtEjb:ejbName/>BeanHelper2.class;
+  
+  <XDtClass:ifClassTagValueEquals tagName="xhibit.auditable" value="true">
+  private static AuditTrailService auditService = CSServices.getAuditTrailService();
+  private static String facadeClassName = <XDtEjb:ejbName/>.class.getName();
+  private static Hashtable<String, Object> auditDetails = new Hashtable<String, Object>();
+  </XDtClass:ifClassTagValueEquals>
+
+  static {
+    Context ctx = null;
+
+    try {
+      ctx = new InitialContext();
+      home = (<XDtEjbHome:homeInterface type="local"/>)ctx.lookup(<XDtEjbHome:homeInterface type="local"/>.JNDI_NAME);
+    }catch(NamingException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }finally {
+      try {
+        if(ctx != null) ctx.close();
+      }catch(NamingException ignore) {
+        CSServices.getDefaultErrorHandler().handleError(ignore, clazz);
+        ignore.printStackTrace();
+      }
+    }
+  }
+
+  //Finders returning value objects
+<XDtEjbHome:forAllHomeMethods type="local" tagName="ejb:finder">
+<XDtEjbHome:ifIsCollectionType>
+  /**
+   *
+   * Returns an array of value objects for the corresponding finder
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @return <XDtEjbDataObj:dataObjectClass/>
+   * @throws EJBException
+   */
+  public static <XDtEjbDataObj:dataObjectClass/>[] <XDtEjbHome:currentMethod/>Value(<XDtEjbHome:parameterListDefinition/>) {
+</XDtEjbHome:ifIsCollectionType>
+<XDtEjbHome:ifIsInterfaceType>
+  /**
+   *
+   * Returns the value object for the correspondinf finder
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @return <XDtEjbDataObj:dataObjectClass/>
+<XDtEjbHome:ifIsInterfaceType>
+   * @throws <XDtEjb:ejbName/>BeanNotFoundException If object not found
+</XDtEjbHome:ifIsInterfaceType>
+   * @throws EJBException
+   */
+  public static <XDtEjbDataObj:dataObjectClass/> <XDtEjbHome:currentMethod/>Value(<XDtEjbHome:parameterListDefinition/>) {
+</XDtEjbHome:ifIsInterfaceType>
+
+    <XDtEjbHome:currentType/> selected = null;
+
+<XDtEjbHome:ifIsCollectionType>
+    try {
+      selected = home.<XDtEjbHome:currentMethod/>( <XDtEjbHome:parameterList/> );
+    }catch(FinderException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+</XDtEjbHome:ifIsCollectionType>
+<XDtEjbHome:ifIsInterfaceType>
+    try {
+      selected = home.<XDtEjbHome:currentMethod/>( <XDtEjbHome:parameterList/> );
+    }catch(ObjectNotFoundException ex) {
+      throw new <XDtEjb:ejbName/>BeanNotFoundException(ex);
+    }catch(FinderException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+</XDtEjbHome:ifIsInterfaceType>
+
+
+<XDtEjbHome:ifIsCollectionType>
+    <XDtEjbDataObj:dataObjectClass/>[] retval = new <XDtEjbDataObj:dataObjectClass/>[selected.size()];
+    int count=0;
+    for(Iterator i = selected.iterator(); i.hasNext();) {
+      retval[count++]= (((<XDtEjbIntf:componentInterface type="local"/>)i.next()).getData());
+    }
+</XDtEjbHome:ifIsCollectionType>
+<XDtEjbHome:ifIsInterfaceType>
+    <XDtEjbDataObj:dataObjectClass/> retval = selected.getData();
+</XDtEjbHome:ifIsInterfaceType>
+
+    return retval;
+
+  }
+</XDtEjbHome:forAllHomeMethods>
+
+
+  //Finders returning local references
+<XDtEjbHome:forAllHomeMethods type="local" tagName="ejb:finder">
+<XDtEjbHome:ifIsCollectionType>
+  /**
+   *
+   * Returns a collection of local references
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @return java.util.Collection
+   * @throws EJBException
+   */
+  public static Collection <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>) {
+</XDtEjbHome:ifIsCollectionType>
+<XDtEjbHome:ifIsInterfaceType>
+  /**
+   *
+   * Returns the local reference
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @return <XDtEjbHome:currentType/>
+<XDtEjbHome:ifIsInterfaceType>
+   * @throws <XDtEjb:ejbName/>BeanNotFoundException If object not found
+</XDtEjbHome:ifIsInterfaceType>
+   * @throws EJBException
+   */
+  public static <XDtEjbHome:currentType/> <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>) {
+</XDtEjbHome:ifIsInterfaceType>
+
+    try {
+      return home.<XDtEjbHome:currentMethod/>( <XDtEjbHome:parameterList/> );
+<XDtEjbHome:ifIsInterfaceType>
+    }catch(ObjectNotFoundException ex) {
+      throw new <XDtEjb:ejbName/>BeanNotFoundException(ex);
+</XDtEjbHome:ifIsInterfaceType>
+    }catch(FinderException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+
+  }
+</XDtEjbHome:forAllHomeMethods>
+
+
+  /**
+   *
+   * Creates an entity
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @param <XDtEjbDataObj:dataObjectClass/>
+   * @return <XDtEjbDataObj:dataObjectClass/> populated with primary key
+   * @throws EJBException
+   */
+<XDtEjbHome:forAllHomeMethods  type="local" tagName="ejb:create-method">
+
+  public static <XDtEjbDataObj:dataObjectClass/> <XDtEjbHome:currentMethod/>(<XDtEjbHome:parameterListDefinition/>) {
+    try {
+      return home.create(<XDtEjbHome:parameterList/>).getData();
+    }catch(CreateException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+  }
+
+  public static <XDtEjbHome:currentType/> <XDtEjbHome:currentMethod/>Local(<XDtEjbHome:parameterListDefinition/>) {
+    try {
+      return home.create(<XDtEjbHome:parameterList/>);
+    }catch(CreateException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+  }
+
+</XDtEjbHome:forAllHomeMethods>
+
+
+  /**
+   *
+   * Updates the entity
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @param <XDtEjbDataObj:dataObjectClass/>
+   * @return <XDtEjbDataObj:dataObjectClass/> with updated version number
+   * @throws <XDtEjb:ejbName/>BeanNotFoundException
+   * @throws EJBException
+   */
+  public static <XDtEjbDataObj:dataObjectClass/> update(<XDtEjbDataObj:dataObjectClass/> data) {
+
+   try {
+      <XDtEjbIntf:componentInterface type="local"/> obj = home.findByPrimaryKey(data.getPrimaryKey());
+      
+      <XDtClass:ifClassTagValueEquals tagName="xhibit.auditable" value="true">
+      <XDtEjbDataObj:dataObjectClass/> previousData = obj.getData();
+      
+      <XDtMethod:ifHasMethod name="getObsInd">
+      previousData.setObsInd(data.getObsInd());	
+      </XDtMethod:ifHasMethod>
+
+      auditDetails.put(facadeClassName, previousData);
+      doAudit(auditDetails,true);
+      </XDtClass:ifClassTagValueEquals>
+
+      <XDtMethod:ifHasMethod name="getVersion">
+      if (!obj.getVersion().equals(data.getVersion()))
+      {
+        String errMessage = "OptimisticLock exception - Entity: " + obj.getVersion() + ", Vo: " + data.getVersion();
+        OptimisticLockException opEx = new OptimisticLockException(errMessage);
+        CSServices.getDefaultErrorHandler().handleError(opEx, clazz);
+        throw opEx;
+      }
+      else
+      {
+        obj.setData(data);
+        return obj.getData();
+      }
+      </XDtMethod:ifHasMethod>
+
+      <XDtMethod:ifDoesntHaveMethod name="getVersion">
+      obj.setData(data);
+      return obj.getData();
+      </XDtMethod:ifDoesntHaveMethod>
+
+    } catch(ObjectNotFoundException ex) {
+      throw new <XDtEjb:ejbName/>BeanNotFoundException(ex);
+    }catch(FinderException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+
+  }
+<XDtMethod:setCurrentMethod name="getData">
+<XDtMethod:setCurrentMethod name="setData" parameters="<XDtEjbDataObj:dataObjectClass/>">
+</XDtMethod:setCurrentMethod>
+</XDtMethod:setCurrentMethod>
+
+
+  /**
+   *
+   * Updates the entity
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @param <XDtEjbDataObj:dataObjectClass/>
+   * @return <XDtEjbDataObj:dataObjectClass/> with updated version number
+   * @throws <XDtEjb:ejbName/>BeanNotFoundException
+   * @throws EJBException
+   */
+  public static <XDtEjbIntf:componentInterface type="local"/> updateLocal(<XDtEjbDataObj:dataObjectClass/> data) {
+
+   try {
+      <XDtEjbIntf:componentInterface type="local"/> obj = home.findByPrimaryKey(data.getPrimaryKey());
+      
+      <XDtClass:ifClassTagValueEquals tagName="xhibit.auditable" value="true">
+      <XDtEjbDataObj:dataObjectClass/> previousData = obj.getData();
+      
+      <XDtMethod:ifHasMethod name="getObsInd">
+      previousData.setObsInd(data.getObsInd());	
+      </XDtMethod:ifHasMethod>
+      
+      auditDetails.put(facadeClassName, previousData);
+      doAudit(auditDetails,true);
+
+      </XDtClass:ifClassTagValueEquals>
+
+      <XDtMethod:ifHasMethod name="getVersion">
+      if (!obj.getVersion().equals(data.getVersion()))
+      {
+        String errMessage = "OptimisticLock exception - Entity: " + obj.getVersion() + ", Vo: " + data.getVersion();
+        OptimisticLockException opEx = new OptimisticLockException(errMessage);
+        CSServices.getDefaultErrorHandler().handleError(opEx, clazz);
+        throw opEx;
+      }
+      else
+      {
+        obj.setData(data);
+
+        return obj;
+      }
+      </XDtMethod:ifHasMethod>
+
+      <XDtMethod:ifDoesntHaveMethod name="getVersion">
+      obj.setData(data);
+      return obj;
+      </XDtMethod:ifDoesntHaveMethod>
+
+    } catch(ObjectNotFoundException ex) {
+      throw new <XDtEjb:ejbName/>BeanNotFoundException(ex);
+    }catch(FinderException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+  }
+
+
+  /**
+   *
+   * Removes the entity
+   * Defined in \tools\ant\config\xdoclet\entity\entityfacade2.xdt
+   *
+   * @param <XDtEjbDataObj:dataObjectClass/>
+   * @throws <XDtEjb:ejbName/>BeanNotFoundException
+   * @throws EJBException
+   */
+<XDtMethod:setCurrentMethod name="ejbRemove">
+  public static void remove(<XDtEjbDataObj:dataObjectClass/> data) {
+
+    try {
+      <XDtEjbIntf:componentInterface type="local"/> obj = home.findByPrimaryKey(data.getPrimaryKey());
+
+      <XDtMethod:ifHasMethod name="getVersion">
+      if (!obj.getVersion().equals(data.getVersion()))
+      {
+        String errMessage = "OptimisticLock exception - Entity: " + obj.getVersion() + ", Vo: " + data.getVersion();
+        OptimisticLockException opEx = new OptimisticLockException(errMessage);
+        CSServices.getDefaultErrorHandler().handleError(opEx, clazz);
+        throw opEx;
+      }
+      else
+      {
+        obj.remove();
+      }
+      </XDtMethod:ifHasMethod>
+
+      <XDtMethod:ifDoesntHaveMethod name="getVersion">
+      obj.remove();
+      </XDtMethod:ifDoesntHaveMethod>
+
+
+    }catch(ObjectNotFoundException ex) {
+      throw new <XDtEjb:ejbName/>BeanNotFoundException(ex);
+    }catch(FinderException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }catch(RemoveException ex) {
+      CSServices.getDefaultErrorHandler().handleError(ex, clazz);
+      throw new EJBException(ex);
+    }
+
+  }
+</XDtMethod:setCurrentMethod>
+
+<XDtClass:ifClassTagValueEquals tagName="xhibit.auditable" value="true">
+  private static void doAudit(Hashtable hashtable, boolean successful){
+    AuditTrailEvent event = auditService.getAuditTrailEvent(hashtable);
+
+    if(event == null)
+        return;
+
+    event.setSuccess(successful);
+    auditService.createAuditRecord(event);
+  }
+</XDtClass:ifClassTagValueEquals>
+
+<XDtMerge:merge file="<XDtEjb:ejbName/>BeanHelper-custom.xdt">
+</XDtMerge:merge>
+
+<XDtMerge:merge file="<XDtEjb:ejbName/>BeanHelper2-custom.xdt">
+</XDtMerge:merge>
+
+}

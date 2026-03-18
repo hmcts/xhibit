@@ -1,0 +1,16 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDisposal2Id(java.lang.Integer disposal2Id)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDarRetentionPolicy o 
+ *           WHERE o.disposal2Id is not null AND o.disposal2Id = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') ORDER BY o.darRetentionPolicyId DESC"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDarRetentionPolicy o 
+ *           WHERE o.caseId is not null AND o.caseId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ') ORDER BY o.darRetentionPolicyId DESC"
+ * -------- end of custom finders -------- *

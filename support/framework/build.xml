@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Framework">
+
+    <description>
+        The XHIBIT Framework Code.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+    	<!-- do not include any files from source dir -->
+		<filesetlist id="jar.source.filelist" />
+
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+        </path>
+    </target>
+</project>

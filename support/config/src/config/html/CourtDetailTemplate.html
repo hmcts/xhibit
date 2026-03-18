@@ -1,0 +1,185 @@
+<!DOCTYPE html public "-//W3C//DTD HTML 4.0 Transitional//EN">
+<HTML>
+<HEAD>
+<LINK href="assets/css/style.css" rel="stylesheet" type="text/css">
+<TITLE>Public View - Court Detail</TITLE>
+<SCRIPT>
+//configure the below five variables to change the style of the scroller
+var scrollerwidth=400
+var scrollerheight=85
+var initialScroll=true;
+//var scrollerbgcolor='red'
+//set below to '' if you don't wish to use a background image
+///var scrollerbackground='scrollerback.gif'
+
+///////Do not edit pass this line///////////////////////
+
+if (getNumberOfDefendants()>1) {
+  i=2;
+} else {
+  i=0;
+}
+
+function move1(whichlayer){
+  tlayer=eval(whichlayer);
+  if (tlayer.top>0&&tlayer.top<=5){
+    tlayer.top=0;
+    setTimeout("move1(tlayer)",500);
+    setTimeout("move2(document.main.document.second)",50);
+    return;
+  }
+  if (tlayer.top>=tlayer.document.height*-1) {
+    tlayer.top-=5
+    setTimeout("move1(tlayer)",100)
+  } else{
+    tlayer.top=scrollerheight;
+    tlayer.document.write(getDefendants(i));
+    tlayer.document.close();
+    if (i==getNumberOfDefendants()-1)
+      i=0;
+    else
+      i++;
+  }
+}
+
+function move2(whichlayer) {
+  tlayer2=eval(whichlayer);
+  if (tlayer2.top>0&&tlayer2.top<=5) {
+    tlayer2.top=0;
+    setTimeout("move2(tlayer2)",2000);
+    setTimeout("move1(document.main.document.first)",2000);
+    return;
+  }
+  if (tlayer2.top>=tlayer2.document.height*-1) {
+    tlayer2.top-=5;
+    setTimeout("move2(tlayer2)",100);
+  } else {
+    tlayer2.top=scrollerheight;
+    tlayer2.document.write(getDefendants(i));
+    tlayer2.document.close();
+    if (i==getNumberOfDefendants()-1)
+      i=0;
+    else
+      i++;
+  }
+}
+
+function move3(whichdiv) {
+  tdiv=eval(whichdiv)
+  if (tdiv.style.pixelTop>0&&tdiv.style.pixelTop<=5) {
+    tdiv.style.pixelTop=0;
+    setTimeout("move3(tdiv)",2000);
+    setTimeout("move4(second2)",2000);
+    return;
+  }
+  if (tdiv.style.pixelTop>=tdiv.offsetHeight*-1) {
+    tdiv.style.pixelTop-=5;
+    setTimeout("move3(tdiv)",100);
+  } else {
+    tdiv.style.pixelTop=scrollerheight;
+	// CO - 53501; Overlapping of defendant names were due to no initial check
+	if(initialScroll) {
+		i=2;
+	initialScroll=false;
+	}
+
+    tdiv.innerHTML=getDefendants(i);
+    if (i>=getNumberOfDefendants()-1)
+      i=0;
+    else
+      i++;
+  }
+}
+
+function move4(whichdiv) {
+  tdiv2=eval(whichdiv);
+  if (tdiv2.style.pixelTop>0&&tdiv2.style.pixelTop<=5) {
+    tdiv2.style.pixelTop=0;
+    setTimeout("move4(tdiv2)",2000);
+    setTimeout("move3(first2)",2000);
+    return;
+  }
+  if (tdiv2.style.pixelTop>=tdiv2.offsetHeight*-1) {
+    tdiv2.style.pixelTop-=5;
+    setTimeout("move4(second2)",100);
+  } else {
+    tdiv2.style.pixelTop=scrollerheight;
+    tdiv2.innerHTML=getDefendants(i);
+    if (i>=getNumberOfDefendants()-1)
+      i=0;
+    else
+      i++;
+  }
+}
+
+function startscroll() {
+  if (document.all) {
+    if (document.getElementById("first2")==null)
+      return;
+    move3(first2);
+    second2.style.top=scrollerheight;
+    second2.style.visibility='visible';
+  } else if (document.layers) {
+    document.main.visibility='show';
+    move1(document.main.document.first);
+    document.main.document.second.top=scrollerheight+5;
+    document.main.document.second.visibility='show';
+  }
+}
+
+function writeScrollLayers() {
+  if (document.all){
+    document.writeln('<span id="main2" style="position:relative;width:'+scrollerwidth+';height:'+scrollerheight+';overflow:hiden">')
+    document.writeln('<div style="position:absolute;width:'+scrollerwidth+';height:'+scrollerheight+';clip:rect(0 '+scrollerwidth+' '+scrollerheight+' 0);left:0;top:0">')
+    document.writeln('<div id="first2" style="position:absolute;width:'+scrollerwidth+';left:0;top:1;">')
+    document.write(getDefendants(0));
+    document.writeln('</div>')
+    document.writeln('<div id="second2" style="position:absolute;width:'+scrollerwidth+';left:0;top:0;visibility:hidden">')
+    document.write(getDefendants(1));
+    document.writeln('</div>')
+    document.writeln('</div>')
+    document.writeln('</span>')
+  }
+}
+
+function getDefendants(index) {
+  return document.getElementById('defendants'+index).innerHTML;
+}
+
+function getNumberOfDefendants() {
+  var j=0;
+  while (document.getElementById('defendants'+j)!=null) {
+    j++;
+  }
+  return j;
+}
+
+</SCRIPT>
+</HEAD>
+<BODY class="###SCREENTYPE###" onLoad="startscroll();" leftmargin="0" topmargin="0" marginheight="0" marginwidth="0" scrolling="no">
+	<TABLE cellpadding="0" cellspacing="0" width="100%">
+		<TR valign="bottom">
+			<TD><img src="assets/image/###COURTHOUSECODE###/###SCREENTYPE###/pubban_all_court_status.jpg" border="0" alt="Court Detail" height="70"></TD>
+		</TR>
+	</TABLE>
+	<TABLE class="navbar" width="100%" border="0" cellspacing="0" cellpadding="0" style="MARGIN-TOP: 2px;">
+		<TR align="middle">
+			<TD align="left">
+				<DIV style="FONT-SIZE: 8pt; MARGIN-BOTTOM: 0px">	&nbsp;
+				</DIV>
+			</TD>
+			<TD align="right">
+				<TABLE border="0" width="418" height="25" cellspacing="0" cellpadding="0">
+					<TR>
+						<TD align="right">
+							<DIV align="right">	&nbsp; &nbsp;
+							</DIV>
+						</TD>
+					</TR>
+				</TABLE>
+			</TD>
+		</TR>
+	</TABLE>
+<CENTER>###PANELS###</CENTER><BR><BR>
+</BODY>
+</HTML>

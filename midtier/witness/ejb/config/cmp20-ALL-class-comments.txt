@@ -1,0 +1,6 @@
+  * @ejb.facade type="entity"
+  * @ejb.value-object 
+  * @ejb.data-object
+  * @ejb.util
+  * @ejb.transaction type="Required"
+ 

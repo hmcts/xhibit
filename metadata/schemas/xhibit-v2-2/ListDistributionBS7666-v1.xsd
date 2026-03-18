@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.1"
+    id="ListDistributionBS7666-v1">
+
+	<xsd:simpleType name="PostcodeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:pattern value="(GIR 0AA)|((([A-Z][0-9][0-9]?)|(([A-Z][A-HJ-Y][0-9][0-9]?)|(([A-Z][0-9][A-Z])|([A-Z][A-HJ-Y][0-9]?[A-Z])))) [0-9][A-Z]{2})"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+</xsd:schema>

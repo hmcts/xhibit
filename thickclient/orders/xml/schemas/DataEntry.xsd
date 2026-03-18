@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" elementFormDefault="qualified">
+	<xs:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xs:complexType name="choiceType">
+		<xs:sequence>
+			<xs:element name="option" type="containerType" maxOccurs="unbounded"/>
+		</xs:sequence>
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+	</xs:complexType>
+	<xs:complexType name="comboboxType">
+		<xs:attribute name="length" type="xs:byte" use="required"/>
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+		<xs:attribute name="default" type="xs:string" use="required"/>
+	</xs:complexType>
+	<xs:complexType name="DateType">
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+	</xs:complexType>
+	<xs:complexType name="formType">
+		<xs:sequence>
+			<xs:element name="section" type="containerType" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="optionType" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="textarea" type="textareaType"/>
+			<xs:element name="textfield" type="textfieldType"/>
+		</xs:choice>
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="aboveAddress"/>
+					<xs:enumeration value="appellant"/>
+					<xs:enumeration value="atFollowingAddress"/>
+					<xs:enumeration value="crown"/>
+					<xs:enumeration value="defendant"/>
+					<xs:enumeration value="magistrate"/>
+					<xs:enumeration value="specificOption"/>
+					<xs:enumeration value="sureties"/>
+					<xs:enumeration value="surety"/>
+					<xs:enumeration value="toBeNotifiedOption"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="label" type="xs:string" use="required"/>
+		<xs:attribute name="value" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="aboveAddress"/>
+					<xs:enumeration value="appellant"/>
+					<xs:enumeration value="defendant"/>
+					<xs:enumeration value="sureties"/>
+					<xs:enumeration value="surety"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="selected" type="xs:boolean" use="required"/>
+		<xs:attribute name="ref" type="xs:string" use="optional"/>
+		<xs:attribute name="selectedValue" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="containerType" mixed="true">
+		<xs:choice minOccurs="0" maxOccurs="unbounded">
+			<xs:element name="date" type="apd:DateType"/>
+			<xs:element name="choice" type="choiceType"/>
+			<xs:element name="section" type="containerType"/>
+			<xs:element name="textfield" type="textfieldType"/>
+			<xs:element name="textarea" type="textareaType"/>
+			<xs:element name="combobox" type="comboboxType"/>
+			<xs:element name="list"/>
+			<xs:element name="listbox"/>
+		</xs:choice>
+		<xs:attribute name="switchLabel" type="xs:string"/>
+		<xs:attribute name="borderLabel" type="xs:string"/>
+		<xs:attribute name="borderRaised" type="xs:boolean"/>
+		<xs:attribute name="switchable" type="xs:boolean"/>
+		<xs:attribute name="selectedValue" type="xs:string"/>
+		<xs:attribute name="unselectedValue" type="xs:string"/>
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+	</xs:complexType>
+	<xs:element name="template">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="form" type="formType"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="textareaType">
+		<xs:attribute name="rows" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="10"/>
+					<xs:enumeration value="3"/>
+					<xs:enumeration value="4"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="cols" type="xs:byte" use="required"/>
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+	</xs:complexType>
+	<xs:complexType name="textfieldType">
+		<xs:attribute name="type">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="int"/>
+					<xs:enumeration value="string"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="length" type="xs:byte"/>
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+	</xs:complexType>
+	<xs:attributeGroup name="standardWidgetAttributes">
+		<xs:attribute name="name" type="xs:string" use="required"/>
+		<xs:attribute name="label" type="xs:string" use="required"/>
+		<xs:attribute name="ref" type="xs:string" use="required"/>
+	</xs:attributeGroup>
+	<xs:complexType name="multipleListBoxType">
+		<xs:attributeGroup ref="standardWidgetAttributes"/>
+	</xs:complexType>
+</xs:schema>

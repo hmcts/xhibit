@@ -1,0 +1,70 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trai - Cracked or Ineffective-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20918_Cracked_Trial_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20918_Cracked_Trial_Options">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20918_CTO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20918_CTO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20918_A"/>
+				<xs:enumeration value="E20918_B"/>
+				<xs:enumeration value="E20918_C"/>
+				<xs:enumeration value="E20918_D"/>
+				<xs:enumeration value="E20918_E"/>
+				<xs:enumeration value="E20918_E1"/>
+				<xs:enumeration value="E20918_F"/>
+				<xs:enumeration value="E20918_G"/>
+				<xs:enumeration value="E20918_H"/>
+				<xs:enumeration value="E20918_I"/>
+				<xs:enumeration value="E20918_J"/>
+				<xs:enumeration value="E20918_K"/>
+				<xs:enumeration value="E20918_L"/>
+				<xs:enumeration value="E20918_M1"/>
+				<xs:enumeration value="E20918_M2"/>
+				<xs:enumeration value="E20918_M3"/>
+				<xs:enumeration value="E20918_N1"/>
+				<xs:enumeration value="E20918_N2"/>
+				<xs:enumeration value="E20918_N3"/>
+				<xs:enumeration value="E20918_O1"/>
+				<xs:enumeration value="E20918_O2"/>
+				<xs:enumeration value="E20918_P"/>
+				<xs:enumeration value="E20918_Q1"/>
+				<xs:enumeration value="E20918_Q2"/>
+				<xs:enumeration value="E20918_Q3"/>
+				<xs:enumeration value="E20918_R"/>
+				<xs:enumeration value="E20918_S1"/>
+				<xs:enumeration value="E20918_S2"/>
+				<xs:enumeration value="E20918_S3"/>
+				<xs:enumeration value="E20918_S4"/>
+				<xs:enumeration value="E20918_T"/>
+				<xs:enumeration value="E20918_U1"/>
+				<xs:enumeration value="E20918_U2"/>
+				<xs:enumeration value="E20918_V"/>
+				<xs:enumeration value="E20918_W1"/>
+				<xs:enumeration value="E20918_W2"/>
+				<xs:enumeration value="E20918_W3"/>
+				<xs:enumeration value="E20918_W4"/>
+				<xs:enumeration value="E20918_W5"/>
+				<xs:enumeration value="E20918_X"/>
+				<xs:enumeration value="E20918_Y"/>
+				<xs:enumeration value="E20918_Z"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,104 @@
+﻿<currentcourtstatus>
+    <court>
+        <courtname>Swansea Crown Court</courtname>
+        <courtsites>
+            <courtsite>
+                <courtsitename>SWANSEA1</courtsitename>
+                <courtrooms>
+                    <courtroom>
+                        <cases>
+                            <caseDetails>
+                                <cppurn>TVL87521HM2ZZ</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <hearingtype>For Sentence</hearingtype>
+                            </caseDetails>
+                        </cases>
+                        <defendants>
+                            <defendant>
+                                <firstname>Korneliusz Korneliusz Korneliusz</firstname>
+                                <lastname>Callender</lastname>
+                            </defendant>
+                        </defendants>
+                        <currentstatus>
+                            <event>
+                                <time>12:52</time>
+                                <date>16/04/20</date>
+                                <free_text></free_text>
+                                <type>10100</type>
+                            </event>
+                        </currentstatus>
+                        <timestatusset>12:52</timestatusset>
+                        <courtroomname>Court 4</courtroomname>
+                    </courtroom>
+                    <courtroom>
+                        <cases>
+                            <caseDetails>
+                                <cppurn>TFL3124472471</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <hearingtype>Plea and Trial Preparation</hearingtype>
+                            </caseDetails>
+                        </cases>
+                        <defendants>
+                            <defendant>
+                                <firstname>John</firstname>
+                                <lastname>Protractor-3124472471</lastname>
+                            </defendant>
+                        </defendants>
+                        <currentstatus>
+                            <event>
+                                <time>07:31</time>
+                                <date>16/04/20</date>
+                                <free_text></free_text>
+                                <type>10100</type>
+                            </event>
+                        </currentstatus>
+                        <timestatusset>07:31</timestatusset>
+                        <courtroomname>Court 2</courtroomname>
+                    </courtroom>
+                </courtrooms>
+            </courtsite>
+            <courtsite>
+                <courtsitename>CARMARTHEN</courtsitename>
+                <courtrooms>
+                    <courtroom>
+                        <cases>
+                            <caseDetails>
+                                <cppurn>TVL87521TAPCW</cppurn>
+                                <casenumber>1</casenumber>
+                                <casetype>CROWN</casetype>
+                                <hearingtype>Plea and Trial Preparation</hearingtype>
+                            </caseDetails>
+                        </cases>
+                        <defendants>
+                            <defendant>
+                                <firstname>Alfie Alfie Alfie</firstname>
+                                <lastname>Ryther</lastname>
+                            </defendant>
+                        </defendants>
+                        <currentstatus>
+                            <event>
+                                <time>07:30</time>
+                                <date>16/04/20</date>
+                                <free_text></free_text>
+                                <type>10500</type>
+                            </event>
+                        </currentstatus>
+                        <timestatusset>07:30</timestatusset>
+                        <courtroomname>Court 1</courtroomname>
+                    </courtroom>
+                </courtrooms>
+            </courtsite>
+        </courtsites>
+    </court>
+    <datetimestamp>
+        <dayofweek>Friday</dayofweek>
+        <date>04</date>
+        <month>September</month>
+        <year>2020</year>
+        <hour>11</hour>
+        <min>42</min>
+    </datetimestamp>
+    <pagename>swansea crown court</pagename>
+</currentcourtstatus>

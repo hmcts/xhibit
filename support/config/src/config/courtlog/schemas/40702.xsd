@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Directions By Case-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E40702_Directions_By_Case_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_Directions_By_Case_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40702_P_And_D" minOccurs="0"/>
+				<xs:element ref="E40702_List" minOccurs="0"/>
+				<xs:element ref="E40702_Placed_In" minOccurs="0"/>
+				<xs:element ref="E40702_Time_Estimate" minOccurs="0"/>
+				<xs:element ref="E40702_Directions" minOccurs="0"/>
+				<xs:element ref="E40702_Defendants_To_Attend" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_P_And_D">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40702_Form_Handed_In"/>
+				<xs:enumeration value="E40702_Form_Not_Handed_In"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40702_Time_Estimate">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40702_Time_Estimate_Options"/>
+				<xs:element ref="E40702_Time"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_Time_Estimate_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40702_Days"/>
+<!--				<xs:enumeration value="E40702_Hours"/>-->
+				<xs:enumeration value="E40702_Weeks"/>
+				<xs:enumeration value="E40702_Months"/>
+<!--				<xs:enumeration value="E40702_Years"/>-->
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40702_Time" type="xs:string"/>
+	<xs:element name="E40702_Directions" type="xs:string"/>
+	<xs:element name="E40702_Defendants_To_Attend">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E40702_Defendant_List" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_Defendant_List">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E40702_Defendant_Details" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_Defendant_Details">
+		<xs:complexType>
+			<xs:all>
+				<xs:element name="E40702_Defendant_Id" type="xs:integer"/>
+				<xs:element name="E40702_Defendant_Name" type="xs:string"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_List">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40702_Sentence"/>
+				<xs:enumeration value="E40702_Directions"/>
+				<xs:enumeration value="E40702_Trial"/>
+				<xs:enumeration value="E40702_Mention"/>
+				<xs:enumeration value="E40702_Further_P_And_D"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="E40702_Placed_In">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E40702_Placed_In_List_Options"/>
+				<xs:element name="E40702_List_Date" type="xs:string"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E40702_Placed_In_List_Options">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E40702_Fixed_List"/>
+				<xs:enumeration value="E40702_Warned_List"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<!--
+	<xs:element name="E40702_List_Date">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:pattern value="[0-3][0-9]/[0-1][0-9]/[0-9][0-9]"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+-->
+</xs:schema>

@@ -1,0 +1,6 @@
+ * @ejb.finder
+ *    signature="XhbOrderDeliveryStatus findByCodeUniquely(java.lang.String code)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbOrderDeliveryStatus o WHERE o.code = ?1"
+ *    description="CODE is candidate primary key."

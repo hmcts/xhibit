@@ -1,0 +1,1 @@
+On solaris environments this dir is "/software/apps/xhibit". Note this component is only on the integration tier.

@@ -1,0 +1,40 @@
+Changes from 0_4_n to )_4_o
+
+- File Name Change
+
+- Value of:
+
+Insert into CJI_Parameter_value values ('MobileSysReplyMessage', 'An Incorrect reply code was received - this is an automated response - please resent your message with the correct code');
+
+to
+
+Insert into CJI_Parameter_value values ('MobileSysReplyMessage', 'An Incorrect reply code was received - this is an automated response - please resend your message with the correct code');
+
+
+- Value of:
+
+Insert into CJI_Parameter_value values ('DocumentExpiryTimeOut','126000');
+
+to
+
+
+Insert into CJI_Parameter_value values ('DocumentExpiryTimeOut','2592000');
+
+This equates to 30 days
+
+- Added 2 Statuses to Cji_Event_Status table
+
+Insert into CJI_event_status values (4, 'Event Delivered');
+Insert into CJI_event_status values (5, 'Event Delivered Failed');
+
+IO's should be registered against a CRN so:
+
+Insert into CJI_DOCUMENT_TYPE values 
+ (12,'IO','Imprisonment Order',
+'IMPRISONMENTORDER','http://www.courtservice.gov.uk/transforms/courtservice/ImprisonmentOrder-v1.xsl', 'NPM','BITS.ImprisonmentOrderHandler', 'BITS.XMLTransformHandler','Y', 'N','N', 'Y');
+
+becomes
+
+Insert into CJI_DOCUMENT_TYPE values 
+ (12,'IO','Imprisonment Order',
+'IMPRISONMENTORDER','http://www.courtservice.gov.uk/transforms/courtservice/ImprisonmentOrder-v1.xsl', 'NPM','BITS.ImprisonmentOrderHandler', 'BITS.XMLTransformHandler','Y', 'N','Y', 'N');

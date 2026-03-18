@@ -1,0 +1,12 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDisposalCode(java.lang.String disposalCode)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (o) FROM XhbRefDispRetentionPolicy o WHERE o.disposalCode = ?1 AND (o.obsInd IS NULL OR o.obsInd = 'N') ORDER BY o.refDispRetentionPolicyId DESC"
+ * 
+ * -------- end of custom finders --------
+  
+  
+  

@@ -1,0 +1,236 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<weblogic-jms xmlns="http://www.bea.com/ns/weblogic/90" xmlns:sec="http://www.bea.com/ns/weblogic/90/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls" xsi:schemaLocation="http://www.bea.com/ns/weblogic/920 http://www.bea.com/ns/weblogic/920.xsd">
+<!--
+    Connection Factories
+    -->
+  <connection-factory name="PublicDisplayConnectionFactory">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>PublicDisplayConnectionFactory</jndi-name>
+    <transaction-params>
+      <xa-connection-factory-enabled>true</xa-connection-factory-enabled>
+    </transaction-params>
+    <security-params>
+      <attach-jmsx-user-id>false</attach-jmsx-user-id>
+    </security-params>
+  </connection-factory>
+  <connection-factory name="CSJMSConnectionFactory">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>CSJMSConnectionFactory</jndi-name>
+    <security-params>
+      <attach-jmsx-user-id>false</attach-jmsx-user-id>
+    </security-params>
+  </connection-factory>
+  <connection-factory name="ExissConnectionFactory">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>ExissConnectionFactory</jndi-name>
+    <transaction-params>
+      <xa-connection-factory-enabled>true</xa-connection-factory-enabled>
+    </transaction-params>
+    <security-params>
+      <attach-jmsx-user-id>false</attach-jmsx-user-id>
+    </security-params>
+  </connection-factory>
+  <connection-factory name="AuditTrailConnectionFactory">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>AuditTrailConnectionFactory</jndi-name>
+    <transaction-params>
+      <xa-connection-factory-enabled>true</xa-connection-factory-enabled>
+    </transaction-params>
+    <security-params>
+      <attach-jmsx-user-id>false</attach-jmsx-user-id>
+    </security-params>
+  </connection-factory>
+  <!--
+    Distributed Queues
+    -->
+  <uniform-distributed-queue name="MessageBrokerQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/MessageBrokerQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissMessageBuilderQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>ExissMessageBuilderDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissMessageBuilderQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissMessageBuilderDeadLetterQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissMessageBuilderrDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissItemTrackingNotifierQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>ExissItemTrackingNotifierDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissItemTrackingNotifierQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissItemTrackingNotifierDeadLetterQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissItemTrackingNotifierDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissMessageBrokerQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>ExissMessageBrokerDeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissMessageBrokerQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissMessageBrokerDeadLetterQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissMessageBrokerDeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissItemTrackingQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissItemTrackingQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="ExissInboundQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>5000</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <error-destination>DeadLetterQueue</error-destination>
+      <redelivery-limit>3</redelivery-limit>
+      <expiration-policy>Redirect</expiration-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/ExissInboundQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+    <forward-delay>60</forward-delay>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="DeadLetterQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>0</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <redelivery-limit>0</redelivery-limit>
+      <expiration-policy>Log</expiration-policy>
+      <expiration-logging-policy>%header%,%properties%</expiration-logging-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/DeadLetterQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-queue>
+  <uniform-distributed-queue name="AuditTrailQueue">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <delivery-params-overrides>
+      <redelivery-delay>0</redelivery-delay>
+    </delivery-params-overrides>
+    <delivery-failure-params>
+      <redelivery-limit>0</redelivery-limit>
+      <expiration-policy>Log</expiration-policy>
+      <expiration-logging-policy>%header%,%properties%</expiration-logging-policy>
+    </delivery-failure-params>
+    <jndi-name>xhibit/jms/AuditTrailQueue</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-queue>
+  <!--
+    Distributed Topics
+    -->
+  <uniform-distributed-topic name="PublicDisplay">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>PublicDisplay</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+  <uniform-distributed-topic name="RoleMapper">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>RoleMapper</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+  <uniform-distributed-topic name="CJSENotification">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>CJSENotification</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+  <uniform-distributed-topic name="ChangeNotification">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>ChangeNotification</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+  <uniform-distributed-topic name="CrLiveStatusNotification">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>CrLiveStatusNotification</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+  <uniform-distributed-topic name="PublicDisplayNotification">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>PublicDisplayNotification</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+  <uniform-distributed-topic name="PublicNoticeNotification">
+    <sub-deployment-name>midcluster-Subdeployment</sub-deployment-name>
+    <jndi-name>PublicNoticeNotification</jndi-name>
+    <load-balancing-policy>Round-Robin</load-balancing-policy>
+  </uniform-distributed-topic>
+</weblogic-jms>

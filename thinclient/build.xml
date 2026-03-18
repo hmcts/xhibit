@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project name="thinclient" basedir="." default="all">
+
+    <description>
+        Top-Level Build Script For The Thin Client
+    </description>
+
+    <import file="./../tools/ant/framework.xml" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+
+        <path id="child.path">
+
+            <!-- Build Independents -->
+            <pathelement location="contentswitch/build.xml" />
+            <pathelement location="publicdisplay2/build.xml" />
+
+            <!-- Build Shared & Dependants -->
+
+            <pathelement location="static/build.xml" />
+            <pathelement location="shared/build.xml" />
+            <pathelement location="messaging/build.xml" />
+            <pathelement location="admin/build.xml" />
+            <pathelement location="counselfacilities/build.xml" />
+            <pathelement location="probationservice/build.xml" />
+            <pathelement location="witnessfacilities/build.xml" />
+            
+            <!-- Build NLE data reset -->
+            <pathelement location="datareset/build.xml" />
+        </path>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+            - Build the PublicDisplay.ear and the ThinClient.ear (CJO apps).
+      =======================================================================
+      -->
+    <target name="package" unless="skip.package" depends="framework.package">
+        <log target="package"/>
+
+        <mkdir dir="${lib.build.dir}"/>
+
+        <ear destfile="${lib.build.dir}/PublicDisplay.ear" appxml="${basedir}/META-INF/publicdisplay-application.xml">
+            <fileset dir="${build.dest.dir}">
+                <include name="PublicDisplay.war" />
+            </fileset>
+        </ear>
+        
+        <ear destfile="${lib.build.dir}/DataReset.ear" appxml="${basedir}/META-INF/nle-datareset-application.xml">
+            <fileset dir="${build.dest.dir}">
+                <include name="DataReset.war" />
+            </fileset>
+        </ear>
+
+        <ear destfile="${lib.build.dir}/ThinClient.ear" appxml="${basedir}/META-INF/thinclient-application.xml">
+            <fileset dir="${build.dest.dir}">
+                <include name="ContentSwitchHeartbeat.war" />
+                <include name="Static.war" />
+                <include name="Admin.war" />
+                <include name="CounselFacilities.war" />
+                <include name="Messaging.war" />
+                <include name="ProbationService.war" />
+                <include name="WitnessFacilities.war" />
+            </fileset>
+        </ear>
+    </target>
+
+</project>
+

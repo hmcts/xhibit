@@ -1,0 +1,49 @@
+1) Command to test payload: Message
+
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message.properties -s 
+
+2) Command to test payload: Exception
+
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-exception.txt -p test-data/scjseoutboundqueue/test-exception.properties -s 
+
+3) Test default GD Implementation processes a normal message where the XHBMessageTypeType set is  to MESSAGE and the payload is a business message.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-default.properties -s 
+
+4) Test default GD Implementation processes an exception where the XHBMessageTypeType set is  to DELIVERERROR and the payload is Exception XML.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-exception.txt -p test-data/scjseoutboundqueue/test-exception-default.properties -s 
+
+5)Test REQUEST_PROCESSOR property is set to GD launches Guaranteed Delivery Implementation.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-GD.properties -s 
+
+6)Test REQUEST_PROCESSOR property set to RM logs non-existence of implementation and launches default GD implementation.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-RM.properties -s 
+
+7)Test REQUEST_PROCESSOR property set to invalid value logs non-existence of implementation and launches default GD implementation.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-XX.properties -s 
+
+8)Test scenario where 2 different JMS Property values for each property in JMS Properties
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-2-Values.properties -s 
+
+9)Test scenario where not all mandatory properties are set in the JMS Properties
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-Incomplete.properties -s 
+
+10)Test scenario where invalid(non Numeric) XHBMessageIdentifier property set in the JMS Properties.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-InvalidMessageID.properties -s 
+
+11)Test scenario where invalid JMS property set in the JMS Properties.  The test below is for XHBRequestingSystemName but this test can be repeated for other properties by changing the values in the test-message-Invalid.properties file.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-Invalid.properties -s 
+
+12)Test scenario where a JMS property does not contain a value in the JMS Properties set.  The test below is for XHBRequestingSystemName but this test can be repeated for other properties by changing the values in the test-message-Null.properties file.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-Null.properties -s 
+
+13)Test scenario where an invalid date format exists.  A JMS Message containing the following: 
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-InvalidDate.properties -s 
+
+14)Test scenario where additional JMS Properties exist which are not required.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message.txt -p test-data/scjseoutboundqueue/test-message-Unrequired.properties -s 
+
+15)Test scenario where the Message payload is Null.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-message-Null.txt -p test-data/scjseoutboundqueue/test-message-default.properties -s 
+
+16)Test scenario where the Exception payload is Null.
+java -jar dist\jmsutil.jar -u t3://w2szfnvt02:8001,w2szfnvt02:8501 -d scjsegateway/jms/ScjseOutboundQueue -t test-data/scjseoutboundqueue/text-exception-Null.txt -p test-data/scjseoutboundqueue/test-exception-default.properties -s 

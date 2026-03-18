@@ -1,0 +1,46 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findCounselByBarNumberCourtId(java.lang.Integer barNumber, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT 
+ *		OBJECT(ra) 
+ *		FROM 
+ *			RefAdvocate AS ra,
+ *			RefLegalRepresentative AS rlr
+ *		WHERE 
+ *			ra.barNo = ?1
+ *		AND
+ *			rlr.courtId = ?2
+ *		AND
+ *			ra.isGlobal = 'Y'
+ *		AND 
+ *			(ra.obsInd is null OR ra.obsInd = 'N' OR ra.obsInd = ' ')
+ *		AND
+ *			ra.legalRepId = rlr.refLegalRepId
+ *		AND
+ *			(rlr.obsInd is null OR rlr.obsInd = 'N' OR rlr.obsInd = ' ')"
+ * @ejb.finder
+ *    signature="java.util.Collection findCounselBySurnameInitialsCourtId(java.lang.String surname, java.lang.String initials, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT 
+ *		OBJECT(ra) 
+ *		FROM 
+ *			RefAdvocate AS ra,
+ *			RefLegalRepresentative AS rlr
+ *		WHERE 
+ *			UPPER (rlr.surname) LIKE UPPER (?1)
+ *		AND
+ *			UPPER (rlr.initials) LIKE UPPER (?2)
+ *		AND
+ *			rlr.courtId = ?3
+ *		AND
+ *			ra.isGlobal = 'Y'
+ *		AND
+ *			ra.legalRepId = rlr.refLegalRepId
+ *		ORDER BY
+ *			rlr.surname, rlr.firstName, rlr.middleName"
+ *
+ * -------- end of custom finders --------

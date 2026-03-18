@@ -1,0 +1,25 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByJoinderDefendantOnOffenceId(java.lang.Integer defendantOnOffenceId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (o) 
+ *    FROM XhbCharge AS ch, XhbOffence AS o, XhbJoinderCharge AS jc, XhbDefendantOnOffence AS dof 
+ *    WHERE  ch.chargeId = o.chargeId
+ *    AND o.offenceId = dof.offenceId
+ *    AND ch.chargeId = jc.chargeId 
+ *    AND (dof.obsInd IS NULL OR dof.obsInd = 'N')
+ *    AND dof.defendantOnOffenceId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByJoinderIdCrestSeqNo(java.lang.Integer joinderId, java.lang.Integer crestSeqNo)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (o) 
+ *    FROM XhbCharge AS ch, XhbOffence AS o, XhbJoinderCharge AS jc 
+ *    WHERE  jc.joinderId = ?1
+ *    AND jc.chargeId = ch.chargeId
+ *    AND ch.chargeId = o.chargeId
+ *    AND o.crestOffenceSeqNo = ?2"
+ * -------- end of custom finders --------

@@ -1,0 +1,1001 @@
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > /*
+13:46:46 DOC> * Changes to XHB_ table definitions, indexes and foreign keys
+13:46:46 DOC> *
+13:46:46 DOC> * Additions or deletion of XHB_ tables, indexes and foreign keys
+13:46:46 DOC> */
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > DROP TABLE XHIBIT.XHB_CASE_OVERNIGHT_REFRESH;
+DROP TABLE XHIBIT.XHB_CASE_OVERNIGHT_REFRESH
+                  *
+ERROR at line 1:
+ORA-00942: table or view does not exist
+
+
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > CREATE TABLE XHIBIT.XHB_CASE_OVERNIGHT_REFRESH
+13:46:46   2  (
+13:46:46   3  	CASE_OVERNIGHT_REFRESH_ID NUMBER(8) NOT NULL,
+13:46:46   4  	CASE_TYPE_NUMBER VARCHAR2(9) NOT NULL,
+13:46:46   5  	COURT_ID NUMBER(8) NOT NULL,
+13:46:46   6  	LAST_UPDATE_DATE DATE NOT NULL,
+13:46:46   7  	CREATION_DATE DATE NOT NULL,
+13:46:46   8  	CREATED_BY VARCHAR2(30) NOT NULL,
+13:46:46   9  	LAST_UPDATED_BY VARCHAR2(30) NOT NULL,
+13:46:46  10  	VERSION NUMBER(5) NOT NULL)
+13:46:46  11  tablespace XHIBITD;
+
+Table created.
+
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > DROP PUBLIC SYNONYM XHB_CASE_OVERNIGHT_REFRESH;
+DROP PUBLIC SYNONYM XHB_CASE_OVERNIGHT_REFRESH
+                    *
+ERROR at line 1:
+ORA-01432: public synonym to be dropped does not exist
+
+
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > create public synonym XHB_CASE_OVERNIGHT_REFRESH for XHIBIT.XHB_CASE_OVERNIGHT_REFRESH;
+
+Synonym created.
+
+13:46:46 XHIBIT@CSDBBLD1 > 
+13:46:46 XHIBIT@CSDBBLD1 > GRANT DELETE, INSERT, SELECT, UPDATE ON  XHIBIT.XHB_CASE_OVERNIGHT_REFRESH TO PUBLIC;
+
+Grant succeeded.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CASE_OVERNIGHT_REFRESH
+13:46:47   2  	    ADD CONSTRAINT XHB_CASE_OVERNIGHT_REFRESH_PK PRIMARY KEY (CASE_OVERNIGHT_REFRESH_ID)
+13:46:47   3  	    USING INDEX TABLESPACE XHIBITX;
+
+Table altered.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CASE_OVERNIGHT_REFRESH
+13:46:47   2  	    ADD (FOREIGN KEY (COURT_ID)
+13:46:47   3  		 REFERENCES XHB_COURT);
+
+Table altered.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_INTERNET */
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 >  CREATE TABLE XHB_CR_LIVE_INTERNET
+13:46:47   2   (
+13:46:47   3  	 CR_LIVE_INTERNET_ID	NUMBER(8)	       NOT NULL,
+13:46:47   4  	 COURT_ROOM_ID		NUMBER(8)	       NOT NULL,
+13:46:47   5  	 SCHEDULED_HEARING_ID	NUMBER(8),
+13:46:47   6  	 TIME_STATUS_SET	DATE		       NOT NULL,
+13:46:47   7  	 STATUS 			       VARCHAR2(4000 BYTE),
+13:46:47   8  	 CREATED_BY		VARCHAR2(30 BYTE)      NOT NULL,
+13:46:47   9  	 CREATION_DATE		DATE		       NOT NULL,
+13:46:47  10  	 LAST_UPDATED_BY	VARCHAR2(30 BYTE)      NOT NULL,
+13:46:47  11  	 LAST_UPDATE_DATE	DATE		       NOT NULL,
+13:46:47  12  	 VERSION		NUMBER(5)	       NOT NULL
+13:46:47  13   )
+13:46:47  14   TABLESPACE XHIBITD;
+
+Table created.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > CREATE UNIQUE INDEX CR_LIVE_INT_COURT_RM_FK_IDX ON XHB_CR_LIVE_INTERNET
+13:46:47   2  (COURT_ROOM_ID)
+13:46:47   3  TABLESPACE XHIBITX;
+
+Index created.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CR_LIVE_INTERNET
+13:46:47   2  ADD CONSTRAINT CR_LIVE_INTERNET_PK PRIMARY KEY
+13:46:47   3  (CR_LIVE_INTERNET_ID) USING INDEX
+13:46:47   4  TABLESPACE XHIBITX;
+
+Table altered.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > CREATE INDEX CR_LIVE_INT_SCH_HEAR_FK_IDX ON XHB_CR_LIVE_INTERNET
+13:46:47   2  (SCHEDULED_HEARING_ID)
+13:46:47   3  TABLESPACE XHIBITX;
+
+Index created.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CR_LIVE_INTERNET ADD (
+13:46:47   2  	CONSTRAINT CR_LIVE_INT_COURT_ROOM_ID_FK FOREIGN KEY (COURT_ROOM_ID)
+13:46:47   3  	  REFERENCES XHB_COURT_ROOM (COURT_ROOM_ID));
+
+Table altered.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CR_LIVE_INTERNET ADD (
+13:46:47   2  	CONSTRAINT CR_LIVE_INT_SCHED_HEAR_ID_FK FOREIGN KEY (SCHEDULED_HEARING_ID)
+13:46:47   3  	  REFERENCES XHB_SCHEDULED_HEARING (SCHEDULED_HEARING_ID));
+
+Table altered.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > DROP PUBLIC SYNONYM XHB_CR_LIVE_INTERNET;
+DROP PUBLIC SYNONYM XHB_CR_LIVE_INTERNET
+                    *
+ERROR at line 1:
+ORA-01432: public synonym to be dropped does not exist
+
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > create public synonym XHB_CR_LIVE_INTERNET for XHIBIT.XHB_CR_LIVE_INTERNET;
+
+Synonym created.
+
+13:46:47 XHIBIT@CSDBBLD1 > 
+13:46:47 XHIBIT@CSDBBLD1 > GRANT DELETE, INSERT, SELECT, UPDATE ON  XHIBIT.XHB_CR_LIVE_INTERNET TO PUBLIC;
+
+Grant succeeded.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_DISPLAY */
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > CREATE TABLE XHB_CR_LIVE_DISPLAY
+13:46:48   2  (
+13:46:48   3  	CR_LIVE_DISPLAY_ID     NUMBER(8)	      NOT NULL,
+13:46:48   4  	COURT_ROOM_ID	       NUMBER(8)	      NOT NULL,
+13:46:48   5  	SCHEDULED_HEARING_ID   NUMBER(8),
+13:46:48   6  	TIME_STATUS_SET        DATE		      NOT NULL,
+13:46:48   7  	STATUS				       VARCHAR2(4000 BYTE),
+13:46:48   8  	CREATED_BY	       VARCHAR2(30 BYTE)      NOT NULL,
+13:46:48   9  	CREATION_DATE	       DATE		      NOT NULL,
+13:46:48  10  	LAST_UPDATED_BY        VARCHAR2(30 BYTE)      NOT NULL,
+13:46:48  11  	LAST_UPDATE_DATE       DATE		      NOT NULL,
+13:46:48  12  	VERSION 	       NUMBER(5)	      NOT NULL
+13:46:48  13  )
+13:46:48  14  TABLESPACE XHIBITD;
+
+Table created.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > CREATE UNIQUE INDEX CR_LIVE_DISP_COURT_RM_FK_IDX ON XHB_CR_LIVE_DISPLAY
+13:46:48   2  (COURT_ROOM_ID)
+13:46:48   3  TABLESPACE XHIBITX;
+
+Index created.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CR_LIVE_DISPLAY
+13:46:48   2  ADD CONSTRAINT CR_LIVE_DISPLAY_PK PRIMARY KEY (CR_LIVE_DISPLAY_ID)
+13:46:48   3  USING INDEX
+13:46:48   4  TABLESPACE XHIBITX;
+
+Table altered.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > CREATE INDEX CR_LIVE_DISP_SCH_HEAR_FK_IDX ON XHB_CR_LIVE_DISPLAY
+13:46:48   2  (SCHEDULED_HEARING_ID)
+13:46:48   3  TABLESPACE XHIBITX;
+
+Index created.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CR_LIVE_DISPLAY ADD (
+13:46:48   2  	CONSTRAINT CR_LIVE_DISP_COURT_ROOM_ID_FK FOREIGN KEY (COURT_ROOM_ID)
+13:46:48   3  	  REFERENCES XHB_COURT_ROOM (COURT_ROOM_ID));
+
+Table altered.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > ALTER TABLE XHB_CR_LIVE_DISPLAY ADD (
+13:46:48   2  	CONSTRAINT CR_LIVE_DISP_SCHED_HEAR_ID_FK FOREIGN KEY (SCHEDULED_HEARING_ID)
+13:46:48   3  	  REFERENCES XHB_SCHEDULED_HEARING (SCHEDULED_HEARING_ID));
+
+Table altered.
+
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > /*
+13:46:48 DOC> * Changes, additions or deletion of views
+13:46:48 DOC> */
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > /*
+13:46:48 DOC> * Changes to AUDIT tables (AUD_) as a result of any XHB_ table modifications
+13:46:48 DOC> */
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > /* AUD_CR_LIVE_INTERNET */
+13:46:48 XHIBIT@CSDBBLD1 > 
+13:46:48 XHIBIT@CSDBBLD1 > CREATE TABLE AUD_CR_LIVE_INTERNET
+13:46:48   2  (
+13:46:48   3  	CR_LIVE_INTERNET_ID	NUMBER(8)	       NOT NULL,
+13:46:48   4  	COURT_ROOM_ID	       NUMBER(8)	      NOT NULL,
+13:46:48   5  	SCHEDULED_HEARING_ID   NUMBER(8),
+13:46:48   6  	TIME_STATUS_SET        DATE		      NOT NULL,
+13:46:48   7  	STATUS			       VARCHAR2(4000 BYTE),
+13:46:48   8  	CREATED_BY	       VARCHAR2(30 BYTE)      NOT NULL,
+13:46:48   9  	CREATION_DATE	       DATE		      NOT NULL,
+13:46:48  10  	LAST_UPDATED_BY        VARCHAR2(30 BYTE)      NOT NULL,
+13:46:48  11  	LAST_UPDATE_DATE       DATE		      NOT NULL,
+13:46:48  12  	VERSION 	       NUMBER(5)	      NOT NULL,
+13:46:48  13  	INSERT_EVENT	       VARCHAR2(1 BYTE)       NOT NULL
+13:46:48  14  )
+13:46:48  15  TABLESPACE AUDITD;
+
+Table created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > DROP PUBLIC SYNONYM AUD_CR_LIVE_INTERNET;
+DROP PUBLIC SYNONYM AUD_CR_LIVE_INTERNET
+                    *
+ERROR at line 1:
+ORA-01432: public synonym to be dropped does not exist
+
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE PUBLIC SYNONYM AUD_CR_LIVE_INTERNET FOR XHIBIT.AUD_CR_LIVE_INTERNET;
+
+Synonym created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > GRANT DELETE, INSERT, SELECT, UPDATE ON  XHIBIT.AUD_CR_LIVE_INTERNET TO PUBLIC;
+
+Grant succeeded.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > /* AUD_CR_LIVE_DISPLAY */
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE TABLE AUD_CR_LIVE_DISPLAY
+13:46:49   2  (
+13:46:49   3  	CR_LIVE_DISPLAY_ID     NUMBER(8)	      NOT NULL,
+13:46:49   4  	COURT_ROOM_ID	       NUMBER(8)	      NOT NULL,
+13:46:49   5  	SCHEDULED_HEARING_ID   NUMBER(8),
+13:46:49   6  	TIME_STATUS_SET        DATE		      NOT NULL,
+13:46:49   7  	STATUS			       VARCHAR2(4000 BYTE),
+13:46:49   8  	CREATED_BY	       VARCHAR2(30 BYTE)      NOT NULL,
+13:46:49   9  	CREATION_DATE	       DATE		      NOT NULL,
+13:46:49  10  	LAST_UPDATED_BY        VARCHAR2(30 BYTE)      NOT NULL,
+13:46:49  11  	LAST_UPDATE_DATE       DATE		      NOT NULL,
+13:46:49  12  	VERSION 	       NUMBER(5)	      NOT NULL,
+13:46:49  13  	INSERT_EVENT	       VARCHAR2(1 BYTE)       NOT NULL
+13:46:49  14  )
+13:46:49  15  TABLESPACE AUDITD;
+
+Table created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > DROP PUBLIC SYNONYM AUD_CR_LIVE_DISPLAY;
+DROP PUBLIC SYNONYM AUD_CR_LIVE_DISPLAY
+                    *
+ERROR at line 1:
+ORA-01432: public synonym to be dropped does not exist
+
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE PUBLIC SYNONYM AUD_CR_LIVE_DISPLAY FOR XHIBIT.AUD_CR_LIVE_DISPLAY;
+
+Synonym created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > GRANT DELETE, INSERT, SELECT, UPDATE ON  XHIBIT.AUD_CR_LIVE_DISPLAY TO PUBLIC;
+
+Grant succeeded.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > /*
+13:46:49 DOC> * Changes, additions or deletion of sequences
+13:46:49 DOC> */
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE SEQUENCE XHIBIT.XHB_CASE_OVERNT_REFRESH_ID_SEQ
+13:46:49   2  	START WITH 0
+13:46:49   3  	NOMAXVALUE
+13:46:49   4  	MINVALUE 0
+13:46:49   5  	NOCYCLE
+13:46:49   6  	NOCACHE
+13:46:49   7  	NOORDER;
+
+Sequence created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_INTERNET_SEQ */
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE SEQUENCE XHB_CR_LIVE_INTERNET_SEQ
+13:46:49   2  	INCREMENT BY 1
+13:46:49   3  	START WITH 1
+13:46:49   4  	NOMAXVALUE
+13:46:49   5  	MINVALUE 1
+13:46:49   6  	NOCYCLE
+13:46:49   7  	NOCACHE
+13:46:49   8  	NOORDER;
+
+Sequence created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_DISPLAY_SEQ */
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE SEQUENCE XHB_CR_LIVE_DISPLAY_SEQ
+13:46:49   2  	INCREMENT BY 1
+13:46:49   3  	START WITH 1
+13:46:49   4  	NOMAXVALUE
+13:46:49   5  	MINVALUE 1
+13:46:49   6  	NOCYCLE
+13:46:49   7  	NOCACHE
+13:46:49   8  	NOORDER;
+
+Sequence created.
+
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > /*
+13:46:49 DOC> * Changes to XHB_ table triggers as a result of any XHB_ table modifications
+13:46:49 DOC> */
+13:46:49 XHIBIT@CSDBBLD1 > 
+13:46:49 XHIBIT@CSDBBLD1 > CREATE OR REPLACE TRIGGER XHIBIT.XHB_CASE_OVERNT_REFRESH_BIR_TR
+13:46:49   2  
+13:46:49   3  	BEFORE INSERT
+13:46:49   4  	ON XHB_CASE_OVERNIGHT_REFRESH
+13:46:49   5  	FOR EACH ROW
+13:46:49   6  
+13:46:49   7  BEGIN
+13:46:49   8  
+13:46:49   9  	IF :NEW.CASE_OVERNIGHT_REFRESH_ID IS NULL THEN
+13:46:49  10  
+13:46:49  11  	  SELECT XHB_CASE_OVERNT_REFRESH_ID_SEQ.NEXTVAL
+13:46:49  12  	  INTO	 :NEW.CASE_OVERNIGHT_REFRESH_ID
+13:46:49  13  	  FROM	 DUAL;
+13:46:49  14  
+13:46:49  15  	END IF;
+13:46:49  16  
+13:46:49  17  	IF ((:NEW.LAST_UPDATED_BY IS NULL) OR
+13:46:49  18  	    (:NEW.CREATED_BY IS NULL)) THEN
+13:46:49  19  
+13:46:49  20  	  SELECT SYS_CONTEXT('USERENV', 'SESSION_USER'),
+13:46:49  21  		 SYS_CONTEXT('USERENV', 'SESSION_USER')
+13:46:49  22  	  INTO	 :NEW.LAST_UPDATED_BY,
+13:46:49  23  		 :NEW.CREATED_BY
+13:46:49  24  	  FROM	 DUAL;
+13:46:49  25  	END IF;
+13:46:49  26  
+13:46:49  27  	SELECT SYSDATE,
+13:46:49  28  	       SYSDATE,
+13:46:49  29  	       1
+13:46:49  30  	INTO   :NEW.LAST_UPDATE_DATE,
+13:46:49  31  	       :NEW.CREATION_DATE,
+13:46:49  32  	       :NEW.VERSION
+13:46:49  33  	FROM   DUAL;
+13:46:49  34  
+13:46:49  35  END;
+13:46:49  36  /
+
+Trigger created.
+
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > SHOW ERRORS;
+No errors.
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_INTERNET_BIR_TR */
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > CREATE OR REPLACE TRIGGER XHB_CR_LIVE_INTERNET_BIR_TR
+13:46:50   2  	BEFORE INSERT
+13:46:50   3  	ON XHB_CR_LIVE_INTERNET
+13:46:50   4  	FOR EACH ROW
+13:46:50   5  BEGIN
+13:46:50   6  
+13:46:50   7  	IF :NEW.CR_LIVE_INTERNET_ID IS NULL THEN
+13:46:50   8  
+13:46:50   9  	  SELECT XHB_CR_LIVE_INTERNET_SEQ.NEXTVAL
+13:46:50  10  	  INTO	 :NEW.CR_LIVE_INTERNET_ID
+13:46:50  11  	  FROM	 DUAL;
+13:46:50  12  
+13:46:50  13  	END IF;
+13:46:50  14  
+13:46:50  15  	IF ((:NEW.LAST_UPDATED_BY IS NULL) OR
+13:46:50  16  	    (:NEW.CREATED_BY IS NULL)) THEN
+13:46:50  17  
+13:46:50  18  	  SELECT SYS_CONTEXT('USERENV', 'SESSION_USER'),
+13:46:50  19  		 SYS_CONTEXT('USERENV', 'SESSION_USER')
+13:46:50  20  	  INTO	 :NEW.LAST_UPDATED_BY,
+13:46:50  21  		 :NEW.CREATED_BY
+13:46:50  22  	  FROM	 DUAL;
+13:46:50  23  
+13:46:50  24  	END IF;
+13:46:50  25  
+13:46:50  26  	SELECT SYSDATE,
+13:46:50  27  	       SYSDATE,
+13:46:50  28  	       1
+13:46:50  29  	INTO   :NEW.LAST_UPDATE_DATE,
+13:46:50  30  	       :NEW.CREATION_DATE,
+13:46:50  31  	       :NEW.VERSION
+13:46:50  32  	FROM   DUAL;
+13:46:50  33  
+13:46:50  34  END;
+13:46:50  35  /
+
+Trigger created.
+
+13:46:50 XHIBIT@CSDBBLD1 > SHOW ERRORS;
+No errors.
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_DISPLAY_BIR_TR */
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > CREATE OR REPLACE TRIGGER XHB_CR_LIVE_DISPLAY_BIR_TR
+13:46:50   2  	BEFORE INSERT
+13:46:50   3  	ON XHB_CR_LIVE_DISPLAY
+13:46:50   4  	FOR EACH ROW
+13:46:50   5  BEGIN
+13:46:50   6  
+13:46:50   7  	IF :NEW.CR_LIVE_DISPLAY_ID IS NULL THEN
+13:46:50   8  
+13:46:50   9  	  SELECT XHB_CR_LIVE_DISPLAY_SEQ.NEXTVAL
+13:46:50  10  	  INTO	 :NEW.CR_LIVE_DISPLAY_ID
+13:46:50  11  	  FROM	 DUAL;
+13:46:50  12  
+13:46:50  13  	END IF;
+13:46:50  14  
+13:46:50  15  	IF ((:NEW.LAST_UPDATED_BY IS NULL) OR
+13:46:50  16  	    (:NEW.CREATED_BY IS NULL)) THEN
+13:46:50  17  
+13:46:50  18  	  SELECT SYS_CONTEXT('USERENV', 'SESSION_USER'),
+13:46:50  19  		 SYS_CONTEXT('USERENV', 'SESSION_USER')
+13:46:50  20  	  INTO	 :NEW.LAST_UPDATED_BY,
+13:46:50  21  		 :NEW.CREATED_BY
+13:46:50  22  	  FROM	 DUAL;
+13:46:50  23  
+13:46:50  24  	END IF;
+13:46:50  25  
+13:46:50  26  	SELECT SYSDATE,
+13:46:50  27  	       SYSDATE,
+13:46:50  28  	       1
+13:46:50  29  	INTO   :NEW.LAST_UPDATE_DATE,
+13:46:50  30  	       :NEW.CREATION_DATE,
+13:46:50  31  	       :NEW.VERSION
+13:46:50  32  	FROM   DUAL;
+13:46:50  33  
+13:46:50  34  END;
+13:46:50  35  /
+
+Trigger created.
+
+13:46:50 XHIBIT@CSDBBLD1 > SHOW ERRORS;
+No errors.
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_INTERNET_BUR_TR */
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > CREATE OR REPLACE TRIGGER XHB_CR_LIVE_INTERNET_BUR_TR
+13:46:50   2  	BEFORE UPDATE OR DELETE
+13:46:50   3  	ON XHB_CR_LIVE_INTERNET
+13:46:50   4  	FOR EACH ROW
+13:46:50   5  DECLARE
+13:46:50   6  
+13:46:50   7  	l_trig_event VARCHAR2(1) := NULL;
+13:46:50   8  
+13:46:50   9  	OPTIMISTIC_LOCK_PROB EXCEPTION;
+13:46:50  10  	PRAGMA EXCEPTION_INIT(OPTIMISTIC_LOCK_PROB, -20101);
+13:46:50  11  
+13:46:50  12  BEGIN
+13:46:50  13  
+13:46:50  14  	/* Determine whether UPDATING or DELETING */
+13:46:50  15  	IF UPDATING THEN
+13:46:50  16  
+13:46:50  17  	  l_trig_event := 'U';
+13:46:50  18  
+13:46:50  19  	  /* If the user is the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+13:46:50  20  	  IF (Xhb_Custom_Pkg.IS_CONNECTION_POOL_USER = 1) THEN
+13:46:50  21  
+13:46:50  22  	    IF (:OLD.VERSION != :NEW.VERSION) THEN
+13:46:50  23  	    /* Someone has pulled the rug out from below! */
+13:46:50  24  
+13:46:50  25  	      RAISE OPTIMISTIC_LOCK_PROB;
+13:46:50  26  
+13:46:50  27  	    END IF;
+13:46:50  28  
+13:46:50  29  	  END IF;
+13:46:50  30  
+13:46:50  31  	  SELECT :OLD.VERSION + 1,
+13:46:50  32  		 SYSDATE
+13:46:50  33  	  INTO	 :NEW.VERSION,
+13:46:50  34  		 :NEW.LAST_UPDATE_DATE
+13:46:50  35  	  FROM	 DUAL;
+13:46:50  36  
+13:46:50  37  	  /* If the user is not the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+13:46:50  38  	  IF (Xhb_Custom_Pkg.IS_CONNECTION_POOL_USER = 0) THEN
+13:46:50  39  
+13:46:50  40  	      SELECT SYS_CONTEXT('USERENV', 'SESSION_USER')
+13:46:50  41  	      INTO   :NEW.LAST_UPDATED_BY
+13:46:50  42  	      FROM   DUAL;
+13:46:50  43  
+13:46:50  44  	  END IF;
+13:46:50  45  
+13:46:50  46  	ELSE -- Must be DELETING
+13:46:50  47  
+13:46:50  48  	  l_trig_event := 'D';
+13:46:50  49  
+13:46:50  50  	END IF;
+13:46:50  51  
+13:46:50  52  	/* Is Auditing on this table required */
+13:46:50  53  	IF (Xhb_Custom_Pkg.IS_AUDIT_REQUIRED('XHB_CR_LIVE_INTERNET') = 1) THEN
+13:46:50  54  
+13:46:50  55  	  INSERT INTO AUD_CR_LIVE_INTERNET
+13:46:50  56  		 ( CR_LIVE_INTERNET_ID,
+13:46:50  57  		   COURT_ROOM_ID,
+13:46:50  58  		   SCHEDULED_HEARING_ID,
+13:46:50  59  		   TIME_STATUS_SET,
+13:46:50  60  		   STATUS,
+13:46:50  61  		   CREATED_BY,
+13:46:50  62  		   CREATION_DATE,
+13:46:50  63  		   LAST_UPDATED_BY,
+13:46:50  64  		   LAST_UPDATE_DATE,
+13:46:50  65  		   VERSION,
+13:46:50  66  		   INSERT_EVENT)
+13:46:50  67  	  VALUES (:OLD.CR_LIVE_INTERNET_ID,
+13:46:50  68  		  :OLD.COURT_ROOM_ID,
+13:46:50  69  		  :OLD.SCHEDULED_HEARING_ID,
+13:46:50  70  		  :OLD.TIME_STATUS_SET,
+13:46:50  71  		  :OLD.STATUS,
+13:46:50  72  		  :OLD.CREATED_BY,
+13:46:50  73  		  :OLD.CREATION_DATE,
+13:46:50  74  		  :OLD.LAST_UPDATED_BY,
+13:46:50  75  		  :OLD.LAST_UPDATE_DATE,
+13:46:50  76  		  :OLD.VERSION,
+13:46:50  77  		  l_trig_event);
+13:46:50  78  
+13:46:50  79  	END IF;
+13:46:50  80  
+13:46:50  81  END;
+13:46:50  82  /
+
+Trigger created.
+
+13:46:50 XHIBIT@CSDBBLD1 > SHOW ERRORS;
+No errors.
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > /* XHB_CR_LIVE_DISPLAY_BUR_TR */
+13:46:50 XHIBIT@CSDBBLD1 > 
+13:46:50 XHIBIT@CSDBBLD1 > CREATE OR REPLACE TRIGGER XHB_CR_LIVE_DISPLAY_BUR_TR
+13:46:50   2  	BEFORE UPDATE OR DELETE
+13:46:50   3  	ON XHB_CR_LIVE_DISPLAY
+13:46:50   4  	FOR EACH ROW
+13:46:50   5  DECLARE
+13:46:50   6  
+13:46:50   7  	l_trig_event VARCHAR2(1) := NULL;
+13:46:50   8  
+13:46:50   9  	OPTIMISTIC_LOCK_PROB EXCEPTION;
+13:46:50  10  	PRAGMA EXCEPTION_INIT(OPTIMISTIC_LOCK_PROB, -20101);
+13:46:50  11  
+13:46:50  12  BEGIN
+13:46:50  13  
+13:46:50  14  	/* Determine whether UPDATING or DELETING */
+13:46:50  15  	IF UPDATING THEN
+13:46:50  16  
+13:46:50  17  	  l_trig_event := 'U';
+13:46:50  18  
+13:46:50  19  	  /* If the user is the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+13:46:50  20  	  IF (Xhb_Custom_Pkg.IS_CONNECTION_POOL_USER = 1) THEN
+13:46:50  21  
+13:46:50  22  	    IF (:OLD.VERSION != :NEW.VERSION) THEN
+13:46:50  23  	    /* Someone has pulled the rug out from below! */
+13:46:50  24  
+13:46:50  25  	      RAISE OPTIMISTIC_LOCK_PROB;
+13:46:50  26  
+13:46:50  27  	    END IF;
+13:46:50  28  
+13:46:50  29  	  END IF;
+13:46:50  30  
+13:46:50  31  	  SELECT :OLD.VERSION + 1,
+13:46:50  32  		 SYSDATE
+13:46:50  33  	  INTO	 :NEW.VERSION,
+13:46:50  34  		 :NEW.LAST_UPDATE_DATE
+13:46:50  35  	  FROM	 DUAL;
+13:46:50  36  
+13:46:50  37  	  /* If the user is not the connection pool user as defined in XHB_SYS_USER_INFORMATION */
+13:46:50  38  	  IF (Xhb_Custom_Pkg.IS_CONNECTION_POOL_USER = 0) THEN
+13:46:50  39  
+13:46:50  40  	      SELECT SYS_CONTEXT('USERENV', 'SESSION_USER')
+13:46:50  41  	      INTO   :NEW.LAST_UPDATED_BY
+13:46:50  42  	      FROM   DUAL;
+13:46:50  43  
+13:46:50  44  	  END IF;
+13:46:50  45  
+13:46:50  46  	ELSE -- Must be DELETING
+13:46:50  47  
+13:46:50  48  	  l_trig_event := 'D';
+13:46:50  49  
+13:46:50  50  	END IF;
+13:46:50  51  
+13:46:50  52  	/* Is Auditing on this table required */
+13:46:50  53  	IF (Xhb_Custom_Pkg.IS_AUDIT_REQUIRED('XHB_CR_LIVE_DISPLAY') = 1) THEN
+13:46:50  54  
+13:46:50  55  	  INSERT INTO AUD_CR_LIVE_DISPLAY
+13:46:50  56  		 (CR_LIVE_DISPLAY_ID,
+13:46:50  57  		  COURT_ROOM_ID,
+13:46:50  58  		  SCHEDULED_HEARING_ID,
+13:46:50  59  		  TIME_STATUS_SET,
+13:46:50  60  		  STATUS,
+13:46:50  61  		  CREATED_BY,
+13:46:50  62  		  CREATION_DATE,
+13:46:50  63  		  LAST_UPDATED_BY,
+13:46:50  64  		  LAST_UPDATE_DATE,
+13:46:50  65  		  VERSION,
+13:46:50  66  		  INSERT_EVENT)
+13:46:50  67  	  VALUES (:OLD.CR_LIVE_DISPLAY_ID,
+13:46:50  68  		  :OLD.COURT_ROOM_ID,
+13:46:50  69  		  :OLD.SCHEDULED_HEARING_ID,
+13:46:50  70  		  :OLD.TIME_STATUS_SET,
+13:46:50  71  		  :OLD.STATUS,
+13:46:50  72  		  :OLD.CREATED_BY,
+13:46:50  73  		  :OLD.CREATION_DATE,
+13:46:50  74  		  :OLD.LAST_UPDATED_BY,
+13:46:50  75  		  :OLD.LAST_UPDATE_DATE,
+13:46:50  76  		  :OLD.VERSION,
+13:46:50  77  		  l_trig_event);
+13:46:50  78  
+13:46:50  79  	END IF;
+13:46:50  80  
+13:46:50  81  END;
+13:46:50  82  /
+
+Trigger created.
+
+13:46:51 XHIBIT@CSDBBLD1 > SHOW ERRORS;
+No errors.
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > /*
+13:46:51 DOC> * Changes, additions or deletion of packages/procedures/functions
+13:46:51 DOC> */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > /*
+13:46:51 DOC> * Changes, additions or deletion of standing data
+13:46:51 DOC> */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > /*
+13:46:51 DOC> * Changes, additions or deletion of data
+13:46:51 DOC> */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > /* XHB_SYS_AUDIT */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > INSERT INTO XHB_SYS_AUDIT
+13:46:51   2  	 (TABLE_TO_AUDIT, AUDIT_TABLE, AUDITABLE)
+13:46:51   3   VALUES
+13:46:51   4  	 ('XHB_CR_LIVE_INTERNET', 'AUD_CR_LIVE_INTERNET', 'Y');
+
+1 row created.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > INSERT INTO XHB_SYS_AUDIT
+13:46:51   2  	 (TABLE_TO_AUDIT, AUDIT_TABLE, AUDITABLE)
+13:46:51   3   VALUES
+13:46:51   4  	 ('XHB_CR_LIVE_DISPLAY', 'AUD_CR_LIVE_DISPLAY', 'Y');
+
+1 row created.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > COMMIT;
+
+Commit complete.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > /*  Delete script needs to be run to fix PR57556 */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > select count(*) from xhb_defendant_on_offence;
+
+  COUNT(*)
+----------
+         0
+
+1 row selected.
+
+13:46:51 XHIBIT@CSDBBLD1 > delete xhb_defendant_on_offence where offence_id in (select offence_id from xhb_offence where charge_id =11499);
+
+0 rows deleted.
+
+13:46:51 XHIBIT@CSDBBLD1 > select count(*) from xhb_defendant_on_offence;
+
+  COUNT(*)
+----------
+         0
+
+1 row selected.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > select count(*) from xhb_offence;
+
+  COUNT(*)
+----------
+         0
+
+1 row selected.
+
+13:46:51 XHIBIT@CSDBBLD1 > delete xhb_offence where charge_id = 11499;
+
+0 rows deleted.
+
+13:46:51 XHIBIT@CSDBBLD1 > select count(*) from xhb_offence;
+
+  COUNT(*)
+----------
+         0
+
+1 row selected.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > select count(*) from xhb_charge;
+
+  COUNT(*)
+----------
+         0
+
+1 row selected.
+
+13:46:51 XHIBIT@CSDBBLD1 > delete xhb_charge where charge_id = 11499;
+
+0 rows deleted.
+
+13:46:51 XHIBIT@CSDBBLD1 > select count(*) from xhb_charge;
+
+  COUNT(*)
+----------
+         0
+
+1 row selected.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > COMMIT;
+
+Commit complete.
+
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > /*
+13:46:51 DOC> * Updating of table XHB_VERSION
+13:46:51 DOC> */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > */  Create new or recreate stored procedures  */
+SP2-0734: unknown command beginning " /  Create..." - rest of line ignored.
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > @@code_release_control_77.sql
+13:46:51 XHIBIT@CSDBBLD1 > /*
+13:46:51 DOC> * Filename: code_release_control.sql
+13:46:51 DOC> *
+13:46:51 DOC> *
+13:46:51 DOC> *
+13:46:51 DOC> * Description: Script to rebuild the xhibit database code as part of an xhibit release.
+13:46:51 DOC> * 	     All package headers and package bodies are recreated regardless of whether they have
+13:46:51 DOC> * 	     have changed for a particular release or not.
+13:46:51 DOC> *
+13:46:51 DOC> * 	     This script needs updating should any new packages be added in future releases.
+13:46:51 DOC> *
+13:46:51 DOC> * 	     When releasing the code for a release check out the relevant branch from CVS.
+13:46:51 DOC> * 	     Then place this control script in the same directory as the code and call this script
+13:46:51 DOC> * 	     as part of the db_release patch script.
+13:46:51 DOC> *
+13:46:51 DOC> * Date:	     6th April 2005
+13:46:51 DOC> */
+13:46:51 XHIBIT@CSDBBLD1 > /*
+13:46:51 DOC> * HISTORY
+13:46:51 DOC> * =======
+13:46:51 DOC> * DATE	     WHO     CHANGE ID	     COMMENT
+13:46:51 DOC> * ----	     ---     ---------	     -------
+13:46:51 DOC> * 16/05/05     SS 		     script created.
+13:46:51 DOC> * 16/05/05     SS 		     Commented out xhb_training_list,xhb_training_utils,xhb_standing data
+13:46:51 DOC> * 				     Steve tully confirmed these scripts only required for training environment.
+13:46:51 DOC> * 16/05/05     SS 		     Added in the mpkg_load_bal package required for release 7.4.1.
+13:46:51 DOC> * 22/11/05     Kadu Shah		     Added packages for release 7.7 xhb_crestformsbtof_pkg and xhb_list_distribution_pkg
+13:46:51 DOC> * 02/12/05     Kadu Shah		     Deleted package Xhb_connected_user_pkg as per NE's mail
+13:46:51 DOC> * 13/02/06     Kadu Shah		     set echo off prior to calling proc sql & set it to on
+13:46:51 DOC> * 				     again at the end
+13:46:51 DOC> */
+13:46:51 XHIBIT@CSDBBLD1 > 
+13:46:51 XHIBIT@CSDBBLD1 > set echo off
+First recreate the package headers...
+
+Package created.
+
+No errors.
+
+Package created.
+
+
+Package created.
+
+No errors.
+13:46:52 DOC> * Procedure for updating the XHB_CR_LIVE_STATUS table
+13:46:52 DOC> * at the end of each day.  Called from an Oracle job
+13:46:52 DOC> * at a predefined time (probably say 6 in the morning).
+13:46:52 DOC> */
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+
+Package created.
+
+No errors.
+Now create package bodys.....
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+
+Package body created.
+
+No errors.
+13:46:59 DOC> * Procedure for updating the XHB_CR_LIVE_STATUS table
+13:46:59 DOC> * at the end of each day.  Called from an Oracle job
+13:46:59 DOC> * at a predefined time (probably say 6 in the morning).
+13:46:59 DOC> */
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+13:47:03 DOC> * These procedures are run after a Mercator Crest ref data load.
+13:47:03 DOC> *
+13:47:03 DOC> * The Mercator Map now calls standing_post_merc which in turn calls
+13:47:03 DOC> * the four listed.
+13:47:03 DOC> *
+13:47:03 DOC> * standing_cr_live_status is called once after a build and then once
+13:47:03 DOC> * after adding a new court to the system.
+13:47:03 DOC> *
+13:47:03 DOC> */
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+
+Package body created.
+
+No errors.
+13:47:11 XHIBIT@CSDBBLD1 > 
+13:47:11 XHIBIT@CSDBBLD1 > Prompt Package body compile complete. Please check and rectify any compilation errors.
+Package body compile complete. Please check and rectify any compilation errors.
+13:47:11 XHIBIT@CSDBBLD1 > 
+13:47:11 XHIBIT@CSDBBLD1 > 
+13:47:11 XHIBIT@CSDBBLD1 > spool off

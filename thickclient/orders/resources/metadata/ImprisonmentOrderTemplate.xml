@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  $Revision: 1.20 $  $Author: hingstb $ $Date: 2013/05/31 12:42:17 $-->
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="defendant" label="" borderLabel="Defendant" ref="/">
+			<date name="xxx2" label="Conviction Date:" ref="//ord:ConvictionDate"/>
+			<section name="commitForSentence" label="" switchLabel="Committed for Sentence By" borderLabel="" borderRaised="false" switchable="true" ref="//ord:CommittingCourt/@selected" selectedValue="true" unselectedValue="false">
+				<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:CommittingCourt/ord:CourtHouseName"/>
+			</section>
+		</section>
+		<section name="courtOrdered" label="" borderLabel="Court Ordered" ref="/">
+			<date name="xxx2" label="Sentence Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+			<section name="custodialSentence" borderLabel="Custodial Sentence" label="">
+				<section name="sentenceType" borderLabel="" label="">
+					<choice name="sentenceType" label="" ref="//ord:CustodialSentence/ord:ImprisonmentType">
+						<option name="life" label="Life Imprisonment" value="life" selected="true">
+							<section name="discretionaryLifeOption" label="" switchLabel="Discretionary Life Option" borderLabel="Discretionary Life Prisoners" borderRaised="false" switchable="true" ref="//ord:Section28/@selected" selectedValue="true" unselectedValue="false">
+								<durationdate name="durationdate" dayattribute="false" weekattribute="false" monthattribute="true" yearattribute="true" label="Relevant Part of Sentence" defaultrequired="false" defaultdurationvalue="12" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:Section28/ord:DiscretionaryRelevantPart"/>
+							</section>
+							<!-- Added for RFC 1344 START-->
+							<section name="minSentence" label="" switchLabel="Minimum Sentence Option" borderLabel="Minimum Sentence" borderRaised="false" switchable="true" ref="//ord:MinimumLifeTerm/@selected" selectedValue="true" unselectedValue="false">
+								<textfield name="minSentenceYrs" valueRange="true" minVal="1" maxVal="99" maxLength="2" type="int" label="Minimum to serve (Years): " length="5" ref="//ord:MinimumLifeTerm/ord:SentenceTerm/ord:Years" numeric="Y"/>
+							</section>
+							<!-- Added for RFC 1344 END-->
+						</option>
+						<option name="period" label="Period of Imprisonment" value="period">
+							<section name="duration" label="" ref="/">
+								<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:Term"/>
+							</section>
+							<choice name="sentenceOption" label="" ref=" //ord:CustodialSentence/ord:TermType">
+								<option name="consecutive" label="consecutive" value="Consecutive" selected="true"/>
+								<option name="concurrent" label="concurrent" value="Concurrent"/>
+								<option name="notapplicable" label="not applicable" value="Not Applicable"/>
+							</choice>
+							<section name="extendedSentenceOption" label="" switchLabel="Extended Sentence Option" borderLabel="" borderRaised="false" switchable="true" ref="//ord:CustodialSentence/ord:ExtendedSentence/@selected" selectedValue="true" unselectedValue="false">
+								<durationdate name="durationdate" dayattribute="true" weekattribute="false" monthattribute="true" yearattribute="true" defaultrequired="false" defaultdurationvalue="12" label="Extension Period:" ref="/" ref1="/ord:Order/ord:OrderData/*/ord:CustodialSentence/ord:ExtendedSentence/ord:ExtensionPeriod"/>
+								<choice name="extendedsentenceOption" label="" ref="//ord:ExtendedSentence/ord:SentenceType">
+									<option name="consecutive" label="consecutive" value="Consecutive" selected="true"/>
+									<option name="concurrent" label="concurrent" value="Concurrent"/>
+									<option name="notapplicable" label="not applicable" value="Not Applicable"/>
+								</choice>
+								<section name="section44" label="" switchLabel="Section 44 applies" switchable="true" ref="//ord:ExtendedSentence/ord:Section44/@selected" selectedValue="true" unselectedValue="false">
+								</section>
+							</section>
+						</option>
+					</choice>
+				</section>
+			</section>
+			<section name="requiredCustodial" label="" switchLabel="Required Custodial Option" borderLabel="Required Custodial Sentence" borderRaised="false" switchable="true" ref="//ord:ChapterIII" selectedValue="yes" unselectedValue="no"/>
+			<!-- ADDED FOR RFC 1344 -->
+			<section name="seriousOffence" label="" switchLabel="Second Serious Offence Option" borderLabel="Second Serious Offence" borderRaised="false" switchable="true" ref="//ord:CJA2003RequiredCustodial/@selected" selectedValue="true" unselectedValue="false"/>
+			<section name="drugTrafficking" label="" switchLabel="Third Class A Drug Trafficking Offence Option" borderLabel="Third Class A Drug Trafficking Offence" borderRaised="false" switchable="true" ref="//ord:ClassAtrafficking/@selected" selectedValue="true" unselectedValue="false"/>
+			<section name="domesticBurglary" label="" switchLabel="Third Domestic Burglary Option" borderLabel="Third Domestic Burglary" borderRaised="false" switchable="true" ref="//ord:DomesticBurglary/@selected" selectedValue="true" unselectedValue="false"/>
+			<!-- ADDED FOR RFC 1344 -->
+			<section name="returnOfDefendants" label="" switchLabel="Return of Defendants Option" borderLabel="Return of Defendants" borderRaised="false" switchable="true" ref="//ord:ReturnToImprisonment/@selected" selectedValue="true" unselectedValue="false">
+				<section name="returnDate" label="" borderLabel="Return Date" ref="/">
+					<choice name="returnDateOption" label="" ref="//ord:OffenceDate/@Qualifier">
+						<option name="on" label="On" value="on" selected="true"/>
+						<option name="noLaterThan" label="No later than" value="on or before"/>
+					</choice>
+					<date name="xxx2" label="Return Date:" ref="//ord:ReturnToImprisonment/ord:OffenceDate"/>
+				</section>
+				<section name="sentenceCourt" label="" borderLabel="Sentence Court" ref="/">
+					<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:SentencingCourt/ord:CourtHouse/ord:CourtHouseName"/>
+					<date name="xxx2" label="Sentence Imposed Date:" ref="//ord:SentencingCourt/ord:Date"/>
+				</section>
+				<section name="section116" label="" borderLabel="Section 116" ref="/">
+					<section name="maxSpecified" label="" borderLabel="" ref="/">
+						<choice name="sentenceCourtOption" label="" ref="//ord:ReturnPeriod/ord:Max116">
+							<option name="max" label="Maximum Period" value="yes" selected="true"/>
+							<option name="specified" label="Specified Period" value="no">
+								<textfield name="monthsValue" type="int" label="Months: " length="5" ref="//ord:ReturnPeriod/ord:PeriodInMonths" numeric="Y"/>
+							</option>
+						</choice>
+					</section>
+					<section name="period" label="" borderLabel="" ref="/">
+						<choice name="periodOption" label="" ref="//ord:ReturnPeriod/@TermType">
+							<option name="before" label="Period Before" value="Before" selected="true"/>
+							<option name="concurrently" label="Period concurrently" value="Concurrent"/>
+							<option name="notapplicable" label="Not applicable" value="Not Applicable"/>
+						</choice>
+					</section>
+				</section>
+				<section name="termless12" label="" switchLabel="Term less than 12 months indicator" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReturnToImprisonment/ord:TotalPeriodOfReturn/@selected" selectedValue="true" unselectedValue="false">
+					<section name="custodialTermIndicator" label="" switchLabel="Custodial Term Indicator" switchable="true" ref="//ord:ReturnToImprisonment/ord:TotalPeriodOfReturn/@IncludesNewOffenceTerm" selectedValue="yes" unselectedValue="no"/>
+					<textfield name="returnPeriodValue" returnTerm="true" orderType="imp" type="int" label="Total Period of Return (Months): " length="5" ref="//ord:ReturnToImprisonment/ord:TotalPeriodOfReturn" numeric="Y"/>
+				</section>
+			</section>
+			<section name="pre1998" label="" switchLabel="Sexual Offences Information Option" borderLabel="Pre 1998 Sexual Offences" borderRaised="false" switchable="true" ref="//ord:Section86" selectedValue="yes" unselectedValue="no">
+			</section>
+			<section name="additionalNotes" label="" switchLabel="Additional Notes Option" borderLabel="Additional Notes" borderRaised="false" switchable="true" ref="//ord:AdditionalNotes/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="additonalNotesValue" ref="//ord:AdditionalNotes" label="" topLabel="Additional Notes:" rows="10" cols="15"/>
+			</section>
+			<!--ADDED FOR CCN400 START -->
+			<section name="DeportationSection" label="Deportation" borderLabel="Automatic Deportation" borderRaised="false" switchLabel="Recommended for Deportation" switchable="true" ref="//ord:DeportationSection/@selected" selectedValue="true" unselectedValue="false">
+				<choice name="DeportationReasons" label="DeportationLabel" switchLabel="deport" switchable="false" ref="//ord:DeportationSection/ord:DeportationReasons/ord:Reason">
+					<option name="custodial" label="This defendant or appellant is liable to deportation because the defendant is a foreign national and has received a custodial sentence of 12 months or more." value="custodial" selected="yes"/>
+					<option name="suspended" label="This defendant or appellant meets the requirements for automatic deportation because the defendant has breached a suspended sentence of 12 months or more." value="suspended"/>
+					<option name="seriousDrugOffence" label="This defendant or appellant is liable to deportation because the defendant is a foreign national and has been sentenced to a period of imprisonment for a serious drugs offence." value="seriousDrugOffence"/>
+					<option name="recommendedDeportation" label="This defendant or appellant is liable to deportation because the Court recommended deportation regardless of offence or sentence length." value="recommendedDeportation"/>
+				</choice>
+			</section>
+			<!--ADDED FOR CCN400  END -->
+		</section>
+		<fixedlist name="relatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

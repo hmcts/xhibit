@@ -1,0 +1,14 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseHistoryId(java.lang.Integer caseHistoryId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCaseHistory o WHERE o.caseHistoryId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantHistoryId(java.lang.Integer defendantHistoryId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbDefendantOnCaseHistory o WHERE o.defendantHistoryId = ?1"
+ * -------- end of custom finders --------

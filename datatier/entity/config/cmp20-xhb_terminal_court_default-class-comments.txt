@@ -1,0 +1,34 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtSiteId(java.lang.Integer courtSiteId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminalCourtDefault o WHERE o.courtSiteId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtRoomId(java.lang.Integer courtRoomId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminalCourtDefault o WHERE o.courtRoomId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByTerminalAndCourtIdValue(java.lang.Integer terminalId, java.lang.Integer courtRoomId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminalCourtDefault o WHERE o.terminalId = ?1 and o.courtRoomId = ?2"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByTerminalAndCourtSiteIdValue(java.lang.Integer terminalId, java.lang.Integer courtSiteId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminalCourtDefault o WHERE o.terminalId = ?1 and o.courtSiteId = ?2"
+ *
+ * @ejb.finder
+ *    signature="XhbTerminal findByUniqueTerminalName(java.lang.String terminalName)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbTerminalCourtDefault o WHERE o.terminalName = ?1"
+ *
+ *
+ * -------- end of custom finders --------

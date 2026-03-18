@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Darts">
+
+    <description>
+       This project contains all the DARTS interface components
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+   
+    <property name="project.type.requires.compilation" 	value="true" />
+    <property name="project.type.builds.jar" 					value="marker"/>
+    <property name="project.type.message.bean"         value="true" />
+    <property name="project.type.controller.bean" 		value="true"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="Config.jar" />
+                <include name="TimerProcess.jar" />	
+                <include name="dartsstartup.jar" />
+            </fileset>
+            <fileset dir="${lib.build.dir}">
+                <include name="Darts.jar" />                
+            </fileset>
+        </path>
+
+        <!-- We only want the messaging bean class included here. -->
+        <!-- includes for the Message bean jar -->
+        <property name="package.message.includes" value="**/*MessageBean.*"/>
+		<!-- excludes for the normal lib jar -->        
+        <property name="java.jar.excludes"  value="**/*Bean.*" />
+        <!-- includes for the controller bean jar -->
+        <property name="controller.jar.file.no.ejbc.excludes"  value="**/dartsmessagebuilder/*" />
+        <property name="controller.jar.file.no.ejbc.excludes2"  value="**/darts/*"/>
+    </target>
+
+</project>

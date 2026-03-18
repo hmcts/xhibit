@@ -1,0 +1,3 @@
+Manifest-Version: 1.0
+Class-Path: ./Config.jar ./Framework.jar ./Value.jar ./TranslationController.jar ./TimerProcess.jar ./XhibitXmlBinding.jar
+

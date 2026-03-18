@@ -1,0 +1,623 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<cs:FirmList xmlns="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:p2="http://www.govtalk.gov.uk/people/bs7666" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice FirmList-v1-0.xsd">
+    <cs:DocumentID>
+        <cs:DocumentName>Firm List DRAFT v11 30-MAR-20</cs:DocumentName>
+        <cs:UniqueID>CSDFL000000000021363</cs:UniqueID>
+        <cs:DocumentType>FL</cs:DocumentType>
+        <cs:TimeStamp>2020-09-04T15:04:17.563</cs:TimeStamp>
+        <cs:Version>1.0</cs:Version>
+        <cs:SecurityClassification>NPM</cs:SecurityClassification>
+        <cs:SellByDate>2020-04-25</cs:SellByDate>
+        <cs:XSLstylesheetURL>http://www.courtservice.gov.uk/transforms/courtservice/FirmListHtml.xsl</cs:XSLstylesheetURL>
+    </cs:DocumentID>
+    <cs:ListHeader>
+        <cs:ListCategory>Criminal</cs:ListCategory>
+        <cs:StartDate>2020-03-16</cs:StartDate>
+        <cs:EndDate>2020-03-21</cs:EndDate>
+        <cs:Version>DRAFT 11</cs:Version>
+        <cs:PublishedTime>2020-03-26T15:05:07.000</cs:PublishedTime>
+        <cs:CRESTlistID>614</cs:CRESTlistID>
+    </cs:ListHeader>
+    <cs:CrownCourt>
+        <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+        <cs:CourtHouseCode CourtHouseShortName="SWANS">457</cs:CourtHouseCode>
+        <cs:CourtHouseName>SWANSEA</cs:CourtHouseName>
+        <cs:CourtHouseAddress>
+            <apd:Line>THE LAW COURTS</apd:Line>
+            <apd:Line>ST HELENS ROAD</apd:Line>
+            <apd:Line>-</apd:Line>
+            <apd:Line>-</apd:Line>
+            <apd:Line>SWANSEA</apd:Line>
+            <apd:PostCode>SA1 4PF</apd:PostCode>
+        </cs:CourtHouseAddress>
+        <cs:CourtHouseTelephone>01792 484700</cs:CourtHouseTelephone>
+        <cs:CourtHouseFax>01792 484714</cs:CourtHouseFax>
+        <cs:Description>CROWN COURT</cs:Description>
+    </cs:CrownCourt>
+    <cs:CourtLists>
+        <cs:CourtList SittingDate="2020-03-16">
+            <cs:CourtHouse>
+                <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+                <cs:CourtHouseCode>457</cs:CourtHouseCode>
+                <cs:CourtHouseName>SWANSEA</cs:CourtHouseName>
+                <cs:Description>CROWN COURT</cs:Description>
+            </cs:CourtHouse>
+            <cs:Sittings>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>1</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>10:00:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameSurname>N/A</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>N/A</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings/>
+                </cs:Sitting>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>3</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>11:00:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Leonard Clement</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Goldstone</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Leonard Clement Goldstone Esq QC</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="TRL">
+                                <cs:HearingDescription>For Trial</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 11:00 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Robert</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>MACK</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Robert MACK</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>39MK773201</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>2</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="SEN">
+                                <cs:HearingDescription>For Sentence</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 3:00 PM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Other Prosecutor">
+                                <cs:ProsecutingReference>Other Prosecutor</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Other Prosecutor</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>John</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>Protractor-3199234783</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>John Protractor-3199234783</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>TFL3199234783</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="PS90010" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Public service vehicle - passenger use altered / defaced   ticket</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>4</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>11:00:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Brian</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Cummings</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Brian Cummings Esq QC</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="TRL">
+                                <cs:HearingDescription>For Trial</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 11:00 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Georgia</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>MARCHI</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Georgia MARCHI</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>29OZ372379</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Gussie</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>ROVAI</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Gussie ROVAI</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:MaskedName>******</cs:MaskedName>
+                                        <cs:IsMasked>yes</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>29OZ372379</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>2</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="PTP">
+                                <cs:HearingDescription>Plea and Trial Preparation</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 11:30 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Jackson</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>YOSHIDA</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Jackson YOSHIDA</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>22JO397611</cs:URN>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>4</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>2</cs:SittingSequenceNo>
+                    <cs:SittingAt>15:00:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Anthony Dennis</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Watson</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Anthony Dennis Watson Esq QC</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                        <cs:Justice>
+                            <apd:CitizenNameForename>Sajjad</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Baig</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Mr Sajjad Baig JP</apd:CitizenNameRequestedName>
+                        </cs:Justice>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="TRL">
+                                <cs:HearingDescription>For Trial</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 3:00 PM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Hettie</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>OLSON</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Hettie OLSON</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>82RT142177</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Harrassment</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Armed robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+            </cs:Sittings>
+        </cs:CourtList>
+        <cs:CourtList SittingDate="2020-03-16">
+            <cs:CourtHouse>
+                <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+                <cs:CourtHouseCode>756</cs:CourtHouseCode>
+                <cs:CourtHouseName>CARMARTHEN</cs:CourtHouseName>
+            </cs:CourtHouse>
+            <cs:Sittings>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>1</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>11:00:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Neil</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Flewitt</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Neil Flewitt QC</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="TRL">
+                                <cs:HearingDescription>For Trial</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 11:00 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Douglas</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>GIANNINI</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Douglas GIANNINI</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>35RG682958</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>2</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="TRL">
+                                <cs:HearingDescription>For Trial</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-16</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 11:30 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Gertrude</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>BRAVO</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Gertrude BRAVO</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>34UC737169</cs:URN>
+                                    <cs:Counsel>
+                                        <cs:Solicitor>
+                                            <cs:Party>
+                                                <cs:Organisation>
+                                                    <cs:OrganisationName>EY Solicitors</cs:OrganisationName>
+                                                </cs:Organisation>
+                                            </cs:Party>
+                                        </cs:Solicitor>
+                                    </cs:Counsel>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Armed robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Murder</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+            </cs:Sittings>
+        </cs:CourtList>
+        <cs:CourtList SittingDate="2020-03-17">
+            <cs:CourtHouse>
+                <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+                <cs:CourtHouseCode>457</cs:CourtHouseCode>
+                <cs:CourtHouseName>SWANSEA</cs:CourtHouseName>
+            </cs:CourtHouse>
+            <cs:Sittings>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>4</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>10:30:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Anthony Dennis</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Watson</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Anthony Dennis Watson Esq QC</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="PTP">
+                                <cs:HearingDescription>Plea and Trial Preparation</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-17</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 10:30 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Willie</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>VICIANI</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Willie VICIANI</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>63PG659815</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Armed robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Murder</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+            </cs:Sittings>
+        </cs:CourtList>
+        <cs:CourtList SittingDate="2020-03-18">
+            <cs:CourtHouse>
+                <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+                <cs:CourtHouseCode>457</cs:CourtHouseCode>
+                <cs:CourtHouseName>SWANSEA</cs:CourtHouseName>
+            </cs:CourtHouse>
+            <cs:Sittings>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>4</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>10:30:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Anthony Dennis</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Watson</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Anthony Dennis Watson Esq QC</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="PTP">
+                                <cs:HearingDescription>Plea and Trial Preparation</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-18</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 10:30 AM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>Willie</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>VICIANI</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>Willie VICIANI</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>63PG659815</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Armed robbery</cs:OffenceStatement>
+                                        </cs:Charge>
+                                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Murder</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+            </cs:Sittings>
+        </cs:CourtList>
+        <cs:CourtList SittingDate="2020-03-19">
+            <cs:CourtHouse>
+                <cs:CourtHouseType>Crown Court</cs:CourtHouseType>
+                <cs:CourtHouseCode>457</cs:CourtHouseCode>
+                <cs:CourtHouseName>SWANSEA</cs:CourtHouseName>
+            </cs:CourtHouse>
+            <cs:Sittings>
+                <cs:Sitting>
+                    <cs:CourtRoomNumber>4</cs:CourtRoomNumber>
+                    <cs:SittingSequenceNo>1</cs:SittingSequenceNo>
+                    <cs:SittingAt>16:00:00</cs:SittingAt>
+                    <cs:SittingPriority>T</cs:SittingPriority>
+                    <cs:Judiciary>
+                        <cs:Judge>
+                            <apd:CitizenNameForename>Penelope Juliet</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>Allen</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Ms Penelope Juliet Allen JP</apd:CitizenNameRequestedName>
+                        </cs:Judge>
+                    </cs:Judiciary>
+                    <cs:Hearings>
+                        <cs:Hearing>
+                            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+                            <cs:HearingDetails HearingType="SEN">
+                                <cs:HearingDescription>For Sentence</cs:HearingDescription>
+                                <cs:HearingDate>2020-03-19</cs:HearingDate>
+                            </cs:HearingDetails>
+                            <cs:TimeMarkingNote>NOT BEFORE 4:00 PM</cs:TimeMarkingNote>
+                            <cs:CaseNumber>CPP</cs:CaseNumber>
+                            <cs:Prosecution ProsecutingAuthority="Other Prosecutor">
+                                <cs:ProsecutingReference>Other Prosecutor</cs:ProsecutingReference>
+                                <cs:ProsecutingOrganisation>
+                                    <cs:OrganisationName>Other Prosecutor</cs:OrganisationName>
+                                </cs:ProsecutingOrganisation>
+                            </cs:Prosecution>
+                            <cs:Defendants>
+                                <cs:Defendant>
+                                    <cs:PersonalDetails>
+                                        <cs:Name>
+                                            <apd:CitizenNameForename>John</apd:CitizenNameForename>
+                                            <apd:CitizenNameSurname>Protractor-9475962494</apd:CitizenNameSurname>
+                                            <apd:CitizenNameRequestedName>John Protractor-9475962494</apd:CitizenNameRequestedName>
+                                        </cs:Name>
+                                        <cs:IsMasked>no</cs:IsMasked>
+                                    </cs:PersonalDetails>
+                                    <cs:URN>TFL9475962494</cs:URN>
+                                    <cs:Charges>
+                                        <cs:Charge CJSoffenceCode="PS90010" IndictmentCountNumber="0">
+                                            <cs:OffenceStatement>Public service vehicle - passenger use altered / defaced   ticket</cs:OffenceStatement>
+                                        </cs:Charge>
+                                    </cs:Charges>
+                                </cs:Defendant>
+                            </cs:Defendants>
+                        </cs:Hearing>
+                    </cs:Hearings>
+                </cs:Sitting>
+            </cs:Sittings>
+        </cs:CourtList>
+    </cs:CourtLists>
+    <cs:ReserveList>
+        <cs:Hearing>
+            <cs:HearingSequenceNumber>1</cs:HearingSequenceNumber>
+            <cs:HearingDetails HearingType="TRL">
+                <cs:HearingDescription>For Trial</cs:HearingDescription>
+                <cs:HearingDate>2020-03-19</cs:HearingDate>
+            </cs:HearingDetails>
+            <cs:CaseNumber>CPP</cs:CaseNumber>
+            <cs:Prosecution ProsecutingAuthority="Crown Prosecution Service">
+                <cs:ProsecutingReference>Crown Prosecution Service</cs:ProsecutingReference>
+                <cs:ProsecutingOrganisation>
+                    <cs:OrganisationName>Crown Prosecution Service</cs:OrganisationName>
+                </cs:ProsecutingOrganisation>
+            </cs:Prosecution>
+            <cs:Defendants>
+                <cs:Defendant>
+                    <cs:PersonalDetails>
+                        <cs:Name>
+                            <apd:CitizenNameForename>Lois</apd:CitizenNameForename>
+                            <apd:CitizenNameSurname>ROGERS</apd:CitizenNameSurname>
+                            <apd:CitizenNameRequestedName>Lois ROGERS</apd:CitizenNameRequestedName>
+                        </cs:Name>
+                        <cs:IsMasked>no</cs:IsMasked>
+                    </cs:PersonalDetails>
+                    <cs:URN>52GD8552520</cs:URN>
+                    <cs:Charges>
+                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                            <cs:OffenceStatement>Wounding with intent</cs:OffenceStatement>
+                        </cs:Charge>
+                        <cs:Charge CJSoffenceCode="OF61131" IndictmentCountNumber="0">
+                            <cs:OffenceStatement>Robbery</cs:OffenceStatement>
+                        </cs:Charge>
+                    </cs:Charges>
+                </cs:Defendant>
+            </cs:Defendants>
+        </cs:Hearing>
+    </cs:ReserveList>
+</cs:FirmList>

@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByRotationSetId(java.lang.Integer rotationSetId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRotationSetDd o WHERE o.rotationSetId = ?1"
+ *
+ * -------- end of custom finders --------
+  

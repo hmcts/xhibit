@@ -1,0 +1,462 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0" id="MercatorBody">
+	<xsd:element name="FormA" type="xsd:int"/>
+	<xsd:element name="AppealJudgeCommentLineMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="carId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="appReason" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CrimAppealOffenceResultMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chargeNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="appResultCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="subId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chgId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="lesserOff" type="xsd:string" use="optional"/>
+			<xsd:attribute name="chargeType" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="CrimAppealResultMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="appResult" type="xsd:string" use="optional"/>
+			<xsd:attribute name="appResultDate" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DisposalLineMVO">
+		<xsd:complexType>
+			<xsd:attribute name="delG2" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="delG1" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="lineInsertNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="data" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dilSeqNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="delData" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DisposalMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="DisposalLineMVO" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="subId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="disposalCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="couId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="disId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="templateVersion" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="psdDisId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chgId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="GenDisAppealResultMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="appResultCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="disId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="MiscAppealResultMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="hearingDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="cccTransTo" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="duration" type="xsd:int" use="optional"/>
+			<xsd:attribute name="appResult" type="xsd:string" use="optional"/>
+			<xsd:attribute name="appResultDate" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PleaOnBreachMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="datePut" type="xsd:string" use="optional"/>
+			<xsd:attribute name="subId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="plea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="bchId" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PleaOnCountMVO">
+		<xsd:complexType>
+			<xsd:attribute name="otherPlea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="lessOffPleaDesc" type="xsd:string" use="optional"/>
+			<xsd:attribute name="subId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="arraignmentDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="couId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="dateType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="verdictDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="lessOffPlea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="plea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PleaOnSumMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chargeNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="subId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chgId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="plea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="chargeType" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ResultsMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="DisposalMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="ResultsSequenceMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="GenDisAppealResultMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PleaOnCountMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="CrimAppealResultMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="MiscAppealResultMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="VerdictMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PleaOnSumMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="AppealJudgeCommentLineMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="CrimAppealOffenceResultMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="PleaOnBreachMVO" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="crestCourtId" type="xsd:string" use="optional"/>
+			<xsd:attribute name="crestIPAddress" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ResultsSequenceMVO">
+		<xsd:complexType>
+			<xsd:attribute name="xhibitSequenceNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="dataType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dataIndex" type="xsd:int" use="optional"/>
+			<xsd:attribute name="returnCode" type="xsd:int" use="optional"/>
+			<xsd:attribute name="oraCode" type="xsd:int" use="optional"/>
+			<xsd:attribute name="transType" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="VerdictMVO">
+		<xsd:complexType>
+			<xsd:attribute name="subId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="couId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="verdict" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dateType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dissJurors" type="xsd:int" use="optional"/>
+			<xsd:attribute name="lessOffVerdict" type="xsd:string" use="optional"/>
+			<xsd:attribute name="verdictDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="otherVerdict" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="lessOffVerdictDesc" type="xsd:string" use="optional"/>
+			<xsd:attribute name="assJurors" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="PrimaryKeysMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element name="primaryKeys" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ReturnMVO">
+		<xsd:complexType>
+			<xsd:attribute name="source" type="xsd:string" use="optional"/>
+			<xsd:attribute name="extraInfo" type="xsd:string" use="optional"/>
+			<xsd:attribute name="typeOfTransaction" type="xsd:string" use="optional"/>
+			<xsd:attribute name="validationCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="errorIdentifier" type="xsd:string" use="optional"/>
+			<xsd:attribute name="mercatorReturnCode" type="xsd:int" use="optional"/>
+			<xsd:attribute name="timestamp" type="xsd:string" use="optional"/>
+			<xsd:attribute name="targetInterface" type="xsd:string" use="optional"/>
+			<xsd:attribute name="description" type="xsd:string" use="optional"/>
+			<xsd:attribute name="sourceInterface" type="xsd:string" use="optional"/>
+			<xsd:attribute name="severity" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AddressMVO">
+		<xsd:complexType>
+			<xsd:attribute name="address3" type="xsd:string" use="optional"/>
+			<xsd:attribute name="address2" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dirty" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="address1" type="xsd:string" use="optional"/>
+			<xsd:attribute name="addressID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="country" type="xsd:string" use="optional"/>
+			<xsd:attribute name="postcode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="county" type="xsd:string" use="optional"/>
+			<xsd:attribute name="town" type="xsd:string" use="optional"/>
+			<xsd:attribute name="address4" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DefendantMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="AddressMVO" minOccurs="0"/>
+				<xsd:element ref="DefOnCaseMVO" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="lastConvictionDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dirty" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="initials" type="xsd:string" use="optional"/>
+			<xsd:attribute name="middleName" type="xsd:string" use="optional"/>
+			<xsd:attribute name="defendantID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="dateOfBirth" type="xsd:string" use="optional"/>
+			<xsd:attribute name="crestDefendantID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="gender" type="xsd:int" use="optional"/>
+			<xsd:attribute name="firstName" type="xsd:string" use="optional"/>
+			<xsd:attribute name="surName" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="AddCaseMVO">
+		<xsd:complexType>
+			<xsd:attribute name="dirty" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="createCaseOnCrest" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="caseNumber" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseTitle" type="xsd:string" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hearingType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="UpdateCaseMVO">
+		<xsd:complexType>
+			<xsd:attribute name="caseNumber" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="vulnerableVictimIndicator" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="BreachMVO">
+		<xsd:complexType>
+			<xsd:attribute name="datePut" type="xsd:string" use="optional"/>
+			<xsd:attribute name="inCourt" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="dirty" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="originalSentence" type="xsd:string" use="optional"/>
+			<xsd:attribute name="originalCourtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="refSystemCodeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="hoDescription" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hoCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="originalSentenceDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="chargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="originalCourtType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="plea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="bringBack" type="xsd:string" use="optional"/>
+			<xsd:attribute name="breachType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="breachID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChargeBatchMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="ChargeMVO" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="ChargeMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="OffenceMVO" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element ref="BreachMVO" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="dirty" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="prosPaperServedDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="chargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="dateIndRec" type="xsd:string" use="optional"/>
+			<xsd:attribute name="indSignedDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="defendantID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crestChargeSeqNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="indResp" type="xsd:string" use="optional"/>
+			<xsd:attribute name="chargeTypeDescription" type="xsd:string" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crestChargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chargeType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="OriginalChargeBatchMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="OriginalChargeMVO" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="OriginalChargeMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="ChargeMVO" minOccurs="0"/>
+			</xsd:sequence>
+			<xsd:attribute name="trxCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DefOnOffenceMVO">
+		<xsd:complexType>
+			<xsd:attribute name="defOnOffenceId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="defOnCaseId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="offenceId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="defendantId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crn" type="xsd:string" use="optional"/>
+			<xsd:attribute name="arrestDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="chargeDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="isCommittedOnBail" type="xsd:string" use="optional"/>
+			<xsd:attribute name="seqNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="interimD20" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+			<xsd:attribute name="obsInd" type="xsd:string" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DefOnCaseMVO">
+		<xsd:complexType>
+			<xsd:attribute name="defOnCaseId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="defendantId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="defendantNumber" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="ptiurn" type="xsd:string" use="optional"/>
+			<xsd:attribute name="asn" type="xsd:string" use="optional"/>
+			<xsd:attribute name="isMasked" type="xsd:string" use="optional"/>
+			<xsd:attribute name="maskedName" type="xsd:string" use="optional"/>
+			<xsd:attribute name="isJuvenile" type="xsd:string" use="optional"/>
+			<xsd:attribute name="finalDrivingLicenseStatus" type="xsd:int" use="optional"/>
+			<xsd:attribute name="nbrOfTics" type="xsd:int" use="optional"/>
+			<xsd:attribute name="collectionMagistrateCourtId" type="xsd:int" use="optional"/>
+			<xsd:attribute name="resultsVerified" type="xsd:string" use="optional"/>
+			<xsd:attribute name="committalDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="obsInd" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+			<xsd:attribute name="custodial" type="xsd:string" use="optional"/>
+			<xsd:attribute name="suspended" type="xsd:string" use="optional"/>
+			<xsd:attribute name="seriousDrugOffence" type="xsd:string" use="optional"/>
+			<xsd:attribute name="recommendedDeportation" type="xsd:string" use="optional"/>
+			<xsd:attribute name="nationality" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dateExported" type="xsd:string" use="optional"/>
+			<xsd:attribute name="amendedDateExported" type="xsd:string" use="optional"/>
+			<xsd:attribute name="amendedReason" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateSentIndicator" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateType" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateIndicator" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateGeneralDisability" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateVictimDisability" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateRaceAggravated" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateRaceAndReligionAggravated" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateReligionAggravated" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateGeneralSexual" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateVictimSexual" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateGeneralTransgender" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateVictimTransgender" type="xsd:string" use="optional"/>
+			<xsd:attribute name="hateSentencingUpdate" type="xsd:boolean" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DeleteChargeMVO">
+		<xsd:complexType>
+			<xsd:attribute name="deleteResults" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="chargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="inCourt" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="crestChargeSeqNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crestChargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="DeleteOffenceMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element name="defendantIDs" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="deleteResults" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="offenceID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="inCourt" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="LinkCountDefMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:element ref="DefOnOffenceMVO" minOccurs="0" maxOccurs="unbounded"/>
+			</xsd:sequence>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="inCourt" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="OffenceMVO">
+		<xsd:complexType>
+			<xsd:sequence minOccurs="0">
+				<xsd:sequence minOccurs="0">
+					<xsd:element name="defendantIDs" type="xsd:int" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="DefendantMVO" minOccurs="0" maxOccurs="unbounded"/>
+					<xsd:element ref="LinkCountDefMVO" minOccurs="0"/>
+				</xsd:sequence>
+				<xsd:sequence minOccurs="0">
+					<xsd:element ref="AddressMVO" minOccurs="0" maxOccurs="unbounded"/>
+				</xsd:sequence>
+			</xsd:sequence>
+			<xsd:attribute name="crestHOClass" type="xsd:string" use="optional"/>
+			<xsd:attribute name="inCourt" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="crestHOSubclass" type="xsd:string" use="optional"/>
+			<xsd:attribute name="offenceDescription" type="xsd:string" use="optional"/>
+			<xsd:attribute name="dirty" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="refOffenceID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crestOffenceID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="refSystemCodeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="chargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crestOffenceSeqNo" type="xsd:int" use="optional"/>
+			<xsd:attribute name="crestOffenceFreeText" type="xsd:string" use="optional"/>
+			<xsd:attribute name="plea" type="xsd:string" use="optional"/>
+			<xsd:attribute name="multiple" type="xsd:int" use="optional"/>
+			<xsd:attribute name="offenceID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="forceLocationCode" type="xsd:string" use="optional"/>
+			<xsd:attribute name="startDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="endDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+	<xsd:element name="SignIndMVO">
+		<xsd:complexType>
+			<xsd:attribute name="signOutOfTime" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="chargeID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="numberOfDays" type="xsd:int" use="optional"/>
+			<xsd:attribute name="indSignedDate" type="xsd:string" use="optional"/>
+			<xsd:attribute name="inCourt" type="xsd:boolean" use="optional"/>
+			<xsd:attribute name="caseID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="courtID" type="xsd:int" use="optional"/>
+			<xsd:attribute name="version" type="xsd:int" use="optional"/>
+			<xsd:attribute name="id" type="xsd:int" use="optional"/>
+		</xsd:complexType>
+	</xsd:element>
+</xsd:schema>

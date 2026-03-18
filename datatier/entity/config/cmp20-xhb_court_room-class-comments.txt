@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtSiteId(java.lang.Integer courtSiteId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbCourtRoom o WHERE o.courtSiteId = ?1"
+ *
+ * -------- end of custom finders --------

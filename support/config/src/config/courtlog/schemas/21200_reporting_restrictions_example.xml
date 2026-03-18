@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="21200.xsd">
+	<type>21200</type>	
+	<E21200_Reporting_Restrictions>
+		<E21200_RR_Type>E21200_An_order_has_been_made_under_Section_4(2)_of_the_Contempt_of_Court_Act_1981</E21200_RR_Type>
+	</E21200_Reporting_Restrictions>
+</event>

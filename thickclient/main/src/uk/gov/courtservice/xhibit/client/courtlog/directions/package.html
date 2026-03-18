@@ -1,0 +1,104 @@
+<html>
+    <body>
+<p>
+This package and it's children provide the functionality to add, change and
+delete court log events specific to directions and to view the resultant changes in the court log
+screen.
+</p>
+<h1>Package Structure</h1>
+<p>
+Excluding those items described below, there is no specific package structure
+supported since the majority of user generated court log events are defined in
+this, the main level.
+</p>
+
+<ul>
+<li>
+<b>uk.gov.courtservice.xhibit.client.courtlog.directions</b>:<br>Contains the components
+that support the majority of direction court log events. These in turn are grouped by name
+thus, files concerning one specific court log event share the same stem (see
+also <a href="#namingConvention">Naming Convention</a> below)
+<ul>
+<li>
+<b>uk.gov.courtservice.xhibit.client.courtlog.directions.caze</b>:<br>Contains components that perform processing
+specific to directions for case court log events.
+</li>
+<li>
+<b>uk.gov.courtservice.xhibit.client.courtlog.directions.defendant</b>:<br>Contains components that perform processing
+specific to directions for defendant court log events.
+</li>
+</ul>
+</li>
+</ul>
+
+
+<p>
+<h1>Direction Event Types</h1>
+</p>
+<p>
+The direction event types are split into defendant specific and case specific event types.
+</p>
+<h2>Event Types for Defendant</h2>
+<ul>
+                <li>
+<b>Identification (40704)</b> - where the user is presented with 'Defendant Identified' and 'No reply' radio buttons for selection.
+                </li>
+                <li>
+<b>Arraignment (40705)</b> - where the user is presented with 'Arraigned' and 'Not arraigned' radio buttons for selection.
+               </li>
+                <li>
+<b>Bail or Custody (40706)</b> - where the user is presented with 'Remanded in custody', 'Bail as before' and 'Bail Varied' radio buttons for selection. A text area to record 'New conditions' also exists.
+                </li>
+                <li>
+<b>Certificate of Attendance (40707)</b> - where the user is presented with 'Granted', 'Refused' and 'Not requested' radio buttons for selection.
+                </li>
+<li>
+<b>Form B (40708)</b> - where the user is presented with 'Filed' and 'To be filed' radio buttons for selection. A date combo also exists for date selection.
+</li>
+<li>
+<b>Long Adjournment (40708)</b> - where the user is presented with a combo box for defendant selection, a checkbox to apply the event for all defendants on the case, a combo to select a adjourment option, a check box for 'PSR Required', radio buttons for 'Reserved to Judge' and 'Not Reserved' and a textbox for judge name. A button launches functionality to search for a judge.
+</li>
+</ul>
+<h2>Event Types for Case</h2>
+<ul>
+<li>
+<b>P&D Form (40710)</b> - where the user is presented with 'Form handed in' and 'Form NOT handed in' radio buttons for selection.
+</li>
+<li>
+<b>Trail Time (40711)</b> - where the user is presented with a textbox for period entry and a combo box to select the unit of entry (days, weeks etc...)
+</li>
+<li>
+<b>Directions (40712)</b> - where the user is presented with a textbox for directions entry.
+</li>
+<li>
+<b>Freetext (40711)</b> - where the user is presented with a text area forthe freetext, log date and log time screen components.  A number of court log events are supported by this mechanism
+</li>
+</ul>
+</ul>
+
+
+<h1>Direction Specific Structure</h1>
+
+<p>Key components on the Directions screen extend the class DirectionsParentPanel. This class extends XPanel therefore implementing the life cycle methods in XPanel. DirectionsParentPanel overides these lifecycle methods and in each of these methods it recursively calls the same method on all the XPanel components the panel contains.</p>
+
+<p>This panel is the parent panel of the following panels:</p>
+
+<ul>
+<li>
+	DirecitonForDefendant
+</li>
+<li>
+	DirectionForCase
+</li>
+<li>
+	DirectionSingleEventPanel
+</li>
+<li>
+	DirectionDefendantSelector
+</li>
+<li>
+	Directions
+</li>
+</ul>
+</body>
+</html>

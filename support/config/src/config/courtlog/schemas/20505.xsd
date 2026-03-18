@@ -1,0 +1,16 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Prelim Hearing - Form B-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20505_Form_B_RCDO_By_Date"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20505_Form_B_RCDO_By_Date" type="xs:string"/>
+</xs:schema>

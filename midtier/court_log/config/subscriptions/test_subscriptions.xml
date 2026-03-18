@@ -1,0 +1,23 @@
+<!DOCTYPE subscribers [
+  <!ELEMENT subscribers (subscriber+)>
+  <!ELEMENT subscriber EMPTY>
+  <!ATTLIST subscriber class CDATA #REQUIRED>
+  <!ATTLIST subscriber level (global|category|event) "global">
+  <!ATTLIST subscriber name ID #REQUIRED>
+]>
+  
+<subscribers>
+  <subscriber  level="global" name="Test_Global" 
+    class="uk.gov.courtservice.xhibit.courtlog.subscriptions.TestSubscriber"/>
+  <subscriber  level="category" name="Test_Category_1" 
+    class="uk.gov.courtservice.xhibit.courtlog.subscriptions.TestSubscriber"/>
+  <subscriber  level="category" name="Test_Category_2" 
+    class="uk.gov.courtservice.xhibit.courtlog.subscriptions.TestSubscriber"/>
+  <subscriber  level="event" name="Test_Event" 
+    class="uk.gov.courtservice.xhibit.courtlog.subscriptions.TestSubscriber"/>
+</subscribers>
+
+
+
+
+

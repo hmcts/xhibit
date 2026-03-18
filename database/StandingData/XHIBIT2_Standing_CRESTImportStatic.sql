@@ -1,0 +1,5 @@
+INSERT INTO  XHB_CREST_IMPORT_TYPE VALUES ('GL', 'Global Reference Data');
+INSERT INTO  XHB_CREST_IMPORT_TYPE VALUES ('LL', 'Local Reference Data');
+INSERT INTO  XHB_CREST_IMPORT_TYPE VALUES ('AD', 'Advocate and Counsel Reference Data');
+INSERT INTO  XHB_CREST_IMPORT_TYPE VALUES ('CS', 'CASE Synchronisation'); 
+COMMIT;

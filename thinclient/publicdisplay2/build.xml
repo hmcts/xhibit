@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="PublicDisplay">
+    <description>
+        Thin client Bob, Raks, Meeraj and Neil's rewrite of public display.
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="component.author" value="Neil Ellis, Rakesh Lakhani, Bob Boothby, Meeraj Kunnumpurath"/>
+    <property name="component.name" value="Public Display Rewrite Thinclient"/>
+
+    <!-- define the type of this project (can have many) -->
+    <property name="project.type.requires.jspc" value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+    <property name="project.type.builds.war" value="true" />
+
+    <!--The following is used by test, need to investigate if still used. -->
+    <property name="component.type.java" value="set"/>
+    
+    <!-- local overrides to define project specific values -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+
+        <!-- class path for build -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="PublicDisplayCommon.jar" />
+                <include name="PublicDisplay2ControllerClient.jar" />
+                <include name="TranslationCommon.jar" />
+                <include name="TranslationControllerClient.jar" />
+                <include name="UserMonitorControllerClient.jar" />
+                <include name="CourtLogCommon.jar" />
+		<include name="CommonValue.jar" />
+            </fileset>
+        </path>
+
+        <!-- files to be included in the war -->
+        <filesetlist id="war.classes.fileset">
+            <fileset dir="${classes.dir}" />
+            <fileset dir="${source.dir}" includes="**/*.vm,**/*.xml" />
+        </filesetlist>
+
+        <filesetlist id="war.lib.fileset">
+            <fileset dir="${build.dest.dir}">
+                <include name="Config.jar" />            
+                <include name="Framework.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="PublicDisplayCommon.jar" />
+                <include name="PublicDisplay2ControllerClient.jar" />
+                <include name="TranslationCommon.jar" />
+                <include name="TranslationControllerClient.jar" />
+                <include name="UserMonitorControllerClient.jar" />
+                <include name="CourtLogCommon.jar" />
+		<include name="CommonValue.jar" />
+            </fileset>
+        </filesetlist>
+
+    </target>
+
+</project>
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+"http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+
+  <listener>
+    <listener-class>uk.gov.courtservice.framework.scheduler.web.SchedulerInitServlet</listener-class>
+  </listener>
+
+  <servlet>
+    <servlet-name>initservlet</servlet-name>
+    <servlet-class>uk.gov.courtservice.framework.scheduler.web.SchedulerInitServlet</servlet-class>
+    <load-on-startup>0</load-on-startup>
+    <run-as>
+      <role-name>XHBInternal</role-name>
+    </run-as>
+  </servlet>
+
+  <!-- Use value in weblogic config -->
+  <session-config>
+    <session-timeout>-2</session-timeout>
+  </session-config>
+
+  <!-- Security -->
+  <security-role>
+    <role-name>XHBInternal</role-name>
+  </security-role>
+
+</web-app>

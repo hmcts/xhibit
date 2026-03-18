@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jdbc-data-source xmlns="http://www.bea.com/ns/weblogic/90" xmlns:sec="http://www.bea.com/ns/weblogic/90/security" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:wls="http://www.bea.com/ns/weblogic/90/security/wls" xsi:schemaLocation="http://www.bea.com/ns/weblogic/910/domain.xsd">
+  <name>ExissOracleTxDataSource</name>
+  <jdbc-driver-params>
+    <url>@exiss.tx.database.url@</url>
+    <driver-name>@exiss.tx.database.driver@</driver-name>
+    <properties>
+      <property>
+        <name>user</name>
+        <value>@exiss.tx.database.user@</value>
+      </property>
+      <property>
+        <name>SetBigStringTryClob</name>
+        <value>@exiss.tx.database.bigstringclobenabled@</value>
+      </property>      
+    </properties>
+    <password-encrypted>@exiss.tx.database.password@</password-encrypted>
+  </jdbc-driver-params>
+  <jdbc-connection-pool-params>
+    <initial-capacity>@exiss.pool.capacity@</initial-capacity>
+    <max-capacity>@exiss.pool.max.capacity@</max-capacity>
+    <test-connections-on-reserve>true</test-connections-on-reserve>
+    <test-table-name>SQL SELECT 1 FROM DUAL</test-table-name>
+  </jdbc-connection-pool-params>
+  <jdbc-data-source-params>
+    <jndi-name>@exiss.tx.database.jndi@</jndi-name>
+    <global-transactions-protocol>TwoPhaseCommit</global-transactions-protocol>
+  </jdbc-data-source-params>
+</jdbc-data-source>

@@ -1,0 +1,15 @@
+#Reports as part of Release 8.1.3.1
+#
+#EXISS weekly reports
+00 03 * * 0 /export/home/oracle/exiss/patch_scripts/8.1.3.1/REPORTS/runsql.sh CSDBPRD2 exiss sql_02b.sql
+10 03 * * 0 /export/home/oracle/exiss/patch_scripts/8.1.3.1/REPORTS/runsql.sh CSDBPRD2 exiss sql_05a.sql
+#
+#EXISS monthly reports
+30 01 1 * * /export/home/oracle/exiss/patch_scripts/8.1.3.1/REPORTS/runsql.sh CSDBPRD2 exiss sql_09a.sql
+#
+#GDGATE weekly reports
+00 03 * * 0 /export/home/oracle/gdgate/patch_scripts/8.1.3.1/REPORTS/runsql.sh CSDBPRD3 gdgate sql_06a.sql
+#
+#GDGATE monthly reports
+30 01 1 * * /export/home/oracle/gdgate/patch_scripts/8.1.3.1/REPORTS/runsql.sh CSDBPRD3 gdgate sql_10a.sql
+30 02 1 * * /export/home/oracle/gdgate/patch_scripts/8.1.3.1/REPORTS/runsql.sh CSDBPRD3 gdgate sql_11.sql

@@ -1,0 +1,31 @@
+/* deleteWMB_DEBUG.sql                                                           */
+
+DECLARE  
+  rowsbefore INTEGER;
+  rowsafter INTEGER;
+  l_start_time NUMBER;
+  l_end_time NUMBER;
+  l_diff NUMBER;
+  
+  
+ BEGIN
+  l_start_time := DBMS_UTILITY.get_time;
+  
+  select count(*) into rowsbefore from WMB_DEBUG;
+
+  DBMS_OUTPUT.put_line ('Current date: '||to_char(sysdate,'YYYY-MM-DD HH:MM:SS'));
+
+  execute immediate 'truncate table WMB_DEBUG';
+
+  select count(*) into rowsafter from WMB_DEBUG;
+
+  l_end_time := DBMS_UTILITY.get_time;
+  l_diff := (l_end_time - l_start_time)/100 ;
+
+  DBMS_OUTPUT.put_line ('');
+  DBMS_OUTPUT.put_line ('Rows before:' || rowsbefore);
+  DBMS_OUTPUT.put_line ('Rows after:' || rowsafter);
+  DBMS_OUTPUT.put_line ('Time taken: ' || l_diff || ' seconds' );              
+  DBMS_OUTPUT.put_line ('');
+END;
+/

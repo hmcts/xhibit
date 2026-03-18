@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Joseph Babad (EDS LTD.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trial - Witness Read-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+				<xs:element ref="E20936_Witness_Read_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20936_Witness_Read_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E20936_WR_Type"/>
+				<xs:element name="E20936_WR_Name"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20936_WR_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20936_Respondent_witness_Read"/>
+				<xs:enumeration value="E20936_Appellant_witness_character_Read"/>
+				<xs:enumeration value="E20936_Appellant_witness_expert_Read"/>
+				<xs:enumeration value="E20936_Appellant_witness_professional_Read"/>
+				<xs:enumeration value="E20936_Appellant_witness_fact_Read"/>
+				<xs:enumeration value="E20936_Appellant_Read"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

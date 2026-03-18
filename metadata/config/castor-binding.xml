@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<n:binding xmlns:n="http://www.castor.org/SourceGenerator/Binding" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.castor.org/SourceGenerator/Binding D:\apps\castor-0.9.4.3\doc\binding.xsd" defaultBindingType="element">
+	<!-- 
+       -   Package Mappings
+       -->
+	<package>
+		<name>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit</name>
+		<namespace>http://www.courtservice.gov.uk/schemas/courtservice/xhibit</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.mercator</name>
+		<namespace>http://www.courtservice.gov.uk/schemas/courtservice/xhibit/mercator</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.datamigrationreport</name>
+		<namespace>http://www.courtservice.gov.uk/schemas/courtservice/xhibit/datamigrationreport</namespace>
+	</package>
+	<package>
+		<name>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.datamigrationerror</name>
+		<namespace>http://www.courtservice.gov.uk/schemas/courtservice/xhibit/datamigrationerror</namespace>
+	</package>
+	<!-- 
+       -   Hearing Element Mappings - Hearing Elements have 2 types so need to map old style to stop overwrite
+       -->
+	<elementBinding name="complexType:CaseSummariesStructure/CaseSummary/Hearing">
+		<java-class name="HearingType"/>
+	</elementBinding>
+	<elementBinding name="complexType:ListDistributionCasesStructure/Case/Hearing">
+		<java-class name="HearingType"/>
+	</elementBinding>
+	<!-- 
+       -   WarnedList Element Mappings - Warned List Court Lists are based on fixtuers not hearings
+       -->
+	<elementBinding name="complexType:ListDistributionWarnedListStructure/CourtLists">
+		<java-class name="WarnedCourtLists"/>
+	</elementBinding>
+	<elementBinding name="complexType:ListDistributionWarnedListStructure/CourtLists/CourtList">
+		<java-class name="WarnedCourtList"/>
+	</elementBinding>
+	<elementBinding name="complexType:WarnedListLetterStructure/CourtListSummaries">
+		<java-class name="WarnedCourtListSummaries"/>
+	</elementBinding>
+	<elementBinding name="complexType:WarnedListLetterStructure/CourtListSummaries/CourtListSummary">
+		<java-class name="WarnedCourtListSummary"/>
+	</elementBinding>
+	<!-- 
+       -   FirmList & FirmListLetter Element Mappings - Firm List Court List have additional attributes
+       -->
+	<elementBinding name="complexType:ListDistributionFirmListStructure/CourtLists">
+		<java-class name="FirmCourtLists"/>
+	</elementBinding>
+	<elementBinding name="complexType:ListDistributionFirmListStructure/CourtLists/CourtList">
+		<java-class name="FirmCourtList"/>
+	</elementBinding>
+	<elementBinding name="complexType:FirmListLetterStructure/CourtListSummaries">
+		<java-class name="FirmCourtListSummaries"/>
+	</elementBinding>
+	<elementBinding name="complexType:FirmListLetterStructure/CourtListSummaries/CourtListSummary">
+		<java-class name="FirmCourtListSummary"/>
+	</elementBinding>
+	<!-- 
+       -   DailyList, DailyListLetter & DailyListRingOut Element Mappings - These lists are different to other lists
+       -->
+	<elementBinding name="complexType:ListDistributionDailyListStructure/CourtLists">
+		<java-class name="DailyCourtLists"/>
+	</elementBinding>
+	<elementBinding name="complexType:ListDistributionDailyListStructure/CourtLists/CourtList">
+		<java-class name="DailyCourtList"/>
+	</elementBinding>
+	<elementBinding name="complexType:DailyListLetterStructure/CourtListSummaries">
+		<java-class name="DailyCourtListSummaries"/>
+	</elementBinding>
+	<elementBinding name="complexType:DailyListLetterStructure/CourtListSummaries/CourtListSummary">
+		<java-class name="DailyCourtListSummary"/>
+	</elementBinding>
+	<!--
+       - Added common base types for lists and letters
+       -->
+	<elementBinding name="/DailyListLetters/DailyListLetter">
+		<java-class name="DailyListLetter">
+			<implements>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.ListLetter</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="/FirmListLetters/FirmListLetter">
+		<java-class name="FirmListLetter">
+			<implements>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.ListLetter</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="/WarnedListLetters/WarnedListLetter">
+		<java-class name="WarnedListLetter">
+			<implements>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.ListLetter</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="/DailyList">
+		<java-class name="DailyList">
+			<implements>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.List</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="/FirmList">
+		<java-class name="FirmList">
+			<implements>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.List</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="/WarnedList">
+		<java-class name="WarnedList">
+			<implements>uk.gov.courtservice.xhibit.business.xmlbinding.courtservice.xhibit.List</implements>
+		</java-class>
+	</elementBinding>
+	<!--
+       - Formatting Config
+       -->
+	<elementBinding name="/xsltproperties">
+		<java-class name="XsltProperties"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform">
+		<java-class name="XsltTransform"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/documenttype">
+		<java-class name="DocumentType"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/distributiontype">
+		<java-class name="DistributionType"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/mimetype">
+		<java-class name="MimeType"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/minorversion">
+		<java-class name="MinorVersion"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/majorversion">
+		<java-class name="MajorVersion"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/xsltfilelist">
+		<java-class name="XsltFileList"/>
+	</elementBinding>
+	<elementBinding name="/xsltproperties/xslttransform/xsltfilelist/xsltfilename">
+		<java-class name="XsltFileName"/>
+	</elementBinding>
+	<!--
+       - XTable
+       -->
+	<elementBinding name="/XTable">
+		<java-class name="XTableElement"/>
+	</elementBinding>
+	<elementBinding name="/XTable/XTableTitle">
+		<java-class name="XTableTitleElement"/>
+	</elementBinding>
+	<elementBinding name="/XTable/XTableBody">
+		<java-class name="XTableBodyElement"/>
+	</elementBinding>
+	<elementBinding name="/XTable/XTableHeader">
+		<java-class name="XTableHeaderElement"/>
+	</elementBinding>
+	<elementBinding name="/XTableRow">
+		<java-class name="XTableRowElement"/>
+	</elementBinding>
+	<elementBinding name="/XTableRow/XTableCell">
+		<java-class name="XTableCellElement"/>
+	</elementBinding>
+	<!--
+       - Added common base type for the MVOs
+       -->
+	<elementBinding name="AddCaseMVO">
+		<java-class name="AddCaseMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="UpdateCaseMVO">
+		<java-class name="UpdateCaseMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="AddressMVO">
+		<java-class name="AddressMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="AppealJudgeCommentLineMVO">
+		<java-class name="AppealJudgeCommentLineMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="BreachMVO">
+		<java-class name="BreachMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="ChargeBatchMVO">
+		<java-class name="ChargeBatchMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="ChargeMVO">
+		<java-class name="ChargeMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="CrimAppealOffenceResultMVO">
+		<java-class name="CrimAppealOffenceResultMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="CrimAppealResultMVO">
+		<java-class name="CrimAppealResultMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DefendantMVO">
+		<java-class name="DefendantMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DefOnOffenceMVO">
+		<java-class name="DefOnOffenceMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DeleteChargeMVO">
+		<java-class name="DeleteChargeMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DeleteOffenceMVO">
+		<java-class name="DeleteOffenceMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DisposalLineMVO">
+		<java-class name="DisposalLineMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DisposalMVO">
+		<java-class name="DisposalMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="GenDisAppealResultMVO">
+		<java-class name="GenDisAppealResultMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="LinkCountDefMVO">
+		<java-class name="LinkCountDefMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="MiscAppealResultMVO">
+		<java-class name="MiscAppealResultMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="OffenceMVO">
+		<java-class name="OffenceMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="PleaOnBreachMVO">
+		<java-class name="PleaOnBreachMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="PleaOnCountMVO">
+		<java-class name="PleaOnCountMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="PleaOnSumMVO">
+		<java-class name="PleaOnSumMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="PrimaryKeysMVO">
+		<java-class name="PrimaryKeysMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="ResultsMVO">
+		<java-class name="ResultsMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="ResultsSequenceMVO">
+		<java-class name="ResultsSequenceMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="ReturnMVO">
+		<java-class name="ReturnMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="SignIndMVO">
+		<java-class name="SignIndMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="VerdictMVO">
+		<java-class name="VerdictMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="OriginalChargeBatchMVO">
+		<java-class name="OriginalChargeBatchMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="OriginalChargeMVO">
+		<java-class name="OriginalChargeMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+	<elementBinding name="DefOnCaseMVO">
+		<java-class name="DefOnCaseMVO">
+			<implements>uk.gov.courtservice.framework.business.vos.CSValueMarker</implements>
+		</java-class>
+	</elementBinding>
+</n:binding>

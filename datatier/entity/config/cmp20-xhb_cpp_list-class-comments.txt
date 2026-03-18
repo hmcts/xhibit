@@ -1,0 +1,16 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtCodeAndListTypeAndListDate(java.lang.Integer courtCode, java.lang.String listType, java.util.Date listStartDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbCppList o WHERE o.courtCode = ?1 AND o.listType = ?2 AND o.listStartDate = ?3 AND (o.obsInd IS NULL OR o.obsInd = 'N') AND (o.status IS NULL OR o.status <> 'MF') OrderBy o.creationDate DESC"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtCodeAndListTypeAndListStartAndEndDate(java.lang.Integer courtCode, java.lang.String listType, java.util.Date listStartDate, java.util.Date listEndDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbCppList o WHERE o.courtCode = ?1 AND o.listType = ?2 AND o.listStartDate = ?3 AND o.listEndDate = ?4 AND (o.obsInd IS NULL OR o.obsInd = 'N') OrderBy o.creationDate DESC"
+ *
+ * -------- end of custom finders --------
+  

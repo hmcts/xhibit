@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<nar:Narrative xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative">
+	<nar:Header>Text</nar:Header>
+	<nar:Body>
+		<nar:Section>
+			<nar:Label/>
+			<nar:Body>
+				<nar:H1>Order for Imprisonment
+					</nar:H1>
+			</nar:Body>
+		</nar:Section>
+		<nar:Section>
+			<nar:Label>
+				<nar:Line>The defendant</nar:Line>
+			</nar:Label>
+			<nar:Body>
+				<nar:Table>
+					<nar:TR>
+						<nar:TD>
+							<nar:Line>
+								<nar:DefendantFullName/>
+							</nar:Line>
+							<nar:Line>of: <nar:DefendantAddress/>
+							</nar:Line>
+							<nar:Line>was convicted of crime on <nar:ConvictionDate/>
+							</nar:Line>
+							<nar:CommittedForSentence/>
+							<nar:Line>Details of the conviction and sentence are on the enclosed court record.</nar:Line>
+						</nar:TD>
+						<nar:TD>
+							<nar:Line>Date of Birth</nar:Line>
+							<nar:Line>
+								<nar:DefendantDOB/>
+							</nar:Line>
+						</nar:TD>
+					</nar:TR>
+				</nar:Table>
+			</nar:Body>
+		</nar:Section>
+		<nar:Section>
+			<nar:Label>
+				<nar:Line>The Court ordered</nar:Line>
+			</nar:Label>
+			<nar:Body>
+				<nar:Table>
+					<nar:TR>
+						<nar:TD>
+							<nar:Line>on <nar:OrderDate/> that the defendant serve a period of imprisonment, details of which follow.</nar:Line>
+						</nar:TD>
+					</nar:TR>
+				</nar:Table>
+			</nar:Body>
+		</nar:Section>
+		<nar:Section>
+			<nar:Label>
+				<nar:Line>Custodial sentences</nar:Line>
+			</nar:Label>
+			<nar:Body>
+				<nar:Table>
+					<nar:TR>
+						<nar:TD>
+							<nar:Line>The court ordered that the defendant be sentenced to <nar:ImprisonLife/>
+							</nar:Line>
+							<nar:SentenceOption/>
+						</nar:TD>
+					</nar:TR>
+				</nar:Table>
+			</nar:Body>
+		</nar:Section>
+		<nar:If>
+			<nar:Condition>ChapterIII</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>Required custodial</nar:Line>
+						<nar:Line>sentences for certain</nar:Line>
+						<nar:Line>offences</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						<nar:Table>
+							<nar:TR>
+								<nar:TD>
+									<nar:Line>
+											The court ordered that the provisions of ChapterIII of Part V of the Powers of Criminal Courts (Sentencing) Act 2000 should apply to the defendant
+										</nar:Line>
+								</nar:TD>
+							</nar:TR>
+						</nar:Table>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:If>
+			<nar:Condition>ExtendedSentence</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>Extended Sentence</nar:Line>
+						<nar:Line>(for sexual or violent</nar:Line>
+						<nar:Line>offences)</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						<nar:Table>
+							<nar:TR>
+								<nar:TD>
+									<nar:Line>
+										The court ordered that the defendant be sentenced under section 85 of the Powers of Criminal Courts (Sentencing) Act 2000 to an extended sentence of <nar:AdditionOfDates/> comprising a custodial term of <nar:CustodialTerm/> and an extended period of <nar:ExtendedPeriod/>.
+										</nar:Line>
+									<nar:P/>
+									<nar:P>This sentence was ordered to be <nar:ExtendedSentenceType/> to any other periods of imprisonment to which the defendant was subject prior to making of this order.</nar:P>
+									<nar:Section44/>
+								</nar:TD>
+							</nar:TR>
+						</nar:Table>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:If>
+			<nar:Condition>ReturnOfDefendant</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>Return of defendants</nar:Line>
+						<nar:Line>to prison</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						<nar:Table>
+							<nar:TR>
+								<nar:TD>
+									<nar:Line>The offence for which the defendant has been convicted by this court was committed <nar:Qualifier/>
+										<nar:OffenceDate/>
+									</nar:Line>
+									<nar:P>
+										This date was, or appeared to be, earlier than the date on which the defendant would, but for the defendant's release under Part II of the Criminal Justice Act 1991, have completed serving the full sentence imposed by the <nar:SentencingCourtType/> at <nar:SentencingCourtName/> on <nar:SentencingDate/>
+									</nar:P>
+									<nar:P>
+										The court applied its powers under section 116 of the Powers of Criminal Courts (Sentencing) Act 2000 and ordered that  the defendant be returned to prison for <nar:ReturnPeriod/>
+									</nar:P>
+									<nar:P>
+										This period of imprisonment was ordered to be served <nar:ServedPeriod/> any other periods of imprisonment imposed by the court on the same occasion when this order was made.
+										</nar:P>
+									<nar:TotalPeriodOfReturn/>
+								</nar:TD>
+							</nar:TR>
+						</nar:Table>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:If>
+			<nar:Condition>DiscretionaryLife</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>Release of discretionary</nar:Line>
+						<nar:Line>life prisoners</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						<nar:Table>
+							<nar:TR>
+								<nar:TD>
+									<nar:Line>
+										The court ordered that the provisions of section 28 of the Crime Sentences Act 1997, as substituted by paragraph 182 of Schedule 9 to the Powers of Criminal Courts (Sentencing) Act 2000, should apply to the defendant.
+										</nar:Line>
+									<nar:Line/>
+										The court specified the 'relevant part' of the sentence to be <nar:LifePrisonerPeriod/>
+								</nar:TD>
+							</nar:TR>
+						</nar:Table>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:If>
+			<nar:Condition>Section86</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>Release of prisoners</nar:Line>
+						<nar:Line>who have committed</nar:Line>
+						<nar:Line>sexual offences before</nar:Line>
+						<nar:Line>30th September 1998</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						<nar:Table>
+							<nar:TR>
+								<nar:TD>
+									<nar:Line>
+										The court ordered that the provisions of section 86 of the Powers of Criminal Courts (Sentencing) Act 2000 should apply to the defendant.
+										</nar:Line>
+								</nar:TD>
+							</nar:TR>
+						</nar:Table>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:If>
+			<nar:Condition>AdditionalNotes</nar:Condition>
+			<nar:Body>
+				<nar:Section>
+					<nar:Label>
+						<nar:Line>Additional Notes</nar:Line>
+					</nar:Label>
+					<nar:Body>
+						<nar:Table>
+							<nar:TR>
+								<nar:TD>
+									<nar:Line>
+										<nar:AdditionalNotes/>
+									</nar:Line>
+								</nar:TD>
+							</nar:TR>
+						</nar:Table>
+					</nar:Body>
+				</nar:Section>
+			</nar:Body>
+		</nar:If>
+		<nar:Section>
+			<nar:Label/>
+			<nar:Body>
+				<nar:AssociatedCases/>
+			</nar:Body>
+		</nar:Section>
+	</nar:Body>
+	<nar:Footer>Text</nar:Footer>
+</nar:Narrative>

@@ -1,0 +1,23 @@
+  /**
+   * Returns court-room data for court sites with multiple court sites
+   *
+   * @ejb.interface-method view-type="local"
+   */
+  public uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue[] getMultiSiteXhbCourtRoomsData()
+  {
+
+    
+    java.util.Collection col = getXhbCourtRooms();
+    java.util.Iterator it = getXhbCourtRooms().iterator();
+
+    uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue[] vals =
+    new uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue[col.size()];
+
+    for(int i = 0;i < vals.length && it.hasNext();i++) {
+      uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoom courtRoom =
+        (uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoom)it.next();
+      vals[i] = courtRoom.getMultiSiteData(getShortName(), getCourtSiteCode());
+    }
+    return vals;
+  }
+  

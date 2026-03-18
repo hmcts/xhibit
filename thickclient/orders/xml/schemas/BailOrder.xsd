@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:xsd="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:import namespace="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" schemaLocation="courtService/apd.xsd"/>
+	<xsd:complexType name="BailOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+			<xsd:element name="BailDecision" type="BailDecisionType"/>
+			<xsd:element name="PreConditions">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Surety">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Plural" type="xsd:string"/>
+									<xsd:element name="MonetaryValue" type="MonetaryValueType"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Passport">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Surrendered" type="xsd:boolean"/>
+									<xsd:element name="Retained" type="xsd:boolean"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Security">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="MonetaryValue" type="MonetaryValueType"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="PostConditions">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="LiveSleep">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="AtFollowingAddress" type="xsd:boolean"/>
+									<xsd:element name="Address" type="apd:UKPostalAddressStructure"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="NotifyPolice">
+							<xsd:complexType>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Curfew">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="From" type="xsd:time"/>
+									<xsd:element name="To" type="xsd:time"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="PoliceReport">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Station" type="xsd:string"/>
+									<xsd:element name="Period" type="xsd:string"/>
+									<xsd:element name="From" type="xsd:time"/>
+									<xsd:element name="To" type="xsd:time" nillable="true"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Available">
+							<xsd:complexType>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Contact">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Distance">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="TheDistance" type="xsd:string"/>
+									<xsd:element name="Location" type="xsd:string"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+						</xsd:element>
+						<xsd:element name="Other">
+							<xsd:complexType>
+								<xsd:simpleContent>
+									<xsd:extension base="xsd:string">
+										<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+									</xsd:extension>
+								</xsd:simpleContent>
+							</xsd:complexType>
+						</xsd:element>
+					</xsd:sequence>
+					<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="Reasons">
+				<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string"/>
+					</xsd:simpleContent>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="NextAppearance" type="XHIBITCourtAppearanceStructure"/>
+			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure"/>
+		</xsd:sequence>
+	</xsd:complexType>
+</xsd:schema>

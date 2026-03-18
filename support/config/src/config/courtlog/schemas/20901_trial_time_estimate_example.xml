@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="20901.xsd">
+	<type>20900</type>
+	<date>2002-11-25</date>
+	<time/>
+	<Time-Estimate-Options>
+		<TEO-time>10</TEO-time>
+		<TEO-units>20901_days</TEO-units>
+	</Time-Estimate-Options>
+</event>

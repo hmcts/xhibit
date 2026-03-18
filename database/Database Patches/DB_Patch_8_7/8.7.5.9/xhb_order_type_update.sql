@@ -1,0 +1,3 @@
+UPDATE XHB_ORDER_TYPE SET DESCRIPTION = 'Breach of Suspended Sentence Summons (5074)' WHERE CODE = 'BRSS';
+
+COMMIT;

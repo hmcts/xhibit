@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Neil Entwistle (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+D:\projects\XHIBIT\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<CPOrder>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+					<Charges>
+						<Charge CJSoffenceCode="Not Available" IndictmentCountNumber="0" ChargeType="indictment">
+							<CaseNumber>Z00000000</CaseNumber>
+							<OffenceStatement> </OffenceStatement>
+							<ord:OffenceParticulars>tba</ord:OffenceParticulars>
+						</Charge>
+					</Charges>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<AddressOption>AddressIs</AddressOption>
+			<Trial selected="true">
+				<ConvictionDate>0001-01-01</ConvictionDate>
+			</Trial>
+			<CommittingCourt selected="false">
+				<Date>0001-01-01</Date>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+			</CommittingCourt>
+			<Breach selected="false">
+				<ConvictingCourt>
+					<Date>0001-01-01</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+				</ConvictingCourt>
+				<OriginatingCourt>
+					<Date>0001-01-01</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+					<OriginalOrderType> </OriginalOrderType>
+				</OriginatingCourt>
+				<BreachCourt breachCourtOption="false">
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+					<SentToCrownCourt>String</SentToCrownCourt>
+				</BreachCourt>
+			</Breach>
+			<OriginalOrderRevoked selected="false">
+				<BreachCourt>yes</BreachCourt>
+				<CurrentCourt>no</CurrentCourt>
+			</OriginalOrderRevoked>
+			<FailedToComply>no</FailedToComply>
+			<AfterHearingFrom>no</AfterHearingFrom>
+			<PettySessionalArea>
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</PettySessionalArea>
+			<CommunityPunishment>
+				<Hours TermType="Concurrent">1</Hours>
+				<Period>
+					<Years>0</Years>
+					<Months>12</Months>
+					<Days>0</Days>
+				</Period>
+			</CommunityPunishment>
+			<RehabilitationPeriod>
+				<Years>0</Years>
+				<Months>0</Months>
+				<Days>0</Days>
+			</RehabilitationPeriod>
+			<Conditions selected="false">
+				<Condition>
+					<Description> </Description>
+				</Condition>
+			</Conditions>
+			<AdditionalNotes> </AdditionalNotes>
+		</CPOrder>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

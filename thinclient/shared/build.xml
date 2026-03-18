@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="ThinClientShared">
+    
+    <description>
+        Shared Thinclient
+    </description>
+
+    <property name="component.author" value="Will Fardell"/>
+    <property name="component.name" value="Thinclient Shared"/>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />    
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <!-- Any dirs added to the following path need to be added to the war.lib.fileset 
+             of dependant projects -->
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="ThinClientFramework.jar" />
+                <include name="Value.jar" />
+                <include name="ClientView.jar" />
+                <include name="UserTerminalLocationControllerClient.jar" />
+            </fileset>
+        </path>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+    <target name="package" unless="skip.package" depends="framework.package">
+        <log target="package"/>
+        <mkdir dir="${lib.build.dir}"/>
+        <!-- Create an archive for use by the other web projects, exclude temp web project files! -->
+        <zip destfile="${lib.build.dir}/ThinClientSharedTemp.zip">
+            <zipfileset dir="${docroot.dir}" prefix="docroot" excludes="**/WEB-INF/**"/>
+            <zipfileset dir="${classes.dir}" prefix="classes"/>
+            <zipfileset dir="${resources.dir}" prefix="resources"/>
+        </zip>
+    </target>
+
+</project>
+

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="PublicDisplayThickClient">
+    <description>
+        Thick client Bob, Raks, Meeraj and Neil's rewrite of public display.
+    </description>
+
+    <property name="component.author" value="Neil Ellis, Rakesh Lakhani, Bob Boothby, Meeraj Kunnumpurath"/>
+    <property name="component.name" value="Public Display Rewrite Thickclient"/>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.builds.jar" value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="ThickClientFramework.jar" />
+                <include name="Value.jar" />
+                <include name="XhibitValues.jar" />
+                <include name="PublicDisplay2ControllerClient.jar" />
+            </fileset>
+        </path>
+    </target>
+</project>

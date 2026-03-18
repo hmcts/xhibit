@@ -1,0 +1,51 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseListingEntryIdAndStatusAndListingDate(java.lang.Integer caseListingEntryId, java.lang.String status, java.util.Date fromDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(cdf) 
+ *    FROM XhbCaseDiaryFixture AS cdf
+ *    WHERE cdf.caseListingEntryId = ?1
+ *      AND cdf.status = ?2
+ *      AND cdf.listingDate >= ?3
+ *      AND (cdf.obsInd IS NULL OR cdf.obsInd = 'N')
+ *    orderby cdf.creationDate asc"
+ *
+  * @ejb.finder
+ *    signature="java.util.Collection findByCaseListingEntryIdAndStatus(java.lang.Integer caseListingEntryId, java.lang.String status)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(cdf) 
+ *    FROM XhbCaseDiaryFixture AS cdf
+ *    WHERE cdf.caseListingEntryId = ?1
+ *      AND cdf.status = ?2
+ *      AND (cdf.obsInd IS NULL OR cdf.obsInd = 'N')
+ *    orderby cdf.creationDate asc"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdAndListingDate(java.lang.Integer caseId, java.util.Date fromDate, java.util.Date toDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (cdf) FROM XhbCaseDiaryFixture AS cdf, XhbCaseListingEntry AS cle WHERE cle.caseId = ?1 AND cdf.caseListingEntryId = cle.caseListingEntryId AND (cdf.listingDate = ?2 OR cdf.listingDate > ?2) AND (cdf.listingDate = ?3 OR cdf.listingDate < ?3) AND (cdf.obsInd IS NULL OR cdf.obsInd = 'N')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseIdAndListingDateAndDefendantOnCaseId(java.lang.Integer caseId, java.util.Date fromDate, java.util.Date toDate, java.lang.Integer defendantOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (cdf) FROM XhbCaseDiaryFixture AS cdf, XhbCaseListingEntry AS cle, XhbFixtureDeftAttending AS fda WHERE cle.caseId = ?1 AND cdf.caseListingEntryId = cle.caseListingEntryId AND fda.caseDiaryFixtureId = cdf.caseDiaryFixtureId AND (cdf.listingDate = ?2 OR cdf.listingDate > ?2) AND (cdf.listingDate = ?3 OR cdf.listingDate < ?3) AND fda.defendantOnCaseId = ?4 AND fda.attending = 'Y' AND (cdf.obsInd IS NULL OR cdf.obsInd = 'N') AND (fda.obsInd IS NULL OR fda.obsInd = 'N')"
+ *
+ *  @ejb.finder
+ *    signature="java.util.Collection findCaseDiaryFixturesImpacted(java.lang.Integer caseEntryId, java.util.Date startDate, java.util.Date endDate, java.util.Date currentDate)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (cdf) FROM XhbCaseDiaryFixture AS cdf WHERE cdf.caseListingEntryId = ?1 AND (cdf.listingDate = ?2 OR cdf.listingDate > ?2) 
+ *     AND (cdf.listingDate = ?3 OR cdf.listingDate < ?3) AND cdf.listingDate > ?4 AND (cdf.obsInd IS NULL OR cdf.obsInd = 'N')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByListingDateAndCourtId(java.util.Date dateOfFixture, java.lang.Integer courtId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (f) FROM XhbCaseDiaryFixture f, XhbCaseListingEntry e, XhbCase c WHERE f.caseListingEntryId = e.caseListingEntryId AND f.listingDate = ?1 AND e.courtId = ?2 AND (f.obsInd IS NULL OR f.obsInd = 'N')  AND e.caseId = c.caseId AND ((c.caseStatus is null) OR (c.caseStatus is not null and c.caseStatus not in ('D','F','I','H')))"
+ *
+ * -------- end of custom finders --------

@@ -1,0 +1,9 @@
+* -------- custom finders --------
+* @ejb.finder
+*    signature="java.util.Collection findCurrentByCaseId(java.lang.Integer caseId)"
+*    result-type-mapping="Local"
+*    method-intf="LocalHome"
+*    query="SELECT OBJECT (r) FROM XhbCaseAppReason r WHERE
+*           (r.obsInd IS NULL OR r.obsInd = 'N') AND
+*           r.caseId = ?1"
+* -------- end of custom finders --------

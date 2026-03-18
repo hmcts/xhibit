@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xsd:include schemaLocation="OrderTypes.xsd"/>
+	<xsd:complexType name="NoticeBreachSuspendedSentenceOrderStructure">
+		<xsd:sequence>
+			<xsd:element name="OrderHeader" type="XHIBITCourtOrderHeaderStructure"/>
+		    <xsd:element name="Addresse">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="CourtHouseDetails" type="XHIBITCourtHouseStructure"/>
+ 					</xsd:sequence>
+				</xsd:complexType>
+ 			</xsd:element>
+ 			<xsd:element name="SuspendedDate" type="xsd:date" />
+			<xsd:element name="ConvictionDate" type="xsd:date" />
+			<xsd:element name="SubsequentOffences" type="xsd:string" />
+ 			<xsd:element name="OrderEffective">
+			<xsd:complexType>
+			<xsd:sequence>
+ 				<xsd:element name="TermNBSS">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="SuspendedSentenceOriginalTerm" type="xsd:string" />
+							<xsd:element name="SuspendedSentenceSubstitute">
+							<xsd:complexType>
+								<xsd:sequence>
+									<xsd:element name="Years" type="xsd:string"/>
+									<xsd:element name="Months" type="xsd:string"/>
+									<xsd:element name="Weeks" type="xsd:string"/>
+									<xsd:element name="Days" type="xsd:string"/>
+								</xsd:sequence>
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:complexType>
+							</xsd:element>
+						</xsd:sequence>
+						<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+ 					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="FineValue">
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="CommunityReq">
+					<xsd:complexType>
+						<xsd:simpleContent>
+							<xsd:extension base="xsd:string">
+								<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+							</xsd:extension>
+						</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
+  				<xsd:element name="SuspensionPeriod">
+					<xsd:complexType>
+						<xsd:sequence>
+							<xsd:element name="Years" type="xsd:string"/>
+							<xsd:element name="Months" type="xsd:string"/>
+							<xsd:element name="Weeks" type="xsd:string"/>
+							<xsd:element name="Days" type="xsd:string"/>
+						</xsd:sequence>
+ 					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="SupervisionalPeriod">
+					<xsd:complexType>
+						<xsd:sequence>
+						    <xsd:element name="Years" type="xsd:string"/>
+							<xsd:element name="Months" type="xsd:string"/>
+							<xsd:element name="Weeks" type="xsd:string"/>
+							<xsd:element name="Days" type="xsd:string"/>
+						</xsd:sequence>
+						<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+					</xsd:complexType>
+				</xsd:element>
+				<xsd:element name="OperationPeriod">
+					<xsd:complexType>
+						<xsd:sequence>
+						    <xsd:element name="Years" type="xsd:string"/>
+							<xsd:element name="Months" type="xsd:string"/>
+							<xsd:element name="Weeks" type="xsd:string"/>
+							<xsd:element name="Days" type="xsd:string"/>
+					</xsd:sequence>
+					<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+					</xsd:complexType>
+				</xsd:element>
+ 				<xsd:element name="OrderEffectiveType" minOccurs="0">
+					<xsd:simpleType>
+						<xsd:restriction base="xsd:string">
+							<xsd:enumeration value="SuspendedSentenceOriginalTerm"/>
+	 						<xsd:enumeration value="SuspendedSentenceSubstitute"/>
+ 						</xsd:restriction>
+					</xsd:simpleType>
+				</xsd:element>
+ 		</xsd:sequence>		
+		<xsd:attributeGroup ref="ConditionAttributeGroup"/>
+ 	</xsd:complexType>
+	</xsd:element>
+  			<xsd:element name="AssociatedCases" type="AssociatedCaseStructure" minOccurs="0"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NoticeBreachSuspendedSentenceOrder" type="ord:NoticeBreachSuspendedSentenceOrderStructure">
+		<xsd:annotation>
+			<xsd:documentation>Schema V1.0 (30/11/2015)</xsd:documentation>
+		</xsd:annotation>
+	</xsd:element>
+</xsd:schema>

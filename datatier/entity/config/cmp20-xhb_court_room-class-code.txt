@@ -1,0 +1,37 @@
+      /**
+     * Business method to get the Urn
+     *
+     * @return the URN
+     *
+     * @ejb.interface-method view-type="local"
+     */
+  public String getUrn()
+  {
+
+    uk.gov.courtservice.xhibit.business.entities.xhb_court_site.XhbCourtSite site = getXhbCourtSite();
+    uk.gov.courtservice.xhibit.business.entities.xhb_court.XhbCourt court = site.getXhbCourt();
+    
+    return "//" + court.getShortName() + "/" + site.getCourtSiteCode() + "/" + getCrestCourtRoomNo();
+    
+  }
+
+  /**
+   * Returns court-room data for court sites with multiple court sites
+   *
+   * @ejb.interface-method view-type="local"
+   */
+  public XhbCourtRoomBasicValue getMultiSiteData(String courtSiteShortName, String courtSiteCode)
+  {
+
+    XhbCourtRoomBasicValue value = getData();
+    if (courtSiteShortName != null) {
+        value.setDisplayNameNoSite(value.getDisplayName());
+        value.setDisplayName(courtSiteShortName + "-" + value.getDisplayName());
+    }
+    if (courtSiteCode != null) {
+        value.setCourtSiteCode(courtSiteCode);
+    }
+
+    return value;
+  }
+  

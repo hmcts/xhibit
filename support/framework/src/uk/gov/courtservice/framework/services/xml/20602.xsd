@@ -1,0 +1,32 @@
+<!-- edited with XML Spy v4.4 U (http://www.xmlspy.com) by Faisal Shoukat (EDS LTD.) -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Respondent Case Opened-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="flagged" minOccurs="0"/>
+				<xs:element ref="id" minOccurs="0"/>
+				<xs:element ref="type"/>
+				<xs:element ref="E20602_Respondent_Case_Opened"/>
+				<xs:element ref="free_text" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20602_Respondent_Case_Opened">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="E20602_RCO_Type"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20602_RCO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20602_TV_Link_In_Progress"/>
+				<xs:enumeration value="E20602_Video_Being_Played"/>
+				<xs:enumeration value="E20602_Respondent_Case_Opened"/>
+				</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

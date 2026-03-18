@@ -1,0 +1,539 @@
+#macro( sequenceBlock )
+#if( ${plugin.sequenceblock} )
+      // Use Middlegen's Sequence Block PK generator. Only works for numeric fields
+      try {
+         ${plugin.sequenceblock.interfacePackage}.SequenceSessionLocal sequenceGenerator = 
+         ${plugin.sequenceblock.interfacePackage}.SequenceSessionUtil.getLocalHome().create();      
+#foreach($column in $table.primaryNotForeignKeyColumns)
+#if( $column.numericClass || $column.primitive )
+#set( $pkname = "${table.sqlName}.${column.sqlName}" )
+#if( $column.numericClass )
+         ${column.setterName}(new ${column.javaType}(sequenceGenerator.getNextSequenceNumber( "$pkname" )));
+#else
+         ${column.setterName}(sequenceGenerator.getNextSequenceNumber( "$pkname" ));
+#end
+#end
+#end
+      } catch( javax.naming.NamingException e ) {
+         throw new javax.ejb.CreateException(e.getMessage());
+      }
+#end
+#end
+#macro( guid )
+#if( ${plugin.guid} )
+      // Use XDoclet's GUID generator. Only works for String fields
+      // This requires <utilobject includeGUID="true"/> in ejbdoclet.
+#foreach($column in $table.primaryNotForeignKeyColumns)
+#if( $column.javaType == "java.lang.String" )
+      ${column.setterName}(${table.utilClassName}.generateGUID(this));
+#end
+#end
+
+#end
+#end
+package $table.package;
+
+/**
+## Include common header for all generated classes
+#parse("${plugin.name}-ALL-class-comments.txt")
+ * @author <a href="http://boss.bekk.no/boss/middlegen/">Middlegen</a>
+ *
+## Include table-specific comments. Extra finders will typically be defined here.
+#parse("${plugin.name}-${table.sqlNameLowerCase}-class-comments.txt")
+ *
+ * @ejb.bean
+ *    type="CMP"
+ *    cmp-version="2.x"
+ *    name="${table.beanName}"
+ *    local-jndi-name="${table.beanName}Home"
+ *    view-type="$table.beanViewType"
+#if( !${table.generatePkClass} )
+ *    primkey-field="${table.pkColumn.variableName}"
+ *    use-soft-locking="false"
+#end
+ *
+#if( ${plugin.dataobject} )
+ * @ejb.data-object
+ *    container="true"
+ *    setdata="true"
+ *    generate="true"
+ *
+#end
+ * @ejb.finder
+ *    signature="java.util.Collection findAll()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM ${table.beanName} o"
+ *
+#foreach($column in $table.finderColumns)
+## Don't generate finders for pk fields (They are covered by the standard findByPrimaryKey)
+## Don't generate finders for fk fields (They are covered by the finders which take related objects as parameters)
+#if($column.primitiveOrComparable)
+ * @ejb.finder
+ *    signature="java.util.Collection findBy${column.capitalisedVariableName}($column.javaType $column.variableName)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM ${table.beanName} o WHERE o.$column.variableName = ?1"
+#if($column.indexed)
+ *    description="${column.sqlName} is indexed."
+#else
+ *    description="${column.sqlName} is not indexed."
+#end
+ *
+#end
+#end
+ * @ejb.persistence table-name="$table.sqlName"
+#if( ${plugin.weblogic.pkgen} )
+#if( ${table.pkColumn} )
+## Can still only automatically generate simple PK's
+ * @weblogic.automatic-key-generation 
+#if( ${plugin.weblogic.pkGenType} && ${plugin.weblogic.pkgen} == "VENDOR_SEQ" )
+ *    generator-type="${plugin.weblogic.pkGenType}"
+#elseif( ${plugin.weblogic.pkgen} == "NAMED_SEQUENCE_TABLE" )
+ *    generator-type="NAMED_SEQUENCE_TABLE"
+#end
+#if( !( $plugin.weblogic.pkGenType == "SQL_SERVER" && ${plugin.weblogic.pkgen} == "VENDOR_SEQ" ) )
+ *    generator-name="${table.tableElement.pkTableSqlName}"
+#if( ${table.tableElement.pkCacheSize} )
+ *    key-cache-size="${table.tableElement.pkCacheSize}"
+#end
+#end
+#end
+#end
+#if( $table.readOnly )
+## Use container-specific tags to mark as read only
+ *
+ * @weblogic.cache concurrency-strategy="ReadOnly"
+#end
+ *
+ * @weblogic.data-source-name $plugin.middlegen.middlegenTask.datasourceJNDIName
+ */
+public abstract class $table.destinationClassName extends uk.gov.courtservice.framework.business.entities.CSEntityBean implements javax.ejb.EntityBean {
+
+#foreach($column in $table.columns) 
+#if((!$column.fk || $plugin.fkcmp))
+   /**
+    * Returns the $column.variableName
+    * @todo support OracleClob,OracleBlob on WLS
+    *
+    * @return the $column.variableName
+    *
+#if($column.pk)
+    * @ejb.pk-field
+#end
+#if($column.getterLocalOrRemote)
+    * @ejb.interface-method view-type="$column.getterViewType"
+#end
+## @ejb.persistent-field is a workaround for
+## http://www.mail-archive.com/middlegen-user@lists.sourceforge.net/msg00125.html
+    * @ejb.persistent-field
+    * @ejb.persistence column-name="$column.sqlName"
+#parse("${plugin.name}-${table.sqlNameLowerCase}-${column.sqlName.toLowerCase()}-accessor-comments.txt")
+    */
+   public abstract $column.javaType ${column.getterName}();
+
+
+
+#if(!$column.fk)
+
+   /**
+    * Sets the $column.variableName
+    *
+    * @param $column.javaType the new $column.variableName value
+#if($column.setterLocalOrRemote)
+    * @ejb.interface-method view-type="$column.setterViewType"
+#end
+#parse("${plugin.name}-${table.sqlNameLowerCase}-${column.sqlName.toLowerCase()}-mutator-comments.txt")
+    */
+   public abstract void ${column.setterName}($column.javaType $column.variableName);
+
+#end
+#end
+#end
+
+
+
+#if($table.beanViewType=="remote")
+## bug [ 596249 ] viewtype="remote" code won't compile
+   //// No CMR methods, since this EJB's view-type is remote.
+   //// According to the EJB 2.0 spec there is no CMR for remote EJBs
+#else
+#foreach( $relationshipRole in $table.relationshipRoles )
+#if( $relationshipRole.enabled )
+#set( $many2many = $relationshipRole.relation.many2Many )
+#set( $bidirectional = $relationshipRole.relation.bidirectional )
+#set( $target = $relationshipRole.getTarget($plugin))
+#set( $relationName = "${relationshipRole.relation.getName($plugin)}")
+########## Compute cardinality strings for javadocs. Useful for humans.
+#if( $bidirectional )
+#set( $directionalityText = "bi-directional" )
+#else
+#set( $directionalityText = "uni-directional" )
+#end
+#if( $many2many )
+#set( $cardinalityText = "many-to-many" )
+#else
+#if($relationshipRole.relation.one2One)
+#set( $cardinalityText = "one-to-one" )
+#else
+#set( $cardinalityText = "one-to-many" )
+#end
+#end
+   /**
+    * This is a $directionalityText $cardinalityText relationship CMR method
+    *
+#if( $relationshipRole.targetMany )
+    * @return a $table.getClassName($relationshipRole) of related $target.localClassName.
+    * $target
+    * $target.class
+    * $target.class.name
+#else
+    * @return the related $target.localClassName.
+    *
+#end
+#if( $relationshipRole.enabled )
+    * @ejb.interface-method view-type="local"
+#end
+    *
+#if( $relationshipRole.originMany )
+    * @ejb.aggregate
+#end
+    * @ejb.relation
+    *    name="$relationName"
+    *    role-name="${relationshipRole.getName($plugin)}"
+#if( !$relationshipRole.relation.bidirectional )
+    *    target-ejb="$target.beanName"
+    *    target-role-name="${relationshipRole.targetRole.getName($plugin)}"
+#if($relationshipRole.originMany)
+    *    target-multiple="yes"
+#else
+    *    target-multiple="no"
+#end
+#end
+    *
+#if( $many2many )
+    * @weblogic.relation join-table-name="$relationshipRole.relation.joinTable.sqlName"
+    *
+    * @jboss.relation-mapping style="relation-table"
+    * @jboss.relation-table table-name="$relationshipRole.relation.joinTable.sqlName"
+#set( $thisSideWlsTag = "weblogic.column-map" )
+#set( $otherSideWlsTag = "weblogic.target-column-map" )
+#set( $thisSideJbossTag = "jboss.relation" )
+#set( $otherSideJbossTag = "jboss.target-relation" )
+#else
+    * @jboss.relation-mapping style="foreign-key"
+#set( $thisSideWlsTag = "weblogic.target-column-map" )
+#set( $otherSideWlsTag = "weblogic.column-map" )
+#set( $thisSideJbossTag = "jboss.target-relation" )
+#set( $otherSideJbossTag = "jboss.relation" )
+#end
+    *
+#if( $many2many || !$bidirectional )
+#foreach( $columnMap in $relationshipRole.columnMaps )
+    * @$thisSideWlsTag
+    *    foreign-key-column="$columnMap.foreignKey"
+##if( !$targetRole.getTarget($plugin).pkColumn )
+## XDoclet figures out the pk if the pk is a single column.
+    *    key-column="$columnMap.primaryKey"
+##end
+    *
+    * @$thisSideJbossTag
+    *    fk-constraint="true"
+    *    fk-column="$columnMap.foreignKey"
+    *    related-pk-field="$relationshipRole.targetRole.getTarget($plugin).getColumn($columnMap.primaryKey).variableName"
+    *
+#end
+#end
+#foreach( $columnMap in $relationshipRole.targetRole.columnMaps )
+    * @$otherSideWlsTag
+    *    foreign-key-column="$columnMap.foreignKey"
+##if( !$role.getTarget($plugin).pkColumn )
+## XDoclet figures out the pk if the pk is a single column.
+    *    key-column="$columnMap.primaryKey"
+##end
+    *
+    * @$otherSideJbossTag
+    *    fk-constraint="true"
+    *    fk-column="$columnMap.foreignKey"
+    *    related-pk-field="$relationshipRole.getTarget($plugin).getColumn($columnMap.primaryKey).variableName"
+    *
+#end
+    */
+   public abstract $table.getClassName($relationshipRole) $table.getGetterName($relationshipRole)();
+
+   /**
+#if( $relationshipRole.targetMany )
+    * Sets a collection of related $target.localClassName
+    *
+    * @param a collection of related $target.localClassName
+#else
+    * Sets the related $target.localClassName
+    *
+    * @param $table.localClassName the related $target.variableName
+#end
+    *
+    * @ejb.interface-method view-type="local"
+    *
+    * @param $table.getVariableName($relationshipRole) the new CMR value
+    */
+   public abstract void $table.getSetterName($relationshipRole)($table.getClassName($relationshipRole) $table.getVariableName($relationshipRole));
+
+#end 
+## END if( $relationshipRole.enabled )
+#end 
+## END foreach($relationshipRole in $table.relationshipRoles)
+#end 
+## END if($table.beanViewType=="remote")
+#macro ( cmrSetters $relationshipRoles )
+      // Set CMR fields
+#if(!$table.readOnly)
+#foreach($relationshipRole in $relationshipRoles)
+#set( $target = $relationshipRole.getTarget($plugin))
+      $table.getSetterName($relationshipRole)($table.getVariableName($relationshipRole));
+#end
+#end
+#end
+#if( $plugin.pkgen )
+#set( $mandatoryColumns = $table.mandatoryNotKeyColumns )
+#else
+#set( $mandatoryColumns = $table.mandatoryBasicColumns )
+#end
+   /**
+    * This create method takes only mandatory (non-nullable) parameters.
+#if( $plugin.generatePk )
+    * Since this class was generated with generatepk="true", no primary 
+    * key columns need to be specified.
+#end
+    *
+    * When the client invokes a create method, the EJB container invokes the ejbCreate method. 
+    * Typically, an ejbCreate method in an entity bean performs the following tasks: 
+    * <UL>
+    * <LI>Inserts the entity state into the database.</LI>
+    * <LI>Initializes the instance variables.</LI>
+    * <LI>Returns the primary key.</LI>
+    * </UL>
+    *
+#foreach( $column in $mandatoryColumns )
+    * @param ${column.variableName} the ${column.variableName} value
+#end
+#foreach($relationshipRole in $table.mandatoryRelationshipRoles)
+    * @param $table.getVariableName($relationshipRole) mandatory CMR field
+#end
+    * @return the primary key of the new instance
+    *
+    * @ejb.create-method
+    */
+#set( $mandatoryCreateSignature = $table.getColumnAndRelationSignature($mandatoryColumns, $table.mandatoryRelationshipRoles) )
+   public $table.pkClassName ejbCreate( $mandatoryCreateSignature ) throws javax.ejb.CreateException {
+#sequenceBlock()
+#guid()
+      initialiseAuditInfo();
+      // Set CMP fields
+#if(!$table.readOnly)
+#foreach($column in $mandatoryColumns)
+#if($column.variableName != "createdBy" && $column.variableName != "creationDate" && $column.variableName != "lastUpdatedBy" && $column.variableName != "lastUpdateDate")
+      ${column.setterName}($column.variableName);
+#end
+#end
+#end
+      // EJB 2.0 spec says return null for CMP ejbCreate methods.
+      return null;
+   }
+
+   /**
+    * The container invokes thos method immediately after it calls ejbCreate. 
+    *
+#foreach( $column in $mandatoryColumns )
+    * @param ${column.variableName} the ${column.variableName} value
+#end
+#foreach($relationshipRole in $table.mandatoryRelationshipRoles)
+    * @param $table.getVariableName($relationshipRole) mandatory CMR field
+#end
+    */
+   public void ejbPostCreate( $mandatoryCreateSignature ) throws javax.ejb.CreateException {
+#cmrSetters($table.mandatoryRelationshipRoles)
+   }
+
+#if( $plugin.pkgen )
+#set( $allColumns = $table.notKeyColumns )
+#else
+#set( $allColumns = $table.basicColumns )
+#end
+#if( !($mandatoryColumns.size() == $allColumns.size()) || !($table.mandatoryRelationshipRoles.size() == $table.oneRelationshipRoles.size()) )
+   /**
+    * This create method takes all parameters (both nullable and not nullable). 
+#if( $plugin.generatePk )
+    * Since this class was generated with generatepk="true", no primary 
+    * key columns need to be specified.
+#end
+    *
+    * When the client invokes a create method, the EJB container invokes the ejbCreate method. 
+    * Typically, an ejbCreate method in an entity bean performs the following tasks: 
+    * <UL>
+    * <LI>Inserts the entity state into the database.</LI>
+    * <LI>Initializes the instance variables.</LI>
+    * <LI>Returns the primary key.</LI>
+    * </UL>
+    *
+#foreach( $column in $allColumns )
+    * @param ${column.variableName} the ${column.variableName} value
+#end
+#foreach($relationshipRole in $table.oneRelationshipRoles)
+    * @param $table.getVariableName($relationshipRole) CMR field
+#end
+    * @return the primary key of the new instance
+    *
+    * @ejb.create-method
+    */
+#set( $allCreateSignature = $table.getColumnAndRelationSignature($allColumns, $table.oneRelationshipRoles) )
+   public $table.pkClassName ejbCreate( $allCreateSignature ) throws javax.ejb.CreateException {
+      initialiseAuditInfo();
+#sequenceBlock()
+#guid()
+      // Set CMP fields
+#if(!$table.readOnly)
+#foreach($column in $allColumns)
+#if($column.variableName != "createdBy" && $column.variableName != "creationDate" && $column.variableName != "lastUpdatedBy" && $column.variableName != "lastUpdateDate")
+      ${column.setterName}($column.variableName);
+#end
+#end
+#end
+
+      
+      // EJB 2.0 spec says return null for CMP ejbCreate methods.
+      return null;
+   }
+
+   /**
+    * The container invokes thos method immediately after it calls ejbCreate. 
+    *
+#foreach( $column in $allColumns )
+    * @param ${column.variableName} the ${column.variableName} value
+#end
+#foreach($relationshipRole in $table.oneRelationshipRoles)
+    * @param $table.getVariableName($relationshipRole) CMR field
+#end
+    */
+   public void ejbPostCreate( $allCreateSignature ) throws javax.ejb.CreateException {
+#cmrSetters($table.oneRelationshipRoles)
+   }
+
+#end ## if( !($table.columns.length == $table.mandatoryColumns.length) )
+#if( ${plugin.dataobject} )
+   /**
+    * Gets a data object representing this instance
+    *
+    * @return a data object representing this instance
+    *
+    * @ejb.interface-method view-type="local"
+    */
+   public abstract $table.dataClassName getData(boolean recurse);
+
+   /**
+    * Gets a data object representing this instance
+    *
+    * @return a data object representing this instance
+    *
+    * @ejb.interface-method view-type="local"
+    */
+   public abstract $table.dataClassName getData();
+
+   /**
+    * Sets a data object representing this instance
+    *
+    * @param data a data object holding new values
+    *
+    * @ejb.interface-method view-type="local"
+    */
+   public abstract void setData( $table.dataClassName data );
+
+   /**
+    * Creates an instance based on a data object
+#if( $plugin.generatePk )
+    * Since this class was generated with generatepk="true", the fields
+    * corresponding to primary key columns will be ignored.
+#end
+    *
+    * When the client invokes a create method, the EJB container invokes the ejbCreate method. 
+    * Typically, an ejbCreate method in an entity bean performs the following tasks: 
+    * <UL>
+    * <LI>Inserts the entity state into the database.</LI>
+    * <LI>Initializes the instance variables.</LI>
+    * <LI>Returns the primary key.</LI>
+    * </UL>
+    *
+    * @param data the data object used to initialise the new instance
+    * @return the primary key of the new instance
+    *
+    * @ejb.create-method
+    */
+   public $table.pkClassName ejbCreate($table.dataClassName data) throws javax.ejb.CreateException {
+      initialiseAuditInfo();
+#if(!$table.readOnly)
+#foreach($column in $allColumns)
+#if($column.variableName != "createdBy" && $column.variableName != "creationDate" && $column.variableName != "lastUpdatedBy" && $column.variableName != "lastUpdateDate")
+      ${column.setterName}(data.${column.getterName}());
+#end
+#end
+#end
+      // EJB 2.0 spec says return null for CMP ejbCreate methods.
+      return null;
+   }
+
+   /**
+    * The container invokes this method immediately after it calls ejbCreate. 
+    *
+    * @param data the data object used to initialise the new instance
+    */
+   public void ejbPostCreate( $table.dataClassName data ) throws javax.ejb.CreateException {
+   /*
+#if(!$table.readOnly)
+#foreach( $relationshipRole in $table.relationshipRoles)
+      $table.getSetterName($relationshipRole)(data.${table.getGetterName($relationshipRole)}());
+#end
+#end
+   */
+   }
+#end ## if( ${plugin.dataobject} )
+
+    /**
+     * The container invokes this method before it removes the EJB object that 
+     * is currently associated with the instance.     
+     */  
+    public void ejbRemove() throws javax.ejb.RemoveException {
+        super.ejbRemove();
+    }                     
+
+public void setEntityContext(javax.ejb.EntityContext ctx) 
+{
+    super.setEntityContext(ctx);
+}
+
+protected void updateAuditInfo() 
+{
+        setLastUpdatedBy( ctx.getCallerPrincipal().getName() );
+        setLastUpdateDate(new java.sql.Timestamp(new java.util.Date().getTime()));
+}
+
+protected void initialiseAuditInfo() 
+{
+        setCreatedBy( ctx.getCallerPrincipal().getName() );
+        setCreationDate(new java.sql.Timestamp(new java.util.Date().getTime()));
+        updateAuditInfo();
+}
+
+#set( $classCode = "${plugin.name}-${table.sqlNameLowerCase}-class-code.txt" )
+#if($plugin.mergedir)
+#if($plugin.mergeFileExists($classCode))
+   // Merged code
+#parse("$classCode")
+#else
+   // No $plugin.mergedir/$classCode found.
+#end
+#else
+   // Custom code will be merged in here if a file called
+   // $classCode
+   // exists under the directory assigned with mergedir="somewhere"
+#end
+
+}

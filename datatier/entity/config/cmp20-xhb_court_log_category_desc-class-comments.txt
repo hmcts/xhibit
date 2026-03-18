@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByEventType(java.lang.Integer eventType)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT DISTINCT OBJECT (c) FROM XhbCourtLogCategoryDesc c, IN(c.xhbCourtLogCategories) b WHERE b.xhbCourtLogEventDesc.eventType = ?1 ORDERBY c.categoryDescId"
+ * 
+ * -------- end of custom finders --------

@@ -1,0 +1,22 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCaseId(java.lang.Integer caseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCaseOnList c WHERE (c.obsInd IS NULL OR c.obsInd = 'N') AND c.caseId = ?1"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByListId(java.lang.Integer listId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCaseOnList c WHERE (c.obsInd IS NULL OR c.obsInd = 'N') AND c.listId = ?1"
+ * 
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtSiteIdAndCourtRoomId(java.lang.Integer courtSiteId, java.lang.Integer courtRoomId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (c) FROM XhbCaseOnList c WHERE (c.obsInd IS NULL OR c.obsInd = 'N') AND (c.courtSiteId = ?1 OR ?1 IS NULL) AND (c.courtRoomId = ?2 OR ?2 IS NULL)"
+ *
+ * -------- end of custom finders --------
+  

@@ -1,0 +1,1 @@
+CREATE INDEX XHB_DOC_RECIP_DOCCTL_NAME_IDX ON xhb_document_recipient(doc_control_id, doc_recipient_name);

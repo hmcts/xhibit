@@ -1,0 +1,9 @@
+
+java -jar dist\jmsutil.jar -u t3://w2rzvddy02:9001,w2rzvddy02:9501 -d xhibit/jms/ExissMessageBrokerQueue -t test-data/exissmessagebrokerqueue/text-message.txt -p test-data/exissmessagebrokerqueue/test-message.properties -x ExissConnectionFactory -s
+
+
+
+
+
+
+

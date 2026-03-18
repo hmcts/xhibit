@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit"
+    xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified"
+    attributeFormDefault="unqualified"
+    version="1.1"
+    id="ListDistributionAddressTypes">
+
+    <xsd:include schemaLocation="ListDistributionBS7666-v1.xsd"/>
+    <xsd:include schemaLocation="ListDistributionCommonSimpleTypes-v1.xsd"/>
+
+	<xsd:simpleType name="AddressLineType">
+		<xsd:restriction base="RestrictedStringType">
+			<xsd:minLength value="1"/>
+			<xsd:maxLength value="35"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+
+    <xsd:complexType name="UKPostalAddressStructure">
+        <xsd:sequence>
+            <xsd:element name="Line" type="AddressLineType" minOccurs="2" maxOccurs="5"/>
+            <xsd:element name="PostCode" type="PostcodeType" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+
+
+</xsd:schema>

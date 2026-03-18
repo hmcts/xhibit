@@ -1,0 +1,8 @@
+<!--
+	  Uncomment if run-as role no longer used by method.
+      <security-role>
+         <description>Role added from config</description>
+         <role-name>XHBInternal</role-name>
+      </security-role>
+-->
+

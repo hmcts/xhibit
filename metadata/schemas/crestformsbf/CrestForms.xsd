@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<xs:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/crestformsbf" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/crestformsbf" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:include schemaLocation="CrestFormType.xsd"/>
+	<xs:complexType name="CrestFormType">
+		<xs:choice>
+			<xs:element name="CrestFormB" type="CrestFormBType"/>
+			<xs:element name="CrestFormC" type="CrestFormCType"/>
+			<xs:element name="CrestFormD" type="CrestFormDType"/>
+			<xs:element name="CrestFormE" type="CrestFormEType"/>
+			<xs:element name="CrestFormF" type="CrestFormFType"/>
+			<xs:element name="CrestFormFMisc" type="CrestFormFMiscType"/>
+		</xs:choice>
+	</xs:complexType>
+	<xs:element name="CrestForm" type="CrestFormType"/>
+</xs:schema>

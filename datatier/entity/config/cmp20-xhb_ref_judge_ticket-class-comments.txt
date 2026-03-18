@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findJudgeTicketsByJudgeId(java.lang.Integer judgeId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbRefJudgeTicket o WHERE o.judgeId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' OR o.obsInd = ' ')"
+ *
+ * -------- end of custom finders --------
+  

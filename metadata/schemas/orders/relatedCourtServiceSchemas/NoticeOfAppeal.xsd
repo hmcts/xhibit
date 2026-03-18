@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- *********************************************************************	-->
+<!-- Schema for Crown Court Notice for Appeal				-->
+<!-- *********************************************************************	-->
+<!-- *********************************************************************	-->
+<!-- Update History											-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version 1.1 - Draft 										-->
+<!-- Detail: Version update only								-->
+<!-- *********************************************************************	-->
+<!-- Updated by: Court Service								-->
+<!-- Version:1.0												-->
+<!-- Detail: Release											-->
+<!-- *********************************************************************	-->
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xsd:include schemaLocation="CourtService.xsd"/>
+	<xsd:annotation>
+		<xsd:appinfo xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcq="http://purl.org/terms/" xmlns:gms="http://www.govtalk.gov.uk/CM/gms">
+			<dc:creator>Court Service</dc:creator>
+			<dc:date>2003-02-21</dc:date>
+			<dc:identifier>NoticeOfAppeal</dc:identifier>
+			<dc:language>en</dc:language>
+			<dc:rights>
+				<dcq:copyright>Crown Copyright 2002</dcq:copyright>
+				<gms:SecurityClassification>Unclassified</gms:SecurityClassification>
+			</dc:rights>
+			<dc:subject>Notice of Appeal to the Crown Court</dc:subject>
+		</xsd:appinfo>
+	</xsd:annotation>
+	<xsd:complexType name="NoticeOfAppealStructure">
+		<xsd:sequence>
+			<xsd:element name="DocumentID" type="DocumentIDstructure"/>
+			<xsd:element name="IssuingCourtHouse" type="CourtHouseStructure"/>
+			<xsd:element name="CaseNumber" type="CaseNumberType"/>
+			<xsd:element name="Respondent" type="PersonStructure"/>
+			<xsd:element name="Appellant" type="DefendantStructure"/>
+			<xsd:element name="ExtentOfAppeal">
+				<xsd:simpleType>
+					<xsd:restriction base="xsd:string">
+						<xsd:enumeration value="conviction and sentence"/>
+						<xsd:enumeration value="conviction"/>
+						<xsd:enumeration value="sentence"/>
+					</xsd:restriction>
+				</xsd:simpleType>
+			</xsd:element>
+			<xsd:element name="DateOfAppeal" type="xsd:date"/>
+			<xsd:element name="Sentences">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="Sentence" type="SentenceStructure" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+			<xsd:element name="GroundsOfAppeal">
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:element name="GroundOfAppeal" type="xsd:string"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:element name="NoticeOfAppeal" type="NoticeOfAppealStructure"/>
+</xsd:schema>

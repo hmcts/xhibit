@@ -1,0 +1,31 @@
+CREATE TABLE XHBSTG_OPPOSER_DM
+(
+ OPP_ID                          	  	  NUMBER(8) NOT NULL,
+ ADDR1                                    VARCHAR2(30),
+ ADDR2                                    VARCHAR2(30),
+ ADDR3                                    VARCHAR2(30),
+ ADDR4                                    VARCHAR2(30),
+ POSTCODE                                 VARCHAR2(8),
+ TEL_NO                                   VARCHAR2(14),
+ TOWN                                     VARCHAR2(30),
+ COUNTY                                   VARCHAR2(30),
+ OBS_IND                                  VARCHAR2(1),
+ FAX_NO                                   VARCHAR2(14),
+ CPS_CODE                                 VARCHAR2(4),
+ TITLE                                    VARCHAR2(25),
+ FORENAME1                                VARCHAR2(35),
+ FORENAME2                                VARCHAR2(35),
+ INITIALS                                 VARCHAR2(4),
+ SURNAME                                  VARCHAR2(35),
+ DX_REF                                   VARCHAR2(35),
+ OPP_EMAIL                                VARCHAR2(255),
+ OPP_EMAIL_SECURE                         VARCHAR2(255),
+ CREST_COURT_ID                           VARCHAR2(3 BYTE),
+ XHIBIT_COURT_ID                          VARCHAR2(3 BYTE), 
+ XHIBIT_ETL_STATUS                        CHAR(1 BYTE), 
+ XHIBIT_LOADED_DATE                       DATE DEFAULT SYSDATE, 
+ XHIBIT_ENRICH_DATE                       DATE, 
+ XHIBIT_ETL_DATE                          DATE, 
+ XHIBIT_ETL_ERR_MESSAGE                   VARCHAR2(500 BYTE)
+)
+/

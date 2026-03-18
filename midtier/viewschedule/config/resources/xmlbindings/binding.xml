@@ -1,0 +1,141 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE mapping PUBLIC "-//EXOLAB/Castor Object Mapping DTD Version 1.0//EN" "http://castor.exolab.org/mapping.dtd">
+
+<mapping>
+
+  <description>Castor mapping for daily list</description>
+
+  <!-- Daily list value object -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.DailyListValue">
+   <map-to xml="DailyList"/>
+    <field name="documentValue"><bind-xml name="DocumentID" node="element"/></field>
+    <field name="listValue"><bind-xml name="ListHeader" node="element"/></field>
+    <field name="courtValue"><bind-xml name="CrownCourt" node="element"/></field>
+    <field name="courtSiteValues"><bind-xml name="CourtList" node="element" location="CourtLists"/></field>
+  </class>
+
+  <!-- Court value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.CourtValue">
+    <map-to xml="DailyList"/>
+    <field name="courtHouseType"><bind-xml name="CourtHouseType" node="element"/></field>
+    <field name="courtHouseCode"><bind-xml name="CourtHouseCode" node="element"/></field>
+    <field name="courtHouseName"><bind-xml name="CourtHouseName" node="element"/></field>
+    <field name="address"><bind-xml name="CourtHouseAddress" node="element"/></field>
+  </class>
+
+  <!-- List value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.ListValue">
+    <field name="listCategory"><bind-xml name="ListCategory" node="element"/></field>
+    <field name="startDate"><bind-xml name="StartDate" node="element"/></field>
+    <field name="listVersion"><bind-xml name="Version" node="element"/></field>
+    <field name="printRef"><bind-xml name="CrestprintRef" node="element"/></field>
+    <field name="publishedTime"><bind-xml name="PublishedTime" node="element"/></field>
+    <field name="crestListId"><bind-xml name="CrestlistID" node="element"/></field>
+  </class>
+
+  <!-- Document value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.DocumentValue">
+    <field name="documentName"><bind-xml name="DocumentName" node="element"/></field>
+    <field name="uniqueID"><bind-xml name="UniqueID" node="element"/></field>
+    <field name="documentType"><bind-xml name="DocumentType" node="element"/></field>
+  </class>
+
+  <!-- Address Basic Value -->
+  <class name="uk.gov.courtservice.xhibit.business.entities.xhb_address.XhbAddressBasicValue">
+    <field name="address1"><bind-xml name="Line" node="element" /></field>
+    <field name="address2"><bind-xml name="Line" node="element" /></field>
+    <field name="address3"><bind-xml name="Line" node="element" /></field>
+    <field name="address4"><bind-xml name="Line" node="element" /></field>
+    <field name="postcode"><bind-xml name="PostCode" node="element" /></field>
+  </class>
+
+  <!-- Court Site Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.CourtSiteValue">
+    <field name="courtHouseValue"><bind-xml name="CourtHouse" node="element"/></field>
+    <field name="sittingValues"><bind-xml name="Sitting" node="element" location="Sittings"/></field>
+  </class>
+
+  <!-- Court House Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.CourtHouseValue">
+    <field name="courtHouseType"><bind-xml name="CourtHouseType" node="element"/></field>
+    <field name="crestCourtId"><bind-xml name="CourtHouseCode" node="element"/></field>
+    <field name="courtHouseName"><bind-xml name="CourtHouseName" node="element"/></field>
+    <field name="address"><bind-xml name="CourtHouseAddress" node="element"/></field>
+  </class>
+
+  <!-- Sitting Value -->
+ <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.SittingValue">
+   <field name="courtRoomDisplayName"><bind-xml name="CourtRoomNumber" node="element"/></field>
+   <field name="sittingSeqNo"><bind-xml name="SittingSequenceNo" node="element"/></field>
+   <field name="sittingAt"><bind-xml name="SittingAt" node="element"/></field>
+   <field name="floating"><bind-xml name="SittingPriority" node="element"/></field>
+   <field name="sittingNote"><bind-xml name="SittingNote" node="element"/></field>
+   <field name="judiciaryValue"><bind-xml name="Judiciary" node="element"/></field>
+   <field name="scheduledValues"><bind-xml name="Hearing" node="element" location="Hearings"/></field>
+  </class>
+
+  <!-- Judiciary Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.JudiciaryValue">
+    <field name="judgeValue"><bind-xml name="Judge" node="element"/></field>
+    <field name="justiceList"><bind-xml name="Justice" node="element"/></field>
+  </class>
+
+  <!-- Judge Value -->
+  <class name="uk.gov.courtservice.xhibit.business.entities.xhb_ref_judge.XhbRefJudgeBasicValue">
+    <field name="fullListTitle1"><bind-xml name="CitizenNameFullTitle" node="element"/></field>
+    <field name="title"><bind-xml name="CitizenNameTitle" node="element"/></field>
+    <field name="firstName"><bind-xml name="CitizenNameForename" node="element"/></field>
+    <field name="middleName"><bind-xml name="CitizenNameSuffix" node="element"/></field>
+    <field name="surname"><bind-xml name="CitizenNameSurname" node="element"/></field>
+  </class>
+
+  <!-- Justice Value -->
+ <class name="uk.gov.courtservice.xhibit.business.entities.xhb_ref_justice.XhbRefJusticeBasicValue">
+   <field name="title"><bind-xml name="CitizenNameTitle" node="element"/></field>
+   <field name="justiceName"><bind-xml name="CitizenNameSurname" node="element"/></field>
+  </class>
+
+  <!-- Scheduled Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.ScheduledValue">
+    <field name="sequenceNo"><bind-xml name="HearingSequenceNumber" node="element"/></field>
+    <field name="hearingDetails"><bind-xml name="HearingDetails" node="element"/></field>
+    <field name="notBeforeTime"><bind-xml name="TimeMarkingNote" node="element"/></field>
+    <field name="caseTypeAndNumber"><bind-xml name="CaseNumber" node="element"/></field>
+    <field name="caseTitle"><bind-xml name="CaseTitle" node="element"/></field>    
+    <field name="prosRef"><bind-xml name="ProsecutingReference" node="element" location="Prosecution"/></field>
+    <field name="refCourtBasicValue"><bind-xml name="CommittingCourt" node="element"/></field>
+    <field name="listNote"><bind-xml name="ListNote" node="element"/></field>
+    <field name="defendants"><bind-xml name="Defendant" node="element" location="Defendants"/></field>
+  </class>
+
+  <!-- Hearing Details Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.HearingDetailsValue">
+    <field name="hearingType"><bind-xml name="HearingType" node="attribute"/></field>
+    <field name="hearingDesc"><bind-xml name="HearingDescription" node="element"/></field>
+    <field name="hearingDate"><bind-xml name="HearingDate" node="element"/></field>
+  </class>
+
+  <!-- Ref Court Value -->
+  <class name="uk.gov.courtservice.xhibit.business.entities.xhb_ref_court.XhbRefCourtBasicValue">
+    <field name="courtType"><bind-xml name="CourtHouseType" node="element"/></field>
+    <field name="courtShortName"><bind-xml name="CourtHouseCode" node="element"/></field>
+    <field name="courtFullName"><bind-xml name="CourtHouseName" node="element"/></field>
+  </class>
+
+  <!-- Defendant Details Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.DefendantDetailsValue">
+    <field name="personDetailsValue"><bind-xml name="Name" node="element" location="PersonalDetails"/></field>
+    <field name="masked"><bind-xml name="IsMasked" node="element"/></field>
+    <field name="maskedName"><bind-xml name="MaskedName" node="element"/></field>
+	<field name="piturn"><bind-xml name="URN" node="element"/></field>
+  </class>
+
+  <!-- Person Details Value -->
+  <class name="uk.gov.courtservice.xhibit.business.vos.services.dailylist.PersonDetailsValue">
+    <field name="firstName"><bind-xml name="CitizenNameForename" node="element"/></field>
+    <field name="middleName"><bind-xml name="CitizenNameSuffix" node="element"/></field>
+    <field name="surname"><bind-xml name="CitizenNameSurname" node="element"/></field>
+  </class>
+
+</mapping>

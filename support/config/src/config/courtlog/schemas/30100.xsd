@@ -1,0 +1,46 @@
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!-- Short Adjourn Definition -->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E30100_Short_Adjourn_Options" minOccurs="0"/>
+				<xs:element ref="Listed_Def_On_Case_Ids" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E30100_Short_Adjourn_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E30100_SAO_Type"/>
+				<xs:element name="E30100_SAO_Time" type="xs:string"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E30100_SAO_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E30100_Case_released_until"/>
+				<xs:enumeration value="E30100_Case_adjourned_until"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+	<xs:element name="Listed_Def_On_Case_Ids">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Def_On_Case_Id" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Def_On_Case_Id">
+			<xs:complexType>
+				<xs:sequence>
+					<xs:element name="doc_id" type="xs:integer" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:complexType>
+	</xs:element>		
+</xs:schema>

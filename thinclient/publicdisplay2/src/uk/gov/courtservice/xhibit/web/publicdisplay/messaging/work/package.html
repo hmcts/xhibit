@@ -1,0 +1,16 @@
+<html>
+	<body>
+		<p>
+This package consists of the thread pool and associated classes used in public display for processing events. Most of the classes are generic and not specific to public display and hence can be reused outside public display.
+		</p>
+		<p>
+<code><b>ThreadPool</b></code> is responsible managing the worker threads. A thread pool can be initialized with the number of worker threads in the pool. You can optionally specify a timeout period for getting a worker thread from the pool when all the workers in the pool arwe currently engaged. The <code>scheduleWork(Runnable work)</code> method should be called to schedule a new instance of the work to the thread pool. The logic for the work should be implemented in the <code>run</code> method of the <code>Runnable</code>. Once you are done with the thread pool, you should call the <code>shutdown</code> method to make sure that all the worker threads in the pool return in a disciplined manner.
+		</p>
+		<p>
+<code><b>EventWorkManager</b></code> is more specific to public display. It is responsible for popping an event from an event store and scheduling it to be processed using a thread pool. An instance of this class is initialized with the underlying event store and number of workers to be used in the thread pool. You need to call the <code>start</code> method to start event processing. Once you are done with the event work manager, you should call the <code>shutdown</code> method to gracefully shutdown the underlying thread pool.
+		</p>
+		<p>
+<code><b>EventWork</b></code> class represents a unit of work involved in processing a public display event. This is constructed by the <code>EventWorkManager</code> when a public display event is popped from the event store. This instance is then scheduled to be executed using the underlying thread pool
+		</p>
+	</body>
+</html>

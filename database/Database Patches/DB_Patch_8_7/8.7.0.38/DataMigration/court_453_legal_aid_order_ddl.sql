@@ -1,0 +1,31 @@
+CREATE TABLE XHBSTG_LEGAL_AID_ORDER_DM
+(
+LEO_ID                                  NUMBER (8) NOT NULL,
+CASE_TYPE                               VARCHAR2(1) NOT NULL,
+PARTY_TYPE                              VARCHAR2(1) NOT NULL,
+COL_IND                                 NUMBER (2) NOT NULL,
+SUB_OPP_ID                              NUMBER (8) NOT NULL,
+CASE_NO                                 NUMBER (8) NOT NULL,
+LA_DATE                                 DATE     ,
+NO_OF_COUNSEL                           NUMBER (1)   ,
+PSD_CROWN_CT_IND                        VARCHAR2(1)   ,
+DATE_REFUSED_SUB_OPP                    DATE     ,
+NO_OF_QC                                NUMBER (1)   ,
+REFUSAL_COURT                           VARCHAR2(1)   ,
+REFUSAL_DATE                            DATE     ,
+LA_RETURNED                             VARCHAR2(1)   ,
+LA_REMITTED                             VARCHAR2(1)   ,
+REVOC_REASON                            VARCHAR2(3)   ,
+REVOC_DATE                              DATE     ,
+NO_OF_SOLS                              NUMBER (1)   ,
+PSD_LA_REF                              VARCHAR2(20)   ,
+PRINT_JOB_ID                            NUMBER (8)   ,
+CREST_COURT_ID                          VARCHAR2(3),
+XHIBIT_COURT_ID                         VARCHAR2(3),
+XHIBIT_ETL_STATUS                       CHAR(1),
+XHIBIT_LOADED_DATE                      DATE DEFAULT SYSDATE,
+XHIBIT_ENRICH_DATE                      DATE,
+XHIBIT_ETL_DATE                         DATE,
+XHIBIT_ETL_ERR_MESSAGE                  VARCHAR2(500)
+)
+/

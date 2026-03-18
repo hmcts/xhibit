@@ -1,0 +1,12 @@
+USE CSDBPRD1;
+
+-- Brighton Daily List
+INSERT INTO XHB_DISP_MGR_URL (DESCRIPTION,URL,COURT_SITE_ID) VALUES ('BRIGHTON - Daily List - ENGLISH','pd://document:64/DailyList:2759,2760,u',1796);
+-- Brighton Jury
+INSERT INTO XHB_DISP_MGR_URL (DESCRIPTION,URL,COURT_SITE_ID) VALUES ('BRIGHTON - Jury Current Status - ENGLISH','pd://document:64/JuryCurrentStatus:2759,2760,u',1796);
+-- Summary by name
+INSERT INTO XHB_DISP_MGR_URL (DESCRIPTION,URL,COURT_SITE_ID) VALUES ('BRIGHTON - Summary By Name - ENGLISH','pd://document:64/SummaryByName:2759,2760,u',1796);
+-- All Case Status
+INSERT INTO XHB_DISP_MGR_URL (DESCRIPTION,URL,COURT_SITE_ID) VALUES ('BRIGHTON - All Case Status - ENGLISH','pd://document:64/AllCaseStatus:2759,2760,u',1796);
+-- All Court Status
+INSERT INTO XHB_DISP_MGR_URL (DESCRIPTION,URL,COURT_SITE_ID) VALUES ('BRIGHTON - All Court Status - ENGLISH','pd://document:64/AllCourtStatus:2759,2760,u',1796);

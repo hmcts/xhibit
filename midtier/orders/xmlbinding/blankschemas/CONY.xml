@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+D:\projects\XHIBIT\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<YOIOrder>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode>000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>yes</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>1967-08-13</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="false">
+						<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameSurname>A</apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>1967-08-13</SignedDate>
+			</OrderHeader>
+			<ConvictionDate>1967-08-13</ConvictionDate>
+			<CommittingCourt selected="false">
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode>000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</CommittingCourt>
+			<CustodialSentence>
+				<TermType selected="false">Before</TermType>
+				<Term>
+					<Years>99</Years>
+					<Months>0</Months>
+					<Days>400</Days>
+				</Term>
+				<ExtendedSentence selected="false">
+					<ExtensionPeriod>
+						<Years>99</Years>
+						<Months>0</Months>
+						<Days>400</Days>
+					</ExtensionPeriod>
+					<SentenceType>Consecutive</SentenceType>
+				</ExtendedSentence>
+				<ImprisonmentType>life</ImprisonmentType>
+				<Section91TermType selected="false">section91life</Section91TermType>
+			</CustodialSentence>
+			<ChapterIII>yes</ChapterIII>
+			<ReturnToImprisonment selected="false">
+				<OffenceDate>1967-08-13</OffenceDate>
+				<SentencingCourt>
+					<Date>1967-08-13</Date>
+					<CourtHouse>
+						<CourtHouseType>Magistrates Court</CourtHouseType>
+						<CourtHouseCode>000</CourtHouseCode>
+						<CourtHouseName>String</CourtHouseName>
+					</CourtHouse>
+				</SentencingCourt>
+				<ReturnPeriod>
+					<PeriodInMonths>4096</PeriodInMonths>
+					<Max116>yes</Max116>
+				</ReturnPeriod>
+				<TotalPeriodOfReturn selected="false">4096</TotalPeriodOfReturn>
+			</ReturnToImprisonment>
+			<Section28 selected="false">
+				<DiscretionaryRelevantPart>
+					<Years>99</Years>
+					<Months>0</Months>
+					<Days>400</Days>
+				</DiscretionaryRelevantPart>
+			</Section28>
+			<Section86>yes</Section86>
+			<AdditionalNotes selected="false"/>
+			<AssociatedCases>
+				<AssociatedCase selected="false">A00000000</AssociatedCase>
+			</AssociatedCases>
+		</YOIOrder>
+	</OrderData>
+	<State/>
+	<SaveNotes>String</SaveNotes>
+</Order>

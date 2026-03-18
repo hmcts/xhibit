@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByCourtId(java.lang.Integer courtId, java.lang.String category)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbRefHearingType o WHERE o.courtId = ?1 AND o.category = ?2 AND (o.obsInd IS NULL OR o.obsInd = 'N')"
+ *
+ * -------- end of custom finders --------
+  

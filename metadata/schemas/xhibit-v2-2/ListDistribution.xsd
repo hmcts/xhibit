@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema targetNamespace="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2" id="ListDistribution">
+    <xsd:include schemaLocation="ListDistributionCourtService.xsd"/>
+    <xsd:complexType name="CaseSummariesStructure">
+        <xsd:sequence>
+            <xsd:element name="CaseSummary" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="CaseNumber" type="CaseNumberType"/>
+                        <xsd:element name="Hearing" type="HearingTypeStructure"/>
+                        <xsd:element name="DefendantSummaries" type="DefendantSummariesStructure"/>
+                        <xsd:element name="ProsecutionSummary" type="ProsecutionSummaryStructure" minOccurs="0"/>
+                        <xsd:element name="NoOfDefsOnCase" type="xsd:int"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="id" type="xsd:string" use="required"/>
+                    <xsd:attribute name="type" type="CaseSummaryType" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="CourtHouseSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="CourtHouseCode">
+                <xsd:complexType>
+                    <xsd:simpleContent>
+                        <xsd:extension base="CourtHouseCodeType">
+                            <xsd:attribute name="CourtHouseShortName" use="optional">
+                                <xsd:simpleType>
+                                    <xsd:restriction base="xsd:string">
+                                        <xsd:pattern value="[A-Z]{3,5}"/>
+                                    </xsd:restriction>
+                                </xsd:simpleType>
+                            </xsd:attribute>
+                        </xsd:extension>
+                    </xsd:simpleContent>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="CourtHouseName" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DefendantSummariesStructure">
+        <xsd:sequence>
+            <xsd:element name="DefendantSummary" type="DefendantSummaryStructure" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="DefendantSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="CitizenNameForename" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="CitizenNameSurname" type="xsd:string"/>
+            <xsd:element name="PrisonerID" type="PrisonerIDtype" minOccurs="0"/>
+            <xsd:element name="PrisonLocation" type="PrisonLocationStructure" minOccurs="0"/>
+            <xsd:element name="CustodyStatus" type="BailStatusType" minOccurs="0"/>
+            <xsd:element name="SolicitorRef" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="PTIURN" type="PTIURNtype" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="FixtureSummariesStructure">
+        <xsd:sequence>
+            <xsd:element name="FixtureSummary" type="FixtureSummaryStructure" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="HearingType" type="HearingTypeType"/>
+        <xsd:attribute name="CRESTListSequence" type="xsd:integer"/>
+    </xsd:complexType>
+    <xsd:complexType name="FixtureSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="FixedDate" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="Notes" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CaseSummaries" type="CaseSummariesStructure"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="HearingSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="HearingSequenceNumber" type="xsd:int"/>
+            <xsd:element name="HearingDetails" type="ListDistributionHearingTypeStructure"/>
+            <xsd:element name="CRESThearingID" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="TimeMarkingNote" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CaseNumber" type="CaseNumberType"/>
+            <xsd:element name="ProsecutionSummary" type="ProsecutionSummaryStructure" minOccurs="0"/>
+            <xsd:element name="CommittingCourtSummary" type="CourtHouseSummaryStructure" minOccurs="0"/>            
+            <xsd:element name="ListNote" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="NumberOfDefendants" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="DefendantSummaries" type="DefendantSummariesStructure"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="type" type="HearingSummaryType" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionCasesStructure">
+        <xsd:sequence>
+            <xsd:element name="Case" maxOccurs="unbounded">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="CaseNumber" type="CaseNumberType"/>
+                        <xsd:element name="CaseArrivedFrom" minOccurs="0">
+                            <xsd:complexType>
+                                <xsd:choice>
+                                    <xsd:element name="OriginatingCourt" type="CourtHouseStructure"/>
+                                    <xsd:element name="Section53" type="YesNoType"/>
+                                </xsd:choice>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="Hearing" type="HearingTypeStructure" minOccurs="0"/>
+                        <xsd:element name="Defendants">
+                            <xsd:complexType>
+                                <xsd:sequence>
+                                    <xsd:element name="Defendant" type="ListDistributionDefendantStructure" minOccurs="0" maxOccurs="unbounded"/>
+                                </xsd:sequence>
+                            </xsd:complexType>
+                        </xsd:element>
+                        <xsd:element name="Prosecution" type="ListDistributionProsecutionStructure" minOccurs="0"/>
+                        <xsd:element name="AppealCaseDescription" type="xsd:string" minOccurs="0"/>
+                        <xsd:element name="MethodOfInstigation" type="MethodOfInstigationType" minOccurs="0"/>
+                        <xsd:element name="DateOfInstigation" type="xsd:date" minOccurs="0"/>
+                        <xsd:element name="CaseClassNumber" type="xsd:positiveInteger" minOccurs="0"/>
+                    </xsd:sequence>
+                    <xsd:attribute name="id" type="xsd:string" use="required"/>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionDefenceStructure">
+        <xsd:sequence>
+            <xsd:element name="Solicitor" type="ListDistributionSolicitorStructure" minOccurs="0" maxOccurs="unbounded"/>
+            <xsd:element name="Advocate" type="AdvocateStructure" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionDefendantStructure">
+        <xsd:complexContent>
+            <xsd:extension base="PersonStructure">
+                <xsd:sequence>
+                    <xsd:element name="ASNs" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="ASN" type="ASnumberType" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="DefendantNumber" type="xsd:int" minOccurs="0"/>
+                    <xsd:element name="CRESTdefendantID" type="xsd:int" minOccurs="0"/>
+                    <xsd:element name="PNCnumber" type="PNCnumberType" minOccurs="0"/>
+                    <xsd:element name="URN" type="URNtype" minOccurs="0"/>
+                    <xsd:element name="CROnumber" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="MagistratesCourtRefNumber" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="PrisonerID" type="PrisonerIDtype" minOccurs="0"/>
+                    <xsd:element name="PrisonLocation" type="PrisonLocationStructure" minOccurs="0"/>
+                    <xsd:element name="CustodyStatus" type="BailStatusType" minOccurs="0"/>
+                    <xsd:element name="Counsel" type="ListDistributionDefenceStructure" minOccurs="0" maxOccurs="unbounded"/>
+                    <xsd:element name="Charges" minOccurs="0">
+                        <xsd:complexType>
+                            <xsd:sequence>
+                                <xsd:element name="Charge" type="ChargeStructure" maxOccurs="unbounded"/>
+                            </xsd:sequence>
+                            <xsd:attribute name="NumberOfCharges" type="xsd:integer" use="optional"/>
+                        </xsd:complexType>
+                    </xsd:element>
+                    <xsd:element name="AdditionalNotes" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+                <xsd:attribute name="id" type="xsd:string" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionFixtureStructure">
+        <xsd:sequence>
+            <xsd:element name="FixedDate" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="Notes" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Cases" type="ListDistributionCasesStructure"/>
+            <xsd:element name="LinkedCases" type="LinkedCasesStructure" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionFixtuersStructure">
+        <xsd:sequence>
+            <xsd:element name="Fixture" type="ListDistributionFixtureStructure" maxOccurs="unbounded"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+        <xsd:attribute name="HearingType" type="HearingTypeType"/>
+        <xsd:attribute name="CRESTListSequence" type="xsd:integer"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionListHeaderStructure">
+        <xsd:complexContent>
+            <xsd:extension base="ListHeaderStructure">
+                <xsd:sequence>
+                    <xsd:element name="Duration" type="xsd:int" minOccurs="0"/>
+                </xsd:sequence>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionHearingStructure">
+        <xsd:sequence>
+            <xsd:element name="HearingSequenceNumber" type="xsd:int"/>
+            <xsd:element name="HearingDetails" type="ListDistributionHearingTypeStructure"/>
+            <xsd:element name="CRESThearingID" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="TimeMarkingNote" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="CaseNumber" type="CaseNumberType"/>
+            <xsd:element name="Prosecution" type="ListDistributionProsecutionStructure" minOccurs="0"/>
+            <xsd:element name="CommittingCourt" type="CourtHouseStructure" minOccurs="0"/>
+            <xsd:element name="ListNote" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="NumberOfDefendants" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="Defendants" minOccurs="0">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Defendant" type="ListDistributionDefendantStructure" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+            <xsd:element name="Respondent" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionHearingTypeStructure">
+        <xsd:complexContent>
+            <xsd:extension base="HearingTypeStructure">
+                <xsd:attribute name="CRESTListSequence" type="xsd:integer" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionProsecutionStructure">
+        <xsd:complexContent>
+            <xsd:extension base="ProsecutionStructure">
+                <xsd:sequence>
+                    <xsd:element name="Solicitor" type="ListDistributionSolicitorStructure" minOccurs="0" maxOccurs="unbounded"/>
+                </xsd:sequence>
+                <xsd:attribute name="id" type="xsd:string" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionSittingStructure">
+        <xsd:sequence>
+            <xsd:element name="CourtRoomNumber" type="xsd:int"/>
+            <xsd:element name="SittingSequenceNo" type="xsd:string"/>
+            <xsd:element name="SittingAt" type="xsd:time" minOccurs="0"/>
+            <xsd:element name="SittingPriority" type="SittingPriorityType"/>
+            <xsd:element name="SittingNote" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Judiciary" type="JudiciaryStructure"/>
+            <xsd:element name="Hearings">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="Hearing" type="ListDistributionHearingStructure" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="ListDistributionSolicitorStructure">
+        <xsd:complexContent>
+            <xsd:extension base="SolicitorStructure">
+                <xsd:sequence>
+                    <xsd:element name="SolicitorRef" type="xsd:string" minOccurs="0"/>
+                    <xsd:element name="FirmName" type="xsd:string" minOccurs="0"/>
+                </xsd:sequence>
+                <xsd:attribute name="id" type="xsd:string" use="required"/>
+            </xsd:extension>
+        </xsd:complexContent>
+    </xsd:complexType>
+    <xsd:complexType name="ListHeaderSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="Duration" type="xsd:int" minOccurs="0"/>
+            <xsd:element name="StartDate" type="xsd:date"/>
+            <xsd:element name="EndDate" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="Version" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="ProsecutionSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="OrganisationName" type="xsd:string"/>
+            <xsd:element name="ProsecutingReference" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="SolicitorRef" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="RecipientStructure">
+        <xsd:choice>
+            <xsd:element name="Solicitor" type="ListDistributionSolicitorStructure"/>
+            <xsd:element name="Defendant" type="ListDistributionDefendantStructure"/>
+            <xsd:element name="Prosecution" type="ListDistributionProsecutionStructure"/>
+        </xsd:choice>
+    </xsd:complexType>
+    <xsd:complexType name="SittingSummaryStructure">
+        <xsd:sequence>
+            <xsd:element name="CourtRoomNumber" type="xsd:int"/>
+            <xsd:element name="SittingSequenceNo" type="xsd:string"/>
+            <xsd:element name="SittingAt" type="xsd:time" minOccurs="0"/>
+            <xsd:element name="SittingPriority" type="SittingPriorityType"/>
+            <xsd:element name="SittingNote" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="Judiciary" type="JudiciaryStructure"/>
+            <xsd:element name="HearingSummaries">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element name="HearingSummary" type="HearingSummaryStructure" minOccurs="0" maxOccurs="unbounded"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:sequence>
+        <xsd:attribute name="id" type="xsd:string" use="required"/>
+    </xsd:complexType>
+    <xsd:complexType name="WarnedForCourtsStructure">
+        <xsd:sequence>
+            <xsd:sequence>
+                <xsd:element name="WarnedForCourt" type="xsd:string" maxOccurs="unbounded"/>
+            </xsd:sequence>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="WarnedListDetailStructure">
+        <xsd:sequence>
+            <xsd:element name="Text" type="xsd:string" minOccurs="3" maxOccurs="3"/>
+            <xsd:element name="DeadLineDate" type="xsd:date" minOccurs="0"/>
+            <xsd:element name="DeadlineTime" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:simpleType name="CaseSummaryType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Prosecution"/>
+            <xsd:enumeration value="Defendant"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="SittingPriorityType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="T"/>
+            <xsd:enumeration value="F"/>
+            <xsd:enumeration value="R"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="HearingSummaryType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Prosecution"/>
+            <xsd:enumeration value="Defendant"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType name="PTIURNtype">
+        <xsd:restriction base="xsd:string">
+            <xsd:pattern value="[A-Za-z0-9]{4}[0-9]{7}"/>
+        </xsd:restriction>
+    </xsd:simpleType>    
+</xsd:schema>

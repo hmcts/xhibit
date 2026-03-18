@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--  edited with XMLSPY v5 rel. 2 U  (http://www.xmlspy.com) by Electronic Data Systems LTD (Electronic Data Systems LTD) -->
+<Order xmlns="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xmlns:bs7666="http://www.govtalk.gov.uk/people/bs7666" xmlns:apd="http://www.govtalk.gov.uk/people/AddressAndPersonalDetails" xmlns:cs="http://www.courtservice.gov.uk/schemas/courtservice" xmlns:nar="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders/narrative" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ord="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders" xsi:schemaLocation="http://www.courtservice.gov.uk/schemas/courtservice/xhibit/orders
+F:\XHIBIT\XHIBIT_8_2\metadata\schemas\orders\Orders.xsd">
+	<OrderData>
+		<MonetaryOrder>
+			<OrderHeader>
+				<OrderType>String</OrderType>
+				<CourtHouse>
+					<CourtHouseType>Magistrates Court</CourtHouseType>
+					<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+					<CourtHouseName>String</CourtHouseName>
+				</CourtHouse>
+				<CaseNumber>A00000000</CaseNumber>
+				<Defendant>
+					<PersonalDetails>
+						<IsMasked>no</IsMasked>
+					</PersonalDetails>
+				</Defendant>
+				<OrderDate>0001-01-01</OrderDate>
+				<WelshTranslation>no</WelshTranslation>
+				<SignedBy>
+					<CourtOfficer selected="true">
+						<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+						<apd:CitizenNameForename> </apd:CitizenNameForename>
+						<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+					</CourtOfficer>
+					<Judiciary selected="false">
+						<Judge>
+							<apd:CitizenNameTitle> </apd:CitizenNameTitle>
+							<apd:CitizenNameForename> </apd:CitizenNameForename>
+							<apd:CitizenNameSurname> </apd:CitizenNameSurname>
+						</Judge>
+					</Judiciary>
+				</SignedBy>
+				<SignedDate>0001-01-01</SignedDate>
+			</OrderHeader>
+			<CollectionCentre>
+						<CollectionCentreName> </CollectionCentreName>
+			</CollectionCentre>
+			<MOCommittingMagsCourt selected="false">
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</MOCommittingMagsCourt>
+			<MOCollectingMagsCourt selected="false">
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</MOCollectingMagsCourt>
+			<!--<MOSupervisingMagsCourt selected="false">
+				<CourtHouseType>Magistrates Court</CourtHouseType>
+				<CourtHouseCode CourtHouseShortName="AAAAA">000</CourtHouseCode>
+				<CourtHouseName>String</CourtHouseName>
+			</MOSupervisingMagsCourt>-->
+			<CollectionOrderMade>no</CollectionOrderMade>
+			<SentenceDate>0001-01-01</SentenceDate>
+			<InCustody>no</InCustody>
+			<ParentGuardianName> </ParentGuardianName>
+			<PaymentRateValue> </PaymentRateValue>
+			<AdditionalDetails> </AdditionalDetails>
+			<MonetaryDisposals>
+				<MonetaryDisposalsList> </MonetaryDisposalsList>
+			</MonetaryDisposals>
+			<MonetaryTotals>
+				<MonetaryTotalsList> </MonetaryTotalsList>
+			</MonetaryTotals>
+		</MonetaryOrder>
+	</OrderData>
+	<State/>
+	<SaveNotes> </SaveNotes>
+</Order>

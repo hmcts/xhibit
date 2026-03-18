@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="20610.xsd">
+	<id>20610</id>
+	<type>20610</type>
+	<E20610_Appeal_Judgement_Options>
+		<E20610_AJO_Type>E20610_Appeal_against_sentence_allowed</E20610_AJO_Type>
+	</E20610_Appeal_Judgement_Options>
+</event>

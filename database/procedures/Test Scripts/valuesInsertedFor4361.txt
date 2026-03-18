@@ -1,0 +1,10 @@
+insert into xhb_ref_chamber(obs_ind, is_global, dx_ref, location_code, firm_name, address_id, court_id, clerk_name)
+VALUES ('N','Y','aref123',01, 'TEST 4361', 530315, 1, 'BOB')
+
+				INSERT INTO xhb_ref_legal_representative(FIRST_NAME, MIDDLE_NAME, SURNAME, TITLE, INITIALS, LEGAL_REP_TYPE, COURT_ID, OBS_IND )
+				VALUES ('4361firstName', '4361middle', '4361 sur','Mr', 'AB', 'A', 1, 'N' );
+
+INSERT INTO xhb_ref_advocate(IS_GLOBAL,  CREST_CHAMBER_ID, OBS_IND,  ADV_TYPE_IND, REF_LEGAL_REP_ID, REF_CHAMBER_ID)
+				VALUES('Y', v_ref_advocate_val.CREST_CHAMBER_ID, 'N',  'N', 1003403, 151648 );
+				
+				commit;

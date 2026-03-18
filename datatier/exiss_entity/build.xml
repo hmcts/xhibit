@@ -1,0 +1,177 @@
+<?xml version="1.0"?>
+
+<project basedir="." default="all" name="Exiss">
+
+    <description>
+        The CJIT entity layer.  Custom finders, methods and database column
+        types (e.g. Clob's) can be defined in files in the directory "./config".
+
+        File Name Formats:
+        Custom finders:       "cmp20-xxx_xxx_xxx-class-comments.txt"
+        Custom methods:       "cmp20-xxx_xxx_xxx-class-code.txt"
+        Custom columns types: "cmp20-xxx_xxx_xxx-yyy_yyy_yyy-accessor-comments.txt"
+
+        Where "xxx_xxx_xxx" is the associated table, and yyy_yyy_yyy is the
+        associated column (only applicable for custom column data types.
+
+        Examples:
+        Custom finder:       "cmp20-xhb_court_log_entry-class-comments.txt"
+        Custom method:       "cmp20-xhb_court_log_entry-class-code.txt"
+        Custom columns type: "cmp20-xhb_court_log_entry-log_entry_xml-accessor-comments.txt"
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.entity.bean"          value="marker" />
+    <property name="project.type.requires.compilation" value="marker" />
+
+    <!--
+     =======================================================================
+         LOCAL INIT
+     =======================================================================
+      -->
+
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <property name="entities.meta.dir"                location="${ejb.build.dir}/${ant.project.name}Entities" />
+        <property name="entities.jar.file"                location="${lib.build.dir}/${ant.project.name}Entities.jar" />
+        <property name="entities.jar.file.no.ejbc"        location="${ejb.build.dir}/${ant.project.name}Entities-noejbc.jar" />
+
+        <property name="entities.value.jar.file"          location="${lib.build.dir}/${ant.project.name}Values.jar" />
+        <property name="entities.value.jar.file.includes" value="**/*Value.class, **/*Exception.class" />
+
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <pathelement location="${build.dest.dir}/Framework.jar"/>
+        </path>
+    </target>
+
+    <!--
+     =======================================================================
+         Generate Override
+     =======================================================================
+      -->
+
+    <target name="generate.middlegen" unless="skip.generate" depends="framework.generate.middlegen">
+        <middlegen appname="${ant.project.name}Entities"
+                   prefsdir="${config.build.dir}"
+                   gui="${use.gui}"
+                   databaseurl="${exiss.tx.database.url}"
+                   driver="${exiss.tx.database.driver}"
+                   datasourceJNDIName="${exiss.tx.database.jndi}"
+                   providerURL="${weblogic.provider.url}"
+                   initialContextFactory="${java.naming.factory.initial}"
+                   username="${exiss.tx.database.user}"
+                   password="${exiss.tx.database.password}"
+                   schema="${exiss.tx.database.user}">
+
+            <table name="EXI_ITEM_OUTBOUND"/>
+            <table name="EXI_ITEM_OUTBOUND_TRACKING" />
+            <table name="EXI_REF_TRACKING_STATUS" singular="ExiRefTrackingStatus"/>
+
+            <cmp20 destination="${gen.source.dir}"
+                   package="uk.gov.courtservice.xhibit.business.entities.{0}"
+                   interfacepackage="uk.gov.courtservice.xhibit.business.entities.{0}"
+                   mergedir="${config.dir}"
+                   jndiprefix="${ant.project.name}"
+                   localsuffix=""
+                   localhomesuffix="Home"
+                   pkclass="false"
+                   dataobject="true"
+                   datasuffix="BasicValue"
+                   viewtype="local"
+                   readonly="false"
+                   fkcmp="true">
+                <!-- Only allow finders for indexed columns that are not primary or foreign keys -->
+                <finders>
+                    <and>
+                        <indexed />
+                        <notkey />
+                    </and>
+                </finders>
+                <weblogic pkgen="VENDOR_SEQ" />
+            </cmp20>
+        </middlegen>
+
+    </target>
+
+    <target name="generate.entity" unless="skip.generate">
+        <ejbdoclet destdir="${gen.source.dir}"
+                   excludedtags="@version,@author"
+                   ejbspec="2.0"
+                   mergedir="${config.dir}">
+            <fileset dir="${gen.source.dir}" includes="**/*Bean.java" />
+
+            <localinterface     pattern="{0}" />
+            <localhomeinterface pattern="{0}Home" />
+            <dataobject         pattern="{0}BasicValue" />
+            <entitycmp          pattern="{0}BeanCMP" />
+
+            <template destinationFile="{0}Helper2.java"
+                      templateFile="${framework.config.dir}/xdoclet/entity/entityfacade2.xdt" />
+            <template destinationFile="{0}NotFoundException.java"
+                      templateFile="${framework.config.dir}/xdoclet/entity/exception.xdt" />
+
+            <deploymentdescriptor destdir="${entities.meta.dir}/META-INF" />
+
+            <weblogic version="7.0"
+                      xmlencoding="UTF-8"
+                      destdir="${entities.meta.dir}/META-INF"
+                      validatexml="true"
+                      datasource="${exiss.tx.database.jndi}"
+                      persistence="weblogic" />
+        </ejbdoclet>
+    </target>
+
+    <target name="generate" unless="skip.generate" depends="framework.generate, generate.middlegen, generate.entity">
+        <log target="generate"/>
+    </target>
+
+    <!--
+     =======================================================================
+         LOCAL PACKAGE
+     =======================================================================
+      -->
+
+    <target name="package.entity">
+        <mkdir dir="${lib.build.dir}" />
+
+        <jar destfile="${entities.value.jar.file}">
+            <fileset dir="${classes.dir}" includes="${entities.value.jar.file.includes}" />
+        </jar>
+
+        <jar destfile="${entities.jar.file.no.ejbc}" manifest="${manifest.dir}/Entity.mf">
+            <fileset dir="${classes.dir}" excludes="${entities.value.jar.file.includes}" />
+            <fileset dir="${entities.meta.dir}" />
+        </jar>
+
+        <uptodate property="skip.package.entity.ejbc"
+                  srcfile="${entities.jar.file.no.ejbc}"
+                  targetfile="${entities.jar.file}" />
+    </target>
+
+    <target name="package.entity.ejbc.check" if="skip.package" depends="package.entity">
+        <property name="skip.package.entity.ejbc" value="marker"/>
+    </target>
+
+    <target name="package.entity.ejbc" unless="skip.package.entity.ejbc" depends="package.entity.ejbc.check">
+        <!-- if ejbc of entity tier runs out of memory, up the maxmemory setting for -->
+        <!-- the java process in line with the max memory for ejbc - ejbc can't use  -->
+        <!-- more memory than the java process in which it's running has to offer!   -->
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="lib.classpath"/>
+                <pathelement location="${entities.value.jar.file}" />
+            </classpath>
+            <arg value="-output"/>
+            <arg value="${entities.jar.file}" />
+            <arg value="${entities.jar.file.no.ejbc}" />
+        </java>
+    </target>
+
+    <target name="package" unless="skip.package" depends="framework.package, package.entity.ejbc">
+        <log target="package"/>
+    </target>
+
+</project>

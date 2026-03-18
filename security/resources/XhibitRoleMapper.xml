@@ -1,0 +1,200 @@
+<?xml version="1.0" ?>
+<!DOCTYPE MBeanType SYSTEM "./commo.dtd">
+
+<!-- MBean Definition File (MDF) for the Xhibit Role Mapper.
+
+     Copyright (c) 2002 by BEA Systems, Inc.  All Rights Reserved.
+-->
+
+<!-- Declare your mbean.
+
+     Since it is for a role mapper, it must extend the
+     weblogic.management.security.authorization.RoleMapper or
+     weblogic.management.security.authorization.DeployableRoleMapper mbean.
+
+     Since this Xhibit supports webapp and EJB deployments, it
+     extends the
+     weblogic.management.security.authorization.DeployableRoleMapper mbean.
+
+     The Name and DisplayName must be the same.
+     They specify the name that will appear on the
+     console for this provider.
+
+     Set the PeristPolicy to "OnUpdate" so that if an attribute
+     value is changed, the new value is written to disk immediately.
+     See the "Developing Security Services" manual for more info.
+
+     Note that since this is an xml document, you can't use double
+     quotes directly.  Instead you need to use &quot;
+
+     Note that setting "Writeable" to "false" on an attribute
+     makes the attribute read-only.  The default is read-write.
+-->
+
+<MBeanType
+ Name          = "XhibitRoleMapper"
+ DisplayName   = "XhibitRoleMapper"
+ Package       = "uk.gov.courtservice.framework.security.providers.authorization    "
+ Extends       = "weblogic.management.security.authorization.DeployableRoleMapper"
+ PersistPolicy = "OnUpdate"
+>
+
+    <!-- You must set the value of the ProviderClassName attribute
+         (inherited from the weblogic.management.security.Provider mbean)
+         to the name of the java class you wrote that implements the
+         weblogic.security.spi.RoleProvider or
+         weblogic.security.spi.DeployableRoleProvider interface.
+
+         Since this Xhibit supports webapp and EJB deployments, it implements
+         the weblogic.security.spi.DeployableRoleProvider interface.
+
+         You can think of the provider's mbean as the factory
+         for your provider's runtime implementation.
+    -->
+    <MBeanAttribute
+  Name          = "ProviderClassName"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;uk.gov.courtservice.framework.security.providers.authorization.XhibitRoleMapperProviderImpl&quot;"
+ />
+
+    <!-- You must set the value of the Description attribute
+         (inherited from the weblogic.management.security.Provider mbean)
+         to a brief description of your provider.
+         It is displayed in the console.
+    -->
+    <MBeanAttribute
+  Name          = "Description"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;Database Role Mapper Provider&quot;"
+ />
+
+    <!-- You must set the value of the Version attribute
+         (inherited from the weblogic.management.security.Provider mbean)
+         to your provider's version.  There is no required format.
+    -->
+    <MBeanAttribute
+  Name          = "Version"
+  Type          = "java.lang.String"
+  Writeable     = "false"
+  Default       = "&quot;1.0&quot;"
+ />
+
+    <!--
+     - Active Directory
+     -->
+    <!--
+    <MBeanAttribute
+    Name           = "DatabaseConnection"
+    Default        = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+    Type           = "java.lang.String"
+    Writeable      = "false"
+    />
+    -->
+
+
+    <!-- This is the database driver used to connect to the database.
+    -->
+    <MBeanAttribute
+  Name          = "DriverName"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;oracle.jdbc.OracleDriver&quot;"
+ />
+
+    <!-- This is the JDBC URL to connect to the database.
+    -->
+    <MBeanAttribute
+  Name          = "URL"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;jdbc:oracle:thin:@ukuxs006.eds.com:1521:XHIBITD1&quot;"
+ />
+
+    <!-- This is the user name to connect to the database.
+    -->
+    <MBeanAttribute
+  Name          = "Principal"
+  Type          = "java.lang.String"
+ />
+
+    <!-- This is the password to connect to the database.
+    -->
+    <MBeanAttribute
+  Name          = "Credential"
+  Type          = "java.lang.String"
+  Encrypted     = "true"
+ />
+
+    <!--
+     - Active Directory
+     -->
+    <!--
+    <MBeanAttribute
+    Name           = "MessagingConnection"
+    Default        = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+    Type           = "java.lang.String"
+    Writeable      = "false"
+    />
+    -->
+
+    <!-- This is the JNDI name of the connection factory used to acquire the JMS connection
+    -->
+    <MBeanAttribute
+  Name          = "JMSConnectionFactoryName"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;CSJMSConnectionFactory&quot;"
+ />
+
+    <!-- This is the JNDI name of the JMS destination
+    -->
+    <MBeanAttribute
+  Name          = "JMSDestinationName"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;RoleMapper&quot;"
+ />
+
+    <!-- This is the number of attempts permitted to connect to the associated JMS destination
+     -->
+    <MBeanAttribute
+  Name          = "JMSConnectionAttempts"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;5&quot;"
+ />
+
+    <!-- This is the number of milliseconds to sleep between attempts to connect to the JMS destination
+     -->
+    <MBeanAttribute
+  Name          = "JMSConnectionSleepTime"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;120000&quot;"
+ />
+
+    <!--
+     - Active Directory
+     -->
+    <!--
+    <MBeanAttribute
+    Name           = "RoleMapping"
+    Default        = "&quot;- - - - - - - - - - - - - - - - - - - - - - - - - - - -&quot;"
+    Type           = "java.lang.String"
+    Writeable      = "false"
+    />
+    -->
+
+    <!-- This is the prefix for XHIBIT roles.
+    -->
+    <MBeanAttribute
+  Name          = "RolePrefix"
+  Type          = "java.lang.String"
+  Writeable     = "true"
+  Default       = "&quot;XHB&quot;"
+ />
+
+
+</MBeanType>

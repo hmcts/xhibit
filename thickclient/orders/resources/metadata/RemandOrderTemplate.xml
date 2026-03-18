@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 rel. 2 U (http://www.xmlspy.com) by Surtar Bachra (Electronic Data Systems LTD) -->
+<!--  $Revision: 1.13 $  $Author: hingstb $ $Date: 2015/04/21 20:36:06 $-->
+<template>
+	<form>
+		<translationsection name="translation" label="" switchLabel="Welsh Translation Required" switchable="true" borderLabel="" borderRaised="true" ref="//ord:Order/ord:OrderData/*/ord:OrderHeader/ord:WelshTranslation" selectedValue="yes" unselectedValue="no">
+		</translationsection>
+		<section name="itwasordered" label="" borderLabel="It was ordered" borderRaised="true">
+			<date name="xxx2" label="Order Date:" ref="//ord:OrderHeader/ord:OrderDate"/>
+			<textfield name="custodyLocation" type="string" label="Remand Establishment: " length="10" maxLength="255" ref="//ord:CustodyLocation"/>
+			<choice name="remandTypeOption" label="" ref="//ord:RemandOrderType/ord:RemandOrdType">
+				<option name="remandOption" label="Remand Order" value="standard" selected="true"/>
+				<option name="localAuthorityOption" label="Remand Order - Local Authority Accomodation" value="localauthority">
+					<dropdown name="laDesignatedLocalAuthority" type="six" label="Designated Local Authority: " length="15" ref="//ord:RemandOrderType/ord:LADesignatedLocalAuthority"/>
+					<section name="requirementsOnLA" label="" switchLabel="Requirements of the Court on the Local Authority" borderLabel=""  switchable="true" ref="//ord:RemandOrderType/ord:RequirementsOnLocalAuthority/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="requirementsOnLAEntry" ref="//ord:RemandOrderType/ord:RequirementsOnLocalAuthority" label="" topLabel="" rows="5" cols="10"/>
+					</section>
+					<section name="conditionsOnDefendant" label="" switchLabel="Conditions on Defendant" borderLabel="" switchable="true" ref="//ord:RemandOrderType/ord:ConditionsOnDefendant/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="conditionsOnDefEntry" ref="//ord:RemandOrderType/ord:ConditionsOnDefendant" label="" topLabel="" rows="5" cols="10"/>
+					</section>
+				</option>
+				<option name="youthDetentionOption" label="Remand Order - Youth Detention Accomodation" value="youthdetention">
+					<dropdown name="ydDesignatedLocalAuthority" type="six" label="Designated Local Authority: " length="15" ref="//ord:RemandOrderType/ord:YDDesignatedLocalAuthority"/>
+				</option>
+			</choice>
+			<section name="reportIndicator" label="" switchLabel="Report Indicator" borderLabel="" switchable="true" ref="//ord:ReportDetails/@selected" selectedValue="true" unselectedValue="false">
+				<textarea name="reportDetailsValue" ref="//ord:ReportDetails" label="" topLabel="Report Details:" rows="10" cols="15"/>
+			</section>
+			<section name="date/time" borderLabel="" label="">
+				<choice name="date/timeOption" label="" ref="//ord:NextAppearance/ord:AppearanceDateTime/@selected">
+					<option name="toBeNotifiedOption" label="Date &amp; time to be notified" value="false" selected="true"/>
+					<option name="specificOption" label="Specific date &amp; time" value="true">
+						<date name="xxx2" label="Date:" ref="//ord:AppearanceDateTime/ord:AppearanceDate"/>
+						<timepanel name="timeValue" label="Time: " ref="//ord:AppearanceDateTime/ord:AppearanceTime"/>
+					</option>
+				</choice>
+			</section>
+			<section name="courtType" borderLabel="" label="">
+				<choice name="courtOption" label="" ref="//ord:NextAppearance/ord:AppearanceCourt/ord:CourtHouseType">
+					<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="true" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:NextAppearance/ord:AppearanceCourt/ord:CourtHouseName"/>
+				</choice>
+			</section>
+			<section name="reasonsForRemand" label="" switchLabel="Reasons given in Court for the remand to youth detention \n accomodation (please tick appropriate reasons boxes)" borderLabel="" switchable="true" ref="//ord:ReasonsForRemand/@selected" selectedValue="true" unselectedValue="false">
+				<section name="seriousnessForRemand" label="" switchLabel="Seriousness of offence" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:SeriousnessForRemand/@selected" selectedValue="true" unselectedValue="false">
+					<choice name="seriousnessOfOffence" label="" ref="//ord:ReasonsForRemand/ord:SeriousnessForRemand/ord:SeriousnessOfOffence">
+						<option name="violentOrSexualOffence" label="The offence must be a violent or sexual Offence" value="violentOrSexualOffence" selected="true"/>
+						<label name="or" label="      Or"/>
+						<option name="lengthOfImprisonment" label="An offence carrying 14 years' imprisionment or more in the \n case of an adult" value="lengthOfImprisonment"/>
+					</choice>
+					<section name="likelyConviction" label="" switchLabel="and it is very likely that the offence would \n result in conviction and attract a custodial sentence" switchable="true" ref="//ord:ReasonsForRemand/ord:SeriousnessForRemand/ord:LikelyConviction" selectedValue="true" unselectedValue = "false"/>
+				</section>
+				<section name="remandHistory" label="" switchLabel="History" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:RemandHistory/@selected" selectedValue="true" unselectedValue="false">
+					<choice name="historyForRemand" label="" ref="//ord:ReasonsForRemand/ord:RemandHistory/ord:HistoryForRemand">
+						<option name="historyOfAbsconding" label="the child has a recent and significant history of absconding \n while subject to a custodial remand and that history is \n relevant in all the circumstances of the case" value="historyOfAbsconding" selected="true"/>
+						<label name="or" label="      Or"/>
+						<option name="historyOfOffencesOnBail" label="the child has recent and significant history of committing \n imprisonable offences while on bail or subject to a \n custodial remand and that history is relevant in all the \n circumstances of the case" value="historyOfOffencesOnBail"/>
+					</choice>
+					<section name="likelyCustodialSentence" label="" switchLabel="and it is very likely that the offence would result in a conviction \n and attract a custodial sentence" switchable="true" ref="//ord:ReasonsForRemand/ord:RemandHistory/ord:LikelyCustodialSentence" selectedValue="true" unselectedValue = "false"/>
+				</section>
+				<section name="necessityCondition" label="" switchLabel="Necessity Condition" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:NecessityCondition/@selected" selectedValue="true" unselectedValue="false">
+					<section name="riskofHarm" label="" switchLabel="the court has considered all other options but the child \n poses a risk of harm or offending AND the risk posed by \n the child cannot be managed safely in the community" switchable="true" ref="//ord:ReasonsForRemand/ord:NecessityCondition/ord:RiskOfHarm" selectedValue="true" unselectedValue = "false"/>
+				</section>
+				<section name="otherReasonsForRemand" label="" switchLabel="Other reasons" borderLabel="" switchable="true" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/@selected" selectedValue="true" unselectedValue="false">
+					<section name="welfareReason" label="" switchLabel="for welfare reasons" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:WelfareReason/@selected" selectedValue="true" unselectedValue="false" >
+						<textarea name="welfareReasonValue" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:WelfareReason" label="" topLabel="" maxlength="500" rows="5" cols="10"/>
+					</section>
+					<section name="ownProtectionReason" label="" switchLabel="for own protection" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:OwnProtectionReason/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="ownProtectionReasonValue" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:OwnProtectionReason" label="" maxlength="500" topLabel="" rows="5" cols="10"/>
+					</section>
+					<section name="lackOfPlacementReason" label="" switchLabel="lack of suitable placement in the community (e.g. foster, local authority, relative etc)" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:LackOfPlacementReason/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="lackOfPlacementReasonValue" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:LackOfPlacementReason" label="" topLabel="" maxlength="500" rows="5" cols="10"/>
+					</section>
+					<section name="bailISSNotAvailableReason" label="" switchLabel="Bail ISS not available" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:BailISSNotAvailableReason/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="bailISSNotAvailableReasonValue" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:BailISSNotAvailableReason" label="" topLabel="" maxlength="500" rows="5" cols="10"/>
+					</section>
+					<section name="bailPackageInadequateReason" label="" switchLabel="bail package inadequate" borderLabel="" borderRaised="false" switchable="true" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:BailInadequateReason/@selected" selectedValue="true" unselectedValue="false">
+						<textarea name="bailPackageInadequateReasonValue" ref="//ord:ReasonsForRemand/ord:OtherReasonsForRemand/ord:BailInadequateReason" label="" topLabel="" maxlength="500" rows="5" cols="10"/>
+					</section>
+				</section>
+			</section>
+		</section>
+		<!--		<section name="defendant" label="" switchLabel="Remand Details" borderLabel="Defendant" borderRaised="true" switchable="true" ref="//ord:RemandReason/@selected" selectedValue="true" unselectedValue="false"> -->
+		<section name="defendant" borderLabel="Defendant" borderRaised="true">
+			<section name="commit/before" borderLabel="" label="">
+				<choice name="commitSentOption" label="" ref="/">
+					<option name="sentOption" label="Committed/Sent to the Crown Court" selected="true" ref="/">
+						<section name="committed/send" borderLabel="" label="">
+							<choice name="committed/sentOption" label="" ref="//ord:CommitSent">
+								<option name="committedOption" label="Committed to..." value="committed" selected="true"/>
+								<option name="sentOption" label="Sent to..." value="sent"/>
+							</choice>
+							<date name="xxx2" label="Date:" ref="//ord:CrownCourt//ord:Date"/>
+							<courttype name="courttype" label="tests" crownref="Milton Keynes" magistratesref="Leeds" youthref="Reading" crowncourt="false" magistratecourt="true" youthcourt="false" courtlabel="false" ref="//ord:CrownCourt/ord:CourtHouse/ord:CourtHouseName"/>
+						</section>
+					</option>
+					<option name="beforeOption" label="Is before the Court" selectedValue="true" unselectedValue="false" ref="//ord:IsBefore/@selected">
+						<section name="isBefore" borderLabel="" label="">
+							<choice name="isBeforeOption" label="" ref="/">
+								<option name="voluntaryOption" label="Voluntary Bill" selected="true" ref="//ord:RemandReason/ord:VoluntaryBillOfIndictment/@selected" selectedValue="true" unselectedValue="false">
+									<date name="xxx2" label="Date:" ref="//ord:VoluntaryBillOfIndictment"/>
+								</option>
+								<option name="certificateOption" label="Certificate of Transfer" ref="//ord:RemandReason/ord:CertificateOfTransfer/@selected" selectedValue="true" unselectedValue="false">
+									<date name="xxx2" label="Date:" ref="//ord:CertificateOfTransfer"/>
+								</option>
+								<option name="appealOption" label="Appeal against bail Information" selectedValue="true" unselectedValue="false" ref="//ord:RemandReason/ord:AppealAgainstBailGranted/@selected"/>
+							</choice>
+						</section>
+					</option>
+					<section name="indict/convict" borderLabel="" label="">
+						<choice name="indictConvictOption" label="" ref="//ord:RemandType">
+							<option name="indictedOption" label="Indicted" selected="true" value="Indicted"/>
+							<option name="convictedOption" label="Convicted" value="Convicted"/>
+						</choice>
+					</section>
+				</choice>
+			</section>
+		</section>
+		<section name="additionalRequirements" label="" switchLabel="Additional Requirements Option" borderLabel="Additional Requirements" borderRaised="true" switchable="true" ref="//ord:AdditionalInfo/@selected" selectedValue="true" unselectedValue="false">
+			<textarea name="additonalReqValue" ref="//ord:AdditionalInfo" label="" topLabel="Additional Requirements:" rows="10" cols="15"/>
+		</section>
+		<section name="chargedWith" label="" switchLabel="Charged With Option" borderLabel="Charged WIth" borderRaised="true" switchable="true" ref="//ord:ChargedWith/@selected" selectedValue="true" unselectedValue="false">
+			<textarea name="chargedWithValue" ref="//ord:ChargedWith" label="" topLabel="Charged with:" rows="10" cols="15"/>
+		</section>
+		<fixedlist name="associatedCases" label="Associated Cases" rows="123" cols="60" ref="//ord:AssociatedCases/ord:AssociatedCase"/>
+	</form>
+</template>

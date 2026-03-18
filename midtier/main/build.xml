@@ -1,0 +1,322 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="main-midtier">
+
+    <description>
+        Description to be done...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar"/>
+                <include name="Value.jar"/>
+                <include name="CourtLog2Controller.jar"/>
+                <include name="Integration.jar"/>
+                <include name="XhibitValues.jar"/>
+                <include name="XhibitEntities.jar"/>
+                <include name="CrLiveStatus.jar"/>
+                <include name="flrSearch.jar"/>
+                <include name="XhibitXmlBinding.jar"/>
+                <include name="ProgressCommon.jar"/>
+				<include name="TimerProcess.jar" />
+                <include name="Validation.jar"/>
+            </fileset>
+        </path>
+
+        <property name="cache.dir" location="${basedir}/cache"/>
+        <property name="cache.includes" value="**/*Entities/**"/>
+
+        <property name="entity.file.suffix" value="Entities"/>
+        <path id="entity.files">
+            <dirset dir="${cache.dir}">
+                <include name="**/*Entities"/>
+            </dirset>
+        </path>
+
+        <property name="controller.file.suffix" value="ControllerBean.java"/>
+        <path id="controller.files">
+            <fileset dir="${source.dir}">
+                <include name="**/*${controller.file.suffix}" />
+            </fileset>
+        </path>
+
+        <property name="controller.helper.file.suffix" value="Helper.includes"/>
+        <path id="controller.helper.files">
+            <fileset dir="${config.dir}">
+                <include name="**/*${controller.helper.file.suffix}" />
+            </fileset>
+        </path>
+
+    </target>
+
+    <!--
+      =======================================================================
+        Generate Override
+      =======================================================================
+      -->
+
+    <!-- The section below has been introduced so that session beans can be generated and the associated jars built.
+         Because MidTierMain builds mulitple jars, the framework could not be used.
+         Once the entity layer has been removed, it may be sensible to group all the small jars and have this project
+         build a single jar, using the framework code.
+         If this decision is made, then the section below can be completely deleted. (and local.initialise can be tidied up)
+    -->
+
+    <target name="generate.entity" unless="skip.generate">
+        <copy todir="${ejb.build.dir}" preservelastmodified="true" filtering="true">
+            <filterset>
+                <filter token="xhibit.tx.database.jndi" value="${xhibit.tx.database.jndi}"/>
+            </filterset>
+            <fileset dir="${cache.dir}" includes="${cache.includes}"/>
+        </copy>
+    </target>
+
+    <target name="generate.controller" unless="skip.generate" depends="generate.entity, framework.generate.controller">
+        <foreach param="controller.file" target="generate.controller.internal">
+            <path refid="controller.files"/>
+        </foreach>
+    </target>
+
+    <!--
+      =======================================================================
+        Package Override
+      =======================================================================
+      -->
+
+    <target name="package.entity" unless="skip.package">
+        <foreach param="entity.file" target="package.entity.internal.ejbc">
+            <path refid="entity.files"/>
+        </foreach>
+    </target>
+
+    <target name="package.controller" unless="skip.package" depends="package.entity, framework.package.controller">
+
+        <foreach param="controller.helper.file" target="package.controller.helper.internal">
+            <path refid="controller.helper.files"/>
+        </foreach>
+
+        <foreach param="controller.file" target="package.controller.internal">
+            <path refid="controller.files"/>
+        </foreach>
+        <!-- Seperate Iterations As EJBC depends on other built jars! -->
+        <foreach param="controller.file" target="package.controller.internal.ejbc">
+            <path refid="controller.files"/>
+        </foreach>
+    </target>
+
+    <!--
+      =======================================================================
+        Entity Local Targets
+      =======================================================================
+      -->
+
+    <target name="common.entity.internal.initialise" depends="initialise">
+        <!-- Extract the name both without the classpath and without the ejbgrp.entityx suffix. -->
+        <basename property="entity.name" file="${entity.file}" suffix="${entity.file.suffix}"/>
+
+        <echo message="entity.name: ${entity.name}"/>
+
+        <property name="entity.ejb.dir"         location="${ejb.build.dir}/${entity.name}Entities" />
+        <property name="entity.meta.dir"        location="${entity.ejb.dir}/META-INF" />
+        <property name="entity.manifest.file"   location="${manifest.dir}/Entity.mf" />
+        <property name="entity.includes.file"   location="${config.dir}/${entity.name}Entities.includes" />
+        <property name="entity.jar.file.noejbc" location="${ejb.build.dir}/${entity.name}Entities-noejbc.jar" />
+        <property name="entity.jar.file"        location="${lib.build.dir}/${entity.name}Entities.jar" />
+    </target>
+
+    <target name="package.entity.internal" depends="common.entity.internal.initialise">
+        <echo message="Building ${entity.jar.file.noejbc}."/>
+        <jar destfile="${entity.jar.file.noejbc}" manifest="${entity.manifest.file}" update="true">
+            <fileset dir="${entity.ejb.dir}"/>
+            <fileset dir="${classes.dir}">
+                <includesfile name="${entity.includes.file}"/>
+            </fileset>
+        </jar>
+
+        <uptodate property="skip.package.entity.internal.ejbc"
+                  srcfile="${entity.jar.file.noejbc}"
+                  targetfile="${entity.jar.file}" />
+    </target>
+
+    <target name="package.entity.internal.ejbc" unless="skip.package.entity.internal.ejbc" depends="package.entity.internal" >
+        <echo message="Running ejbc on ${entity.jar.file.noejbc}"/>
+
+        <dirname property="entity.jar.dir" file="${entity.jar.file}"/>
+        <mkdir dir="${entity.jar.dir}"/>
+
+        <path id="entity.ejbc.classpath">
+            <path refid="compile.classpath"/>
+        </path>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="compile.classpath" />
+            </classpath>
+			<arg value="-verbose"/>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${entity.jar.file}" />
+            <arg value="${entity.jar.file.noejbc}" />
+        </java>
+    </target>
+
+
+    <!--
+      =======================================================================
+        Controller Helper Local Targets
+      =======================================================================
+      -->
+
+    <target name="common.controller.helper.internal.initialise" depends="initialise">
+        <basename property="helper.name" file="${controller.helper.file}" suffix="${controller.helper.file.suffix}"/>
+
+        <echo message="helper.name: ${helper.name}" />
+
+        <property name="controller.helper.includes.file"   location="${controller.helper.file}" />
+        <property name="controller.helper.manifest.file"   location="${manifest.dir}/Helper.mf" />
+        <property name="controller.helper.jar.file"        location="${lib.build.dir}/${helper.name}Helper.jar" />
+    </target>
+
+    <target name="package.controller.helper.internal" depends="common.controller.helper.internal.initialise">
+        <echo message="Building ${controller.helper.jar.file}."/>
+
+        <jar destfile="${controller.helper.jar.file}" manifest="${controller.helper.manifest.file}">
+            <fileset dir="${classes.dir}">
+                <includesfile name="${controller.helper.includes.file}"/>
+            </fileset>
+        </jar>
+    </target>
+
+
+    <!--
+      =======================================================================
+        Controller Local Targets
+      =======================================================================
+      -->
+
+    <target name="common.controller.internal.initialise" depends="initialise">
+        <!-- Extract the name both without the classpath and without the ejbgrp.entityx suffix. -->
+        <basename property="controller.name" file="${controller.file}" suffix="${controller.file.suffix}"/>
+
+        <echo message="controller.name: ${controller.name}" />
+
+        <property name="controller.ejb.dir"         location="${ejb.build.dir}/${controller.name}Controller" />
+        <property name="controller.meta.dir"        location="${controller.ejb.dir}/META-INF" />
+        <property name="controller.manifest.file"   location="${manifest.dir}/Session.mf" />
+        <property name="controller.includes.file"   location="${config.dir}/${controller.name}Controller.includes" />
+        <property name="controller.jar.file.no.ejbc" location="${ejb.build.dir}/${controller.name}Controller-noejbc.jar" />
+        <property name="controller.jar.file"        location="${lib.build.dir}/${controller.name}Controller.jar" />
+        <property name="controller.client.file"     location="${client.build.dir}/${controller.name}ControllerClient.jar" />
+        <property name="controller.client.includes.file" location="${config.dir}/${controller.name}ControllerClient.includes" />
+    </target>
+
+    <target name="generate.controller.internal" depends="common.controller.internal.initialise">
+        <ejbdoclet mergedir="${config.dir}"
+                   destdir="${gen.source.dir}"
+                   excludedtags="@version,@author"
+                   addedtags="@xdoclet-generated at ${TODAY}"
+                   ejbspec="2.0">
+
+            <fileset dir="${source.dir}">
+                <include name="**/${controller.name}${controller.file.suffix}" />
+            </fileset>
+
+            <remoteinterface pattern="{0}" />
+            <homeinterface pattern="{0}Home" />
+            <localinterface pattern="{0}Local" />
+            <localhomeinterface pattern="{0}LocalHome" />
+
+            <!-- Override template so that only remote methods are assigned security
+                 Also uses xhb_asm-descriptor.xdt which is where the main change is.
+            -->
+            <deploymentdescriptor destdir="${controller.meta.dir}"
+                                  templateFile="${framework.config.dir}/xdoclet/xhb_ejb-jar_xml.xdt"
+                                  clientjar="${controller.client.file}" />
+
+            <!-- Specify a custom template file due to a bug in Xdoclet 1.2.2 -->
+            <!-- Cannot put in preferred location as causes problems where other builds are using the templates folder
+                 as a merge directory -->
+            <weblogic templateFile="${framework.config.dir}/xdoclet/weblogic-ejb-jar-xml.xdt"
+                      mergedir="${config.dir}"
+                      destdir="${controller.meta.dir}"
+                      version="7.0" />
+
+            <template subTaskName="businessDelegate" destinationFile="{0}BusinessDelegate.java"
+                    templateFile="${framework.config.dir}/uk/gov/courtservice/codegen/delegate.xdt" />
+        </ejbdoclet>
+    </target>
+
+    <target name="package.controller.internal" depends="common.controller.internal.initialise">
+        <echo message="Building ${controller.jar.file.no.ejbc}."/>
+
+        <jar destfile="${controller.jar.file.no.ejbc}" manifest="${controller.manifest.file}">
+            <fileset dir="${controller.ejb.dir}"/>
+            <fileset dir="${classes.dir}">
+                <includesfile name="${controller.includes.file}"/>
+            </fileset>
+        </jar>
+    </target>
+
+    <target name="package.controller.internal.ejbc.check" unless="skip.package.controller.internal" depends="common.controller.internal.initialise">
+        <uptodate property="skip.package.controller.internal"
+            srcfile="${controller.jar.file.no.ejbc}"
+            targetfile="${controller.jar.file}" />
+    </target>
+
+    <target name="package.controller.internal.ejbc" unless="skip.package.controller.internal" depends="package.controller.internal.ejbc.check">
+        <echo message="Running ejbc on ${controller.jar.file.no.ejbc}."/>
+
+        <dirname property="controller.jar.dir" file="${controller.jar.file}"/>
+        <mkdir dir="${controller.jar.dir}"/>
+
+        <dirname property="controller.client.dir" file="${controller.client.file}"/>
+        <mkdir dir="${controller.client.dir}"/>
+
+        <java classname="weblogic.appc" fork="true" failonerror="true">
+            <classpath>
+                <pathelement path="${java.class.path}"/>
+                <path refid="compile.classpath" />
+                <fileset dir="${ejb.build.dir}">
+                    <include name="*.jar"/>
+                    <exclude name="*${controller.name}Controller*"/>
+                </fileset>
+            </classpath>
+            <arg value="-verbose"/>
+            <arg value="-basicClientJar"/>
+            <arg value="-compiler"/>
+            <arg value="${ejbc.compiler}"/>
+            <arg value="-output"/>
+            <arg value="${controller.jar.file}" />
+            <arg value="${controller.jar.file.no.ejbc}" />
+        </java>
+
+        <!-- Add any additional client files to the client.jar -->
+
+        <echo message="controller.client.file ${controller.client.file}"/>
+        <echo message="controller.client.includes.file: ${controller.client.includes.file}"/>
+
+        <jar update="true"
+             basedir="${classes.dir}"
+             destfile="${controller.client.file}"
+             includesfile="${controller.client.includes.file}"/>
+    </target>
+
+
+</project>
+

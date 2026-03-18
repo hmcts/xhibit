@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByHearingId(java.lang.Integer hearingId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT (o) FROM XhbShJustice o WHERE o.hearingId = ?1 order by o.shJusticeId asc"
+ *
+ * -------- end of custom finders --------
+  

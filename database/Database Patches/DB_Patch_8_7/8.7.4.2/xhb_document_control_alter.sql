@@ -1,0 +1,1 @@
+CREATE INDEX XHB_DOC_CTRL_COURT_LASTUPD_IDX ON xhb_document_control(court_id, last_update_date);

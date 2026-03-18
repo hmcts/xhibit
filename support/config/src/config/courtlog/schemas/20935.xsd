@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE schema [
+	<!ENTITY defaultEvent SYSTEM "defaultEvent.xml">
+]>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+	<!--Trial - Witness Read-->
+	<xs:include schemaLocation="basic_elements.xsd"/>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:all>
+				&defaultEvent;
+				<xs:element ref="E20935_Witness_Read_Options"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20935_Witness_Read_Options">
+		<xs:complexType>
+			<xs:all>
+				<xs:element ref="E20935_WR_Type"/>
+				<xs:element ref="E20935_WR_Name"/>
+				<xs:element ref="E20935_WR_ID" minOccurs="0"/>
+			</xs:all>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="E20935_WR_Name" type="xs:string"/>
+	<xs:element name="E20935_WR_ID" type="xs:string"/>
+	<xs:element name="E20935_WR_Type">
+		<xs:simpleType>
+			<xs:restriction base="xs:string">
+				<xs:enumeration value="E20935_Prosecution_witness_Read"/>
+				<xs:enumeration value="E20935_Defendant_Read"/>
+				<xs:enumeration value="E20935_Prosecution_witness_expert_Read"/>
+				<xs:enumeration value="E20935_Defence_witness_character_Read"/>
+				<xs:enumeration value="E20935_Defence_witness_expert_Read"/>
+				<xs:enumeration value="E20935_Defence_witness_professional_Read"/>
+				<xs:enumeration value="E20935_Defence_witness_fact_Read"/>
+			</xs:restriction>
+		</xs:simpleType>
+	</xs:element>
+</xs:schema>

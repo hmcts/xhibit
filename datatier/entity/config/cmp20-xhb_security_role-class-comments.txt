@@ -1,0 +1,10 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="Collection findNonSystemRoles()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(s) FROM XhbSecurityRole s WHERE s.systemRole = 'N'"
+ *
+ * -------- end of custom finders --------
+  

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<event xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="40100.xsd">
+	<type>40100</type>
+	<date>2002-11-26</date>
+	<time/>
+	<free_text>Text goes here</free_text>
+</event>

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="Validation">
+    
+    <description>
+        MDB for validating xml documents
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.author" value="Will Fardell"/>
+
+    <!-- Although jar contains an MDB only build as Java as 
+      deployment descriptors manually constructed. -->
+
+    <property name="project.type.builds.jar" value="marker"/>
+    <property name="project.type.requires.compilation" value="marker"/>
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />                
+            </fileset>
+        </path>
+        
+    </target>
+</project>

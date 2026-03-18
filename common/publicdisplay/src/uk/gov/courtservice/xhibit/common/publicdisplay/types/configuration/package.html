@@ -1,0 +1,21 @@
+<html>
+	<body>
+		<p>
+This package contains the classes that represent the types of configuration changes and initialisations available
+to public displays. The super-class is <code>CourtConfigurationChange</code>, this type of change is intended to be
+the fail safe, should the configuration component not know how to handle a sub-class, it should treat it as a
+configuration change for the whole court.
+		</p>
+		<p>
+The sub-classes of <code>CourtConfigurationChange</code> represent the configuration changes available to a user of
+the Public Display system. A <code>CourtDisplayConfigurationChange</code> represents a configuration change to the
+a display and a <code>CourtRotationSetConfigurationChange</code> is a configuration change to a rotation set.
+		</p>
+		<p>
+For the purposes of initialisation, all types of <code>CourtConfigurationChange</code> support the concept of
+&apos;recreate&apos;, which tells the configuration component to produce as render changes all elements associated with
+the scope of the <code>CourtConfigurationChange</code>. If recreate is not selected, then only the
+delta between original and current configuration is produced as render changes. By default
+<code>CourtConfigurationChange</code> has recreate selected and its sub-classes do not.
+	</body>
+</html>

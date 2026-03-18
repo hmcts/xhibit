@@ -1,0 +1,85 @@
+<project name="encodingutil" basedir="." default="dist">
+    <description>Encoding/Decoding Utility Applications</description>
+
+    <target name="initialisation" description="Initialise project variables.">
+        <!-- Set version and build -->
+        <property name="version" value="1.0.0"/>
+
+        <tstamp>
+            <format property="build" pattern="yyyyMMddHHmmss"/>
+        </tstamp>
+
+        <property environment="env"/>
+        <property name="weblogic.home" value="${env.WL_HOME}"/>
+        <property name="computer.name" value="${env.COMPUTERNAME}"/>
+
+
+        <!-- Set properties -->
+        <property name="src.dir" value="${basedir}/src"/>
+        <property name="resources.dir" value="${basedir}/resources"/>
+        <property name="build.dir" value="${basedir}/build"/>
+        <property name="classes.dir" value="${build.dir}/classes"/>
+        <property name="jar.file" value="${build.dir}/${ant.project.name}.jar"/>
+        <property name="lib.dir" value="${basedir}/lib"/>
+        <property name="dist.dir" value="${basedir}/dist"/>
+
+        <property name="dist.file.prefix" value="${ant.project.name}"/>
+        <property name="dist.file.postfix" value="zip"/>
+        <property name="dist.file" value="${ant.project.name}-${version}.${dist.file.postfix}"/>
+        <property name="dist.file.dir" value="${ant.project.name}-${version}"/>
+
+        <fileset id="wl.lib" dir="${weblogic.home}/server/lib">
+            <include name="weblogic.jar"/>
+            <!--
+            <include name="wlclient.jar"/>
+            <include name="wljmsclient.jar"/>
+            -->
+        </fileset>
+
+        <!-- Set paths -->
+        <path id="javac-class-path">
+            <fileset refid="wl.lib"/>
+        </path>
+    </target>
+
+    <target name="compile" description="Compile the java src flles." depends="initialisation">
+        <mkdir dir="${build.dir}/classes"/>
+        <javac srcdir="${src.dir}" destdir="${classes.dir}" debug="true" deprecation="true" classpathref="javac-class-path" />
+    </target>
+
+    <target name="resource" description="Copy the resource files substituting any parameters" depends="initialisation">
+        <!--
+        <filter token="build" value="${build}"/>
+        <filter token="version" value="${version}"/>
+        <property name="binary.files" value="**/*.gif,**/*.jar,**/*.exe "/>        
+
+        <copy todir="${classes.dir}" filtering="true" overwrite="true">
+            <fileset dir="${resources.dir}" excludes="${binary.files}"/>
+        </copy>
+
+        <copy todir="${classes.dir}" filtering="false">
+            <fileset dir="${resources.dir}" includes="${binary.files}"/>
+        </copy>
+        -->
+    </target>
+
+    <target name="package" description="Package archive." depends="compile, resource" >
+        <jar destfile="${jar.file}" manifest="manifest.mf">
+            <fileset dir="${classes.dir}"/>
+        </jar>
+    </target>
+
+    <target name="clean" description="Remove all the files created by the build process." depends="initialisation">
+        <delete dir="${build.dir}" failonerror="true"/>
+        <delete dir="${dist.dir}" failonerror="true"/>
+    </target>
+
+    <target name="dist" description="Prepare the source distribution" depends="package" >
+        <mkdir dir="${dist.dir}"/>
+        <copy todir="${dist.dir}">
+            <fileset refid="wl.lib"/>
+            <fileset dir="${build.dir}" includes="**/*.jar"/>
+        </copy>
+    </target>
+
+</project>

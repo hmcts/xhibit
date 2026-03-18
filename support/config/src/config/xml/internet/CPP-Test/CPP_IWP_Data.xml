@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/xsl" href="InternetWebPageTemplate.xsl"?>
+<currentcourtstatus xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<court>
+		<courtname>CENTRAL CRIMINAL COURT</courtname>
+		<courtsites>
+			<courtsite>
+				<courtsitename>CENTRAL CRIMINAL COURT</courtsitename>
+				<courtrooms>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 1</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 2</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 3</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 4</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM000119</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+							<caseDetails>
+								<cppurn>01BM000219</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:41</time>
+								<date>20/09/19</date>
+								<free_text>Jury Sworn In</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:41</timestatusset>
+						<courtroomname>Court 5</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM000319</cppurn>
+								<hearingtype>For Application</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<lastname>******
+</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>11:36</time>
+								<date>20/09/19</date>
+								<free_text>Jury sent out to watch Bargain Hunt</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>11:36</timestatusset>
+						<courtroomname>Court 6</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM000419</cppurn>
+								<hearingtype>For Sentence</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:39</time>
+								<date>20/09/19</date>
+								<free_text>Legal arguments taking place</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:39</timestatusset>
+						<courtroomname>Court 7</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM000519</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+							<caseDetails>
+								<cppurn>01BM000619</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+							<caseDetails>
+								<cppurn>01BM000719</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+							<caseDetails>
+								<cppurn>01BM000819</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<lastname>******
+</lastname>
+							</defendant>
+							<defendant>
+								<lastname>******
+</lastname>
+							</defendant>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+							<defendant>
+								<firstname>NAME</firstname>
+								<middlename>NAME</middlename>
+								<lastname>NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:29</time>
+								<date>20/09/19</date>
+								<free_text>Currently engaged in a game of monopoly</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:29</timestatusset>
+						<courtroomname>Court 8</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM000919</cppurn>
+								<hearingtype>For Appeal against Conviction</hearingtype>
+							</caseDetails>
+							<caseDetails>
+								<cppurn>01BM001019</cppurn>
+								<hearingtype>For Appeal against Conviction</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:36</time>
+								<date>20/09/19</date>
+								<free_text>Court usher has soiled themselves</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:36</timestatusset>
+						<courtroomname>Court 9</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM001119</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>NAME</firstname>
+								<middlename>NAME</middlename>
+								<lastname>NAME</lastname>
+							</defendant>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:34</time>
+								<date>20/09/19</date>
+								<free_text>Adjourned until 3pm</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:34</timestatusset>
+						<courtroomname>Court 10</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 11</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 12</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 13</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM001219</cppurn>
+								<hearingtype>Trial (Part Heard)</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>O&apos;NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:37</time>
+								<date>20/09/19</date>
+								<free_text>Dance off currently under way</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:37</timestatusset>
+						<courtroomname>Court 14</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 15</courtroomname>
+					</courtroom>
+					<courtroom>
+						<cases>
+							<caseDetails>
+								<cppurn>01BM001319</cppurn>
+								<hearingtype>For Mention</hearingtype>
+							</caseDetails>
+							<caseDetails>
+								<cppurn>01BM001419</cppurn>
+								<hearingtype>For Mention</hearingtype>
+							</caseDetails>
+						</cases>
+						<defendants>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+							<defendant>
+								<firstname>NAME</firstname>
+								<lastname>NAME</lastname>
+							</defendant>
+						</defendants>
+						<currentstatus>
+							<event>
+								<time>10:33</time>
+								<date>20/09/19</date>
+								<free_text>Called for pizza</free_text>
+								<type>CPP</type>
+							</event>
+						</currentstatus>
+						<timestatusset>10:33</timestatusset>
+						<courtroomname>Court 16</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 17</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 18</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 19</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 20</courtroomname>
+					</courtroom>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>Court 22</courtroomname>
+					</courtroom>
+				</courtrooms>
+			</courtsite>
+			<courtsite>
+				<courtsitename>OTHER CROWN COURT SITTINGS</courtsitename>
+				<courtrooms>
+					<courtroom>
+						<currentstatus/>
+						<courtroomname>OTHER CROWN COURTS SITTINGS</courtroomname>
+					</courtroom>
+				</courtrooms>
+			</courtsite>
+		</courtsites>
+	</court>
+	<datetimestamp>
+		<dayofweek>Friday</dayofweek>
+		<date>20</date>
+		<month>September</month>
+		<year>2019</year>
+		<hour>10</hour>
+		<min>44</min>
+	</datetimestamp>
+	<pagename>centralcriminalcourt</pagename>
+</currentcourtstatus>

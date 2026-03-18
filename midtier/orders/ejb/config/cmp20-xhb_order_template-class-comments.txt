@@ -1,0 +1,12 @@
+ * @ejb.finder
+ *    signature="XhbOrderTemplate findCurrentTypeTemplate(java.lang.Integer templateId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xot) FROM XhbOrderTemplate xot WHERE xot.orderTypeId = ?1"
+ *    description="Current Type Template"
+ * @ejb.finder
+ *    signature="java.util.Collection findCurrentTypeTemplates()"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(xot) FROM XhbOrderTemplate xot"
+ *    description="Current Type Templates"

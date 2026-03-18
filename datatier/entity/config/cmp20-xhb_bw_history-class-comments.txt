@@ -1,0 +1,16 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByDefendantOnCaseId(java.lang.Integer defendantOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbBwHistory o where o.defendantOnCaseId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' or o.obsInd = ' ')"
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findOutstandingBenchWarrantsForDefOnCaseId(java.lang.Integer defendantOnCaseId)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(o) FROM XhbBwHistory o where o.defendantOnCaseId = ?1 AND (o.obsInd is null OR o.obsInd = 'N' or o.obsInd = ' ') AND (o.bwIssueDate is not null AND o.bwEndDate is null)"
+ *
+ * -------- end of custom finders --------
+  

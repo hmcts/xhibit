@@ -1,0 +1,2 @@
+This dir is added to the domain path by the presence of the PropertiesLibExtension.jar in the lib dir. 
+The PropertiesLibExtension.jar is a manifest only jar with a classpath attribute set to ../properties/

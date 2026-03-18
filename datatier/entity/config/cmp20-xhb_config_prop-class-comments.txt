@@ -1,0 +1,9 @@
+	* -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByPropertyName(java.lang.String propertyName)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(c) FROM XhbConfigProp c WHERE c.propertyName = ?1"
+ *
+ * -------- end of custom finders --------

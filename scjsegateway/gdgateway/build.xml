@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<project basedir="." default="all" name="GdGateway">
+
+    <description>
+        This project contains ...
+    </description>
+
+    <import file="./../../tools/ant/framework.xml" />
+
+    <property name="project.type.controller.bean"      value="true" />
+    <property name="project.type.message.bean" value="true" />
+    <property name="project.type.requires.compilation" value="true" />
+
+    <!--
+      =======================================================================
+        Initialise Override
+      =======================================================================
+      -->
+    <target name="initialise" unless="skip.initialise" depends="framework.initialise">
+        <log target="initialise"/>
+        <path id="compile.classpath">
+            <path refid="lib.classpath"/>
+            <path refid="framework.classpath"/>
+            <fileset dir="${build.dest.dir}">
+                <include name="Framework.jar" />
+                <include name="Config.jar" />
+                <include name="Value.jar" />
+                <include name="TimerProcess.jar" />
+                <include name="ScjseGatewayMessageBeans.jar" />
+                <include name="GdGatewayWebServiceClient.jar" />
+                <include name="GdGatewayXmlBinding.jar" />
+                <include name="ScjseGatewayMessaging.jar" />
+            </fileset>
+        </path>
+        <property name="package.message.includes" value="**/*MessageBean.class"/>
+        <property name="package.controller.basicclientjar" value=""/>
+    </target>
+
+
+    <target name="generate" unless="skip.generate" depends="framework.generate">
+<!-- message.meta.dir not set until generate-message! -->
+
+        <filesetlist id="message.package.filelist">
+           <fileset dir="${classes.dir}" includes="${default.jar.includes}" excludes="${default.jar.classes.excludes}"/>
+            <fileset dir="${message.meta.dir}">
+                <include name="META-INF/**"/>
+            </fileset>
+           <fileset dir="${resources.dir}" includes="${default.jar.includes}" excludes="${default.jar.classes.excludes}"/>
+       </filesetlist>
+    </target>
+
+</project>

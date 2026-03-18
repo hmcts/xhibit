@@ -1,0 +1,53 @@
+<CJSE_CL_CONFIGURATION>
+    <INCOMING_EVENT xhibitid="11111"
+                    level="CASE"
+                    type="ONETOMANY">
+        <DIFFERENTIATING_FIELD xpath="XXX/YYY/ZZZ/text()"/>
+        <EVENT fieldvalue="ABC" cjseid="11112" cjsemessagecode="testGetMessageForMessageCode"/>
+        <EVENT fieldvalue="DEF" cjseid="11113" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="11123"
+                    level="DEFENDANT"
+                    type="ONETOONE">
+        <EVENT cjseid="20400" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="11124"
+                    level="CASE"
+                    type="ONETOONE">
+        <EVENT cjseid="20400" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="11125"
+                    level="CRN"
+                    type="ONETOONE">
+        <EVENT cjseid="20400" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="10100"
+                    level="CASE"
+                    type="ONETOONE">
+        <EVENT cjseid="10100" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="20906"
+                    level="DEFENDANT"
+                    type="ONETOONE">
+        <EVENT cjseid="10607" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="60100"
+                    level="CRN"
+                    type="ONETOONE">
+        <EVENT cjseid="11300" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="40201"
+                    level="JOINDER"
+                    type="ONETOONE">
+        <EVENT cjseid="10621" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>
+    <INCOMING_EVENT xhibitid="20904"
+						  level="TRIAL_WITNESS_SWORN"
+						  type="ONETOONE">
+		  <EVENT cjseid="10603" cjsemessagecode="testGetMessageForMessageCode"/>
+    </INCOMING_EVENT>       
+</CJSE_CL_CONFIGURATION>
+
+
+
+

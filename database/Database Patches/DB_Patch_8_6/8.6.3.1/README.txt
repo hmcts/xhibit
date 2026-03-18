@@ -1,0 +1,2 @@
+This release is an NLE only release however the new table will be required to be deployed to Live too as MidTier.ear will expect it to exist.
+However it can wait until the next Live release for this to happen.

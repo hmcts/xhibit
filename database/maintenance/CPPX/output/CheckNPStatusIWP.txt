@@ -1,0 +1,5 @@
+
+COUNT(XCF.CPP_FORMATTING_ID)                                                    
+----------------------------                                                    
+                          17                                                    
+

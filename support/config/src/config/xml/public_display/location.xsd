@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSPY v5 U (http://www.xmlspy.com) by Alex Brown (EDS) -->
+<xs:schema targetNamespace="uri:XHIBIT/location" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:location="uri:XHIBIT/location" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="uk">
+		<xs:annotation>
+			<xs:documentation>This represents the nation.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="location:circuit" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="circuit">
+		<xs:annotation>
+			<xs:documentation>The circuit would enable administration at this level rather than at the site level. It is an option.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="location:site" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="site">
+		<xs:annotation>
+			<xs:documentation>This schema represents the physical locations of the screens. This will remain static unless new screens are added.					</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="courthouse" maxOccurs="unbounded">
+					<xs:annotation>
+						<xs:documentation>This represents the courthouse that the screen is located in. e.g Basildon / Southend. Whilst they are treated as one site they are two separate courthouses.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="screenlocation" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>This represents the floor / area that the screen is located in.</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element ref="location:screen" maxOccurs="unbounded"/>
+									</xs:sequence>
+									<xs:attribute name="id" type="xs:string" use="required"/>
+									<xs:attribute name="description" type="xs:string" use="optional"/>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+						<xs:attribute name="id" type="xs:string" use="required"/>
+						<xs:attribute name="description" type="xs:string" use="optional"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="screen">
+		<xs:annotation>
+			<xs:documentation>This represents the physical screen. This is global to allow it to be referenced. Please note that a screen cannot contain either a circuit or a site.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="id" type="xs:string" use="required"/>
+			<xs:attribute name="description" type="xs:string" use="optional"/>
+			<xs:attribute name="type" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
