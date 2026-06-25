@@ -1,0 +1,3 @@
+ORACLE_XHIBIT_DB_USER=xhibit
+ORACLE_XHIBIT_DB_PASS=xhibit
+ORACLE_SID=host:port/o10tst12

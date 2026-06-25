@@ -11,6 +11,9 @@ import org.apache.log4j.Logger;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
 import uk.gov.courtservice.framework.services.CSServices;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseSearchDialog;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseSearchModel;
 import uk.gov.courtservice.xhibit.client.casemanagement.TransferCaseDialog;
@@ -18,6 +21,7 @@ import uk.gov.courtservice.xhibit.client.casemanagement.TransferCaseModel;
 import uk.gov.courtservice.xhibit.client.util.XAction;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationController;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationControllerImpl;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 
 public class TransferCaseAction extends XAction {
 	private static final long serialVersionUID = 1L;
@@ -69,9 +73,16 @@ public class TransferCaseAction extends XAction {
 			caseId = caseSearchModel.getCaseId();
 	        //--- If we've got a valid case number, transfer this case ---
 	        if (caseId > 0) {
-	        	transferCaseModel = new TransferCaseModel(caseId);
-	        	transferCaseDialog = new TransferCaseDialog(xac, transferCaseModel);
-	        	transferCaseDialog.setVisible(true);
+				// XDMX8
+				MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.EDIT);
+				
+				if (migrationDetail != null && migrationDetail.isMigrated) {
+					new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+				} else {
+					transferCaseModel = new TransferCaseModel(caseId);
+		        	transferCaseDialog = new TransferCaseDialog(xac, transferCaseModel);
+		        	transferCaseDialog.setVisible(true);
+				}
 	        }
 		}
 	}

@@ -3,8 +3,11 @@ package uk.gov.courtservice.xhibit.client.actions.listdistribution;
 import java.awt.event.ActionEvent;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.client.actions.XhibitActions;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseMaintain;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.listings.details.CaseListingDetailDialog;
 import uk.gov.courtservice.xhibit.client.listings.details.CaseListingDetailModel;
 import uk.gov.courtservice.xhibit.client.util.XAction;
@@ -12,6 +15,7 @@ import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
 import uk.gov.courtservice.xhibit.client.util.XMessageBox;
 import uk.gov.courtservice.xhibit.client.util.XhibitBundles;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationController;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitSingleton;
 
 public class CaseListingEntryAction extends XAction {
@@ -31,6 +35,13 @@ public class CaseListingEntryAction extends XAction {
     	this.xac = (XhibitApplicationController) getController();
 
     	if(xac.getApplicationCaseModel() != null && xac.getApplicationCaseModel().getCaseId() > 0) {
+    		// XDMX10 - Needed as this code will trigger if a case is already opened when the user selects 'Case Listing Entry'
+    		MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(xac.getApplicationCaseModel().getCaseId(), MigrationMessageType.EDIT); 
+    		if (migrationDetail != null && migrationDetail.isMigrated) {
+				new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+				return;
+    		}
+    		
 			if (!CaseListingDetailModel.ValidValues.CASE_TYPES.contains(xac.getApplicationCaseModel().getCaseType())) {				
 				XMessageBox.alert(xac, getErrorResourceBundle("validation.caseType.title"), true,
 					XMessageBox.ICONERROR, getErrorResourceBundle("validation.caseType.TSA"), XMessageBox.OK_ONLY, XMessageBox.DEFAULTOK);
@@ -47,7 +58,15 @@ public class CaseListingEntryAction extends XAction {
 			do {
 				if (exitImmediately) {break;}
 				showSearchScreen();
-				callDetailScreen(true);
+	    		// XDMX10
+	    		MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.EDIT); 
+	    		if (migrationDetail != null && migrationDetail.isMigrated) {
+					new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+					return;
+	    		} else {
+					callDetailScreen(true);
+	    		}
+	    		
 			} while (hasValidCaseId());
 		}
     } 

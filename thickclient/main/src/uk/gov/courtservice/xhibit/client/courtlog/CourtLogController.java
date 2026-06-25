@@ -295,6 +295,7 @@ public class CourtLogController extends XPanel implements PrintFunction {
             column = courtLogHeaderTable.getColumnModel().getColumn(CourtLogHeaderTableModel.T_CASE);
             column.setPreferredWidth(PREFERRED_CASENO_COL_WIDTH);
             remainingWidth -= column.getPreferredWidth();
+            column.setCellRenderer(new CourtLogCaseCellRenderer(courtLogHeaderTable, courtLogHeaderTable.getMultiLineHelper()));
 
             try {
                 if (CaseTypeHelper.isCriminalAppeal_CaseType(hearingHeaderValue)) {

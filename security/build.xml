@@ -179,7 +179,7 @@
         <java classname="weblogic.management.commo.WebLogicMBeanMaker" fork="true" failonerror="true">
             <jvmarg value="-Dfiles=${package.mbean.build.dir}"/>
             <jvmarg value="-DMJF=${java.jar.file}"/>
-            <jvmarg value="-DmbeantypesDir=C:\bea\wlserver_10.3\server\lib\mbeantypes"/>
+            <jvmarg value="-DmbeantypesDir=C:\Oracle\Middleware\wlserver_10.3\server\lib\mbeantypes"/>
             <classpath>
 				<pathelement path="${lib.dir}/wlfullclient.jar"/>
                 <path refid="compile.classpath"/>

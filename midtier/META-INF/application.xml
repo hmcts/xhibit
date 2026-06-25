@@ -209,6 +209,12 @@
 	<module>
 		<ejb>SHJusticeController.jar</ejb>
 	</module>
+	<module>
+		<ejb>MigrateCaseController.jar</ejb>
+	</module>
+	<module>
+		<ejb>CmLogsController.jar</ejb>
+	</module>
     <module>
         <web>
             <web-uri>TimerProcess.war</web-uri>

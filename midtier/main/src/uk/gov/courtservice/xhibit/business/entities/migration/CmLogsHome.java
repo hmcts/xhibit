@@ -1,5 +1,6 @@
 package uk.gov.courtservice.xhibit.business.entities.migration;
 
+import java.util.Collection;
 import java.util.Date;
 
 import javax.ejb.CreateException;
@@ -12,4 +13,10 @@ public interface CmLogsHome extends javax.ejb.EJBLocalHome {
 			Integer noOfCasesInFile, String userDisplayName) throws CreateException;
 
     public CmLogs findByPrimaryKey(Integer id) throws FinderException;
+
+    public Collection<CmLogs> findByFileNameInActiveStatuses(String fileName) throws FinderException;
+
+    public Collection<CmLogs> findByProcessingStatus(String processingStatus) throws FinderException;
+
+    public Collection<CmLogs> findAll() throws FinderException;
 }

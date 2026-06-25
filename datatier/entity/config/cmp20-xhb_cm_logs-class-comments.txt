@@ -1,0 +1,9 @@
+ * -------- custom finders --------
+ *
+ * @ejb.finder
+ *    signature="java.util.Collection findByProcessingStatus(java.lang.String processingStatus)"
+ *    result-type-mapping="Local"
+ *    method-intf="LocalHome"
+ *    query="SELECT OBJECT(m) FROM XhbCmLogs m WHERE m.processingStatus = ?1"
+ *
+ * -------- end of custom finders --------

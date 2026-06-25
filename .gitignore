@@ -1,0 +1,13 @@
+build/
+classes/
+**/build.log
+**/clean.log
+*.bak
+*.bkp
+*.xsd
+**/.classpath
+**/.project
+tools/eclipse/
+.scannerwork/
+lib/
+**/*.jar

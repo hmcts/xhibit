@@ -2863,6 +2863,32 @@
 				<field-name>version</field-name>
 			</cmp-field>
 			<primkey-field>cmLogsId</primkey-field>
+			<query>
+				<query-method>
+					<method-name>findByFileNameInActiveStatuses</method-name>
+					<method-params>
+						<method-param>java.lang.String</method-param>
+					</method-params>
+				</query-method>
+				<ejb-ql>SELECT OBJECT(o) FROM CmLogs o WHERE o.originalUploadedFilename = ?1 AND o.processingStatus IN ('RUNNING', 'SUCCESS', 'PENDING')</ejb-ql>
+			</query>
+			<query>
+				<query-method>
+					<method-name>findByProcessingStatus</method-name>
+					<method-params>
+						<method-param>java.lang.String</method-param>
+					</method-params>
+				</query-method>
+				<ejb-ql>SELECT OBJECT(o) FROM CmLogs o WHERE o.processingStatus = ?1</ejb-ql>
+			</query>
+			<query>
+				<query-method>
+					<method-name>findAll</method-name>
+					<method-params>
+					</method-params>
+				</query-method>
+				<ejb-ql>SELECT OBJECT(o) FROM CmLogs o ORDER BY o.processingDatetime DESC</ejb-ql>
+			</query>
 		</entity>
 		<entity>
             <display-name>DarRetentionPolicy</display-name>

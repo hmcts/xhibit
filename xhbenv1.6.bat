@@ -12,7 +12,7 @@
 IF DEFINED BEA_HOME GOTO BEA_HOME_DEFINED
 
 @rem 
-@rem Check the contents of C:\bea\beahomelist and determine weblogic 10's home.
+@rem Check the contents of C:\Oracle\Middleware\beahomelist and determine weblogic 10's home.
 @rem    - Note checks a max of 5 entries per line!
 @rem 
 

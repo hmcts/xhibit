@@ -6,6 +6,7 @@ import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
 import javax.ejb.ObjectNotFoundException;
+import javax.ejb.RemoveException;
 
 import org.apache.log4j.Logger;
 
@@ -130,7 +131,7 @@ public class MigrateCaseMaintainer extends AbstractEntityMaintainer {
 		throw new java.lang.UnsupportedOperationException();
 	}
 	
-    public void delete(Integer id, Integer version, String userDisplayName) {
+    public void delete(Integer id, Integer version, String userDisplayName) throws EJBException, RemoveException {
     	try {
 			// Get the current db values
 			MigrateCase local = home.findByPrimaryKey(id);
@@ -141,10 +142,8 @@ public class MigrateCaseMaintainer extends AbstractEntityMaintainer {
 				throw new OptimisticLockException("Optimistic Lock Error");
 			}
 			
-	    	// Update the record
-			if (userDisplayName != null) {
-				local.setUpdated(userDisplayName);
-			}
+			local.remove();
+	        log.debug(userDisplayName + " has removed MigrateCase record");
 			
 	    } catch (ObjectNotFoundException ex) {
 	        CSServices.getDefaultErrorHandler().handleError(ex, getClass());
@@ -152,7 +151,6 @@ public class MigrateCaseMaintainer extends AbstractEntityMaintainer {
 	    } catch (FinderException ex) {
 	        CSServices.getDefaultErrorHandler().handleError(ex, getClass());
 	        throw new EJBException(ex);
-	    }		
-
+	    }
     }
 }

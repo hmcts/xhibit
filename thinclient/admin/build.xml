@@ -72,8 +72,15 @@
                 <include name="ThinClientFramework.jar" />
                 <include name="TimerProcess.jar" />
                 <include name="UserTerminalLocationControllerClient.jar" />
+				<include name="CmLogsController.jar" />
             </fileset>
+			
+			<fileset dir="${lib.dir}">
+				<include name="com.bea.core.apache.commons.io_*.jar" />
+				<include name="com.bea.core.apache.commons.fileupload_*.jar" />
+			</fileset>
         </filesetlist>
+	
     </target>
 
     <!--

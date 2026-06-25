@@ -35,6 +35,7 @@ import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
 import uk.gov.courtservice.xhibit.client.util.XPanel;
 import uk.gov.courtservice.xhibit.client.util.security.FunctionList;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationController;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitSingleton;
 
 /**
@@ -395,6 +396,15 @@ public class TodaysScheduleController extends XPanel {
                     }
                 } else {
                     item.setEnabled(false);
+                }
+                
+                if (selectedShv != null) {
+                    // XDMX7 disable the update option if case is migrated
+                    int caseId = selectedShv.getCaseId();
+                    
+                    if (XhibitDelegateHelper.getMigrateCaseDelegate().isCaseMigrated(caseId)) {
+                    	item.setEnabled(false);
+                    }	
                 }
             }
             if (item == movecase || item == caseProps) {

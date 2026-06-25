@@ -20,12 +20,15 @@ import javax.swing.TransferHandler;
 import javax.swing.table.TableModel;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.entities.CaseComplexValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.CaseFilterResultComplexValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.CaseListingEntryComplexValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.DefendantOnCaseBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.services.listing.CaseListingFilterCriteria;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseMaintain;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseType;
 import uk.gov.courtservice.xhibit.client.listings.ListTypeEnum;
 import uk.gov.courtservice.xhibit.client.listings.list.common.caze.AddCaseDataModel;
@@ -284,8 +287,15 @@ public class OtherCasesPanel extends JPanel {
 			}
 
 			Integer caseId = controller.getCaseId();
+			
 			if (!caseId.equals(0)) {
-				retrieveCaseAndPopulateOtherCaseModel(caseId);
+				// XDMX10
+				MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.LISTED);
+				if (migrationDetail != null && migrationDetail.isMigrated) {
+					new CaseMigratedPopup(listModel.getXac(), migrationDetail.migrationTo).setVisible(true);
+				} else {
+					retrieveCaseAndPopulateOtherCaseModel(caseId);
+				}	
 			}
 			setButtonsEnabled();
 		}

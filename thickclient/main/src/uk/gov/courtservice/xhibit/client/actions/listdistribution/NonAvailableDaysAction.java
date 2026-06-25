@@ -3,7 +3,10 @@ package uk.gov.courtservice.xhibit.client.actions.listdistribution;
 import java.awt.event.ActionEvent;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseMaintain;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.listings.casesummary.CaseSummaryModel;
 import uk.gov.courtservice.xhibit.client.listings.nonavailabledays.NonAvailableDaysDialog;
 import uk.gov.courtservice.xhibit.client.listings.nonavailabledays.NonAvailableDaysModel;
@@ -12,6 +15,7 @@ import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
 import uk.gov.courtservice.xhibit.client.util.XMessageBox;
 import uk.gov.courtservice.xhibit.client.util.XhibitBundles;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationController;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 
 public class NonAvailableDaysAction extends XAction {
 
@@ -44,7 +48,13 @@ public class NonAvailableDaysAction extends XAction {
 	    	CaseMaintain searchController = new CaseMaintain(xac, NonAvailableDaysModel.ValidValues.CASE_TYPES);
 	    	// Call the Non Available Days screen 
 	    	if (searchController.getCaseId() > 0) {
-	    		displayNonAvailableDaysDialog(xac, searchController.getCaseId());
+	    		// XDMX10
+	    		MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(searchController.getCaseId(), MigrationMessageType.EDIT);
+	    		if (migrationDetail != null && migrationDetail.isMigrated) {
+	    			new CaseMigratedPopup(xac, migrationDetail.migrationTo).setVisible(true);
+	    		} else {
+		    		displayNonAvailableDaysDialog(xac, searchController.getCaseId());
+	    		}
 	    	}
 	    } 
 	}

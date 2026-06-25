@@ -1,5 +1,5 @@
 /*
- * Filename:    Xhibit_DB_Patch_8_8_9_0.sql (PDDA release)
+ * Filename:    Xhibit_DB_Patch_8_8_9_0.sql (Thickclient Migration release)
  *
  *
  * PLEASE CHANGE :  Insert relevant release number in X_X - in Filename above, for generating logfile name
@@ -11,7 +11,7 @@
  * DATE         WHO             COMMENT
  * ----         ---             -------
  * 27/01/2026	Luke Gittins	Initial Commit
- * 28/01/2026	Luke Gittins	XDMX-3
+ * 28/01/2026	Luke Gittins	XDMX-3 - Add XHB_MIGRATE_CASE table
  * 17/02/2026	Scott Atwell	XDMX-3 - Add XHB_CM_LOGS table
  */
 

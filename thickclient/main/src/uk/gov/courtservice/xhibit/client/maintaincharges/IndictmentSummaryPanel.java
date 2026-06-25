@@ -9,12 +9,7 @@ import java.awt.event.HierarchyBoundsListener;
 import java.awt.event.HierarchyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
-import java.util.Calendar;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
-import javax.swing.JOptionPane;
-import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
@@ -28,19 +23,14 @@ import javax.swing.event.ListSelectionListener;
 import javax.swing.event.TableColumnModelEvent;
 import javax.swing.event.TableColumnModelListener;
 
-import uk.gov.courtservice.xhibit.client.util.XAction;
-import uk.gov.courtservice.framework.services.validation.CSValidationException;
 import uk.gov.courtservice.xhibit.business.services.charge.UncodedOffenceInterface;
 import uk.gov.courtservice.xhibit.business.vos.services.charge.ChargeValue;
 import uk.gov.courtservice.xhibit.business.vos.services.charge.JoinderChargeInfoValue;
 import uk.gov.courtservice.xhibit.client.actions.XhibitActions;
-import uk.gov.courtservice.xhibit.client.util.XDateFormat;
-import uk.gov.courtservice.xhibit.client.util.XDatePanel;
 import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
 import uk.gov.courtservice.xhibit.client.util.XTableFactory;
 import uk.gov.courtservice.xhibit.client.util.table.XTable;
-import uk.gov.courtservice.xhibit.business.entities.migration.MigrateUtils;
-import uk.gov.courtservice.xhibit.business.entities.migration.MigrateUtils.MigrationDetail;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 
 /**
  * <p>
@@ -229,7 +219,6 @@ public class IndictmentSummaryPanel extends ChargePanel implements UncodedOffenc
 		return this.parent;
 	}
 
-	//TODO: See below
 	private JPopupMenu getPopup() {
 		if (popup == null) {
 			// Create the popup menu.
@@ -238,16 +227,14 @@ public class IndictmentSummaryPanel extends ChargePanel implements UncodedOffenc
 					XhibitActions.getAction(parent.getXAC(), XhibitActions.AddDefendantsToCount));
 			popup.add(menuItem);
 			menuItem = new JMenuItem(XhibitActions.getAction(parent.getXAC(), XhibitActions.CopyCharge));
-			// XDMX-6 Line below disables the Copy Charge option if in read only. Need more logic to check
-			// whether the case being viewed is migrated in the new table after blocker is resolved.
-			MigrateUtils migrateUtils = new MigrateUtils();
-			int caseId = parent.getXAC().getApplicationCaseModel().getCaseId();
-			boolean isReadOnly = parent.getXAC().getApplicationCaseModel().isInEditMode();
-			MigrationDetail migrationDetail = migrateUtils.getMigrationDetails(caseId);
 			
-			if(migrationDetail != null && migrationDetail.isMigrated() && isReadOnly) {
+			// XDMX-6 below disables the Copy Charge option if the case is migrated and opened in read-only
+			boolean isInEditMode = parent.getXAC().getApplicationCaseModel().isInEditMode();
+			int caseId = parent.getXAC().getApplicationCaseModel().getCaseId();
+			if (XhibitDelegateHelper.getMigrateCaseDelegate().isCaseMigratedAndInReadOnly(isInEditMode, caseId)) {
 				menuItem.setEnabled(false);
 			}
+			
 			popup.add(menuItem);
 			menuItem = new JMenuItem(XhibitActions.getAction(parent.getXAC(), XhibitActions.RemoveDefendantsOnCount));
 			popup.add(menuItem);

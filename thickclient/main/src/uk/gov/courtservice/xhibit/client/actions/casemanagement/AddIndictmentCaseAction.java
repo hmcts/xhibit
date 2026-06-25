@@ -7,13 +7,15 @@ import java.util.Calendar;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
 import uk.gov.courtservice.xhibit.business.services.defendant.DefendantControllerBeanBusinessDelegate;
-import uk.gov.courtservice.xhibit.business.services.systemadmin.BisRefControllerBeanBusinessDelegate;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.entities.CaseBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.CourtRoomBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.DefendantOnCaseBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.ScheduledHearingBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.services.todaysschedule.ScheduledHearingValue;
 import uk.gov.courtservice.xhibit.client.casemanagement.AddIndictmentCase;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.maintaincharges.ChargesController;
 import uk.gov.courtservice.xhibit.client.models.ApplicationCaseModel;
 import uk.gov.courtservice.xhibit.client.util.XAction;
@@ -41,25 +43,31 @@ public class AddIndictmentCaseAction extends XAction {
 		AddIndictmentCase addIndictment = new AddIndictmentCase(xac);
 		if (addIndictment.getCaseId() != null) {
 			if (addIndictment.getCaseId() > 0) { // returns 0 by default so just null check wasn't enough
-
-				CaseBasicValue basic = XhibitDelegateHelper.getCaseDelegate().getCase(addIndictment.getCaseId());
-
-				DefendantControllerBeanBusinessDelegate del = XhibitDelegateHelper.getDefendantDelegate();
-				ArrayList<DefendantOnCaseBasicValue> arr = new ArrayList<DefendantOnCaseBasicValue>();
-				arr = (ArrayList<DefendantOnCaseBasicValue>) del.findByCaseId(addIndictment.getCaseId());
-
-				ApplicationCaseModel acm = populateApplicationCaseModel(true, basic, arr);
-				acm.setXhibitApplicationController(xac);
-
-				ChargesController cc = new ChargesController(acm, true);
-				cc.setAccessedFromAddIndictmentCase(true);
-				xac.setApplicationCaseModel(acm);
-				xac.open(cc);
-				xac.getCaseStatus().setCaseCreateInProgressFlag(true);
-				xac.setCaseChargesDisposalsOpened(true);
+				// XDMX-8
+            	MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate()
+    					.getMigrationDetails(addIndictment.getCaseId(), MigrationMessageType.EDIT);
+            	
+            	if (migrationDetail != null && migrationDetail.isMigrated) {
+            		new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+            	} else {
+					CaseBasicValue basic = XhibitDelegateHelper.getCaseDelegate().getCase(addIndictment.getCaseId());
+	
+					DefendantControllerBeanBusinessDelegate del = XhibitDelegateHelper.getDefendantDelegate();
+					ArrayList<DefendantOnCaseBasicValue> arr = new ArrayList<DefendantOnCaseBasicValue>();
+					arr = (ArrayList<DefendantOnCaseBasicValue>) del.findByCaseId(addIndictment.getCaseId());
+	
+					ApplicationCaseModel acm = populateApplicationCaseModel(true, basic, arr);
+					acm.setXhibitApplicationController(xac);
+	
+					ChargesController cc = new ChargesController(acm, true);
+					cc.setAccessedFromAddIndictmentCase(true);
+					xac.setApplicationCaseModel(acm);
+					xac.open(cc);
+					xac.getCaseStatus().setCaseCreateInProgressFlag(true);
+					xac.setCaseChargesDisposalsOpened(true);
+            	}
 			}
 		}
-
 	}
 
 	private ApplicationCaseModel populateApplicationCaseModel(boolean overload, CaseBasicValue oldCBV,

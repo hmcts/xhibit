@@ -70,6 +70,13 @@
         <c:set scope="request" var="buttonRequestURL" value="/internetwebpages/listInternetWebPages.jsp"/>
         <c:import url="${menuButtonURL}"/>
     </td>
+        <td class="psMenuVerticalSpace"><img src="/Static/images/blank.gif"></td>
+    
+    <td class="psMenu" nowrap>
+        <c:set scope="request" var="buttonTextKey" value="menu.button.crimeMigration"/>
+        <c:set scope="request" var="buttonRequestURL" value="/crimemigration/bulkUpdate.jsp"/>
+        <c:import url="${menuButtonURL}"/>
+    </td>
     <td class="psMenuVerticalSpace"><img src="/Static/images/blank.gif"></td>
     
 	<td class="psMenu">

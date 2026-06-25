@@ -413,7 +413,13 @@ public class XhibitApplicationControllerImpl extends XhibitApplicationController
                 // CR46; Authorise Results Use Case Pre-conditions
                 if (!(CaseTypeHelper.isBail_CaseType(shv) || CaseTypeHelper.isUndefined_CaseType(shv) || CaseTypeHelper
                         .isMiscelleanousAppeal_CaseType(shv))) {
-                    XhibitActions.getAction(this, XhibitActions.AuthoriseResults).setEnabled(true);
+                	// If the case is migrated then authorise results will be greyed out
+                	if (XhibitDelegateHelper.getMigrateCaseDelegate()
+                			.isCaseMigrated(getApplicationCaseModel().getCaseId())) {
+                		XhibitActions.getAction(this, XhibitActions.AuthoriseResults).setEnabled(false);
+                	} else {
+                		XhibitActions.getAction(this, XhibitActions.AuthoriseResults).setEnabled(true);
+                	}
                     XhibitActions.getAction(this, XhibitActions.OriginalCharges).setEnabled(
                         CaseTypeHelper.isTrial_CaseType(shv)
                     );

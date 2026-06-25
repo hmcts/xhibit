@@ -30,8 +30,11 @@ import org.apache.log4j.Logger;
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
 import uk.gov.courtservice.framework.services.CSServices;
 import uk.gov.courtservice.xhibit.business.entities.xhb_court_room.XhbCourtRoomBasicValue;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.services.todaysschedule.ScheduledHearingValue;
 import uk.gov.courtservice.xhibit.client.actions.XhibitActions;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.util.UserCancelException;
 import uk.gov.courtservice.xhibit.client.util.XAction;
 import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
@@ -41,6 +44,7 @@ import uk.gov.courtservice.xhibit.client.util.XhibitBundles;
 import uk.gov.courtservice.xhibit.client.util.security.FunctionList;
 import uk.gov.courtservice.xhibit.client.util.table.model.XHIBITTableModelInterface;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationController;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitSingleton;
 
 /**
@@ -280,6 +284,17 @@ public class OpenCasePanel extends XPanel {
                 throw new UserCancelException();
 
             selectedShv = ((ScheduledHearingValueHelper) selectedItem).getModel();
+            
+            // XDMX7
+            int caseId = selectedShv.getCaseId();
+            MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.READONLY);
+            
+            if (migrationDetail != null && migrationDetail.isMigrated) {
+                XhibitApplicationController xac = (XhibitApplicationController) myParent.getParentFrame();
+    			new CaseMigratedPopup(xac, migrationDetail.migrationTo).setVisible(true);
+    			chkReadOnly.setSelected(true);;
+            }
+            
             // if (selectedShv.getIsFloating() != null &&
             // !selectedShv.getIsFloating().booleanValue() ) {
             if (canOpenFloating(selectedShv)) {

@@ -27,8 +27,11 @@ import uk.gov.courtservice.framework.services.validation.CSValidationException;
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerException;
 import uk.gov.courtservice.xhibit.business.services.defendant.DefendantControllerBeanBusinessDelegate;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.entities.CaseBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.entities.DefendantOnCaseBasicValue;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.util.CustomButtonPanel;
 import uk.gov.courtservice.xhibit.client.util.XDialog;
 import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
@@ -409,31 +412,43 @@ public class CaseLinkingPanel extends XPanel {
 										XhibitSingleton.getInstance().getCourtId());
 				
 				if (caseIdToLink > 0) {
-					defendantDelegate = XhibitDelegateHelper.getDefendantDelegate();
+					// XDMX10
+					MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseIdToLink, MigrationMessageType.LINKED);
 					
-					Collection<DefendantOnCaseBasicValue> defendantsOnCase = (ArrayList<DefendantOnCaseBasicValue>) defendantDelegate
-							.findByCaseId(caseIdToLink);
-					
-					if (defendantsOnCase.size() > 0) {		
-						for (DefendantOnCaseBasicValue defendantOnCase : defendantsOnCase) {
-							if ((null != defendantOnCase.getResultsVerified())
-									&& (defendantOnCase.getResultsVerified().equals("E"))) {
-								throw new CaseControllerException();
-							}
-						}			
-					} else {
-						throw new CaseControllerException();
-					}
-					caseToLink = caseDelegate.getCase(caseIdToLink);
-					txtCaseTitleToLink.setText(caseToLink.getCaseTitle());
-					
-					if (caseToLink.getCaseGroupNumber() != null) {
-						btnViewLinks.setEnabled(true);	
-					} else {
+					if (migrationDetail != null && migrationDetail.isMigrated) {
+						new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+						// prevent user first searching for a valid case, enabling the buttons, then searching for a migrated case and linking.
+						btnCreateLink.setEnabled(false);
 						btnViewLinks.setEnabled(false);
-					}
+						txtCaseTitleToLink.setText("");
 
-					btnCreateLink.setEnabled(true);
+					} else {
+						defendantDelegate = XhibitDelegateHelper.getDefendantDelegate();
+						
+						Collection<DefendantOnCaseBasicValue> defendantsOnCase = (ArrayList<DefendantOnCaseBasicValue>) defendantDelegate
+								.findByCaseId(caseIdToLink);
+						
+						if (defendantsOnCase.size() > 0) {		
+							for (DefendantOnCaseBasicValue defendantOnCase : defendantsOnCase) {
+								if ((null != defendantOnCase.getResultsVerified())
+										&& (defendantOnCase.getResultsVerified().equals("E"))) {
+									throw new CaseControllerException();
+								}
+							}			
+						} else {
+							throw new CaseControllerException();
+						}
+						caseToLink = caseDelegate.getCase(caseIdToLink);
+						txtCaseTitleToLink.setText(caseToLink.getCaseTitle());
+						
+						if (caseToLink.getCaseGroupNumber() != null) {
+							btnViewLinks.setEnabled(true);	
+						} else {
+							btnViewLinks.setEnabled(false);
+						}
+
+						btnCreateLink.setEnabled(true);
+					}
 				} 
 			} catch (CaseControllerException e) {
 				log.debug("Couldn't find case: " + txtCaseNumberToLink.getText());

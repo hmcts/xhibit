@@ -16,7 +16,9 @@ import uk.gov.courtservice.xhibit.client.util.XDateFormat;
 import uk.gov.courtservice.xhibit.client.util.XhibitBundles;
 import uk.gov.courtservice.xhibit.client.util.helpers.CaseTypeHelper;
 import uk.gov.courtservice.xhibit.client.util.helpers.ResourceBundleHelper;
-
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.entities.SHJusticeBasicValue;
 
 /**
@@ -230,7 +232,7 @@ public class CourtLogHeaderTableModel extends AbstractTableModel {
             if (CaseTypeHelper.isCriminalAppeal_CaseType(myVO)) {
                 switch (c) {
                 case 0: // Case Number
-                    returnString = getCaseTypeAndNumber(myVO.getHhCase().getCaseType(), myVO.getHhCase()
+                    returnString = getCaseTypeAndNumber(myVO.getHhCase().getCaseId(), myVO.getHhCase().getCaseType(), myVO.getHhCase()
                             .getCaseNumber());
                     break;
                 case 1: // Appellant
@@ -288,7 +290,7 @@ public class CourtLogHeaderTableModel extends AbstractTableModel {
             } else if (CaseTypeHelper.isMiscelleanousAppeal_CaseType(myVO)) {
                 switch (c) {
                 case 0: // Case Number
-                    returnString = getCaseTypeAndNumber(myVO.getHhCase().getCaseType(), myVO.getHhCase()
+                    returnString = getCaseTypeAndNumber(myVO.getHhCase().getCaseId(), myVO.getHhCase().getCaseType(), myVO.getHhCase()
                             .getCaseNumber());
                     break;
                 case 1: // Appellants
@@ -348,7 +350,7 @@ public class CourtLogHeaderTableModel extends AbstractTableModel {
                 // Assume Trial as the default
                 switch (c) {
                 case 0: // Case Number
-                    returnString = getCaseTypeAndNumber(myVO.getHhCase().getCaseType(), myVO.getHhCase()
+                    returnString = getCaseTypeAndNumber(myVO.getHhCase().getCaseId(), myVO.getHhCase().getCaseType(), myVO.getHhCase()
                             .getCaseNumber());
                     break;
                 case 1: // Defendants (Case Title for Undefined Case Types)
@@ -406,7 +408,7 @@ public class CourtLogHeaderTableModel extends AbstractTableModel {
         }
     }
 
-    private String getCaseTypeAndNumber(String caseType, Integer caseNumber) {
+    private String getCaseTypeAndNumber(int caseId, String caseType, Integer caseNumber) {
         String typeAndNumber = "";
 
         if (caseType == null) {
@@ -417,6 +419,14 @@ public class CourtLogHeaderTableModel extends AbstractTableModel {
 
         if (caseNumber != null) {
             typeAndNumber = typeAndNumber + caseNumber.toString();
+            
+            // Check if case is migrated here and append the migration message
+            MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate()
+            		.getMigrationDetails(caseId, MigrationMessageType.COURT_LOG);
+            
+            if (migrationDetail != null) {
+            	typeAndNumber = typeAndNumber + migrationDetail.getMigrationTo();
+            }
         }
 
         return typeAndNumber;

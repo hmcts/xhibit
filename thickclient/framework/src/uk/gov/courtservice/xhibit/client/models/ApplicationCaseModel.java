@@ -67,8 +67,6 @@ public class ApplicationCaseModel {
 
     private boolean isLinked;
     
-    private boolean isMigrated;
-
     private Vector linkedGroup;
 
     private boolean forAllDaysLogs;

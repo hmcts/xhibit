@@ -3,12 +3,16 @@ package uk.gov.courtservice.xhibit.client.actions.listdistribution;
 import java.awt.event.ActionEvent;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseSearchDialog;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseSearchModel;
 import uk.gov.courtservice.xhibit.client.casemanagement.caselinking.CaseUnlinkingDialog;
 import uk.gov.courtservice.xhibit.client.casemanagement.caselinking.CaseUnlinkingModel;
 import uk.gov.courtservice.xhibit.client.util.XAction;
 import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitApplicationController;
+import uk.gov.courtservice.xhibit.client.xhibitapplication.XhibitDelegateHelper;
 
 public class NewUnlinkCasesAction extends XAction {
 
@@ -44,14 +48,17 @@ public class NewUnlinkCasesAction extends XAction {
 		caseId = caseSearchModel.getCaseId();
 			
 		if (caseId > 0) { 
-					
-			caseUnlinkingModel = new CaseUnlinkingModel();
-			caseUnlinkingModel.setCaseId(caseId);
-			caseUnlinkingDialog = new CaseUnlinkingDialog(xac, caseUnlinkingModel);
-			caseUnlinkingDialog.setVisible(true);
+			// XDMX10
+			MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.EDIT);
+			
+			if (migrationDetail != null && migrationDetail.isMigrated) {
+				new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+			} else {
+				caseUnlinkingModel = new CaseUnlinkingModel();
+				caseUnlinkingModel.setCaseId(caseId);
+				caseUnlinkingDialog = new CaseUnlinkingDialog(xac, caseUnlinkingModel);
+				caseUnlinkingDialog.setVisible(true);
+			}
 		}
 	}
 }
-
-
-

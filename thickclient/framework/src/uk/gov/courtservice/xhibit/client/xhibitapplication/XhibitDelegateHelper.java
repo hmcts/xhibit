@@ -20,6 +20,7 @@ import uk.gov.courtservice.xhibit.business.services.listdistribution.ListDistrib
 import uk.gov.courtservice.xhibit.business.services.listdistribution.MaintainRecipientControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.listing.ListingsControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.messaging.MessagingControllerBeanBusinessDelegate;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrateCaseControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.monetaryordertracking.MonetaryOrderTrackingControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.orders.CollectionCentreControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.orders.OrdersControllerBeanBusinessDelegate;
@@ -384,5 +385,9 @@ public class XhibitDelegateHelper {
 
 	public static SchedHearingDefendantControllerBeanBusinessDelegate getSchedHearingDefendantDelegate() {
 		return SchedHearingDefendantControllerBeanBusinessDelegate.DelegateFactory.getInstance();
+	}
+	
+	public static MigrateCaseControllerBeanBusinessDelegate getMigrateCaseDelegate() {
+		return MigrateCaseControllerBeanBusinessDelegate.DelegateFactory.getInstance();
 	}
 }

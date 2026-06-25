@@ -1,5 +1,7 @@
 package uk.gov.courtservice.xhibit.business.entities.migration;
 
+import java.util.Collection;
+
 import javax.ejb.CreateException;
 import javax.ejb.EJBException;
 import javax.ejb.FinderException;
@@ -32,6 +34,19 @@ public class CmLogsMaintainer extends AbstractEntityMaintainer {
 		log.debug("*** entered into findByPrimaryKey ***");
 		try {
 			return home.findByPrimaryKey(id);
+		} catch (ObjectNotFoundException e) {
+			CSServices.getDefaultErrorHandler().handleError(e, this.getClass());
+			throw e;
+		} catch (FinderException e) {
+			CSServices.getDefaultErrorHandler().handleError(e, this.getClass());
+			throw new EJBException(e);
+		}
+	}
+	
+	public Collection<CmLogs> findByProcessingStatus(String processingStatus) throws ObjectNotFoundException {
+		log.debug("*** entered into findByProcessingStatus ***");
+		try {
+			return home.findByProcessingStatus(processingStatus);
 		} catch (ObjectNotFoundException e) {
 			CSServices.getDefaultErrorHandler().handleError(e, this.getClass());
 			throw e;
@@ -145,5 +160,24 @@ public class CmLogsMaintainer extends AbstractEntityMaintainer {
 	        throw new EJBException(ex);
 	    }		
 
+    }
+    
+    public boolean hasExistingLogForFilename(String fileName) {
+		try {
+			Collection<CmLogs> logs = home.findByFileNameInActiveStatuses(fileName);
+	    	return logs != null && !logs.isEmpty();
+		} catch (FinderException e) {
+			CSServices.getDefaultErrorHandler().handleError(e, getClass());
+			throw new EJBException(e);
+		}
+    }
+    
+    public Collection<CmLogs> findAll() {
+    	try {
+    		return home.findAll();
+    	} catch (FinderException e) {
+	        CSServices.getDefaultErrorHandler().handleError(e, getClass());
+	        throw new EJBException(e);
+    	}
     }
 }

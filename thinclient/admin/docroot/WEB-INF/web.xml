@@ -71,6 +71,17 @@
         <load-on-startup>1</load-on-startup>
     </servlet>
     
+	<servlet>
+        <servlet-name>BulkUpdateServlet</servlet-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.admin.servlet.BulkUpdateServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+	
+		<servlet>
+        <servlet-name>DownloadLogServlet</servlet-name>
+        <servlet-class>uk.gov.courtservice.xhibit.web.admin.servlet.DownloadLogServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
     <!--
       -
       - Map the controlservlet to respond to all requests except jsps
@@ -79,11 +90,21 @@
 
     <servlet-mapping>
         <servlet-name>ControlServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+		<url-pattern>/</url-pattern>
         <url-pattern>/caseresync/</url-pattern>
         <url-pattern>/terminals/</url-pattern>
         <url-pattern>/unauthorisedcases/</url-pattern>
         <url-pattern>/internetwebpages/</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>BulkUpdateServlet</servlet-name>
+        <url-pattern>/crimemigration/bulkUpdate</url-pattern>
+    </servlet-mapping>
+	
+	<servlet-mapping>
+        <servlet-name>DownloadLogServlet</servlet-name>
+        <url-pattern>/crimemigration/downloadLog</url-pattern>
     </servlet-mapping>
 
     <!-- Use the timeout set in weblogic config -->

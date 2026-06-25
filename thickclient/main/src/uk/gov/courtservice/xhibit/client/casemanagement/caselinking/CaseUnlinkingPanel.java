@@ -32,9 +32,12 @@ import uk.gov.courtservice.framework.services.validation.CSValidationException;
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerException;
 import uk.gov.courtservice.xhibit.business.services.defendant.DefendantControllerBeanBusinessDelegate;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.entities.CaseBasicValue;
 import uk.gov.courtservice.xhibit.business.vos.services.caselinking.CaseLinkingValue;
 import uk.gov.courtservice.xhibit.business.vos.services.userterminal.UserTerminalProperties;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.util.CustomButtonPanel;
 import uk.gov.courtservice.xhibit.client.util.XDialog;
 import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
@@ -288,61 +291,69 @@ public class CaseUnlinkingPanel extends XPanel {
 		
 		try {
 			int selectedCaseId = (Integer) linkedCasesTable.getModel().getValueAt(row, 2);
-			CaseBasicValue cbv = caseDelegate.getCase(selectedCaseId);
 			
-			ArrayList<CaseLinkingValue> clvColl = (ArrayList<CaseLinkingValue>)
-					caseDelegate.findCommonDefendantsWithGroupNumber(cbv.getCaseId(), cbv.getCourtID(), cbv.getCaseGroupNumber());
+			// XDMX10
+			MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(selectedCaseId, MigrationMessageType.LINKED);
 			
-			ArrayList<CaseLinkingValue> clvCollGroup = (ArrayList<CaseLinkingValue>) 
-					caseDelegate.findActiveCasesWithGroupNumber(XhibitSingleton.getInstance().getCourtId(), 
-								cbv.getCaseGroupNumber());
-			
-			boolean unlinked = false; 
-			
-			if (clvColl.size() > 0) {
-				int result = JOptionPane.showConfirmDialog(null, new JLabel(commonDefendants, SwingConstants.CENTER), "Warning", JOptionPane.ERROR_MESSAGE);
+			if (migrationDetail != null && migrationDetail.isMigrated) {
+				new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+			} else {
+				CaseBasicValue cbv = caseDelegate.getCase(selectedCaseId);
 				
-				if (result == JOptionPane.YES_OPTION) {
+				ArrayList<CaseLinkingValue> clvColl = (ArrayList<CaseLinkingValue>)
+						caseDelegate.findCommonDefendantsWithGroupNumber(cbv.getCaseId(), cbv.getCourtID(), cbv.getCaseGroupNumber());
+				
+				ArrayList<CaseLinkingValue> clvCollGroup = (ArrayList<CaseLinkingValue>) 
+						caseDelegate.findActiveCasesWithGroupNumber(XhibitSingleton.getInstance().getCourtId(), 
+									cbv.getCaseGroupNumber());
+				
+				boolean unlinked = false; 
+				
+				if (clvColl.size() > 0) {
+					int result = JOptionPane.showConfirmDialog(null, new JLabel(commonDefendants, SwingConstants.CENTER), "Warning", JOptionPane.ERROR_MESSAGE);
+					
+					if (result == JOptionPane.YES_OPTION) {
+						caseDelegate.removeGroupNumber(selectedCaseId, 
+								XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
+						
+						JOptionPane.showMessageDialog(null, "Case unlinked successfully", "Un-link successful", JOptionPane.INFORMATION_MESSAGE);
+						unlinked = true;
+					}
+				} else {
 					caseDelegate.removeGroupNumber(selectedCaseId, 
 							XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
-					
+
 					JOptionPane.showMessageDialog(null, "Case unlinked successfully", "Un-link successful", JOptionPane.INFORMATION_MESSAGE);
 					unlinked = true;
 				}
-			} else {
-				caseDelegate.removeGroupNumber(selectedCaseId, 
-						XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
-
-				JOptionPane.showMessageDialog(null, "Case unlinked successfully", "Un-link successful", JOptionPane.INFORMATION_MESSAGE);
-				unlinked = true;
-			}
-			
-			boolean noLinks = false;
-			// If it's just this case grouped with a single other case, then unlink the other case too
-			if (clvCollGroup.size() == 2 && unlinked) {
-				if(selectedCaseId == clvCollGroup.get(0).getCaseId()) {	// to find the other one, i.e. the non selected case id
-					caseDelegate.removeGroupNumber(clvCollGroup.get(1).getCaseId(), 
-							XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
-			
-					noLinks = true;
-				} else {
-					caseDelegate.removeGroupNumber(clvCollGroup.get(0).getCaseId(), 
-							XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
-					
-					noLinks = true;
+				
+				boolean noLinks = false;
+				// If it's just this case grouped with a single other case, then unlink the other case too
+				if (clvCollGroup.size() == 2 && unlinked) {
+					if(selectedCaseId == clvCollGroup.get(0).getCaseId()) {	// to find the other one, i.e. the non selected case id
+						caseDelegate.removeGroupNumber(clvCollGroup.get(1).getCaseId(), 
+								XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
+				
+						noLinks = true;
+					} else {
+						caseDelegate.removeGroupNumber(clvCollGroup.get(0).getCaseId(), 
+								XhibitSingleton.getInstance().getUserSession().getSessionProperty(UserTerminalProperties.USER_NAME));
+						
+						noLinks = true;
+					}
 				}
-			}
-			
-			// unlinked from itself
-			if (selectedCaseId == caseUnlinkingModel.getCaseId() || noLinks) {
-				String titleString = "Case Number: " + cbv.getCaseType() + cbv.getCaseNumber().toString();
 				
-				JOptionPane.showMessageDialog((Component) null, "The case is not linked to any others", 
-						  titleString, JOptionPane.INFORMATION_MESSAGE);
-				
-				parent.dispose();
-			} else {
-				stepUpdateViewState();
+				// unlinked from itself
+				if (selectedCaseId == caseUnlinkingModel.getCaseId() || noLinks) {
+					String titleString = "Case Number: " + cbv.getCaseType() + cbv.getCaseNumber().toString();
+					
+					JOptionPane.showMessageDialog((Component) null, "The case is not linked to any others", 
+							  titleString, JOptionPane.INFORMATION_MESSAGE);
+					
+					parent.dispose();
+				} else {
+					stepUpdateViewState();
+				}
 			}
 		} catch (CaseControllerException e) {
 			log.debug("Couldn't find case at row: " + row);

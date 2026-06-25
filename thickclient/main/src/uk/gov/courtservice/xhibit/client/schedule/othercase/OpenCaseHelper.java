@@ -7,7 +7,10 @@ import javax.swing.JOptionPane;
 
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
 import uk.gov.courtservice.framework.services.validation.CSValidationException;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.vos.services.todaysschedule.ScheduledHearingValue;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.util.CaseHelper;
 import uk.gov.courtservice.xhibit.client.util.UserCancelException;
 import uk.gov.courtservice.xhibit.client.util.XHIBITConstant;
@@ -110,6 +113,16 @@ public class OpenCaseHelper {
                         throw new UserCancelException();
                 }
             }
+            
+            // XDMX7
+            int caseId = ts_Shv[0].getCaseId();
+            MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.READONLY);
+            
+            if (migrationDetail != null && migrationDetail.isMigrated) {
+    			new CaseMigratedPopup(xac, migrationDetail.migrationTo).setVisible(true);
+    			readOnly = true;
+            }
+            
             xac.openCase(ts_Shv[0], !readOnly);
         } else {
             throw new CSValidationException("gui.search.casenotfound", new Object[] { strCaseNumber },

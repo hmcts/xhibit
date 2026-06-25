@@ -34,6 +34,8 @@ import uk.gov.courtservice.xhibit.business.services.casehistory.CaseHistoryContr
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerException;
 import uk.gov.courtservice.xhibit.business.services.defendant.DefendantControllerBeanBusinessDelegate;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.services.monetaryordertracking.MonetaryOrderTrackingControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.monetaryordertracking.MonetaryOrderTrackingControllerException;
 import uk.gov.courtservice.xhibit.business.services.systemadmin.BisRefControllerBeanBusinessDelegate;
@@ -967,10 +969,17 @@ public class CaseSearchPanel extends XPanel {
 	}
 	
 	private void showCourtAppeal() throws CSRecoverableException {
-		courtAppealDialog = new CourtOfAppealDialog(xac, newCBV);
-		courtAppealDialog.setLocationRelativeTo(parent.getParentFrame());
-		courtAppealDialog.setVisible(true);
-				
+		MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate()
+				.getMigrationDetails(caseId, MigrationMessageType.EDIT);
+		if (migrationDetail != null && migrationDetail.isMigrated) {
+			// Case is migrated so display migrated panel and appropriate message
+			new CaseMigratedPopup(xac, migrationDetail.migrationTo).setVisible(true);
+		}
+		else {
+			courtAppealDialog = new CourtOfAppealDialog(xac, newCBV);
+			courtAppealDialog.setLocationRelativeTo(parent.getParentFrame());
+			courtAppealDialog.setVisible(true);
+		}		
 	}
 
 	private void caseNotFound() {

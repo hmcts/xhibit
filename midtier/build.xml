@@ -132,6 +132,7 @@
                 <include name="CaseController.jar" />
 				<include name="CaseHistoryController.jar" />
 				<include name="CaseProsecutorAgencyController.jar" />
+				<include name="CmLogsController.jar" />
                 <include name="GenerateCaseNumberController.jar"/>
 				<include name="GenerateCaseGroupController.jar"/>
                 <include name="ChargeController.jar" />

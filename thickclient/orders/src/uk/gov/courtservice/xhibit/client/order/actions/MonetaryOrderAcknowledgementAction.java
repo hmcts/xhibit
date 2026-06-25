@@ -11,8 +11,11 @@ import org.apache.log4j.Logger;
 import uk.gov.courtservice.framework.exception.CSRecoverableException;
 import uk.gov.courtservice.framework.services.CSServices;
 import uk.gov.courtservice.xhibit.business.services.caze.CaseControllerBeanBusinessDelegate;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationDetail;
+import uk.gov.courtservice.xhibit.business.services.migration.MigrationMessageType;
 import uk.gov.courtservice.xhibit.business.services.monetaryordertracking.MonetaryOrderTrackingControllerBeanBusinessDelegate;
 import uk.gov.courtservice.xhibit.business.services.monetaryordertracking.MonetaryOrderTrackingControllerException;
+import uk.gov.courtservice.xhibit.client.casemanagement.CaseMigratedPopup;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseSearchDialog;
 import uk.gov.courtservice.xhibit.client.casemanagement.CaseSearchModel;
 import uk.gov.courtservice.xhibit.client.monetaryorders.MonetaryOrderAcknowledgementDialog;
@@ -94,8 +97,16 @@ public class MonetaryOrderAcknowledgementAction extends OrderAction {
     private void processMonetaryOrder() {
     	log.debug("processMonetaryOrder()");
 		try {
-			monetaryOrderAcknowledgementDialog = new MonetaryOrderAcknowledgementDialog(xac, monetaryOrderAcknowledgementModel);
-			monetaryOrderAcknowledgementDialog.setVisible(true);
+			MigrationDetail migrationDetail = XhibitDelegateHelper.getMigrateCaseDelegate().getMigrationDetails(caseId, MigrationMessageType.EDIT);
+						
+			if (migrationDetail != null && migrationDetail.isMigrated) {
+				// case is migrated so display migrated panel and appropriate message
+				new CaseMigratedPopup(xac, migrationDetail.getMigrationTo()).setVisible(true);
+			}
+			else {
+				monetaryOrderAcknowledgementDialog = new MonetaryOrderAcknowledgementDialog(xac, monetaryOrderAcknowledgementModel);
+				monetaryOrderAcknowledgementDialog.setVisible(true);
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
